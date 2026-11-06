@@ -1,0 +1,27 @@
+{
+  "ccUsrTitle": { "tr": "Kullanıcılar", "en": "Users", "ar": "المستخدمون" },
+  "ccUsrSubtitle": { "tr": "Tüm platform", "en": "Entire platform", "ar": "المنصة بأكملها" },
+  "ccUsrSearch": { "tr": "Ad, TC veya telefon ara", "en": "Search name, ID or phone", "ar": "ابحث بالاسم أو الهوية أو الهاتف" },
+  "ccUsrAll": { "tr": "Tümü", "en": "All", "ar": "الكل" },
+  "ccUsrActive24": { "tr": "Son 24 saat aktif", "en": "Active in 24h", "ar": "نشط خلال 24 ساعة" },
+  "ccUsrActive30": { "tr": "Son 30 gün aktif", "en": "Active in 30 days", "ar": "نشط خلال 30 يومًا" },
+  "ccUsrTotal": { "tr": "Toplam", "en": "Total", "ar": "الإجمالي" },
+  "ccUsrDau": { "tr": "Bugün aktif", "en": "Active today", "ar": "نشط اليوم" },
+  "ccUsrMau": { "tr": "30 gün aktif", "en": "Active 30 days", "ar": "نشط 30 يومًا" },
+  "ccUsrNew30": { "tr": "Son 30 gün yeni", "en": "New in 30 days", "ar": "جديد خلال 30 يومًا" },
+  "ccUsrEmpty": { "tr": "Bu filtreye uyan kullanıcı yok", "en": "No users match this filter", "ar": "لا يوجد مستخدمون مطابقون" },
+  "ccUsrLoadFailed": { "tr": "Kullanıcılar yüklenemedi", "en": "Could not load users", "ar": "تعذر تحميل المستخدمين" },
+  "ccUsrNoAgency": { "tr": "Acentesiz", "en": "No agency", "ar": "بدون وكالة" },
+  "ccUsrNeverActive": { "tr": "Henüz aktif olmadı", "en": "Not active yet", "ar": "لم ينشط بعد" },
+  "ccUsrLastActive": { "tr": "Son aktiflik", "en": "Last active", "ar": "آخر نشاط" },
+  "ccUsrCreated": { "tr": "Kayıt tarihi", "en": "Registered", "ar": "تاريخ التسجيل" },
+  "ccUsrAgency": { "tr": "Acente", "en": "Agency", "ar": "الوكالة" },
+  "ccUsrPhone": { "tr": "Telefon", "en": "Phone", "ar": "الهاتف" },
+  "ccUsrTc": { "tr": "TC Kimlik No", "en": "ID number", "ar": "رقم الهوية" },
+  "ccUsrRole": { "tr": "Rol", "en": "Role", "ar": "الدور" },
+  "ccUsrOpenAgency": { "tr": "Acentesini aç", "en": "Open agency", "ar": "فتح الوكالة" },
+  "ccUsrCount": {
+    "tr": "{count} kullanıcı", "en": "{count} users", "ar": "{count} مستخدم",
+    "placeholders": { "count": { "type": "int" } }
+  }
+}

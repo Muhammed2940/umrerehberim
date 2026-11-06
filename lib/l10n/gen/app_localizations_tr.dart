@@ -3315,6 +3315,74 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccTitle => 'Kontrol Merkezi';
 
   @override
+  String get ccUsrActive24 => 'Son 24 saat aktif';
+
+  @override
+  String get ccUsrActive30 => 'Son 30 gün aktif';
+
+  @override
+  String get ccUsrAgency => 'Acente';
+
+  @override
+  String get ccUsrAll => 'Tümü';
+
+  @override
+  String ccUsrCount(int count) {
+    return '$count kullanıcı';
+  }
+
+  @override
+  String get ccUsrCreated => 'Kayıt tarihi';
+
+  @override
+  String get ccUsrDau => 'Bugün aktif';
+
+  @override
+  String get ccUsrEmpty => 'Bu filtreye uyan kullanıcı yok';
+
+  @override
+  String get ccUsrLastActive => 'Son aktiflik';
+
+  @override
+  String get ccUsrLoadFailed => 'Kullanıcılar yüklenemedi';
+
+  @override
+  String get ccUsrMau => '30 gün aktif';
+
+  @override
+  String get ccUsrNeverActive => 'Henüz aktif olmadı';
+
+  @override
+  String get ccUsrNew30 => 'Son 30 gün yeni';
+
+  @override
+  String get ccUsrNoAgency => 'Acentesiz';
+
+  @override
+  String get ccUsrOpenAgency => 'Acentesini aç';
+
+  @override
+  String get ccUsrPhone => 'Telefon';
+
+  @override
+  String get ccUsrRole => 'Rol';
+
+  @override
+  String get ccUsrSearch => 'Ad, TC veya telefon ara';
+
+  @override
+  String get ccUsrSubtitle => 'Tüm platform';
+
+  @override
+  String get ccUsrTc => 'TC Kimlik No';
+
+  @override
+  String get ccUsrTitle => 'Kullanıcılar';
+
+  @override
+  String get ccUsrTotal => 'Toplam';
+
+  @override
   String get commonCancel => 'Vazgeç';
 
   @override

@@ -3335,6 +3335,74 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccTitle => 'مركز التحكم';
 
   @override
+  String get ccUsrActive24 => 'نشط خلال 24 ساعة';
+
+  @override
+  String get ccUsrActive30 => 'نشط خلال 30 يومًا';
+
+  @override
+  String get ccUsrAgency => 'الوكالة';
+
+  @override
+  String get ccUsrAll => 'الكل';
+
+  @override
+  String ccUsrCount(int count) {
+    return '$count مستخدم';
+  }
+
+  @override
+  String get ccUsrCreated => 'تاريخ التسجيل';
+
+  @override
+  String get ccUsrDau => 'نشط اليوم';
+
+  @override
+  String get ccUsrEmpty => 'لا يوجد مستخدمون مطابقون';
+
+  @override
+  String get ccUsrLastActive => 'آخر نشاط';
+
+  @override
+  String get ccUsrLoadFailed => 'تعذر تحميل المستخدمين';
+
+  @override
+  String get ccUsrMau => 'نشط 30 يومًا';
+
+  @override
+  String get ccUsrNeverActive => 'لم ينشط بعد';
+
+  @override
+  String get ccUsrNew30 => 'جديد خلال 30 يومًا';
+
+  @override
+  String get ccUsrNoAgency => 'بدون وكالة';
+
+  @override
+  String get ccUsrOpenAgency => 'فتح الوكالة';
+
+  @override
+  String get ccUsrPhone => 'الهاتف';
+
+  @override
+  String get ccUsrRole => 'الدور';
+
+  @override
+  String get ccUsrSearch => 'ابحث بالاسم أو الهوية أو الهاتف';
+
+  @override
+  String get ccUsrSubtitle => 'المنصة بأكملها';
+
+  @override
+  String get ccUsrTc => 'رقم الهوية';
+
+  @override
+  String get ccUsrTitle => 'المستخدمون';
+
+  @override
+  String get ccUsrTotal => 'الإجمالي';
+
+  @override
   String get commonCancel => 'إلغاء';
 
   @override

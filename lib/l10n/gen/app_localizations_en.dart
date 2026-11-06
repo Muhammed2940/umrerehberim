@@ -3337,6 +3337,74 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccTitle => 'Control Center';
 
   @override
+  String get ccUsrActive24 => 'Active in 24h';
+
+  @override
+  String get ccUsrActive30 => 'Active in 30 days';
+
+  @override
+  String get ccUsrAgency => 'Agency';
+
+  @override
+  String get ccUsrAll => 'All';
+
+  @override
+  String ccUsrCount(int count) {
+    return '$count users';
+  }
+
+  @override
+  String get ccUsrCreated => 'Registered';
+
+  @override
+  String get ccUsrDau => 'Active today';
+
+  @override
+  String get ccUsrEmpty => 'No users match this filter';
+
+  @override
+  String get ccUsrLastActive => 'Last active';
+
+  @override
+  String get ccUsrLoadFailed => 'Could not load users';
+
+  @override
+  String get ccUsrMau => 'Active 30 days';
+
+  @override
+  String get ccUsrNeverActive => 'Not active yet';
+
+  @override
+  String get ccUsrNew30 => 'New in 30 days';
+
+  @override
+  String get ccUsrNoAgency => 'No agency';
+
+  @override
+  String get ccUsrOpenAgency => 'Open agency';
+
+  @override
+  String get ccUsrPhone => 'Phone';
+
+  @override
+  String get ccUsrRole => 'Role';
+
+  @override
+  String get ccUsrSearch => 'Search name, ID or phone';
+
+  @override
+  String get ccUsrSubtitle => 'Entire platform';
+
+  @override
+  String get ccUsrTc => 'ID number';
+
+  @override
+  String get ccUsrTitle => 'Users';
+
+  @override
+  String get ccUsrTotal => 'Total';
+
+  @override
   String get commonCancel => 'Cancel';
 
   @override

@@ -1958,6 +1958,35 @@
   "ccStaffYou": "Sen",
   "ccSubtitle": "Platformun nabzı tek ekranda",
   "ccTitle": "Kontrol Merkezi",
+  "ccUsrActive24": "Son 24 saat aktif",
+  "ccUsrActive30": "Son 30 gün aktif",
+  "ccUsrAgency": "Acente",
+  "ccUsrAll": "Tümü",
+  "ccUsrCount": "{count} kullanıcı",
+  "@ccUsrCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccUsrCreated": "Kayıt tarihi",
+  "ccUsrDau": "Bugün aktif",
+  "ccUsrEmpty": "Bu filtreye uyan kullanıcı yok",
+  "ccUsrLastActive": "Son aktiflik",
+  "ccUsrLoadFailed": "Kullanıcılar yüklenemedi",
+  "ccUsrMau": "30 gün aktif",
+  "ccUsrNeverActive": "Henüz aktif olmadı",
+  "ccUsrNew30": "Son 30 gün yeni",
+  "ccUsrNoAgency": "Acentesiz",
+  "ccUsrOpenAgency": "Acentesini aç",
+  "ccUsrPhone": "Telefon",
+  "ccUsrRole": "Rol",
+  "ccUsrSearch": "Ad, TC veya telefon ara",
+  "ccUsrSubtitle": "Tüm platform",
+  "ccUsrTc": "TC Kimlik No",
+  "ccUsrTitle": "Kullanıcılar",
+  "ccUsrTotal": "Toplam",
   "commonCancel": "Vazgeç",
   "commonClose": "Kapat",
   "commonComingSoon": "Çok yakında",

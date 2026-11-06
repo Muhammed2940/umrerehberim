@@ -6140,6 +6140,138 @@ abstract class AppLocalizations {
   /// **'Kontrol Merkezi'**
   String get ccTitle;
 
+  /// No description provided for @ccUsrActive24.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 24 saat aktif'**
+  String get ccUsrActive24;
+
+  /// No description provided for @ccUsrActive30.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 30 gün aktif'**
+  String get ccUsrActive30;
+
+  /// No description provided for @ccUsrAgency.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acente'**
+  String get ccUsrAgency;
+
+  /// No description provided for @ccUsrAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get ccUsrAll;
+
+  /// No description provided for @ccUsrCount.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} kullanıcı'**
+  String ccUsrCount(int count);
+
+  /// No description provided for @ccUsrCreated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kayıt tarihi'**
+  String get ccUsrCreated;
+
+  /// No description provided for @ccUsrDau.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün aktif'**
+  String get ccUsrDau;
+
+  /// No description provided for @ccUsrEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu filtreye uyan kullanıcı yok'**
+  String get ccUsrEmpty;
+
+  /// No description provided for @ccUsrLastActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son aktiflik'**
+  String get ccUsrLastActive;
+
+  /// No description provided for @ccUsrLoadFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcılar yüklenemedi'**
+  String get ccUsrLoadFailed;
+
+  /// No description provided for @ccUsrMau.
+  ///
+  /// In tr, this message translates to:
+  /// **'30 gün aktif'**
+  String get ccUsrMau;
+
+  /// No description provided for @ccUsrNeverActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz aktif olmadı'**
+  String get ccUsrNeverActive;
+
+  /// No description provided for @ccUsrNew30.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son 30 gün yeni'**
+  String get ccUsrNew30;
+
+  /// No description provided for @ccUsrNoAgency.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acentesiz'**
+  String get ccUsrNoAgency;
+
+  /// No description provided for @ccUsrOpenAgency.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acentesini aç'**
+  String get ccUsrOpenAgency;
+
+  /// No description provided for @ccUsrPhone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Telefon'**
+  String get ccUsrPhone;
+
+  /// No description provided for @ccUsrRole.
+  ///
+  /// In tr, this message translates to:
+  /// **'Rol'**
+  String get ccUsrRole;
+
+  /// No description provided for @ccUsrSearch.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ad, TC veya telefon ara'**
+  String get ccUsrSearch;
+
+  /// No description provided for @ccUsrSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tüm platform'**
+  String get ccUsrSubtitle;
+
+  /// No description provided for @ccUsrTc.
+  ///
+  /// In tr, this message translates to:
+  /// **'TC Kimlik No'**
+  String get ccUsrTc;
+
+  /// No description provided for @ccUsrTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcılar'**
+  String get ccUsrTitle;
+
+  /// No description provided for @ccUsrTotal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplam'**
+  String get ccUsrTotal;
+
   /// No description provided for @commonCancel.
   ///
   /// In tr, this message translates to:

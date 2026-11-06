@@ -13,6 +13,7 @@ import '../audit/audit_entry_tile.dart';
 import '../audit/audit_labels.dart';
 import '../shared/audit_log.dart';
 import '../shared/cc_widgets.dart';
+import '../users/cc_users_screen.dart';
 
 /// Kontrol Merkezi ana ekranı: süper admin, destek ve muhasebe buraya düşer.
 /// Üstte canlı KPI şeridi (count/sum toplama sorguları), altta role göre modül
@@ -149,6 +150,11 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
   }
 
   void _go(String route) => Navigator.pushNamed(context, route);
+
+  void _openUsers(CcUserFilter filter) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => CcUsersScreen(initialFilter: filter)),
+      );
 
   void _openAgencies() => Navigator.push(
         context,
@@ -350,7 +356,12 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
                 onTap: _openAgencies,
               ),
             if (k.users != null)
-              CcKpiTile(icon: Icons.groups_rounded, value: CcFmt.num0(k.users!), label: t.ccKpiUsers),
+              CcKpiTile(
+                icon: Icons.groups_rounded,
+                value: CcFmt.num0(k.users!),
+                label: t.ccKpiUsers,
+                onTap: () => _openUsers(CcUserFilter.all),
+              ),
             if (k.dau != null)
               CcKpiTile(
                 icon: Icons.bolt_rounded,
@@ -358,6 +369,7 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
                 label: t.ccKpiDau,
                 color: CcColors.info,
                 delta: (k.users ?? 0) > 0 ? CcFmt.pct(k.dau! * 100 / k.users!) : null,
+                onTap: () => _openUsers(CcUserFilter.active24),
               ),
             if (k.activeShops != null)
               CcKpiTile(
