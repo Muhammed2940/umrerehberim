@@ -36,6 +36,8 @@ import '../features/info_screen/screens/seyahat_rehberi_screen.dart';
 import '../features/info_screen/screens/ihtiyac_listesi_screen.dart';
 import '../features/info_screen/screens/mikat_screen.dart';
 import '../features/info_screen/screens/otel_restoran_screen.dart';
+import '../features/info_screen/screens/harem_kapilari_screen.dart';
+import '../features/info_screen/screens/ulasim_screen.dart';
 import '../features/simulasyon/screens/rota_simulasyonu_screen.dart';
 import '../features/simulasyon/screens/tavaf_simulasyonu_screen.dart';
 import '../features/shops/screens/admin_shops_page.dart';
@@ -101,6 +103,8 @@ class AppRoutes {
         '/ihtiyac-listesi': (_) => const IhtiyacListesiScreen(),
         '/mikat': (_) => const MikatScreen(),
         '/otel-restoran': (_) => const OtelRestoranScreen(),
+        '/harem-kapilari': (_) => const HaremKapilariScreen(),
+        '/ulasim': (_) => const UlasimScreen(),
         '/rota-simulasyonu': (_) => const RotaSimulasyonuScreen(),
         '/tavaf-simulasyonu': (_) => const TavafSimulasyonuScreen(),
         '/dukkanlar': (_) => const ShopsScreen(),

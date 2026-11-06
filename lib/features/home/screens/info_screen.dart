@@ -4,6 +4,7 @@ import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../info_screen/data/l10n_text.dart';
 import '../../info_screen/screens/ihram_restrictions_screen.dart';
 import '../../info_screen/widgets/yakinda_widgets.dart';
 
@@ -51,6 +52,28 @@ class _GeneralInfoScreenState extends State<GeneralInfoScreen> {
         icon: FlutterIslamicIcons.solidMosque,
         color: const Color(0xFF2E7D9A),
         onTap: () => Navigator.pushNamed(context, '/general/places'),
+      ),
+      InfoCardData(
+        title: const L10nText(tr: 'Harem Kapıları', en: 'Gates of the Two Holy Mosques', ar: 'أبواب الحرمين').of(context),
+        subtitle: const L10nText(
+          tr: 'Mescid-i Haram ve Mescid-i Nebevî kapıları, yerleri ve tarihçesi',
+          en: 'Gates of Masjid al-Haram and Masjid an-Nabawi, locations and history',
+          ar: 'أبواب المسجد الحرام والمسجد النبوي ومواقعها وتاريخها',
+        ).of(context),
+        icon: Icons.door_front_door_rounded,
+        color: const Color(0xFF8A6D1F),
+        onTap: () => Navigator.pushNamed(context, '/harem-kapilari'),
+      ),
+      InfoCardData(
+        title: const L10nText(tr: 'Ulaşım Rehberi', en: 'Transport Guide', ar: 'دليل المواصلات').of(context),
+        subtitle: const L10nText(
+          tr: 'Otobüs hatları, tren, taksi: duraklar, saatler, fiyatlar',
+          en: 'Bus lines, train, taxi: stops, hours, fares',
+          ar: 'خطوط الحافلات والقطار وسيارات الأجرة: المحطات والمواعيد والأسعار',
+        ).of(context),
+        icon: Icons.directions_bus_rounded,
+        color: const Color(0xFF2E7D9A),
+        onTap: () => Navigator.pushNamed(context, '/ulasim'),
       ),
       InfoCardData(
         title: t.infoCardTravelGuide,

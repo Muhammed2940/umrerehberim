@@ -38,13 +38,42 @@ class _GezilecekYerlerScreenState extends State<GezilecekYerlerScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(context.l10n.infoCardPlaces),
-          bottom: TabBar(
-            indicatorColor: AppColors.accent,
-            tabs: [
-              Tab(text: GeziMetin.tabMekke.of(context)),
-              Tab(text: GeziMetin.tabMedine.of(context)),
-              Tab(text: GeziMetin.tabDiger.of(context)),
-            ],
+          // Koyu başlık çubuğunda okunur "hap" sekmeler: seçili beyaz zemin + koyu yazı,
+          // diğerleri beyaz yazı; yanlarında o bölgedeki yer sayısı.
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(58),
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.14),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: TabBar(
+                dividerColor: Colors.transparent,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicator: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+                labelColor: AppColors.emerald800,
+                unselectedLabelColor: Colors.white,
+                labelStyle: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w800),
+                unselectedLabelStyle: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600),
+                labelPadding: EdgeInsets.zero,
+                tabs: [
+                  for (final (b, ad) in [
+                    (GeziBolge.mekke, GeziMetin.tabMekke),
+                    (GeziBolge.medine, GeziMetin.tabMedine),
+                    (GeziBolge.diger, GeziMetin.tabDiger),
+                  ])
+                    Tab(
+                      height: 40,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text('${ad.of(context)} (${geziYerleriOf(b).length})'),
+                      ),
+                    ),
+                ],
+              ),
+            ),
           ),
         ),
         body: TabBarView(
