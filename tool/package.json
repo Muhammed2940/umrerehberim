@@ -1,0 +1,15 @@
+{
+  "name": "umrerehberim-tool",
+  "description": "Umre Rehberim demo verisi yükleme betiği (REST, bağımlılıksız, Node 18+)",
+  "private": true,
+  "main": "seed.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "seed": "node seed.js",
+    "seed:reset": "node seed.js --reset",
+    "seed:dry": "node seed.js --dry-run"
+  },
+  "dependencies": {}
+}

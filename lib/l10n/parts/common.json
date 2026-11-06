@@ -1,0 +1,21 @@
+{
+  "appTitle": { "tr": "Umre Rehberim", "en": "My Umrah Guide", "ar": "دليل العمرة" },
+  "commonLanguage": { "tr": "Dil", "en": "Language", "ar": "اللغة" },
+  "commonSelectLanguage": { "tr": "Dil seçin", "en": "Select language", "ar": "اختر اللغة" },
+  "commonComingSoon": { "tr": "Çok yakında", "en": "Coming soon", "ar": "قريبًا" },
+  "commonOk": { "tr": "Tamam", "en": "OK", "ar": "حسنًا" },
+  "commonCancel": { "tr": "Vazgeç", "en": "Cancel", "ar": "إلغاء" },
+  "commonSave": { "tr": "Kaydet", "en": "Save", "ar": "حفظ" },
+  "commonDelete": { "tr": "Sil", "en": "Delete", "ar": "حذف" },
+  "commonEdit": { "tr": "Düzenle", "en": "Edit", "ar": "تعديل" },
+  "commonClose": { "tr": "Kapat", "en": "Close", "ar": "إغلاق" },
+  "commonRetry": { "tr": "Tekrar Dene", "en": "Try Again", "ar": "حاول مرة أخرى" },
+  "commonLoading": { "tr": "Yükleniyor...", "en": "Loading...", "ar": "جارٍ التحميل..." },
+  "commonSearch": { "tr": "Ara", "en": "Search", "ar": "بحث" },
+  "commonYes": { "tr": "Evet", "en": "Yes", "ar": "نعم" },
+  "commonNo": { "tr": "Hayır", "en": "No", "ar": "لا" },
+  "commonMecca": { "tr": "Mekke", "en": "Mecca", "ar": "مكة المكرمة" },
+  "commonMedina": { "tr": "Medine", "en": "Medina", "ar": "المدينة المنورة" },
+  "commonError": { "tr": "Bir hata oluştu.", "en": "An error occurred.", "ar": "حدث خطأ." },
+  "commonLanguageChanged": { "tr": "Dil değiştirildi", "en": "Language changed", "ar": "تم تغيير اللغة" }
+}

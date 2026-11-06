@@ -1,0 +1,84 @@
+{
+  "kibleTitle": { "tr": "Kıble Yönü", "en": "Qibla Direction", "ar": "اتجاه القبلة" },
+  "kibleSubtitle": { "tr": "Kıbleye yönelin ve kalbinizi huzura çevirin.", "en": "Face the Qibla and turn your heart to peace.", "ar": "توجّه إلى القبلة ووجّه قلبك إلى السكينة." },
+  "kibleHelp": { "tr": "Yardım", "en": "Help", "ar": "مساعدة" },
+  "kibleHelpText": {
+    "tr": "Telefonunuzu yere paralel tutun ve kendi etrafınızda yavaşça dönün. İbre tam yukarıyı gösterdiğinde ve Kâbe rozeti üstteki işaretle hizalandığında kıbleye dönmüş olursunuz; telefon hafifçe titrer.\n\nMetal eşyalar, mıknatıslı kılıflar ve elektronik cihazlar pusulayı etkileyebilir. Sapma görürseniz \"Kalibre Et\" adımlarını uygulayın.\n\nKıble açısı gerçek kuzeye göre hesaplanır.",
+    "en": "Hold your phone parallel to the ground and turn slowly around yourself. When the needle points straight up and the Kaaba badge lines up with the marker at the top, you are facing the Qibla; the phone vibrates gently.\n\nMetal objects, magnetic cases and electronic devices can affect the compass. If you notice a deviation, follow the \"Calibrate\" steps.\n\nThe Qibla angle is calculated relative to true north.",
+    "ar": "أمسك هاتفك موازيًا للأرض واستدر حول نفسك ببطء. عندما يشير المؤشر إلى الأعلى تمامًا وتتطابق شارة الكعبة مع العلامة العلوية تكون متجهًا إلى القبلة، ويهتز الهاتف اهتزازًا خفيفًا.\n\nقد تؤثر الأشياء المعدنية والأغطية المغناطيسية والأجهزة الإلكترونية في البوصلة. إذا لاحظت انحرافًا فاتبع خطوات \"المعايرة\".\n\nتُحسب زاوية القبلة بالنسبة إلى الشمال الحقيقي."
+  },
+  "kibleCalibrate": { "tr": "Kalibre Et", "en": "Calibrate", "ar": "معايرة" },
+  "kibleLocationNotYet": { "tr": "Konum henüz alınamadı", "en": "Location not available yet", "ar": "لم يتم تحديد الموقع بعد" },
+  "kibleShowMyLocation": { "tr": "Konumumu Göster", "en": "Show My Location", "ar": "إظهار موقعي" },
+  "kibleArMode": { "tr": "AR Modu", "en": "AR Mode", "ar": "الواقع المعزز" },
+  "kibleSoon": { "tr": "Yakında", "en": "Soon", "ar": "قريبًا" },
+  "kibleArSoon": { "tr": "AR modu yakında eklenecek", "en": "AR mode is coming soon", "ar": "سيُضاف وضع الواقع المعزز قريبًا" },
+  "kibleQiblaDegrees": {
+    "tr": "Kıble {degrees}°", "en": "Qibla {degrees}°", "ar": "القبلة {degrees}°",
+    "placeholders": { "degrees": { "type": "int" } }
+  },
+  "kibleQiblaUnknown": { "tr": "Kıble —", "en": "Qibla —", "ar": "القبلة —" },
+  "kibleTrueNorthNote": { "tr": "(gerçek kuzeye göre, saat yönünde)", "en": "(relative to true north, clockwise)", "ar": "(بالنسبة إلى الشمال الحقيقي، باتجاه عقارب الساعة)" },
+  "kibleNoCompass": { "tr": "Cihazınızda pusula sensörü bulunamadı", "en": "No compass sensor was found on your device", "ar": "لم يُعثر على مستشعر بوصلة في جهازك" },
+  "kibleGettingLocation": { "tr": "Konum alınıyor…", "en": "Getting location…", "ar": "جارٍ تحديد الموقع…" },
+  "kiblePreparingCompass": { "tr": "Pusula hazırlanıyor…", "en": "Preparing compass…", "ar": "جارٍ تجهيز البوصلة…" },
+  "kibleFacingQibla": { "tr": "Kıble yönündesiniz", "en": "You are facing the Qibla", "ar": "أنت متجه إلى القبلة" },
+  "kibleTurnRight": {
+    "tr": "Telefonu {degrees}° sağa çevirin", "en": "Turn the phone {degrees}° to the right", "ar": "أدر الهاتف {degrees}° إلى اليمين",
+    "placeholders": { "degrees": { "type": "int" } }
+  },
+  "kibleTurnLeft": {
+    "tr": "Telefonu {degrees}° sola çevirin", "en": "Turn the phone {degrees}° to the left", "ar": "أدر الهاتف {degrees}° إلى اليسار",
+    "placeholders": { "degrees": { "type": "int" } }
+  },
+  "kibleServiceOffTitle": { "tr": "Konum servisi kapalı", "en": "Location service is off", "ar": "خدمة الموقع متوقفة" },
+  "kibleServiceOffText": { "tr": "Kıble yönünü hesaplayabilmek için cihazınızın konum servisini açın.", "en": "Turn on your device's location service so the Qibla direction can be calculated.", "ar": "شغّل خدمة الموقع في جهازك لحساب اتجاه القبلة." },
+  "kiblePermissionTitle": { "tr": "Konum izni gerekli", "en": "Location permission required", "ar": "إذن الموقع مطلوب" },
+  "kiblePermissionDeniedForeverText": {
+    "tr": "Kıble yönü ve Kâbe'ye uzaklık, bulunduğunuz konuma göre hesaplanır. Konum izni kalıcı olarak reddedildi; lütfen ayarlardan izin verin.",
+    "en": "The Qibla direction and distance to the Kaaba are calculated from your location. Location permission was permanently denied; please allow it in settings.",
+    "ar": "يُحسب اتجاه القبلة والمسافة إلى الكعبة حسب موقعك. تم رفض إذن الموقع نهائيًا؛ يرجى السماح به من الإعدادات."
+  },
+  "kiblePermissionDeniedText": {
+    "tr": "Kıble yönü ve Kâbe'ye uzaklık, bulunduğunuz konuma göre hesaplanır. Konumunuz yalnızca bu hesap için kullanılır.",
+    "en": "The Qibla direction and distance to the Kaaba are calculated from your location. Your location is used only for this calculation.",
+    "ar": "يُحسب اتجاه القبلة والمسافة إلى الكعبة حسب موقعك. يُستخدم موقعك لهذا الحساب فقط."
+  },
+  "kibleLocationFailedTitle": { "tr": "Konum alınamadı", "en": "Location unavailable", "ar": "تعذّر تحديد الموقع" },
+  "kibleLocationFailedText": { "tr": "Konumunuz alınamadı. Lütfen tekrar deneyin.", "en": "Your location could not be determined. Please try again.", "ar": "تعذّر تحديد موقعك. يرجى المحاولة مرة أخرى." },
+  "kibleOpenSettings": { "tr": "Ayarları aç", "en": "Open settings", "ar": "فتح الإعدادات" },
+  "kibleTryAgain": { "tr": "Tekrar dene", "en": "Try again", "ar": "حاول مرة أخرى" },
+  "kibleDirN": { "tr": "Kuzey", "en": "North", "ar": "الشمال" },
+  "kibleDirNE": { "tr": "Kuzey Doğu", "en": "North East", "ar": "الشمال الشرقي" },
+  "kibleDirE": { "tr": "Doğu", "en": "East", "ar": "الشرق" },
+  "kibleDirSE": { "tr": "Güney Doğu", "en": "South East", "ar": "الجنوب الشرقي" },
+  "kibleDirS": { "tr": "Güney", "en": "South", "ar": "الجنوب" },
+  "kibleDirSW": { "tr": "Güney Batı", "en": "South West", "ar": "الجنوب الغربي" },
+  "kibleDirW": { "tr": "Batı", "en": "West", "ar": "الغرب" },
+  "kibleDirNW": { "tr": "Kuzey Batı", "en": "North West", "ar": "الشمال الغربي" },
+  "kibleCompassN": { "tr": "K", "en": "N", "ar": "ش" },
+  "kibleCompassE": { "tr": "D", "en": "E", "ar": "ق" },
+  "kibleCompassS": { "tr": "G", "en": "S", "ar": "ج" },
+  "kibleCompassW": { "tr": "B", "en": "W", "ar": "غ" },
+  "kibleRefreshLocation": { "tr": "Konumu yenile", "en": "Refresh location", "ar": "تحديث الموقع" },
+  "kibleDistanceTitle": { "tr": "Kıbleye Uzaklığınız", "en": "Your Distance to the Qibla", "ar": "المسافة إلى القبلة" },
+  "kibleMeccaSaudi": { "tr": "Mekke, Suudi Arabistan", "en": "Mecca, Saudi Arabia", "ar": "مكة المكرمة، المملكة العربية السعودية" },
+  "kibleCalibrationNeeded": { "tr": "Pusula kalibrasyonu gerekli: ", "en": "Compass calibration needed: ", "ar": "يلزم معايرة البوصلة: " },
+  "kibleCalibrationHint": { "tr": "telefonunuzu havada 8 çizerek hareket ettirin", "en": "move your phone in a figure 8 in the air", "ar": "حرّك هاتفك في الهواء على شكل الرقم 8" },
+  "kibleTipLabel": { "tr": "İpucu: ", "en": "Tip: ", "ar": "نصيحة: " },
+  "kibleTipText": { "tr": "Cihazınızı düz bir zemine yerleştirerek daha doğru sonuçlar alabilirsiniz.", "en": "Place your device on a flat surface for more accurate results.", "ar": "ضع جهازك على سطح مستوٍ للحصول على نتائج أدق." },
+  "kibleCalibrateTitle": { "tr": "Pusulayı Kalibre Et", "en": "Calibrate the Compass", "ar": "معايرة البوصلة" },
+  "kibleCalibrateStep1": { "tr": "Telefonunuzu elinize alın, metal eşyalardan ve mıknatıslardan uzaklaşın.", "en": "Hold your phone and move away from metal objects and magnets.", "ar": "أمسك هاتفك وابتعد عن الأشياء المعدنية والمغناطيس." },
+  "kibleCalibrateStep2": { "tr": "Telefonu havada yan yatmış bir 8 çizerek birkaç kez hareket ettirin.", "en": "Move the phone through the air in a sideways figure 8 several times.", "ar": "حرّك الهاتف في الهواء على شكل رقم 8 أفقي عدة مرات." },
+  "kibleCalibrateStep3": { "tr": "Hareket ederken telefonu bileğinizden de çevirin.", "en": "Rotate the phone with your wrist while moving it.", "ar": "أدر الهاتف بمعصمك أثناء تحريكه." },
+  "kibleRouteTitle": { "tr": "Kıble Rotası", "en": "Qibla Route", "ar": "مسار القبلة" },
+  "kibleDistanceToKaaba": { "tr": "Kâbe'ye uzaklık", "en": "Distance to the Kaaba", "ar": "المسافة إلى الكعبة" },
+  "kibleDistanceKm": {
+    "tr": "{value} km", "en": "{value} km", "ar": "{value} كم",
+    "placeholders": { "value": { "type": "String" } }
+  },
+  "kibleDistanceM": {
+    "tr": "{value} m", "en": "{value} m", "ar": "{value} م",
+    "placeholders": { "value": { "type": "String" } }
+  }
+}

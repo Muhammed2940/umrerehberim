@@ -1,0 +1,632 @@
+{
+  "shopsTitle": {
+    "tr": "Anlaşmalı Dükkanlar",
+    "en": "Partner Shops",
+    "ar": "المتاجر المتعاقدة"
+  },
+  "shopsAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "shopsListView": {
+    "tr": "Liste",
+    "en": "List",
+    "ar": "قائمة"
+  },
+  "shopsMapView": {
+    "tr": "Harita",
+    "en": "Map",
+    "ar": "خريطة"
+  },
+  "shopsInfoBanner": {
+    "tr": "Bu dükkanlarda Umre Rehberim misafiri olduğunuzu QR kodla gösterip indirim alabilirsiniz.",
+    "en": "Show the QR code at these shops to prove you are a My Umrah Guide guest and get a discount.",
+    "ar": "أظهر رمز QR في هذه المتاجر لتثبت أنك ضيف في دليل العمرة واحصل على خصم."
+  },
+  "shopsSearchHint": {
+    "tr": "Dükkan ara",
+    "en": "Search shops",
+    "ar": "ابحث عن متجر"
+  },
+  "shopsEmpty": {
+    "tr": "Henüz anlaşmalı dükkan eklenmedi.",
+    "en": "No partner shops added yet.",
+    "ar": "لم تتم إضافة متاجر متعاقدة بعد."
+  },
+  "shopsNoMatch": {
+    "tr": "Bu filtreye uygun dükkan yok.",
+    "en": "No shops match this filter.",
+    "ar": "لا توجد متاجر تطابق هذا الفلتر."
+  },
+  "shopsMissingLocation": {
+    "tr": "{count} dükkanın konumu girilmemiş, haritada görünmüyor.",
+    "en": "{count, plural, =1{1 shop has no location and is not shown on the map.} other{{count} shops have no location and are not shown on the map.}}",
+    "ar": "{count, plural, =1{متجر واحد بلا موقع ولا تظهر على الخريطة.} =2{متجران بلا موقع ولا تظهر على الخريطة.} few{{count} متاجر بلا موقع ولا تظهر على الخريطة.} many{{count} متجرًا بلا موقع ولا تظهر على الخريطة.} other{{count} متجر بلا موقع ولا تظهر على الخريطة.}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsLoadFailed": {
+    "tr": "Dükkanlar yüklenemedi. İnternet bağlantınızı kontrol edin.",
+    "en": "Could not load shops. Check your internet connection.",
+    "ar": "تعذّر تحميل المتاجر. تحقق من اتصالك بالإنترنت."
+  },
+  "shopsAdminLoadFailed": {
+    "tr": "Dükkanlar yüklenemedi.",
+    "en": "Could not load shops.",
+    "ar": "تعذّر تحميل المتاجر."
+  },
+  "shopsCatGifts": {
+    "tr": "Hediyelik",
+    "en": "Gifts & Souvenirs",
+    "ar": "هدايا وتذكارات"
+  },
+  "shopsCatDatesFood": {
+    "tr": "Hurma & Gıda",
+    "en": "Dates & Food",
+    "ar": "تمور وأغذية"
+  },
+  "shopsCatPerfume": {
+    "tr": "Parfüm & Misk",
+    "en": "Perfume & Musk",
+    "ar": "عطور ومسك"
+  },
+  "shopsCatTextile": {
+    "tr": "Tekstil & İhram",
+    "en": "Textiles & Ihram",
+    "ar": "منسوجات وإحرام"
+  },
+  "shopsCatJeweler": {
+    "tr": "Kuyumcu",
+    "en": "Jeweler",
+    "ar": "مجوهرات"
+  },
+  "shopsCatRestaurant": {
+    "tr": "Restoran & Kafe",
+    "en": "Restaurant & Café",
+    "ar": "مطاعم ومقاهٍ"
+  },
+  "shopsCatBooks": {
+    "tr": "Kitap & Tesbih",
+    "en": "Books & Prayer Beads",
+    "ar": "كتب ومسابح"
+  },
+  "shopsCatOther": {
+    "tr": "Diğer",
+    "en": "Other",
+    "ar": "أخرى"
+  },
+  "shopsCityJeddah": {
+    "tr": "Cidde",
+    "en": "Jeddah",
+    "ar": "جدة"
+  },
+  "shopsCityOther": {
+    "tr": "Diğer",
+    "en": "Other",
+    "ar": "أخرى"
+  },
+  "shopsSpecialPrice": {
+    "tr": "ÖZEL FİYAT",
+    "en": "SPECIAL PRICE",
+    "ar": "سعر خاص"
+  },
+  "shopsSpecialPriceLower": {
+    "tr": "Özel fiyat",
+    "en": "Special price",
+    "ar": "سعر خاص"
+  },
+  "shopsDiscountBadge": {
+    "tr": "İNDİRİM",
+    "en": "OFF",
+    "ar": "خصم"
+  },
+  "shopsPercent": {
+    "tr": "%{percent}",
+    "en": "{percent}%",
+    "ar": "{percent}٪",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsDiscountPercent": {
+    "tr": "%{percent} İNDİRİM",
+    "en": "{percent}% OFF",
+    "ar": "خصم {percent}٪",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsDiscountPercentLower": {
+    "tr": "%{percent} indirim",
+    "en": "{percent}% off",
+    "ar": "خصم {percent}٪",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsAbout": {
+    "tr": "Hakkında",
+    "en": "About",
+    "ar": "نبذة"
+  },
+  "shopsInfo": {
+    "tr": "Bilgiler",
+    "en": "Details",
+    "ar": "المعلومات"
+  },
+  "shopsAddress": {
+    "tr": "Adres",
+    "en": "Address",
+    "ar": "العنوان"
+  },
+  "shopsWorkingHours": {
+    "tr": "Çalışma saatleri",
+    "en": "Opening hours",
+    "ar": "ساعات العمل"
+  },
+  "shopsPhone": {
+    "tr": "Telefon",
+    "en": "Phone",
+    "ar": "الهاتف"
+  },
+  "shopsLocation": {
+    "tr": "Konum",
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "shopsCall": {
+    "tr": "Ara",
+    "en": "Call",
+    "ar": "اتصال"
+  },
+  "shopsDirections": {
+    "tr": "Yol Tarifi",
+    "en": "Directions",
+    "ar": "الاتجاهات"
+  },
+  "shopsShowMyCode": {
+    "tr": "İndirim Kodumu Göster",
+    "en": "Show My Discount Code",
+    "ar": "اعرض رمز الخصم"
+  },
+  "shopsLinkOpenFailed": {
+    "tr": "Bağlantı açılamadı.",
+    "en": "Could not open the link.",
+    "ar": "تعذّر فتح الرابط."
+  },
+  "shopsCodeGuestTitle": {
+    "tr": "Umre Rehberim Misafiri",
+    "en": "My Umrah Guide Guest",
+    "ar": "ضيف دليل العمرة"
+  },
+  "shopsCodeVerifyLater": {
+    "tr": "Esnaf paneli hazır olduğunda doğrulanacak.",
+    "en": "Will be verified once the merchant panel is ready.",
+    "ar": "سيتم التحقق منه عند جاهزية لوحة التاجر."
+  },
+  "shopsCodeShowAtCheckout": {
+    "tr": "Lütfen bu ekranı kasada esnafa gösterin.",
+    "en": "Please show this screen to the shopkeeper at checkout.",
+    "ar": "يرجى إظهار هذه الشاشة للبائع عند الدفع."
+  },
+  "shopsGuest": {
+    "tr": "Misafir",
+    "en": "Guest",
+    "ar": "ضيف"
+  },
+  "shopsQrScanTitle": {
+    "tr": "QR Kodu Okut",
+    "en": "Scan QR Code",
+    "ar": "امسح رمز QR"
+  },
+  "shopsTorch": {
+    "tr": "Fener",
+    "en": "Flashlight",
+    "ar": "المصباح"
+  },
+  "shopsCameraFailed": {
+    "tr": "Kamera açılamadı. Kamera iznini kontrol edin.\n({code})",
+    "en": "Could not open the camera. Check the camera permission.\n({code})",
+    "ar": "تعذّر فتح الكاميرا. تحقق من إذن الكاميرا.\n({code})",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsQrScanHint": {
+    "tr": "Dükkanın QR kodunu çerçevenin içine getirin.",
+    "en": "Place the shop's QR code inside the frame.",
+    "ar": "ضع رمز QR الخاص بالمتجر داخل الإطار."
+  },
+  "shopsLocServiceOff": {
+    "tr": "Konum servisi kapalı.",
+    "en": "Location services are off.",
+    "ar": "خدمة الموقع متوقفة."
+  },
+  "shopsLocPermissionDenied": {
+    "tr": "Konum izni verilmedi.",
+    "en": "Location permission was not granted.",
+    "ar": "لم يتم منح إذن الموقع."
+  },
+  "shopsLocFailed": {
+    "tr": "Konum alınamadı.",
+    "en": "Could not get the location.",
+    "ar": "تعذّر الحصول على الموقع."
+  },
+  "shopsPickerHint": {
+    "tr": "Haritada dükkanın yerine dokunarak iğne bırakın.",
+    "en": "Tap the shop's spot on the map to drop a pin.",
+    "ar": "اضغط على مكان المتجر في الخريطة لوضع دبوس."
+  },
+  "shopsUseMyLocation": {
+    "tr": "Şu anki konumumu kullan",
+    "en": "Use my current location",
+    "ar": "استخدم موقعي الحالي"
+  },
+  "shopsLatitude": {
+    "tr": "Enlem",
+    "en": "Latitude",
+    "ar": "خط العرض"
+  },
+  "shopsLongitude": {
+    "tr": "Boylam",
+    "en": "Longitude",
+    "ar": "خط الطول"
+  },
+  "shopsRemoveLocation": {
+    "tr": "Konumu kaldır",
+    "en": "Remove location",
+    "ar": "إزالة الموقع"
+  },
+  "shopsInvalid": {
+    "tr": "Geçersiz",
+    "en": "Invalid",
+    "ar": "غير صالح"
+  },
+  "shopsAdd": {
+    "tr": "Dükkan Ekle",
+    "en": "Add Shop",
+    "ar": "إضافة متجر"
+  },
+  "shopsEdit": {
+    "tr": "Dükkanı Düzenle",
+    "en": "Edit Shop",
+    "ar": "تعديل المتجر"
+  },
+  "shopsActivated": {
+    "tr": "{name} aktif edildi.",
+    "en": "{name} activated.",
+    "ar": "تم تفعيل {name}.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeactivated": {
+    "tr": "{name} pasif yapıldı.",
+    "en": "{name} deactivated.",
+    "ar": "تم إلغاء تفعيل {name}.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsUpdateFailed": {
+    "tr": "Güncellenemedi: {error}",
+    "en": "Could not update: {error}",
+    "ar": "تعذّر التحديث: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeleteTitle": {
+    "tr": "Dükkanı sil",
+    "en": "Delete shop",
+    "ar": "حذف المتجر"
+  },
+  "shopsDeleteConfirm": {
+    "tr": "\"{name}\" silinsin mi? Bu işlem geri alınamaz.",
+    "en": "Delete \"{name}\"? This cannot be undone.",
+    "ar": "هل تريد حذف \"{name}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeleted": {
+    "tr": "Dükkan silindi.",
+    "en": "Shop deleted.",
+    "ar": "تم حذف المتجر."
+  },
+  "shopsDeleteFailed": {
+    "tr": "Silinemedi: {error}",
+    "en": "Could not delete: {error}",
+    "ar": "تعذّر الحذف: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsOrderSaveFailed": {
+    "tr": "Sıralama kaydedilemedi: {error}",
+    "en": "Could not save the order: {error}",
+    "ar": "تعذّر حفظ الترتيب: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsEmptyAdminHint": {
+    "tr": "Sağ alttaki \"Dükkan Ekle\" ile başlayın.",
+    "en": "Start with the \"Add Shop\" button.",
+    "ar": "ابدأ بزر \"إضافة متجر\"."
+  },
+  "shopsReorderHint": {
+    "tr": "Sıralamak için sağdaki tutamaçtan sürükleyin.",
+    "en": "Drag the handle to reorder.",
+    "ar": "اسحب المقبض لإعادة الترتيب."
+  },
+  "shopsSharedSection": {
+    "tr": "Tüm acentelere açık (süper admin yönetir)",
+    "en": "Open to all agencies (managed by super admin)",
+    "ar": "متاحة لجميع الوكالات (يديرها المشرف العام)"
+  },
+  "shopsAllAgencies": {
+    "tr": "Tüm acenteler",
+    "en": "All agencies",
+    "ar": "جميع الوكالات"
+  },
+  "shopsLogoAdded": {
+    "tr": "Logo eklendi ({size} KB).",
+    "en": "Logo added ({size} KB).",
+    "ar": "تمت إضافة الشعار ({size} ك.ب).",
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsLogoTooLarge": {
+    "tr": "Logo çok büyük ({size} KB). Daha küçük bir görsel seçin.",
+    "en": "Logo is too large ({size} KB). Choose a smaller image.",
+    "ar": "الشعار كبير جدًا ({size} ك.ب). اختر صورة أصغر.",
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsImagePickFailed": {
+    "tr": "Görsel seçilemedi: {error}",
+    "en": "Could not select image: {error}",
+    "ar": "تعذّر اختيار الصورة: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsQrScanned": {
+    "tr": "QR kodu okundu.",
+    "en": "QR code scanned.",
+    "ar": "تمت قراءة رمز QR."
+  },
+  "shopsFixFields": {
+    "tr": "Lütfen işaretli alanları düzeltin.",
+    "en": "Please correct the highlighted fields.",
+    "ar": "يرجى تصحيح الحقول المحددة."
+  },
+  "shopsLatLngBoth": {
+    "tr": "Enlem ve boylamın ikisini de girin ya da ikisini de boş bırakın.",
+    "en": "Enter both latitude and longitude, or leave both empty.",
+    "ar": "أدخل خط العرض وخط الطول معًا أو اترك كليهما فارغًا."
+  },
+  "shopsSelectAgency": {
+    "tr": "Bir acente seçin ya da \"Tüm acentelere açık\" seçeneğini açın.",
+    "en": "Select an agency or turn on \"Open to all agencies\".",
+    "ar": "اختر وكالة أو فعّل خيار \"متاح لجميع الوكالات\"."
+  },
+  "shopsAdded": {
+    "tr": "Dükkan eklendi.",
+    "en": "Shop added.",
+    "ar": "تمت إضافة المتجر."
+  },
+  "shopsUpdated": {
+    "tr": "Dükkan güncellendi.",
+    "en": "Shop updated.",
+    "ar": "تم تحديث المتجر."
+  },
+  "shopsSaveFailed": {
+    "tr": "Kaydedilemedi: {error}",
+    "en": "Could not save: {error}",
+    "ar": "تعذّر الحفظ: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsSaving": {
+    "tr": "Kaydediliyor...",
+    "en": "Saving...",
+    "ar": "جارٍ الحفظ..."
+  },
+  "shopsLogo": {
+    "tr": "Logo",
+    "en": "Logo",
+    "ar": "الشعار"
+  },
+  "shopsDetailsSection": {
+    "tr": "Dükkan Bilgileri",
+    "en": "Shop Details",
+    "ar": "بيانات المتجر"
+  },
+  "shopsNameRequired": {
+    "tr": "Dükkan adı *",
+    "en": "Shop name *",
+    "ar": "اسم المتجر *"
+  },
+  "shopsNameMissing": {
+    "tr": "Ad gerekli",
+    "en": "Name is required",
+    "ar": "الاسم مطلوب"
+  },
+  "shopsCategory": {
+    "tr": "Kategori",
+    "en": "Category",
+    "ar": "الفئة"
+  },
+  "shopsCity": {
+    "tr": "Şehir",
+    "en": "City",
+    "ar": "المدينة"
+  },
+  "shopsDescription": {
+    "tr": "Açıklama",
+    "en": "Description",
+    "ar": "الوصف"
+  },
+  "shopsDiscountSection": {
+    "tr": "İndirim",
+    "en": "Discount",
+    "ar": "الخصم"
+  },
+  "shopsDiscountPercentRequired": {
+    "tr": "İndirim yüzdesi *",
+    "en": "Discount percentage *",
+    "ar": "نسبة الخصم *"
+  },
+  "shopsDiscountPercentHint": {
+    "tr": "ör. 15",
+    "en": "e.g. 15",
+    "ar": "مثال: 15"
+  },
+  "shopsDiscountNotNumber": {
+    "tr": "Bir sayı girin (0-100)",
+    "en": "Enter a number (0-100)",
+    "ar": "أدخل رقمًا (0-100)"
+  },
+  "shopsDiscountRange": {
+    "tr": "0 ile 100 arasında olmalı",
+    "en": "Must be between 0 and 100",
+    "ar": "يجب أن يكون بين 0 و100"
+  },
+  "shopsDiscountNote": {
+    "tr": "İndirim notu",
+    "en": "Discount note",
+    "ar": "ملاحظة الخصم"
+  },
+  "shopsDiscountNoteHint": {
+    "tr": "ör. Nakit alışverişte geçerli",
+    "en": "e.g. Valid for cash purchases",
+    "ar": "مثال: صالح عند الدفع نقدًا"
+  },
+  "shopsContactSection": {
+    "tr": "İletişim",
+    "en": "Contact",
+    "ar": "التواصل"
+  },
+  "shopsWhatsappHint": {
+    "tr": "Ülke koduyla, ör. 9665xxxxxxxx",
+    "en": "With country code, e.g. 9665xxxxxxxx",
+    "ar": "مع رمز الدولة، مثال: 9665xxxxxxxx"
+  },
+  "shopsWorkingHoursHint": {
+    "tr": "ör. 09:00 - 23:00",
+    "en": "e.g. 09:00 - 23:00",
+    "ar": "مثال: 09:00 - 23:00"
+  },
+  "shopsQrSection": {
+    "tr": "QR Kodu",
+    "en": "QR Code",
+    "ar": "رمز QR"
+  },
+  "shopsQrExplain": {
+    "tr": "Dükkanın \"bizden geldi\" kodu. Misafir indirim ekranında bu QR'ı gösterir. Boş bırakılırsa misafire özel doğrulama kodu üretilir.",
+    "en": "The shop's \"referred by us\" code. Guests show this QR on the discount screen. If left empty, a guest-specific verification code is generated.",
+    "ar": "رمز \"قادم من طرفنا\" الخاص بالمتجر. يعرض الضيف رمز QR هذا في شاشة الخصم. إذا تُرك فارغًا يُنشأ رمز تحقق خاص بالضيف."
+  },
+  "shopsQrScanWithCamera": {
+    "tr": "Kameradan okut",
+    "en": "Scan with camera",
+    "ar": "امسح بالكاميرا"
+  },
+  "shopsQrManual": {
+    "tr": "Elle gir (metin ya da bağlantı)",
+    "en": "Enter manually (text or link)",
+    "ar": "أدخل يدويًا (نص أو رابط)"
+  },
+  "shopsMerchantCode": {
+    "tr": "Esnaf kodu: {code}  (esnaf paneli için)",
+    "en": "Merchant code: {code}  (for the merchant panel)",
+    "ar": "رمز التاجر: {code}  (للوحة التاجر)",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsPublishSection": {
+    "tr": "Yayın",
+    "en": "Publishing",
+    "ar": "النشر"
+  },
+  "shopsActive": {
+    "tr": "Aktif",
+    "en": "Active",
+    "ar": "نشط"
+  },
+  "shopsActiveSub": {
+    "tr": "Pasif dükkanlar misafirlere görünmez.",
+    "en": "Inactive shops are hidden from guests.",
+    "ar": "المتاجر غير النشطة لا تظهر للضيوف."
+  },
+  "shopsForAllAgencies": {
+    "tr": "Tüm acentelere açık",
+    "en": "Open to all agencies",
+    "ar": "متاح لجميع الوكالات"
+  },
+  "shopsForAllAgenciesSub": {
+    "tr": "Bütün acentelerin misafirleri bu dükkanı görür.",
+    "en": "Guests of every agency will see this shop.",
+    "ar": "سيرى ضيوف جميع الوكالات هذا المتجر."
+  },
+  "shopsAgency": {
+    "tr": "Acente",
+    "en": "Agency",
+    "ar": "الوكالة"
+  },
+  "shopsGallery": {
+    "tr": "Galeri",
+    "en": "Gallery",
+    "ar": "المعرض"
+  },
+  "shopsCamera": {
+    "tr": "Kamera",
+    "en": "Camera",
+    "ar": "الكاميرا"
+  },
+  "shopsRemove": {
+    "tr": "Kaldır",
+    "en": "Remove",
+    "ar": "إزالة"
+  }
+}

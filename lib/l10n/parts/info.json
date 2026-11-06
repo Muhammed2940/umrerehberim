@@ -1,0 +1,520 @@
+{
+  "infoGeneralTitle": {
+    "tr": "Genel Bilgiler",
+    "en": "General Information",
+    "ar": "معلومات عامة"
+  },
+  "infoTapForDetails": {
+    "tr": "Detaylar için tıklayınız.",
+    "en": "Tap for details.",
+    "ar": "اضغط لعرض التفاصيل."
+  },
+  "infoCardIhram": {
+    "tr": "İhram Yasakları",
+    "en": "Ihram Prohibitions",
+    "ar": "محظورات الإحرام"
+  },
+  "infoCardPlaces": {
+    "tr": "Gezilecek Yerler",
+    "en": "Places to Visit",
+    "ar": "أماكن للزيارة"
+  },
+  "infoCardTravelGuide": {
+    "tr": "Seyahat Rehberi",
+    "en": "Travel Guide",
+    "ar": "دليل السفر"
+  },
+  "infoCardTravelGuideSub": {
+    "tr": "Vize, sağlık, para, ulaşım ve önemli telefonlar.",
+    "en": "Visa, health, money, transport and important phone numbers.",
+    "ar": "التأشيرة والصحة والمال والمواصلات والأرقام المهمة."
+  },
+  "infoCardRouteSim": {
+    "tr": "Rota Simülasyonu",
+    "en": "Route Simulation",
+    "ar": "محاكاة المسار"
+  },
+  "infoCardRouteSimSub": {
+    "tr": "Mikattan tıraşa umre adımları haritada.",
+    "en": "Umrah steps on the map, from the Miqat to Halq/Taqsir.",
+    "ar": "مناسك العمرة على الخريطة من الميقات إلى الحلق أو التقصير."
+  },
+  "infoCardTawafSim": {
+    "tr": "Tavaf Simülasyonu",
+    "en": "Tawaf Simulation",
+    "ar": "محاكاة الطواف"
+  },
+  "infoCardTawafSimSub": {
+    "tr": "Kâbe çevresinde 7 şavt, istilam ve dualar.",
+    "en": "7 circuits around the Kaaba, Istilam and supplications.",
+    "ar": "سبعة أشواط حول الكعبة والاستلام والأدعية."
+  },
+  "infoCardNeedList": {
+    "tr": "İhtiyaç Listesi",
+    "en": "Packing List",
+    "ar": "قائمة الاحتياجات"
+  },
+  "infoCardNeedListSub": {
+    "tr": "Bavulunuzu hazırlarken işaretleyin.",
+    "en": "Tick items off as you pack.",
+    "ar": "ضع علامة على كل غرض أثناء تجهيز حقيبتك."
+  },
+  "infoCardMiqat": {
+    "tr": "Mikat Mahalleri",
+    "en": "Miqat Stations",
+    "ar": "المواقيت"
+  },
+  "infoCardMiqatSub": {
+    "tr": "Beş mikat, uzaklıkları ve harita konumları.",
+    "en": "The five Miqats, their distances and map locations.",
+    "ar": "المواقيت الخمسة ومسافاتها ومواقعها على الخريطة."
+  },
+  "infoCardHotels": {
+    "tr": "Otel ve Restoranlar",
+    "en": "Hotels and Restaurants",
+    "ar": "الفنادق والمطاعم"
+  },
+  "infoCardHotelsSub": {
+    "tr": "Harem çevresindeki oteller ve yeme-içme yerleri.",
+    "en": "Hotels and places to eat around the Haram.",
+    "ar": "الفنادق وأماكن الطعام حول الحرم."
+  },
+  "infoCardContactGuide": {
+    "tr": "Rehberle İletişime Geç",
+    "en": "Contact Your Guide",
+    "ar": "تواصل مع المرشد"
+  },
+  "infoCardTechSupport": {
+    "tr": "Teknik Servis Bilgileri",
+    "en": "Technical Support",
+    "ar": "معلومات الدعم الفني"
+  },
+  "infoCardPedometer": {
+    "tr": "Adım Sayar",
+    "en": "Pedometer",
+    "ar": "عداد الخطوات"
+  },
+  "infoCardPedometerSub": {
+    "tr": "Günlük adım sayınızı takip edin.",
+    "en": "Track your daily step count.",
+    "ar": "تابع عدد خطواتك اليومية."
+  },
+  "infoBadgeSoon": {
+    "tr": "Yakında",
+    "en": "Soon",
+    "ar": "قريبًا"
+  },
+  "infoPedometerNextVersion": {
+    "tr": "Adım sayar bir sonraki sürümde eklenecek.",
+    "en": "The pedometer will be added in the next version.",
+    "ar": "ستتم إضافة عداد الخطوات في الإصدار القادم."
+  },
+  "infoMapOpenFailed": {
+    "tr": "Harita uygulaması açılamadı.",
+    "en": "Could not open the maps app.",
+    "ar": "تعذر فتح تطبيق الخرائط."
+  },
+  "infoShowOnMap": {
+    "tr": "Haritada göster",
+    "en": "Show on map",
+    "ar": "عرض على الخريطة"
+  },
+  "infoDirections": {
+    "tr": "Yol tarifi",
+    "en": "Directions",
+    "ar": "الاتجاهات"
+  },
+  "infoDistanceM": {
+    "tr": "~{meters} m",
+    "en": "~{meters} m",
+    "ar": "~{meters} م",
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "infoDistanceKm": {
+    "tr": "~{km} km",
+    "en": "~{km} km",
+    "ar": "~{km} كم",
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "infoWalkMinutes": {
+    "tr": "{minutes} dk yürüme",
+    "en": "{minutes} min walk",
+    "ar": "{minutes, plural, =1{دقيقة واحدة مشيًا} =2{دقيقتان مشيًا} few{{minutes} دقائق مشيًا} many{{minutes} دقيقةً مشيًا} other{{minutes} دقيقة مشيًا}}",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "infoWalkHours": {
+    "tr": "{hours} saat yürüme",
+    "en": "{hours} h walk",
+    "ar": "{hours} ساعة مشيًا",
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "infoIhramHeader": {
+    "tr": "İhrama girdikten sonra ihramdan çıkıncaya kadar aşağıdaki davranışlar yasaktır.",
+    "en": "From entering Ihram until leaving it (Tahallul), the following acts are prohibited.",
+    "ar": "تحرم الأفعال التالية من الدخول في الإحرام إلى التحلل منه."
+  },
+  "infoNeedListTitle": {
+    "tr": "İhtiyaç Listesi",
+    "en": "Packing List",
+    "ar": "قائمة الاحتياجات"
+  },
+  "infoNeedReset": {
+    "tr": "Sıfırla",
+    "en": "Reset",
+    "ar": "إعادة تعيين"
+  },
+  "infoNeedAddItem": {
+    "tr": "Madde ekle",
+    "en": "Add item",
+    "ar": "إضافة غرض"
+  },
+  "infoNeedAdd": {
+    "tr": "Ekle",
+    "en": "Add",
+    "ar": "إضافة"
+  },
+  "infoNeedItemName": {
+    "tr": "Madde adı",
+    "en": "Item name",
+    "ar": "اسم الغرض"
+  },
+  "infoNeedItemExample": {
+    "tr": "Ör. Yedek gözlük",
+    "en": "e.g. Spare glasses",
+    "ar": "مثال: نظارة احتياطية"
+  },
+  "infoNeedCategory": {
+    "tr": "Kategori",
+    "en": "Category",
+    "ar": "الفئة"
+  },
+  "infoNeedOther": {
+    "tr": "Diğer",
+    "en": "Other",
+    "ar": "أخرى"
+  },
+  "infoNeedItemDeleted": {
+    "tr": "\"{item}\" silindi.",
+    "en": "\"{item}\" deleted.",
+    "ar": "تم حذف \"{item}\".",
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "infoNeedResetTitle": {
+    "tr": "Listeyi sıfırla",
+    "en": "Reset list",
+    "ar": "إعادة تعيين القائمة"
+  },
+  "infoNeedResetBody": {
+    "tr": "Tüm işaretler kaldırılacak. Eklediğiniz maddeler de silinsin mi?",
+    "en": "All ticks will be cleared. Should the items you added be deleted too?",
+    "ar": "ستُزال جميع العلامات. هل تريد حذف الأغراض التي أضفتها أيضًا؟"
+  },
+  "infoNeedResetChecksOnly": {
+    "tr": "Yalnız işaretler",
+    "en": "Ticks only",
+    "ar": "العلامات فقط"
+  },
+  "infoNeedResetAll": {
+    "tr": "Hepsini sıfırla",
+    "en": "Reset everything",
+    "ar": "إعادة تعيين الكل"
+  },
+  "infoNeedDisclaimer": {
+    "tr": "Bu liste genel bir öneridir; kafilenizin ve Diyanet'in güncel duyurularını da kontrol edin.",
+    "en": "This list is a general suggestion; also check the latest announcements from your group and the Diyanet (Turkish Presidency of Religious Affairs).",
+    "ar": "هذه القائمة اقتراح عام؛ راجع أيضًا أحدث إعلانات مجموعتك ورئاسة الشؤون الدينية التركية."
+  },
+  "infoNeedReadyCount": {
+    "tr": "{done}/{total} hazır",
+    "en": "{done}/{total} ready",
+    "ar": "{done}/{total} جاهز",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "infoNeedPercent": {
+    "tr": "%{percent}",
+    "en": "{percent}%",
+    "ar": "{percent}٪",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "infoNeedAllReady": {
+    "tr": "Bavulunuz hazır. Hayırlı yolculuklar!",
+    "en": "Your bag is ready. Have a blessed journey!",
+    "ar": "حقيبتك جاهزة. رحلة مباركة!"
+  },
+  "infoNeedAddYourOwn": {
+    "tr": "Kendi maddenizi ekleyin",
+    "en": "Add your own items",
+    "ar": "أضف أغراضك الخاصة"
+  },
+  "infoNeedEmpty": {
+    "tr": "Henüz madde yok. \"Madde ekle\" ile ekleyebilirsiniz.",
+    "en": "No items yet. You can add some with \"Add item\".",
+    "ar": "لا توجد أغراض بعد. يمكنك الإضافة عبر \"إضافة غرض\"."
+  },
+  "infoNeedMyItem": {
+    "tr": "Benim maddem",
+    "en": "My item",
+    "ar": "غرضي"
+  },
+  "infoMapCouldNotOpen": {
+    "tr": "Harita açılamadı.",
+    "en": "Could not open the map.",
+    "ar": "تعذر فتح الخريطة."
+  },
+  "infoShowAll": {
+    "tr": "Hepsini göster",
+    "en": "Show all",
+    "ar": "عرض الكل"
+  },
+  "infoMeccaKaaba": {
+    "tr": "Mekke (Kâbe)",
+    "en": "Makkah (Kaaba)",
+    "ar": "مكة (الكعبة)"
+  },
+  "infoOpenInGoogleMaps": {
+    "tr": "Google Maps'te aç",
+    "en": "Open in Google Maps",
+    "ar": "فتح في خرائط Google"
+  },
+  "infoMiqatFlightNote": {
+    "tr": "Türkiye'den uçakla doğrudan Cidde'ye gidenler, uçakta mikat hizasına gelmeden ihrama girer. Erkekler ihram örtülerini uçağa binmeden giyebilir; niyet ve telbiye, rehberin/kabin ekibinin duyurusuyla mikat hizasından önce yapılır.",
+    "en": "Those flying directly from Türkiye to Jeddah enter Ihram on the plane before reaching the line of the Miqat. Men may put on their Ihram garments before boarding; the intention (niyyah) and Talbiyah are made before the Miqat line, following the announcement of the guide/cabin crew.",
+    "ar": "من يسافر جوًا من تركيا إلى جدة مباشرةً يُحرم في الطائرة قبل محاذاة الميقات. ويجوز للرجال لبس ثياب الإحرام قبل ركوب الطائرة؛ وتكون النية والتلبية قبل محاذاة الميقات عند إعلان المرشد أو طاقم الطائرة."
+  },
+  "infoMiqatAlignNote": {
+    "tr": "Mikat noktasının kendisinde değil, hizasında da ihrama girilebilir. Mesafeler yola göre değiştiği için kaynaklarda farklı rakamlar geçebilir.",
+    "en": "Ihram may be entered not only at the Miqat itself but also at a point in line with it. Since distances vary by route, sources may give different figures.",
+    "ar": "يجوز الإحرام من محاذاة الميقات لا من الميقات نفسه فقط. ولأن المسافات تختلف باختلاف الطرق فقد تذكر المصادر أرقامًا مختلفة."
+  },
+  "infoMiqatFive": {
+    "tr": "Beş mikat",
+    "en": "The five Miqats",
+    "ar": "المواقيت الخمسة"
+  },
+  "infoMiqatSource": {
+    "tr": "Kaynak: TDV İslâm Ansiklopedisi, \"Mîkāt\" maddesi. Konumlar: OpenStreetMap.",
+    "en": "Source: TDV İslâm Ansiklopedisi, \"Mîkāt\" entry. Locations: OpenStreetMap.",
+    "ar": "المصدر: TDV İslâm Ansiklopedisi، مادة \"Mîkāt\". المواقع: OpenStreetMap."
+  },
+  "infoMiqatRoad": {
+    "tr": "Yol: {distance}",
+    "en": "By road: {distance}",
+    "ar": "بالطريق: {distance}",
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "infoMiqatAsCrowFlies": {
+    "tr": "Kuş uçuşu {distance}",
+    "en": "As the crow flies {distance}",
+    "ar": "خط مستقيم {distance}",
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "infoMiqatForWhom": {
+    "tr": "Kimler için:",
+    "en": "For whom:",
+    "ar": "لمن:"
+  },
+  "infoKaaba": {
+    "tr": "Kâbe",
+    "en": "Kaaba",
+    "ar": "الكعبة"
+  },
+  "infoProphetsMosque": {
+    "tr": "Mescid-i Nebevî",
+    "en": "Prophet's Mosque",
+    "ar": "المسجد النبوي"
+  },
+  "infoFilterAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "infoFilterHotels": {
+    "tr": "Oteller",
+    "en": "Hotels",
+    "ar": "الفنادق"
+  },
+  "infoFilterFood": {
+    "tr": "Yeme-içme",
+    "en": "Food & drink",
+    "ar": "المطاعم"
+  },
+  "infoHotelsFootnoteMecca": {
+    "tr": "Mesafeler Kâbe'ye kuş uçuşudur; yürüme süresi kalabalığa ve girilen kapıya göre değişir. Konumlar OpenStreetMap'ten alınmıştır. Fiyat ve müsaitlik için otelle iletişime geçin.",
+    "en": "Distances to the Kaaba are as the crow flies; walking time varies with crowds and the gate you enter. Locations are from OpenStreetMap. Contact the hotel for prices and availability.",
+    "ar": "المسافات إلى الكعبة بخط مستقيم؛ ويختلف وقت المشي حسب الزحام والباب الذي تدخل منه. المواقع مأخوذة من OpenStreetMap. تواصل مع الفندق لمعرفة الأسعار والتوفر."
+  },
+  "infoPlacesMeccaTitle": {
+    "tr": "Mekke Gezilecek Yerler",
+    "en": "Places to Visit in Makkah",
+    "ar": "أماكن للزيارة في مكة المكرمة"
+  },
+  "infoPlacesMedinaTitle": {
+    "tr": "Medine Gezilecek Yerler",
+    "en": "Places to Visit in Madinah",
+    "ar": "أماكن للزيارة في المدينة المنورة"
+  },
+  "infoTechTitle": {
+    "tr": "Teknik Servis",
+    "en": "Technical Support",
+    "ar": "الدعم الفني"
+  },
+  "infoTechContactUs": {
+    "tr": "Bize Ulaşın",
+    "en": "Contact Us",
+    "ar": "تواصل معنا"
+  },
+  "infoTechContactUsBody": {
+    "tr": "Uygulamayla ilgili her türlü sorun ve öneriniz için bize ulaşabilirsiniz.",
+    "en": "You can contact us about any problem or suggestion regarding the app.",
+    "ar": "يمكنك التواصل معنا بشأن أي مشكلة أو اقتراح يتعلق بالتطبيق."
+  },
+  "infoTechPhones": {
+    "tr": "Telefon Numaraları",
+    "en": "Phone Numbers",
+    "ar": "أرقام الهاتف"
+  },
+  "infoTechEmails": {
+    "tr": "E-Posta Adresleri",
+    "en": "Email Addresses",
+    "ar": "عناوين البريد الإلكتروني"
+  },
+  "infoTechPhone1": {
+    "tr": "Birinci Telefon",
+    "en": "First Phone",
+    "ar": "الهاتف الأول"
+  },
+  "infoTechPhone2": {
+    "tr": "İkinci Telefon",
+    "en": "Second Phone",
+    "ar": "الهاتف الثاني"
+  },
+  "infoTechEmail1": {
+    "tr": "Birinci E-Posta",
+    "en": "First Email",
+    "ar": "البريد الإلكتروني الأول"
+  },
+  "infoTechEmail2": {
+    "tr": "İkinci E-Posta",
+    "en": "Second Email",
+    "ar": "البريد الإلكتروني الثاني"
+  },
+  "infoTechPhoneFailed": {
+    "tr": "Telefon açılamadı",
+    "en": "Could not open the phone app",
+    "ar": "تعذر فتح تطبيق الهاتف"
+  },
+  "infoTechEmailFailed": {
+    "tr": "Email açılamadı",
+    "en": "Could not open the email app",
+    "ar": "تعذر فتح تطبيق البريد"
+  },
+  "infoTechWhatsAppFailed": {
+    "tr": "WhatsApp açılamadı",
+    "en": "Could not open WhatsApp",
+    "ar": "تعذر فتح WhatsApp"
+  },
+  "infoCheckBeforeTravel": {
+    "tr": "Yola çıkmadan önce güncelliğini kontrol edin.",
+    "en": "Check that this is still current before you travel.",
+    "ar": "تحقق من أن هذه المعلومات ما زالت سارية قبل السفر."
+  },
+  "infoGuideRulesWarning": {
+    "tr": "Suudi Arabistan vize, izin ve sağlık kurallarını sık günceller. Bu sayfadaki kurallar Kasım 2026 itibarıyla resmî kaynaklardan derlenmiştir. Kafilenizin ve Diyanet'in duyurularını esas alın.",
+    "en": "Saudi Arabia frequently updates its visa, permit and health rules. The rules on this page were compiled from official sources as of November 2026. Follow the announcements of your group and the Diyanet.",
+    "ar": "تُحدّث السعودية أنظمة التأشيرات والتصاريح والصحة كثيرًا. جُمعت الأنظمة في هذه الصفحة من مصادر رسمية حتى نوفمبر 2026. اعتمد على إعلانات مجموعتك ورئاسة الشؤون الدينية التركية."
+  },
+  "infoGuidePhonesTitle": {
+    "tr": "Önemli Telefonlar",
+    "en": "Important Phone Numbers",
+    "ar": "أرقام هواتف مهمة"
+  },
+  "infoGuidePhonesSub": {
+    "tr": "Suudi acil hatları, Türk temsilcilikleri",
+    "en": "Saudi emergency lines, Turkish missions",
+    "ar": "أرقام الطوارئ السعودية، البعثات التركية"
+  },
+  "infoGuideSaudiEmergency": {
+    "tr": "Suudi Arabistan acil",
+    "en": "Saudi Arabia emergency",
+    "ar": "الطوارئ في السعودية"
+  },
+  "infoGuide911Note": {
+    "tr": "911, Mekke dahil bazı bölgelerde birleşik acil çağrı hattı olarak çalışır.",
+    "en": "911 works as the unified emergency number in some regions, including Makkah.",
+    "ar": "يعمل الرقم 911 رقمًا موحدًا للطوارئ في بعض المناطق ومنها مكة المكرمة."
+  },
+  "infoGuideJeddahConsulate": {
+    "tr": "T.C. Cidde Başkonsolosluğu",
+    "en": "Consulate General of Türkiye in Jeddah",
+    "ar": "القنصلية العامة لجمهورية تركيا في جدة"
+  },
+  "infoGuideRiyadhEmbassy": {
+    "tr": "T.C. Riyad Büyükelçiliği",
+    "en": "Embassy of Türkiye in Riyadh",
+    "ar": "سفارة جمهورية تركيا في الرياض"
+  },
+  "infoGuideMfa": {
+    "tr": "Dışişleri Bakanlığı",
+    "en": "Ministry of Foreign Affairs of Türkiye",
+    "ar": "وزارة الخارجية التركية"
+  },
+  "infoGuideSources": {
+    "tr": "Kaynaklar: Suudi Sağlık Bakanlığı (moh.gov.sa), visa.visitsaudi.com, Nusuk, Diyanet İşleri Başkanlığı, Haremeyn Hızlı Treni (sar.hhr.sa), T.C. Dışişleri Bakanlığı (mfa.gov.tr).",
+    "en": "Sources: Saudi Ministry of Health (moh.gov.sa), visa.visitsaudi.com, Nusuk, Diyanet İşleri Başkanlığı, Haramain High-Speed Railway (sar.hhr.sa), Republic of Türkiye Ministry of Foreign Affairs (mfa.gov.tr).",
+    "ar": "المصادر: وزارة الصحة السعودية (moh.gov.sa)، visa.visitsaudi.com، نسك، Diyanet İşleri Başkanlığı، قطار الحرمين السريع (sar.hhr.sa)، وزارة الخارجية التركية (mfa.gov.tr)."
+  },
+  "infoCouldNotOpen": {
+    "tr": "Açılamadı.",
+    "en": "Could not open.",
+    "ar": "تعذر الفتح."
+  },
+  "infoEmail": {
+    "tr": "E-posta",
+    "en": "Email",
+    "ar": "البريد الإلكتروني"
+  },
+  "infoHotelsFootnoteMedina": {
+    "tr": "Mesafeler Mescid-i Nebevî'ye kuş uçuşudur; yürüme süresi kalabalığa ve girilen kapıya göre değişir. Konumlar OpenStreetMap'ten alınmıştır. Fiyat ve müsaitlik için otelle iletişime geçin.",
+    "en": "Distances to the Prophet's Mosque are as the crow flies; walking time varies with crowds and the gate you enter. Locations are from OpenStreetMap. Contact the hotel for prices and availability.",
+    "ar": "المسافات إلى المسجد النبوي بخط مستقيم؛ ويختلف وقت المشي حسب الزحام والباب الذي تدخل منه. المواقع مأخوذة من OpenStreetMap. تواصل مع الفندق لمعرفة الأسعار والتوفر."
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/
+# Servis hesabı anahtarı ASLA git'e girmesin
+*serviceAccount*.json
+*-firebase-adminsdk-*.json
+service-account*.json

@@ -1,0 +1,873 @@
+{
+  "homeGreeting": {
+    "tr": "Selamün Aleyküm",
+    "en": "Assalamu Alaikum",
+    "ar": "السلام عليكم"
+  },
+  "homeSectionJourney": {
+    "tr": "Kutsal Yolculuk Vakti",
+    "en": "Time for the Sacred Journey",
+    "ar": "موعد الرحلة المباركة"
+  },
+  "homeSectionPrayerTimes": {
+    "tr": "Ezan Vakitleri",
+    "en": "Prayer Times",
+    "ar": "مواقيت الصلاة"
+  },
+  "homeSectionQuickAccess": {
+    "tr": "Hızlı Erişim",
+    "en": "Quick Access",
+    "ar": "وصول سريع"
+  },
+  "homeSectionCurrency": {
+    "tr": "Döviz",
+    "en": "Exchange Rates",
+    "ar": "أسعار الصرف"
+  },
+  "homeQuickQuran": {
+    "tr": "Kur'an-ı Kerim",
+    "en": "Holy Quran",
+    "ar": "القرآن الكريم"
+  },
+  "homeQuickDuas": {
+    "tr": "Dualar",
+    "en": "Duas",
+    "ar": "الأدعية"
+  },
+  "homeQuickQibla": {
+    "tr": "Kıble",
+    "en": "Qibla",
+    "ar": "القبلة"
+  },
+  "homeQuickShops": {
+    "tr": "Anlaşmalı Dükkanlar",
+    "en": "Partner Shops",
+    "ar": "المتاجر المتعاقدة"
+  },
+  "homeQuickPlaces": {
+    "tr": "Gezilecek Yerler",
+    "en": "Places to Visit",
+    "ar": "أماكن للزيارة"
+  },
+  "homeProgramCalendar": {
+    "tr": "Program Takvimi",
+    "en": "Program Calendar",
+    "ar": "جدول البرنامج"
+  },
+  "homeContactGuide": {
+    "tr": "Rehberle İletişim",
+    "en": "Contact Your Guide",
+    "ar": "التواصل مع المرشد"
+  },
+  "homeContactGuideSubtitle": {
+    "tr": "Rehberinizle iletişim kurun",
+    "en": "Get in touch with your guide",
+    "ar": "تواصل مع مرشدك"
+  },
+  "homeOfflineMode": {
+    "tr": "Çevrimdışı mod",
+    "en": "Offline mode",
+    "ar": "وضع عدم الاتصال"
+  },
+  "homeLastUpdate": {
+    "tr": "Son güncelleme: {date}",
+    "en": "Last update: {date}",
+    "ar": "آخر تحديث: {date}",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "homePrayerFajr": {
+    "tr": "İmsak",
+    "en": "Fajr",
+    "ar": "الفجر"
+  },
+  "homePrayerSunrise": {
+    "tr": "Güneş",
+    "en": "Sunrise",
+    "ar": "الشروق"
+  },
+  "homePrayerDhuhr": {
+    "tr": "Öğle",
+    "en": "Dhuhr",
+    "ar": "الظهر"
+  },
+  "homePrayerAsr": {
+    "tr": "İkindi",
+    "en": "Asr",
+    "ar": "العصر"
+  },
+  "homePrayerMaghrib": {
+    "tr": "Akşam",
+    "en": "Maghrib",
+    "ar": "المغرب"
+  },
+  "homePrayerIsha": {
+    "tr": "Yatsı",
+    "en": "Isha",
+    "ar": "العشاء"
+  },
+  "homePhaseUpcoming": {
+    "tr": "Yaklaşıyor",
+    "en": "Upcoming",
+    "ar": "قادمة"
+  },
+  "homePhaseOngoing": {
+    "tr": "Devam ediyor",
+    "en": "In progress",
+    "ar": "جارية"
+  },
+  "homePhaseDone": {
+    "tr": "Tamamlandı",
+    "en": "Completed",
+    "ar": "اكتملت"
+  },
+  "homePhaseNone": {
+    "tr": "Planlanmadı",
+    "en": "Not planned",
+    "ar": "غير مخططة"
+  },
+  "homeTripNotDefined": {
+    "tr": "Sefer bilgisi henüz tanımlanmadı.",
+    "en": "Trip details have not been set yet.",
+    "ar": "لم تُحدَّد معلومات الرحلة بعد."
+  },
+  "homeTripAccepted": {
+    "tr": "Allah teâlâ kabul eylesin!",
+    "en": "May Allah accept it!",
+    "ar": "تقبّل الله منكم!"
+  },
+  "homeCountdownDays": {
+    "tr": "Gün",
+    "en": "Days",
+    "ar": "يوم"
+  },
+  "homeCountdownHours": {
+    "tr": "Saat",
+    "en": "Hours",
+    "ar": "ساعة"
+  },
+  "homeCountdownMinutes": {
+    "tr": "Dakika",
+    "en": "Minutes",
+    "ar": "دقيقة"
+  },
+  "homeCountdownSeconds": {
+    "tr": "Saniye",
+    "en": "Seconds",
+    "ar": "ثانية"
+  },
+  "homeDaysLeftLabel": {
+    "tr": "gün kaldı",
+    "en": "days left",
+    "ar": "أيام متبقية"
+  },
+  "homeProgramDay": {
+    "tr": "Programın {day}. günü • toplam {total} gün",
+    "en": "Day {day} of the program • {total} days total",
+    "ar": "اليوم {day} من البرنامج • المجموع {total} يومًا",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "homeRoom": {
+    "tr": "Oda {room}",
+    "en": "Room {room}",
+    "ar": "غرفة {room}",
+    "placeholders": {
+      "room": {
+        "type": "String"
+      }
+    }
+  },
+  "homeCurrencySar": {
+    "tr": "Suudi Riyali",
+    "en": "Saudi Riyal",
+    "ar": "الريال السعودي"
+  },
+  "homeCurrencyTry": {
+    "tr": "Türk Lirası",
+    "en": "Turkish Lira",
+    "ar": "الليرة التركية"
+  },
+  "homeRatesError": {
+    "tr": "Döviz kurları alınamadı. İnternet bağlantınızı kontrol edin.",
+    "en": "Exchange rates could not be loaded. Check your internet connection.",
+    "ar": "تعذّر جلب أسعار الصرف. تحقق من اتصالك بالإنترنت."
+  },
+  "homeRatesLive": {
+    "tr": "Canlı kur",
+    "en": "Live rate",
+    "ar": "سعر مباشر"
+  },
+  "homeRefresh": {
+    "tr": "Yenile",
+    "en": "Refresh",
+    "ar": "تحديث"
+  },
+  "homeQuoteCompleteHajj": {
+    "tr": "Haccı ve umreyi Allah için tamamlayın.",
+    "en": "And complete the Hajj and 'umrah for Allah.",
+    "ar": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ"
+  },
+  "homeQuoteUmrahExpiation": {
+    "tr": "Bir umre, diğer umreye kadar arada işlenen günahlara kefarettir.",
+    "en": "An 'umrah is an expiation for the sins committed between it and the next.",
+    "ar": "العمرة إلى العمرة كفارة لما بينهما"
+  },
+  "homeQuoteSafaMarwah": {
+    "tr": "Şüphesiz Safa ile Merve Allah'ın nişanelerindendir.",
+    "en": "Indeed, as-Safa and al-Marwah are among the symbols of Allah.",
+    "ar": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ"
+  },
+  "homeQuoteRamadanUmrah": {
+    "tr": "Ramazan ayında yapılan umre, bir hacca denktir.",
+    "en": "An 'umrah performed in Ramadan is equal to Hajj.",
+    "ar": "عمرة في رمضان تعدل حجة"
+  },
+  "homeQuoteAcceptFromUs": {
+    "tr": "Rabbimiz! Bizden kabul buyur. Şüphesiz sen hakkıyla işitensin, hakkıyla bilensin.",
+    "en": "Our Lord, accept [this] from us. Indeed You are the Hearing, the Knowing.",
+    "ar": "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ"
+  },
+  "homeSourceBaqarah196": {
+    "tr": "Bakara Suresi, 196",
+    "en": "Surah Al-Baqarah, 196",
+    "ar": "سورة البقرة، 196"
+  },
+  "homeSourceBaqarah158": {
+    "tr": "Bakara Suresi, 158",
+    "en": "Surah Al-Baqarah, 158",
+    "ar": "سورة البقرة، 158"
+  },
+  "homeSourceBaqarah127": {
+    "tr": "Bakara Suresi, 127",
+    "en": "Surah Al-Baqarah, 127",
+    "ar": "سورة البقرة، 127"
+  },
+  "homeSourceBukhari": {
+    "tr": "Hadis-i Şerif (Buhârî)",
+    "en": "Hadith (Bukhari)",
+    "ar": "حديث شريف (البخاري)"
+  },
+  "homeDuasTitle": {
+    "tr": "Dualar ve Kuran-ı Kerim",
+    "en": "Supplications and the Holy Quran",
+    "ar": "الأدعية والقرآن الكريم"
+  },
+  "homeDownloadContent": {
+    "tr": "İçerik indir",
+    "en": "Download content",
+    "ar": "تنزيل المحتوى"
+  },
+  "homeDuasQuranSubtitle": {
+    "tr": "Okumak ve dinlemek için tıklayın",
+    "en": "Tap to read and listen",
+    "ar": "اضغط للقراءة والاستماع"
+  },
+  "homeDuasUmrahSection": {
+    "tr": "Umre Duaları",
+    "en": "Umrah Supplications",
+    "ar": "أدعية العمرة"
+  },
+  "homeDuasTawaf": {
+    "tr": "Tavaf Duaları",
+    "en": "Tawaf Supplications",
+    "ar": "أدعية الطواف"
+  },
+  "homeTapToRead": {
+    "tr": "Okumak için tıklayın",
+    "en": "Tap to read",
+    "ar": "اضغط للقراءة"
+  },
+  "homeDuasSai": {
+    "tr": "Sa'y Duaları",
+    "en": "Sa'i Supplications",
+    "ar": "أدعية السعي"
+  },
+  "homeDuasSaiSubtitle": {
+    "tr": "Safa ile Merve arası okumak için tıklayın",
+    "en": "Tap to read between Safa and Marwah",
+    "ar": "اضغط للقراءة بين الصفا والمروة"
+  },
+  "homeDhikrSection": {
+    "tr": "Zikir",
+    "en": "Dhikr",
+    "ar": "الذكر"
+  },
+  "homeTasbihCounter": {
+    "tr": "Zikirmatik",
+    "en": "Tasbih Counter",
+    "ar": "المسبحة الإلكترونية"
+  },
+  "homeTasbihSubtitle": {
+    "tr": "Zikir çekmek için tıklayın",
+    "en": "Tap to start dhikr",
+    "ar": "اضغط لبدء الذكر"
+  },
+  "homeSavedDhikrs": {
+    "tr": "Kayıtlı Zikirlerim",
+    "en": "My Saved Dhikrs",
+    "ar": "أذكاري المحفوظة"
+  },
+  "homeSavedDhikrsSubtitle": {
+    "tr": "Kaldığınız yerden devam edin",
+    "en": "Continue where you left off",
+    "ar": "تابع من حيث توقفت"
+  },
+  "homeDuaQuoteNear": {
+    "tr": "Kullarım sana beni sorarlarsa, bilsinler ki ben onlara çok yakınım. Bana dua edince, dua edenin duasına cevap veririm.",
+    "en": "And when My servants ask you concerning Me – indeed I am near. I respond to the invocation of the supplicant when he calls upon Me.",
+    "ar": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ"
+  },
+  "homeDuaQuoteCallUpon": {
+    "tr": "Rabbiniz şöyle dedi: Bana dua edin, size karşılık vereyim.",
+    "en": "And your Lord says, \"Call upon Me; I will respond to you.\"",
+    "ar": "وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ"
+  },
+  "homeDuaQuoteHearts": {
+    "tr": "Bilesiniz ki kalpler ancak Allah'ı anmakla huzur bulur.",
+    "en": "Unquestionably, by the remembrance of Allah hearts are assured.",
+    "ar": "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"
+  },
+  "homeDuaQuoteRemember": {
+    "tr": "Öyleyse yalnız beni anın ki ben de sizi anayım.",
+    "en": "So remember Me; I will remember you.",
+    "ar": "فَاذْكُرُونِي أَذْكُرْكُمْ"
+  },
+  "homeSourceBaqarah186Short": {
+    "tr": "Bakara 2/186",
+    "en": "Al-Baqarah 2:186",
+    "ar": "البقرة: 186"
+  },
+  "homeSourceGhafir60Short": {
+    "tr": "Mü'min 40/60",
+    "en": "Ghafir 40:60",
+    "ar": "غافر: 60"
+  },
+  "homeSourceRad28Short": {
+    "tr": "Ra'd 13/28",
+    "en": "Ar-Ra'd 13:28",
+    "ar": "الرعد: 28"
+  },
+  "homeSourceBaqarah152Short": {
+    "tr": "Bakara 2/152",
+    "en": "Al-Baqarah 2:152",
+    "ar": "البقرة: 152"
+  },
+  "homeSourceBaqarah196Short": {
+    "tr": "Bakara 2/196",
+    "en": "Al-Baqarah 2:196",
+    "ar": "البقرة: 196"
+  },
+  "homeNotificationsTitle": {
+    "tr": "Bildirimler",
+    "en": "Notifications",
+    "ar": "الإشعارات"
+  },
+  "homeNoNotifications": {
+    "tr": "Henüz bildirim yok.",
+    "en": "No notifications yet.",
+    "ar": "لا توجد إشعارات بعد."
+  },
+  "homeNoNotificationsHint": {
+    "tr": "Rehberinizin duyuruları burada görünecek.",
+    "en": "Your guide's announcements will appear here.",
+    "ar": "ستظهر إعلانات مرشدك هنا."
+  },
+  "homeNotificationsLoadError": {
+    "tr": "Bildirimler yüklenemedi.",
+    "en": "Notifications could not be loaded.",
+    "ar": "تعذّر تحميل الإشعارات."
+  },
+  "homeJustNow": {
+    "tr": "Az önce",
+    "en": "Just now",
+    "ar": "الآن"
+  },
+  "homeMinutesAgo": {
+    "tr": "{count} dk önce",
+    "en": "{count} min ago",
+    "ar": "منذ {count} د",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeHoursAgo": {
+    "tr": "{count} sa önce",
+    "en": "{count} h ago",
+    "ar": "منذ {count} س",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homePersonal": {
+    "tr": "Size özel",
+    "en": "Personal",
+    "ar": "خاص بك"
+  },
+  "homeAnnouncement": {
+    "tr": "Duyuru",
+    "en": "Announcement",
+    "ar": "إعلان"
+  },
+  "homeProfileTitle": {
+    "tr": "Profil",
+    "en": "Profile",
+    "ar": "الملف الشخصي"
+  },
+  "homeLogout": {
+    "tr": "Çıkış Yap",
+    "en": "Log Out",
+    "ar": "تسجيل الخروج"
+  },
+  "homeLogoutConfirm": {
+    "tr": "Hesabınızdan çıkış yapmak istediğinize emin misiniz?",
+    "en": "Are you sure you want to log out of your account?",
+    "ar": "هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟"
+  },
+  "homeLogoutFailed": {
+    "tr": "Çıkış yapılamadı. Lütfen tekrar deneyin.",
+    "en": "Could not log out. Please try again.",
+    "ar": "تعذّر تسجيل الخروج. يرجى المحاولة مرة أخرى."
+  },
+  "homeUserNotFound": {
+    "tr": "Kullanıcı bilgisi bulunamadı",
+    "en": "User information not found",
+    "ar": "لم يتم العثور على معلومات المستخدم"
+  },
+  "homePersonalInfo": {
+    "tr": "Kişisel Bilgiler",
+    "en": "Personal Information",
+    "ar": "المعلومات الشخصية"
+  },
+  "homeTcNo": {
+    "tr": "T.C. Kimlik No",
+    "en": "Turkish ID No.",
+    "ar": "رقم الهوية التركية"
+  },
+  "homePhone": {
+    "tr": "Telefon",
+    "en": "Phone",
+    "ar": "الهاتف"
+  },
+  "homeGender": {
+    "tr": "Cinsiyet",
+    "en": "Gender",
+    "ar": "الجنس"
+  },
+  "homeGenderMale": {
+    "tr": "Erkek",
+    "en": "Male",
+    "ar": "ذكر"
+  },
+  "homeGenderFemale": {
+    "tr": "Kadın",
+    "en": "Female",
+    "ar": "أنثى"
+  },
+  "homeBirthDate": {
+    "tr": "Doğum Tarihi",
+    "en": "Date of Birth",
+    "ar": "تاريخ الميلاد"
+  },
+  "homeRegistrationDate": {
+    "tr": "Kayıt Tarihi",
+    "en": "Registration Date",
+    "ar": "تاريخ التسجيل"
+  },
+  "homeUmrahInfo": {
+    "tr": "Umre Bilgileri",
+    "en": "Umrah Details",
+    "ar": "معلومات العمرة"
+  },
+  "homeLocationTracking": {
+    "tr": "Konum Takibi",
+    "en": "Location Tracking",
+    "ar": "تتبع الموقع"
+  },
+  "homeGuest": {
+    "tr": "Misafir",
+    "en": "Guest",
+    "ar": "ضيف"
+  },
+  "homeUserTypeSuperAdmin": {
+    "tr": "Süper Yönetici",
+    "en": "Super Administrator",
+    "ar": "المشرف العام"
+  },
+  "homeUserTypeAdmin": {
+    "tr": "Yönetici",
+    "en": "Manager",
+    "ar": "مشرف"
+  },
+  "homeUserTypePilgrim": {
+    "tr": "Umre Ziyaretçisi",
+    "en": "Umrah Pilgrim",
+    "ar": "معتمر"
+  },
+  "homeTripOf": {
+    "tr": "{city} Seferi",
+    "en": "{city} Trip",
+    "ar": "رحلة {city}",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "homeHotelInfo": {
+    "tr": "Otel Bilgileri",
+    "en": "Hotel Details",
+    "ar": "معلومات الفندق"
+  },
+  "homeRoomInfo": {
+    "tr": "Oda Bilgileri",
+    "en": "Room Details",
+    "ar": "معلومات الغرفة"
+  },
+  "homeRoomCapacity": {
+    "tr": "({count} kişilik)",
+    "en": "({count} people)",
+    "ar": "({count, plural, =1{شخص واحد} =2{شخصان} few{{count} أشخاص} many{{count} شخصًا} other{{count} شخص}})",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUnknown": {
+    "tr": "Bilinmeyen",
+    "en": "Unknown",
+    "ar": "غير معروف"
+  },
+  "homeLocationStart": {
+    "tr": "Konum Takibini Başlat",
+    "en": "Start Location Tracking",
+    "ar": "بدء تتبع الموقع"
+  },
+  "homeLocationStartHint": {
+    "tr": "Rehberiniz konumunuzu görebilsin",
+    "en": "Let your guide see your location",
+    "ar": "ليتمكن مرشدك من رؤية موقعك"
+  },
+  "homeLocationAllow": {
+    "tr": "Konum İznine İzin Ver",
+    "en": "Allow Location Access",
+    "ar": "السماح بالوصول إلى الموقع"
+  },
+  "homeLocationStop": {
+    "tr": "Konum Takibini Durdur",
+    "en": "Stop Location Tracking",
+    "ar": "إيقاف تتبع الموقع"
+  },
+  "homeLocationSharing": {
+    "tr": "Konum Paylaşımı",
+    "en": "Location Sharing",
+    "ar": "مشاركة الموقع"
+  },
+  "homeLocationSharingDesc": {
+    "tr": "Açıkken konumunuz uygulama kapalıyken de rehberinizle paylaşılır.",
+    "en": "When on, your location is shared with your guide even when the app is closed.",
+    "ar": "عند التفعيل، تتم مشاركة موقعك مع مرشدك حتى عندما يكون التطبيق مغلقًا."
+  },
+  "homeLocationSharingOn": {
+    "tr": "Konum paylaşımı açıldı",
+    "en": "Location sharing turned on",
+    "ar": "تم تفعيل مشاركة الموقع"
+  },
+  "homeLocationSharingOff": {
+    "tr": "Konum paylaşımı kapatıldı",
+    "en": "Location sharing turned off",
+    "ar": "تم إيقاف مشاركة الموقع"
+  },
+  "homeLocationGpsOff": {
+    "tr": "Telefonun konum servisi (GPS) kapalı",
+    "en": "The phone's location service (GPS) is off",
+    "ar": "خدمة الموقع (GPS) في الهاتف مغلقة"
+  },
+  "homeLocationPermissionDenied": {
+    "tr": "Konum izni verilmedi",
+    "en": "Location permission not granted",
+    "ar": "لم يتم منح إذن الموقع"
+  },
+  "homeLocationSharingDisabled": {
+    "tr": "Paylaşım kapalı",
+    "en": "Sharing is off",
+    "ar": "المشاركة متوقفة"
+  },
+  "homeLocationServiceStarting": {
+    "tr": "Paylaşım açık, servis başlatılıyor...",
+    "en": "Sharing is on, starting the service...",
+    "ar": "المشاركة مفعّلة، جارٍ تشغيل الخدمة..."
+  },
+  "homeLocationBeingShared": {
+    "tr": "Konumunuz paylaşılıyor",
+    "en": "Your location is being shared",
+    "ar": "تتم مشاركة موقعك"
+  },
+  "homeLocationReducedWarning": {
+    "tr": "\"Yaklaşık konum\" açık: konumunuz birkaç yüz metre ile birkaç km arasında sapabilir. Ayarlar > İzinler > Konum bölümünden \"Tam konum kullan\"ı açın.",
+    "en": "\"Approximate location\" is on: your location may be off by a few hundred meters to several kilometers. Turn on \"Use precise location\" in Settings > Permissions > Location.",
+    "ar": "خيار \"الموقع التقريبي\" مفعّل: قد ينحرف موقعك بين بضع مئات من الأمتار وعدة كيلومترات. فعّل \"استخدام الموقع الدقيق\" من الإعدادات > الأذونات > الموقع."
+  },
+  "homeLocationBackgroundWarning": {
+    "tr": "Arka plan konum izni yok: ekran kapalıyken konum seyrek ve yanlış güncellenir. Ayarlar > İzinler > Konum bölümünden \"Her zaman izin ver\"i seçin.",
+    "en": "No background location permission: while the screen is off, your location is updated rarely and inaccurately. Select \"Allow all the time\" in Settings > Permissions > Location.",
+    "ar": "لا يوجد إذن للموقع في الخلفية: عندما تكون الشاشة مغلقة يُحدَّث الموقع نادرًا وبشكل غير دقيق. اختر \"السماح طوال الوقت\" من الإعدادات > الأذونات > الموقع."
+  },
+  "homeChecking": {
+    "tr": "Kontrol ediliyor...",
+    "en": "Checking...",
+    "ar": "جارٍ التحقق..."
+  },
+  "homeLastSent": {
+    "tr": "Son gönderim: {when}",
+    "en": "Last sent: {when}",
+    "ar": "آخر إرسال: {when}",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "homeNotYet": {
+    "tr": "henüz yok",
+    "en": "not yet",
+    "ar": "لم يتم بعد"
+  },
+  "homeFixPermission": {
+    "tr": "İzni Düzelt",
+    "en": "Fix Permission",
+    "ar": "إصلاح الإذن"
+  },
+  "homeNoPhone": {
+    "tr": "Telefon bilgisi yok",
+    "en": "No phone number",
+    "ar": "لا يوجد رقم هاتف"
+  },
+  "homeSendMessage": {
+    "tr": "Mesaj gönder",
+    "en": "Send message",
+    "ar": "إرسال رسالة"
+  },
+  "homeDayN": {
+    "tr": "{day}. Gün",
+    "en": "Day {day}",
+    "ar": "اليوم {day}",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "homeYourGuide": {
+    "tr": "Rehberiniz",
+    "en": "Your Guide",
+    "ar": "مرشدك"
+  },
+  "homeNoName": {
+    "tr": "İsim bilgisi yok",
+    "en": "No name available",
+    "ar": "لا يوجد اسم"
+  },
+  "homeGuideLocation": {
+    "tr": "Rehberin Konumu",
+    "en": "Guide's Location",
+    "ar": "موقع المرشد"
+  },
+  "homeWaitingGuideLocation": {
+    "tr": "Rehber konumu bekleniyor...",
+    "en": "Waiting for the guide's location...",
+    "ar": "في انتظار موقع المرشد..."
+  },
+  "homeGuide": {
+    "tr": "Rehber",
+    "en": "Guide",
+    "ar": "المرشد"
+  },
+  "homeOpenBigMap": {
+    "tr": "Büyük haritada aç ve yol tarifi al",
+    "en": "Open in full map and get directions",
+    "ar": "افتح في الخريطة الكاملة واحصل على الاتجاهات"
+  },
+  "homeLocationReceived": {
+    "tr": "Konum alındı",
+    "en": "Location received",
+    "ar": "تم استلام الموقع"
+  },
+  "homeUpdatedJustNow": {
+    "tr": "Az önce güncellendi",
+    "en": "Updated just now",
+    "ar": "تم التحديث الآن"
+  },
+  "homeUpdatedMinutesAgo": {
+    "tr": "{count} dk önce güncellendi",
+    "en": "Updated {count} min ago",
+    "ar": "{count, plural, =1{تم التحديث منذ دقيقة} =2{تم التحديث منذ دقيقتين} few{تم التحديث منذ {count} دقائق} many{تم التحديث منذ {count} دقيقةً} other{تم التحديث منذ {count} دقيقة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUpdatedHoursAgo": {
+    "tr": "{count} saat önce güncellendi",
+    "en": "Updated {count} h ago",
+    "ar": "{count, plural, =1{تم التحديث منذ ساعة} =2{تم التحديث منذ ساعتين} few{تم التحديث منذ {count} ساعات} many{تم التحديث منذ {count} ساعةً} other{تم التحديث منذ {count} ساعة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUpdatedDaysAgo": {
+    "tr": "{count} gün önce güncellendi",
+    "en": "Updated {count} days ago",
+    "ar": "{count, plural, =1{تم التحديث منذ يوم} =2{تم التحديث منذ يومين} few{تم التحديث منذ {count} أيام} many{تم التحديث منذ {count} يومًا} other{تم التحديث منذ {count} يوم}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeNoManagerForTrip": {
+    "tr": "Bu sefere henüz yönetici atanmamış",
+    "en": "No manager has been assigned to this trip yet",
+    "ar": "لم يتم تعيين مسؤول لهذه الرحلة بعد"
+  },
+  "homeNoActiveTrip": {
+    "tr": "Aktif bir seferiniz bulunmuyor",
+    "en": "You have no active trip",
+    "ar": "ليست لديك رحلة نشطة"
+  },
+  "homeContactAgencyHint": {
+    "tr": "Lütfen acente ile iletişime geçin.",
+    "en": "Please contact your agency.",
+    "ar": "يرجى التواصل مع الوكالة."
+  },
+  "homeCallAgency": {
+    "tr": "Acenteyi Ara",
+    "en": "Call Agency",
+    "ar": "اتصل بالوكالة"
+  },
+  "homeTechSupportInfo": {
+    "tr": "Teknik Servis Bilgileri",
+    "en": "Technical Support Info",
+    "ar": "معلومات الدعم الفني"
+  },
+  "homePhoneOpenFailed": {
+    "tr": "Telefon açılamadı",
+    "en": "Could not open the phone app",
+    "ar": "تعذّر فتح تطبيق الهاتف"
+  },
+  "homeWhatsAppOpenFailed": {
+    "tr": "WhatsApp açılamadı",
+    "en": "Could not open WhatsApp",
+    "ar": "تعذّر فتح واتساب"
+  },
+  "homePickDay": {
+    "tr": "Gün Seç",
+    "en": "Pick a Day",
+    "ar": "اختر يومًا"
+  },
+  "homeToday": {
+    "tr": "Bugün",
+    "en": "Today",
+    "ar": "اليوم"
+  },
+  "homePrevious": {
+    "tr": "Önceki",
+    "en": "Previous",
+    "ar": "السابق"
+  },
+  "homeNext": {
+    "tr": "Sonraki",
+    "en": "Next",
+    "ar": "التالي"
+  },
+  "homeCalendarNotFound": {
+    "tr": "Takvim bilgisi bulunamadı",
+    "en": "Calendar not found",
+    "ar": "لم يتم العثور على معلومات الجدول"
+  },
+  "homeCalendarNoAgency": {
+    "tr": "Acente bilginiz tanımlandığında program burada görünecek.",
+    "en": "The program will appear here once your agency is set.",
+    "ar": "سيظهر البرنامج هنا عند تحديد وكالتك."
+  },
+  "homeSomethingWrong": {
+    "tr": "Bir sorun oluştu",
+    "en": "Something went wrong",
+    "ar": "حدثت مشكلة"
+  },
+  "homeNoEventsToday": {
+    "tr": "Bu gün için etkinlik yok",
+    "en": "No events for this day",
+    "ar": "لا توجد فعاليات لهذا اليوم"
+  },
+  "homeNoEventsHint": {
+    "tr": "Başka bir gün seçerek etkinlikleri görüntüleyin",
+    "en": "Select another day to view events",
+    "ar": "اختر يومًا آخر لعرض الفعاليات"
+  },
+  "homeEventUpcoming": {
+    "tr": "Yaklaşan",
+    "en": "Upcoming",
+    "ar": "قادمة"
+  },
+  "homeEventDone": {
+    "tr": "Gerçekleşti",
+    "en": "Completed",
+    "ar": "انتهت"
+  },
+  "homeEventsLoadError": {
+    "tr": "Etkinlikler yüklenemedi. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "Events could not be loaded. Check your internet connection and try again.",
+    "ar": "تعذّر تحميل الفعاليات. تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+  },
+  "homeDurationH": {
+    "tr": "{hours} sa",
+    "en": "{hours} h",
+    "ar": "{hours} س",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDurationM": {
+    "tr": "{minutes} dk",
+    "en": "{minutes} min",
+    "ar": "{minutes} د",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDurationHM": {
+    "tr": "{hours} sa {minutes} dk",
+    "en": "{hours} h {minutes} min",
+    "ar": "{hours} س {minutes} د",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "cuzdanTitle": {
+    "tr": "Harcamalarım ve Puanlarım",
+    "en": "My Purchases and Points",
+    "ar": "مشترياتي ونقاطي"
+  },
+  "cuzdanProfileSubtitle": {
+    "tr": "{points} puan · alışveriş geçmişi",
+    "en": "{points} points · purchase history",
+    "ar": "{points} نقطة · سجل المشتريات",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "cuzdanLoyaltyPoints": {
+    "tr": "Sadakat Puanı",
+    "en": "Loyalty Points",
+    "ar": "نقاط الولاء"
+  },
+  "cuzdanPointsWorth": {
+    "tr": "≈ {value} SAR değerinde",
+    "en": "≈ worth {value} SAR",
+    "ar": "≈ بقيمة {value} ريال",
+    "placeholders": { "value": { "type": "String" } }
+  },
+  "cuzdanTotalSpent": {
+    "tr": "Toplam harcama",
+    "en": "Total spent",
+    "ar": "إجمالي الإنفاق"
+  },
+  "cuzdanTotalDiscount": {
+    "tr": "Kazanılan indirim",
+    "en": "Discount earned",
+    "ar": "الخصم المكتسب"
+  },
+  "cuzdanPurchaseCount": {
+    "tr": "Alışveriş",
+    "en": "Purchases",
+    "ar": "المشتريات"
+  },
+  "cuzdanFilterAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "cuzdanFilterEarned": {
+    "tr": "Puan kazanılan",
+    "en": "Points earned",
+    "ar": "نقاط مكتسبة"
+  },
+  "cuzdanFilterSpent": {
+    "tr": "Puanla ödenen",
+    "en": "Paid with points",
+    "ar": "مدفوع بالنقاط"
+  },
+  "cuzdanCancelled": {
+    "tr": "İptal edildi",
+    "en": "Cancelled",
+    "ar": "أُلغيت"
+  },
+  "cuzdanGross": {
+    "tr": "Tutar",
+    "en": "Amount",
+    "ar": "المبلغ"
+  },
+  "cuzdanDiscount": {
+    "tr": "İndirim",
+    "en": "Discount",
+    "ar": "الخصم"
+  },
+  "cuzdanPaid": {
+    "tr": "Ödenen",
+    "en": "Paid",
+    "ar": "المدفوع"
+  },
+  "cuzdanPaymentMethod": {
+    "tr": "Ödeme türü",
+    "en": "Payment method",
+    "ar": "طريقة الدفع"
+  },
+  "cuzdanMethodCash": {
+    "tr": "Nakit",
+    "en": "Cash",
+    "ar": "نقدًا"
+  },
+  "cuzdanMethodCard": {
+    "tr": "Kredi kartı",
+    "en": "Credit card",
+    "ar": "بطاقة ائتمان"
+  },
+  "cuzdanMethodPoints": {
+    "tr": "Puan",
+    "en": "Points",
+    "ar": "نقاط"
+  },
+  "cuzdanSar": {
+    "tr": "{amount} SAR",
+    "en": "{amount} SAR",
+    "ar": "{amount} ريال",
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "cuzdanPointsPlus": {
+    "tr": "+{points} puan",
+    "en": "+{points} pts",
+    "ar": "+{points} نقطة",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "cuzdanPointsMinus": {
+    "tr": "−{points} puan",
+    "en": "−{points} pts",
+    "ar": "−{points} نقطة",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "cuzdanPointsEarned": {
+    "tr": "Kazanılan puan",
+    "en": "Points earned",
+    "ar": "النقاط المكتسبة"
+  },
+  "cuzdanPointsSpent": {
+    "tr": "Harcanan puan",
+    "en": "Points spent",
+    "ar": "النقاط المستخدمة"
+  },
+  "cuzdanHowTitle": {
+    "tr": "Puan nasıl çalışır?",
+    "en": "How do points work?",
+    "ar": "كيف تعمل النقاط؟"
+  },
+  "cuzdanHowEarn": {
+    "tr": "Anlaşmalı dükkanlarda harcadığınız her 1 SAR için 1 puan kazanırsınız.",
+    "en": "You earn 1 point for every 1 SAR you spend at partner shops.",
+    "ar": "تكسب نقطة واحدة مقابل كل ريال تنفقه في المتاجر المتعاقدة."
+  },
+  "cuzdanHowValue": {
+    "tr": "100 puan = 5 SAR değerindedir.",
+    "en": "100 points = 5 SAR.",
+    "ar": "100 نقطة = 5 ريال."
+  },
+  "cuzdanHowPay": {
+    "tr": "Puanla ödediğinizde dükkanın indirimi yine uygulanır.",
+    "en": "When you pay with points, the shop discount still applies.",
+    "ar": "عند الدفع بالنقاط يظل خصم المتجر مطبقًا."
+  },
+  "cuzdanHowRecord": {
+    "tr": "Uygulama ödeme almaz; yalnızca alışverişinizi kaydeder.",
+    "en": "The app does not take payments; it only records your purchase.",
+    "ar": "التطبيق لا يستلم أي مدفوعات؛ إنه يسجل مشترياتك فقط."
+  },
+  "cuzdanEmpty": {
+    "tr": "Henüz alışveriş yok. Anlaşmalı dükkanlarda QR kodunuzu göstererek indirim ve puan kazanın.",
+    "en": "No purchases yet. Show your QR code at partner shops to get discounts and earn points.",
+    "ar": "لا توجد مشتريات بعد. أظهر رمز QR في المتاجر المتعاقدة لتحصل على خصم وتكسب نقاطًا."
+  },
+  "cuzdanNoFilterMatch": {
+    "tr": "Bu filtreye uygun işlem yok.",
+    "en": "No purchases match this filter.",
+    "ar": "لا توجد عمليات تطابق هذا الفلتر."
+  },
+  "cuzdanGoShops": {
+    "tr": "Anlaşmalı Dükkanlar",
+    "en": "Partner Shops",
+    "ar": "المتاجر المتعاقدة"
+  },
+  "cuzdanLoadError": {
+    "tr": "Harcamalar yüklenemedi. İnternet bağlantınızı kontrol edin.",
+    "en": "Purchases could not be loaded. Check your internet connection.",
+    "ar": "تعذر تحميل المشتريات. تحقق من اتصالك بالإنترنت."
+  },
+  "cuzdanRetry": {
+    "tr": "Tekrar dene",
+    "en": "Try again",
+    "ar": "حاول مرة أخرى"
+  },
+  "cuzdanCodeOneTime": {
+    "tr": "Bu kod tek kullanımlıktır ve {minutes} dakikada yenilenir.",
+    "en": "This code can be used once and renews every {minutes} minutes.",
+    "ar": "هذا الرمز للاستخدام مرة واحدة ويتجدد كل {minutes} دقيقة.",
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "cuzdanCodeCreating": {
+    "tr": "Kod hazırlanıyor…",
+    "en": "Preparing your code…",
+    "ar": "جارٍ تجهيز الرمز…"
+  },
+  "cuzdanCodeError": {
+    "tr": "Kod oluşturulamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "The code could not be created. Check your internet connection and try again.",
+    "ar": "تعذر إنشاء الرمز. تحقق من اتصالك بالإنترنت ثم حاول مرة أخرى."
+  },
+  "cuzdanCodeTimeLeft": {
+    "tr": "Kalan süre",
+    "en": "Time left",
+    "ar": "الوقت المتبقي"
+  },
+  "cuzdanCodeYourPoints": {
+    "tr": "Puanınız: {points}",
+    "en": "Your points: {points}",
+    "ar": "نقاطك: {points}",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "cuzdanCodeShowStatic": {
+    "tr": "Dükkanın kendi QR kodunu göster",
+    "en": "Show the shop's own QR code",
+    "ar": "إظهار رمز QR الخاص بالمتجر"
+  },
+  "cuzdanCodeShowLive": {
+    "tr": "Tek kullanımlık koda dön",
+    "en": "Back to the one-time code",
+    "ar": "العودة إلى الرمز لمرة واحدة"
+  },
+  "cuzdanCodeWaiting": {
+    "tr": "Kod okutuldu, işlem kaydediliyor…",
+    "en": "Code scanned, saving the purchase…",
+    "ar": "تمت قراءة الرمز، جارٍ حفظ العملية…"
+  },
+  "cuzdanSuccessTitle": {
+    "tr": "Alışveriş kaydedildi",
+    "en": "Purchase recorded",
+    "ar": "تم تسجيل الشراء"
+  },
+  "cuzdanMyPurchases": {
+    "tr": "Harcamalarım",
+    "en": "My Purchases",
+    "ar": "مشترياتي"
+  },
+  "cuzdanClose": {
+    "tr": "Kapat",
+    "en": "Close",
+    "ar": "إغلاق"
+  },
+  "cuzdanNotifEarned": {
+    "tr": "{shop}: {amount} SAR ödendi, {points} puan kazandınız.",
+    "en": "{shop}: {amount} SAR paid, you earned {points} points.",
+    "ar": "{shop}: تم دفع {amount} ريال، وكسبت {points} نقطة.",
+    "placeholders": {
+      "shop": { "type": "String" },
+      "amount": { "type": "String" },
+      "points": { "type": "int" }
+    }
+  },
+  "cuzdanNotifSpent": {
+    "tr": "{shop}: {amount} SAR tutarı {points} puanla ödendi.",
+    "en": "{shop}: {amount} SAR paid with {points} points.",
+    "ar": "{shop}: تم دفع {amount} ريال باستخدام {points} نقطة.",
+    "placeholders": {
+      "shop": { "type": "String" },
+      "amount": { "type": "String" },
+      "points": { "type": "int" }
+    }
+  },
+  "cuzdanMyCoupons": {
+    "tr": "Kuponlarım",
+    "en": "My Coupons",
+    "ar": "قسائمي"
+  },
+  "cuzdanCouponHowTo": {
+    "tr": "Kullanmak için dükkanda indirim kodunu açıp kuponu seç. Her kupon bir kez kullanılır.",
+    "en": "To use one, open the discount code at the shop and pick the coupon. Each coupon can be used once.",
+    "ar": "لاستخدامها افتح رمز الخصم في المتجر واختر القسيمة. تُستخدم كل قسيمة مرة واحدة."
+  },
+  "cuzdanCouponOff": {
+    "tr": "İNDİRİM",
+    "en": "OFF",
+    "ar": "خصم"
+  },
+  "cuzdanCouponValidUntil": {
+    "tr": "Son gün {date}",
+    "en": "Until {date}",
+    "ar": "حتى {date}",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponAllShops": {
+    "tr": "Tüm anlaşmalı dükkanlarda",
+    "en": "At all partner shops",
+    "ar": "في جميع المتاجر المتعاقدة"
+  },
+  "cuzdanCouponAtShop": {
+    "tr": "Yalnız {shop}",
+    "en": "Only at {shop}",
+    "ar": "فقط في {shop}",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponUse": {
+    "tr": "Kupon kullan",
+    "en": "Use a coupon",
+    "ar": "استخدم قسيمة"
+  },
+  "cuzdanCouponAvailable": {
+    "tr": "Bu dükkanda {count} kupon kullanılabilir",
+    "en": "{count} coupon(s) available at this shop",
+    "ar": "{count} قسيمة متاحة في هذا المتجر",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanCouponSelected": {
+    "tr": "Kupon: {code}",
+    "en": "Coupon: {code}",
+    "ar": "القسيمة: {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponNone": {
+    "tr": "Kupon kullanma",
+    "en": "Don't use a coupon",
+    "ar": "بدون قسيمة"
+  },
+  "cuzdanCouponPickTitle": {
+    "tr": "Kupon seç",
+    "en": "Choose a coupon",
+    "ar": "اختر قسيمة"
+  },
+  "cuzdanCouponPickHint": {
+    "tr": "Seçtiğin kupon koda eklenir; esnaf kodu okutunca indirim uygulanır.",
+    "en": "The coupon is added to your code; the discount is applied when the shop scans it.",
+    "ar": "تُضاف القسيمة إلى رمزك ويُطبق الخصم عندما يمسحه المتجر."
+  },
+  "cuzdanCouponUsed": {
+    "tr": "Kupon {code}",
+    "en": "Coupon {code}",
+    "ar": "القسيمة {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanGiftPoints": {
+    "tr": "Hediye puan",
+    "en": "Gift points",
+    "ar": "نقاط هدية"
+  },
+  "cuzdanPointsCorrection": {
+    "tr": "Puan düzeltmesi",
+    "en": "Points adjustment",
+    "ar": "تعديل النقاط"
+  },
+  "cuzdanPointsRevert": {
+    "tr": "Puan hareketi geri alındı",
+    "en": "Points entry reversed",
+    "ar": "تم عكس حركة النقاط"
+  },
+  "cuzdanPointsReverted": {
+    "tr": "Geri alındı",
+    "en": "Reversed",
+    "ar": "تم العكس"
+  },
+  "cuzdanReviewAction": {
+    "tr": "Değerlendir",
+    "en": "Rate",
+    "ar": "قيّم"
+  },
+  "cuzdanReviewTitle": {
+    "tr": "Alışverişi değerlendir",
+    "en": "Rate your purchase",
+    "ar": "قيّم عملية الشراء"
+  },
+  "cuzdanReviewStar1": {
+    "tr": "Çok kötü",
+    "en": "Very bad",
+    "ar": "سيئ جدًا"
+  },
+  "cuzdanReviewStar2": {
+    "tr": "Kötü",
+    "en": "Bad",
+    "ar": "سيئ"
+  },
+  "cuzdanReviewStar3": {
+    "tr": "İdare eder",
+    "en": "Okay",
+    "ar": "مقبول"
+  },
+  "cuzdanReviewStar4": {
+    "tr": "İyi",
+    "en": "Good",
+    "ar": "جيد"
+  },
+  "cuzdanReviewStar5": {
+    "tr": "Mükemmel",
+    "en": "Excellent",
+    "ar": "ممتاز"
+  },
+  "cuzdanReviewComment": {
+    "tr": "Yorumun (isteğe bağlı)",
+    "en": "Your comment (optional)",
+    "ar": "تعليقك (اختياري)"
+  },
+  "cuzdanReviewComplaint": {
+    "tr": "Şikâyet olarak bildir",
+    "en": "Report as a complaint",
+    "ar": "الإبلاغ كشكوى"
+  },
+  "cuzdanReviewComplaintHint": {
+    "tr": "Şikâyetin platform ekibine iletilir ve incelenir.",
+    "en": "Your complaint is forwarded to the platform team for review.",
+    "ar": "تُرسل شكواك إلى فريق المنصة لمراجعتها."
+  },
+  "cuzdanReviewSend": {
+    "tr": "Gönder",
+    "en": "Send",
+    "ar": "إرسال"
+  },
+  "cuzdanReviewOnce": {
+    "tr": "Değerlendirme bir kez gönderilir ve sonradan değiştirilemez.",
+    "en": "A review can be sent once and can't be changed later.",
+    "ar": "يُرسل التقييم مرة واحدة ولا يمكن تغييره لاحقًا."
+  },
+  "cuzdanReviewPickStars": {
+    "tr": "Lütfen 1–5 arası yıldız seç.",
+    "en": "Please choose 1–5 stars.",
+    "ar": "يرجى اختيار من 1 إلى 5 نجوم."
+  },
+  "cuzdanReviewError": {
+    "tr": "Değerlendirme gönderilemedi. Lütfen tekrar dene.",
+    "en": "The review couldn't be sent. Please try again.",
+    "ar": "تعذر إرسال التقييم. يرجى المحاولة مرة أخرى."
+  },
+  "cuzdanReviewThanks": {
+    "tr": "Değerlendirmen için teşekkürler!",
+    "en": "Thanks for your review!",
+    "ar": "شكرًا على تقييمك!"
+  },
+  "cuzdanReviewYours": {
+    "tr": "Değerlendirmen",
+    "en": "Your rating",
+    "ar": "تقييمك"
+  }
+}

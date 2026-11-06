@@ -1,0 +1,117 @@
+{
+  "ccCpnTitle": { "tr": "Kuponlar", "en": "Coupons", "ar": "القسائم" },
+  "ccCpnSubtitle": { "tr": "Kampanya ve indirim kuponları", "en": "Campaign and discount coupons", "ar": "قسائم الحملات والخصومات" },
+  "ccCpnReadOnly": { "tr": "Salt okuma", "en": "Read only", "ar": "للقراءة فقط" },
+  "ccCpnLoadError": { "tr": "Kuponlar yüklenemedi.", "en": "Coupons couldn't be loaded.", "ar": "تعذر تحميل القسائم." },
+  "ccCpnSaveError": { "tr": "İşlem tamamlanamadı. Lütfen tekrar deneyin.", "en": "The action couldn't be completed. Please try again.", "ar": "تعذر إتمام العملية. يرجى المحاولة مرة أخرى." },
+  "ccCpnNew": { "tr": "Yeni Kupon", "en": "New Coupon", "ar": "قسيمة جديدة" },
+  "ccCpnNewTitle": { "tr": "Yeni kupon", "en": "New coupon", "ar": "قسيمة جديدة" },
+  "ccCpnEditTitle": { "tr": "Kuponu düzenle", "en": "Edit coupon", "ar": "تعديل القسيمة" },
+  "ccCpnEdit": { "tr": "Düzenle", "en": "Edit", "ar": "تعديل" },
+  "ccCpnDelete": { "tr": "Sil", "en": "Delete", "ar": "حذف" },
+  "ccCpnDeactivate": { "tr": "Pasife al", "en": "Deactivate", "ar": "إلغاء التفعيل" },
+  "ccCpnKpiActive": { "tr": "Aktif kupon", "en": "Active coupons", "ar": "القسائم الفعالة" },
+  "ccCpnKpiUses": { "tr": "Toplam kullanım", "en": "Total redemptions", "ar": "إجمالي الاستخدام" },
+  "ccCpnKpiDiscount": { "tr": "Verilen toplam indirim", "en": "Total discount given", "ar": "إجمالي الخصم الممنوح" },
+  "ccCpnKpiGuests": { "tr": "Kupon kullanan misafir", "en": "Guests who redeemed", "ar": "الضيوف المستخدمون" },
+  "ccCpnFilterAll": { "tr": "Tümü", "en": "All", "ar": "الكل" },
+  "ccCpnStatusActive": { "tr": "Aktif", "en": "Active", "ar": "فعالة" },
+  "ccCpnStatusScheduled": { "tr": "Başlamadı", "en": "Scheduled", "ar": "لم تبدأ" },
+  "ccCpnStatusExpired": { "tr": "Süresi doldu", "en": "Expired", "ar": "منتهية" },
+  "ccCpnStatusInactive": { "tr": "Pasif", "en": "Inactive", "ar": "غير مفعلة" },
+  "ccCpnStatusExhausted": { "tr": "Tükendi", "en": "Used up", "ar": "نفدت" },
+  "ccCpnEmpty": { "tr": "Henüz kupon yok. İlk kampanyanı oluştur!", "en": "No coupons yet. Create your first campaign!", "ar": "لا توجد قسائم بعد. أنشئ حملتك الأولى!" },
+  "ccCpnNoMatch": { "tr": "Bu filtreye uyan kupon yok.", "en": "No coupons match this filter.", "ar": "لا توجد قسائم مطابقة لهذا الفلتر." },
+  "ccCpnAllAgencies": { "tr": "Tüm acenteler", "en": "All agencies", "ar": "كل الوكالات" },
+  "ccCpnAllShops": { "tr": "Tüm dükkanlar", "en": "All shops", "ar": "كل المتاجر" },
+  "ccCpnUpTo": {
+    "tr": "en fazla {amount}", "en": "up to {amount}", "ar": "بحد أقصى {amount}",
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "ccCpnMinShort": {
+    "tr": "min. {amount}", "en": "min. {amount}", "ar": "الحد الأدنى {amount}",
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "ccCpnUsesUnlimited": {
+    "tr": "{count} kullanım · sınırsız", "en": "{count} uses · unlimited", "ar": "{count} استخدام · غير محدود",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccCpnGiven": {
+    "tr": "Verilen indirim: {amount}", "en": "Discount given: {amount}", "ar": "الخصم الممنوح: {amount}",
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "ccCpnSectionBasics": { "tr": "Kupon bilgileri", "en": "Coupon details", "ar": "بيانات القسيمة" },
+  "ccCpnSectionDiscount": { "tr": "İndirim", "en": "Discount", "ar": "الخصم" },
+  "ccCpnSectionScope": { "tr": "Geçerlilik", "en": "Validity", "ar": "الصلاحية" },
+  "ccCpnCode": { "tr": "Kupon kodu", "en": "Coupon code", "ar": "رمز القسيمة" },
+  "ccCpnCodeHelp": { "tr": "Büyük harf ve rakam, 4–16 karakter. Sonradan değiştirilemez.", "en": "Capital letters and digits, 4–16 characters. Can't be changed later.", "ar": "أحرف كبيرة وأرقام، من 4 إلى 16 حرفًا. لا يمكن تغييره لاحقًا." },
+  "ccCpnCodeLocked": { "tr": "Kod kuponun kimliğidir; değiştirilemez.", "en": "The code is the coupon's ID and can't be changed.", "ar": "الرمز هو معرّف القسيمة ولا يمكن تغييره." },
+  "ccCpnCodeSuggest": { "tr": "Kod öner", "en": "Suggest a code", "ar": "اقتراح رمز" },
+  "ccCpnCodeInvalid": { "tr": "4–16 karakter, yalnız A–Z ve 0–9.", "en": "4–16 characters, A–Z and 0–9 only.", "ar": "من 4 إلى 16 حرفًا، A–Z و0–9 فقط." },
+  "ccCpnCodeTaken": { "tr": "Bu kod zaten kullanılıyor. Başka bir kod seçin.", "en": "This code is already taken. Choose another one.", "ar": "هذا الرمز مستخدم بالفعل. اختر رمزًا آخر." },
+  "ccCpnTitleField": { "tr": "Başlık", "en": "Title", "ar": "العنوان" },
+  "ccCpnTitleHint": { "tr": "Örn. Hoş geldin indirimi", "en": "e.g. Welcome discount", "ar": "مثال: خصم الترحيب" },
+  "ccCpnDescription": { "tr": "Açıklama (isteğe bağlı)", "en": "Description (optional)", "ar": "الوصف (اختياري)" },
+  "ccCpnRequired": { "tr": "Bu alan zorunlu.", "en": "This field is required.", "ar": "هذا الحقل إلزامي." },
+  "ccCpnTypePercent": { "tr": "Yüzde", "en": "Percent", "ar": "نسبة مئوية" },
+  "ccCpnTypeFixed": { "tr": "Sabit tutar", "en": "Fixed amount", "ar": "مبلغ ثابت" },
+  "ccCpnValue": { "tr": "İndirim değeri", "en": "Discount value", "ar": "قيمة الخصم" },
+  "ccCpnValueInvalid": { "tr": "0'dan büyük bir değer girin.", "en": "Enter a value greater than 0.", "ar": "أدخل قيمة أكبر من 0." },
+  "ccCpnPercentMax": { "tr": "Yüzde en fazla 100 olabilir.", "en": "Percent can be at most 100.", "ar": "النسبة 100 كحد أقصى." },
+  "ccCpnMinSpend": { "tr": "Alt limit", "en": "Minimum spend", "ar": "الحد الأدنى للشراء" },
+  "ccCpnMaxDiscount": { "tr": "İndirim tavanı", "en": "Discount cap", "ar": "سقف الخصم" },
+  "ccCpnZeroNone": { "tr": "Boş/0 = alt limit yok", "en": "Empty/0 = no minimum", "ar": "فارغ/0 = بلا حد أدنى" },
+  "ccCpnZeroNoCap": { "tr": "Boş/0 = tavan yok", "en": "Empty/0 = no cap", "ar": "فارغ/0 = بلا سقف" },
+  "ccCpnDates": { "tr": "Geçerlilik tarihleri", "en": "Valid dates", "ar": "تواريخ الصلاحية" },
+  "ccCpnAgency": { "tr": "Acente", "en": "Agency", "ar": "الوكالة" },
+  "ccCpnShop": { "tr": "Dükkan", "en": "Shop", "ar": "المتجر" },
+  "ccCpnMaxUses": { "tr": "Toplam kullanım sınırı", "en": "Total usage limit", "ar": "حد الاستخدام الإجمالي" },
+  "ccCpnMaxUsesHelp": { "tr": "Boş/0 = sınırsız. Her misafir kuponu bir kez kullanabilir.", "en": "Empty/0 = unlimited. Each guest can use the coupon once.", "ar": "فارغ/0 = غير محدود. يمكن لكل ضيف استخدام القسيمة مرة واحدة." },
+  "ccCpnMaxUsesBelowUsed": {
+    "tr": "Sınır, mevcut kullanımdan ({used}) az olamaz.", "en": "The limit can't be below current usage ({used}).", "ar": "لا يمكن أن يقل الحد عن الاستخدام الحالي ({used}).",
+    "placeholders": { "used": { "type": "int" } }
+  },
+  "ccCpnActive": { "tr": "Aktif", "en": "Active", "ar": "فعالة" },
+  "ccCpnActiveHelp": { "tr": "Pasif kupon misafirlere görünmez ve kullanılamaz.", "en": "Inactive coupons are hidden from guests and can't be used.", "ar": "القسائم غير المفعلة مخفية عن الضيوف ولا يمكن استخدامها." },
+  "ccCpnOncePerGuest": { "tr": "Kupon indirimi dükkan indiriminden sonra uygulanır; ödenecek tutar sıfırın altına inmez.", "en": "The coupon discount applies after the shop discount; the amount due never goes below zero.", "ar": "يُطبق خصم القسيمة بعد خصم المتجر؛ ولا ينخفض المبلغ المستحق عن الصفر." },
+  "ccCpnCreate": { "tr": "Kuponu oluştur", "en": "Create coupon", "ar": "إنشاء القسيمة" },
+  "ccCpnSave": { "tr": "Değişiklikleri kaydet", "en": "Save changes", "ar": "حفظ التغييرات" },
+  "ccCpnCreatedOk": {
+    "tr": "{code} kuponu oluşturuldu.", "en": "Coupon {code} created.", "ar": "تم إنشاء القسيمة {code}.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnUpdatedOk": {
+    "tr": "{code} kuponu güncellendi.", "en": "Coupon {code} updated.", "ar": "تم تحديث القسيمة {code}.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnActivatedOk": {
+    "tr": "{code} aktif edildi.", "en": "{code} activated.", "ar": "تم تفعيل {code}.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnDeactivatedOk": {
+    "tr": "{code} pasife alındı.", "en": "{code} deactivated.", "ar": "تم إلغاء تفعيل {code}.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnDeleteTitle": { "tr": "Kupon silinsin mi?", "en": "Delete coupon?", "ar": "حذف القسيمة؟" },
+  "ccCpnDeleteBody": {
+    "tr": "{code} kalıcı olarak silinecek.", "en": "{code} will be permanently deleted.", "ar": "سيتم حذف {code} نهائيًا.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnDeletedOk": {
+    "tr": "{code} silindi.", "en": "{code} deleted.", "ar": "تم حذف {code}.",
+    "placeholders": { "code": { "type": "String" } }
+  },
+  "ccCpnDeleteBlockedTitle": { "tr": "Kullanılmış kupon silinemez", "en": "A used coupon can't be deleted", "ar": "لا يمكن حذف قسيمة مستخدمة" },
+  "ccCpnDeleteBlockedBody": {
+    "tr": "Bu kupon {count} kez kullanıldı. Raporlar bozulmasın diye silinmez; bunun yerine pasife alabilirsiniz.",
+    "en": "This coupon was used {count} times. It's kept for reporting; you can deactivate it instead.",
+    "ar": "استُخدمت هذه القسيمة {count} مرة. تُحفظ لأغراض التقارير؛ يمكنك إلغاء تفعيلها بدلاً من ذلك.",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccCpnStatUses": { "tr": "Kullanım", "en": "Redemptions", "ar": "الاستخدامات" },
+  "ccCpnStatTotal": { "tr": "Toplam indirim", "en": "Total discount", "ar": "إجمالي الخصم" },
+  "ccCpnStatAvg": { "tr": "Ortalama indirim", "en": "Average discount", "ar": "متوسط الخصم" },
+  "ccCpnStatUntil": { "tr": "Son geçerlilik", "en": "Valid until", "ar": "صالحة حتى" },
+  "ccCpnRedemptions": { "tr": "Kullanımlar", "en": "Redemptions", "ar": "الاستخدامات" },
+  "ccCpnNoRedemptions": { "tr": "Bu kupon henüz kullanılmadı.", "en": "This coupon hasn't been used yet.", "ar": "لم تُستخدم هذه القسيمة بعد." }
+}

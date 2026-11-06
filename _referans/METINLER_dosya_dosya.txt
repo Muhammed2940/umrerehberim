@@ -1,0 +1,1747 @@
+===== lib/app/routes.dart =====
+  /
+  /splash
+  /login
+  /main
+  /home
+  /profil
+  /info
+  /takvim
+  /gezilecek-yerler
+  /admin
+  /admin/analytics
+  /admin/agencies
+  /super-admin
+  /super-admin/agency
+  /admin/events
+  /admin/users
+  /admin/users/create
+  /admin/users/detail
+  /admin/trips
+  /admin/hotels
+  /admin/currency
+  /admin/notifications
+  /admin/settings
+  /general/places
+  /technical-support
+  /dualar
+  /kuran
+  /rehber_iletisim
+
+===== lib/common/constant/surahs_info.dart =====
+  name
+  Fatiha
+  ayahCount
+  page
+  Bakara
+  Al-i İmran
+  Nisa
+  Maide
+  En\'am
+  A\'raf
+  Enfal
+  Tevbe
+  Yunus
+  Hud
+  Yusuf
+  Ra\'d
+  İbrahim
+  Hicr
+  Nahl
+  İsra
+  Kehf
+  Meryem
+  Taha
+  Enbiya
+  Hac
+  Mu\'minun
+  Nur
+  Furkan
+  Şuara
+  Neml
+  Kasas
+  Ankebut
+  Rum
+  Lokman
+  Es-Secde
+  Ahzab
+  Sebe\'
+  Fatır
+  Yasin
+  Es-Saffat
+  Sad
+  Zümer
+  Mü\'min
+  Fussilet
+  Şura
+  Zuhruf
+  Ed-Duhan
+  Casiye
+  Ahkaf
+  Muhammed
+  Fetih
+  Hucurat
+  Kaf
+  Zariyat
+  Tur
+  Necm
+  Kamer
+  Rahman
+  Vakıa
+  Hadid
+  Mücadele
+  Haşr
+  Mümtehine
+  Es-Saff
+  Cuma
+  Münafikun
+  Tegabun
+  Talak
+  Tahrim
+  Mülk
+  Kalem
+  Hakka
+  Mearic
+  Nuh
+  Cinn
+  Müzzemmil
+  Müddessir
+  Kıyamet
+  İnsan
+  Mürselat
+  Nebe
+  Naziat
+  Abese
+  Tekvir
+  İnfitâr
+  Mutaffifin
+  İnşikak
+  Buruc
+  Tarik
+  Ala
+  Gaşiye
+  Fecr
+  Beled
+  Şems
+  Leyl
+  Ed-Duha
+  İnşirah
+  Tin
+  Alak
+  Kadr
+  Beyyine
+  Zilzal
+  Adiyat
+  Karia
+  Tekasur
+  Asr
+  Hümeze
+  Fil
+  Kureyş
+  Maun
+  Kevser
+  Kafirun
+  Nasr
+  Tebbet
+  İhlas
+  Felak
+  Nas
+  value
+  English
+  Turkish
+  Russian
+  Urdu
+  Indonesian
+  French
+  German
+  Spanish
+  Persian
+  Bengali
+  Malay
+  Chinese
+  Italian
+  Portuguese
+  Dutch
+  Japanese
+  Korean
+  Bosnian
+  Albanian
+  Transliteration
+  Swedish
+  Polish
+  Tamil
+  Malayalam
+  Hindi
+  Thai
+  Vietnamese
+  Uzbek
+  Azerbaijani
+  Kurdish
+  Swahili
+  Hausa
+  Somali
+  Amharic
+  Pashto
+  Tajik
+  Kazakh
+  Romanian
+  Bulgarian
+  Czech
+  Norwegian
+  Finnish
+  Ukrainian
+  Nepali
+  Sinhala
+  Gujarati
+  Marathi
+  Telugu
+  Kannada
+  Assamese
+  Divehi
+  Tagalog
+  Khmer
+  Yoruba
+  Oromo
+  Bambara
+  Kinyarwanda
+  Sindhi
+  Chechen
+  Tatar
+  Dari
+  Amazigh
+  Hebrew
+  Ganda
+
+===== lib/common/network/api_service.dart =====
+  /by_page/
+  \?translations=
+  verses
+  API Error: 
+  verse_number
+  translations
+  text
+  no
+
+===== lib/common/services/background_location_service.dart =====
+  stopService
+
+===== lib/common/services/firestore_service.dart =====
+  agency_id
+  room_number
+  rooms
+  trip_managers
+  trip_id
+  user_id
+  hotels
+  name
+  trips
+  start_date
+  users
+  agencies
+  date
+  time
+  events
+  0
+  -
+  currencies
+  medine_prayer_times
+  Bugünün vakitleri bulunamadı.
+  mekke_prayer_times
+  notifications
+  created_at
+  user_token
+  fcm_token
+  updated_at
+  mekke_seferi_id
+  mekke_otel_id
+  mekke_oda_id
+  medine_seferi_id
+  medine_otel_id
+  medine_oda_id
+  title
+  message
+  sendPushToTopic
+  topic
+  body
+  sendPushToCondition
+  condition
+  id
+  user_tc
+  Mekke
+  hotel_id
+
+===== lib/common/services/location_firebase_service.dart =====
+  locations
+  latitude
+  longitude
+  accuracy
+  speed
+  updatedAt
+
+===== lib/common/services/notification_topic_service.dart =====
+  all
+  agency_
+  mekke_otel_
+  mekke_oda_
+  mekke_sefer_
+  medine_otel_
+  medine_oda_
+  medine_sefer_
+
+===== lib/common/services/token_service.dart =====
+  user_token
+
+===== lib/common/widgets/empty_state_widget.dart =====
+  Henüz acenta eklenmemiş
+
+===== lib/common/widgets/text_field.dart =====
+  TC Kimlik No
+
+===== lib/core/services/quran_storage_service.dart =====
+  all_quran_pages_downloaded
+  onProgress
+  kuran-
+  0
+  .png
+  https://hactapot.xyz
+  /
+  quran-pages
+  Accept
+  image/png,image/*
+  Connection
+  keep-alive
+  User-Agent
+  UmremApp/1.0
+  Sunucu hatası: 
+  Zaman aşımı: 
+  İnternet bağlantısı yok
+  İndirme hatası: 
+  İndirme başarısız
+  downloaded_quran_pages
+  /quran_pages
+  /kuran-
+  Sayfa 
+   indirilemedi. Lütfen internet bağlantınızı kontrol edin.
+   indirilemedi: 
+
+===== lib/core/services/say_dualari_storage_service.dart =====
+  all_say_dualari_downloaded
+  /say_dualari
+  /
+  onProgress
+  https://hactapot.xyz
+  say_dualari
+  Accept
+  image/*
+  Connection
+  keep-alive
+  User-Agent
+  UmremApp/1.0
+  Sunucu hatası: 
+  Zaman aşımı: 
+  İnternet bağlantısı yok
+  İndirme hatası: 
+  İndirme başarısız
+  downloaded_say_dualari_files
+  Dosya 
+   indirilemedi.
+   indirilemedi: 
+
+===== lib/core/services/tavaf_dualari_storage_service.dart =====
+  all_tavaf_dualari_downloaded
+  /tavaf_dualari
+  /
+  onProgress
+  https://hactapot.xyz
+  tavaf_dualari
+  Accept
+  image/*
+  Connection
+  keep-alive
+  User-Agent
+  UmremApp/1.0
+  Sunucu hatası: 
+  Zaman aşımı: 
+  İnternet bağlantısı yok
+  İndirme hatası: 
+  İndirme başarısız
+  downloaded_tavaf_dualari_files
+  Dosya 
+   indirilemedi.
+   indirilemedi: 
+
+===== lib/core/utils/date_input_formatter.dart =====
+  tr_TR
+  d MMMM y
+  EEEE
+  0
+  /
+  :
+
+===== lib/core/utils/global_snackbar.dart =====
+  Lütfen konum iznini açın ve uygulamayı yeniden başlatın.
+
+===== lib/features/adimsayar/step_controller.dart =====
+  sp
+  wt
+  bsp
+  walking
+   sa 
+   dk
+
+===== lib/features/adimsayar/step_counter_view.dart =====
+  Adım Sayar
+  Mesafe
+  km
+  Kalori
+  kcal
+  Süre
+  Son 7 Gün
+  Günlük Ortalama
+    
+  adım
+
+===== lib/features/admin/models/agency_model.dart =====
+  name
+  description
+  phone
+  email
+  address
+  is_active
+  created_at
+  updated_at
+  id
+  isActive
+
+===== lib/features/admin/models/currency_model.dart =====
+  emoji
+  name
+  value
+  agency_id
+  created_at
+  updated_at
+  id
+
+===== lib/features/admin/models/event_model.dart =====
+  title
+  description
+  date
+  time
+  09:00
+  duration
+  trip_id
+  agency_id
+  created_at
+  updated_at
+
+===== lib/features/admin/models/hotel_model.dart =====
+  name
+  city
+  address
+  trip_id
+  agency_id
+  capacity
+  created_at
+  updated_at
+  id
+
+===== lib/features/admin/models/notification_model.dart =====
+  id
+  title
+  message
+  user_token
+  agency_id
+  created_at
+
+===== lib/features/admin/models/room_model.dart =====
+  hotel_id
+  room_number
+  capacity
+  gender
+  note
+  agency_id
+  created_at
+  updated_at
+  id
+  roomNumber
+
+===== lib/features/admin/models/trip_model.dart =====
+  name
+  location
+  note
+  agency_id
+  start_date
+  end_date
+  created_at
+  updated_at
+  id
+  endDate
+  startDate
+
+===== lib/features/admin/providers/admin_provider.dart =====
+  Veriler yüklenirken bir hata oluştu
+  Otel oluşturuldu
+  Otel oluşturulamadı
+  Sefer silindi
+  Sefer silinemedi
+  Oda silindi
+  Oda silinemedi
+  room_number
+  capacity
+  gender
+  note
+  Oda güncellendi
+  Oda güncellenemedi
+  yonetici
+  Sefer oluşturuldu
+  Sefer oluşturulamadı
+  name
+  location
+  start_date
+  end_date
+  Sefer güncellendi
+  Sefer güncellenemedi
+  Oda oluşturuldu
+  Oda oluşturulamadı
+  Bu TC ile kayıt var.
+  Kişi oluşturuldu
+  Kişi oluşturulamadı
+  Atama güncellendi
+  Atama kaydedilemedi
+  Mekke
+  user_name
+  user_tel
+  user_location
+  cinsiyet
+  dogum_tarihi
+  Kullanıcı bilgileri güncellendi
+  Kullanıcı bilgileri kaydedilemedi
+
+===== lib/features/admin/providers/agency_provider.dart =====
+  Acenta silindi
+  Acenta silinemedi
+  Acenta oluşturuldu
+  Acenta oluşturulamadı
+  address
+  description
+  email
+  isActive
+  name
+  phone
+  is_active
+  Acenta güncellendi
+  Acenta güncellenemedi
+
+===== lib/features/admin/providers/currency_provider.dart =====
+  agencyId
+  💵
+  USD
+  💶
+  EUR
+  🇸🇦
+  SAR
+
+===== lib/features/admin/providers/event_provider.dart =====
+  agencyId
+  :
+  0
+
+===== lib/features/admin/providers/location_tracking_provider.dart =====
+  latitude
+  longitude
+  timestamp
+  users
+  user_name
+  userName
+  name
+  Bilinmeyen
+  agency_id
+  locations
+  🎯 LocationTrackingProvider: Constructor çağrıldı
+  🚀 LocationTrackingProvider: startListeningAllLocations çağrıldı
+  ⏳ LocationTrackingProvider: isLoading = true yapıldı
+  ❌ LocationTrackingProvider: Konum dinleme hatası: 
+  ✅ LocationTrackingProvider: isLoading = false yapıldı (hata)
+  ✅ LocationTrackingProvider: 
+   konum yüklendi
+  ✅ LocationTrackingProvider: isLoading = false yapıldı
+  ⚠️ LocationTrackingProvider: Konum verisi boş
+  ✅ LocationTrackingProvider: isLoading = false yapıldı (boş data)
+  🚫 LocationTrackingProvider: Farklı acenta - userId: 
+  , userAgency: 
+  , currentAgency: 
+  ❌ LocationTrackingProvider: _createLocationEntry hatası: 
+
+===== lib/features/admin/providers/notification_provider.dart =====
+  Başlık ve mesaj zorunlu
+  agency_
+  all
+  \'mekke_sefer_
+  \' in topics || \'medine_sefer_
+  \' in topics
+  \'mekke_otel_
+  \' in topics || \'medine_otel_
+  \'mekke_oda_
+  \' in topics || \'medine_oda_
+  Lütfen geçerli bir hedef seçiniz.
+  CONDITION: 
+  TOPIC: 
+  Bildirim gönderildi.
+  Bildirim gönderilirken hata oluştu.
+  NotificationTargetType.
+
+===== lib/features/admin/screens/admin_analytics_screen.dart =====
+  Kayıtlı Kişi
+  Sefer
+  Otel
+  Oda
+
+===== lib/features/admin/screens/admin_dashboard_screen.dart =====
+  Yönetim Paneli
+
+===== lib/features/admin/screens/admin_events_screen.dart =====
+  Önceki
+  Gün Seç
+  Sonraki
+
+===== lib/features/admin/screens/agencies_page.dart =====
+  Henüz acenta eklenmemiş
+  \"
+  \" acentasını silmek istediğinize emin misiniz\?\n\nBu işlem geri alınamaz ve acentaya bağlı veriler etkilenebilir.
+  agency
+  Acenta Düzenle
+  Yeni Acenta
+  Güncelle
+  Kaydet
+  Acenta adı gerekli
+
+===== lib/features/admin/screens/all_locations_map_view.dart =====
+  Son güncelleme: 
+  :
+
+===== lib/features/admin/screens/currency_page.dart =====
+   ₺
+
+===== lib/features/admin/screens/notifications_page.dart =====
+  Gönderilecek Hedef
+  Sefer
+  Otel
+  Oda
+  Başlık
+  •
+  Mesaj
+  Oda 
+
+===== lib/features/admin/screens/rooms_management_screen.dart =====
+   - Odalar
+  Bu otele ait oda eklenmedi
+   numaralı oda silinecek. Emin misiniz\?
+  Güncelleniyor...
+  Güncelle
+  Cinsiyet türü seçiniz
+  Geçerli kapasite girin
+  Oda numarası girin
+  1
+  Kaydediliyor...
+  Kaydet
+  Oda 
+   kişilik
+   • 
+  Not: 
+  /
+  Kişileri görmek için tıklayın
+   - Kişiler
+  Mekke
+  Medine
+  \?
+  Odadan Çıkar
+   odadan çıkarıldı
+  Kullanıcı odadan çıkarılamadı
+   kullanıcısını bu odadan çıkarmak istediğinize emin misiniz\?
+  edit
+  delete
+
+===== lib/features/admin/screens/settings_page.dart =====
+  stopService
+  Konum takibi durduruldu.
+  Konum takibi durdurulamadı.
+  Konum servisi kapalı. Lütfen telefonunuzun konum ayarlarını açın.
+  Konum izni reddedildi.
+  Konum izni kalıcı olarak reddedildi. Lütfen ayarlardan izin verin.
+  Konum takibi başlatıldı.
+  Konum takibi başlatılamadı: 
+  Konum Takibi
+  Konum Servisi
+  Kontrol ediliyor...
+  Aktif - Konumunuz paylaşılıyor
+  Pasif - Konumunuz paylaşılmıyor
+  Konum Takibi Kontrolü
+  Konum İznine İzin Ver
+  Konum Takibini Başlat
+  Konum takibi aktif olduğunda, misafirleriniz sizin konumunuzu harita üzerinde görebilir. Bu özellik rehber olarak görev yaptığınızda faydalıdır.
+  Konum izni verildi.
+
+===== lib/features/admin/screens/single_user_map_view.dart =====
+  Son güncelleme: 
+  :
+  0
+  Enlem: 
+  Boylam: 
+  Güncelleme: 
+  /
+   
+
+===== lib/features/admin/screens/super_admin_dashboard.dart =====
+  Toplam Acenta
+  Aktif Acenta
+  A
+  Aktif
+  Pasif
+  /super-admin/agency
+  edit
+  toggle
+  delete
+  \"
+  \" acentasını silmek istediğinize emin misiniz\?\n\nBu işlem geri alınamaz ve acentaya ait tüm veriler silinecektir.
+  Acenta Düzenle
+  Yeni Acenta Ekle
+  Acenta Adı *
+  Açıklama
+  Telefon
+  E-posta
+  Adres
+  isRequired
+   gerekli
+  Güncelle
+  Ekle
+  Pasif Yap
+  Aktif Yap
+
+===== lib/features/admin/screens/user_selection_view.dart =====
+  Kullanıcı ara...
+  •
+  Son güncelleme: 
+  Az önce
+   dakika önce
+   saat önce
+  /
+   
+  :
+  0
+  🔍 UserSelectionView: build() çağrıldı
+  🔍 UserSelectionView: Yeni provider oluşturuluyor...
+
+===== lib/features/admin/screens/users/create_user_screen.dart =====
+  0
+  /
+  Tarih Seçiniz
+  yonetici
+  misafir
+  Yönetici için acenta seçimi zorunludur
+  TC gerekli
+  Ad soyad gerekli
+
+===== lib/features/admin/screens/users/user_detail_screen.dart =====
+  user
+  admin
+  Kişi Detayı
+
+===== lib/features/admin/screens/users/users_page.dart =====
+  /admin/users/create
+
+===== lib/features/admin/widgets/agency_card.dart =====
+  Aktif
+  Pasif
+
+===== lib/features/admin/widgets/doviz/delete_dialog.dart =====
+  null dövizini silmek istediğinize emin misiniz\?
+
+===== lib/features/admin/widgets/doviz/edit_dialog.dart =====
+  Yeni Döviz Ekle
+  Döviz Düzenle
+  •
+  ^\\d+\\.\?\\d{0,2}
+  Ekle
+  Güncelle
+  Döviz eklendi
+  Döviz güncellendi
+
+===== lib/features/admin/widgets/drawer.dart =====
+  Anasayfa
+  Yönetim paneline dön
+  Takvim
+  Etkinlikleri yönet
+  Kişiler
+  Kullanıcıları yönet
+  Seferler
+  Seferleri yönet
+  Otel & Oda
+  Otelleri ve odaları yönet
+  Döviz Kurları
+  Döviz kurlarını yönet
+  Bildirim Gönder
+  Kullanıcılara bildirim gönder
+  Konum Takibi
+  Konum takibini yönet
+  /admin/settings
+  /admin/notifications
+  /admin/currency
+  /admin/hotels
+  /admin/trips
+  /admin/users
+  /admin/events
+
+===== lib/features/admin/widgets/events/delete_dialog.dart =====
+  \"
+  \" silinsin mi\?
+
+===== lib/features/admin/widgets/events/edit_dialog.dart =====
+  agencyId
+  09:00
+  Etkinlik Ekle
+  Etkinliği Düzenle
+  •
+  Ekle
+  Güncelle
+  :
+  0
+
+===== lib/features/admin/widgets/events/empty_card.dart =====
+  Bu gün için etkinlik yok
+  Başka bir gün seçerek etkinlikleri görüntüleyin
+
+===== lib/features/admin/widgets/events/event_card.dart =====
+   - 
+  Yaklaşan
+  Gerçekleşti
+
+===== lib/features/admin/widgets/hotel/hotel_card.dart =====
+   • 
+  Kap. 
+  Bu otele ait oda eklenmedi.
+   kişilik
+
+===== lib/features/admin/widgets/hotel/hotels_tab.dart =====
+  Şehir: 
+  Kaydediliyor...
+  Kaydet
+  Sefer seçimi zorunludur
+   (
+  )
+  Henüz otel eklenmedi.
+
+===== lib/features/admin/widgets/kisiler/user_assignment_card.dart =====
+  Mekke
+  İsimsiz Misafir
+  TC belirtilmemiş
+  yonetici
+  Yönetici
+  Misafir
+  Erkek
+   Seferi
+  0
+  /
+  Tarih Seçiniz
+   Oteli
+   Odası
+  Kaydediliyor
+  Kaydet
+  Otel seçildiğinde oda seçim zorunludur.
+  Oda kapasitesi dolu! Başka bir oda seçin.
+  Bu oda 
+   için ayrılmış! Cinsiyet uyumsuz.
+  Karma
+   • 
+   kişi
+
+===== lib/features/admin/widgets/kisiler/users_tab.dart =====
+  Kayıtlı Kişi
+  Sefer
+  Otel
+  İsim veya TC ile ara
+  •
+  Sonuç bulunamadı.
+  Henüz kullanıcı bulunmuyor.
+  İsimsiz
+  TC: 
+  user
+  admin
+  /admin/users/detail
+
+===== lib/features/admin/widgets/trips/trips_tab.dart =====
+  \"
+  \" seferini silmek istediğinize emin misiniz\? Bu işlem geri alınamaz.
+  Sefer Düzenle
+  Sefer Oluştur
+  Başlangıç
+  Bitiş
+   seçili
+  Yönetici tipinde kullanıcı bulunamadı.
+  Kaydediliyor...
+  Güncelle
+  Kaydet
+  \?
+  Zorunlu alan
+  Sefer oluştur, düzenle ve listele.
+  Henüz sefer oluşturulmadı.
+  , 
+  Yer belirtilmedi
+   • 
+  Tarih yok
+   - 
+  📋 
+  Açıklama yok
+  \n👤 Yönetici: 
+
+===== lib/features/auth/models/user_model.dart =====
+  mekke_seferi_id
+  medine_seferi_id
+  mekke_otel_id
+  medine_otel_id
+  mekke_oda_id
+  medine_oda_id
+  user_token
+  user_name
+  user_type
+  user_tel
+  user_tc
+  user_location
+  cinsiyet
+  dogum_tarihi
+  created_at
+  updated_at
+  fcm_token
+  agency_id
+  dogumTarihi
+  medineOdaId
+  medineOtelId
+  medineSeferiId
+  mekkeOdaId
+  mekkeOtelId
+  mekkeSeferiId
+  userLocation
+  userName
+  userTel
+
+===== lib/features/auth/providers/login_provider.dart =====
+  Bu hesap 
+  yonetici
+  yönetici
+  misafir
+   hesabıdır.
+  user_token
+  Bir hata oluştu
+  stopService
+  Background service yeniden başlatılırken hata: 
+
+===== lib/features/auth/screens/login.dart =====
+  assets/icons/logo.png
+  Kutsal Yolculukta\nYanınızdaki Rehber
+  Selamün Aleyküm!
+  Giriş Tipi
+  TC Kimlik No
+  KVKK Aydınlatma Metnini okudum ve onaylıyorum
+  Bu alan boş bırakılamaz
+  TC kimlik numarası 11 haneli olmalıdır
+  misafir
+
+===== lib/features/auth/widgets/kvkk_dialog.dart =====
+  Veri Sorumlusu:
+  Hacktapot Software
+  İşlenen Kişisel Veriler:
+  Kimlik (Ad, Soyad, T.C. Kimlik No), İletişim (Telefon No), Demografik (Cinsiyet, Yaş), Konum bilgisi (anlık ve uygulama kullanım süresince), Uygulama kullanım verileri.
+  İşlenme Amaçları:
+  Kullanıcı hesabı oluşturma ve yönetme, Umre Rehberi ile anlık iletişim, acil durumlarda kullanıcıya ulaşma, grup takibi ve rehberlik hizmetleri, bildirim gönderme, uygulama güvenliğini sağlama.
+  Konum Bilgisi:
+  Uygulama aktifken takip edilir, arka planda veya çıkıldığında izleme yapılmaz. Kullanıcının güvenliği ve rehberlik hizmeti için zorunludur. İzin verilmemesi durumunda bazı temel özellikler kullanılamayabilir.
+  Kişisel Verilerin Aktarılması:
+  Üçüncü kişilerle paylaşılmaz. Hacktapot Software\'in güvenli veri merkezlerinde saklanır. Yalnızca savcılık/adli makam kararı bulunması halinde veya ilgili tur firması ile sınırlı olarak paylaşılabilir.
+  Yurt Dışına Veri Aktarımı:
+  Google Firebase ve Cloudflare hizmetleri aracılığıyla yurt dışında bulunan güvenli sunucularda depolanabilir. Bu aktarım KVKK\'ya uygun teknik ve idari tedbirler alınarak yapılmaktadır.
+  Toplanma Yöntemi ve Hukuki Sebebi:
+  Mobil uygulama üzerinden elektronik ortamda, kullanıcının açık rızasına dayanarak, KVKK\'nın 5. ve 6. maddeleri kapsamında toplanmakta ve işlenmektedir.
+  KVKK Kapsamındaki Haklarınız:
+  Verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, yanlış veya eksik verilerin düzeltilmesini isteme, verilerin silinmesini veya yok edilmesini talep etme. Taleplerinizi support@umrerehberim.com adresine iletebilirsiniz.
+  Reddet
+
+===== lib/features/auth/widgets/login_button.dart =====
+  super_admin
+  Süper Admin Girişi
+  Giriş Yap
+  12345678909
+  /super-admin
+  misafir
+  show_download_dialog_on_login
+  /main
+  yonetici
+  /admin
+
+===== lib/features/auth/widgets/section_title.dart =====
+  Giriş Tipi
+
+===== lib/features/auth/widgets/user_type_selector.dart =====
+  misafir
+  Misafir
+  yonetici
+  Yönetici
+
+===== lib/features/dualar/models/model_zikirlerim.dart =====
+  0
+  zikirAdi
+  zikirSayisi
+  zikirTarihi
+  id
+
+===== lib/features/dualar/providers/quran_download_provider.dart =====
+  Sayfa 
+   indiriliyor...
+  Sayfa indirme hatası: 
+  İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.
+  Kuran sayfaları indiriliyor...
+  Tüm sayfalar başarıyla indirildi!
+   indirilemedi. Lütfen tekrar deneyin.
+  İndirme başarısız!
+  İndirme sırasında bir hata oluştu: 
+  /
+
+===== lib/features/dualar/providers/quran_provider.dart =====
+  Error getting translations: 
+
+===== lib/features/dualar/providers/say_dualari_download_provider.dart =====
+  Dosya indiriliyor...
+  Dosya indirme hatası: 
+  İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.
+  Say duaları indiriliyor...
+  Tüm dosyalar başarıyla indirildi!
+  Dosya 
+   indirilemedi. Lütfen tekrar deneyin.
+  İndirme başarısız!
+  İndirme sırasında bir hata oluştu: 
+
+===== lib/features/dualar/providers/tavaf_dualari_download_provider.dart =====
+  Dosya indiriliyor...
+  Dosya indirme hatası: 
+  İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.
+  Tavaf duaları indiriliyor...
+  Tüm dosyalar başarıyla indirildi!
+  Dosya 
+   indirilemedi. Lütfen tekrar deneyin.
+  İndirme başarısız!
+  İndirme sırasında bir hata oluştu: 
+  /
+   indiriliyor...
+
+===== lib/features/dualar/screens/kayitli_zikirlerim.dart =====
+   adlı zikri silmek istediğinize emin misiniz\?
+  İptal
+  zikirlerim
+  Zikir Adı
+  •
+  Zikir Sayısı
+  Kaydet
+  Lütfen Boş Alan Bırakmayınız.
+  yyyy-MM-dd - kk:mm
+
+===== lib/features/dualar/screens/kuran.dart =====
+  quran_last_page
+  name
+  downloadController
+  controller
+  quran_download_dialog_shown
+  Kuran-ı Kerim
+  Sayfa 
+   Yüklenemedi
+  İnternet
+  İnternet bağlantınızı kontrol edin veya\nsayfayı önceden indirin
+  Lütfen daha sonra tekrar deneyin
+  Dosya yüklenemedi
+  page
+   Suresi
+  value
+  no
+  text
+  body
+  sup
+
+===== lib/features/dualar/screens/savt_dualari_page.dart =====
+  _downloadController@1022035749
+  Şavt Duaları (Tavaf)
+  Zikirmatik
+   / 
+  isZikirmatik
+  title
+  Başlangıç
+  Bitiş
+  arabicFiles
+  turkishFiles
+  files
+  Resim henüz indirilmemiş
+  Bu sayfa için dil seçeneği mevcut değil
+  Türkçe Çeviri
+  Arapça Metin
+  Tavafa Başlarken Dua
+  tavaf-baslangic.jpg
+  Tavafın 1. Şavtının Duası
+  tavaf-arabic-1.png
+  tavaf-turkish-1.png
+  Tavafın 2. Şavtının Duası
+  tavaf-arabic-2.png
+  tavaf-turkish-2.png
+  Tavafın 3. Şavtının Duası
+  tavaf-arabic-3.png
+  tavaf-turkish-3.png
+  Tavafın 4. Şavtının Duası
+  tavaf-arabic-4.png
+  tavaf-turkish-4.png
+  Tavafın 5. Şavtının Duası
+  tavaf-arabic-5.png
+  tavaf-turkish-5.png
+  Tavafın 6. Şavtının Duası
+  tavaf-arabic-6.png
+  tavaf-turkish-6.png
+  Tavafın 7. Şavtının Duası
+  tavaf-arabic-7.png
+  tavaf-turkish-7.png
+  Tavaf Namazından Sonra Dua
+  tavaf-bitis-1.jpg
+  tavaf-bitis-2.jpg
+
+===== lib/features/dualar/screens/say_dualari_page.dart =====
+  _downloadController@1023509472
+  Bu sayfa için dil seçeneği mevcut değil
+  Türkçe Çeviri
+  Arapça Metin
+  Sa\'y Duaları (Safa ve Merve)
+  Zikirmatik
+   / 
+  isZikirmatik
+  title
+  Başlangıç
+  Bitiş
+  arabicFiles
+  turkishFiles
+  files
+  Resim henüz indirilmemiş
+  Sa\'yin 1. Şavtının Duası
+  say-arabic-1.png
+  say-arabic-1-1.png
+  say-turkish-1.png
+  say-turkish-1-1.png
+  Sa\'yin 2. Şavtının Duası
+  say-arabic-2.png
+  say-arabic-2-1.png
+  say-turkish-2.png
+  say-turkish-2-1.png
+  Sa\'yin 3. Şavtının Duası
+  say-arabic-3.png
+  say-arabic-3-1.png
+  say-turkish-3.png
+  say-turkish-3-1.png
+  Sa\'yin 4. Şavtının Duası
+  say-arabic-4.jpg
+  say-arabic-4-1.jpg
+  say-turkish-4.jpg
+  say-turkish-4-1.jpg
+  Sa\'yin 5. Şavtının Duası
+  say-arabic-5.jpg
+  say-arabic-5-1.jpg
+  say-turkish-5.jpg
+  say-turkish-5-1.jpg
+  Sa\'yin 6. Şavtının Duası
+  say-arabic-6.jpg
+  say-arabic-6-1.jpg
+  say-turkish-6.jpg
+  say-turkish-6-1.jpg
+  Sa\'yin 7. Şavtının Duası
+  say-arabic-7.jpg
+  say-arabic-7-1.jpg
+  say-turkish-7.jpg
+  say-turkish-7-1.jpg
+  Sa\'y Sonunda Merve\'de Dua
+  say-bitis-1.jpg
+  say-bitis-2.jpg
+
+===== lib/features/dualar/screens/zikirmatik.dart =====
+  titreme
+  zikirlerim
+  kaydedilenZikir
+  hedef
+   adlı zikire devam ediyorsunuz.
+  0
+  renk
+  arkaplan
+  yyyy-MM-dd - kk:mm
+  Listeye hangi adla kaydedeceksiniz\?
+  •
+  Zikriniz Başarıyla Kaydedildi!
+  Lütfen bir isim giriniz!
+  Hedefiniz: 
+  Hedefinize ulaştınız!
+  Zikirmatik daha fazla artamaz!
+  İptal
+  Tamam
+  Nereden başlayıp çekmek istiyorsunuz\?
+  Kaydet
+  Lütfen bir sayı giriniz!
+  Kendinize bir hedef belirleyin.
+  Hedefiniz 0 olamaz!
+  Hedefiniz 99999\'dan büyük olamaz!
+  Hedefiniz 
+   olarak belirlendi!
+  Lütfen bir hedef belirleyin!
+
+===== lib/features/dualar/widgets/content_download_dialog.dart =====
+  Error checking download status: 
+  Kuran-ı Kerim
+  604 sayfa
+  Say Duaları
+  34 resim
+  Tavaf Duaları
+  17 resim
+  İndirildi ✓
+  Tavaf Duaları indirilemedi: 
+  Say Duaları indirilemedi: 
+  Kuran-ı Kerim indirilemedi: 
+  Genel: %
+
+===== lib/features/home/models/prayer_time_model.dart =====
+  aksam
+  date
+  day
+  gunes
+  hicri
+  ikindi
+  imsak
+  ogle
+  yatsi
+
+===== lib/features/home/screens/dualar.dart =====
+  _selectedQuote@933395931
+  Dualar ve Kuran-ı Kerim
+  Okumak için tıklayın
+  Kuran-ı Kerim
+  Tavaf Duaları
+  Say Duaları
+  Zikir çekmek için tıklayın
+  Zikirmatik
+  \n
+   
+  /kuran
+
+===== lib/features/home/screens/home_screen.dart =====
+  Selamün Aleyküm
+  Kutsal Yolculuk Vakti
+  Mekke
+  Medine
+  Ezan Vakitleri
+  Döviz
+  0.0
+  Duyurular
+  İmsak
+  06:15
+  Güneş
+  07:10
+  Öğle
+  12:42
+  İkindi
+  15:09
+  Akşam
+  17:30
+  Yatsı
+  18:53
+  06:05
+  07:00
+  12:32
+  14:59
+  17:20
+  18:43
+
+===== lib/features/home/screens/info_screen.dart =====
+  Gezilecek Yerler
+  Detaylar icin tıklayınız.
+  Rehberle İletişime Geç
+  Teknik Servis Bilgileri
+  İhram Yasakları
+  Adım Sayar
+  Günlük adım sayınızı takip edin.
+  Genel Bilgiler
+  /technical-support
+  /rehber_iletisim
+  /general/places
+
+===== lib/features/home/screens/profil.dart =====
+  _selectedQuote@936387819
+  stopService
+  Konum takibi durduruldu.
+  Konum takibi durdurulamadı.
+  Konum servisi kapalı. Lütfen telefonunuzun konum ayarlarını açın.
+  Konum izni reddedildi.
+  Konum izni kalıcı olarak reddedildi. Lütfen ayarlardan izin verin.
+  Konum takibi başlatıldı.
+  Konum takibi başlatılamadı: 
+  -
+  Kullanıcı bilgisi bulunamadı
+  Profil
+  Çıkış Yap
+  Misafir
+  misafir
+  Umre Ziyaretçisi
+  Hızlı Erişim
+  Rehberle İletişim
+  Rehberinizle iletişim kurun
+  T.C. Kimlik No
+  Telefon
+  Doğum Tarihi
+  Kayıt Tarihi
+  Umre Bilgileri
+   - 
+  Mekke Seferi
+  Medine Seferi
+  Mekke: 
+  \nMedine: 
+  Otel Bilgileri
+  Oda Bilgileri
+  Konum Takibi
+  Ocak
+  Şubat
+  Mart
+  Nisan
+  Mayıs
+  Haziran
+  Temmuz
+  Ağustos
+  Eylül
+  Ekim
+  Kasım
+  Aralık
+   
+  Konum izni verildi.
+
+===== lib/features/home/screens/rehber_iletisim.dart =====
+  Rehber bilgileri yüklenirken hata: 
+  locations/
+  latitude
+  longitude
+  updatedAt
+  Yönetici bilgisi alınırken hata: 
+  mekke
+  medine
+  Rehberle İletişim
+  Telefon bilgisi yok
+  Telefon
+  \?
+  İsim bilgisi yok
+  https://www.google.com/maps/search/\?api=1&query=
+  ,
+  Harita açılamadı: 
+  https://maps.googleapis.com/maps/api/staticmap\?center=
+  &zoom=15&size=600x300&scale=2&maptype=roadmap&markers=color:red%7Clabel:R%7C
+  &key=AIzaSyAKYVbWruYnNmvIxFRTY0SxByrf356KiUA
+  Rehberin Konumu
+  Az önce güncellendi
+   dk önce güncellendi
+   saat önce güncellendi
+   gün önce güncellendi
+  isError
+  Harita yüklenemedi
+  Rehber konumu bekleniyor...
+  Harita yükleniyor...
+  Haritayı Google Maps\'te açmak için tıklayın
+  Harita yükleme hatası: 
+  . Gün • 
+   
+  tel:
+  Telefon açılamadı: 
+  Aktif bir seferiniz bulunmuyor
+  Bu sefere henüz yönetici atanmamış
+  Lütfen acente ile iletişime geçin.
+
+===== lib/features/home/screens/takvim_screen.dart =====
+  Program Takvimi
+  Önceki
+  Gün Seç
+  Sonraki
+  Bu gün için etkinlik yok
+  Başka bir gün seçerek etkinlikleri görüntüleyin
+  tr_TR
+  d MMMM y
+  EEEE
+   - 
+  Yaklaşan
+  Gerçekleşti
+  :
+
+===== lib/features/home/widgets/ezan_vakitleri.dart =====
+  Mekke
+  assets/images/kabe.webp
+  assets/images/medine.jpg
+
+===== lib/features/home/widgets/location_button.dart =====
+  Konum Takibini Başlat
+  Konum İznine İzin Ver
+  Konum Takibini Durdur
+
+===== lib/features/home/widgets/quick_action_card.dart =====
+  Rehberle İletişim
+  Rehberinizle iletişim kurun
+
+===== lib/features/home/widgets/quote_widget.dart =====
+  \n
+   
+
+===== lib/features/home/widgets/yolculuk_vakti_card.dart =====
+  Mekke
+  assets/icons/kabe.png
+  assets/icons/medine.png
+  gün kaldı
+  Allah teâlâ \nkabul eylesin!
+
+===== lib/features/info_screen/screens/gezilecek_yerler_screen.dart =====
+  Mescid-i Nebevî (Peygamber Mescidi)
+  Hz. Muhammed\'in inşa ettiği ve kabrinin bulunduğu mescit. Ravza-i Mutahhara burada yer alır. Burada kılınan namaz bin namaza denktir.
+  Cennetü\'l Baki (Baki Mezarlığı)
+  Hz. Osman, Hz. Fatıma ve birçok sahabenin medfun bulunduğu tarihi mezarlık.
+  Uhud Dağı ve Şehitliği
+  Uhud Savaşı\'nın yaşandığı yer. Hz. Hamza ve diğer şehitlerin kabirleri burada bulunmaktadır.
+  Kuba Mescidi
+  İslam tarihinin ilk mescidi. Hz. Peygamber tarafından Medine\'ye hicretten hemen sonra inşa edilmiştir. Burada kılınan namaz umre sevabına denktir.
+  Mescid-i Kıbleteyn (İki Kıbleli Mescit)
+  Namaz kıblesinin Kudüs\'ten Kâbe\'ye döndürüldüğü mescit. İslam tarihinde önemli bir dönüm noktasını temsil eder.
+  Mescid-i Zülhuleyfe (Mîkât Mescidi)
+  Medine\'den umre veya hac için ihrama girilen mîkât noktası. Bi\'r-i Ali olarak da bilinir.
+  Yedi Mescitler (Mescid-i Seb\'a)
+  Hendek Savaşı\'nın gerçekleştiği bölgede bulunan tarihi mescitler topluluğu.
+  Diğer Önemli Yerler
+  Mescid-i Gamame, Mescid-i Ebu Bekir, Osmanlı Hicaz Demiryolu İstasyonu ve diğer tarihi mekânlar.
+  Medine Gezilecek Yerler
+  Mescid-i Haram ve Kâbe
+  İslam\'ın en kutsal mekânı olan Kâbe, Mescid-i Haram\'ın ortasında yer alır. Müslümanlar günde beş vakit namazda Kâbe\'ye yönelir ve hac ile umre ibadetlerini burada gerçekleştirir.
+  Safa ve Merve Tepeleri
+  Hz. Hacer\'in oğlu İsmail için su arayışını simgeleyen bu iki tepe arasında sa\'y ibadeti yapılır. Hac ve umrenin önemli rükünlerinden biridir.
+  Zemzem Kuyusu
+  Hz. İsmail\'in ayağının altından çıkan mübarek su kaynağı. Binlerce yıldır akmaya devam eden ve şifa niyetiyle içilen kutsal sudur.
+  Nur Dağı (Cebel-i Nur) ve Hira Mağarası
+  Hz. Muhammed\'e ilk vahyin geldiği mağara burada bulunmaktadır. Peygamber Efendimiz burada tefekkür ederdi.
+  Sevr Dağı ve Sevr Mağarası
+  Hz. Muhammed ve Hz. Ebu Bekir\'in hicret sırasında sığındıkları mağara. Örümcek ağı ve güvercin yuvası mucizesiyle bilinir.
+  Cennetü\'l Muallâ Mezarlığı
+  Hz. Hatice, Hz. Abdulmuttalib ve birçok sahabenin medfun bulunduğu tarihi mezarlık.
+  Mescid-i Cin
+  Cinlerin Hz. Peygamber\'den Kur\'an dinleyip Müslüman olduğu rivayet edilen yer.
+  Mina
+  Hac ibadetinin önemli duraklarından biri. Şeytan taşlama ve kurban kesme burada gerçekleştirilir.
+  Arafat Ovası ve Cebel-i Rahme
+  Haccın en önemli rüknü olan vakfenin yapıldığı yer. Hz. Adem ve Hz. Havva\'nın buluştuğu rivayet edilen Rahmet Dağı burada bulunur.
+  Müzdelife
+  Arafat ile Mina arasında bulunan ve hacıların gecelediği bölge. Meş\'ar-i Haram burada yer alır.
+  Hz. Peygamber\'in doğduğu ev (Mekke Kütüphanesi), Daru\'l-Erkam, Hz. Ebu Bekir\'in evi ve diğer tarihi mekânlar.
+  Mekke Gezilecek Yerler
+  assets/images/kabe.webp
+  Mekke
+  assets/images/medine.jpg
+  Medine
+  Gezilecek Yerler
+
+===== lib/features/info_screen/screens/ihram_restrictions_screen.dart =====
+  Inci ve mücevher takmak
+  Parfüm ve sedefli çeşitli kokular kullanmak
+  Saçını tıraş veya saçından çıkarmak
+  Vücudun herhangi bir yerindeki kıl çıkarmak
+  Tırnak kesmek
+  Erkekler için gömlekli kıyafet giymek
+  Erkekler için pantolon giymek
+  Erkekler için ayakkabı giymek (ihram sandali giyilir)
+  Erkekler için başlık veya türban takmak
+  Kadınlar için yüzü kaplayan peçe takmak
+  Erkekler için eldiven takmak
+  Tıraşlı tarakla saçı taramak
+  Avlanmak veya hayvan öldürmek
+  Hayvan avlamayı dilemek
+  İhram durumunda şikarlı hayvanları işaret etmek
+  Mubarek ayda Mescid-i Haram sahasında ağaç budamak
+  Mescid-i Haram alanında çiçek almak
+  Karı-kocanın cinsel ilişkiye girmesi
+  Mübaşeret yapmak (dokunma seviyesinde)
+  İhram Yasakları
+
+===== lib/features/info_screen/screens/technical_support_screen.dart =====
+  Teknik Servi̇s
+  Bize Ulaşın
+  Telefon Numaraları
+  Birinci Telefon
+  +90 555 021 69 74
+  İkinci Telefon
+  +90 530 378 09 68
+  E-Posta Adresleri
+  Birinci E-Posta
+  support@umrerehberim.com
+  İkinci E-Posta
+  info@umrerehberim.com
+  mailto:
+  Email açılamadı: 
+   
+  tel:
+  Telefon açılamadı: 
+
+===== lib/features/main/screens/main_screen.dart =====
+  show_download_dialog_on_login
+  ✅ Tüm içerikler zaten indirilmiş, dialog gösterilmiyor.
+  ❌ İndirme durumu kontrol edilemedi: 
+
+===== lib/features/splash/providers/splash_provider.dart =====
+  İnternet bağlantısı kontrol ediliyor...
+  Offline modda başlatılıyor...
+  Veriler yükleniyor...
+  user_token
+  Lütfen TC numaranız ile giriş yapın.
+  Kullanıcı bulunuyor...
+  Kullanıcı bulunamadı. Lütfen kayıt olun.
+  Kullanıcı bilgileri yükleniyor...
+  Kullanıcı bulunamadı.
+  Giriş yapılırken bir hata oluştu.
+  stopService
+  Background service yeniden başlatılırken hata: 
+  cached_user
+  cached_mekke_trip
+  cached_mekke_hotel
+  cached_mekke_oda
+  cached_mekke_prayer
+  cached_medine_trip
+  cached_medine_hotel
+  cached_medine_oda
+  cached_medine_prayer
+  cached_currencies
+  cached_notifications
+  last_data_update
+  Veriler bulunamadı. Lütfen internet bağlantınızı kontrol edin.
+  Verileriniz güncel değil. Lütfen internet bağlantınızı kontrol edin.
+  Yerel veriler yükleniyor...
+  Veriler yüklenemedi. Lütfen internet bağlantınızı kontrol edin.
+  /splash
+
+===== lib/features/splash/screens/splash_screen.dart =====
+  yonetici
+  /admin
+  /main
+  /login
+  assets/images/play_store_512.png
+
+===== lib/features/super_admin/screens/agency_detail_page.dart =====
+  Veri yüklenirken hata: 
+  Kullanıcılar
+  Seferler
+  Oteller
+  Odalar
+  Döviz
+  Takvim
+
+===== lib/features/super_admin/widgets/agency_detail/calendar_tab.dart =====
+  Önceki
+  Gün Seç
+  Sonraki
+  Yaklaşan
+  Geçmiş
+   - 
+  :
+
+===== lib/features/super_admin/widgets/agency_detail/currencies_tab.dart =====
+  Döviz Düzenle
+  Yeni Döviz
+  Döviz Adı *
+  Emoji
+  Kur Değeri (TL) *
+  Güncelle
+  Ekle
+  currencies
+  name
+  emoji
+  value
+  updated_at
+  agency_id
+  created_at
+  Hata: 
+  💵
+  Döviz kuru bulunamadı
+  Döviz Ekle
+  ₺
+  \"
+  \" dövizini silmek istediğinize emin misiniz\?
+
+===== lib/features/super_admin/widgets/agency_detail/hotels_tab.dart =====
+  Otel Düzenle
+  Yeni Otel
+  Bağlı Sefer *
+  Şehir: 
+  Otel Adı *
+  Adres
+  Güncelle
+  Ekle
+  hotels
+  name
+  city
+  address
+  trip_id
+  updated_at
+  agency_id
+  created_at
+  Hata: 
+  Otel bulunamadı
+  Otel Ekle
+  İsimsiz Otel
+  -
+  Şehir
+  \"
+  \" otelini silmek istediğinize emin misiniz\?
+
+===== lib/features/super_admin/widgets/agency_detail/rooms_tab.dart =====
+  Oda Düzenle
+  Yeni Oda
+  Sefer *
+  Otel *
+  Oda Numarası *
+  Kapasite
+  Oda Cinsiyet Türü *
+  Güncelle
+  Ekle
+  rooms
+  hotel_id
+  room_number
+  capacity
+  gender
+  updated_at
+  agency_id
+  created_at
+  Hata: 
+  4
+  Oda bulunamadı
+  Oda Ekle
+  Oda 
+  /
+  Bilinmiyor
+  Otel
+   kişi
+  Cinsiyet
+  Kişileri görmek için tıklayın
+   - Kişiler
+  Mekke
+  Medine
+  \?
+   • 
+  Odadan Çıkar
+  mekke_oda_id
+  medine_oda_id
+  users
+   odadan çıkarıldı
+   kullanıcısını bu odadan çıkarmak istediğinize emin misiniz\?
+  \"Oda 
+  \" odasını silmek istediğinize emin misiniz\?
+
+===== lib/features/super_admin/widgets/agency_detail/shared_widgets.dart =====
+  keyboardType
+  •
+  prefixIcon
+  /
+   Seçin
+  : 
+
+===== lib/features/super_admin/widgets/agency_detail/trips_tab.dart =====
+  Sefer Düzenle
+  Yeni Sefer
+  Sefer Adı *
+  Lokasyon
+  Başlangıç
+  Bitiş
+  Not
+  Güncelle
+  Ekle
+   seçili
+  İsimsiz
+  \?
+  trips
+  name
+  location
+  start_date
+  end_date
+  note
+  updated_at
+  agency_id
+  created_at
+  Hata: 
+  Sefer bulunamadı
+  Sefer Ekle
+  , 
+  İsimsiz Sefer
+  -
+   
+  Yöneticiler
+  \"
+  \" seferini silmek istediğinize emin misiniz\?
+
+===== lib/features/super_admin/widgets/agency_detail/users_tab.dart =====
+  -
+  misafir
+  Mekke
+  Kullanıcı Düzenle
+  Yeni Kullanıcı
+  Ad Soyad
+  TC Kimlik No
+  Telefon
+  Konum / Adres
+  Kullanıcı Tipi
+  Cinsiyet
+  Doğum Tarihi
+  0
+  /
+  Tarih Seçiniz
+   Seferi
+   Oteli
+   Odası
+  Güncelle
+  Ekle
+  Mekke Seferi
+  Mekke Oteli
+  Mekke Odası
+  Medine Seferi
+  Medine Oteli
+  Medine Odası
+  : 
+  Medine
+  users
+  user_name
+  user_tc
+  user_tel
+  user_location
+  user_type
+  cinsiyet
+  dogum_tarihi
+  mekke_seferi_id
+  mekke_otel_id
+  mekke_oda_id
+  medine_seferi_id
+  medine_otel_id
+  medine_oda_id
+  updated_at
+  user_token
+  agency_id
+  created_at
+  Hata: 
+  Karma
+   • 
+  \"
+  \" kullanıcısını silmek istediğinize emin misiniz\?
+  Kullanıcı bulunamadı
+  Kullanıcı Ekle
+  K
+  İsimsiz Kullanıcı
+  TC: 
+  Belirtilmemiş
+
+===== lib/main.dart =====
+  Preparing
+  Background Service
+  /
+  Umre Rehberim
+  Sayfa bulunamadı
+  Bilinmeyen sayfa
+  /main
+

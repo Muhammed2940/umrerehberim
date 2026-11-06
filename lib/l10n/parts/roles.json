@@ -1,0 +1,13 @@
+{
+  "rolesSuperAdmin": { "tr": "Süper Admin", "en": "Super Admin", "ar": "المشرف العام" },
+  "rolesManager": { "tr": "Yönetici", "en": "Manager", "ar": "مشرف" },
+  "rolesManagerDesc": { "tr": "Tüm acenteler", "en": "All agencies", "ar": "جميع الوكالات" },
+  "rolesAgencyAdmin": { "tr": "Acente Admini", "en": "Agency Admin", "ar": "مسؤول الوكالة" },
+  "rolesMerchant": { "tr": "Esnaf", "en": "Merchant", "ar": "تاجر" },
+  "rolesGuest": { "tr": "Misafir", "en": "Guest", "ar": "ضيف" },
+  "rolesSupport": { "tr": "Destek", "en": "Support", "ar": "الدعم" },
+  "rolesFinance": { "tr": "Muhasebe", "en": "Finance", "ar": "المحاسبة" },
+  "rolesStaff": { "tr": "Yetkililer", "en": "Staff", "ar": "المسؤولون" },
+  "rolesNoAccess": { "tr": "Bu bölüme erişim yetkiniz yok", "en": "You are not authorized to access this section", "ar": "ليست لديك صلاحية للوصول إلى هذا القسم" },
+  "rolesSelectAgencyFirst": { "tr": "Önce bir acente seçin", "en": "Select an agency first", "ar": "اختر وكالة أولًا" }
+}

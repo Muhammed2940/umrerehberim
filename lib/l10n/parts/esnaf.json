@@ -1,0 +1,768 @@
+{
+  "esnafTitle": {
+    "tr": "Esnaf Paneli",
+    "en": "Merchant Panel",
+    "ar": "لوحة التاجر"
+  },
+  "esnafLoginType": {
+    "tr": "Esnaf",
+    "en": "Merchant",
+    "ar": "تاجر"
+  },
+  "esnafLoginCodeLabel": {
+    "tr": "Esnaf kodu",
+    "en": "Merchant code",
+    "ar": "رمز التاجر"
+  },
+  "esnafLoginPinLabel": {
+    "tr": "PIN",
+    "en": "PIN",
+    "ar": "الرقم السري (PIN)"
+  },
+  "esnafLoginCodeError": {
+    "tr": "Esnaf kodu 6 karakter olmalı (A-Z, 2-9).",
+    "en": "Merchant code must be 6 characters (A-Z, 2-9).",
+    "ar": "يجب أن يتكون رمز التاجر من 6 خانات (A-Z، 2-9)."
+  },
+  "esnafLoginPinError": {
+    "tr": "PIN 6 haneli olmalı.",
+    "en": "PIN must be 6 digits.",
+    "ar": "يجب أن يتكون الرقم السري من 6 أرقام."
+  },
+  "esnafLoginHint": {
+    "tr": "Kod ve PIN size acenteniz tarafından verilir.",
+    "en": "Your code and PIN are provided by the travel agency.",
+    "ar": "يتم تزويدك بالرمز والرقم السري من قبل وكالة السفر."
+  },
+  "esnafLoginWrong": {
+    "tr": "Esnaf kodu ya da PIN hatalı.",
+    "en": "Merchant code or PIN is incorrect.",
+    "ar": "رمز التاجر أو الرقم السري غير صحيح."
+  },
+  "esnafLoginNotMerchant": {
+    "tr": "Bu hesap bir esnaf hesabı değil.",
+    "en": "This account is not a merchant account.",
+    "ar": "هذا الحساب ليس حساب تاجر."
+  },
+  "esnafLoginUseMerchant": {
+    "tr": "Bu bir esnaf hesabı. Lütfen \"Esnaf\" girişini seçin.",
+    "en": "This is a merchant account. Please choose \"Merchant\" login.",
+    "ar": "هذا حساب تاجر. يرجى اختيار تسجيل الدخول كـ \"تاجر\"."
+  },
+  "esnafMenuShopInfo": {
+    "tr": "Dükkan bilgilerim",
+    "en": "My shop info",
+    "ar": "معلومات متجري"
+  },
+  "esnafLogout": {
+    "tr": "Çıkış yap",
+    "en": "Log out",
+    "ar": "تسجيل الخروج"
+  },
+  "esnafLogoutConfirm": {
+    "tr": "Oturumu kapatmak istiyor musunuz?",
+    "en": "Do you want to log out?",
+    "ar": "هل تريد تسجيل الخروج؟"
+  },
+  "esnafShopNotFound": {
+    "tr": "Dükkan bulunamadı",
+    "en": "Shop not found",
+    "ar": "لم يتم العثور على المتجر"
+  },
+  "esnafShopNotFoundBody": {
+    "tr": "Hesabınıza bağlı bir dükkan yok. Lütfen acentenizle iletişime geçin.",
+    "en": "No shop is linked to your account. Please contact the travel agency.",
+    "ar": "لا يوجد متجر مرتبط بحسابك. يرجى التواصل مع وكالة السفر."
+  },
+  "esnafShopInactive": {
+    "tr": "Dükkanınız şu an pasif. İşlem yapılamaz; acentenizle görüşün.",
+    "en": "Your shop is currently inactive. Transactions are disabled; please contact the agency.",
+    "ar": "متجرك غير نشط حاليًا ولا يمكن تسجيل عمليات. يرجى التواصل مع الوكالة."
+  },
+  "esnafLoadFailed": {
+    "tr": "Veriler yüklenemedi",
+    "en": "Could not load data",
+    "ar": "تعذر تحميل البيانات"
+  },
+  "esnafLoadFailedBody": {
+    "tr": "İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "Check your internet connection and try again.",
+    "ar": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+  },
+  "esnafDiscountBadge": {
+    "tr": "%{percent} indirim",
+    "en": "{percent}% off",
+    "ar": "خصم {percent}%",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "esnafCodeLabel": {
+    "tr": "Kod: {code}",
+    "en": "Code: {code}",
+    "ar": "الرمز: {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafScanQr": {
+    "tr": "QR Okut",
+    "en": "Scan QR",
+    "ar": "امسح رمز QR"
+  },
+  "esnafScanQrHint": {
+    "tr": "Misafirin telefonundaki kodu okutun",
+    "en": "Scan the code on the guest's phone",
+    "ar": "امسح الرمز الظاهر على هاتف الضيف"
+  },
+  "esnafTodaySummary": {
+    "tr": "Bugünün özeti",
+    "en": "Today's summary",
+    "ar": "ملخص اليوم"
+  },
+  "esnafStatCount": {
+    "tr": "İşlem",
+    "en": "Transactions",
+    "ar": "العمليات"
+  },
+  "esnafStatNet": {
+    "tr": "Net ciro",
+    "en": "Net sales",
+    "ar": "صافي المبيعات"
+  },
+  "esnafStatDiscount": {
+    "tr": "Verilen indirim",
+    "en": "Discount given",
+    "ar": "الخصم المقدم"
+  },
+  "esnafByMethod": {
+    "tr": "Ödeme türüne göre",
+    "en": "By payment type",
+    "ar": "حسب طريقة الدفع"
+  },
+  "esnafRecentTransactions": {
+    "tr": "Son işlemler",
+    "en": "Recent transactions",
+    "ar": "آخر العمليات"
+  },
+  "esnafAllTransactions": {
+    "tr": "Tüm işlemler",
+    "en": "All transactions",
+    "ar": "كل العمليات"
+  },
+  "esnafNoTransactionsToday": {
+    "tr": "Bugün henüz işlem yok.",
+    "en": "No transactions today yet.",
+    "ar": "لا توجد عمليات اليوم بعد."
+  },
+  "esnafNoTransactions": {
+    "tr": "Bu filtreye uygun işlem yok.",
+    "en": "No transactions match this filter.",
+    "ar": "لا توجد عمليات مطابقة لهذا الفلتر."
+  },
+  "esnafSar": {
+    "tr": "{amount} SAR",
+    "en": "SAR {amount}",
+    "ar": "{amount} ر.س",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafDiscountShort": {
+    "tr": "indirim {amount}",
+    "en": "discount {amount}",
+    "ar": "خصم {amount}",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCancelledTag": {
+    "tr": "İptal",
+    "en": "Cancelled",
+    "ar": "ملغاة"
+  },
+  "esnafMethodCash": {
+    "tr": "Nakit",
+    "en": "Cash",
+    "ar": "نقدًا"
+  },
+  "esnafMethodCard": {
+    "tr": "Kredi kartı",
+    "en": "Credit card",
+    "ar": "بطاقة ائتمان"
+  },
+  "esnafMethodPoints": {
+    "tr": "Puan",
+    "en": "Points",
+    "ar": "نقاط"
+  },
+  "esnafMethodAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "esnafMethodLabel": {
+    "tr": "Ödeme türü",
+    "en": "Payment type",
+    "ar": "طريقة الدفع"
+  },
+  "esnafTxTitle": {
+    "tr": "Yeni işlem",
+    "en": "New transaction",
+    "ar": "عملية جديدة"
+  },
+  "esnafGuest": {
+    "tr": "Misafir",
+    "en": "Guest",
+    "ar": "الضيف"
+  },
+  "esnafGuestTrip": {
+    "tr": "Sefer",
+    "en": "Trip",
+    "ar": "الرحلة"
+  },
+  "esnafGuestPoints": {
+    "tr": "Puan bakiyesi",
+    "en": "Points balance",
+    "ar": "رصيد النقاط"
+  },
+  "esnafAmountLabel": {
+    "tr": "Tutar (SAR)",
+    "en": "Amount (SAR)",
+    "ar": "المبلغ (ر.س)"
+  },
+  "esnafAmountInvalid": {
+    "tr": "Geçerli bir tutar girin.",
+    "en": "Enter a valid amount.",
+    "ar": "أدخل مبلغًا صحيحًا."
+  },
+  "esnafAmountTooHigh": {
+    "tr": "Tek işlemde en fazla {max} girilebilir.",
+    "en": "Maximum per transaction is {max}.",
+    "ar": "الحد الأقصى للعملية الواحدة هو {max}.",
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafPointsNone": {
+    "tr": "Misafirin puan bakiyesi yok; puanla ödeme yapılamaz.",
+    "en": "The guest has no points; paying with points is not possible.",
+    "ar": "لا يملك الضيف نقاطًا، لا يمكن الدفع بالنقاط."
+  },
+  "esnafPointsInsufficient": {
+    "tr": "Puan yetersiz: {need} puan gerekli, bakiye {balance}.",
+    "en": "Not enough points: {need} needed, balance {balance}.",
+    "ar": "النقاط غير كافية: المطلوب {need}، الرصيد {balance}.",
+    "placeholders": {
+      "need": {
+        "type": "String"
+      },
+      "balance": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCalcGross": {
+    "tr": "Brüt tutar",
+    "en": "Gross amount",
+    "ar": "المبلغ الإجمالي"
+  },
+  "esnafCalcDiscount": {
+    "tr": "İndirim (%{percent})",
+    "en": "Discount ({percent}%)",
+    "ar": "الخصم ({percent}%)",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "esnafCalcPayable": {
+    "tr": "Ödenecek",
+    "en": "To pay",
+    "ar": "المبلغ المستحق"
+  },
+  "esnafCalcPointsNeeded": {
+    "tr": "Gereken puan",
+    "en": "Points needed",
+    "ar": "النقاط المطلوبة"
+  },
+  "esnafCalcPointsBalance": {
+    "tr": "Misafirin bakiyesi",
+    "en": "Guest's balance",
+    "ar": "رصيد الضيف"
+  },
+  "esnafCalcPointsEarned": {
+    "tr": "Kazanılan puan",
+    "en": "Points earned",
+    "ar": "النقاط المكتسبة"
+  },
+  "esnafCalcPointsSpent": {
+    "tr": "Harcanan puan",
+    "en": "Points spent",
+    "ar": "النقاط المستخدمة"
+  },
+  "esnafNoteLabel": {
+    "tr": "Not (isteğe bağlı)",
+    "en": "Note (optional)",
+    "ar": "ملاحظة (اختياري)"
+  },
+  "esnafSaveTx": {
+    "tr": "İşlemi kaydet",
+    "en": "Save transaction",
+    "ar": "حفظ العملية"
+  },
+  "esnafNoCollectNote": {
+    "tr": "Uygulama ödeme almaz; yalnızca kaydı tutar.",
+    "en": "The app does not collect payment; it only records the sale.",
+    "ar": "التطبيق لا يحصّل الدفع، بل يسجّل العملية فقط."
+  },
+  "esnafTime": {
+    "tr": "Zaman",
+    "en": "Time",
+    "ar": "الوقت"
+  },
+  "esnafErrTitle": {
+    "tr": "İşlem kaydedilemedi",
+    "en": "Transaction not saved",
+    "ar": "لم يتم حفظ العملية"
+  },
+  "esnafErrInvalidCode": {
+    "tr": "Bu kod geçersiz, süresi dolmuş ya da daha önce kullanılmış.",
+    "en": "This code is invalid, expired or already used.",
+    "ar": "هذا الرمز غير صالح أو منتهي الصلاحية أو مستخدم مسبقًا."
+  },
+  "esnafErrNetwork": {
+    "tr": "Bağlantı sorunu. İnternetinizi kontrol edip tekrar deneyin.",
+    "en": "Connection problem. Check your internet and try again.",
+    "ar": "مشكلة في الاتصال. تحقق من الإنترنت وحاول مرة أخرى."
+  },
+  "esnafErrSave": {
+    "tr": "Kaydedilemedi. Lütfen tekrar deneyin.",
+    "en": "Could not save. Please try again.",
+    "ar": "تعذر الحفظ. يرجى المحاولة مرة أخرى."
+  },
+  "esnafErrNotOurs": {
+    "tr": "Bu bir Umre Rehberim kodu değil",
+    "en": "This is not a My Umrah Guide code",
+    "ar": "هذا ليس رمزًا من دليل العمرة"
+  },
+  "esnafErrNotOursBody": {
+    "tr": "Misafirden uygulamadaki esnaf kodunu açmasını isteyin.",
+    "en": "Ask the guest to open the shop code in the app.",
+    "ar": "اطلب من الضيف فتح رمز المتجر في التطبيق."
+  },
+  "esnafErrNotFound": {
+    "tr": "Kod bulunamadı",
+    "en": "Code not found",
+    "ar": "لم يتم العثور على الرمز"
+  },
+  "esnafErrUsed": {
+    "tr": "Kod daha önce kullanılmış",
+    "en": "Code already used",
+    "ar": "الرمز مستخدم مسبقًا"
+  },
+  "esnafErrUsedBody": {
+    "tr": "Misafirden yeni bir kod oluşturmasını isteyin.",
+    "en": "Ask the guest to create a new code.",
+    "ar": "اطلب من الضيف إنشاء رمز جديد."
+  },
+  "esnafErrUsedAt": {
+    "tr": "Bu kod \"{shop}\" dükkanında kullanıldı. Misafirden yeni kod isteyin.",
+    "en": "This code was used at \"{shop}\". Ask the guest for a new code.",
+    "ar": "تم استخدام هذا الرمز في متجر \"{shop}\". اطلب من الضيف رمزًا جديدًا.",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafErrExpired": {
+    "tr": "Kodun süresi doldu",
+    "en": "Code expired",
+    "ar": "انتهت صلاحية الرمز"
+  },
+  "esnafErrExpiredBody": {
+    "tr": "Kodun süresi doldu. Misafirden yeni kod isteyip tekrar okutun.",
+    "en": "The code has expired. Ask the guest for a new code and scan again.",
+    "ar": "انتهت صلاحية الرمز. اطلب من الضيف رمزًا جديدًا وامسحه مرة أخرى."
+  },
+  "esnafErrOtherAgency": {
+    "tr": "Anlaşmalı acente değil",
+    "en": "Not a partner agency",
+    "ar": "ليست وكالة متعاقدة"
+  },
+  "esnafErrOtherAgencyBody": {
+    "tr": "Bu misafirin acentesiyle dükkanınızın indirim anlaşması yok.",
+    "en": "Your shop has no discount agreement with this guest's agency.",
+    "ar": "لا يوجد اتفاق خصم بين متجرك ووكالة هذا الضيف."
+  },
+  "esnafScanAgain": {
+    "tr": "Tekrar okut",
+    "en": "Scan again",
+    "ar": "امسح مرة أخرى"
+  },
+  "esnafBackHome": {
+    "tr": "Ana sayfa",
+    "en": "Home",
+    "ar": "الرئيسية"
+  },
+  "esnafSuccessTitle": {
+    "tr": "İşlem kaydedildi",
+    "en": "Transaction saved",
+    "ar": "تم حفظ العملية"
+  },
+  "esnafSuccessBody": {
+    "tr": "Ödemeyi kendi kasanızda ya da POS cihazınızda alın.",
+    "en": "Collect the payment at your own till or POS.",
+    "ar": "استلم المبلغ من خلال صندوقك أو جهاز نقاط البيع الخاص بك."
+  },
+  "esnafNewTx": {
+    "tr": "Yeni işlem",
+    "en": "New transaction",
+    "ar": "عملية جديدة"
+  },
+  "esnafHistoryTitle": {
+    "tr": "İşlem geçmişi",
+    "en": "Transaction history",
+    "ar": "سجل العمليات"
+  },
+  "esnafRangeToday": {
+    "tr": "Bugün",
+    "en": "Today",
+    "ar": "اليوم"
+  },
+  "esnafRange7": {
+    "tr": "7 gün",
+    "en": "7 days",
+    "ar": "7 أيام"
+  },
+  "esnafRange30": {
+    "tr": "30 gün",
+    "en": "30 days",
+    "ar": "30 يومًا"
+  },
+  "esnafRangeCustom": {
+    "tr": "Özel",
+    "en": "Custom",
+    "ar": "مخصص"
+  },
+  "esnafCancelTitle": {
+    "tr": "İşlemi iptal et",
+    "en": "Cancel transaction",
+    "ar": "إلغاء العملية"
+  },
+  "esnafCancelAction": {
+    "tr": "İptal et",
+    "en": "Cancel it",
+    "ar": "إلغاء"
+  },
+  "esnafCancelReasonPrompt": {
+    "tr": "İptal sebebini yazın. Acenteniz bu kaydı görür.",
+    "en": "Enter the reason for cancelling. The agency will see it.",
+    "ar": "اكتب سبب الإلغاء. ستطلع الوكالة على هذا السجل."
+  },
+  "esnafCancelReason": {
+    "tr": "İptal sebebi",
+    "en": "Cancellation reason",
+    "ar": "سبب الإلغاء"
+  },
+  "esnafCancelReasonRequired": {
+    "tr": "Lütfen kısa bir sebep yazın.",
+    "en": "Please enter a short reason.",
+    "ar": "يرجى كتابة سبب مختصر."
+  },
+  "esnafContinue": {
+    "tr": "Devam",
+    "en": "Continue",
+    "ar": "متابعة"
+  },
+  "esnafCancelConfirmTitle": {
+    "tr": "Emin misiniz?",
+    "en": "Are you sure?",
+    "ar": "هل أنت متأكد؟"
+  },
+  "esnafCancelConfirmBody": {
+    "tr": "{guest} adına {amount} tutarındaki işlem iptal edilecek. Bu işlem geri alınamaz.",
+    "en": "The {amount} transaction for {guest} will be cancelled. This cannot be undone.",
+    "ar": "سيتم إلغاء عملية {guest} بمبلغ {amount}. لا يمكن التراجع عن ذلك.",
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCancelDone": {
+    "tr": "İşlem iptal edildi.",
+    "en": "Transaction cancelled.",
+    "ar": "تم إلغاء العملية."
+  },
+  "esnafCancelDenied": {
+    "tr": "İptal edilemedi: 24 saatlik iptal süresi dolmuş olabilir.",
+    "en": "Could not cancel: the 24-hour window may have passed.",
+    "ar": "تعذر الإلغاء: ربما انتهت مهلة الـ 24 ساعة."
+  },
+  "esnafCancelWindowPassed": {
+    "tr": "İşlemler yalnızca ilk 24 saat içinde iptal edilebilir.",
+    "en": "Transactions can only be cancelled within 24 hours.",
+    "ar": "يمكن إلغاء العمليات خلال 24 ساعة فقط."
+  },
+  "esnafCancelledAt": {
+    "tr": "İptal zamanı",
+    "en": "Cancelled at",
+    "ar": "وقت الإلغاء"
+  },
+  "esnafDayReport": {
+    "tr": "Gün sonu raporu",
+    "en": "End-of-day report",
+    "ar": "تقرير نهاية اليوم"
+  },
+  "esnafReportPickDay": {
+    "tr": "Rapor günü seçin",
+    "en": "Choose report day",
+    "ar": "اختر يوم التقرير"
+  },
+  "esnafReportHeader": {
+    "tr": "{shop} – Gün sonu raporu",
+    "en": "{shop} – End-of-day report",
+    "ar": "{shop} – تقرير نهاية اليوم",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafReportCancelled": {
+    "tr": "İptal edilen işlem",
+    "en": "Cancelled transactions",
+    "ar": "العمليات الملغاة"
+  },
+  "esnafReportFooter": {
+    "tr": "Umre Rehberim – Esnaf Paneli",
+    "en": "My Umrah Guide – Merchant Panel",
+    "ar": "دليل العمرة – لوحة التاجر"
+  },
+  "esnafCopy": {
+    "tr": "Kopyala",
+    "en": "Copy",
+    "ar": "نسخ"
+  },
+  "esnafCopied": {
+    "tr": "Rapor panoya kopyalandı.",
+    "en": "Report copied to clipboard.",
+    "ar": "تم نسخ التقرير."
+  },
+  "esnafShopDescription": {
+    "tr": "Açıklama",
+    "en": "Description",
+    "ar": "الوصف"
+  },
+  "esnafShopHours": {
+    "tr": "Çalışma saatleri",
+    "en": "Working hours",
+    "ar": "ساعات العمل"
+  },
+  "esnafShopPhone": {
+    "tr": "Telefon",
+    "en": "Phone",
+    "ar": "الهاتف"
+  },
+  "esnafShopWhatsapp": {
+    "tr": "WhatsApp",
+    "en": "WhatsApp",
+    "ar": "واتساب"
+  },
+  "esnafShopReadOnlyNote": {
+    "tr": "Dükkan adı ve indirim oranını yalnızca acenteniz değiştirebilir.",
+    "en": "Only the agency can change the shop name and discount rate.",
+    "ar": "يمكن للوكالة فقط تغيير اسم المتجر ونسبة الخصم."
+  },
+  "esnafShopSaved": {
+    "tr": "Dükkan bilgileri kaydedildi.",
+    "en": "Shop info saved.",
+    "ar": "تم حفظ معلومات المتجر."
+  },
+  "esnafLogoGallery": {
+    "tr": "Galeriden seç",
+    "en": "Choose from gallery",
+    "ar": "اختر من المعرض"
+  },
+  "esnafLogoCamera": {
+    "tr": "Fotoğraf çek",
+    "en": "Take a photo",
+    "ar": "التقط صورة"
+  },
+  "esnafLogoRemove": {
+    "tr": "Logoyu kaldır",
+    "en": "Remove logo",
+    "ar": "إزالة الشعار"
+  },
+  "esnafCalcCoupon": {
+    "tr": "Kupon {code}",
+    "en": "Coupon {code}",
+    "ar": "القسيمة {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponTitle": {
+    "tr": "Kupon: {code}",
+    "en": "Coupon: {code}",
+    "ar": "القسيمة: {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponLoading": {
+    "tr": "Kupon kontrol ediliyor…",
+    "en": "Checking coupon…",
+    "ar": "جارٍ التحقق من القسيمة…"
+  },
+  "esnafCouponPercent": {
+    "tr": "%{value} indirim",
+    "en": "{value}% off",
+    "ar": "خصم {value}%",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponFixed": {
+    "tr": "{amount} indirim",
+    "en": "{amount} off",
+    "ar": "خصم {amount}",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponMax": {
+    "tr": "en fazla {amount}",
+    "en": "up to {amount}",
+    "ar": "بحد أقصى {amount}",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponMin": {
+    "tr": "en az {amount} alışverişte",
+    "en": "on purchases of at least {amount}",
+    "ar": "للمشتريات من {amount} فأكثر",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponApplied": {
+    "tr": "Uygulanan kupon indirimi: {amount}",
+    "en": "Coupon discount applied: {amount}",
+    "ar": "خصم القسيمة المطبق: {amount}",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponEnterAmount": {
+    "tr": "Tutarı girince kupon indirimi hesaplanır.",
+    "en": "The coupon discount is calculated once you enter the amount.",
+    "ar": "يُحسب خصم القسيمة بعد إدخال المبلغ."
+  },
+  "esnafCouponInvalidHint": {
+    "tr": "Bu kodla işlem kaydedilemez. Misafirden kuponsuz yeni bir kod üretmesini isteyin.",
+    "en": "This code can't be recorded. Ask the guest to generate a new code without the coupon.",
+    "ar": "لا يمكن تسجيل العملية بهذا الرمز. اطلب من الضيف إنشاء رمز جديد بدون القسيمة."
+  },
+  "esnafCouponErrNotFound": {
+    "tr": "Kupon bulunamadı.",
+    "en": "Coupon not found.",
+    "ar": "لم يتم العثور على القسيمة."
+  },
+  "esnafCouponErrInactive": {
+    "tr": "Kupon pasif.",
+    "en": "The coupon is inactive.",
+    "ar": "القسيمة غير مفعلة."
+  },
+  "esnafCouponErrNotStarted": {
+    "tr": "Kupon henüz başlamadı.",
+    "en": "The coupon hasn't started yet.",
+    "ar": "لم تبدأ القسيمة بعد."
+  },
+  "esnafCouponErrExpired": {
+    "tr": "Kuponun süresi dolmuş.",
+    "en": "The coupon has expired.",
+    "ar": "انتهت صلاحية القسيمة."
+  },
+  "esnafCouponErrExhausted": {
+    "tr": "Kupon kullanım sınırına ulaştı.",
+    "en": "The coupon has reached its usage limit.",
+    "ar": "بلغت القسيمة حد الاستخدام."
+  },
+  "esnafCouponErrOtherAgency": {
+    "tr": "Kupon bu misafirin acentesi için geçerli değil.",
+    "en": "The coupon isn't valid for this guest's agency.",
+    "ar": "القسيمة غير صالحة لوكالة هذا الضيف."
+  },
+  "esnafCouponErrOtherShop": {
+    "tr": "Kupon bu dükkanda geçerli değil.",
+    "en": "The coupon isn't valid at this shop.",
+    "ar": "القسيمة غير صالحة في هذا المتجر."
+  },
+  "esnafCouponErrMinSpend": {
+    "tr": "Bu kupon en az {amount} alışverişte geçerli.",
+    "en": "This coupon requires a purchase of at least {amount}.",
+    "ar": "هذه القسيمة صالحة للمشتريات من {amount} فأكثر.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponErrAlreadyUsed": {
+    "tr": "Misafir bu kuponu daha önce kullanmış.",
+    "en": "The guest has already used this coupon.",
+    "ar": "استخدم الضيف هذه القسيمة من قبل."
+  },
+  "esnafCouponErrZero": {
+    "tr": "Bu tutarda kupon indirimi uygulanamıyor.",
+    "en": "No coupon discount can be applied to this amount.",
+    "ar": "لا يمكن تطبيق خصم القسيمة على هذا المبلغ."
+  },
+  "esnafCouponErrSave": {
+    "tr": "Kupon kullanılamadı: misafir bu kuponu daha önce kullanmış ya da kupon az önce tükenmiş olabilir. Misafirden kuponsuz yeni bir kod üretmesini isteyin.",
+    "en": "The coupon couldn't be used: the guest may have used it before or it may have just run out. Ask the guest to generate a new code without the coupon.",
+    "ar": "تعذر استخدام القسيمة: ربما استخدمها الضيف من قبل أو نفدت للتو. اطلب من الضيف إنشاء رمز جديد بدون القسيمة."
+  },
+  "esnafReviewTitle": {
+    "tr": "Misafir değerlendirmesi",
+    "en": "Guest review",
+    "ar": "تقييم الضيف"
+  },
+  "esnafReviewComplaint": {
+    "tr": "Şikâyet",
+    "en": "Complaint",
+    "ar": "شكوى"
+  }
+}

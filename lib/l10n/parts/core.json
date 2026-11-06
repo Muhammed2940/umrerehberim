@@ -1,0 +1,262 @@
+{
+  "coreStarting": {
+    "tr": "Başlatılıyor...",
+    "en": "Starting...",
+    "ar": "جارٍ التشغيل..."
+  },
+  "coreStartFailed": {
+    "tr": "Uygulama başlatılamadı",
+    "en": "The app could not be started",
+    "ar": "تعذّر تشغيل التطبيق"
+  },
+  "corePageNotFound": {
+    "tr": "Sayfa bulunamadı",
+    "en": "Page not found",
+    "ar": "الصفحة غير موجودة"
+  },
+  "coreUnknownPage": {
+    "tr": "Bilinmeyen sayfa",
+    "en": "Unknown page",
+    "ar": "صفحة غير معروفة"
+  },
+  "coreNavHome": {
+    "tr": "Ana Sayfa",
+    "en": "Home",
+    "ar": "الرئيسية"
+  },
+  "coreNavPrayers": {
+    "tr": "Dualar",
+    "en": "Prayers",
+    "ar": "الأدعية"
+  },
+  "coreNavCalendar": {
+    "tr": "Takvim",
+    "en": "Calendar",
+    "ar": "التقويم"
+  },
+  "coreNavInfo": {
+    "tr": "Bilgi",
+    "en": "Info",
+    "ar": "معلومات"
+  },
+  "coreNavProfile": {
+    "tr": "Profil",
+    "en": "Profile",
+    "ar": "الملف الشخصي"
+  },
+  "coreOsmContributors": {
+    "tr": "OpenStreetMap katkıcıları",
+    "en": "OpenStreetMap contributors",
+    "ar": "مساهمو OpenStreetMap"
+  },
+  "coreJustNow": {
+    "tr": "Az önce",
+    "en": "Just now",
+    "ar": "الآن"
+  },
+  "coreMinutesAgo": {
+    "tr": "{count} dakika önce",
+    "en": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+    "ar": "{count, plural, =1{منذ دقيقة} =2{منذ دقيقتين} few{منذ {count} دقائق} other{منذ {count} دقيقة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreHoursAgo": {
+    "tr": "{count} saat önce",
+    "en": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+    "ar": "{count, plural, =1{منذ ساعة} =2{منذ ساعتين} few{منذ {count} ساعات} other{منذ {count} ساعة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreLocationPermissionRestart": {
+    "tr": "Lütfen konum iznini açın ve uygulamayı yeniden başlatın.",
+    "en": "Please enable location permission and restart the app.",
+    "ar": "يرجى تفعيل إذن الموقع ثم إعادة تشغيل التطبيق."
+  },
+  "coreLocationServiceOffSnack": {
+    "tr": "Konum servisi kapalı. Lütfen telefonunuzun konumunu (GPS) açın.",
+    "en": "Location services are off. Please turn on your phone's location (GPS).",
+    "ar": "خدمة الموقع متوقفة. يرجى تشغيل الموقع (GPS) في هاتفك."
+  },
+  "coreLocationServiceOffTitle": {
+    "tr": "Konum Servisi Kapalı",
+    "en": "Location Services Off",
+    "ar": "خدمة الموقع متوقفة"
+  },
+  "coreLocationServiceOffMessage": {
+    "tr": "Rehberinizin sizi görebilmesi için telefonunuzun konum (GPS) özelliğini açmanız gerekiyor.",
+    "en": "To let your guide see you, you need to turn on your phone's location (GPS).",
+    "ar": "لكي يتمكن مرشدك من رؤيتك، عليك تشغيل خاصية الموقع (GPS) في هاتفك."
+  },
+  "coreLocationServiceOpen": {
+    "tr": "Konumu Aç",
+    "en": "Turn On Location",
+    "ar": "تشغيل الموقع"
+  },
+  "coreLocationPermissionTitle": {
+    "tr": "Konum İzni Gerekli",
+    "en": "Location Permission Required",
+    "ar": "إذن الموقع مطلوب"
+  },
+  "coreLocationPermissionMessage": {
+    "tr": "Konumunuzun rehberinizle paylaşılabilmesi için konum iznine ihtiyaç var. Ayarlar sayfasından izin verebilirsiniz.",
+    "en": "Location permission is needed to share your location with your guide. You can grant it from the Settings page.",
+    "ar": "يلزم إذن الموقع لمشاركة موقعك مع مرشدك. يمكنك منح الإذن من صفحة الإعدادات."
+  },
+  "coreGoToSettings": {
+    "tr": "Ayarlara Git",
+    "en": "Open Settings",
+    "ar": "فتح الإعدادات"
+  },
+  "coreBackgroundLocationTitle": {
+    "tr": "Arka Planda Konum",
+    "en": "Background Location",
+    "ar": "الموقع في الخلفية"
+  },
+  "coreBackgroundLocationMessage": {
+    "tr": "Uygulama kapalıyken de rehberinizin sizi görebilmesi için açılacak ekranda \"Her zaman izin ver\" seçeneğini seçin.",
+    "en": "So your guide can see you even when the app is closed, choose \"Allow all the time\" on the next screen.",
+    "ar": "لكي يتمكن مرشدك من رؤيتك حتى عند إغلاق التطبيق، اختر \"السماح طوال الوقت\" في الشاشة التالية."
+  },
+  "coreContinue": {
+    "tr": "Devam",
+    "en": "Continue",
+    "ar": "متابعة"
+  },
+  "coreNotNow": {
+    "tr": "Şimdi Değil",
+    "en": "Not Now",
+    "ar": "ليس الآن"
+  },
+  "coreLocationSharingNotification": {
+    "tr": "Konumunuz rehberinizle paylaşılıyor",
+    "en": "Your location is being shared with your guide",
+    "ar": "تتم مشاركة موقعك مع مرشدك"
+  },
+  "coreChannelAnnouncements": {
+    "tr": "Duyurular",
+    "en": "Announcements",
+    "ar": "الإعلانات"
+  },
+  "coreChannelAnnouncementsDesc": {
+    "tr": "Acente ve rehber duyuruları",
+    "en": "Announcements from your agency and guide",
+    "ar": "إعلانات الوكالة والمرشد"
+  },
+  "coreChannelLocation": {
+    "tr": "Konum Paylaşımı",
+    "en": "Location Sharing",
+    "ar": "مشاركة الموقع"
+  },
+  "coreChannelLocationDesc": {
+    "tr": "Konumunuz rehberinizle paylaşılırken gösterilir",
+    "en": "Shown while your location is shared with your guide",
+    "ar": "يظهر أثناء مشاركة موقعك مع مرشدك"
+  },
+  "coreChannelRadio": {
+    "tr": "Telsiz",
+    "en": "Radio",
+    "ar": "اللاسلكي"
+  },
+  "coreChannelRadioDesc": {
+    "tr": "Telsiz yayını sürerken görünen bildirim.",
+    "en": "Notification shown while a radio broadcast is active.",
+    "ar": "إشعار يظهر أثناء البث اللاسلكي."
+  },
+  "coreAnnouncement": {
+    "tr": "Duyuru",
+    "en": "Announcement",
+    "ar": "إعلان"
+  },
+  "coreQuranTitle": {
+    "tr": "Kur'an-ı Kerim",
+    "en": "The Holy Quran",
+    "ar": "القرآن الكريم"
+  },
+  "coreChannelQuranDesc": {
+    "tr": "Sesli Kur'an okuma kontrolleri",
+    "en": "Quran audio playback controls",
+    "ar": "أدوات التحكم في تلاوة القرآن الصوتية"
+  },
+  "coreQuranBlockedByRadio": {
+    "tr": "Telsiz açıkken Kur'an dinlenemez.",
+    "en": "You can't listen to the Quran while the radio is on.",
+    "ar": "لا يمكن الاستماع إلى القرآن أثناء تشغيل اللاسلكي."
+  },
+  "coreAudioLoadFailed": {
+    "tr": "Ses yüklenemedi. İnternet bağlantınızı kontrol edin.",
+    "en": "Audio could not be loaded. Check your internet connection.",
+    "ar": "تعذّر تحميل الصوت. تحقق من اتصالك بالإنترنت."
+  },
+  "coreAyahCount": {
+    "tr": "{count} ayet",
+    "en": "{count, plural, =1{1 verse} other{{count} verses}}",
+    "ar": "{count, plural, =1{آية واحدة} =2{آيتان} few{{count} آيات} other{{count} آية}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreCurrencyUsd": {
+    "tr": "ABD Doları",
+    "en": "US Dollar",
+    "ar": "الدولار الأمريكي"
+  },
+  "coreCurrencyEur": {
+    "tr": "Euro",
+    "en": "Euro",
+    "ar": "اليورو"
+  },
+  "coreCurrencyGbp": {
+    "tr": "İngiliz Sterlini",
+    "en": "British Pound",
+    "ar": "الجنيه الإسترليني"
+  },
+  "coreCurrencySar": {
+    "tr": "Suudi Riyali",
+    "en": "Saudi Riyal",
+    "ar": "الريال السعودي"
+  },
+  "coreCurrencyTry": {
+    "tr": "Türk Lirası",
+    "en": "Turkish Lira",
+    "ar": "الليرة التركية"
+  },
+  "coreRatesFetchFailed": {
+    "tr": "Döviz kurları alınamadı. İnternet bağlantınızı kontrol edin.",
+    "en": "Exchange rates could not be retrieved. Check your internet connection.",
+    "ar": "تعذّر جلب أسعار الصرف. تحقق من اتصالك بالإنترنت."
+  },
+  "coreRatesCached": {
+    "tr": "kayıtlı",
+    "en": "saved",
+    "ar": "محفوظ"
+  },
+  "coreRatesDaily": {
+    "tr": "günlük",
+    "en": "daily",
+    "ar": "يومي"
+  },
+  "coreSessionNotFound": {
+    "tr": "Oturum bulunamadı.",
+    "en": "No active session found.",
+    "ar": "لم يتم العثور على جلسة نشطة."
+  },
+  "coreInvalidTokenResponse": {
+    "tr": "Geçersiz token yanıtı.",
+    "en": "Invalid token response.",
+    "ar": "استجابة رمز غير صالحة."
+  },
+  "coreAccountExists": {
+    "tr": "Bu TC ile kayıtlı bir hesap zaten var.",
+    "en": "An account with this ID number already exists.",
+    "ar": "يوجد حساب مسجّل بهذا الرقم بالفعل."
+  }
+}

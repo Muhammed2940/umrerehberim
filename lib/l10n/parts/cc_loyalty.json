@@ -1,0 +1,103 @@
+{
+  "ccLoyTitle": { "tr": "Sadakat Puanları", "en": "Loyalty Points", "ar": "نقاط الولاء" },
+  "ccLoySubtitle": { "tr": "Puan ver, düş, geri al", "en": "Grant, deduct, reverse", "ar": "منح وخصم وعكس النقاط" },
+  "ccLoyReadOnly": { "tr": "Salt okuma", "en": "Read only", "ar": "للقراءة فقط" },
+  "ccLoyRefresh": { "tr": "Yenile", "en": "Refresh", "ar": "تحديث" },
+  "ccLoyLoadError": { "tr": "Sadakat verileri yüklenemedi.", "en": "Loyalty data couldn't be loaded.", "ar": "تعذر تحميل بيانات الولاء." },
+  "ccLoyActionError": { "tr": "İşlem tamamlanamadı. Lütfen tekrar deneyin.", "en": "The action couldn't be completed. Please try again.", "ar": "تعذر إتمام العملية. يرجى المحاولة مرة أخرى." },
+  "ccLoyKpiCirculation": { "tr": "Dolaşımdaki toplam puan", "en": "Points in circulation", "ar": "إجمالي النقاط المتداولة" },
+  "ccLoyKpiGrantedMonth": { "tr": "Bu ay elle verilen puan", "en": "Granted manually this month", "ar": "نقاط ممنوحة يدويًا هذا الشهر" },
+  "ccLoyKpiSpent": { "tr": "Alışverişte harcanan puan", "en": "Points spent at shops", "ar": "نقاط مصروفة في المتاجر" },
+  "ccLoyKpiRedeemed": { "tr": "Puanla ödenen tutar", "en": "Value redeemed with points", "ar": "القيمة المدفوعة بالنقاط" },
+  "ccLoyGuestsTitle": { "tr": "Misafirler", "en": "Guests", "ar": "الضيوف" },
+  "ccLoyGuestCount": {
+    "tr": "{count} misafir", "en": "{count} guests", "ar": "{count} ضيف",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccLoySearchHint": { "tr": "Ad, TC kimlik no veya acente ara", "en": "Search name, ID number or agency", "ar": "ابحث بالاسم أو رقم الهوية أو الوكالة" },
+  "ccLoyAllAgencies": { "tr": "Tüm acenteler", "en": "All agencies", "ar": "كل الوكالات" },
+  "ccLoyNoGuests": { "tr": "Eşleşen misafir yok.", "en": "No matching guests.", "ar": "لا يوجد ضيوف مطابقون." },
+  "ccLoyShowMore": {
+    "tr": "{count} misafir daha göster", "en": "Show {count} more", "ar": "عرض {count} آخرين",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccLoyPointsUnit": { "tr": "puan", "en": "pts", "ar": "نقطة" },
+  "ccLoyWorth": {
+    "tr": "≈ {value} değerinde", "en": "≈ worth {value}", "ar": "≈ بقيمة {value}",
+    "placeholders": { "value": { "type": "String" } }
+  },
+  "ccLoyEarned": { "tr": "Kazanılan", "en": "Earned", "ar": "المكتسبة" },
+  "ccLoySpentShort": { "tr": "Harcanan", "en": "Spent", "ar": "المصروفة" },
+  "ccLoyManual": { "tr": "Elle", "en": "Manual", "ar": "يدوي" },
+  "ccLoyGrant": { "tr": "Puan Ver", "en": "Grant Points", "ar": "منح نقاط" },
+  "ccLoyDeduct": { "tr": "Puan Düş", "en": "Deduct Points", "ar": "خصم نقاط" },
+  "ccLoyGrantTitle": { "tr": "Hediye puan ver", "en": "Grant gift points", "ar": "منح نقاط هدية" },
+  "ccLoyDeductTitle": { "tr": "Puan düş", "en": "Deduct points", "ar": "خصم نقاط" },
+  "ccLoyReason": { "tr": "Sebep (zorunlu)", "en": "Reason (required)", "ar": "السبب (إلزامي)" },
+  "ccLoyReasonHintGrant": { "tr": "Örn. Hoş geldin hediyesi", "en": "e.g. Welcome gift", "ar": "مثال: هدية ترحيب" },
+  "ccLoyReasonHintDeduct": { "tr": "Örn. Hatalı yükleme düzeltmesi", "en": "e.g. Correction of a wrong entry", "ar": "مثال: تصحيح إدخال خاطئ" },
+  "ccLoyReasonHintBulk": { "tr": "Örn. Ramazan kampanyası", "en": "e.g. Ramadan campaign", "ar": "مثال: حملة رمضان" },
+  "ccLoyReasonRequired": { "tr": "Lütfen bir sebep yazın (en az 3 karakter).", "en": "Please enter a reason (at least 3 characters).", "ar": "يرجى كتابة سبب (3 أحرف على الأقل)." },
+  "ccLoyPointsInvalid": { "tr": "1 ile 100.000 arasında bir puan girin.", "en": "Enter between 1 and 100,000 points.", "ar": "أدخل عدد نقاط بين 1 و100000." },
+  "ccLoyGrantedOk": {
+    "tr": "{points} puan verildi.", "en": "{points} points granted.", "ar": "تم منح {points} نقطة.",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "ccLoyDeductedOk": {
+    "tr": "{points} puan düşüldü.", "en": "{points} points deducted.", "ar": "تم خصم {points} نقطة.",
+    "placeholders": { "points": { "type": "int" } }
+  },
+  "ccLoyRevertAction": { "tr": "Geri al", "en": "Reverse", "ar": "عكس" },
+  "ccLoyRevertTitle": { "tr": "Puan hareketini geri al", "en": "Reverse points entry", "ar": "عكس حركة النقاط" },
+  "ccLoyRevertBody": {
+    "tr": "{guest} için yapılan {points} puanlık hareket, {opposite} puanlık ters kayıtla geri alınacak. Asıl kayıt silinmez.",
+    "en": "The {points} points entry for {guest} will be reversed with an opposite entry of {opposite}. The original isn't deleted.",
+    "ar": "سيتم عكس حركة {points} نقطة للضيف {guest} بقيد معاكس قدره {opposite}. لا يُحذف القيد الأصلي.",
+    "placeholders": { "guest": { "type": "String" }, "points": { "type": "String" }, "opposite": { "type": "String" } }
+  },
+  "ccLoyRevertDefaultReason": {
+    "tr": "Geri alma: {reason}", "en": "Reversal: {reason}", "ar": "عكس: {reason}",
+    "placeholders": { "reason": { "type": "String" } }
+  },
+  "ccLoyRevertedOk": { "tr": "Puan hareketi geri alındı.", "en": "Points entry reversed.", "ar": "تم عكس حركة النقاط." },
+  "ccLoyHistory": { "tr": "Puan geçmişi", "en": "Points history", "ar": "سجل النقاط" },
+  "ccLoyHistoryEmpty": { "tr": "Henüz puan hareketi yok.", "en": "No points activity yet.", "ar": "لا توجد حركات نقاط بعد." },
+  "ccLoyFeedTitle": { "tr": "Son puan hareketleri", "en": "Recent adjustments", "ar": "أحدث حركات النقاط" },
+  "ccLoyFeedEmpty": { "tr": "Bu filtreye uyan hareket yok.", "en": "No entries match this filter.", "ar": "لا توجد حركات مطابقة لهذا الفلتر." },
+  "ccLoyFilterAll": { "tr": "Tümü", "en": "All", "ar": "الكل" },
+  "ccLoyFilterGranted": { "tr": "Verilen", "en": "Granted", "ar": "الممنوحة" },
+  "ccLoyFilterDeducted": { "tr": "Düşülen", "en": "Deducted", "ar": "المخصومة" },
+  "ccLoyFilterBulk": { "tr": "Toplu", "en": "Bulk", "ar": "جماعية" },
+  "ccLoyFilterReverted": { "tr": "Geri alınan", "en": "Reversed", "ar": "المعكوسة" },
+  "ccLoyTagBulk": { "tr": "Toplu", "en": "Bulk", "ar": "جماعي" },
+  "ccLoyTagRevert": { "tr": "Geri alma", "en": "Reversal", "ar": "عكس" },
+  "ccLoyTagReverted": { "tr": "Geri alındı", "en": "Reversed", "ar": "تم العكس" },
+  "ccLoyTagCancelled": { "tr": "İptal", "en": "Cancelled", "ar": "ملغاة" },
+  "ccLoyBulkAction": { "tr": "Toplu Puan", "en": "Bulk Points", "ar": "نقاط جماعية" },
+  "ccLoyBulkTitle": { "tr": "Toplu puan yükle", "en": "Bulk grant points", "ar": "منح نقاط جماعية" },
+  "ccLoyBulkAgency": { "tr": "Acente", "en": "Agency", "ar": "الوكالة" },
+  "ccLoyBulkTrip": { "tr": "Sefer (isteğe bağlı)", "en": "Trip (optional)", "ar": "الرحلة (اختياري)" },
+  "ccLoyBulkAllTrips": { "tr": "Acentenin tüm misafirleri", "en": "All guests of the agency", "ar": "جميع ضيوف الوكالة" },
+  "ccLoyBulkPointsEach": { "tr": "Misafir başına puan", "en": "Points per guest", "ar": "النقاط لكل ضيف" },
+  "ccLoyBulkPickAgency": { "tr": "Önce bir acente seçin.", "en": "Choose an agency first.", "ar": "اختر وكالة أولاً." },
+  "ccLoyBulkNoTargets": { "tr": "Seçime uyan misafir yok.", "en": "No guests match the selection.", "ar": "لا يوجد ضيوف مطابقون للاختيار." },
+  "ccLoyBulkPreview": {
+    "tr": "{count} misafire toplam {total} puan yüklenecek.", "en": "{total} points in total will go to {count} guests.", "ar": "سيتم منح {total} نقطة إجمالًا لـ {count} ضيف.",
+    "placeholders": { "count": { "type": "int" }, "total": { "type": "String" } }
+  },
+  "ccLoyBulkConfirm": {
+    "tr": "{count} misafire yükle", "en": "Grant to {count} guests", "ar": "منح {count} ضيف",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccLoyBulkRunning": { "tr": "Puanlar yükleniyor…", "en": "Granting points…", "ar": "جارٍ منح النقاط…" },
+  "ccLoyBulkOk": {
+    "tr": "{count} misafire {points} puan yüklendi.", "en": "{points} points granted to {count} guests.", "ar": "تم منح {points} نقطة لـ {count} ضيف.",
+    "placeholders": { "count": { "type": "int" }, "points": { "type": "int" } }
+  },
+  "ccLoyBulkPartial": {
+    "tr": "Yükleme yarıda kaldı: {done}/{total} misafire yüklendi. Geri kalanlar için tekrar deneyin.",
+    "en": "Bulk grant stopped: {done}/{total} guests received points. Try again for the rest.",
+    "ar": "توقف المنح الجماعي: حصل {done}/{total} ضيف على النقاط. حاول مرة أخرى للباقين.",
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  }
+}

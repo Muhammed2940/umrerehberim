@@ -1,0 +1,1633 @@
+{
+  "adminMenuHome": {
+    "tr": "Anasayfa",
+    "en": "Home",
+    "ar": "الرئيسية"
+  },
+  "adminMenuHomeSub": {
+    "tr": "Yönetim paneline dön",
+    "en": "Back to the admin panel",
+    "ar": "العودة إلى لوحة الإدارة"
+  },
+  "adminMenuLiveLocation": {
+    "tr": "Canlı Konum",
+    "en": "Live Location",
+    "ar": "الموقع المباشر"
+  },
+  "adminMenuLiveLocationSub": {
+    "tr": "Misafirleri haritada gör",
+    "en": "See guests on the map",
+    "ar": "عرض الضيوف على الخريطة"
+  },
+  "adminMenuCalendar": {
+    "tr": "Takvim",
+    "en": "Calendar",
+    "ar": "التقويم"
+  },
+  "adminMenuCalendarSub": {
+    "tr": "Etkinlikleri yönet",
+    "en": "Manage events",
+    "ar": "إدارة الفعاليات"
+  },
+  "adminMenuPeople": {
+    "tr": "Kişiler",
+    "en": "People",
+    "ar": "الأشخاص"
+  },
+  "adminMenuPeopleSub": {
+    "tr": "Kullanıcıları yönet",
+    "en": "Manage users",
+    "ar": "إدارة المستخدمين"
+  },
+  "adminMenuTrips": {
+    "tr": "Seferler",
+    "en": "Trips",
+    "ar": "الرحلات"
+  },
+  "adminMenuTripsSub": {
+    "tr": "Seferleri yönet",
+    "en": "Manage trips",
+    "ar": "إدارة الرحلات"
+  },
+  "adminMenuHotels": {
+    "tr": "Otel & Oda",
+    "en": "Hotels & Rooms",
+    "ar": "الفنادق والغرف"
+  },
+  "adminMenuHotelsSub": {
+    "tr": "Otelleri ve odaları yönet",
+    "en": "Manage hotels and rooms",
+    "ar": "إدارة الفنادق والغرف"
+  },
+  "adminMenuCurrency": {
+    "tr": "Döviz Kurları",
+    "en": "Exchange Rates",
+    "ar": "أسعار الصرف"
+  },
+  "adminMenuCurrencySub": {
+    "tr": "Döviz kurlarını yönet",
+    "en": "Manage exchange rates",
+    "ar": "إدارة أسعار الصرف"
+  },
+  "adminMenuNotify": {
+    "tr": "Bildirim Gönder",
+    "en": "Send Notification",
+    "ar": "إرسال إشعار"
+  },
+  "adminMenuNotifySub": {
+    "tr": "Kullanıcılara bildirim gönder",
+    "en": "Send notifications to users",
+    "ar": "إرسال إشعارات إلى المستخدمين"
+  },
+  "adminMenuAnalytics": {
+    "tr": "Analiz",
+    "en": "Analytics",
+    "ar": "التحليلات"
+  },
+  "adminMenuAnalyticsSub": {
+    "tr": "İstatistik ve grafikler",
+    "en": "Statistics and charts",
+    "ar": "الإحصاءات والرسوم البيانية"
+  },
+  "adminMenuTracking": {
+    "tr": "Konum Takibi",
+    "en": "Location Tracking",
+    "ar": "تتبع الموقع"
+  },
+  "adminMenuTrackingSub": {
+    "tr": "Konum takibini yönet",
+    "en": "Manage location tracking",
+    "ar": "إدارة تتبع الموقع"
+  },
+  "adminMenuRadio": {
+    "tr": "Telsiz",
+    "en": "Radio",
+    "ar": "اللاسلكي"
+  },
+  "adminMenuRadioSub": {
+    "tr": "Misafirlere canlı sesli yayın",
+    "en": "Live voice broadcast to guests",
+    "ar": "بث صوتي مباشر للضيوف"
+  },
+  "adminMenuShops": {
+    "tr": "Anlaşmalı Dükkanlar",
+    "en": "Partner Shops",
+    "ar": "المتاجر المتعاقدة"
+  },
+  "adminMenuShopsSub": {
+    "tr": "İndirimli esnafı yönet",
+    "en": "Manage discounted shops",
+    "ar": "إدارة المتاجر ذات الخصم"
+  },
+  "adminRoleManager": {
+    "tr": "Yönetici",
+    "en": "Manager",
+    "ar": "مشرف"
+  },
+  "adminRoleSuperAdmin": {
+    "tr": "Süper Admin",
+    "en": "Super Admin",
+    "ar": "المشرف العام"
+  },
+  "adminRoleGuest": {
+    "tr": "Misafir",
+    "en": "Guest",
+    "ar": "ضيف"
+  },
+  "adminPanelTitle": {
+    "tr": "Yönetim Paneli",
+    "en": "Admin Panel",
+    "ar": "لوحة الإدارة"
+  },
+  "adminLogout": {
+    "tr": "Çıkış Yap",
+    "en": "Log Out",
+    "ar": "تسجيل الخروج"
+  },
+  "adminLogoutConfirm": {
+    "tr": "Oturumu kapatmak istediğinize emin misiniz?",
+    "en": "Are you sure you want to log out?",
+    "ar": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+  },
+  "adminWelcome": {
+    "tr": "Hoş geldiniz",
+    "en": "Welcome",
+    "ar": "أهلًا بك"
+  },
+  "adminWelcomeName": {
+    "tr": "Hoş geldiniz, {name}",
+    "en": "Welcome, {name}",
+    "ar": "أهلًا بك، {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAgencyLabel": {
+    "tr": "Acente: {name}",
+    "en": "Agency: {name}",
+    "ar": "الوكالة: {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminStatPeople": {
+    "tr": "Kayıtlı Kişi",
+    "en": "Registered",
+    "ar": "المسجلون"
+  },
+  "adminStatTrip": {
+    "tr": "Sefer",
+    "en": "Trips",
+    "ar": "الرحلات"
+  },
+  "adminStatHotel": {
+    "tr": "Otel",
+    "en": "Hotels",
+    "ar": "الفنادق"
+  },
+  "adminStatRoom": {
+    "tr": "Oda",
+    "en": "Rooms",
+    "ar": "الغرف"
+  },
+  "adminManagement": {
+    "tr": "Yönetim",
+    "en": "Management",
+    "ar": "الإدارة"
+  },
+  "adminActive": {
+    "tr": "Aktif",
+    "en": "Active",
+    "ar": "نشط"
+  },
+  "adminInactive": {
+    "tr": "Pasif",
+    "en": "Inactive",
+    "ar": "غير نشط"
+  },
+  "adminMakeActive": {
+    "tr": "Aktif Yap",
+    "en": "Activate",
+    "ar": "تفعيل"
+  },
+  "adminMakeInactive": {
+    "tr": "Pasif Yap",
+    "en": "Deactivate",
+    "ar": "إلغاء التفعيل"
+  },
+  "adminAdd": {
+    "tr": "Ekle",
+    "en": "Add",
+    "ar": "إضافة"
+  },
+  "adminUpdate": {
+    "tr": "Güncelle",
+    "en": "Update",
+    "ar": "تحديث"
+  },
+  "adminSaving": {
+    "tr": "Kaydediliyor...",
+    "en": "Saving...",
+    "ar": "جارٍ الحفظ..."
+  },
+  "adminUpdating": {
+    "tr": "Güncelleniyor...",
+    "en": "Updating...",
+    "ar": "جارٍ التحديث..."
+  },
+  "adminSend": {
+    "tr": "Gönder",
+    "en": "Send",
+    "ar": "إرسال"
+  },
+  "adminSending": {
+    "tr": "Gönderiliyor...",
+    "en": "Sending...",
+    "ar": "جارٍ الإرسال..."
+  },
+  "adminRemove": {
+    "tr": "Çıkar",
+    "en": "Remove",
+    "ar": "إزالة"
+  },
+  "adminManage": {
+    "tr": "Yönet",
+    "en": "Manage",
+    "ar": "إدارة"
+  },
+  "adminDetail": {
+    "tr": "Detay",
+    "en": "Details",
+    "ar": "التفاصيل"
+  },
+  "adminAreYouSure": {
+    "tr": "Emin misiniz?",
+    "en": "Are you sure?",
+    "ar": "هل أنت متأكد؟"
+  },
+  "adminFilterAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "adminNotSelected": {
+    "tr": "Seçilmedi",
+    "en": "Not selected",
+    "ar": "غير محدد"
+  },
+  "adminNotAssigned": {
+    "tr": "Atanmadı",
+    "en": "Not assigned",
+    "ar": "غير معيّن"
+  },
+  "adminNoResults": {
+    "tr": "Sonuç bulunamadı.",
+    "en": "No results found.",
+    "ar": "لا توجد نتائج."
+  },
+  "adminUnknown": {
+    "tr": "Bilinmeyen",
+    "en": "Unknown",
+    "ar": "غير معروف"
+  },
+  "adminUnnamed": {
+    "tr": "İsimsiz",
+    "en": "Unnamed",
+    "ar": "بدون اسم"
+  },
+  "adminUnnamedGuest": {
+    "tr": "İsimsiz Misafir",
+    "en": "Unnamed Guest",
+    "ar": "ضيف بدون اسم"
+  },
+  "adminNoDate": {
+    "tr": "Tarih yok",
+    "en": "No date",
+    "ar": "لا يوجد تاريخ"
+  },
+  "adminNoAgencySelected": {
+    "tr": "Acente seçilmedi.",
+    "en": "No agency selected.",
+    "ar": "لم يتم اختيار وكالة."
+  },
+  "adminDataLoadFailed": {
+    "tr": "Veriler yüklenirken bir hata oluştu",
+    "en": "An error occurred while loading data",
+    "ar": "حدث خطأ أثناء تحميل البيانات"
+  },
+  "adminRequired": {
+    "tr": "Gerekli",
+    "en": "Required",
+    "ar": "مطلوب"
+  },
+  "adminRequiredField": {
+    "tr": "Zorunlu alan",
+    "en": "Required field",
+    "ar": "حقل مطلوب"
+  },
+  "adminDescription": {
+    "tr": "Açıklama",
+    "en": "Description",
+    "ar": "الوصف"
+  },
+  "adminAddress": {
+    "tr": "Adres",
+    "en": "Address",
+    "ar": "العنوان"
+  },
+  "adminPhone": {
+    "tr": "Telefon",
+    "en": "Phone",
+    "ar": "الهاتف"
+  },
+  "adminEmail": {
+    "tr": "E-posta",
+    "en": "Email",
+    "ar": "البريد الإلكتروني"
+  },
+  "adminNote": {
+    "tr": "Not",
+    "en": "Note",
+    "ar": "ملاحظة"
+  },
+  "adminNoteValue": {
+    "tr": "Not: {note}",
+    "en": "Note: {note}",
+    "ar": "ملاحظة: {note}",
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTrip": {
+    "tr": "Sefer",
+    "en": "Trip",
+    "ar": "الرحلة"
+  },
+  "adminAllTrips": {
+    "tr": "Tüm seferler",
+    "en": "All trips",
+    "ar": "جميع الرحلات"
+  },
+  "adminHotels": {
+    "tr": "Oteller",
+    "en": "Hotels",
+    "ar": "الفنادق"
+  },
+  "adminRooms": {
+    "tr": "Odalar",
+    "en": "Rooms",
+    "ar": "الغرف"
+  },
+  "adminTc": {
+    "tr": "TC",
+    "en": "Turkish ID No.",
+    "ar": "رقم الهوية التركية"
+  },
+  "adminTcValue": {
+    "tr": "TC: {tc}",
+    "en": "ID: {tc}",
+    "ar": "الهوية: {tc}",
+    "placeholders": {
+      "tc": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTcUnspecified": {
+    "tr": "TC belirtilmemiş",
+    "en": "Turkish ID not specified",
+    "ar": "رقم الهوية التركية غير محدد"
+  },
+  "adminGender": {
+    "tr": "Cinsiyet",
+    "en": "Gender",
+    "ar": "الجنس"
+  },
+  "adminGenderRequired": {
+    "tr": "Cinsiyet *",
+    "en": "Gender *",
+    "ar": "الجنس *"
+  },
+  "adminGenderMale": {
+    "tr": "Erkek",
+    "en": "Male",
+    "ar": "ذكر"
+  },
+  "adminGenderFemale": {
+    "tr": "Kadın",
+    "en": "Female",
+    "ar": "أنثى"
+  },
+  "adminGenderMixed": {
+    "tr": "Karma",
+    "en": "Mixed",
+    "ar": "مختلط"
+  },
+  "adminGenderUnspecified": {
+    "tr": "Belirtilmemiş",
+    "en": "Unspecified",
+    "ar": "غير محدد"
+  },
+  "adminCityJeddah": {
+    "tr": "Cidde",
+    "en": "Jeddah",
+    "ar": "جدة"
+  },
+  "adminCityOther": {
+    "tr": "Diğer",
+    "en": "Other",
+    "ar": "أخرى"
+  },
+  "adminBirthDate": {
+    "tr": "Doğum Tarihi",
+    "en": "Date of Birth",
+    "ar": "تاريخ الميلاد"
+  },
+  "adminDateHint": {
+    "tr": "gg/aa/yyyy",
+    "en": "dd/mm/yyyy",
+    "ar": "يوم/شهر/سنة"
+  },
+  "adminDateInvalid": {
+    "tr": "Geçerli bir tarih girin (gg/aa/yyyy)",
+    "en": "Enter a valid date (dd/mm/yyyy)",
+    "ar": "أدخل تاريخًا صالحًا (يوم/شهر/سنة)"
+  },
+  "adminPickDate": {
+    "tr": "Tarih Seçiniz",
+    "en": "Select a date",
+    "ar": "اختر التاريخ"
+  },
+  "adminStartDate": {
+    "tr": "Başlangıç",
+    "en": "Start",
+    "ar": "البداية"
+  },
+  "adminEndDate": {
+    "tr": "Bitiş",
+    "en": "End",
+    "ar": "النهاية"
+  },
+  "adminTime": {
+    "tr": "Saat",
+    "en": "Time",
+    "ar": "الوقت"
+  },
+  "adminDurationMin": {
+    "tr": "Süre (dk)",
+    "en": "Duration (min)",
+    "ar": "المدة (دقيقة)"
+  },
+  "adminMinutes": {
+    "tr": "{count} dk",
+    "en": "{count} min",
+    "ar": "{count} د",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminTitleRequired": {
+    "tr": "Başlık *",
+    "en": "Title *",
+    "ar": "العنوان *"
+  },
+  "adminCapacityRequired": {
+    "tr": "Kapasite *",
+    "en": "Capacity *",
+    "ar": "السعة *"
+  },
+  "adminCapacityInvalid": {
+    "tr": "Geçerli kapasite girin",
+    "en": "Enter a valid capacity",
+    "ar": "أدخل سعة صالحة"
+  },
+  "adminPersonCount": {
+    "tr": "{count} kişi",
+    "en": "{count, plural, =1{1 person} other{{count} people}}",
+    "ar": "{count, plural, =0{لا أحد} =1{شخص واحد} =2{شخصان} few{{count} أشخاص} many{{count} شخصًا} other{{count} شخص}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPeopleRatio": {
+    "tr": "{count}/{capacity} kişi",
+    "en": "{count}/{capacity} people",
+    "ar": "{count}/{capacity} أشخاص",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
+  },
+  "adminAnalyticsOverview": {
+    "tr": "Genel Durum",
+    "en": "Overview",
+    "ar": "نظرة عامة"
+  },
+  "adminAnalyticsGender": {
+    "tr": "Misafir Cinsiyet Dağılımı",
+    "en": "Guest Gender Distribution",
+    "ar": "توزيع الضيوف حسب الجنس"
+  },
+  "adminAnalyticsAssignment": {
+    "tr": "Atama Durumu",
+    "en": "Assignment Status",
+    "ar": "حالة التعيين"
+  },
+  "adminAnalyticsAssignedGuests": {
+    "tr": "{assigned} / {total} misafir bir sefere atanmış",
+    "en": "{assigned} / {total} guests assigned to a trip",
+    "ar": "{assigned} / {total} من الضيوف معيّنون لرحلة",
+    "placeholders": {
+      "assigned": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "adminNoGuestsYet": {
+    "tr": "Henüz misafir yok.",
+    "en": "No guests yet.",
+    "ar": "لا يوجد ضيوف بعد."
+  },
+  "adminEventAdd": {
+    "tr": "Etkinlik Ekle",
+    "en": "Add Event",
+    "ar": "إضافة فعالية"
+  },
+  "adminEventEdit": {
+    "tr": "Etkinliği Düzenle",
+    "en": "Edit Event",
+    "ar": "تعديل الفعالية"
+  },
+  "adminEventDelete": {
+    "tr": "Etkinliği Sil",
+    "en": "Delete Event",
+    "ar": "حذف الفعالية"
+  },
+  "adminEventDeleteConfirm": {
+    "tr": "\"{title}\" silinsin mi?",
+    "en": "Delete \"{title}\"?",
+    "ar": "هل تريد حذف \"{title}\"؟",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEventEmpty": {
+    "tr": "Bu gün için etkinlik yok",
+    "en": "No events for this day",
+    "ar": "لا توجد فعاليات في هذا اليوم"
+  },
+  "adminEventEmptySub": {
+    "tr": "Başka bir gün seçerek etkinlikleri görüntüleyin",
+    "en": "Select another day to view events",
+    "ar": "اختر يومًا آخر لعرض الفعاليات"
+  },
+  "adminEventUpcoming": {
+    "tr": "Yaklaşan",
+    "en": "Upcoming",
+    "ar": "قادمة"
+  },
+  "adminEventPast": {
+    "tr": "Gerçekleşti",
+    "en": "Completed",
+    "ar": "انتهت"
+  },
+  "adminEventLoadFailed": {
+    "tr": "Etkinlikler yüklenemedi",
+    "en": "Could not load events",
+    "ar": "تعذّر تحميل الفعاليات"
+  },
+  "adminEventAdded": {
+    "tr": "Etkinlik eklendi",
+    "en": "Event added",
+    "ar": "تمت إضافة الفعالية"
+  },
+  "adminEventUpdated": {
+    "tr": "Etkinlik güncellendi",
+    "en": "Event updated",
+    "ar": "تم تحديث الفعالية"
+  },
+  "adminEventAddFailed": {
+    "tr": "Etkinlik eklenemedi",
+    "en": "Could not add event",
+    "ar": "تعذّرت إضافة الفعالية"
+  },
+  "adminEventUpdateFailed": {
+    "tr": "Etkinlik güncellenemedi",
+    "en": "Could not update event",
+    "ar": "تعذّر تحديث الفعالية"
+  },
+  "adminEventDeleted": {
+    "tr": "Etkinlik silindi",
+    "en": "Event deleted",
+    "ar": "تم حذف الفعالية"
+  },
+  "adminEventDeleteFailed": {
+    "tr": "Etkinlik silinemedi",
+    "en": "Could not delete event",
+    "ar": "تعذّر حذف الفعالية"
+  },
+  "adminPrevious": {
+    "tr": "Önceki",
+    "en": "Previous",
+    "ar": "السابق"
+  },
+  "adminNext": {
+    "tr": "Sonraki",
+    "en": "Next",
+    "ar": "التالي"
+  },
+  "adminPickDay": {
+    "tr": "Gün Seç",
+    "en": "Pick a day",
+    "ar": "اختر اليوم"
+  },
+  "adminAgencies": {
+    "tr": "Acentalar",
+    "en": "Agencies",
+    "ar": "الوكالات"
+  },
+  "adminAgencyNew": {
+    "tr": "Yeni Acenta",
+    "en": "New Agency",
+    "ar": "وكالة جديدة"
+  },
+  "adminAgencyAddTitle": {
+    "tr": "Yeni Acenta Ekle",
+    "en": "Add New Agency",
+    "ar": "إضافة وكالة جديدة"
+  },
+  "adminAgencyEdit": {
+    "tr": "Acenta Düzenle",
+    "en": "Edit Agency",
+    "ar": "تعديل الوكالة"
+  },
+  "adminAgencyDetail": {
+    "tr": "Acenta Detayı",
+    "en": "Agency Details",
+    "ar": "تفاصيل الوكالة"
+  },
+  "adminAgencyEmpty": {
+    "tr": "Henüz acenta eklenmemiş",
+    "en": "No agencies added yet",
+    "ar": "لم تتم إضافة أي وكالة بعد"
+  },
+  "adminAgencyTotal": {
+    "tr": "Toplam Acenta",
+    "en": "Total Agencies",
+    "ar": "إجمالي الوكالات"
+  },
+  "adminAgencyActive": {
+    "tr": "Aktif Acenta",
+    "en": "Active Agencies",
+    "ar": "الوكالات النشطة"
+  },
+  "adminAgencyNameRequired": {
+    "tr": "Acenta Adı *",
+    "en": "Agency Name *",
+    "ar": "اسم الوكالة *"
+  },
+  "adminAgencyNameMissing": {
+    "tr": "Acenta adı gerekli",
+    "en": "Agency name is required",
+    "ar": "اسم الوكالة مطلوب"
+  },
+  "adminAgencyRequired": {
+    "tr": "Acenta *",
+    "en": "Agency *",
+    "ar": "الوكالة *"
+  },
+  "adminAgencyNotFound": {
+    "tr": "Acenta bulunamadı",
+    "en": "Agency not found",
+    "ar": "لم يتم العثور على الوكالة"
+  },
+  "adminAgencyDelete": {
+    "tr": "Acentayı Sil",
+    "en": "Delete Agency",
+    "ar": "حذف الوكالة"
+  },
+  "adminAgencyDeleteConfirm": {
+    "tr": "\"{name}\" acentasını silmek istediğinize emin misiniz?\n\nBu işlem geri alınamaz ve acentaya bağlı veriler etkilenebilir.",
+    "en": "Are you sure you want to delete the agency \"{name}\"?\n\nThis cannot be undone and data linked to the agency may be affected.",
+    "ar": "هل أنت متأكد أنك تريد حذف الوكالة \"{name}\"؟\n\nلا يمكن التراجع عن هذا الإجراء وقد تتأثر البيانات المرتبطة بالوكالة.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAgencySummary": {
+    "tr": "{users} kişi • {trips} sefer • {hotels} otel • {currencies} döviz",
+    "en": "{users} people • {trips} trips • {hotels} hotels • {currencies} currencies",
+    "ar": "{users} أشخاص • {trips} رحلات • {hotels} فنادق • {currencies} عملات",
+    "placeholders": {
+      "users": {
+        "type": "int"
+      },
+      "trips": {
+        "type": "int"
+      },
+      "hotels": {
+        "type": "int"
+      },
+      "currencies": {
+        "type": "int"
+      }
+    }
+  },
+  "adminCurrencyTab": {
+    "tr": "Döviz",
+    "en": "Currency",
+    "ar": "العملات"
+  },
+  "adminAgencyLoadFailed": {
+    "tr": "Acentalar yüklenemedi",
+    "en": "Could not load agencies",
+    "ar": "تعذّر تحميل الوكالات"
+  },
+  "adminAgencyCreated": {
+    "tr": "Acenta oluşturuldu",
+    "en": "Agency created",
+    "ar": "تم إنشاء الوكالة"
+  },
+  "adminAgencyCreateFailed": {
+    "tr": "Acenta oluşturulamadı",
+    "en": "Could not create agency",
+    "ar": "تعذّر إنشاء الوكالة"
+  },
+  "adminAgencyUpdated": {
+    "tr": "Acenta güncellendi",
+    "en": "Agency updated",
+    "ar": "تم تحديث الوكالة"
+  },
+  "adminAgencyUpdateFailed": {
+    "tr": "Acenta güncellenemedi",
+    "en": "Could not update agency",
+    "ar": "تعذّر تحديث الوكالة"
+  },
+  "adminAgencyDeleted": {
+    "tr": "Acenta silindi",
+    "en": "Agency deleted",
+    "ar": "تم حذف الوكالة"
+  },
+  "adminAgencyDeleteFailed": {
+    "tr": "Acenta silinemedi",
+    "en": "Could not delete agency",
+    "ar": "تعذّر حذف الوكالة"
+  },
+  "adminMapSelectAgencyHint": {
+    "tr": "Konumları görmek için önce bir acente seçin.\nAcenteler sayfasından bir acenteyi \"Yönet\" ile açabilirsiniz.",
+    "en": "Select an agency first to see locations.\nYou can open an agency with \"Manage\" on the Agencies page.",
+    "ar": "اختر وكالة أولًا لعرض المواقع.\nيمكنك فتح وكالة من صفحة الوكالات عبر زر \"إدارة\"."
+  },
+  "adminMapShowAll": {
+    "tr": "Herkesi göster",
+    "en": "Show everyone",
+    "ar": "عرض الجميع"
+  },
+  "adminMapPeopleList": {
+    "tr": "Kişi listesi",
+    "en": "People list",
+    "ar": "قائمة الأشخاص"
+  },
+  "adminMapNoOneSharing": {
+    "tr": "Henüz konum paylaşan kimse yok",
+    "en": "No one is sharing their location yet",
+    "ar": "لا أحد يشارك موقعه بعد"
+  },
+  "adminMapVisiblePeople": {
+    "tr": "Konumu görünen kişiler ({count})",
+    "en": "People with visible location ({count})",
+    "ar": "الأشخاص الظاهرة مواقعهم ({count})",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminMapLastUpdate": {
+    "tr": "Son güncelleme: {time}",
+    "en": "Last update: {time}",
+    "ar": "آخر تحديث: {time}",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "adminMapSelectPerson": {
+    "tr": "Kişi Seç",
+    "en": "Select Person",
+    "ar": "اختر شخصًا"
+  },
+  "adminMapEveryoneOnMap": {
+    "tr": "Haritada herkes",
+    "en": "Everyone on map",
+    "ar": "الجميع على الخريطة"
+  },
+  "adminSearchUser": {
+    "tr": "Kullanıcı ara...",
+    "en": "Search users...",
+    "ar": "ابحث عن مستخدم..."
+  },
+  "adminMapLocation": {
+    "tr": "Konum",
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "adminMapLoading": {
+    "tr": "Konum yükleniyor...",
+    "en": "Loading location...",
+    "ar": "جارٍ تحميل الموقع..."
+  },
+  "adminMapNoSharedLocation": {
+    "tr": "Bu kişinin paylaşılan konumu yok.",
+    "en": "This person has no shared location.",
+    "ar": "لا يوجد موقع مُشارك لهذا الشخص."
+  },
+  "adminMapLatLng": {
+    "tr": "Enlem: {lat}  Boylam: {lng}",
+    "en": "Lat: {lat}  Lng: {lng}",
+    "ar": "خط العرض: {lat}  خط الطول: {lng}",
+    "placeholders": {
+      "lat": {
+        "type": "String"
+      },
+      "lng": {
+        "type": "String"
+      }
+    }
+  },
+  "adminMapDirections": {
+    "tr": "Google Maps'te yol tarifi",
+    "en": "Directions in Google Maps",
+    "ar": "الاتجاهات في خرائط Google"
+  },
+  "adminMapOpenFailed": {
+    "tr": "Harita açılamadı",
+    "en": "Could not open the map",
+    "ar": "تعذّر فتح الخريطة"
+  },
+  "adminMapLoadFailed": {
+    "tr": "Konumlar yüklenemedi. Yetkiniz olmayabilir.",
+    "en": "Could not load locations. You may not have permission.",
+    "ar": "تعذّر تحميل المواقع. قد لا تملك الصلاحية."
+  },
+  "adminMapReadFailed": {
+    "tr": "Konum okunamadı.",
+    "en": "Could not read the location.",
+    "ar": "تعذّرت قراءة الموقع."
+  },
+  "adminCurrencyAdd": {
+    "tr": "Döviz Ekle",
+    "en": "Add Currency",
+    "ar": "إضافة عملة"
+  },
+  "adminCurrencyAddTitle": {
+    "tr": "Yeni Döviz Ekle",
+    "en": "Add New Currency",
+    "ar": "إضافة عملة جديدة"
+  },
+  "adminCurrencyEdit": {
+    "tr": "Döviz Düzenle",
+    "en": "Edit Currency",
+    "ar": "تعديل العملة"
+  },
+  "adminCurrencyQuickAdd": {
+    "tr": "Hızlı ekle",
+    "en": "Quick add",
+    "ar": "إضافة سريعة"
+  },
+  "adminCurrencyEmpty": {
+    "tr": "Henüz döviz eklenmedi.",
+    "en": "No currencies added yet.",
+    "ar": "لم تتم إضافة أي عملة بعد."
+  },
+  "adminCurrencyFlag": {
+    "tr": "Bayrak",
+    "en": "Flag",
+    "ar": "العلم"
+  },
+  "adminCurrencyName": {
+    "tr": "Ad (USD, EUR...)",
+    "en": "Code (USD, EUR...)",
+    "ar": "الرمز (USD، EUR...)"
+  },
+  "adminCurrencyValue": {
+    "tr": "Değer (₺)",
+    "en": "Value (₺)",
+    "ar": "القيمة (₺)"
+  },
+  "adminCurrencyValueInvalid": {
+    "tr": "Geçerli bir değer girin",
+    "en": "Enter a valid value",
+    "ar": "أدخل قيمة صالحة"
+  },
+  "adminCurrencyDelete": {
+    "tr": "Dövizi Sil",
+    "en": "Delete Currency",
+    "ar": "حذف العملة"
+  },
+  "adminCurrencyDeleteConfirm": {
+    "tr": "{name} dövizini silmek istediğinize emin misiniz?",
+    "en": "Are you sure you want to delete {name}?",
+    "ar": "هل أنت متأكد أنك تريد حذف {name}؟",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminCurrencyLoadFailed": {
+    "tr": "Döviz kurları yüklenemedi",
+    "en": "Could not load exchange rates",
+    "ar": "تعذّر تحميل أسعار الصرف"
+  },
+  "adminCurrencyAdded": {
+    "tr": "Döviz eklendi",
+    "en": "Currency added",
+    "ar": "تمت إضافة العملة"
+  },
+  "adminCurrencyUpdated": {
+    "tr": "Döviz güncellendi",
+    "en": "Currency updated",
+    "ar": "تم تحديث العملة"
+  },
+  "adminCurrencyAddFailed": {
+    "tr": "Döviz eklenemedi",
+    "en": "Could not add currency",
+    "ar": "تعذّرت إضافة العملة"
+  },
+  "adminCurrencyUpdateFailed": {
+    "tr": "Döviz güncellenemedi",
+    "en": "Could not update currency",
+    "ar": "تعذّر تحديث العملة"
+  },
+  "adminCurrencyDeleted": {
+    "tr": "Döviz silindi",
+    "en": "Currency deleted",
+    "ar": "تم حذف العملة"
+  },
+  "adminCurrencyDeleteFailed": {
+    "tr": "Döviz silinemedi",
+    "en": "Could not delete currency",
+    "ar": "تعذّر حذف العملة"
+  },
+  "adminHotelAdd": {
+    "tr": "Otel Ekle",
+    "en": "Add Hotel",
+    "ar": "إضافة فندق"
+  },
+  "adminHotelEdit": {
+    "tr": "Otel Düzenle",
+    "en": "Edit Hotel",
+    "ar": "تعديل الفندق"
+  },
+  "adminHotelDelete": {
+    "tr": "Oteli Sil",
+    "en": "Delete Hotel",
+    "ar": "حذف الفندق"
+  },
+  "adminHotelDeleteConfirm": {
+    "tr": "\"{name}\" otelini ve tüm odalarını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "en": "Are you sure you want to delete the hotel \"{name}\" and all its rooms? This cannot be undone.",
+    "ar": "هل أنت متأكد أنك تريد حذف الفندق \"{name}\" وجميع غرفه؟ لا يمكن التراجع عن هذا الإجراء.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminHotelEmpty": {
+    "tr": "Henüz otel eklenmedi.",
+    "en": "No hotels added yet.",
+    "ar": "لم تتم إضافة أي فندق بعد."
+  },
+  "adminHotelNameRequired": {
+    "tr": "Otel Adı *",
+    "en": "Hotel Name *",
+    "ar": "اسم الفندق *"
+  },
+  "adminHotelCapacityShort": {
+    "tr": "Kap. {count}",
+    "en": "Cap. {count}",
+    "ar": "السعة {count}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminHotelCreated": {
+    "tr": "Otel oluşturuldu",
+    "en": "Hotel created",
+    "ar": "تم إنشاء الفندق"
+  },
+  "adminHotelCreateFailed": {
+    "tr": "Otel oluşturulamadı",
+    "en": "Could not create hotel",
+    "ar": "تعذّر إنشاء الفندق"
+  },
+  "adminHotelUpdated": {
+    "tr": "Otel güncellendi",
+    "en": "Hotel updated",
+    "ar": "تم تحديث الفندق"
+  },
+  "adminHotelUpdateFailed": {
+    "tr": "Otel güncellenemedi",
+    "en": "Could not update hotel",
+    "ar": "تعذّر تحديث الفندق"
+  },
+  "adminHotelDeleted": {
+    "tr": "Otel silindi",
+    "en": "Hotel deleted",
+    "ar": "تم حذف الفندق"
+  },
+  "adminHotelDeleteFailed": {
+    "tr": "Otel silinemedi",
+    "en": "Could not delete hotel",
+    "ar": "تعذّر حذف الفندق"
+  },
+  "adminRoomsOfHotel": {
+    "tr": "{name} - Odalar",
+    "en": "{name} - Rooms",
+    "ar": "{name} - الغرف",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomAdd": {
+    "tr": "Oda Ekle",
+    "en": "Add Room",
+    "ar": "إضافة غرفة"
+  },
+  "adminRoomEdit": {
+    "tr": "Oda Düzenle",
+    "en": "Edit Room",
+    "ar": "تعديل الغرفة"
+  },
+  "adminRoomDelete": {
+    "tr": "Odayı Sil",
+    "en": "Delete Room",
+    "ar": "حذف الغرفة"
+  },
+  "adminRoomDeleteConfirm": {
+    "tr": "{number} numaralı oda silinecek. Emin misiniz?",
+    "en": "Room {number} will be deleted. Are you sure?",
+    "ar": "سيتم حذف الغرفة رقم {number}. هل أنت متأكد؟",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomEmpty": {
+    "tr": "Bu otele ait oda eklenmedi",
+    "en": "No rooms added for this hotel",
+    "ar": "لم تتم إضافة غرف لهذا الفندق"
+  },
+  "adminRoomNumber": {
+    "tr": "Oda {number}",
+    "en": "Room {number}",
+    "ar": "غرفة {number}",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomOccupancy": {
+    "tr": "{count}/{capacity} kişilik",
+    "en": "{count}/{capacity} occupied",
+    "ar": "{count}/{capacity} مشغولة",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
+  },
+  "adminRoomCount": {
+    "tr": "{count} oda",
+    "en": "{count, plural, =1{1 room} other{{count} rooms}}",
+    "ar": "{count, plural, =0{لا غرف} =1{غرفة واحدة} =2{غرفتان} few{{count} غرف} many{{count} غرفة} other{{count} غرفة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminRoomOccupantsTitle": {
+    "tr": "Oda {number} - Kişiler",
+    "en": "Room {number} - Occupants",
+    "ar": "غرفة {number} - النزلاء",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomNoOccupants": {
+    "tr": "Bu odada kimse yok.",
+    "en": "No one is in this room.",
+    "ar": "لا يوجد أحد في هذه الغرفة."
+  },
+  "adminRoomRemoveUser": {
+    "tr": "Odadan Çıkar",
+    "en": "Remove from Room",
+    "ar": "إزالة من الغرفة"
+  },
+  "adminRoomRemoveUserConfirm": {
+    "tr": "{name} kullanıcısını bu odadan çıkarmak istediğinize emin misiniz?",
+    "en": "Are you sure you want to remove {name} from this room?",
+    "ar": "هل أنت متأكد أنك تريد إزالة {name} من هذه الغرفة؟",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomNumberRequired": {
+    "tr": "Oda Numarası *",
+    "en": "Room Number *",
+    "ar": "رقم الغرفة *"
+  },
+  "adminRoomNumberMissing": {
+    "tr": "Oda numarası girin",
+    "en": "Enter a room number",
+    "ar": "أدخل رقم الغرفة"
+  },
+  "adminRoomGenderMissing": {
+    "tr": "Cinsiyet türü seçiniz",
+    "en": "Select a gender type",
+    "ar": "اختر نوع الجنس"
+  },
+  "adminRoomCreated": {
+    "tr": "Oda oluşturuldu",
+    "en": "Room created",
+    "ar": "تم إنشاء الغرفة"
+  },
+  "adminRoomCreateFailed": {
+    "tr": "Oda oluşturulamadı",
+    "en": "Could not create room",
+    "ar": "تعذّر إنشاء الغرفة"
+  },
+  "adminRoomUpdated": {
+    "tr": "Oda güncellendi",
+    "en": "Room updated",
+    "ar": "تم تحديث الغرفة"
+  },
+  "adminRoomUpdateFailed": {
+    "tr": "Oda güncellenemedi",
+    "en": "Could not update room",
+    "ar": "تعذّر تحديث الغرفة"
+  },
+  "adminRoomDeleted": {
+    "tr": "Oda silindi",
+    "en": "Room deleted",
+    "ar": "تم حذف الغرفة"
+  },
+  "adminRoomDeleteFailed": {
+    "tr": "Oda silinemedi",
+    "en": "Could not delete room",
+    "ar": "تعذّر حذف الغرفة"
+  },
+  "adminRoomUserRemoved": {
+    "tr": "{name} odadan çıkarıldı",
+    "en": "{name} was removed from the room",
+    "ar": "تمت إزالة {name} من الغرفة",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomUserRemoveFailed": {
+    "tr": "Kullanıcı odadan çıkarılamadı",
+    "en": "Could not remove user from room",
+    "ar": "تعذّرت إزالة المستخدم من الغرفة"
+  },
+  "adminNotifyNoAgencyHint": {
+    "tr": "Bildirim göndermek için önce bir acenteyi yönetmeye başlayın.",
+    "en": "Start managing an agency first to send notifications.",
+    "ar": "ابدأ بإدارة وكالة أولًا لإرسال الإشعارات."
+  },
+  "adminNotifyTarget": {
+    "tr": "Gönderilecek Hedef",
+    "en": "Target Audience",
+    "ar": "الجهة المستهدفة"
+  },
+  "adminNotifyTargetAll": {
+    "tr": "Tüm Acente",
+    "en": "Whole Agency",
+    "ar": "كل الوكالة"
+  },
+  "adminNotifyTargetInvalid": {
+    "tr": "Lütfen geçerli bir hedef seçiniz.",
+    "en": "Please select a valid target.",
+    "ar": "يرجى اختيار جهة مستهدفة صالحة."
+  },
+  "adminNotifyTitle": {
+    "tr": "Başlık",
+    "en": "Title",
+    "ar": "العنوان"
+  },
+  "adminNotifyMessage": {
+    "tr": "Mesaj",
+    "en": "Message",
+    "ar": "الرسالة"
+  },
+  "adminNotifyRequired": {
+    "tr": "Başlık ve mesaj zorunlu",
+    "en": "Title and message are required",
+    "ar": "العنوان والرسالة مطلوبان"
+  },
+  "adminNotifySent": {
+    "tr": "Gönderilen Bildirimler",
+    "en": "Sent Notifications",
+    "ar": "الإشعارات المرسلة"
+  },
+  "adminNotifyEmpty": {
+    "tr": "Henüz bildirim gönderilmedi.",
+    "en": "No notifications sent yet.",
+    "ar": "لم يتم إرسال أي إشعار بعد."
+  },
+  "adminNotifyHistoryLoadFailed": {
+    "tr": "Bildirim geçmişi yüklenemedi",
+    "en": "Could not load notification history",
+    "ar": "تعذّر تحميل سجل الإشعارات"
+  },
+  "adminNotifySendFailed": {
+    "tr": "Bildirim gönderilirken hata oluştu.",
+    "en": "An error occurred while sending the notification.",
+    "ar": "حدث خطأ أثناء إرسال الإشعار."
+  },
+  "adminNotifySentOk": {
+    "tr": "Duyuru gönderildi",
+    "en": "Announcement sent",
+    "ar": "تم إرسال الإعلان"
+  },
+  "adminTrackingDescription": {
+    "tr": "Konum takibi aktif olduğunda, misafirleriniz sizin konumunuzu harita üzerinde görebilir. Bu özellik rehber olarak görev yaptığınızda faydalıdır.",
+    "en": "When location tracking is on, your guests can see your location on the map. This is useful when you are acting as their guide.",
+    "ar": "عند تفعيل تتبع الموقع، يمكن لضيوفك رؤية موقعك على الخريطة. هذه الميزة مفيدة عندما تعمل مرشدًا لهم."
+  },
+  "adminLiveMap": {
+    "tr": "Canlı Konum Haritası",
+    "en": "Live Location Map",
+    "ar": "خريطة المواقع المباشرة"
+  },
+  "adminLiveMapSub": {
+    "tr": "Acentenizdeki herkesin son konumu",
+    "en": "Latest location of everyone in your agency",
+    "ar": "آخر موقع لجميع أفراد وكالتك"
+  },
+  "adminTripCreate": {
+    "tr": "Sefer Oluştur",
+    "en": "Create Trip",
+    "ar": "إنشاء رحلة"
+  },
+  "adminTripEdit": {
+    "tr": "Sefer Düzenle",
+    "en": "Edit Trip",
+    "ar": "تعديل الرحلة"
+  },
+  "adminTripDelete": {
+    "tr": "Seferi Sil",
+    "en": "Delete Trip",
+    "ar": "حذف الرحلة"
+  },
+  "adminTripDeleteConfirm": {
+    "tr": "\"{name}\" seferini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "en": "Are you sure you want to delete the trip \"{name}\"? This cannot be undone.",
+    "ar": "هل أنت متأكد أنك تريد حذف الرحلة \"{name}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTripEmpty": {
+    "tr": "Henüz sefer oluşturulmadı.",
+    "en": "No trips created yet.",
+    "ar": "لم يتم إنشاء أي رحلة بعد."
+  },
+  "adminTripEmptySub": {
+    "tr": "Sefer oluştur, düzenle ve listele.",
+    "en": "Create, edit and list trips.",
+    "ar": "أنشئ الرحلات وعدّلها واعرضها."
+  },
+  "adminTripNoLocation": {
+    "tr": "Yer belirtilmedi",
+    "en": "No location set",
+    "ar": "لم يُحدد المكان"
+  },
+  "adminTripAssignedCount": {
+    "tr": "{count} kişi atanmış",
+    "en": "{count, plural, =1{1 person assigned} other{{count} people assigned}}",
+    "ar": "{count, plural, =0{لا أحد معيّن} =1{شخص واحد معيّن} =2{شخصان معيّنان} few{{count} أشخاص معيّنون} many{{count} شخصًا معيّنًا} other{{count} شخص معيّن}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminTripManagerLabel": {
+    "tr": "Yönetici: {names}",
+    "en": "Manager: {names}",
+    "ar": "المدير: {names}",
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTripNameRequired": {
+    "tr": "Sefer Adı *",
+    "en": "Trip Name *",
+    "ar": "اسم الرحلة *"
+  },
+  "adminTripManagersSelected": {
+    "tr": "Sefer Yöneticileri ({count} seçili)",
+    "en": "Trip Managers ({count} selected)",
+    "ar": "مديرو الرحلة ({count} محدد)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminTripNoManagers": {
+    "tr": "Yönetici tipinde kullanıcı bulunamadı.",
+    "en": "No users with the manager role found.",
+    "ar": "لم يتم العثور على مستخدمين بدور المدير."
+  },
+  "adminTripEndBeforeStart": {
+    "tr": "Bitiş tarihi başlangıçtan önce olamaz",
+    "en": "End date cannot be before the start date",
+    "ar": "لا يمكن أن يكون تاريخ النهاية قبل تاريخ البداية"
+  },
+  "adminTripCreated": {
+    "tr": "Sefer oluşturuldu",
+    "en": "Trip created",
+    "ar": "تم إنشاء الرحلة"
+  },
+  "adminTripCreateFailed": {
+    "tr": "Sefer oluşturulamadı",
+    "en": "Could not create trip",
+    "ar": "تعذّر إنشاء الرحلة"
+  },
+  "adminTripUpdated": {
+    "tr": "Sefer güncellendi",
+    "en": "Trip updated",
+    "ar": "تم تحديث الرحلة"
+  },
+  "adminTripUpdateFailed": {
+    "tr": "Sefer güncellenemedi",
+    "en": "Could not update trip",
+    "ar": "تعذّر تحديث الرحلة"
+  },
+  "adminTripDeleted": {
+    "tr": "Sefer silindi",
+    "en": "Trip deleted",
+    "ar": "تم حذف الرحلة"
+  },
+  "adminTripDeleteFailed": {
+    "tr": "Sefer silinemedi",
+    "en": "Could not delete trip",
+    "ar": "تعذّر حذف الرحلة"
+  },
+  "adminUserAdd": {
+    "tr": "Kişi Ekle",
+    "en": "Add Person",
+    "ar": "إضافة شخص"
+  },
+  "adminUserCreate": {
+    "tr": "Kişi Oluştur",
+    "en": "Create Person",
+    "ar": "إنشاء شخص"
+  },
+  "adminUserEdit": {
+    "tr": "Kişiyi Düzenle",
+    "en": "Edit Person",
+    "ar": "تعديل الشخص"
+  },
+  "adminUserDetail": {
+    "tr": "Kişi Detayı",
+    "en": "Person Details",
+    "ar": "تفاصيل الشخص"
+  },
+  "adminUserDelete": {
+    "tr": "Kişiyi Sil",
+    "en": "Delete Person",
+    "ar": "حذف الشخص"
+  },
+  "adminUserDeleteConfirm": {
+    "tr": "\"{name}\" kişisini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+    "en": "Are you sure you want to delete \"{name}\"? This cannot be undone.",
+    "ar": "هل أنت متأكد أنك تريد حذف \"{name}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminUserNotFound": {
+    "tr": "Kişi bulunamadı.",
+    "en": "Person not found.",
+    "ar": "لم يتم العثور على الشخص."
+  },
+  "adminUserEmpty": {
+    "tr": "Henüz kullanıcı bulunmuyor.",
+    "en": "No users yet.",
+    "ar": "لا يوجد مستخدمون بعد."
+  },
+  "adminUserSearchHint": {
+    "tr": "İsim veya TC ile ara",
+    "en": "Search by name or ID",
+    "ar": "ابحث بالاسم أو رقم الهوية"
+  },
+  "adminUserNameRequired": {
+    "tr": "Ad Soyad *",
+    "en": "Full Name *",
+    "ar": "الاسم الكامل *"
+  },
+  "adminUserNameMissing": {
+    "tr": "Ad soyad gerekli",
+    "en": "Full name is required",
+    "ar": "الاسم الكامل مطلوب"
+  },
+  "adminUserTcRequired": {
+    "tr": "TC Kimlik No *",
+    "en": "Turkish ID No. *",
+    "ar": "رقم الهوية التركية *"
+  },
+  "adminUserTcLocked": {
+    "tr": "TC kimlik numarası değiştirilemez",
+    "en": "The ID number cannot be changed",
+    "ar": "لا يمكن تغيير رقم الهوية"
+  },
+  "adminUserTcMissing": {
+    "tr": "TC gerekli",
+    "en": "ID number is required",
+    "ar": "رقم الهوية مطلوب"
+  },
+  "adminUserTcLength": {
+    "tr": "TC 11 haneli olmalı",
+    "en": "ID number must be 11 digits",
+    "ar": "يجب أن يتكون رقم الهوية من 11 رقمًا"
+  },
+  "adminUserType": {
+    "tr": "Kullanıcı Tipi",
+    "en": "User Type",
+    "ar": "نوع المستخدم"
+  },
+  "adminUserAgencyRequired": {
+    "tr": "Yönetici için acenta seçimi zorunludur",
+    "en": "Selecting an agency is required",
+    "ar": "اختيار الوكالة إلزامي"
+  },
+  "adminUserTcExists": {
+    "tr": "Bu TC ile kayıtlı bir hesap zaten var.",
+    "en": "An account with this ID number already exists.",
+    "ar": "يوجد حساب مسجل بهذا الرقم بالفعل."
+  },
+  "adminUserCreated": {
+    "tr": "Kişi oluşturuldu",
+    "en": "Person created",
+    "ar": "تم إنشاء الشخص"
+  },
+  "adminUserCreateOffline": {
+    "tr": "İnternet bağlantısı yok. Kişi oluşturulamadı.",
+    "en": "No internet connection. Could not create person.",
+    "ar": "لا يوجد اتصال بالإنترنت. تعذّر إنشاء الشخص."
+  },
+  "adminUserAccountCreateFailed": {
+    "tr": "Kişi hesabı oluşturulamadı ({code})",
+    "en": "Could not create the account ({code})",
+    "ar": "تعذّر إنشاء الحساب ({code})",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "adminUserCreateFailed": {
+    "tr": "Kişi oluşturulamadı",
+    "en": "Could not create person",
+    "ar": "تعذّر إنشاء الشخص"
+  },
+  "adminUserUpdated": {
+    "tr": "Kullanıcı bilgileri güncellendi",
+    "en": "User details updated",
+    "ar": "تم تحديث بيانات المستخدم"
+  },
+  "adminUserUpdateFailed": {
+    "tr": "Kullanıcı bilgileri kaydedilemedi",
+    "en": "Could not save user details",
+    "ar": "تعذّر حفظ بيانات المستخدم"
+  },
+  "adminUserDeleted": {
+    "tr": "Kişi silindi",
+    "en": "Person deleted",
+    "ar": "تم حذف الشخص"
+  },
+  "adminUserDeleteFailed": {
+    "tr": "Kişi silinemedi",
+    "en": "Could not delete person",
+    "ar": "تعذّر حذف الشخص"
+  },
+  "adminAssignTitle": {
+    "tr": "{city} Ataması",
+    "en": "{city} Assignment",
+    "ar": "التعيين في {city}",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignTrip": {
+    "tr": "{city} Seferi",
+    "en": "{city} Trip",
+    "ar": "رحلة {city}",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignHotel": {
+    "tr": "{city} Oteli",
+    "en": "{city} Hotel",
+    "ar": "فندق {city}",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignRoom": {
+    "tr": "{city} Odası",
+    "en": "{city} Room",
+    "ar": "غرفة {city}",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignRoomRequired": {
+    "tr": "Otel seçildiğinde oda seçim zorunludur.",
+    "en": "A room must be selected when a hotel is selected.",
+    "ar": "يجب اختيار غرفة عند اختيار فندق."
+  },
+  "adminAssignRoomFull": {
+    "tr": "Oda kapasitesi dolu! Başka bir oda seçin.",
+    "en": "The room is full! Select another room.",
+    "ar": "الغرفة ممتلئة! اختر غرفة أخرى."
+  },
+  "adminAssignGenderMismatch": {
+    "tr": "Bu oda {gender} için ayrılmış! Cinsiyet uyumsuz.",
+    "en": "This room is reserved for {gender}! Gender mismatch.",
+    "ar": "هذه الغرفة مخصصة لـ{gender}! الجنس غير متوافق.",
+    "placeholders": {
+      "gender": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignUpdated": {
+    "tr": "Atama güncellendi",
+    "en": "Assignment updated",
+    "ar": "تم تحديث التعيين"
+  },
+  "adminAssignFailed": {
+    "tr": "Atama kaydedilemedi",
+    "en": "Could not save the assignment",
+    "ar": "تعذّر حفظ التعيين"
+  }
+}

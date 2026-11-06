@@ -1,0 +1,3868 @@
+{
+  "@@locale": "tr",
+  "adminActive": "Aktif",
+  "adminAdd": "Ekle",
+  "adminAddress": "Adres",
+  "adminAgencies": "Acentalar",
+  "adminAgencyActive": "Aktif Acenta",
+  "adminAgencyAddTitle": "Yeni Acenta Ekle",
+  "adminAgencyCreateFailed": "Acenta oluşturulamadı",
+  "adminAgencyCreated": "Acenta oluşturuldu",
+  "adminAgencyDelete": "Acentayı Sil",
+  "adminAgencyDeleteConfirm": "\"{name}\" acentasını silmek istediğinize emin misiniz?\n\nBu işlem geri alınamaz ve acentaya bağlı veriler etkilenebilir.",
+  "@adminAgencyDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAgencyDeleteFailed": "Acenta silinemedi",
+  "adminAgencyDeleted": "Acenta silindi",
+  "adminAgencyDetail": "Acenta Detayı",
+  "adminAgencyEdit": "Acenta Düzenle",
+  "adminAgencyEmpty": "Henüz acenta eklenmemiş",
+  "adminAgencyLabel": "Acente: {name}",
+  "@adminAgencyLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAgencyLoadFailed": "Acentalar yüklenemedi",
+  "adminAgencyNameMissing": "Acenta adı gerekli",
+  "adminAgencyNameRequired": "Acenta Adı *",
+  "adminAgencyNew": "Yeni Acenta",
+  "adminAgencyNotFound": "Acenta bulunamadı",
+  "adminAgencyRequired": "Acenta *",
+  "adminAgencySummary": "{users} kişi • {trips} sefer • {hotels} otel • {currencies} döviz",
+  "@adminAgencySummary": {
+    "placeholders": {
+      "users": {
+        "type": "int"
+      },
+      "trips": {
+        "type": "int"
+      },
+      "hotels": {
+        "type": "int"
+      },
+      "currencies": {
+        "type": "int"
+      }
+    }
+  },
+  "adminAgencyTotal": "Toplam Acenta",
+  "adminAgencyUpdateFailed": "Acenta güncellenemedi",
+  "adminAgencyUpdated": "Acenta güncellendi",
+  "adminAllTrips": "Tüm seferler",
+  "adminAnalyticsAssignedGuests": "{assigned} / {total} misafir bir sefere atanmış",
+  "@adminAnalyticsAssignedGuests": {
+    "placeholders": {
+      "assigned": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "adminAnalyticsAssignment": "Atama Durumu",
+  "adminAnalyticsGender": "Misafir Cinsiyet Dağılımı",
+  "adminAnalyticsOverview": "Genel Durum",
+  "adminAreYouSure": "Emin misiniz?",
+  "adminAssignFailed": "Atama kaydedilemedi",
+  "adminAssignGenderMismatch": "Bu oda {gender} için ayrılmış! Cinsiyet uyumsuz.",
+  "@adminAssignGenderMismatch": {
+    "placeholders": {
+      "gender": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignHotel": "{city} Oteli",
+  "@adminAssignHotel": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignRoom": "{city} Odası",
+  "@adminAssignRoom": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignRoomFull": "Oda kapasitesi dolu! Başka bir oda seçin.",
+  "adminAssignRoomRequired": "Otel seçildiğinde oda seçim zorunludur.",
+  "adminAssignTitle": "{city} Ataması",
+  "@adminAssignTitle": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignTrip": "{city} Seferi",
+  "@adminAssignTrip": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "adminAssignUpdated": "Atama güncellendi",
+  "adminBirthDate": "Doğum Tarihi",
+  "adminCapacityInvalid": "Geçerli kapasite girin",
+  "adminCapacityRequired": "Kapasite *",
+  "adminCityJeddah": "Cidde",
+  "adminCityOther": "Diğer",
+  "adminCurrencyAdd": "Döviz Ekle",
+  "adminCurrencyAddFailed": "Döviz eklenemedi",
+  "adminCurrencyAddTitle": "Yeni Döviz Ekle",
+  "adminCurrencyAdded": "Döviz eklendi",
+  "adminCurrencyDelete": "Dövizi Sil",
+  "adminCurrencyDeleteConfirm": "{name} dövizini silmek istediğinize emin misiniz?",
+  "@adminCurrencyDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminCurrencyDeleteFailed": "Döviz silinemedi",
+  "adminCurrencyDeleted": "Döviz silindi",
+  "adminCurrencyEdit": "Döviz Düzenle",
+  "adminCurrencyEmpty": "Henüz döviz eklenmedi.",
+  "adminCurrencyFlag": "Bayrak",
+  "adminCurrencyLoadFailed": "Döviz kurları yüklenemedi",
+  "adminCurrencyName": "Ad (USD, EUR...)",
+  "adminCurrencyQuickAdd": "Hızlı ekle",
+  "adminCurrencyTab": "Döviz",
+  "adminCurrencyUpdateFailed": "Döviz güncellenemedi",
+  "adminCurrencyUpdated": "Döviz güncellendi",
+  "adminCurrencyValue": "Değer (₺)",
+  "adminCurrencyValueInvalid": "Geçerli bir değer girin",
+  "adminDataLoadFailed": "Veriler yüklenirken bir hata oluştu",
+  "adminDateHint": "gg/aa/yyyy",
+  "adminDateInvalid": "Geçerli bir tarih girin (gg/aa/yyyy)",
+  "adminDescription": "Açıklama",
+  "adminDetail": "Detay",
+  "adminDurationMin": "Süre (dk)",
+  "adminEmail": "E-posta",
+  "adminEndDate": "Bitiş",
+  "adminEsnafAccountActive": "Esnaf hesabı açık",
+  "adminEsnafAccountNone": "Bu dükkanın esnaf hesabı yok. Hesap açılınca esnaf kod ve PIN ile giriş yapar, misafirin QR kodunu okutarak indirimli satışı kaydeder.",
+  "adminEsnafAccountSection": "Esnaf Hesabı",
+  "adminEsnafAlertBigTx": "{guest} – {shop}: tek işlemde {amount}",
+  "@adminEsnafAlertBigTx": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafAlertManyTx": "{guest} – {shop}: {date} tarihinde {count} işlem",
+  "@adminEsnafAlertManyTx": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafAlertQuickCancel": "{guest} – {shop}: {amount} tutarlı işlem 24 saat içinde iptal edildi",
+  "@adminEsnafAlertQuickCancel": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafAlerts": "Uyarılar",
+  "adminEsnafBadgeNo": "Esnaf hesabı yok",
+  "adminEsnafBadgeYes": "Esnaf hesabı var",
+  "adminEsnafByShop": "Dükkan bazında",
+  "adminEsnafCancelDone": "İşlem iptal edildi",
+  "adminEsnafCancelReason": "İptal sebebi",
+  "adminEsnafCancelReasonLabel": "Sebep: {reason}",
+  "@adminEsnafCancelReasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafCancelReasonRequired": "Sebep girin",
+  "adminEsnafCancelTx": "İşlemi iptal et",
+  "adminEsnafCancelled": "İptal",
+  "adminEsnafClose": "Hesabı kapat",
+  "adminEsnafCloseConfirm": "{name} için esnaf hesabı kapatılsın mı? Esnaf artık giriş yapamaz.",
+  "@adminEsnafCloseConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafClosed": "Esnaf hesabı kapatıldı",
+  "adminEsnafCode": "Kod",
+  "adminEsnafCodeExists": "Bu kod başka bir hesapta kullanılıyor. Tekrar deneyin.",
+  "adminEsnafCodeLabel": "Esnaf kodu: {code}",
+  "@adminEsnafCodeLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafCommission": "Komisyon oranı (%)",
+  "adminEsnafCommissionHint": "0-30 arası, boş = 0",
+  "adminEsnafCommissionRange": "Komisyon 0 ile 30 arasında olmalı",
+  "adminEsnafCommissionShort": "Komisyon %{percent}",
+  "@adminEsnafCommissionShort": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafContinue": "Devam",
+  "adminEsnafCopied": "Panoya kopyalandı",
+  "adminEsnafCopy": "Kopyala",
+  "adminEsnafCreate": "Esnaf hesabı oluştur",
+  "adminEsnafCreated": "Esnaf hesabı oluşturuldu",
+  "adminEsnafCredsTitle": "Esnaf giriş bilgileri",
+  "adminEsnafCredsWarning": "Bu bilgileri esnafa iletin. PIN bir daha gösterilmeyecek.",
+  "adminEsnafDailyChart": "Günlük net ciro (SAR)",
+  "adminEsnafDone": "Tamam",
+  "adminEsnafEmpty": "Bu dönemde anlaşmalı esnafta alışveriş yok.",
+  "adminEsnafFailed": "İşlem başarısız: {error}",
+  "@adminEsnafFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafLoadFailed": "Rapor yüklenemedi. Aşağı çekerek yenileyin.",
+  "adminEsnafLoyaltyInfo": "Sadakat puanı: 1 SAR = {points} puan, 100 puan = {sar} SAR",
+  "@adminEsnafLoyaltyInfo": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      },
+      "sar": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafMenu": "Esnaf Raporları",
+  "adminEsnafMenuSub": "Anlaşmalı esnaf satışları ve komisyon",
+  "adminEsnafMethodCard": "Kart",
+  "adminEsnafMethodCash": "Nakit",
+  "adminEsnafMethodChart": "Ödeme türü dağılımı",
+  "adminEsnafMethodPoints": "Puan",
+  "adminEsnafNoAgencyHint": "Raporu görmek için süper admin panelinden bir acente seçip yönetin.",
+  "adminEsnafNoAlerts": "Şüpheli işlem yok.",
+  "adminEsnafPeriod30": "Son 30 gün",
+  "adminEsnafPeriodCustom": "Özel aralık",
+  "adminEsnafPeriodLastMonth": "Geçen ay",
+  "adminEsnafPeriodThisMonth": "Bu ay",
+  "adminEsnafPin": "PIN",
+  "adminEsnafPinField": "6 haneli PIN",
+  "adminEsnafPinInvalid": "PIN 6 haneli rakam olmalı",
+  "adminEsnafPinManual": "PIN'i ben gireyim",
+  "adminEsnafPinRandom": "Rastgele PIN üret",
+  "adminEsnafRange": "{from} – {to}",
+  "@adminEsnafRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafResetConfirm": "Yeni bir kod ve PIN oluşturulacak. Eski kod ve PIN ile giriş artık çalışmaz. Devam edilsin mi?",
+  "adminEsnafResetPin": "PIN sıfırla",
+  "adminEsnafSaveFirst": "Esnaf hesabı açmak için önce dükkanı kaydedin.",
+  "adminEsnafShare": "Komisyon dökümü paylaş",
+  "adminEsnafShareByShop": "Dükkan bazında:",
+  "adminEsnafShareCopied": "Komisyon dökümü panoya kopyalandı",
+  "adminEsnafShareHeader": "Esnaf Komisyon Dökümü",
+  "adminEsnafShareMessage": "السلام عليكم\nتم إنشاء حساب التاجر لمتجر {shop} في تطبيق Umre Rehberim.\n1) ثبّت تطبيق Umre Rehberim على هاتفك.\n2) افتح التطبيق واختر «تاجر».\n3) الرمز: {code}\n4) الرقم السري (PIN): {pin}\nلا تشارك الرقم السري مع أحد.\n\nSelamün aleyküm\n{shop} için Umre Rehberim esnaf hesabınız açıldı.\n1) Umre Rehberim uygulamasını telefonunuza yükleyin.\n2) Uygulamayı açıp giriş tipi olarak \"Esnaf\"ı seçin.\n3) Kod: {code}\n4) PIN: {pin}\nPIN'inizi kimseyle paylaşmayın.",
+  "@adminEsnafShareMessage": {
+    "description": "Esnafa WhatsApp ile gönderilen giriş mesajı; her dilde Arapça + Türkçe birlikte.",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      },
+      "pin": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafSharePeriod": "Dönem: {range}",
+  "@adminEsnafSharePeriod": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafShareTotals": "Toplam: {count} işlem, net ciro {net}, komisyon {commission}",
+  "@adminEsnafShareTotals": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "net": {
+        "type": "String"
+      },
+      "commission": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafShareWhatsapp": "WhatsApp ile paylaş",
+  "adminEsnafShopRow": "{count} işlem · Net {net} · %{percent} → {commission}",
+  "@adminEsnafShopRow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "net": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      },
+      "commission": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafShowAll": "Tümünü göster ({count})",
+  "@adminEsnafShowAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafSumCommission": "Biriken komisyon",
+  "adminEsnafSumCount": "Alışveriş sayısı",
+  "adminEsnafSumDiscount": "Misafirlere sağlanan indirim",
+  "adminEsnafSumGross": "Brüt ciro",
+  "adminEsnafSumNet": "Net ciro",
+  "adminEsnafSumPointsEarned": "Dağıtılan puan",
+  "adminEsnafSumPointsSpent": "Harcanan puan",
+  "adminEsnafTransactions": "İşlemler",
+  "adminEsnafWhatsappFailed": "WhatsApp açılamadı; bilgiler panoya kopyalandı",
+  "adminEventAdd": "Etkinlik Ekle",
+  "adminEventAddFailed": "Etkinlik eklenemedi",
+  "adminEventAdded": "Etkinlik eklendi",
+  "adminEventDelete": "Etkinliği Sil",
+  "adminEventDeleteConfirm": "\"{title}\" silinsin mi?",
+  "@adminEventDeleteConfirm": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEventDeleteFailed": "Etkinlik silinemedi",
+  "adminEventDeleted": "Etkinlik silindi",
+  "adminEventEdit": "Etkinliği Düzenle",
+  "adminEventEmpty": "Bu gün için etkinlik yok",
+  "adminEventEmptySub": "Başka bir gün seçerek etkinlikleri görüntüleyin",
+  "adminEventLoadFailed": "Etkinlikler yüklenemedi",
+  "adminEventPast": "Gerçekleşti",
+  "adminEventUpcoming": "Yaklaşan",
+  "adminEventUpdateFailed": "Etkinlik güncellenemedi",
+  "adminEventUpdated": "Etkinlik güncellendi",
+  "adminFilterAll": "Tümü",
+  "adminGender": "Cinsiyet",
+  "adminGenderFemale": "Kadın",
+  "adminGenderMale": "Erkek",
+  "adminGenderMixed": "Karma",
+  "adminGenderRequired": "Cinsiyet *",
+  "adminGenderUnspecified": "Belirtilmemiş",
+  "adminHotelAdd": "Otel Ekle",
+  "adminHotelCapacityShort": "Kap. {count}",
+  "@adminHotelCapacityShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminHotelCreateFailed": "Otel oluşturulamadı",
+  "adminHotelCreated": "Otel oluşturuldu",
+  "adminHotelDelete": "Oteli Sil",
+  "adminHotelDeleteConfirm": "\"{name}\" otelini ve tüm odalarını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+  "@adminHotelDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminHotelDeleteFailed": "Otel silinemedi",
+  "adminHotelDeleted": "Otel silindi",
+  "adminHotelEdit": "Otel Düzenle",
+  "adminHotelEmpty": "Henüz otel eklenmedi.",
+  "adminHotelNameRequired": "Otel Adı *",
+  "adminHotelUpdateFailed": "Otel güncellenemedi",
+  "adminHotelUpdated": "Otel güncellendi",
+  "adminHotels": "Oteller",
+  "adminInactive": "Pasif",
+  "adminLiveMap": "Canlı Konum Haritası",
+  "adminLiveMapSub": "Acentenizdeki herkesin son konumu",
+  "adminLogout": "Çıkış Yap",
+  "adminLogoutConfirm": "Oturumu kapatmak istediğinize emin misiniz?",
+  "adminMakeActive": "Aktif Yap",
+  "adminMakeInactive": "Pasif Yap",
+  "adminManage": "Yönet",
+  "adminManagement": "Yönetim",
+  "adminMapDirections": "Google Maps'te yol tarifi",
+  "adminMapEveryoneOnMap": "Haritada herkes",
+  "adminMapLastUpdate": "Son güncelleme: {time}",
+  "@adminMapLastUpdate": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "adminMapLatLng": "Enlem: {lat}  Boylam: {lng}",
+  "@adminMapLatLng": {
+    "placeholders": {
+      "lat": {
+        "type": "String"
+      },
+      "lng": {
+        "type": "String"
+      }
+    }
+  },
+  "adminMapLoadFailed": "Konumlar yüklenemedi. Yetkiniz olmayabilir.",
+  "adminMapLoading": "Konum yükleniyor...",
+  "adminMapLocation": "Konum",
+  "adminMapNoOneSharing": "Henüz konum paylaşan kimse yok",
+  "adminMapNoSharedLocation": "Bu kişinin paylaşılan konumu yok.",
+  "adminMapOpenFailed": "Harita açılamadı",
+  "adminMapPeopleList": "Kişi listesi",
+  "adminMapReadFailed": "Konum okunamadı.",
+  "adminMapSelectAgencyHint": "Konumları görmek için önce bir acente seçin.\nAcenteler sayfasından bir acenteyi \"Yönet\" ile açabilirsiniz.",
+  "adminMapSelectPerson": "Kişi Seç",
+  "adminMapShowAll": "Herkesi göster",
+  "adminMapVisiblePeople": "Konumu görünen kişiler ({count})",
+  "@adminMapVisiblePeople": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminMenuAnalytics": "Analiz",
+  "adminMenuAnalyticsSub": "İstatistik ve grafikler",
+  "adminMenuCalendar": "Takvim",
+  "adminMenuCalendarSub": "Etkinlikleri yönet",
+  "adminMenuCurrency": "Döviz Kurları",
+  "adminMenuCurrencySub": "Döviz kurlarını yönet",
+  "adminMenuHome": "Anasayfa",
+  "adminMenuHomeSub": "Yönetim paneline dön",
+  "adminMenuHotels": "Otel & Oda",
+  "adminMenuHotelsSub": "Otelleri ve odaları yönet",
+  "adminMenuLiveLocation": "Canlı Konum",
+  "adminMenuLiveLocationSub": "Misafirleri haritada gör",
+  "adminMenuNotify": "Bildirim Gönder",
+  "adminMenuNotifySub": "Kullanıcılara bildirim gönder",
+  "adminMenuPeople": "Kişiler",
+  "adminMenuPeopleSub": "Kullanıcıları yönet",
+  "adminMenuRadio": "Telsiz",
+  "adminMenuRadioSub": "Misafirlere canlı sesli yayın",
+  "adminMenuShops": "Anlaşmalı Dükkanlar",
+  "adminMenuShopsSub": "İndirimli esnafı yönet",
+  "adminMenuTracking": "Konum Takibi",
+  "adminMenuTrackingSub": "Konum takibini yönet",
+  "adminMenuTrips": "Seferler",
+  "adminMenuTripsSub": "Seferleri yönet",
+  "adminMinutes": "{count} dk",
+  "@adminMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminNext": "Sonraki",
+  "adminNoAgencySelected": "Acente seçilmedi.",
+  "adminNoDate": "Tarih yok",
+  "adminNoGuestsYet": "Henüz misafir yok.",
+  "adminNoResults": "Sonuç bulunamadı.",
+  "adminNotAssigned": "Atanmadı",
+  "adminNotSelected": "Seçilmedi",
+  "adminNote": "Not",
+  "adminNoteValue": "Not: {note}",
+  "@adminNoteValue": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "adminNotifyEmpty": "Henüz bildirim gönderilmedi.",
+  "adminNotifyHistoryLoadFailed": "Bildirim geçmişi yüklenemedi",
+  "adminNotifyMessage": "Mesaj",
+  "adminNotifyNoAgencyHint": "Bildirim göndermek için önce bir acenteyi yönetmeye başlayın.",
+  "adminNotifyRequired": "Başlık ve mesaj zorunlu",
+  "adminNotifySendFailed": "Bildirim gönderilirken hata oluştu.",
+  "adminNotifySent": "Gönderilen Bildirimler",
+  "adminNotifySentOk": "Duyuru gönderildi",
+  "adminNotifyTarget": "Gönderilecek Hedef",
+  "adminNotifyTargetAll": "Tüm Acente",
+  "adminNotifyTargetInvalid": "Lütfen geçerli bir hedef seçiniz.",
+  "adminNotifyTitle": "Başlık",
+  "adminPanelTitle": "Yönetim Paneli",
+  "adminPeopleRatio": "{count}/{capacity} kişi",
+  "@adminPeopleRatio": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPersonCount": "{count} kişi",
+  "@adminPersonCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPhone": "Telefon",
+  "adminPickDate": "Tarih Seçiniz",
+  "adminPickDay": "Gün Seç",
+  "adminPrevious": "Önceki",
+  "adminRemove": "Çıkar",
+  "adminRequired": "Gerekli",
+  "adminRequiredField": "Zorunlu alan",
+  "adminRoleGuest": "Misafir",
+  "adminRoleManager": "Yönetici",
+  "adminRoleSuperAdmin": "Süper Admin",
+  "adminRoomAdd": "Oda Ekle",
+  "adminRoomCount": "{count} oda",
+  "@adminRoomCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminRoomCreateFailed": "Oda oluşturulamadı",
+  "adminRoomCreated": "Oda oluşturuldu",
+  "adminRoomDelete": "Odayı Sil",
+  "adminRoomDeleteConfirm": "{number} numaralı oda silinecek. Emin misiniz?",
+  "@adminRoomDeleteConfirm": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomDeleteFailed": "Oda silinemedi",
+  "adminRoomDeleted": "Oda silindi",
+  "adminRoomEdit": "Oda Düzenle",
+  "adminRoomEmpty": "Bu otele ait oda eklenmedi",
+  "adminRoomGenderMissing": "Cinsiyet türü seçiniz",
+  "adminRoomNoOccupants": "Bu odada kimse yok.",
+  "adminRoomNumber": "Oda {number}",
+  "@adminRoomNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomNumberMissing": "Oda numarası girin",
+  "adminRoomNumberRequired": "Oda Numarası *",
+  "adminRoomOccupancy": "{count}/{capacity} kişilik",
+  "@adminRoomOccupancy": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
+  },
+  "adminRoomOccupantsTitle": "Oda {number} - Kişiler",
+  "@adminRoomOccupantsTitle": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomRemoveUser": "Odadan Çıkar",
+  "adminRoomRemoveUserConfirm": "{name} kullanıcısını bu odadan çıkarmak istediğinize emin misiniz?",
+  "@adminRoomRemoveUserConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRoomUpdateFailed": "Oda güncellenemedi",
+  "adminRoomUpdated": "Oda güncellendi",
+  "adminRoomUserRemoveFailed": "Kullanıcı odadan çıkarılamadı",
+  "adminRoomUserRemoved": "{name} odadan çıkarıldı",
+  "@adminRoomUserRemoved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminRooms": "Odalar",
+  "adminRoomsOfHotel": "{name} - Odalar",
+  "@adminRoomsOfHotel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminSaving": "Kaydediliyor...",
+  "adminSearchUser": "Kullanıcı ara...",
+  "adminSend": "Gönder",
+  "adminSending": "Gönderiliyor...",
+  "adminStartDate": "Başlangıç",
+  "adminStatHotel": "Otel",
+  "adminStatPeople": "Kayıtlı Kişi",
+  "adminStatRoom": "Oda",
+  "adminStatTrip": "Sefer",
+  "adminTc": "TC",
+  "adminTcUnspecified": "TC belirtilmemiş",
+  "adminTcValue": "TC: {tc}",
+  "@adminTcValue": {
+    "placeholders": {
+      "tc": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTime": "Saat",
+  "adminTitleRequired": "Başlık *",
+  "adminTrackingDescription": "Konum takibi aktif olduğunda, misafirleriniz sizin konumunuzu harita üzerinde görebilir. Bu özellik rehber olarak görev yaptığınızda faydalıdır.",
+  "adminTrip": "Sefer",
+  "adminTripAssignedCount": "{count} kişi atanmış",
+  "@adminTripAssignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminTripCreate": "Sefer Oluştur",
+  "adminTripCreateFailed": "Sefer oluşturulamadı",
+  "adminTripCreated": "Sefer oluşturuldu",
+  "adminTripDelete": "Seferi Sil",
+  "adminTripDeleteConfirm": "\"{name}\" seferini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+  "@adminTripDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTripDeleteFailed": "Sefer silinemedi",
+  "adminTripDeleted": "Sefer silindi",
+  "adminTripEdit": "Sefer Düzenle",
+  "adminTripEmpty": "Henüz sefer oluşturulmadı.",
+  "adminTripEmptySub": "Sefer oluştur, düzenle ve listele.",
+  "adminTripEndBeforeStart": "Bitiş tarihi başlangıçtan önce olamaz",
+  "adminTripManagerLabel": "Yönetici: {names}",
+  "@adminTripManagerLabel": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "adminTripManagersSelected": "Sefer Yöneticileri ({count} seçili)",
+  "@adminTripManagersSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminTripNameRequired": "Sefer Adı *",
+  "adminTripNoLocation": "Yer belirtilmedi",
+  "adminTripNoManagers": "Yönetici tipinde kullanıcı bulunamadı.",
+  "adminTripUpdateFailed": "Sefer güncellenemedi",
+  "adminTripUpdated": "Sefer güncellendi",
+  "adminUnknown": "Bilinmeyen",
+  "adminUnnamed": "İsimsiz",
+  "adminUnnamedGuest": "İsimsiz Misafir",
+  "adminUpdate": "Güncelle",
+  "adminUpdating": "Güncelleniyor...",
+  "adminUserAccountCreateFailed": "Kişi hesabı oluşturulamadı ({code})",
+  "@adminUserAccountCreateFailed": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "adminUserAdd": "Kişi Ekle",
+  "adminUserAgencyRequired": "Yönetici için acenta seçimi zorunludur",
+  "adminUserCreate": "Kişi Oluştur",
+  "adminUserCreateFailed": "Kişi oluşturulamadı",
+  "adminUserCreateOffline": "İnternet bağlantısı yok. Kişi oluşturulamadı.",
+  "adminUserCreated": "Kişi oluşturuldu",
+  "adminUserDelete": "Kişiyi Sil",
+  "adminUserDeleteConfirm": "\"{name}\" kişisini silmek istediğinize emin misiniz? Bu işlem geri alınamaz.",
+  "@adminUserDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminUserDeleteFailed": "Kişi silinemedi",
+  "adminUserDeleted": "Kişi silindi",
+  "adminUserDetail": "Kişi Detayı",
+  "adminUserEdit": "Kişiyi Düzenle",
+  "adminUserEmpty": "Henüz kullanıcı bulunmuyor.",
+  "adminUserNameMissing": "Ad soyad gerekli",
+  "adminUserNameRequired": "Ad Soyad *",
+  "adminUserNotFound": "Kişi bulunamadı.",
+  "adminUserSearchHint": "İsim veya TC ile ara",
+  "adminUserTcExists": "Bu TC ile kayıtlı bir hesap zaten var.",
+  "adminUserTcLength": "TC 11 haneli olmalı",
+  "adminUserTcLocked": "TC kimlik numarası değiştirilemez",
+  "adminUserTcMissing": "TC gerekli",
+  "adminUserTcRequired": "TC Kimlik No *",
+  "adminUserType": "Kullanıcı Tipi",
+  "adminUserUpdateFailed": "Kullanıcı bilgileri kaydedilemedi",
+  "adminUserUpdated": "Kullanıcı bilgileri güncellendi",
+  "adminWelcome": "Hoş geldiniz",
+  "adminWelcomeName": "Hoş geldiniz, {name}",
+  "@adminWelcomeName": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "appTitle": "Umre Rehberim",
+  "authAccountIsAdmin": "Bu hesap yönetici hesabıdır.",
+  "authAccountIsGuest": "Bu hesap misafir hesabıdır.",
+  "authAdmin": "Yönetici",
+  "authFieldRequired": "Bu alan boş bırakılamaz",
+  "authGreeting": "Selamün Aleyküm!",
+  "authGuest": "Misafir",
+  "authKvkkAbroadBody": "Google Firebase ve Cloudflare hizmetleri aracılığıyla yurt dışında bulunan güvenli sunucularda depolanabilir. Bu aktarım KVKK'ya uygun teknik ve idari tedbirler alınarak yapılmaktadır.",
+  "authKvkkAbroadTitle": "Yurt Dışına Veri Aktarımı:",
+  "authKvkkAccept": "Onaylıyorum",
+  "authKvkkCheckbox": "KVKK Aydınlatma Metnini okudum ve onaylıyorum",
+  "authKvkkControllerTitle": "Veri Sorumlusu:",
+  "authKvkkDataBody": "Kimlik (Ad, Soyad, T.C. Kimlik No), İletişim (Telefon No), Demografik (Cinsiyet, Yaş), Konum bilgisi (anlık ve uygulama kullanım süresince), Uygulama kullanım verileri.",
+  "authKvkkDataTitle": "İşlenen Kişisel Veriler:",
+  "authKvkkLocationBody": "Uygulama aktifken takip edilir, arka planda veya çıkıldığında izleme yapılmaz. Kullanıcının güvenliği ve rehberlik hizmeti için zorunludur. İzin verilmemesi durumunda bazı temel özellikler kullanılamayabilir.",
+  "authKvkkLocationTitle": "Konum Bilgisi:",
+  "authKvkkMethodBody": "Mobil uygulama üzerinden elektronik ortamda, kullanıcının açık rızasına dayanarak, KVKK'nın 5. ve 6. maddeleri kapsamında toplanmakta ve işlenmektedir.",
+  "authKvkkMethodTitle": "Toplanma Yöntemi ve Hukuki Sebebi:",
+  "authKvkkPurposeBody": "Kullanıcı hesabı oluşturma ve yönetme, Umre Rehberi ile anlık iletişim, acil durumlarda kullanıcıya ulaşma, grup takibi ve rehberlik hizmetleri, bildirim gönderme, uygulama güvenliğini sağlama.",
+  "authKvkkPurposeTitle": "İşlenme Amaçları:",
+  "authKvkkReject": "Reddet",
+  "authKvkkRequired": "Lütfen KVKK Aydınlatma Metnini onaylayın.",
+  "authKvkkRightsBody": "Verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, yanlış veya eksik verilerin düzeltilmesini isteme, verilerin silinmesini veya yok edilmesini talep etme. Taleplerinizi support@umrerehberim.com adresine iletebilirsiniz.",
+  "authKvkkRightsTitle": "KVKK Kapsamındaki Haklarınız:",
+  "authKvkkTitle": "KVKK Aydınlatma Metni",
+  "authKvkkTransferBody": "Üçüncü kişilerle paylaşılmaz. Hacktapot Software'in güvenli veri merkezlerinde saklanır. Yalnızca savcılık/adli makam kararı bulunması halinde veya ilgili tur firması ile sınırlı olarak paylaşılabilir.",
+  "authKvkkTransferTitle": "Kişisel Verilerin Aktarılması:",
+  "authLoginButton": "Giriş Yap",
+  "authLoginFailed": "Giriş yapılırken bir hata oluştu.",
+  "authLoginType": "Giriş Tipi",
+  "authNoInternet": "İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+  "authSplashCheckingInternet": "İnternet bağlantısı kontrol ediliyor...",
+  "authSplashDataLoadFailed": "Veriler yüklenemedi. Lütfen internet bağlantınızı kontrol edin.",
+  "authSplashDataNotFound": "Veriler bulunamadı. Lütfen internet bağlantınızı kontrol edin.",
+  "authSplashDataStale": "Verileriniz güncel değil. Lütfen internet bağlantınızı kontrol edin.",
+  "authSplashLoadingData": "Veriler yükleniyor...",
+  "authSplashLoadingLocal": "Yerel veriler yükleniyor...",
+  "authSplashLoadingUser": "Kullanıcı bilgileri yükleniyor...",
+  "authSplashNoInternetLogin": "İnternet bağlantısı yok. Lütfen TC numaranız ile giriş yapın.",
+  "authSplashOfflineStart": "Offline modda başlatılıyor...",
+  "authSplashPleaseLogin": "Lütfen TC numaranız ile giriş yapın.",
+  "authSplashUserNotFound": "Kullanıcı bulunamadı.",
+  "authTagline": "Kutsal Yolculukta\nYanınızdaki Rehber",
+  "authTcLabel": "TC Kimlik No",
+  "authTcLengthError": "TC kimlik numarası 11 haneli olmalıdır",
+  "authTooManyRequests": "Çok fazla deneme yapıldı. Lütfen biraz sonra tekrar deneyin.",
+  "authUserDisabled": "Bu hesap devre dışı bırakılmış.",
+  "authUserNotFound": "Kullanıcı bulunamadı. Lütfen kayıt olun.",
+  "ccActAgencyCreate": "Acente eklendi",
+  "ccActAgencyDelete": "Acente silindi",
+  "ccActAgencyUpdate": "Acente güncellendi",
+  "ccActCouponCreate": "Kupon oluşturuldu",
+  "ccActCouponDelete": "Kupon silindi",
+  "ccActCouponUpdate": "Kupon güncellendi",
+  "ccActFinanceSettings": "Finans ayarları değişti",
+  "ccActMerchantCreate": "Esnaf hesabı açıldı",
+  "ccActMessageSend": "Acenteye mesaj gönderildi",
+  "ccActPointsBulk": "Toplu puan yüklendi",
+  "ccActPointsGrant": "Puan hareketi eklendi",
+  "ccActPointsRevert": "Puan hareketi geri alındı",
+  "ccActRiskReview": "Risk alarmı incelendi",
+  "ccActRoleChange": "Rol değiştirildi",
+  "ccActSettlementPaid": "Hak ediş ödendi",
+  "ccActSettlementUpdate": "Hak ediş güncellendi",
+  "ccActShopCreate": "Dükkan eklendi",
+  "ccActShopDelete": "Dükkan silindi",
+  "ccActShopToggle": "Dükkan aktifliği değişti",
+  "ccActShopUpdate": "Dükkan güncellendi",
+  "ccActTxCancel": "İşlem iptal edildi",
+  "ccActUserCreate": "Kullanıcı oluşturuldu",
+  "ccActUserDelete": "Kullanıcı silindi",
+  "ccActUserUpdate": "Kullanıcı güncellendi",
+  "ccAgoDays": "{count} gün önce",
+  "@ccAgoDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAgoHours": "{count} sa önce",
+  "@ccAgoHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAgoMinutes": "{count} dk önce",
+  "@ccAgoMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAgoNow": "az önce",
+  "ccAnAvgBasket": "Ortalama sepet",
+  "ccAnAvgRating": "Ortalama puan",
+  "ccAnBusyHours": "Saatlere göre yoğunluk",
+  "ccAnCancelRate": "İptal oranı",
+  "ccAnCommission": "Komisyon",
+  "ccAnCommissionGenerated": "Üretilen komisyon",
+  "ccAnComplaintBadge": "Şikâyet",
+  "ccAnComplaints": "Şikâyet",
+  "ccAnConversion": "Dönüşüm (işlem / görüntülenme)",
+  "ccAnConversionShort": "Dönüşüm",
+  "ccAnCouponDiscount": "Kupon indirimi",
+  "ccAnDailySales": "Günlük satış",
+  "ccAnDailyVolume": "Günlük net hacim",
+  "ccAnDau": "Günlük aktif (DAU)",
+  "ccAnDiscount": "Esnaf indirimi",
+  "ccAnGross": "Brüt ciro",
+  "ccAnGuest": "Misafir",
+  "ccAnInactive": "Pasif",
+  "ccAnLatestReviews": "Son değerlendirmeler ve şikâyetler",
+  "ccAnLoadError": "Veriler yüklenemedi. Aşağı çekerek yenileyin.",
+  "ccAnMau": "Aylık aktif (MAU)",
+  "ccAnMonthlyNewUsers": "Aylık yeni kullanıcı (son 12 ay)",
+  "ccAnMonthlyVolume": "Aylık net hacim",
+  "ccAnMostViewed": "En çok görüntülenen esnaf",
+  "ccAnMpAll": "Tüm esnaf",
+  "ccAnMpPodium": "En Popüler Esnaf",
+  "ccAnMpSubtitle": "Satış, puan, şikâyet ve dönüşüm",
+  "ccAnMpTitle": "Esnaf Performansı",
+  "ccAnNet": "Net ciro",
+  "ccAnNewUsers": "Dönemde yeni kullanıcı",
+  "ccAnNoAccess": "Bu bölüme erişim yetkiniz yok.",
+  "ccAnNoAgency": "Acentesiz",
+  "ccAnNoComment": "(yorum yazılmamış)",
+  "ccAnNoData": "Bu dönemde veri yok.",
+  "ccAnNoReviews": "Bu dönemde değerlendirme yok.",
+  "ccAnNoShops": "Henüz anlaşmalı esnaf yok.",
+  "ccAnOpenMerchantPerf": "Esnaf performansı",
+  "ccAnPayCard": "Kart",
+  "ccAnPayCash": "Nakit",
+  "ccAnPayPoints": "Puan",
+  "ccAnPaymentSplit": "Ödeme yöntemi dağılımı",
+  "ccAnPeriodAll": "Tümü",
+  "ccAnPeriodMonth": "30 gün",
+  "ccAnPeriodQuarter": "90 gün",
+  "ccAnPeriodToday": "Bugün",
+  "ccAnPeriodWeek": "7 gün",
+  "ccAnPeriodYear": "1 yıl",
+  "ccAnPointsEarned": "Kazanılan puan",
+  "ccAnPointsFlow": "Puan akışı",
+  "ccAnPointsNet": "Net puan",
+  "ccAnPointsSpent": "Harcanan puan",
+  "ccAnRatingDist": "Puan dağılımı",
+  "ccAnRefresh": "Yenile",
+  "ccAnReviewCount": "{count} değerlendirme",
+  "@ccAnReviewCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAnRoleAgencyAdmin": "Acente Admini",
+  "ccAnRoleFinance": "Muhasebe",
+  "ccAnRoleGuest": "Misafir",
+  "ccAnRoleManager": "Yönetici",
+  "ccAnRoleMerchant": "Esnaf",
+  "ccAnRoleOther": "Diğer",
+  "ccAnRoleSuperAdmin": "Süper Admin",
+  "ccAnRoleSupport": "Destek",
+  "ccAnSecTrends": "Trendler",
+  "ccAnSecUsage": "Kullanım",
+  "ccAnSecVolume": "İşlem hacmi",
+  "ccAnShopsCount": "{count} dükkan",
+  "@ccAnShopsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAnSortComplaints": "Şikâyet",
+  "ccAnSortRating": "Puan",
+  "ccAnSortRevenue": "Ciro",
+  "ccAnSortTx": "İşlem",
+  "ccAnSortViews": "Görüntülenme",
+  "ccAnStickiness": "Bağlılık (DAU/MAU)",
+  "ccAnSubtitle": "Kullanım, işlem hacmi ve trendler",
+  "ccAnTitle": "Analiz & BI",
+  "ccAnTopCategories": "Kategorilere göre ciro",
+  "ccAnTopShopsByRevenue": "En yüksek cirolu esnaf",
+  "ccAnTopShopsByTx": "En çok işlem yapan esnaf",
+  "ccAnTotalUsers": "Toplam kullanıcı",
+  "ccAnTxCount": "İşlem sayısı",
+  "ccAnTxCountShort": "{count} işlem",
+  "@ccAnTxCountShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAnUsersByAgency": "Acentelere göre kullanıcılar",
+  "ccAnUsersByRole": "Rollere göre kullanıcılar",
+  "ccAnUsersCount": "{count} kullanıcı",
+  "@ccAnUsersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAnViews": "Görüntülenme",
+  "ccAnViewsNote": "Görüntülenme sayısı tüm zamanları kapsar.",
+  "ccAnViewsShort": "{count} görüntülenme",
+  "@ccAnViewsShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAnWau": "Haftalık aktif (WAU)",
+  "ccAuditCatAgency": "Acente",
+  "ccAuditCatAll": "Tümü",
+  "ccAuditCatCoupon": "Kupon",
+  "ccAuditCatFinance": "Finans",
+  "ccAuditCatMessage": "Mesaj",
+  "ccAuditCatPoints": "Puan",
+  "ccAuditCatRisk": "Risk",
+  "ccAuditCatShop": "Esnaf/Dükkan",
+  "ccAuditCatUser": "Kullanıcı",
+  "ccAuditDetails": "Ayrıntılar",
+  "ccAuditEmpty": "Bu filtrelerle kayıt bulunamadı",
+  "ccAuditLoadMore": "Daha fazla yükle",
+  "ccAuditSearchActor": "İşlemi yapan kişiyi ara",
+  "ccAuditShown": "{count} kayıt",
+  "@ccAuditShown": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccAuditSubtitle": "Kim, ne zaman, ne yaptı",
+  "ccAuditTarget": "Hedef",
+  "ccAuditTitle": "Denetim Kaydı",
+  "ccAuditUnknownActor": "Bilinmeyen",
+  "ccCancel": "Vazgeç",
+  "ccCpnActivatedOk": "{code} aktif edildi.",
+  "@ccCpnActivatedOk": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnActive": "Aktif",
+  "ccCpnActiveHelp": "Pasif kupon misafirlere görünmez ve kullanılamaz.",
+  "ccCpnAgency": "Acente",
+  "ccCpnAllAgencies": "Tüm acenteler",
+  "ccCpnAllShops": "Tüm dükkanlar",
+  "ccCpnCode": "Kupon kodu",
+  "ccCpnCodeHelp": "Büyük harf ve rakam, 4–16 karakter. Sonradan değiştirilemez.",
+  "ccCpnCodeInvalid": "4–16 karakter, yalnız A–Z ve 0–9.",
+  "ccCpnCodeLocked": "Kod kuponun kimliğidir; değiştirilemez.",
+  "ccCpnCodeSuggest": "Kod öner",
+  "ccCpnCodeTaken": "Bu kod zaten kullanılıyor. Başka bir kod seçin.",
+  "ccCpnCreate": "Kuponu oluştur",
+  "ccCpnCreatedOk": "{code} kuponu oluşturuldu.",
+  "@ccCpnCreatedOk": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnDates": "Geçerlilik tarihleri",
+  "ccCpnDeactivate": "Pasife al",
+  "ccCpnDeactivatedOk": "{code} pasife alındı.",
+  "@ccCpnDeactivatedOk": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnDelete": "Sil",
+  "ccCpnDeleteBlockedBody": "Bu kupon {count} kez kullanıldı. Raporlar bozulmasın diye silinmez; bunun yerine pasife alabilirsiniz.",
+  "@ccCpnDeleteBlockedBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccCpnDeleteBlockedTitle": "Kullanılmış kupon silinemez",
+  "ccCpnDeleteBody": "{code} kalıcı olarak silinecek.",
+  "@ccCpnDeleteBody": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnDeleteTitle": "Kupon silinsin mi?",
+  "ccCpnDeletedOk": "{code} silindi.",
+  "@ccCpnDeletedOk": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnDescription": "Açıklama (isteğe bağlı)",
+  "ccCpnEdit": "Düzenle",
+  "ccCpnEditTitle": "Kuponu düzenle",
+  "ccCpnEmpty": "Henüz kupon yok. İlk kampanyanı oluştur!",
+  "ccCpnFilterAll": "Tümü",
+  "ccCpnGiven": "Verilen indirim: {amount}",
+  "@ccCpnGiven": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnKpiActive": "Aktif kupon",
+  "ccCpnKpiDiscount": "Verilen toplam indirim",
+  "ccCpnKpiGuests": "Kupon kullanan misafir",
+  "ccCpnKpiUses": "Toplam kullanım",
+  "ccCpnLoadError": "Kuponlar yüklenemedi.",
+  "ccCpnMaxDiscount": "İndirim tavanı",
+  "ccCpnMaxUses": "Toplam kullanım sınırı",
+  "ccCpnMaxUsesBelowUsed": "Sınır, mevcut kullanımdan ({used}) az olamaz.",
+  "@ccCpnMaxUsesBelowUsed": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      }
+    }
+  },
+  "ccCpnMaxUsesHelp": "Boş/0 = sınırsız. Her misafir kuponu bir kez kullanabilir.",
+  "ccCpnMinShort": "min. {amount}",
+  "@ccCpnMinShort": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnMinSpend": "Alt limit",
+  "ccCpnNew": "Yeni Kupon",
+  "ccCpnNewTitle": "Yeni kupon",
+  "ccCpnNoMatch": "Bu filtreye uyan kupon yok.",
+  "ccCpnNoRedemptions": "Bu kupon henüz kullanılmadı.",
+  "ccCpnOncePerGuest": "Kupon indirimi dükkan indiriminden sonra uygulanır; ödenecek tutar sıfırın altına inmez.",
+  "ccCpnPercentMax": "Yüzde en fazla 100 olabilir.",
+  "ccCpnReadOnly": "Salt okuma",
+  "ccCpnRedemptions": "Kullanımlar",
+  "ccCpnRequired": "Bu alan zorunlu.",
+  "ccCpnSave": "Değişiklikleri kaydet",
+  "ccCpnSaveError": "İşlem tamamlanamadı. Lütfen tekrar deneyin.",
+  "ccCpnSectionBasics": "Kupon bilgileri",
+  "ccCpnSectionDiscount": "İndirim",
+  "ccCpnSectionScope": "Geçerlilik",
+  "ccCpnShop": "Dükkan",
+  "ccCpnStatAvg": "Ortalama indirim",
+  "ccCpnStatTotal": "Toplam indirim",
+  "ccCpnStatUntil": "Son geçerlilik",
+  "ccCpnStatUses": "Kullanım",
+  "ccCpnStatusActive": "Aktif",
+  "ccCpnStatusExhausted": "Tükendi",
+  "ccCpnStatusExpired": "Süresi doldu",
+  "ccCpnStatusInactive": "Pasif",
+  "ccCpnStatusScheduled": "Başlamadı",
+  "ccCpnSubtitle": "Kampanya ve indirim kuponları",
+  "ccCpnTitle": "Kuponlar",
+  "ccCpnTitleField": "Başlık",
+  "ccCpnTitleHint": "Örn. Hoş geldin indirimi",
+  "ccCpnTypeFixed": "Sabit tutar",
+  "ccCpnTypePercent": "Yüzde",
+  "ccCpnUpTo": "en fazla {amount}",
+  "@ccCpnUpTo": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnUpdatedOk": "{code} kuponu güncellendi.",
+  "@ccCpnUpdatedOk": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "ccCpnUsesUnlimited": "{count} kullanım · sınırsız",
+  "@ccCpnUsesUnlimited": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccCpnValue": "İndirim değeri",
+  "ccCpnValueInvalid": "0'dan büyük bir değer girin.",
+  "ccCpnZeroNoCap": "Boş/0 = tavan yok",
+  "ccCpnZeroNone": "Boş/0 = alt limit yok",
+  "ccFinActionError": "İşlem başarısız oldu",
+  "ccFinAgencyEmpty": "Bu dönemde acente payı yok",
+  "ccFinAgencyExplain": "Acente, kendi misafirlerinin yaptığı alışverişlerin komisyonundan pay alır.",
+  "ccFinAgencySub": "{count} işlem · net {net}",
+  "@ccFinAgencySub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "net": {
+        "type": "String"
+      }
+    }
+  },
+  "ccFinAllAgencies": "Tüm acentelere açık",
+  "ccFinCancel": "Vazgeç",
+  "ccFinColAgency": "Acente",
+  "ccFinColCommission": "Komisyon",
+  "ccFinColCoupon": "Kupon",
+  "ccFinColDate": "Tarih",
+  "ccFinColDiscount": "İndirim",
+  "ccFinColGross": "Brüt",
+  "ccFinColGuest": "Misafir",
+  "ccFinColNet": "Net",
+  "ccFinColPeriod": "Dönem",
+  "ccFinColPlatform": "Platform",
+  "ccFinColRate": "Komisyon %",
+  "ccFinColStatus": "Durum",
+  "ccFinColTx": "İşlem",
+  "ccFinCopyAllCsv": "Tüm dönemi CSV kopyala",
+  "ccFinCsvCopied": "CSV panoya kopyalandı",
+  "ccFinDailyChart": "Günlük komisyon",
+  "ccFinEmpty": "Bu dönemde işlem yok",
+  "ccFinGenerate": "Dönemi Oluştur/Güncelle",
+  "ccFinGenerateConfirm": "{month} dönemi için hak ediş kayıtları oluşturulsun mu? Ödenmiş kayıtların tutarları değişmez.",
+  "@ccFinGenerateConfirm": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "ccFinGenerateDone": "{count} dükkanın hak edişi güncellendi",
+  "@ccFinGenerateDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccFinGenerateFirst": "Önce dönemi oluşturun",
+  "ccFinKpiAgency": "Acente payı",
+  "ccFinKpiCommission": "Toplam komisyon",
+  "ccFinKpiCoupon": "Kupon indirimi",
+  "ccFinKpiDiscount": "Esnaf indirimi",
+  "ccFinKpiGross": "Brüt ciro",
+  "ccFinKpiNet": "Net ciro",
+  "ccFinKpiPlatform": "Platform payı",
+  "ccFinKpiTxCount": "İşlem sayısı",
+  "ccFinLoadError": "Finans verileri yüklenemedi",
+  "ccFinMarkPaid": "Ödendi olarak işaretle",
+  "ccFinMarkPaidTitle": "Ödeme kaydı",
+  "ccFinMarkedPaid": "Ödendi olarak işaretlendi",
+  "ccFinNextMonth": "Sonraki ay",
+  "ccFinNoteHint": "Not (isteğe bağlı)",
+  "ccFinPaidCount": "{paid}/{total} ödendi",
+  "@ccFinPaidCount": {
+    "placeholders": {
+      "paid": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ccFinPaidDiff": "Canlı tutarlar ödenmiş kayıttan farklı (kayıt: {recorded}, {count} işlem). Geç iptal veya geç kayıt olabilir.",
+  "@ccFinPaidDiff": {
+    "placeholders": {
+      "recorded": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccFinPaidOn": "Ödendi: {date}",
+  "@ccFinPaidOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ccFinPrevMonth": "Önceki ay",
+  "ccFinProNote": "Ödeme dağıtımı ve e-fatura entegrasyonu Pro sunucu aşamasında",
+  "ccFinRefresh": "Yenile",
+  "ccFinRevert": "Bekliyor'a geri al",
+  "ccFinRevertConfirm": "Bu hak ediş tekrar 'Bekliyor' durumuna alınsın mı?",
+  "ccFinReverted": "Bekliyor durumuna alındı",
+  "ccFinSave": "Kaydet",
+  "ccFinSettingsDefault": "Ayar kaydı yok; varsayılan %50 kullanılıyor",
+  "ccFinSettingsDialogTitle": "Platform payı (%)",
+  "ccFinSettingsEdit": "Düzenle",
+  "ccFinSettingsExplain": "Esnaftan alınan komisyonun %{platform}'i platforma, kalan %{agency}'i acenteye aktarılır.",
+  "@ccFinSettingsExplain": {
+    "placeholders": {
+      "platform": {
+        "type": "int"
+      },
+      "agency": {
+        "type": "int"
+      }
+    }
+  },
+  "ccFinSettingsInvalid": "0 ile 100 arasında bir sayı girin",
+  "ccFinSettingsSaved": "Platform payı güncellendi",
+  "ccFinSettingsTitle": "Platform payı",
+  "ccFinStatement": "Dekont",
+  "ccFinStatusNone": "Oluşturulmadı",
+  "ccFinStatusPaid": "Ödendi",
+  "ccFinStatusPending": "Bekliyor",
+  "ccFinStmtAgency": "Acente",
+  "ccFinStmtCopyCsv": "Kopyala (CSV)",
+  "ccFinStmtFooter": "Bu belge bilgilendirme amaçlıdır; mali belge yerine geçmez.",
+  "ccFinStmtIssued": "Düzenlenme",
+  "ccFinStmtLines": "İşlem dökümü",
+  "ccFinStmtMerchantCode": "Esnaf kodu",
+  "ccFinStmtNo": "Dekont no",
+  "ccFinStmtNote": "Not",
+  "ccFinStmtPayable": "Esnafın ödeyeceği komisyon",
+  "ccFinStmtPeriod": "Dönem",
+  "ccFinStmtPlatform": "Umre Rehberim · Anlaşmalı Esnaf Programı",
+  "ccFinStmtRate": "Komisyon oranı",
+  "ccFinStmtShop": "Dükkan",
+  "ccFinStmtStampPaid": "ÖDENDİ",
+  "ccFinStmtStampPending": "BEKLİYOR",
+  "ccFinStmtTitle": "Hak Ediş Dekontu",
+  "ccFinStmtTotals": "Toplamlar",
+  "ccFinSubtitle": "Esnaf komisyonları ve dönem kapanışı",
+  "ccFinTabAgencies": "Acente payları",
+  "ccFinTabShops": "Esnaf hak edişleri",
+  "ccFinTitle": "Finans ve Hak Ediş",
+  "ccFinTotalsTitle": "Dönem toplamları",
+  "ccFinUnknownAgency": "Acentesiz",
+  "ccGreetingDay": "İyi günler",
+  "ccGreetingEvening": "İyi akşamlar",
+  "ccGreetingMorning": "Günaydın",
+  "ccKpiAgencies": "Acente",
+  "ccKpiDau": "Günlük aktif kullanıcı",
+  "ccKpiOpenMessages": "Okunmamış acente mesajı",
+  "ccKpiShops": "Aktif dükkan",
+  "ccKpiTx30": "Son 30 gün işlem",
+  "ccKpiUsers": "Kullanıcı",
+  "ccKpiVolume30": "Son 30 gün işlem hacmi",
+  "ccLoadFailed": "Veriler yüklenemedi",
+  "ccLogout": "Çıkış yap",
+  "ccLogoutConfirm": "Oturumu kapatmak istediğinize emin misiniz?",
+  "ccLoyActionError": "İşlem tamamlanamadı. Lütfen tekrar deneyin.",
+  "ccLoyAllAgencies": "Tüm acenteler",
+  "ccLoyBulkAction": "Toplu Puan",
+  "ccLoyBulkAgency": "Acente",
+  "ccLoyBulkAllTrips": "Acentenin tüm misafirleri",
+  "ccLoyBulkConfirm": "{count} misafire yükle",
+  "@ccLoyBulkConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyBulkNoTargets": "Seçime uyan misafir yok.",
+  "ccLoyBulkOk": "{count} misafire {points} puan yüklendi.",
+  "@ccLoyBulkOk": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyBulkPartial": "Yükleme yarıda kaldı: {done}/{total} misafire yüklendi. Geri kalanlar için tekrar deneyin.",
+  "@ccLoyBulkPartial": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyBulkPickAgency": "Önce bir acente seçin.",
+  "ccLoyBulkPointsEach": "Misafir başına puan",
+  "ccLoyBulkPreview": "{count} misafire toplam {total} puan yüklenecek.",
+  "@ccLoyBulkPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "ccLoyBulkRunning": "Puanlar yükleniyor…",
+  "ccLoyBulkTitle": "Toplu puan yükle",
+  "ccLoyBulkTrip": "Sefer (isteğe bağlı)",
+  "ccLoyDeduct": "Puan Düş",
+  "ccLoyDeductTitle": "Puan düş",
+  "ccLoyDeductedOk": "{points} puan düşüldü.",
+  "@ccLoyDeductedOk": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyEarned": "Kazanılan",
+  "ccLoyFeedEmpty": "Bu filtreye uyan hareket yok.",
+  "ccLoyFeedTitle": "Son puan hareketleri",
+  "ccLoyFilterAll": "Tümü",
+  "ccLoyFilterBulk": "Toplu",
+  "ccLoyFilterDeducted": "Düşülen",
+  "ccLoyFilterGranted": "Verilen",
+  "ccLoyFilterReverted": "Geri alınan",
+  "ccLoyGrant": "Puan Ver",
+  "ccLoyGrantTitle": "Hediye puan ver",
+  "ccLoyGrantedOk": "{points} puan verildi.",
+  "@ccLoyGrantedOk": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyGuestCount": "{count} misafir",
+  "@ccLoyGuestCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoyGuestsTitle": "Misafirler",
+  "ccLoyHistory": "Puan geçmişi",
+  "ccLoyHistoryEmpty": "Henüz puan hareketi yok.",
+  "ccLoyKpiCirculation": "Dolaşımdaki toplam puan",
+  "ccLoyKpiGrantedMonth": "Bu ay elle verilen puan",
+  "ccLoyKpiRedeemed": "Puanla ödenen tutar",
+  "ccLoyKpiSpent": "Alışverişte harcanan puan",
+  "ccLoyLoadError": "Sadakat verileri yüklenemedi.",
+  "ccLoyManual": "Elle",
+  "ccLoyNoGuests": "Eşleşen misafir yok.",
+  "ccLoyPointsInvalid": "1 ile 100.000 arasında bir puan girin.",
+  "ccLoyPointsUnit": "puan",
+  "ccLoyReadOnly": "Salt okuma",
+  "ccLoyReason": "Sebep (zorunlu)",
+  "ccLoyReasonHintBulk": "Örn. Ramazan kampanyası",
+  "ccLoyReasonHintDeduct": "Örn. Hatalı yükleme düzeltmesi",
+  "ccLoyReasonHintGrant": "Örn. Hoş geldin hediyesi",
+  "ccLoyReasonRequired": "Lütfen bir sebep yazın (en az 3 karakter).",
+  "ccLoyRefresh": "Yenile",
+  "ccLoyRevertAction": "Geri al",
+  "ccLoyRevertBody": "{guest} için yapılan {points} puanlık hareket, {opposite} puanlık ters kayıtla geri alınacak. Asıl kayıt silinmez.",
+  "@ccLoyRevertBody": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "points": {
+        "type": "String"
+      },
+      "opposite": {
+        "type": "String"
+      }
+    }
+  },
+  "ccLoyRevertDefaultReason": "Geri alma: {reason}",
+  "@ccLoyRevertDefaultReason": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ccLoyRevertTitle": "Puan hareketini geri al",
+  "ccLoyRevertedOk": "Puan hareketi geri alındı.",
+  "ccLoySearchHint": "Ad, TC kimlik no veya acente ara",
+  "ccLoyShowMore": "{count} misafir daha göster",
+  "@ccLoyShowMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccLoySpentShort": "Harcanan",
+  "ccLoySubtitle": "Puan ver, düş, geri al",
+  "ccLoyTagBulk": "Toplu",
+  "ccLoyTagCancelled": "İptal",
+  "ccLoyTagRevert": "Geri alma",
+  "ccLoyTagReverted": "Geri alındı",
+  "ccLoyTitle": "Sadakat Puanları",
+  "ccLoyWorth": "≈ {value} değerinde",
+  "@ccLoyWorth": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModAgencies": "Acenteler",
+  "ccModAgenciesDesc": "Acente listesi, kişiler ve yönetim",
+  "ccModAgenciesReadDesc": "Acenteleri ve kişileri görüntüle",
+  "ccModAnalytics": "Analitik",
+  "ccModAnalyticsDesc": "Büyüme, aktiflik ve trendler",
+  "ccModAudit": "Denetim Kaydı",
+  "ccModAuditDesc": "Kim, ne zaman, ne yaptı",
+  "ccModCoupons": "Kampanya & Kupon",
+  "ccModCouponsDesc": "Kupon oluştur, kullanımı izle",
+  "ccModFinance": "Finans & Hak Ediş",
+  "ccModFinanceDesc": "Komisyon, hak ediş ve ödemeler",
+  "ccModLoyalty": "Sadakat & Puan",
+  "ccModLoyaltyDesc": "Puan bakiyeleri ve hareketleri",
+  "ccModMerchantPerf": "Esnaf Performansı",
+  "ccModMerchantPerfDesc": "Ciro, puan ve memnuniyet sıralaması",
+  "ccModMerchantReports": "Esnaf Raporları",
+  "ccModMerchantReportsDesc": "Alışveriş işlemleri ve iptaller",
+  "ccModMessages": "Acente Mesajları",
+  "ccModMessagesDesc": "Acentelerle yazışma ve duyuru",
+  "ccModRisk": "Risk & Fraud",
+  "ccModRiskDesc": "Şüpheli işlem alarmları",
+  "ccModShops": "Anlaşmalı Dükkanlar",
+  "ccModShopsDesc": "Dükkan, indirim ve esnaf hesapları",
+  "ccModStaff": "Yetkili Personel",
+  "ccModStaffDesc": "Destek ve muhasebe hesapları",
+  "ccMsgAddTitle": "Başlık ekle",
+  "ccMsgAgencies": "Acenteler",
+  "ccMsgAllAgencies": "Tüm acenteler",
+  "ccMsgAllRead": "Tümü okundu",
+  "ccMsgBodyHint": "Mesaj yazın…",
+  "ccMsgBodyLabel": "Mesaj metni",
+  "ccMsgBodyRequired": "Mesaj metni boş olamaz.",
+  "ccMsgBroadcast": "Toplu Mesaj",
+  "ccMsgBroadcastConfirm": "Mesaj {count} acenteye gönderilecek. Onaylıyor musunuz?",
+  "@ccMsgBroadcastConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgBroadcastDone": "Mesaj {count} acenteye gönderildi.",
+  "@ccMsgBroadcastDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgBroadcastSend": "{count} acenteye gönder",
+  "@ccMsgBroadcastSend": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgBroadcastSub": "Birden çok acenteye aynı anda gönderin",
+  "ccMsgBroadcastTag": "Toplu",
+  "ccMsgCancel": "Vazgeç",
+  "ccMsgClearSelection": "Temizle",
+  "ccMsgEmptyThread": "Henüz mesaj yok. İlk mesajı siz yazın.",
+  "ccMsgFilterAll": "Tümü",
+  "ccMsgFilterUnread": "Okunmamış",
+  "ccMsgHq": "Merkez",
+  "ccMsgHqSub": "Umre Rehberim Merkez Ofis",
+  "ccMsgInboxBannerBody": "{count} okunmamış mesajınız var",
+  "@ccMsgInboxBannerBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgInboxBannerTitle": "Merkezden yeni mesaj",
+  "ccMsgLoadFailed": "Mesajlar yüklenemedi.",
+  "ccMsgMenu": "Merkez Mesajları",
+  "ccMsgMenuSub": "Merkezle yazışın",
+  "ccMsgMessage": "Mesaj",
+  "ccMsgNoAgencies": "Acente bulunamadı.",
+  "ccMsgNoAgency": "Hesabınıza bağlı bir acente bulunamadı.",
+  "ccMsgNoMessagesYet": "Henüz mesaj yok",
+  "ccMsgNoRecipients": "En az bir acente seçin.",
+  "ccMsgPreview": "Önizleme",
+  "ccMsgRecipients": "Alıcılar",
+  "ccMsgSearch": "Acente ara…",
+  "ccMsgSelectAll": "Tümünü seç",
+  "ccMsgSelectedAgencies": "Seçili acenteler",
+  "ccMsgSelectedCount": "{count} acente seçildi",
+  "@ccMsgSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgSend": "Gönder",
+  "ccMsgSendFailed": "Mesaj gönderilemedi.",
+  "ccMsgSent": "Mesaj gönderildi.",
+  "ccMsgSubtitle": "Merkez ↔ Acente iletişimi",
+  "ccMsgTemplates": "Hazır şablonlar",
+  "ccMsgTitle": "Acente Mesajları",
+  "ccMsgTitleHint": "Başlık (isteğe bağlı)",
+  "ccMsgTitleLabel": "Başlık",
+  "ccMsgToday": "Bugün",
+  "ccMsgTplCampaign": "Kampanya duyurusu",
+  "ccMsgTplCampaignBody": "Değerli iş ortağımız, anlaşmalı esnaf ağımızda misafirlerinize özel yeni bir puan kampanyası başlattık. Ayrıntılar için panelinizi inceleyebilir, misafirlerinizi bilgilendirebilirsiniz.",
+  "ccMsgTplCampaignTitle": "Yeni kampanya",
+  "ccMsgTplDocument": "Belge talebi",
+  "ccMsgTplDocumentBody": "Değerli iş ortağımız, kayıtlarınızın güncellenmesi için güncel TÜRSAB belgenizi ve vergi levhanızı en kısa sürede iletmenizi rica ederiz.",
+  "ccMsgTplDocumentTitle": "Belge talebi",
+  "ccMsgTplMaintenance": "Sistem bakımı",
+  "ccMsgTplMaintenanceBody": "Değerli iş ortağımız, sistemimizde planlı bakım çalışması yapılacaktır. Bakım süresince uygulamada kısa süreli kesintiler yaşanabilir. Anlayışınız için teşekkür ederiz.",
+  "ccMsgTplMaintenanceTitle": "Planlı sistem bakımı",
+  "ccMsgTplPayment": "Ödeme hatırlatma",
+  "ccMsgTplPaymentBody": "Değerli iş ortağımız, dönem hizmet bedelinizin son ödeme tarihi yaklaşmaktadır. Ödemenizi zamanında yapmanızı rica eder, ödeme yaptıysanız bu mesajı dikkate almamanızı rica ederiz.",
+  "ccMsgTplPaymentTitle": "Ödeme hatırlatması",
+  "ccMsgTplWelcome": "Hoş geldiniz",
+  "ccMsgTplWelcomeBody": "Değerli iş ortağımız, Umre Rehberim ailesine hoş geldiniz. Panelinizden misafirlerinizi, seferlerinizi ve otellerinizi yönetebilirsiniz. Her türlü sorunuz için bu kanaldan bize yazabilirsiniz.",
+  "ccMsgTplWelcomeTitle": "Umre Rehberim'e hoş geldiniz",
+  "ccMsgUnreadTotal": "{count} okunmamış",
+  "@ccMsgUnreadTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccMsgYesterday": "Dün",
+  "ccMsgYou": "Siz",
+  "ccNoRecent": "Henüz kayıt yok",
+  "ccPeriodAll": "Tümü",
+  "ccPeriodMonth": "30 gün",
+  "ccPeriodQuarter": "90 gün",
+  "ccPeriodToday": "Bugün",
+  "ccPeriodWeek": "7 gün",
+  "ccPeriodYear": "1 yıl",
+  "ccPermAgencies": "Acenteler ve kişiler",
+  "ccPermAgencyEdit": "Acente ekle / düzenle",
+  "ccPermAudit": "Denetim kaydı",
+  "ccPermCoupons": "Kampanya ve kupon",
+  "ccPermFinance": "Finans ve hak ediş",
+  "ccPermFull": "Tam",
+  "ccPermLoyalty": "Puan hareketleri",
+  "ccPermMessages": "Acente mesajları",
+  "ccPermNone": "Yok",
+  "ccPermRead": "Okuma",
+  "ccPermReports": "Esnaf raporları ve performans",
+  "ccPermRisk": "Risk ve fraud",
+  "ccPermShops": "Dükkan ve esnaf yönetimi",
+  "ccPermStaff": "Personel yönetimi",
+  "ccReadOnly": "Salt okuma",
+  "ccRiskActionError": "İşlem başarısız oldu",
+  "ccRiskAlarmsTitle": "Alarmlar",
+  "ccRiskAmount": "Tutar",
+  "ccRiskCancel": "Vazgeç",
+  "ccRiskCancelReasonDefault": "Risk incelemesi",
+  "ccRiskCancelReasonHint": "İptal nedeni",
+  "ccRiskCancelTitle": "İşlem iptali",
+  "ccRiskCancelTx": "İşlemi iptal et",
+  "ccRiskCancelled": "İşlem iptal edildi",
+  "ccRiskCouponActive": "Aktif",
+  "ccRiskCouponInfo": "İndirim {value} · {used}/{max} kullanım",
+  "@ccRiskCouponInfo": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskCouponPassive": "Pasif",
+  "ccRiskEmpty": "Filtreye uyan alarm yok",
+  "ccRiskEntities": "İlgili kayıtlar",
+  "ccRiskEntityAdmin": "Yönetici",
+  "ccRiskEntityCoupon": "Kupon",
+  "ccRiskEntityGuest": "Misafir",
+  "ccRiskEntityShop": "Dükkan",
+  "ccRiskEvidence": "Kanıtlar",
+  "ccRiskExpAdminGrants": "{admin} 7 gün içinde toplam {points} puan yükledi.",
+  "@ccRiskExpAdminGrants": {
+    "placeholders": {
+      "admin": {
+        "type": "String"
+      },
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpBasket": "İşlem {amount}; dükkanın ortalama sepeti {avg} (5 katından fazla).",
+  "@ccRiskExpBasket": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpBigAmount": "Tek işlem {amount}; azami tutarın (20.000 SAR) %80'ine ulaşıyor.",
+  "@ccRiskExpBigAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpBigGrant": "{guest} misafirine tek seferde {points} puan yüklendi.",
+  "@ccRiskExpBigGrant": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpBigPoints": "Tek işlemde {points} puan harcandı.",
+  "@ccRiskExpBigPoints": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpCancelRate": "{shop} son 90 günde {count} işlemin %{rate}'ini iptal etti.",
+  "@ccRiskExpCancelRate": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskExpConcentration": "{guest}, {shop} dükkanının cirosunun %{share}'ini tek başına oluşturuyor.",
+  "@ccRiskExpConcentration": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "share": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskExpCouponUnlimited": "{code} kuponunun kullanım sınırı yok ve {count} kez kullanıldı.",
+  "@ccRiskExpCouponUnlimited": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskExpCouponValue": "{code} kuponu {value} indirim veriyor.",
+  "@ccRiskExpCouponValue": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpFrequentGrants": "{guest} misafirine 7 gün içinde {count} kez puan yüklendi.",
+  "@ccRiskExpFrequentGrants": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskExpNight": "İşlem gece saatinde ({time}) yapıldı.",
+  "@ccRiskExpNight": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpPointsBurn": "{guest} 90 günde {spent} puan harcadı, aynı dönemde yalnız {earned} puan kazandı.",
+  "@ccRiskExpPointsBurn": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "spent": {
+        "type": "String"
+      },
+      "earned": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskExpQuickCancel": "İşlem oluşturulduktan {minutes} dakika sonra iptal edildi.",
+  "@ccRiskExpQuickCancel": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskExpSameAgency": "Misafir ve dükkan aynı acenteye bağlı.",
+  "ccRiskExpVelocity": "{guest}, {shop} dükkanında 24 saat içinde {count} işlem yaptı.",
+  "@ccRiskExpVelocity": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccRiskFilterAll": "Tümü",
+  "ccRiskFilterSeverity": "Önem",
+  "ccRiskFilterStatus": "Durum",
+  "ccRiskFilterType": "Tür",
+  "ccRiskKpiOpen": "İncelenmemiş",
+  "ccRiskLoadError": "Risk verileri yüklenemedi",
+  "ccRiskNoteHint": "İnceleme notu",
+  "ccRiskPointsUnit": "{points} puan",
+  "@ccRiskPointsUnit": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskRefresh": "Yenile",
+  "ccRiskReview": "İnceleme",
+  "ccRiskReviewSaved": "İnceleme kaydedildi",
+  "ccRiskReviewedBy": "{name} · {date}",
+  "@ccRiskReviewedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ccRiskReviewsEmpty": "Henüz inceleme yok",
+  "ccRiskReviewsTitle": "İnceleme kayıtları",
+  "ccRiskSaveReview": "İncelemeyi kaydet",
+  "ccRiskSevHigh": "Yüksek",
+  "ccRiskSevLow": "Düşük",
+  "ccRiskSevMedium": "Orta",
+  "ccRiskStatusConfirmed": "Onaylandı",
+  "ccRiskStatusFalse": "Yanlış alarm",
+  "ccRiskStatusNew": "Yeni",
+  "ccRiskStatusReviewed": "İncelendi",
+  "ccRiskSubtitle": "Son 90 günün kural tabanlı alarmları",
+  "ccRiskSupportNote": "İşlem tabanlı alarmlar (alışveriş, puan ve kupon verisi) yalnız süper admin tarafından hesaplanır. Aşağıda yapılan incelemeleri görebilirsiniz.",
+  "ccRiskTime": "Zaman",
+  "ccRiskTitle": "Risk ve Dolandırıcılık",
+  "ccRiskTxCancelledBadge": "İptal",
+  "ccRiskTypeAdminGrants": "Yönetici puan hacmi",
+  "ccRiskTypeBasket": "Olağandışı sepet",
+  "ccRiskTypeBigAmount": "Yüksek tutarlı işlem",
+  "ccRiskTypeBigGrant": "Büyük puan yüklemesi",
+  "ccRiskTypeBigPoints": "Yüksek puan harcaması",
+  "ccRiskTypeCancelRate": "Yüksek iptal oranı",
+  "ccRiskTypeConcentration": "Ciro yoğunlaşması",
+  "ccRiskTypeCouponUnlimited": "Sınırsız kupon, yoğun kullanım",
+  "ccRiskTypeCouponValue": "Yüksek değerli kupon",
+  "ccRiskTypeFrequentGrants": "Sık puan yüklemesi",
+  "ccRiskTypeNight": "Gece işlemi",
+  "ccRiskTypePointsBurn": "Hızlı puan tüketimi",
+  "ccRiskTypeQuickCancel": "Hızlı iptal",
+  "ccRiskTypeVelocity": "Kısa sürede çok işlem",
+  "ccRoleFinanceDesc": "Hak ediş, esnaf raporları, puan ve kupon (okuma)",
+  "ccRoleSuperDesc": "Tüm modüller, tam yetki",
+  "ccRoleSupportDesc": "Acenteler (okuma), mesajlar, risk",
+  "ccSectionModules": "Modüller",
+  "ccSectionOverview": "Genel Bakış",
+  "ccSectionRecent": "Son İşlemler",
+  "ccSeeAll": "Tümü",
+  "ccStaffActionFailed": "İşlem tamamlanamadı",
+  "ccStaffAdd": "Personel ekle",
+  "ccStaffChangeRole": "Rolü değiştir",
+  "ccStaffCount": "{count} kişi",
+  "@ccStaffCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccStaffCreate": "Hesap aç",
+  "ccStaffCreateFailed": "Hesap açılamadı",
+  "ccStaffCreated": "Personel hesabı açıldı",
+  "ccStaffDelete": "Personeli sil",
+  "ccStaffDeleteConfirm": "{name} silinsin mi? Hesap paneli kullanamaz hale gelir.",
+  "@ccStaffDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccStaffDeleted": "Personel silindi",
+  "ccStaffEmpty": "Henüz destek veya muhasebe personeli yok",
+  "ccStaffList": "Personel",
+  "ccStaffLoginHint": "Personel, \"Yönetici\" girişinden TC kimlik numarasıyla girer.",
+  "ccStaffMatrix": "Yetki Matrisi",
+  "ccStaffName": "Ad Soyad",
+  "ccStaffNameMissing": "Ad soyad girin",
+  "ccStaffPhone": "Telefon",
+  "ccStaffRole": "Rol",
+  "ccStaffRoleChanged": "Rol güncellendi",
+  "ccStaffSubtitle": "Platform rolleri ve yetkileri",
+  "ccStaffTc": "TC kimlik no",
+  "ccStaffTcExists": "Bu TC ile kayıtlı bir kullanıcı var",
+  "ccStaffTcInvalid": "TC 11 haneli olmalı",
+  "ccStaffTitle": "Yetkili Personel",
+  "ccStaffYou": "Sen",
+  "ccSubtitle": "Platformun nabzı tek ekranda",
+  "ccTitle": "Kontrol Merkezi",
+  "commonCancel": "Vazgeç",
+  "commonClose": "Kapat",
+  "commonComingSoon": "Çok yakında",
+  "commonDelete": "Sil",
+  "commonEdit": "Düzenle",
+  "commonError": "Bir hata oluştu.",
+  "commonLanguage": "Dil",
+  "commonLanguageChanged": "Dil değiştirildi",
+  "commonLoading": "Yükleniyor...",
+  "commonMecca": "Mekke",
+  "commonMedina": "Medine",
+  "commonNo": "Hayır",
+  "commonOk": "Tamam",
+  "commonRetry": "Tekrar Dene",
+  "commonSave": "Kaydet",
+  "commonSearch": "Ara",
+  "commonSelectLanguage": "Dil seçin",
+  "commonYes": "Evet",
+  "coreAccountExists": "Bu TC ile kayıtlı bir hesap zaten var.",
+  "coreAnnouncement": "Duyuru",
+  "coreAudioLoadFailed": "Ses yüklenemedi. İnternet bağlantınızı kontrol edin.",
+  "coreAyahCount": "{count} ayet",
+  "@coreAyahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreBackgroundLocationMessage": "Uygulama kapalıyken de rehberinizin sizi görebilmesi için açılacak ekranda \"Her zaman izin ver\" seçeneğini seçin.",
+  "coreBackgroundLocationTitle": "Arka Planda Konum",
+  "coreChannelAnnouncements": "Duyurular",
+  "coreChannelAnnouncementsDesc": "Acente ve rehber duyuruları",
+  "coreChannelLocation": "Konum Paylaşımı",
+  "coreChannelLocationDesc": "Konumunuz rehberinizle paylaşılırken gösterilir",
+  "coreChannelQuranDesc": "Sesli Kur'an okuma kontrolleri",
+  "coreChannelRadio": "Telsiz",
+  "coreChannelRadioDesc": "Telsiz yayını sürerken görünen bildirim.",
+  "coreContinue": "Devam",
+  "coreCurrencyEur": "Euro",
+  "coreCurrencyGbp": "İngiliz Sterlini",
+  "coreCurrencySar": "Suudi Riyali",
+  "coreCurrencyTry": "Türk Lirası",
+  "coreCurrencyUsd": "ABD Doları",
+  "coreGoToSettings": "Ayarlara Git",
+  "coreHoursAgo": "{count} saat önce",
+  "@coreHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreInvalidTokenResponse": "Geçersiz token yanıtı.",
+  "coreJustNow": "Az önce",
+  "coreLocationPermissionMessage": "Konumunuzun rehberinizle paylaşılabilmesi için konum iznine ihtiyaç var. Ayarlar sayfasından izin verebilirsiniz.",
+  "coreLocationPermissionRestart": "Lütfen konum iznini açın ve uygulamayı yeniden başlatın.",
+  "coreLocationPermissionTitle": "Konum İzni Gerekli",
+  "coreLocationServiceOffMessage": "Rehberinizin sizi görebilmesi için telefonunuzun konum (GPS) özelliğini açmanız gerekiyor.",
+  "coreLocationServiceOffSnack": "Konum servisi kapalı. Lütfen telefonunuzun konumunu (GPS) açın.",
+  "coreLocationServiceOffTitle": "Konum Servisi Kapalı",
+  "coreLocationServiceOpen": "Konumu Aç",
+  "coreLocationSharingNotification": "Konumunuz rehberinizle paylaşılıyor",
+  "coreMinutesAgo": "{count} dakika önce",
+  "@coreMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "coreNavCalendar": "Takvim",
+  "coreNavHome": "Ana Sayfa",
+  "coreNavInfo": "Bilgi",
+  "coreNavPrayers": "Dualar",
+  "coreNavProfile": "Profil",
+  "coreNotNow": "Şimdi Değil",
+  "coreOsmContributors": "OpenStreetMap katkıcıları",
+  "corePageNotFound": "Sayfa bulunamadı",
+  "coreQuranBlockedByRadio": "Telsiz açıkken Kur'an dinlenemez.",
+  "coreQuranTitle": "Kur'an-ı Kerim",
+  "coreRatesCached": "kayıtlı",
+  "coreRatesDaily": "günlük",
+  "coreRatesFetchFailed": "Döviz kurları alınamadı. İnternet bağlantınızı kontrol edin.",
+  "coreSessionNotFound": "Oturum bulunamadı.",
+  "coreStartFailed": "Uygulama başlatılamadı",
+  "coreStarting": "Başlatılıyor...",
+  "coreUnknownPage": "Bilinmeyen sayfa",
+  "cuzdanCancelled": "İptal edildi",
+  "cuzdanClose": "Kapat",
+  "cuzdanCodeCreating": "Kod hazırlanıyor…",
+  "cuzdanCodeError": "Kod oluşturulamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+  "cuzdanCodeOneTime": "Bu kod tek kullanımlıktır ve {minutes} dakikada yenilenir.",
+  "@cuzdanCodeOneTime": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanCodeShowLive": "Tek kullanımlık koda dön",
+  "cuzdanCodeShowStatic": "Dükkanın kendi QR kodunu göster",
+  "cuzdanCodeTimeLeft": "Kalan süre",
+  "cuzdanCodeWaiting": "Kod okutuldu, işlem kaydediliyor…",
+  "cuzdanCodeYourPoints": "Puanınız: {points}",
+  "@cuzdanCodeYourPoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanCouponAllShops": "Tüm anlaşmalı dükkanlarda",
+  "cuzdanCouponAtShop": "Yalnız {shop}",
+  "@cuzdanCouponAtShop": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponAvailable": "Bu dükkanda {count} kupon kullanılabilir",
+  "@cuzdanCouponAvailable": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanCouponHowTo": "Kullanmak için dükkanda indirim kodunu açıp kuponu seç. Her kupon bir kez kullanılır.",
+  "cuzdanCouponNone": "Kupon kullanma",
+  "cuzdanCouponOff": "İNDİRİM",
+  "cuzdanCouponPickHint": "Seçtiğin kupon koda eklenir; esnaf kodu okutunca indirim uygulanır.",
+  "cuzdanCouponPickTitle": "Kupon seç",
+  "cuzdanCouponSelected": "Kupon: {code}",
+  "@cuzdanCouponSelected": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponUse": "Kupon kullan",
+  "cuzdanCouponUsed": "Kupon {code}",
+  "@cuzdanCouponUsed": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanCouponValidUntil": "Son gün {date}",
+  "@cuzdanCouponValidUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanDiscount": "İndirim",
+  "cuzdanEmpty": "Henüz alışveriş yok. Anlaşmalı dükkanlarda QR kodunuzu göstererek indirim ve puan kazanın.",
+  "cuzdanFilterAll": "Tümü",
+  "cuzdanFilterEarned": "Puan kazanılan",
+  "cuzdanFilterSpent": "Puanla ödenen",
+  "cuzdanGiftPoints": "Hediye puan",
+  "cuzdanGoShops": "Anlaşmalı Dükkanlar",
+  "cuzdanGross": "Tutar",
+  "cuzdanHowEarn": "Anlaşmalı dükkanlarda harcadığınız her 1 SAR için 1 puan kazanırsınız.",
+  "cuzdanHowPay": "Puanla ödediğinizde dükkanın indirimi yine uygulanır.",
+  "cuzdanHowRecord": "Uygulama ödeme almaz; yalnızca alışverişinizi kaydeder.",
+  "cuzdanHowTitle": "Puan nasıl çalışır?",
+  "cuzdanHowValue": "100 puan = 5 SAR değerindedir.",
+  "cuzdanLoadError": "Harcamalar yüklenemedi. İnternet bağlantınızı kontrol edin.",
+  "cuzdanLoyaltyPoints": "Sadakat Puanı",
+  "cuzdanMethodCard": "Kredi kartı",
+  "cuzdanMethodCash": "Nakit",
+  "cuzdanMethodPoints": "Puan",
+  "cuzdanMyCoupons": "Kuponlarım",
+  "cuzdanMyPurchases": "Harcamalarım",
+  "cuzdanNoFilterMatch": "Bu filtreye uygun işlem yok.",
+  "cuzdanNotifEarned": "{shop}: {amount} SAR ödendi, {points} puan kazandınız.",
+  "@cuzdanNotifEarned": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanNotifSpent": "{shop}: {amount} SAR tutarı {points} puanla ödendi.",
+  "@cuzdanNotifSpent": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPaid": "Ödenen",
+  "cuzdanPaymentMethod": "Ödeme türü",
+  "cuzdanPointsCorrection": "Puan düzeltmesi",
+  "cuzdanPointsEarned": "Kazanılan puan",
+  "cuzdanPointsMinus": "−{points} puan",
+  "@cuzdanPointsMinus": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPointsPlus": "+{points} puan",
+  "@cuzdanPointsPlus": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPointsRevert": "Puan hareketi geri alındı",
+  "cuzdanPointsReverted": "Geri alındı",
+  "cuzdanPointsSpent": "Harcanan puan",
+  "cuzdanPointsWorth": "≈ {value} SAR değerinde",
+  "@cuzdanPointsWorth": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanProfileSubtitle": "{points} puan · alışveriş geçmişi",
+  "@cuzdanProfileSubtitle": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPurchaseCount": "Alışveriş",
+  "cuzdanRetry": "Tekrar dene",
+  "cuzdanReviewAction": "Değerlendir",
+  "cuzdanReviewComment": "Yorumun (isteğe bağlı)",
+  "cuzdanReviewComplaint": "Şikâyet olarak bildir",
+  "cuzdanReviewComplaintHint": "Şikâyetin platform ekibine iletilir ve incelenir.",
+  "cuzdanReviewError": "Değerlendirme gönderilemedi. Lütfen tekrar dene.",
+  "cuzdanReviewOnce": "Değerlendirme bir kez gönderilir ve sonradan değiştirilemez.",
+  "cuzdanReviewPickStars": "Lütfen 1–5 arası yıldız seç.",
+  "cuzdanReviewSend": "Gönder",
+  "cuzdanReviewStar1": "Çok kötü",
+  "cuzdanReviewStar2": "Kötü",
+  "cuzdanReviewStar3": "İdare eder",
+  "cuzdanReviewStar4": "İyi",
+  "cuzdanReviewStar5": "Mükemmel",
+  "cuzdanReviewThanks": "Değerlendirmen için teşekkürler!",
+  "cuzdanReviewTitle": "Alışverişi değerlendir",
+  "cuzdanReviewYours": "Değerlendirmen",
+  "cuzdanSar": "{amount} SAR",
+  "@cuzdanSar": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanSuccessTitle": "Alışveriş kaydedildi",
+  "cuzdanTitle": "Harcamalarım ve Puanlarım",
+  "cuzdanTotalDiscount": "Kazanılan indirim",
+  "cuzdanTotalSpent": "Toplam harcama",
+  "dualarAllFilesDownloaded": "Tüm dosyalar başarıyla indirildi!",
+  "dualarArabicText": "Arapça Metin",
+  "dualarBookPageView": "Kitap sayfası görünümü",
+  "dualarChangeStartNumber": "Başlangıç sayısını değiştir",
+  "dualarCompleted": "Tamamlandı",
+  "dualarContentDownloadSuccess": "İçerikler başarıyla indirildi!",
+  "dualarContentDownloadTitle": "İçerik İndir",
+  "dualarContinue": "Devam Et",
+  "dualarContinueFrom": "{count} sayısından devam et",
+  "@dualarContinueFrom": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarCustom": "Özel",
+  "dualarCustomValue": "Özel ({value})",
+  "@dualarCustomValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarDeleteZikirConfirm": "{name} adlı zikri silmek istediğinize emin misiniz?",
+  "@dualarDeleteZikirConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarDeleteZikirTitle": "Zikri Sil",
+  "dualarDlSay": "Say Duaları",
+  "dualarDlTavaf": "Tavaf Duaları",
+  "dualarDownload": "İndir",
+  "dualarDownloadAll": "Tümünü indir",
+  "dualarDownloadContent": "İçerik indir",
+  "dualarDownloadDialogInfo": "Kitap sayfası görsellerini indirerek internetsiz kullanabilirsiniz. Dua metinleri zaten cihazınızda.",
+  "dualarDownloadErrorDetail": "İndirme sırasında bir hata oluştu: {error}",
+  "@dualarDownloadErrorDetail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarDownloadErrorGeneric": "İndirme hatası: {error}",
+  "@dualarDownloadErrorGeneric": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarDownloadFailedShort": "İndirme başarısız",
+  "dualarDownloadFailedTitle": "İndirme başarısız!",
+  "dualarDownloadItemFailed": "{name} indirilemedi: {error}",
+  "@dualarDownloadItemFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarDownloaded": "İndirildi ✓",
+  "dualarDownloading": "İndiriliyor",
+  "dualarDownloadingTitle": "İndiriliyor...",
+  "dualarEditZikirTitle": "Zikri Düzenle",
+  "dualarEndShort": "Bitiş",
+  "dualarEnterName": "Lütfen bir isim giriniz!",
+  "dualarEnterNumber": "Lütfen bir sayı giriniz!",
+  "dualarEnterTarget": "Lütfen bir hedef belirleyin!",
+  "dualarFileDownloadError": "Dosya indirme hatası: {error}",
+  "@dualarFileDownloadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarFileDownloading": "Dosya indiriliyor...",
+  "dualarFileNotDownloaded": "Dosya {name} indirilemedi: {error}",
+  "@dualarFileNotDownloaded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarFileProgress": "Dosya {current}/{total} indiriliyor...",
+  "@dualarFileProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarFillAllFields": "Lütfen Boş Alan Bırakmayınız.",
+  "dualarImageCount": "{count} resim",
+  "@dualarImageCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarImageNotDownloaded": "Resim henüz indirilmemiş",
+  "dualarMeaning": "Anlamı",
+  "dualarNewZikir": "Yeni zikir",
+  "dualarNoInternet": "İnternet bağlantısı yok",
+  "dualarNoInternetCheck": "İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.",
+  "dualarNoLanguageOption": "Bu sayfa için dil seçeneği mevcut değil",
+  "dualarNoSavedZikir": "Henüz kayıtlı zikriniz yok",
+  "dualarNoSavedZikirHint": "Zikirmatik'te çektiğiniz zikri \"Kaydet\" ile bu listeye ekleyebilirsiniz.",
+  "dualarOptions": "Seçenekler",
+  "dualarOverallProgress": "Genel: %{percent}",
+  "@dualarOverallProgress": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarReading": "Okunuşu",
+  "dualarReset": "Sıfırla",
+  "dualarResetConfirm": "Sayaç sıfırlansın mı?",
+  "dualarRoundsCompleted": "{count} tur tamamlandı",
+  "@dualarRoundsCompleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSaveAsTitle": "Listeye hangi adla kaydedeceksiniz?",
+  "dualarSavedZikirs": "Kayıtlı Zikirlerim",
+  "dualarSavtCompletedReset": "{count} şavt tamamlandı. Sıfırlamak için sayaca uzun basın.",
+  "@dualarSavtCompletedReset": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSavtCongrats": "Tebrikler! {count} şavtı tamamladınız.",
+  "@dualarSavtCongrats": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSavtCounter": "Şavt Sayacı",
+  "dualarSavtPlusOne": "Şavt +1",
+  "dualarSavtShort": "{number}. Şavt",
+  "@dualarSavtShort": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSayDownloading": "Say duaları indiriliyor...",
+  "dualarSayPageTitle": "Sa'y Duaları (Safa ve Merve)",
+  "dualarServerError": "Sunucu hatası: {code}",
+  "@dualarServerError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSetTargetTitle": "Kendinize bir hedef belirleyin.",
+  "dualarSilent": "Sessiz",
+  "dualarStartFromTitle": "Nereden başlayıp çekmek istiyorsunuz?",
+  "dualarStartNumberHint": "Başlangıç sayısı",
+  "dualarStartShort": "Başlangıç",
+  "dualarTap": "Dokun",
+  "dualarTargetHint": "Örn. 500",
+  "dualarTargetReached": "Hedefinize ulaştınız!",
+  "dualarTargetSet": "Hedefiniz {target} olarak belirlendi!",
+  "@dualarTargetSet": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarTargetTooBig": "Hedefiniz 99999'dan büyük olamaz!",
+  "dualarTargetZero": "Hedefiniz 0 olamaz!",
+  "dualarTavafDownloading": "Tavaf duaları indiriliyor...",
+  "dualarTavafPageTitle": "Şavt Duaları (Tavaf)",
+  "dualarTextView": "Metin görünümü",
+  "dualarTextViewOffline": "Metin görünümü internetsiz de kullanılabilir.",
+  "dualarThemeColor": "Tema rengi",
+  "dualarTimeout": "Zaman aşımı",
+  "dualarTurkishTranslation": "Türkçe Çeviri",
+  "dualarUndo": "Geri al",
+  "dualarVibration": "Titreşim",
+  "dualarVibrationOff": "Titreşim kapatıldı",
+  "dualarVibrationOn": "Titreşim açıldı",
+  "dualarViewList": "Listeyi Gör",
+  "dualarYourTarget": "Hedefiniz: {target}",
+  "@dualarYourTarget": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarZikirContinuing": "{name} adlı zikire devam ediyorsunuz.",
+  "@dualarZikirContinuing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarZikirCount": "Zikir Sayısı",
+  "dualarZikirMaxReached": "Zikirmatik daha fazla artamaz!",
+  "dualarZikirName": "Zikir Adı",
+  "dualarZikirNameHint": "Örn. Sübhanallah",
+  "dualarZikirSaved": "Zikriniz Başarıyla Kaydedildi!",
+  "dualarZikirSavedCount": "\"{name}\" kaydedildi ({count})",
+  "@dualarZikirSavedCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarZikirmatik": "Zikirmatik",
+  "esnafAllTransactions": "Tüm işlemler",
+  "esnafAmountInvalid": "Geçerli bir tutar girin.",
+  "esnafAmountLabel": "Tutar (SAR)",
+  "esnafAmountTooHigh": "Tek işlemde en fazla {max} girilebilir.",
+  "@esnafAmountTooHigh": {
+    "placeholders": {
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafBackHome": "Ana sayfa",
+  "esnafByMethod": "Ödeme türüne göre",
+  "esnafCalcCoupon": "Kupon {code}",
+  "@esnafCalcCoupon": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCalcDiscount": "İndirim (%{percent})",
+  "@esnafCalcDiscount": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "esnafCalcGross": "Brüt tutar",
+  "esnafCalcPayable": "Ödenecek",
+  "esnafCalcPointsBalance": "Misafirin bakiyesi",
+  "esnafCalcPointsEarned": "Kazanılan puan",
+  "esnafCalcPointsNeeded": "Gereken puan",
+  "esnafCalcPointsSpent": "Harcanan puan",
+  "esnafCancelAction": "İptal et",
+  "esnafCancelConfirmBody": "{guest} adına {amount} tutarındaki işlem iptal edilecek. Bu işlem geri alınamaz.",
+  "@esnafCancelConfirmBody": {
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCancelConfirmTitle": "Emin misiniz?",
+  "esnafCancelDenied": "İptal edilemedi: 24 saatlik iptal süresi dolmuş olabilir.",
+  "esnafCancelDone": "İşlem iptal edildi.",
+  "esnafCancelReason": "İptal sebebi",
+  "esnafCancelReasonPrompt": "İptal sebebini yazın. Acenteniz bu kaydı görür.",
+  "esnafCancelReasonRequired": "Lütfen kısa bir sebep yazın.",
+  "esnafCancelTitle": "İşlemi iptal et",
+  "esnafCancelWindowPassed": "İşlemler yalnızca ilk 24 saat içinde iptal edilebilir.",
+  "esnafCancelledAt": "İptal zamanı",
+  "esnafCancelledTag": "İptal",
+  "esnafCodeLabel": "Kod: {code}",
+  "@esnafCodeLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafContinue": "Devam",
+  "esnafCopied": "Rapor panoya kopyalandı.",
+  "esnafCopy": "Kopyala",
+  "esnafCouponApplied": "Uygulanan kupon indirimi: {amount}",
+  "@esnafCouponApplied": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponEnterAmount": "Tutarı girince kupon indirimi hesaplanır.",
+  "esnafCouponErrAlreadyUsed": "Misafir bu kuponu daha önce kullanmış.",
+  "esnafCouponErrExhausted": "Kupon kullanım sınırına ulaştı.",
+  "esnafCouponErrExpired": "Kuponun süresi dolmuş.",
+  "esnafCouponErrInactive": "Kupon pasif.",
+  "esnafCouponErrMinSpend": "Bu kupon en az {amount} alışverişte geçerli.",
+  "@esnafCouponErrMinSpend": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponErrNotFound": "Kupon bulunamadı.",
+  "esnafCouponErrNotStarted": "Kupon henüz başlamadı.",
+  "esnafCouponErrOtherAgency": "Kupon bu misafirin acentesi için geçerli değil.",
+  "esnafCouponErrOtherShop": "Kupon bu dükkanda geçerli değil.",
+  "esnafCouponErrSave": "Kupon kullanılamadı: misafir bu kuponu daha önce kullanmış ya da kupon az önce tükenmiş olabilir. Misafirden kuponsuz yeni bir kod üretmesini isteyin.",
+  "esnafCouponErrZero": "Bu tutarda kupon indirimi uygulanamıyor.",
+  "esnafCouponFixed": "{amount} indirim",
+  "@esnafCouponFixed": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponInvalidHint": "Bu kodla işlem kaydedilemez. Misafirden kuponsuz yeni bir kod üretmesini isteyin.",
+  "esnafCouponLoading": "Kupon kontrol ediliyor…",
+  "esnafCouponMax": "en fazla {amount}",
+  "@esnafCouponMax": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponMin": "en az {amount} alışverişte",
+  "@esnafCouponMin": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponPercent": "%{value} indirim",
+  "@esnafCouponPercent": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafCouponTitle": "Kupon: {code}",
+  "@esnafCouponTitle": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafDayReport": "Gün sonu raporu",
+  "esnafDiscountBadge": "%{percent} indirim",
+  "@esnafDiscountBadge": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "esnafDiscountShort": "indirim {amount}",
+  "@esnafDiscountShort": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafErrExpired": "Kodun süresi doldu",
+  "esnafErrExpiredBody": "Kodun süresi doldu. Misafirden yeni kod isteyip tekrar okutun.",
+  "esnafErrInvalidCode": "Bu kod geçersiz, süresi dolmuş ya da daha önce kullanılmış.",
+  "esnafErrNetwork": "Bağlantı sorunu. İnternetinizi kontrol edip tekrar deneyin.",
+  "esnafErrNotFound": "Kod bulunamadı",
+  "esnafErrNotOurs": "Bu bir Umre Rehberim kodu değil",
+  "esnafErrNotOursBody": "Misafirden uygulamadaki esnaf kodunu açmasını isteyin.",
+  "esnafErrOtherAgency": "Anlaşmalı acente değil",
+  "esnafErrOtherAgencyBody": "Bu misafirin acentesiyle dükkanınızın indirim anlaşması yok.",
+  "esnafErrSave": "Kaydedilemedi. Lütfen tekrar deneyin.",
+  "esnafErrTitle": "İşlem kaydedilemedi",
+  "esnafErrUsed": "Kod daha önce kullanılmış",
+  "esnafErrUsedAt": "Bu kod \"{shop}\" dükkanında kullanıldı. Misafirden yeni kod isteyin.",
+  "@esnafErrUsedAt": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafErrUsedBody": "Misafirden yeni bir kod oluşturmasını isteyin.",
+  "esnafGuest": "Misafir",
+  "esnafGuestPoints": "Puan bakiyesi",
+  "esnafGuestTrip": "Sefer",
+  "esnafHistoryTitle": "İşlem geçmişi",
+  "esnafLoadFailed": "Veriler yüklenemedi",
+  "esnafLoadFailedBody": "İnternet bağlantınızı kontrol edip tekrar deneyin.",
+  "esnafLoginCodeError": "Esnaf kodu 6 karakter olmalı (A-Z, 2-9).",
+  "esnafLoginCodeLabel": "Esnaf kodu",
+  "esnafLoginHint": "Kod ve PIN size acenteniz tarafından verilir.",
+  "esnafLoginNotMerchant": "Bu hesap bir esnaf hesabı değil.",
+  "esnafLoginPinError": "PIN 6 haneli olmalı.",
+  "esnafLoginPinLabel": "PIN",
+  "esnafLoginType": "Esnaf",
+  "esnafLoginUseMerchant": "Bu bir esnaf hesabı. Lütfen \"Esnaf\" girişini seçin.",
+  "esnafLoginWrong": "Esnaf kodu ya da PIN hatalı.",
+  "esnafLogoCamera": "Fotoğraf çek",
+  "esnafLogoGallery": "Galeriden seç",
+  "esnafLogoRemove": "Logoyu kaldır",
+  "esnafLogout": "Çıkış yap",
+  "esnafLogoutConfirm": "Oturumu kapatmak istiyor musunuz?",
+  "esnafMenuShopInfo": "Dükkan bilgilerim",
+  "esnafMethodAll": "Tümü",
+  "esnafMethodCard": "Kredi kartı",
+  "esnafMethodCash": "Nakit",
+  "esnafMethodLabel": "Ödeme türü",
+  "esnafMethodPoints": "Puan",
+  "esnafNewTx": "Yeni işlem",
+  "esnafNoCollectNote": "Uygulama ödeme almaz; yalnızca kaydı tutar.",
+  "esnafNoTransactions": "Bu filtreye uygun işlem yok.",
+  "esnafNoTransactionsToday": "Bugün henüz işlem yok.",
+  "esnafNoteLabel": "Not (isteğe bağlı)",
+  "esnafPointsInsufficient": "Puan yetersiz: {need} puan gerekli, bakiye {balance}.",
+  "@esnafPointsInsufficient": {
+    "placeholders": {
+      "need": {
+        "type": "String"
+      },
+      "balance": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafPointsNone": "Misafirin puan bakiyesi yok; puanla ödeme yapılamaz.",
+  "esnafRange30": "30 gün",
+  "esnafRange7": "7 gün",
+  "esnafRangeCustom": "Özel",
+  "esnafRangeToday": "Bugün",
+  "esnafRecentTransactions": "Son işlemler",
+  "esnafReportCancelled": "İptal edilen işlem",
+  "esnafReportFooter": "Umre Rehberim – Esnaf Paneli",
+  "esnafReportHeader": "{shop} – Gün sonu raporu",
+  "@esnafReportHeader": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafReportPickDay": "Rapor günü seçin",
+  "esnafReviewComplaint": "Şikâyet",
+  "esnafReviewTitle": "Misafir değerlendirmesi",
+  "esnafSar": "{amount} SAR",
+  "@esnafSar": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "esnafSaveTx": "İşlemi kaydet",
+  "esnafScanAgain": "Tekrar okut",
+  "esnafScanQr": "QR Okut",
+  "esnafScanQrHint": "Misafirin telefonundaki kodu okutun",
+  "esnafShopDescription": "Açıklama",
+  "esnafShopHours": "Çalışma saatleri",
+  "esnafShopInactive": "Dükkanınız şu an pasif. İşlem yapılamaz; acentenizle görüşün.",
+  "esnafShopNotFound": "Dükkan bulunamadı",
+  "esnafShopNotFoundBody": "Hesabınıza bağlı bir dükkan yok. Lütfen acentenizle iletişime geçin.",
+  "esnafShopPhone": "Telefon",
+  "esnafShopReadOnlyNote": "Dükkan adı ve indirim oranını yalnızca acenteniz değiştirebilir.",
+  "esnafShopSaved": "Dükkan bilgileri kaydedildi.",
+  "esnafShopWhatsapp": "WhatsApp",
+  "esnafStatCount": "İşlem",
+  "esnafStatDiscount": "Verilen indirim",
+  "esnafStatNet": "Net ciro",
+  "esnafSuccessBody": "Ödemeyi kendi kasanızda ya da POS cihazınızda alın.",
+  "esnafSuccessTitle": "İşlem kaydedildi",
+  "esnafTime": "Zaman",
+  "esnafTitle": "Esnaf Paneli",
+  "esnafTodaySummary": "Bugünün özeti",
+  "esnafTxTitle": "Yeni işlem",
+  "homeAnnouncement": "Duyuru",
+  "homeBirthDate": "Doğum Tarihi",
+  "homeCalendarNoAgency": "Acente bilginiz tanımlandığında program burada görünecek.",
+  "homeCalendarNotFound": "Takvim bilgisi bulunamadı",
+  "homeCallAgency": "Acenteyi Ara",
+  "homeChecking": "Kontrol ediliyor...",
+  "homeContactAgencyHint": "Lütfen acente ile iletişime geçin.",
+  "homeContactGuide": "Rehberle İletişim",
+  "homeContactGuideSubtitle": "Rehberinizle iletişim kurun",
+  "homeCountdownDays": "Gün",
+  "homeCountdownHours": "Saat",
+  "homeCountdownMinutes": "Dakika",
+  "homeCountdownSeconds": "Saniye",
+  "homeCurrencySar": "Suudi Riyali",
+  "homeCurrencyTry": "Türk Lirası",
+  "homeDayN": "{day}. Gün",
+  "@homeDayN": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDaysLeftLabel": "gün kaldı",
+  "homeDhikrSection": "Zikir",
+  "homeDownloadContent": "İçerik indir",
+  "homeDuaQuoteCallUpon": "Rabbiniz şöyle dedi: Bana dua edin, size karşılık vereyim.",
+  "homeDuaQuoteHearts": "Bilesiniz ki kalpler ancak Allah'ı anmakla huzur bulur.",
+  "homeDuaQuoteNear": "Kullarım sana beni sorarlarsa, bilsinler ki ben onlara çok yakınım. Bana dua edince, dua edenin duasına cevap veririm.",
+  "homeDuaQuoteRemember": "Öyleyse yalnız beni anın ki ben de sizi anayım.",
+  "homeDuasQuranSubtitle": "Okumak ve dinlemek için tıklayın",
+  "homeDuasSai": "Sa'y Duaları",
+  "homeDuasSaiSubtitle": "Safa ile Merve arası okumak için tıklayın",
+  "homeDuasTawaf": "Tavaf Duaları",
+  "homeDuasTitle": "Dualar ve Kuran-ı Kerim",
+  "homeDuasUmrahSection": "Umre Duaları",
+  "homeDurationH": "{hours} sa",
+  "@homeDurationH": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDurationHM": "{hours} sa {minutes} dk",
+  "@homeDurationHM": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "homeDurationM": "{minutes} dk",
+  "@homeDurationM": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "homeEventDone": "Gerçekleşti",
+  "homeEventUpcoming": "Yaklaşan",
+  "homeEventsLoadError": "Etkinlikler yüklenemedi. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+  "homeFixPermission": "İzni Düzelt",
+  "homeGender": "Cinsiyet",
+  "homeGenderFemale": "Kadın",
+  "homeGenderMale": "Erkek",
+  "homeGreeting": "Selamün Aleyküm",
+  "homeGuest": "Misafir",
+  "homeGuide": "Rehber",
+  "homeGuideLocation": "Rehberin Konumu",
+  "homeHotelInfo": "Otel Bilgileri",
+  "homeHoursAgo": "{count} sa önce",
+  "@homeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeJustNow": "Az önce",
+  "homeLastSent": "Son gönderim: {when}",
+  "@homeLastSent": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "homeLastUpdate": "Son güncelleme: {date}",
+  "@homeLastUpdate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "homeLocationAllow": "Konum İznine İzin Ver",
+  "homeLocationBackgroundWarning": "Arka plan konum izni yok: ekran kapalıyken konum seyrek ve yanlış güncellenir. Ayarlar > İzinler > Konum bölümünden \"Her zaman izin ver\"i seçin.",
+  "homeLocationBeingShared": "Konumunuz paylaşılıyor",
+  "homeLocationGpsOff": "Telefonun konum servisi (GPS) kapalı",
+  "homeLocationPermissionDenied": "Konum izni verilmedi",
+  "homeLocationReceived": "Konum alındı",
+  "homeLocationReducedWarning": "\"Yaklaşık konum\" açık: konumunuz birkaç yüz metre ile birkaç km arasında sapabilir. Ayarlar > İzinler > Konum bölümünden \"Tam konum kullan\"ı açın.",
+  "homeLocationServiceStarting": "Paylaşım açık, servis başlatılıyor...",
+  "homeLocationSharing": "Konum Paylaşımı",
+  "homeLocationSharingDesc": "Açıkken konumunuz uygulama kapalıyken de rehberinizle paylaşılır.",
+  "homeLocationSharingDisabled": "Paylaşım kapalı",
+  "homeLocationSharingOff": "Konum paylaşımı kapatıldı",
+  "homeLocationSharingOn": "Konum paylaşımı açıldı",
+  "homeLocationStart": "Konum Takibini Başlat",
+  "homeLocationStartHint": "Rehberiniz konumunuzu görebilsin",
+  "homeLocationStop": "Konum Takibini Durdur",
+  "homeLocationTracking": "Konum Takibi",
+  "homeLogout": "Çıkış Yap",
+  "homeLogoutConfirm": "Hesabınızdan çıkış yapmak istediğinize emin misiniz?",
+  "homeLogoutFailed": "Çıkış yapılamadı. Lütfen tekrar deneyin.",
+  "homeMinutesAgo": "{count} dk önce",
+  "@homeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeNext": "Sonraki",
+  "homeNoActiveTrip": "Aktif bir seferiniz bulunmuyor",
+  "homeNoEventsHint": "Başka bir gün seçerek etkinlikleri görüntüleyin",
+  "homeNoEventsToday": "Bu gün için etkinlik yok",
+  "homeNoManagerForTrip": "Bu sefere henüz yönetici atanmamış",
+  "homeNoName": "İsim bilgisi yok",
+  "homeNoNotifications": "Henüz bildirim yok.",
+  "homeNoNotificationsHint": "Rehberinizin duyuruları burada görünecek.",
+  "homeNoPhone": "Telefon bilgisi yok",
+  "homeNotYet": "henüz yok",
+  "homeNotificationsLoadError": "Bildirimler yüklenemedi.",
+  "homeNotificationsTitle": "Bildirimler",
+  "homeOfflineMode": "Çevrimdışı mod",
+  "homeOpenBigMap": "Büyük haritada aç ve yol tarifi al",
+  "homePersonal": "Size özel",
+  "homePersonalInfo": "Kişisel Bilgiler",
+  "homePhaseDone": "Tamamlandı",
+  "homePhaseNone": "Planlanmadı",
+  "homePhaseOngoing": "Devam ediyor",
+  "homePhaseUpcoming": "Yaklaşıyor",
+  "homePhone": "Telefon",
+  "homePhoneOpenFailed": "Telefon açılamadı",
+  "homePickDay": "Gün Seç",
+  "homePrayerAsr": "İkindi",
+  "homePrayerDhuhr": "Öğle",
+  "homePrayerFajr": "İmsak",
+  "homePrayerIsha": "Yatsı",
+  "homePrayerMaghrib": "Akşam",
+  "homePrayerSunrise": "Güneş",
+  "homePrevious": "Önceki",
+  "homeProfileTitle": "Profil",
+  "homeProgramCalendar": "Program Takvimi",
+  "homeProgramDay": "Programın {day}. günü • toplam {total} gün",
+  "@homeProgramDay": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "homeQuickDuas": "Dualar",
+  "homeQuickPlaces": "Gezilecek Yerler",
+  "homeQuickQibla": "Kıble",
+  "homeQuickQuran": "Kur'an-ı Kerim",
+  "homeQuickShops": "Anlaşmalı Dükkanlar",
+  "homeQuoteAcceptFromUs": "Rabbimiz! Bizden kabul buyur. Şüphesiz sen hakkıyla işitensin, hakkıyla bilensin.",
+  "homeQuoteCompleteHajj": "Haccı ve umreyi Allah için tamamlayın.",
+  "homeQuoteRamadanUmrah": "Ramazan ayında yapılan umre, bir hacca denktir.",
+  "homeQuoteSafaMarwah": "Şüphesiz Safa ile Merve Allah'ın nişanelerindendir.",
+  "homeQuoteUmrahExpiation": "Bir umre, diğer umreye kadar arada işlenen günahlara kefarettir.",
+  "homeRatesError": "Döviz kurları alınamadı. İnternet bağlantınızı kontrol edin.",
+  "homeRatesLive": "Canlı kur",
+  "homeRefresh": "Yenile",
+  "homeRegistrationDate": "Kayıt Tarihi",
+  "homeRoom": "Oda {room}",
+  "@homeRoom": {
+    "placeholders": {
+      "room": {
+        "type": "String"
+      }
+    }
+  },
+  "homeRoomCapacity": "({count} kişilik)",
+  "@homeRoomCapacity": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeRoomInfo": "Oda Bilgileri",
+  "homeSavedDhikrs": "Kayıtlı Zikirlerim",
+  "homeSavedDhikrsSubtitle": "Kaldığınız yerden devam edin",
+  "homeSectionCurrency": "Döviz",
+  "homeSectionJourney": "Kutsal Yolculuk Vakti",
+  "homeSectionPrayerTimes": "Ezan Vakitleri",
+  "homeSectionQuickAccess": "Hızlı Erişim",
+  "homeSendMessage": "Mesaj gönder",
+  "homeSomethingWrong": "Bir sorun oluştu",
+  "homeSourceBaqarah127": "Bakara Suresi, 127",
+  "homeSourceBaqarah152Short": "Bakara 2/152",
+  "homeSourceBaqarah158": "Bakara Suresi, 158",
+  "homeSourceBaqarah186Short": "Bakara 2/186",
+  "homeSourceBaqarah196": "Bakara Suresi, 196",
+  "homeSourceBaqarah196Short": "Bakara 2/196",
+  "homeSourceBukhari": "Hadis-i Şerif (Buhârî)",
+  "homeSourceGhafir60Short": "Mü'min 40/60",
+  "homeSourceRad28Short": "Ra'd 13/28",
+  "homeTapToRead": "Okumak için tıklayın",
+  "homeTasbihCounter": "Zikirmatik",
+  "homeTasbihSubtitle": "Zikir çekmek için tıklayın",
+  "homeTcNo": "T.C. Kimlik No",
+  "homeTechSupportInfo": "Teknik Servis Bilgileri",
+  "homeToday": "Bugün",
+  "homeTripAccepted": "Allah teâlâ kabul eylesin!",
+  "homeTripNotDefined": "Sefer bilgisi henüz tanımlanmadı.",
+  "homeTripOf": "{city} Seferi",
+  "@homeTripOf": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "homeUmrahInfo": "Umre Bilgileri",
+  "homeUnknown": "Bilinmeyen",
+  "homeUpdatedDaysAgo": "{count} gün önce güncellendi",
+  "@homeUpdatedDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUpdatedHoursAgo": "{count} saat önce güncellendi",
+  "@homeUpdatedHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUpdatedJustNow": "Az önce güncellendi",
+  "homeUpdatedMinutesAgo": "{count} dk önce güncellendi",
+  "@homeUpdatedMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "homeUserNotFound": "Kullanıcı bilgisi bulunamadı",
+  "homeUserTypeAdmin": "Yönetici",
+  "homeUserTypePilgrim": "Umre Ziyaretçisi",
+  "homeUserTypeSuperAdmin": "Süper Yönetici",
+  "homeWaitingGuideLocation": "Rehber konumu bekleniyor...",
+  "homeWhatsAppOpenFailed": "WhatsApp açılamadı",
+  "homeYourGuide": "Rehberiniz",
+  "infoBadgeSoon": "Yakında",
+  "infoCardContactGuide": "Rehberle İletişime Geç",
+  "infoCardHotels": "Otel ve Restoranlar",
+  "infoCardHotelsSub": "Harem çevresindeki oteller ve yeme-içme yerleri.",
+  "infoCardIhram": "İhram Yasakları",
+  "infoCardMiqat": "Mikat Mahalleri",
+  "infoCardMiqatSub": "Beş mikat, uzaklıkları ve harita konumları.",
+  "infoCardNeedList": "İhtiyaç Listesi",
+  "infoCardNeedListSub": "Bavulunuzu hazırlarken işaretleyin.",
+  "infoCardPedometer": "Adım Sayar",
+  "infoCardPedometerSub": "Günlük adım sayınızı takip edin.",
+  "infoCardPlaces": "Gezilecek Yerler",
+  "infoCardRouteSim": "Rota Simülasyonu",
+  "infoCardRouteSimSub": "Mikattan tıraşa umre adımları haritada.",
+  "infoCardTawafSim": "Tavaf Simülasyonu",
+  "infoCardTawafSimSub": "Kâbe çevresinde 7 şavt, istilam ve dualar.",
+  "infoCardTechSupport": "Teknik Servis Bilgileri",
+  "infoCardTravelGuide": "Seyahat Rehberi",
+  "infoCardTravelGuideSub": "Vize, sağlık, para, ulaşım ve önemli telefonlar.",
+  "infoCheckBeforeTravel": "Yola çıkmadan önce güncelliğini kontrol edin.",
+  "infoCouldNotOpen": "Açılamadı.",
+  "infoDirections": "Yol tarifi",
+  "infoDistanceKm": "~{km} km",
+  "@infoDistanceKm": {
+    "placeholders": {
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "infoDistanceM": "~{meters} m",
+  "@infoDistanceM": {
+    "placeholders": {
+      "meters": {
+        "type": "int"
+      }
+    }
+  },
+  "infoEmail": "E-posta",
+  "infoFilterAll": "Tümü",
+  "infoFilterFood": "Yeme-içme",
+  "infoFilterHotels": "Oteller",
+  "infoGeneralTitle": "Genel Bilgiler",
+  "infoGuide911Note": "911, Mekke dahil bazı bölgelerde birleşik acil çağrı hattı olarak çalışır.",
+  "infoGuideJeddahConsulate": "T.C. Cidde Başkonsolosluğu",
+  "infoGuideMfa": "Dışişleri Bakanlığı",
+  "infoGuidePhonesSub": "Suudi acil hatları, Türk temsilcilikleri",
+  "infoGuidePhonesTitle": "Önemli Telefonlar",
+  "infoGuideRiyadhEmbassy": "T.C. Riyad Büyükelçiliği",
+  "infoGuideRulesWarning": "Suudi Arabistan vize, izin ve sağlık kurallarını sık günceller. Bu sayfadaki kurallar Kasım 2026 itibarıyla resmî kaynaklardan derlenmiştir. Kafilenizin ve Diyanet'in duyurularını esas alın.",
+  "infoGuideSaudiEmergency": "Suudi Arabistan acil",
+  "infoGuideSources": "Kaynaklar: Suudi Sağlık Bakanlığı (moh.gov.sa), visa.visitsaudi.com, Nusuk, Diyanet İşleri Başkanlığı, Haremeyn Hızlı Treni (sar.hhr.sa), T.C. Dışişleri Bakanlığı (mfa.gov.tr).",
+  "infoHotelsFootnoteMecca": "Mesafeler Kâbe'ye kuş uçuşudur; yürüme süresi kalabalığa ve girilen kapıya göre değişir. Konumlar OpenStreetMap'ten alınmıştır. Fiyat ve müsaitlik için otelle iletişime geçin.",
+  "infoHotelsFootnoteMedina": "Mesafeler Mescid-i Nebevî'ye kuş uçuşudur; yürüme süresi kalabalığa ve girilen kapıya göre değişir. Konumlar OpenStreetMap'ten alınmıştır. Fiyat ve müsaitlik için otelle iletişime geçin.",
+  "infoIhramHeader": "İhrama girdikten sonra ihramdan çıkıncaya kadar aşağıdaki davranışlar yasaktır.",
+  "infoKaaba": "Kâbe",
+  "infoMapCouldNotOpen": "Harita açılamadı.",
+  "infoMapOpenFailed": "Harita uygulaması açılamadı.",
+  "infoMeccaKaaba": "Mekke (Kâbe)",
+  "infoMiqatAlignNote": "Mikat noktasının kendisinde değil, hizasında da ihrama girilebilir. Mesafeler yola göre değiştiği için kaynaklarda farklı rakamlar geçebilir.",
+  "infoMiqatAsCrowFlies": "Kuş uçuşu {distance}",
+  "@infoMiqatAsCrowFlies": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "infoMiqatFive": "Beş mikat",
+  "infoMiqatFlightNote": "Türkiye'den uçakla doğrudan Cidde'ye gidenler, uçakta mikat hizasına gelmeden ihrama girer. Erkekler ihram örtülerini uçağa binmeden giyebilir; niyet ve telbiye, rehberin/kabin ekibinin duyurusuyla mikat hizasından önce yapılır.",
+  "infoMiqatForWhom": "Kimler için:",
+  "infoMiqatRoad": "Yol: {distance}",
+  "@infoMiqatRoad": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      }
+    }
+  },
+  "infoMiqatSource": "Kaynak: TDV İslâm Ansiklopedisi, \"Mîkāt\" maddesi. Konumlar: OpenStreetMap.",
+  "infoNeedAdd": "Ekle",
+  "infoNeedAddItem": "Madde ekle",
+  "infoNeedAddYourOwn": "Kendi maddenizi ekleyin",
+  "infoNeedAllReady": "Bavulunuz hazır. Hayırlı yolculuklar!",
+  "infoNeedCategory": "Kategori",
+  "infoNeedDisclaimer": "Bu liste genel bir öneridir; kafilenizin ve Diyanet'in güncel duyurularını da kontrol edin.",
+  "infoNeedEmpty": "Henüz madde yok. \"Madde ekle\" ile ekleyebilirsiniz.",
+  "infoNeedItemDeleted": "\"{item}\" silindi.",
+  "@infoNeedItemDeleted": {
+    "placeholders": {
+      "item": {
+        "type": "String"
+      }
+    }
+  },
+  "infoNeedItemExample": "Ör. Yedek gözlük",
+  "infoNeedItemName": "Madde adı",
+  "infoNeedListTitle": "İhtiyaç Listesi",
+  "infoNeedMyItem": "Benim maddem",
+  "infoNeedOther": "Diğer",
+  "infoNeedPercent": "%{percent}",
+  "@infoNeedPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "infoNeedReadyCount": "{done}/{total} hazır",
+  "@infoNeedReadyCount": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "infoNeedReset": "Sıfırla",
+  "infoNeedResetAll": "Hepsini sıfırla",
+  "infoNeedResetBody": "Tüm işaretler kaldırılacak. Eklediğiniz maddeler de silinsin mi?",
+  "infoNeedResetChecksOnly": "Yalnız işaretler",
+  "infoNeedResetTitle": "Listeyi sıfırla",
+  "infoOpenInGoogleMaps": "Google Maps'te aç",
+  "infoPedometerNextVersion": "Adım sayar bir sonraki sürümde eklenecek.",
+  "infoPlacesMeccaTitle": "Mekke Gezilecek Yerler",
+  "infoPlacesMedinaTitle": "Medine Gezilecek Yerler",
+  "infoProphetsMosque": "Mescid-i Nebevî",
+  "infoShowAll": "Hepsini göster",
+  "infoShowOnMap": "Haritada göster",
+  "infoTapForDetails": "Detaylar için tıklayınız.",
+  "infoTechContactUs": "Bize Ulaşın",
+  "infoTechContactUsBody": "Uygulamayla ilgili her türlü sorun ve öneriniz için bize ulaşabilirsiniz.",
+  "infoTechEmail1": "Birinci E-Posta",
+  "infoTechEmail2": "İkinci E-Posta",
+  "infoTechEmailFailed": "Email açılamadı",
+  "infoTechEmails": "E-Posta Adresleri",
+  "infoTechPhone1": "Birinci Telefon",
+  "infoTechPhone2": "İkinci Telefon",
+  "infoTechPhoneFailed": "Telefon açılamadı",
+  "infoTechPhones": "Telefon Numaraları",
+  "infoTechTitle": "Teknik Servis",
+  "infoTechWhatsAppFailed": "WhatsApp açılamadı",
+  "infoWalkHours": "{hours} saat yürüme",
+  "@infoWalkHours": {
+    "placeholders": {
+      "hours": {
+        "type": "String"
+      }
+    }
+  },
+  "infoWalkMinutes": "{minutes} dk yürüme",
+  "@infoWalkMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "kibleArMode": "AR Modu",
+  "kibleArSoon": "AR modu yakında eklenecek",
+  "kibleCalibrate": "Kalibre Et",
+  "kibleCalibrateStep1": "Telefonunuzu elinize alın, metal eşyalardan ve mıknatıslardan uzaklaşın.",
+  "kibleCalibrateStep2": "Telefonu havada yan yatmış bir 8 çizerek birkaç kez hareket ettirin.",
+  "kibleCalibrateStep3": "Hareket ederken telefonu bileğinizden de çevirin.",
+  "kibleCalibrateTitle": "Pusulayı Kalibre Et",
+  "kibleCalibrationHint": "telefonunuzu havada 8 çizerek hareket ettirin",
+  "kibleCalibrationNeeded": "Pusula kalibrasyonu gerekli: ",
+  "kibleCompassE": "D",
+  "kibleCompassN": "K",
+  "kibleCompassS": "G",
+  "kibleCompassW": "B",
+  "kibleDirE": "Doğu",
+  "kibleDirN": "Kuzey",
+  "kibleDirNE": "Kuzey Doğu",
+  "kibleDirNW": "Kuzey Batı",
+  "kibleDirS": "Güney",
+  "kibleDirSE": "Güney Doğu",
+  "kibleDirSW": "Güney Batı",
+  "kibleDirW": "Batı",
+  "kibleDistanceKm": "{value} km",
+  "@kibleDistanceKm": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "kibleDistanceM": "{value} m",
+  "@kibleDistanceM": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "kibleDistanceTitle": "Kıbleye Uzaklığınız",
+  "kibleDistanceToKaaba": "Kâbe'ye uzaklık",
+  "kibleFacingQibla": "Kıble yönündesiniz",
+  "kibleGettingLocation": "Konum alınıyor…",
+  "kibleHelp": "Yardım",
+  "kibleHelpText": "Telefonunuzu yere paralel tutun ve kendi etrafınızda yavaşça dönün. İbre tam yukarıyı gösterdiğinde ve Kâbe rozeti üstteki işaretle hizalandığında kıbleye dönmüş olursunuz; telefon hafifçe titrer.\n\nMetal eşyalar, mıknatıslı kılıflar ve elektronik cihazlar pusulayı etkileyebilir. Sapma görürseniz \"Kalibre Et\" adımlarını uygulayın.\n\nKıble açısı gerçek kuzeye göre hesaplanır.",
+  "kibleLocationFailedText": "Konumunuz alınamadı. Lütfen tekrar deneyin.",
+  "kibleLocationFailedTitle": "Konum alınamadı",
+  "kibleLocationNotYet": "Konum henüz alınamadı",
+  "kibleMeccaSaudi": "Mekke, Suudi Arabistan",
+  "kibleNoCompass": "Cihazınızda pusula sensörü bulunamadı",
+  "kibleOpenSettings": "Ayarları aç",
+  "kiblePermissionDeniedForeverText": "Kıble yönü ve Kâbe'ye uzaklık, bulunduğunuz konuma göre hesaplanır. Konum izni kalıcı olarak reddedildi; lütfen ayarlardan izin verin.",
+  "kiblePermissionDeniedText": "Kıble yönü ve Kâbe'ye uzaklık, bulunduğunuz konuma göre hesaplanır. Konumunuz yalnızca bu hesap için kullanılır.",
+  "kiblePermissionTitle": "Konum izni gerekli",
+  "kiblePreparingCompass": "Pusula hazırlanıyor…",
+  "kibleQiblaDegrees": "Kıble {degrees}°",
+  "@kibleQiblaDegrees": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "kibleQiblaUnknown": "Kıble —",
+  "kibleRefreshLocation": "Konumu yenile",
+  "kibleRouteTitle": "Kıble Rotası",
+  "kibleServiceOffText": "Kıble yönünü hesaplayabilmek için cihazınızın konum servisini açın.",
+  "kibleServiceOffTitle": "Konum servisi kapalı",
+  "kibleShowMyLocation": "Konumumu Göster",
+  "kibleSoon": "Yakında",
+  "kibleSubtitle": "Kıbleye yönelin ve kalbinizi huzura çevirin.",
+  "kibleTipLabel": "İpucu: ",
+  "kibleTipText": "Cihazınızı düz bir zemine yerleştirerek daha doğru sonuçlar alabilirsiniz.",
+  "kibleTitle": "Kıble Yönü",
+  "kibleTrueNorthNote": "(gerçek kuzeye göre, saat yönünde)",
+  "kibleTryAgain": "Tekrar dene",
+  "kibleTurnLeft": "Telefonu {degrees}° sola çevirin",
+  "@kibleTurnLeft": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "kibleTurnRight": "Telefonu {degrees}° sağa çevirin",
+  "@kibleTurnRight": {
+    "placeholders": {
+      "degrees": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAddBookmark": "Yer işareti ekle",
+  "quranAgoDays": "{count} gün önce",
+  "@quranAgoDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAgoHours": "{count} saat önce",
+  "@quranAgoHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAgoJustNow": "Az önce",
+  "quranAgoMinutes": "{count} dk önce",
+  "@quranAgoMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranArabicFontSize": "Arapça yazı boyutu",
+  "quranAyahActions": "Ayet seçenekleri",
+  "quranAyahBookmarkAdded": "{ref} yer işaretlerine eklendi",
+  "@quranAyahBookmarkAdded": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranAyahBookmarkRemoved": "{ref} yer işaretlerinden çıkarıldı",
+  "@quranAyahBookmarkRemoved": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranAyahCount": "{count} ayet",
+  "@quranAyahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAyahsLabel": "Ayetler",
+  "quranBack": "Geri",
+  "quranBookmarkAyah": "Ayeti işaretle",
+  "quranBookmarkPage": "Sayfaya yer işareti koy",
+  "quranClear": "Temizle",
+  "quranContinueReading": "Okumaya Devam Et",
+  "quranCopied": "Ayet panoya kopyalandı",
+  "quranCopy": "Kopyala",
+  "quranDayMode": "Gündüz modu",
+  "quranFilter": "Filtrele",
+  "quranFilterAll": "Tüm sureler",
+  "quranFilterMeccan": "Mekki sureler",
+  "quranFilterMedinan": "Medeni sureler",
+  "quranGo": "Git",
+  "quranGoToPage": "Sayfaya git",
+  "quranJuz": "{number}. Cüz",
+  "@quranJuz": {
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranJuzSubtitle": "{surah}, {ayah}. ayet • Sayfa {page}",
+  "@quranJuzSubtitle": {
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      },
+      "ayah": {
+        "type": "int"
+      },
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranLast10": "Son 10 kayıt",
+  "quranListen": "Dinle",
+  "quranListenAyah": "Bu ayeti dinle",
+  "quranListened": "Dinlendi",
+  "quranMeal": "Meal",
+  "quranMealFailed": "Meal alınamadı. Daha sonra tekrar deneyin.",
+  "quranMealOffline": "Meal için internet bağlantısı gerekli. Bağlantınızı kontrol edip tekrar deneyin.",
+  "quranMealSource": "Kaynak: {source}",
+  "@quranMealSource": {
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "quranMeccanAdj": "Mekki",
+  "quranMedinanAdj": "Medeni",
+  "quranNextSurah": "Sonraki sure",
+  "quranNightMode": "Gece modu",
+  "quranNoAyahAudio": "Bu imamın ayet kaydı yok",
+  "quranNoBookmarks": "Yer işareti yok",
+  "quranNoBookmarksHint": "Sure listesindeki ya da okuyucudaki yer işareti simgesine dokunarak ekleyebilirsiniz.",
+  "quranNoHistory": "Henüz kayıt yok",
+  "quranNoHistoryHint": "Okuduğunuz ve dinlediğiniz sureler burada görünecek.",
+  "quranNoResults": "Sonuç bulunamadı",
+  "quranNoResultsHint": "Sure adını (ör. Yasin) ya da numarasını (ör. 36 veya 2:255) yazmayı deneyin.",
+  "quranPage": "Sayfa {page}",
+  "@quranPage": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPageBookmarkAdded": "Sayfa {page} yer işaretlerine eklendi",
+  "@quranPageBookmarkAdded": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPageBookmarkRemoved": "Sayfa {page} yer işaretlerinden çıkarıldı",
+  "@quranPageBookmarkRemoved": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPageJuz": "Sayfa {page} • {juz}. Cüz",
+  "@quranPageJuz": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "juz": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranPageOfTotalJuz": "Sayfa {page} / {total} • {juz}. Cüz",
+  "@quranPageOfTotalJuz": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "juz": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranPagesLabel": "Sayfalar",
+  "quranPercent": "%{value}",
+  "@quranPercent": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPlaceMeccan": "Mekke",
+  "quranPlaceMedinan": "Medine",
+  "quranPlayFailed": "Ses çalınamadı. Lütfen tekrar deneyin.",
+  "quranPreparing": "Mushaf hazırlanıyor…",
+  "quranPrevSurah": "Önceki sure",
+  "quranReciterSelection": "İmam seçimi",
+  "quranReciterStyleHafsMurattal": "Hafs • Murattal",
+  "quranRemoveBookmark": "Yer işaretini kaldır",
+  "quranSearchHint": "Sure veya ayet ara",
+  "quranSettings": "Ayarlar",
+  "quranStartReading": "Okumaya Başla",
+  "quranStop": "Durdur",
+  "quranStopAyah": "Durdur",
+  "quranStreamingNote": "Sesli okumalar internetten akış olarak çalınır.",
+  "quranSubtitle": "Huzur bulmak için oku, anlamak için yaşa.",
+  "quranSurahBookmarkAdded": "{surah} yer işaretlerine eklendi",
+  "@quranSurahBookmarkAdded": {
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahBookmarkRemoved": "{surah} yer işaretlerinden çıkarıldı",
+  "@quranSurahBookmarkRemoved": {
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahCount": "{count} sure",
+  "@quranSurahCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranSurahTitle": "{name} Suresi",
+  "@quranSurahTitle": {
+    "description": "Sure başlığı. name: tr Türkçe ad, en İngilizce transliterasyon, ar Arapça ad.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "quranTabBookmarks": "Yer İşaretleri",
+  "quranTabJuz": "Cüzler",
+  "quranTabRecents": "Son Okunanlar",
+  "quranTabSurahs": "Sureler",
+  "quranTextLoadFailed": "Kur'an metni yüklenemedi.",
+  "quranTextSource": "Metin kaynağı",
+  "quranTextSourceBody": "Kur'an metni: Tanzil Projesi (tanzil.net), Hafs rivayeti, Osmanlı hattı. Sayfa düzeni: 604 sayfalık Medine Mushafı. Yazı tipi: Amiri Quran (SIL Open Font License). Mealler: quran.com.",
+  "quranTitle": "Kur'an-ı Kerim",
+  "rolesAgencyAdmin": "Acente Admini",
+  "rolesFinance": "Muhasebe",
+  "rolesGuest": "Misafir",
+  "rolesManager": "Yönetici",
+  "rolesManagerDesc": "Tüm acenteler",
+  "rolesMerchant": "Esnaf",
+  "rolesNoAccess": "Bu bölüme erişim yetkiniz yok",
+  "rolesSelectAgencyFirst": "Önce bir acente seçin",
+  "rolesStaff": "Yetkililer",
+  "rolesSuperAdmin": "Süper Admin",
+  "rolesSupport": "Destek",
+  "shopsAbout": "Hakkında",
+  "shopsActivated": "{name} aktif edildi.",
+  "@shopsActivated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsActive": "Aktif",
+  "shopsActiveSub": "Pasif dükkanlar misafirlere görünmez.",
+  "shopsAdd": "Dükkan Ekle",
+  "shopsAdded": "Dükkan eklendi.",
+  "shopsAddress": "Adres",
+  "shopsAdminLoadFailed": "Dükkanlar yüklenemedi.",
+  "shopsAgency": "Acente",
+  "shopsAll": "Tümü",
+  "shopsAllAgencies": "Tüm acenteler",
+  "shopsCall": "Ara",
+  "shopsCamera": "Kamera",
+  "shopsCameraFailed": "Kamera açılamadı. Kamera iznini kontrol edin.\n({code})",
+  "@shopsCameraFailed": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsCatBooks": "Kitap & Tesbih",
+  "shopsCatDatesFood": "Hurma & Gıda",
+  "shopsCatGifts": "Hediyelik",
+  "shopsCatJeweler": "Kuyumcu",
+  "shopsCatOther": "Diğer",
+  "shopsCatPerfume": "Parfüm & Misk",
+  "shopsCatRestaurant": "Restoran & Kafe",
+  "shopsCatTextile": "Tekstil & İhram",
+  "shopsCategory": "Kategori",
+  "shopsCity": "Şehir",
+  "shopsCityJeddah": "Cidde",
+  "shopsCityOther": "Diğer",
+  "shopsCodeGuestTitle": "Umre Rehberim Misafiri",
+  "shopsCodeShowAtCheckout": "Lütfen bu ekranı kasada esnafa gösterin.",
+  "shopsCodeVerifyLater": "Esnaf paneli hazır olduğunda doğrulanacak.",
+  "shopsContactSection": "İletişim",
+  "shopsDeactivated": "{name} pasif yapıldı.",
+  "@shopsDeactivated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeleteConfirm": "\"{name}\" silinsin mi? Bu işlem geri alınamaz.",
+  "@shopsDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeleteFailed": "Silinemedi: {error}",
+  "@shopsDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsDeleteTitle": "Dükkanı sil",
+  "shopsDeleted": "Dükkan silindi.",
+  "shopsDescription": "Açıklama",
+  "shopsDetailsSection": "Dükkan Bilgileri",
+  "shopsDirections": "Yol Tarifi",
+  "shopsDiscountBadge": "İNDİRİM",
+  "shopsDiscountNotNumber": "Bir sayı girin (0-100)",
+  "shopsDiscountNote": "İndirim notu",
+  "shopsDiscountNoteHint": "ör. Nakit alışverişte geçerli",
+  "shopsDiscountPercent": "%{percent} İNDİRİM",
+  "@shopsDiscountPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsDiscountPercentHint": "ör. 15",
+  "shopsDiscountPercentLower": "%{percent} indirim",
+  "@shopsDiscountPercentLower": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsDiscountPercentRequired": "İndirim yüzdesi *",
+  "shopsDiscountRange": "0 ile 100 arasında olmalı",
+  "shopsDiscountSection": "İndirim",
+  "shopsEdit": "Dükkanı Düzenle",
+  "shopsEmpty": "Henüz anlaşmalı dükkan eklenmedi.",
+  "shopsEmptyAdminHint": "Sağ alttaki \"Dükkan Ekle\" ile başlayın.",
+  "shopsFixFields": "Lütfen işaretli alanları düzeltin.",
+  "shopsForAllAgencies": "Tüm acentelere açık",
+  "shopsForAllAgenciesSub": "Bütün acentelerin misafirleri bu dükkanı görür.",
+  "shopsGallery": "Galeri",
+  "shopsGuest": "Misafir",
+  "shopsImagePickFailed": "Görsel seçilemedi: {error}",
+  "@shopsImagePickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsInfo": "Bilgiler",
+  "shopsInfoBanner": "Bu dükkanlarda Umre Rehberim misafiri olduğunuzu QR kodla gösterip indirim alabilirsiniz.",
+  "shopsInvalid": "Geçersiz",
+  "shopsLatLngBoth": "Enlem ve boylamın ikisini de girin ya da ikisini de boş bırakın.",
+  "shopsLatitude": "Enlem",
+  "shopsLinkOpenFailed": "Bağlantı açılamadı.",
+  "shopsListView": "Liste",
+  "shopsLoadFailed": "Dükkanlar yüklenemedi. İnternet bağlantınızı kontrol edin.",
+  "shopsLocFailed": "Konum alınamadı.",
+  "shopsLocPermissionDenied": "Konum izni verilmedi.",
+  "shopsLocServiceOff": "Konum servisi kapalı.",
+  "shopsLocation": "Konum",
+  "shopsLogo": "Logo",
+  "shopsLogoAdded": "Logo eklendi ({size} KB).",
+  "@shopsLogoAdded": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsLogoTooLarge": "Logo çok büyük ({size} KB). Daha küçük bir görsel seçin.",
+  "@shopsLogoTooLarge": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsLongitude": "Boylam",
+  "shopsMapView": "Harita",
+  "shopsMerchantCode": "Esnaf kodu: {code}  (esnaf paneli için)",
+  "@shopsMerchantCode": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsMissingLocation": "{count} dükkanın konumu girilmemiş, haritada görünmüyor.",
+  "@shopsMissingLocation": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsNameMissing": "Ad gerekli",
+  "shopsNameRequired": "Dükkan adı *",
+  "shopsNoMatch": "Bu filtreye uygun dükkan yok.",
+  "shopsOrderSaveFailed": "Sıralama kaydedilemedi: {error}",
+  "@shopsOrderSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsPercent": "%{percent}",
+  "@shopsPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "shopsPhone": "Telefon",
+  "shopsPickerHint": "Haritada dükkanın yerine dokunarak iğne bırakın.",
+  "shopsPublishSection": "Yayın",
+  "shopsQrExplain": "Dükkanın \"bizden geldi\" kodu. Misafir indirim ekranında bu QR'ı gösterir. Boş bırakılırsa misafire özel doğrulama kodu üretilir.",
+  "shopsQrManual": "Elle gir (metin ya da bağlantı)",
+  "shopsQrScanHint": "Dükkanın QR kodunu çerçevenin içine getirin.",
+  "shopsQrScanTitle": "QR Kodu Okut",
+  "shopsQrScanWithCamera": "Kameradan okut",
+  "shopsQrScanned": "QR kodu okundu.",
+  "shopsQrSection": "QR Kodu",
+  "shopsRemove": "Kaldır",
+  "shopsRemoveLocation": "Konumu kaldır",
+  "shopsReorderHint": "Sıralamak için sağdaki tutamaçtan sürükleyin.",
+  "shopsSaveFailed": "Kaydedilemedi: {error}",
+  "@shopsSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsSaving": "Kaydediliyor...",
+  "shopsSearchHint": "Dükkan ara",
+  "shopsSelectAgency": "Bir acente seçin ya da \"Tüm acentelere açık\" seçeneğini açın.",
+  "shopsSharedSection": "Tüm acentelere açık (süper admin yönetir)",
+  "shopsShowMyCode": "İndirim Kodumu Göster",
+  "shopsSpecialPrice": "ÖZEL FİYAT",
+  "shopsSpecialPriceLower": "Özel fiyat",
+  "shopsTitle": "Anlaşmalı Dükkanlar",
+  "shopsTorch": "Fener",
+  "shopsUpdateFailed": "Güncellenemedi: {error}",
+  "@shopsUpdateFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "shopsUpdated": "Dükkan güncellendi.",
+  "shopsUseMyLocation": "Şu anki konumumu kullan",
+  "shopsWhatsappHint": "Ülke koduyla, ör. 9665xxxxxxxx",
+  "shopsWorkingHours": "Çalışma saatleri",
+  "shopsWorkingHoursHint": "ör. 09:00 - 23:00",
+  "simApproximate": "{place} (yaklaşık)",
+  "@simApproximate": {
+    "placeholders": {
+      "place": {
+        "type": "String"
+      }
+    }
+  },
+  "simAutoPlay": "Otomatik oynat",
+  "simCircuit": "Şavt",
+  "simContinue": "Devam et",
+  "simFirstThreeRaml": "İlk 3 şavt: erkekler remel yapar",
+  "simIstilam": "İstilam",
+  "simNext": "Sonraki",
+  "simNormalWalk": "Normal yürüyüş",
+  "simPause": "Duraklat",
+  "simPrayBehindMaqam": "Makam-ı İbrahim arkasında 2 rekât tavaf namazı kılınır.",
+  "simPrevious": "Önceki",
+  "simReplay": "Baştan oynat",
+  "simReset": "Sıfırla",
+  "simRouteTitle": "Umre Rota Simülasyonu",
+  "simSaiDuas": "Sa'y Duaları",
+  "simSaiLap": "Sa'y: {lap}. şavt",
+  "@simSaiLap": {
+    "placeholders": {
+      "lap": {
+        "type": "int"
+      }
+    }
+  },
+  "simSevenCircuitsDone": "7 şavt tamamlandı",
+  "simSpeed": "{speed}x",
+  "@simSpeed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "simStart": "Başlat",
+  "simStartOver": "Baştan başlat",
+  "simStepOf": "Adım {step}/{total}",
+  "@simStepOf": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "simStop": "Durdur",
+  "simSupplicationToRecite": "Okunacak dua",
+  "simTawafCompleted": "Tavaf tamamlandı",
+  "simTawafDuas": "Tavaf Duaları",
+  "simTawafEssentials": "Tavafta bilinmesi gerekenler",
+  "simTawafSource": "Kaynak: Diyanet İşleri Başkanlığı hac ve umre yayınları; Bakara 2/201.",
+  "simThingsToNote": "Dikkat edilecekler",
+  "simWhatToDo": "Ne yapılır?",
+  "telsizAllAgency": "Tüm acente",
+  "telsizBroadcastGroup": "Yayın yapılacak grup",
+  "telsizCheckInternet": "İnternet bağlantınızı kontrol edin.",
+  "telsizConnectFailed": "Bağlantı kurulamadı. Lütfen tekrar deneyin.",
+  "telsizConnecting": "Bağlanıyor…",
+  "telsizConnectionLost": "Bağlantı koptu, yeniden bağlanıyor…",
+  "telsizDuplicateIdentity": "Bu hesapla başka bir cihazdan bağlanıldı.",
+  "telsizDuration": "Süre",
+  "telsizEnd": "Bitir",
+  "telsizEndBroadcast": "Yayını Bitir",
+  "telsizEndBroadcastConfirm": "Canlı yayın sona erecek. Emin misiniz?",
+  "telsizEndBroadcastTitle": "Yayını bitir",
+  "telsizEnded": "Yayın sona erdi",
+  "telsizGuest": "Misafir",
+  "telsizGuide": "Rehber",
+  "telsizGuideHint": "Ekranı kapatsanız da yayın sürer. Yayını bitirmeyi unutmayın; misafirleriniz yalnızca dinler, konuşamaz.",
+  "telsizGuideNotLive": "Rehberiniz şu an yayında değil",
+  "telsizGuideNotLiveBody": "Rehberiniz telsiz yayını başlattığında burada görünecek. Gezilerde ve kalabalık alanlarda rehberinizi buradan canlı dinleyebilirsiniz.",
+  "telsizGuideVoice": "Rehberin sesi",
+  "telsizListen": "Dinle",
+  "telsizListenerHint": "Kulaklık takmanız önerilir. Ekran kapalıyken de dinlemeye devam edebilirsiniz.",
+  "telsizListeners": "Dinleyici",
+  "telsizListening": "Dinleniyor",
+  "telsizLiveBadge": "CANLI",
+  "telsizLiveNow": "Canlı yayında",
+  "telsizLoginRequired": "Telsiz için giriş yapmalısınız.",
+  "telsizMicLevel": "Mikrofon seviyesi",
+  "telsizMicPermanentlyDenied": "Mikrofon izni kapalı. Ayarlardan mikrofon iznini açın.",
+  "telsizMicRequired": "Yayın için mikrofon izni gerekli.",
+  "telsizMute": "Sesi Kapat",
+  "telsizNoAgency": "Acente bilgisi bulunamadı.",
+  "telsizNoAgencyHint": "Telsiz, acentenize bağlı hesaplarda kullanılabilir.",
+  "telsizNoInternet": "İnternet bağlantısı yok veya sunucuya ulaşılamıyor.",
+  "telsizNoPermission": "Telsiz için yetkiniz yok.",
+  "telsizNotConfiguredBody": "Canlı ses sunucusu bilgileri henüz girilmedi. Lütfen teknik destek ile iletişime geçin.",
+  "telsizNotConfiguredError": "Telsiz yapılandırılmadı.",
+  "telsizNotConfiguredTitle": "Telsiz yapılandırılmadı",
+  "telsizNotConnected": "Bağlı değil",
+  "telsizNotifBroadcastText": "Misafirleriniz sizi dinliyor. Bitirmek için uygulamaya dönün.",
+  "telsizNotifBroadcastTitle": "Telsiz yayında – Rehber",
+  "telsizNotifGuestsListening": "Misafirleriniz sizi dinliyor.",
+  "telsizNotifListeningText": "{name} yayını. Kapatmak için uygulamaya dönün.",
+  "@telsizNotifListeningText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "telsizNotifListeningTitle": "Telsiz dinleniyor",
+  "telsizNotifMicOff": "Mikrofon kapalı.",
+  "telsizOffAir": "Yayında değilsiniz",
+  "telsizOnAir": "Yayındasınız",
+  "telsizOnAirMuted": "Yayında – mikrofon kapalı",
+  "telsizReconnecting": "Bağlantı yeniden kuruluyor…",
+  "telsizServerDenied": "Telsiz sunucusundan izin alınamadı ({code}).",
+  "@telsizServerDenied": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "telsizStartBroadcast": "Yayını Başlat",
+  "telsizStatusError": "Yayın bilgisi alınamadı.",
+  "telsizStatusSaveDenied": "Yayın durumu kaydedilemedi: yetki yok.",
+  "telsizStop": "Durdur",
+  "telsizTitle": "Telsiz",
+  "telsizToAllAgency": "Tüm acenteye yayın",
+  "telsizToYourTrip": "Seferinize yayın",
+  "telsizTrip": "Sefer",
+  "telsizUnmute": "Sesi Aç",
+  "telsizVolumeKeysHint": "Telefonunuzun ses tuşlarını da kullanabilirsiniz.",
+  "telsizWaitingGuide": "Bağlandı, rehberin sesi bekleniyor…"
+}

@@ -1,0 +1,49 @@
+{
+  "rules": {
+    "roles": {
+      ".read": "auth != null && ((auth.token.email == '10000000146@umrerehberim.app' || root.child('roles').child(auth.uid).child('role').val() == 'super_admin') || root.child('roles').child(auth.uid).child('role').val() == 'yonetici')",
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && ((auth.token.email == '10000000146@umrerehberim.app' || root.child('roles').child(auth.uid).child('role').val() == 'super_admin') || ($uid != auth.uid && ((root.child('roles').child(auth.uid).child('role').val() == 'yonetici' && (!data.exists() || (data.child('role').val() == 'misafir' || data.child('role').val() == 'acente_admin')) && (!newData.exists() || (newData.child('role').val() == 'misafir' || newData.child('role').val() == 'acente_admin'))) || (root.child('roles').child(auth.uid).child('role').val() == 'acente_admin' && (!data.exists() || (data.child('agencyId').val() == root.child('roles').child(auth.uid).child('agencyId').val() && data.child('role').val() == 'misafir')) && (!newData.exists() || (newData.child('agencyId').val() == root.child('roles').child(auth.uid).child('agencyId').val() && newData.child('role').val() == 'misafir'))))))",
+        ".validate": "newData.hasChild('role')",
+        "role": {
+          ".validate": "newData.isString() && (newData.val() == 'misafir' || newData.val() == 'acente_admin' || newData.val() == 'yonetici' || newData.val() == 'super_admin' || newData.val() == 'esnaf' || newData.val() == 'destek' || newData.val() == 'muhasebe')"
+        },
+        "agencyId": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "locations": {
+      "$agencyId": {
+        ".read": "auth != null && (((auth.token.email == '10000000146@umrerehberim.app' || root.child('roles').child(auth.uid).child('role').val() == 'super_admin') || root.child('roles').child(auth.uid).child('role').val() == 'yonetici') || (root.child('roles').child(auth.uid).child('role').val() == 'acente_admin' && root.child('roles').child(auth.uid).child('agencyId').val() == $agencyId))",
+        "$uid": {
+          ".read": "auth != null && (auth.uid == $uid || ((root.child('roles').child($uid).child('role').val() == 'acente_admin' || root.child('roles').child($uid).child('role').val() == 'yonetici') && root.child('roles').child(auth.uid).child('agencyId').val() == $agencyId))",
+          ".write": "auth != null && auth.uid == $uid && root.child('roles').child(auth.uid).child('agencyId').val() == $agencyId",
+          ".validate": "newData.hasChildren(['latitude', 'longitude', 'timestamp'])",
+          "latitude": {
+            ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+          },
+          "longitude": {
+            ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 300000"
+          },
+          "accuracy": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "userName": {
+            ".validate": "newData.isString() && newData.val().length <= 100"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

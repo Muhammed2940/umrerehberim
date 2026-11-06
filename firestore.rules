@@ -1,0 +1,374 @@
+rules_version = '2';
+// Spark planı: custom claim yok. Rol ve acente, isteği yapanın users/{uid}
+// belgesinden okunur (user_type, agency_id). users belgesinin id'si Auth uid'sidir.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+
+    // Bootstrap: kök süper admin (TC 10000000146). tool/seed.js bu hesapla
+    // giriş yapıp ilk verileri (kendi users belgesi dahil) yazar; o anda henüz
+    // users belgesi olmadığından rolü e-postadan tanınır. Hesap seed tarafından
+    // bir kez oluşturulduktan sonra aynı e-postayla kimse yeniden kayıt olamaz.
+    function isRoot() {
+      // get(): e-postası olmayan token'larda kural hata verip tümden reddetmesin.
+      return signedIn() && request.auth.token.get('email', '') == '10000000146@umrerehberim.app';
+    }
+
+    function me()     { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function role()   { return isRoot() ? 'super_admin' : me().get('user_type', ''); }
+    // Genel yöneticinin acentesi olmayabilir; get() ile hata vermez.
+    function agency() { return me().get('agency_id', ''); }
+
+    // ROLLER
+    //   super_admin  : her şey (acente ekle/sil, anlaşmalı dükkan, esnaf, esnaf raporu)
+    //   yonetici     : genel yardımcı admin; TÜM acentelerin verisini yönetir,
+    //                  ama dükkan/esnaf/esnaf raporu ve acente ekle/sil YOK
+    //   acente_admin : yalnız kendi acentesi (ve oraya kayıtlı kişiler)
+    //   esnaf        : yalnız kendi dükkanı
+    //   misafir      : kendisi + acentesinin verisi
+    function isSuper()       { return signedIn() && (isRoot() || role() == 'super_admin'); }
+    function isManager()     { return signedIn() && role() == 'yonetici'; }
+    function isGlobal()      { return isSuper() || isManager(); }
+    function isAgencyAdmin() { return signedIn() && role() == 'acente_admin'; }
+    function isAdmin()       { return isGlobal() || isAgencyAdmin(); }
+    // Platform personeli (süper adminin açtığı alt hesaplar, acentesi yok):
+    //   destek   : acente/kişi okuma, acente mesajları, risk alarmlarını inceleme
+    //   muhasebe : esnaf işlemleri, hak ediş, puan hareketleri, kuponlar (okuma) + hak ediş yazma
+    function isSupport()     { return signedIn() && role() == 'destek'; }
+    function isFinance()     { return signedIn() && role() == 'muhasebe'; }
+    // Merkez (acenteye mesaj yazan taraf).
+    function isHq()          { return isGlobal() || isSupport(); }
+    function isStaff()       { return isAdmin() || isSupport() || isFinance(); }
+    // Yazma yetkisi: genel adminler her acente, acente admini yalnız kendi acentesi.
+    function sameAgency(d) { return isGlobal() || (isAgencyAdmin() && d.agency_id == agency()); }
+    // Okuma: kendi acentesinin verisi.
+    function myAgency(d)   { return signedIn() && d.agency_id == agency(); }
+
+    function changed() { return request.resource.data.diff(resource.data).affectedKeys(); }
+
+    // Esnaf (anlaşmalı dükkan hesabı): users/{uid}.user_type == 'esnaf', shop_id = dükkanı.
+    function isMerchant() { return signedIn() && role() == 'esnaf'; }
+    function myShop()     { return me().shop_id; }
+
+    // Kullanıcılar:
+    // - herkes kendini; genel adminler herkesi; acente admini kendi acentesini görür.
+    // - misafir, Rehber İletişim için kendi acentesindeki rehberleri (acente_admin/yonetici) okur
+    //   (sorgu where agency_id == <acente> içermeli).
+    // Oluşturma/düzenleme/silme:
+    // - süper admin: her tür
+    // - yönetici (genel): misafir ve acente_admin, her acentede
+    // - acente admini: yalnız kendi acentesine misafir
+    // - esnaf hesabı yalnız süper admin
+    function guestOrAgencyAdmin(t) { return t in ['misafir', 'acente_admin']; }
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid
+                     || isGlobal() || isSupport() || isFinance()
+                     || (isAgencyAdmin() && resource.data.agency_id == agency())
+                     || (myAgency(resource.data) && resource.data.user_type in ['acente_admin', 'yonetici']));
+
+      allow create: if isSuper()
+                    || (isManager()
+                        && guestOrAgencyAdmin(request.resource.data.user_type)
+                        && request.resource.data.agency_id is string
+                        && request.resource.data.agency_id != '')
+                    || (isAgencyAdmin()
+                        && request.resource.data.agency_id == agency()
+                        && request.resource.data.user_type == 'misafir');
+
+      // 1) Herkes kendi belgesinde yalnızca fcm_token, user_location, updated_at.
+      // 2) Kimse (kök hariç) kendi user_type / agency_id alanını değiştiremez.
+      allow update: if (signedIn() && request.auth.uid == uid
+                         && changed().hasOnly(['fcm_token', 'user_location', 'updated_at', 'last_active_at']))
+                    || ((request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id']))
+                        && (isSuper()
+                            || (isManager()
+                                && guestOrAgencyAdmin(resource.data.user_type)
+                                && guestOrAgencyAdmin(request.resource.data.user_type))
+                            || (isAgencyAdmin()
+                                && resource.data.agency_id == agency()
+                                && resource.data.user_type == 'misafir'
+                                && request.resource.data.agency_id == agency()
+                                && request.resource.data.user_type == 'misafir')));
+
+      allow delete: if isSuper()
+                    || (isManager() && guestOrAgencyAdmin(resource.data.user_type))
+                    || (isAgencyAdmin() && resource.data.agency_id == agency()
+                        && resource.data.user_type == 'misafir');
+    }
+
+    // Acente ekleme/silme/düzenleme yalnız süper admin.
+    match /agencies/{id} {
+      allow read: if signedIn() && (isGlobal() || isSupport() || isFinance() || agency() == id);
+      allow write: if isSuper();
+    }
+
+    // Acenteye bağlı koleksiyonlar: aynı acentedeki herkes okur; genel adminler hepsini.
+    // Acente admini ve misafirin liste sorguları where('agency_id', isEqualTo: <acente>) içermelidir.
+    match /{col}/{id} {
+      allow read: if col in ['trips','hotels','rooms','events','currencies','notifications','trip_managers']
+                     && (isGlobal() || myAgency(resource.data));
+      allow create: if col in ['trips','hotels','rooms','events','currencies','notifications','trip_managers']
+                     && sameAgency(request.resource.data);
+      allow update: if col in ['trips','hotels','rooms','events','currencies','notifications','trip_managers']
+                     && sameAgency(resource.data) && sameAgency(request.resource.data);
+      allow delete: if col in ['trips','hotels','rooms','events','currencies','notifications','trip_managers']
+                     && sameAgency(resource.data);
+    }
+
+    // Telsiz "yayında" durumu: telsiz/{agencyId}_{tripId|all}.
+    // Aynı acentedeki herkes okur (liste sorgusu where agency_id == <acente> içermeli),
+    // yalnız yönetici/süper admin kendi acentesine yazar. Belge id'si alanlarla tutarlı olmalı.
+    match /telsiz/{id} {
+      allow read: if isGlobal() || myAgency(resource.data);
+      allow create: if sameAgency(request.resource.data)
+                    && id == request.resource.data.agency_id + '_' + request.resource.data.trip_id;
+      allow update: if sameAgency(resource.data) && sameAgency(request.resource.data)
+                    && id == request.resource.data.agency_id + '_' + request.resource.data.trip_id;
+      allow delete: if sameAgency(resource.data);
+    }
+
+    // Anlaşmalı dükkanlar (shops). agency_id == 'all' ise tüm acentelere açıktır.
+    // Liste sorguları ayrı ayrı: where agency_id == <acente> ve where agency_id == 'all'
+    // (süper admin filtresiz okuyabilir). Pasif (is_active == false) dükkanları istemci gizler.
+    match /shops/{id} {
+      allow read: if signedIn()
+                  && (resource.data.agency_id == 'all' || isSuper() || isFinance() || myAgency(resource.data)
+                      || (isMerchant() && myShop() == id));
+      // Anlaşmalı dükkanları YALNIZ süper admin yönetir (yönetici ve acente admini değil).
+      allow create: if isSuper();
+      // Esnaf kendi dükkanının yalnız vitrin alanlarını düzenleyebilir
+      // (indirim, komisyon, acente, aktiflik süper adminde kalır).
+      allow update: if isSuper()
+                    || (isMerchant() && myShop() == id
+                        && changed().hasOnly(['description', 'working_hours', 'phone',
+                                              'whatsapp', 'logo_base64', 'updated_at']))
+                    // Tıklanma sayacı: dükkanı görebilen herkes yalnız view_count'u 1 artırır.
+                    || (signedIn()
+                        && (resource.data.agency_id == 'all' || myAgency(resource.data))
+                        && changed().hasOnly(['view_count'])
+                        && request.resource.data.view_count == resource.data.get('view_count', 0) + 1);
+      allow delete: if isSuper();
+    }
+
+    // ESNAF PANELİ ------------------------------------------------------------
+    // Misafirin esnafa gösterdiği tek kullanımlık QR kodu. Belge id'si rastgele;
+    // QR yalnız "UMRE1:<id>" içerir. Esnaf id ile tek belge okur (liste yok).
+    match /shop_tokens/{id} {
+      allow create: if signedIn()
+                    && request.resource.data.guest_uid == request.auth.uid
+                    && request.resource.data.agency_id == agency()
+                    && request.resource.data.created_at == request.time
+                    && request.resource.data.used == false
+                    && request.resource.data.points_available is int
+                    && request.resource.data.points_available >= 0;
+      allow get: if signedIn() && (resource.data.guest_uid == request.auth.uid || isMerchant());
+      allow list: if signedIn() && resource.data.guest_uid == request.auth.uid;
+      // Esnaf kodu yalnız aynı batch'te işlem kaydını açarken "kullanıldı" yapar.
+      allow update: if isMerchant()
+                    && resource.data.used == false
+                    && changed().hasOnly(['used', 'used_by_shop', 'used_by_shop_name', 'used_at'])
+                    && request.resource.data.used == true
+                    && request.resource.data.used_by_shop == myShop()
+                    && existsAfter(/databases/$(database)/documents/shop_transactions/$(id));
+      allow delete: if signedIn() && resource.data.guest_uid == request.auth.uid;
+    }
+
+    // Esnaftaki alışveriş kaydı. Belge id'si = kod id'si, bu yüzden bir kod
+    // en fazla bir işlemde kullanılır. Uygulama ödeme TAHSİL ETMEZ; esnaf kaydeder.
+    match /shop_transactions/{id} {
+      function tok()  { return get(/databases/$(database)/documents/shop_tokens/$(id)).data; }
+      function shop() { return get(/databases/$(database)/documents/shops/$(myShop())).data; }
+
+      allow create: if isMerchant()
+                    && exists(/databases/$(database)/documents/shop_tokens/$(id))
+                    && request.resource.data.shop_id == myShop()
+                    && request.resource.data.cashier_uid == request.auth.uid
+                    && request.resource.data.status == 'ok'
+                    && request.resource.data.created_at == request.time
+                    // kod: kullanılmamış, 3 dakikadan yeni, aynı misafir
+                    && tok().used == false
+                    && tok().created_at > request.time - duration.value(3, 'm')
+                    && tok().guest_uid == request.resource.data.guest_uid
+                    && tok().agency_id == request.resource.data.guest_agency_id
+                    // dükkan: aktif, misafirin acentesine açık; oranlar dükkandan
+                    && shop().is_active != false
+                    && (shop().agency_id == 'all' || shop().agency_id == tok().agency_id)
+                    && request.resource.data.shop_agency_id == shop().agency_id
+                    && request.resource.data.discount_percent == shop().discount_percent
+                    && request.resource.data.commission_percent == shop().get('commission_percent', 0)
+                    // tutarlar
+                    && request.resource.data.payment_method in ['nakit', 'kart', 'puan']
+                    && request.resource.data.amount_gross is number
+                    && request.resource.data.amount_gross > 0
+                    && request.resource.data.amount_gross <= 20000
+                    && request.resource.data.amount_net >= 0
+                    && request.resource.data.amount_net <= request.resource.data.amount_gross
+                    && request.resource.data.points_spent is int
+                    && request.resource.data.points_spent >= 0
+                    && request.resource.data.points_spent <= tok().points_available
+                    && request.resource.data.points_earned is int
+                    && request.resource.data.points_earned >= 0
+                    && request.resource.data.points_earned <= request.resource.data.amount_net + 1
+                    // kupon: misafirin QR'da seçtiğiyle aynı olmalı
+                    && request.resource.data.get('coupon_id', '') == tok().get('coupon_id', '')
+                    && ((request.resource.data.get('coupon_id', '') == ''
+                         && request.resource.data.get('coupon_discount', 0) == 0)
+                        || couponOk(request.resource.data));
+
+      // Kupon geçerliliği: aktif, tarih aralığında, acente/dükkan uygun, alt limit,
+      // kullanım sınırı, indirim tavanı; aynı batch'te misafir başına tek kullanım kaydı.
+      function couponOk(d) {
+        let c = get(/databases/$(database)/documents/coupons/$(d.coupon_id)).data;
+        let cap = c.type == 'percent' ? d.amount_gross * c.value / 100 : c.value;
+        return c.active == true
+            && request.time >= c.valid_from && request.time <= c.valid_until
+            && (c.agency_id == 'all' || c.agency_id == d.guest_agency_id)
+            && (c.shop_id == 'all' || c.shop_id == d.shop_id)
+            && d.amount_gross >= c.min_spend
+            && (c.max_uses == 0 || c.used_count < c.max_uses)
+            && d.coupon_discount is number
+            && d.coupon_discount > 0
+            && d.coupon_discount <= cap + 0.01
+            && (c.max_discount == 0 || d.coupon_discount <= c.max_discount + 0.01)
+            && existsAfter(/databases/$(database)/documents/coupon_redemptions/$(d.coupon_id + '_' + d.guest_uid));
+      }
+
+      // Esnaf raporları: süper admin ve muhasebe; misafir kendi, esnaf kendi dükkanı.
+      allow read: if signedIn()
+                  && (resource.data.guest_uid == request.auth.uid
+                      || (isMerchant() && resource.data.shop_id == myShop())
+                      || isSuper() || isFinance());
+
+      // İptal: kayıt silinmez, işaretlenir. Esnaf 24 saat içinde; süper admin her zaman.
+      allow update: if resource.data.status == 'ok'
+                    && changed().hasOnly(['status', 'cancel_reason', 'cancelled_at'])
+                    && request.resource.data.status == 'iptal'
+                    && ((isMerchant() && resource.data.shop_id == myShop()
+                         && request.time < resource.data.created_at + duration.value(24, 'h'))
+                        || isSuper());
+      allow delete: if false;
+    }
+
+    // SÜPER ADMİN MODÜLLERİ ---------------------------------------------------
+    // Şema: tool/SUPER_ADMIN_SEMA.md
+
+    // Denetim kaydı: yöneticiler yalnız kendi adına ekler; kimse değiştiremez/silemez.
+    match /audit_logs/{id} {
+      allow create: if isStaff()
+                    && request.resource.data.actor_uid == request.auth.uid
+                    && request.resource.data.created_at == request.time
+                    && request.resource.data.action is string;
+      allow read: if isSuper();
+      allow update, delete: if false;
+    }
+
+    // Elle puan hareketi (+/-). Bakiye = alışveriş puanları + bu kayıtların toplamı.
+    // Geri alma: ters işaretli yeni kayıt + asıl kayıtta reverted=true.
+    match /point_adjustments/{id} {
+      allow create: if isSuper()
+                    && request.resource.data.created_by == request.auth.uid
+                    && request.resource.data.created_at == request.time
+                    && request.resource.data.points is int
+                    && request.resource.data.points != 0
+                    && request.resource.data.points >= -100000
+                    && request.resource.data.points <= 100000
+                    && request.resource.data.guest_uid is string;
+      allow update: if isSuper()
+                    && changed().hasOnly(['reverted', 'reverted_by_id', 'reverted_at'])
+                    && resource.data.get('reverted', false) == false;
+      allow read: if signedIn()
+                  && (resource.data.guest_uid == request.auth.uid || isSuper() || isFinance());
+      allow delete: if false;
+    }
+
+    // Kuponlar (belge id = kod, büyük harf). Misafir aktif ve acentesine uygun olanları görür
+    // (sorgu where active == true + where agency_id in ['all', <acente>] içermeli).
+    match /coupons/{id} {
+      allow read: if signedIn()
+                  && (isSuper() || isFinance() || isMerchant()
+                      || (resource.data.active == true
+                          && (resource.data.agency_id == 'all' || resource.data.agency_id == agency())));
+      allow create, delete: if isSuper();
+      allow update: if isSuper()
+                    // Esnaf yalnız işlem kaydıyla aynı batch'te kullanım sayısını 1 artırır.
+                    || (isMerchant()
+                        && changed().hasOnly(['used_count', 'last_tx_id'])
+                        && request.resource.data.used_count == resource.data.used_count + 1
+                        && !exists(/databases/$(database)/documents/shop_transactions/$(request.resource.data.last_tx_id))
+                        && getAfter(/databases/$(database)/documents/shop_transactions/$(request.resource.data.last_tx_id)).data.coupon_id == id);
+    }
+
+    // Kupon kullanımı: id = <kupon>_<misafirUid> → misafir başına tek kullanım.
+    match /coupon_redemptions/{id} {
+      allow create: if isMerchant()
+                    && id == request.resource.data.coupon_id + '_' + request.resource.data.guest_uid
+                    && !exists(/databases/$(database)/documents/shop_transactions/$(request.resource.data.tx_id))
+                    && getAfter(/databases/$(database)/documents/shop_transactions/$(request.resource.data.tx_id)).data.coupon_id == request.resource.data.coupon_id
+                    && getAfter(/databases/$(database)/documents/shop_transactions/$(request.resource.data.tx_id)).data.guest_uid == request.resource.data.guest_uid;
+      allow read: if signedIn()
+                  && (resource.data.guest_uid == request.auth.uid || isSuper() || isFinance());
+      allow update, delete: if false;
+    }
+
+    // Değerlendirme/şikâyet: id = işlem id'si; yalnız o alışverişi yapan misafir, bir kez.
+    match /shop_reviews/{txId} {
+      function rtx() { return get(/databases/$(database)/documents/shop_transactions/$(txId)).data; }
+      allow create: if signedIn()
+                    && rtx().guest_uid == request.auth.uid
+                    && rtx().status == 'ok'
+                    && request.resource.data.guest_uid == request.auth.uid
+                    && request.resource.data.shop_id == rtx().shop_id
+                    && request.resource.data.guest_agency_id == rtx().guest_agency_id
+                    && request.resource.data.rating is int
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.get('comment', '').size() <= 500
+                    && request.resource.data.created_at == request.time;
+      allow read: if signedIn()
+                  && (resource.data.guest_uid == request.auth.uid || isSuper() || isFinance()
+                      || (isMerchant() && resource.data.shop_id == myShop()));
+      allow update: if false;
+      allow delete: if isSuper();
+    }
+
+    // Hak ediş dönemleri (id = <shopId>_<YYYY-MM>) ve finans ayarları.
+    match /settlements/{id} {
+      allow read, write: if isSuper() || isFinance();
+    }
+    match /platform_settings/{id} {
+      allow read: if isSuper() || isFinance();
+      allow write: if isSuper();
+    }
+
+    // Risk alarmı incelemeleri (alarm id'si istemcide üretilir).
+    match /risk_reviews/{id} {
+      allow read, write: if isSuper() || isSupport();
+    }
+
+    // Merkez ↔ acente mesajları. Merkez: süper admin, yönetici, destek.
+    // Acente admini yalnız kendi acentesinin mesajlarını görür
+    // (sorgu where agency_id == <acente> içermeli) ve yalnız 'agency' tarafı olarak yazar.
+    match /agency_messages/{id} {
+      allow read: if isHq() || (isAgencyAdmin() && resource.data.agency_id == agency());
+      allow create: if request.resource.data.from_uid == request.auth.uid
+                    && request.resource.data.created_at == request.time
+                    && ((isHq() && request.resource.data.from_side == 'hq')
+                        || (isAgencyAdmin() && request.resource.data.from_side == 'agency'
+                            && request.resource.data.agency_id == agency()));
+      allow update: if (isHq() && changed().hasOnly(['read_by_hq']))
+                    || (isAgencyAdmin() && resource.data.agency_id == agency()
+                        && changed().hasOnly(['read_by_agency']));
+      allow delete: if isSuper();
+    }
+
+    // Ezan vakitleri (orijinal koleksiyon adları): herkes okur, süper admin yazar.
+    match /mekke_prayer_times/{id}  { allow read: if true; allow write: if isSuper(); }
+    match /medine_prayer_times/{id} { allow read: if true; allow write: if isSuper(); }
+
+    // Dualar vb. ortak içerik
+    match /content/{doc=**} {
+      allow read: if signedIn();
+      allow write: if isSuper();
+    }
+  }
+}

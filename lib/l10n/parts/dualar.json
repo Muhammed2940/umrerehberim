@@ -1,0 +1,1098 @@
+{
+  "dualarDownloadContent": {
+    "tr": "İçerik indir",
+    "en": "Download content",
+    "ar": "تنزيل المحتوى"
+  },
+  "dualarZikirmatik": {
+    "tr": "Zikirmatik",
+    "en": "Tasbih Counter",
+    "ar": "المسبحة"
+  },
+  "dualarSavedZikirs": {
+    "tr": "Kayıtlı Zikirlerim",
+    "en": "My Saved Dhikrs",
+    "ar": "أذكاري المحفوظة"
+  },
+  "dualarTavafPageTitle": {
+    "tr": "Şavt Duaları (Tavaf)",
+    "en": "Tawaf Supplications (Rounds)",
+    "ar": "أدعية أشواط الطواف"
+  },
+  "dualarSayPageTitle": {
+    "tr": "Sa'y Duaları (Safa ve Merve)",
+    "en": "Sa'i Supplications (Safa and Marwah)",
+    "ar": "أدعية السعي (الصفا والمروة)"
+  },
+  "dualarFileDownloadError": {
+    "tr": "Dosya indirme hatası: {error}",
+    "en": "File download error: {error}",
+    "ar": "خطأ في تنزيل الملف: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarSavtShort": {
+    "tr": "{number}. Şavt",
+    "en": "Round {number}",
+    "ar": "الشوط {number}",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarStartShort": {
+    "tr": "Başlangıç",
+    "en": "Start",
+    "ar": "البداية"
+  },
+  "dualarEndShort": {
+    "tr": "Bitiş",
+    "en": "End",
+    "ar": "النهاية"
+  },
+  "dualarSavtCompletedReset": {
+    "tr": "{count} şavt tamamlandı. Sıfırlamak için sayaca uzun basın.",
+    "en": "{count} rounds completed. Long-press the counter to reset.",
+    "ar": "اكتملت الأشواط الـ{count}. اضغط مطولًا على العداد لإعادة الضبط.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSavtCongrats": {
+    "tr": "Tebrikler! {count} şavtı tamamladınız.",
+    "en": "Congratulations! You have completed all {count} rounds.",
+    "ar": "مبارك! أتممت الأشواط الـ{count}.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarTurkishTranslation": {
+    "tr": "Türkçe Çeviri",
+    "en": "Turkish Translation",
+    "ar": "الترجمة التركية"
+  },
+  "dualarArabicText": {
+    "tr": "Arapça Metin",
+    "en": "Arabic Text",
+    "ar": "النص العربي"
+  },
+  "dualarNoLanguageOption": {
+    "tr": "Bu sayfa için dil seçeneği mevcut değil",
+    "en": "No language option is available for this page",
+    "ar": "لا يتوفر خيار لغة لهذه الصفحة"
+  },
+  "dualarTextView": {
+    "tr": "Metin görünümü",
+    "en": "Text view",
+    "ar": "عرض النص"
+  },
+  "dualarBookPageView": {
+    "tr": "Kitap sayfası görünümü",
+    "en": "Book page view",
+    "ar": "عرض صفحة الكتاب"
+  },
+  "dualarReading": {
+    "tr": "Okunuşu",
+    "en": "Transliteration",
+    "ar": "النطق"
+  },
+  "dualarMeaning": {
+    "tr": "Anlamı",
+    "en": "Meaning",
+    "ar": "المعنى"
+  },
+  "dualarImageNotDownloaded": {
+    "tr": "Resim henüz indirilmemiş",
+    "en": "Image not downloaded yet",
+    "ar": "لم يتم تنزيل الصورة بعد"
+  },
+  "dualarTextViewOffline": {
+    "tr": "Metin görünümü internetsiz de kullanılabilir.",
+    "en": "The text view also works offline.",
+    "ar": "يعمل عرض النص دون اتصال بالإنترنت أيضًا."
+  },
+  "dualarDownloading": {
+    "tr": "İndiriliyor",
+    "en": "Downloading",
+    "ar": "جارٍ التنزيل"
+  },
+  "dualarDownload": {
+    "tr": "İndir",
+    "en": "Download",
+    "ar": "تنزيل"
+  },
+  "dualarDownloadAll": {
+    "tr": "Tümünü indir",
+    "en": "Download all",
+    "ar": "تنزيل الكل"
+  },
+  "dualarSavtCounter": {
+    "tr": "Şavt Sayacı",
+    "en": "Round Counter",
+    "ar": "عداد الأشواط"
+  },
+  "dualarCompleted": {
+    "tr": "Tamamlandı",
+    "en": "Completed",
+    "ar": "اكتمل"
+  },
+  "dualarSavtPlusOne": {
+    "tr": "Şavt +1",
+    "en": "Round +1",
+    "ar": "شوط +1"
+  },
+  "dualarReset": {
+    "tr": "Sıfırla",
+    "en": "Reset",
+    "ar": "إعادة الضبط"
+  },
+  "dualarContentDownloadTitle": {
+    "tr": "İçerik İndir",
+    "en": "Download Content",
+    "ar": "تنزيل المحتوى"
+  },
+  "dualarDownloadDialogInfo": {
+    "tr": "Kitap sayfası görsellerini indirerek internetsiz kullanabilirsiniz. Dua metinleri zaten cihazınızda.",
+    "en": "Download the book page images to use them offline. The supplication texts are already on your device.",
+    "ar": "نزّل صور صفحات الكتاب لاستخدامها دون إنترنت. نصوص الأدعية موجودة على جهازك بالفعل."
+  },
+  "dualarDlTavaf": {
+    "tr": "Tavaf Duaları",
+    "en": "Tawaf Supplications",
+    "ar": "أدعية الطواف"
+  },
+  "dualarDlSay": {
+    "tr": "Say Duaları",
+    "en": "Sa'i Supplications",
+    "ar": "أدعية السعي"
+  },
+  "dualarImageCount": {
+    "tr": "{count} resim",
+    "en": "{count} images",
+    "ar": "{count, plural, =1{صورة واحدة} =2{صورتان} few{{count} صور} many{{count} صورةً} other{{count} صورة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarDownloaded": {
+    "tr": "İndirildi ✓",
+    "en": "Downloaded ✓",
+    "ar": "تم التنزيل ✓"
+  },
+  "dualarDownloadItemFailed": {
+    "tr": "{name} indirilemedi: {error}",
+    "en": "{name} could not be downloaded: {error}",
+    "ar": "تعذّر تنزيل {name}: {error}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarContentDownloadSuccess": {
+    "tr": "İçerikler başarıyla indirildi!",
+    "en": "Content downloaded successfully!",
+    "ar": "تم تنزيل المحتوى بنجاح!"
+  },
+  "dualarDownloadFailedTitle": {
+    "tr": "İndirme başarısız!",
+    "en": "Download failed!",
+    "ar": "فشل التنزيل!"
+  },
+  "dualarDownloadingTitle": {
+    "tr": "İndiriliyor...",
+    "en": "Downloading...",
+    "ar": "جارٍ التنزيل..."
+  },
+  "dualarOverallProgress": {
+    "tr": "Genel: %{percent}",
+    "en": "Overall: {percent}%",
+    "ar": "الإجمالي: {percent}٪",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSayDownloading": {
+    "tr": "Say duaları indiriliyor...",
+    "en": "Downloading Sa'i supplications...",
+    "ar": "جارٍ تنزيل أدعية السعي..."
+  },
+  "dualarTavafDownloading": {
+    "tr": "Tavaf duaları indiriliyor...",
+    "en": "Downloading Tawaf supplications...",
+    "ar": "جارٍ تنزيل أدعية الطواف..."
+  },
+  "dualarFileDownloading": {
+    "tr": "Dosya indiriliyor...",
+    "en": "Downloading file...",
+    "ar": "جارٍ تنزيل الملف..."
+  },
+  "dualarFileProgress": {
+    "tr": "Dosya {current}/{total} indiriliyor...",
+    "en": "Downloading file {current}/{total}...",
+    "ar": "جارٍ تنزيل الملف {current}/{total}...",
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarAllFilesDownloaded": {
+    "tr": "Tüm dosyalar başarıyla indirildi!",
+    "en": "All files downloaded successfully!",
+    "ar": "تم تنزيل جميع الملفات بنجاح!"
+  },
+  "dualarNoInternetCheck": {
+    "tr": "İnternet bağlantısı yok. Lütfen bağlantınızı kontrol edin.",
+    "en": "No internet connection. Please check your connection.",
+    "ar": "لا يوجد اتصال بالإنترنت. يرجى التحقق من اتصالك."
+  },
+  "dualarDownloadErrorDetail": {
+    "tr": "İndirme sırasında bir hata oluştu: {error}",
+    "en": "An error occurred while downloading: {error}",
+    "ar": "حدث خطأ أثناء التنزيل: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarNoInternet": {
+    "tr": "İnternet bağlantısı yok",
+    "en": "No internet connection",
+    "ar": "لا يوجد اتصال بالإنترنت"
+  },
+  "dualarServerError": {
+    "tr": "Sunucu hatası: {code}",
+    "en": "Server error: {code}",
+    "ar": "خطأ في الخادم: {code}",
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarDownloadFailedShort": {
+    "tr": "İndirme başarısız",
+    "en": "Download failed",
+    "ar": "فشل التنزيل"
+  },
+  "dualarTimeout": {
+    "tr": "Zaman aşımı",
+    "en": "Timed out",
+    "ar": "انتهت المهلة"
+  },
+  "dualarDownloadErrorGeneric": {
+    "tr": "İndirme hatası: {error}",
+    "en": "Download error: {error}",
+    "ar": "خطأ في التنزيل: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarFileNotDownloaded": {
+    "tr": "Dosya {name} indirilemedi: {error}",
+    "en": "File {name} could not be downloaded: {error}",
+    "ar": "تعذّر تنزيل الملف {name}: {error}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarZikirContinuing": {
+    "tr": "{name} adlı zikire devam ediyorsunuz.",
+    "en": "Continuing the dhikr \"{name}\".",
+    "ar": "تواصل ذكر «{name}».",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarZikirMaxReached": {
+    "tr": "Zikirmatik daha fazla artamaz!",
+    "en": "The counter cannot go any higher!",
+    "ar": "لا يمكن زيادة العداد أكثر!"
+  },
+  "dualarTargetReached": {
+    "tr": "Hedefinize ulaştınız!",
+    "en": "You have reached your target!",
+    "ar": "لقد وصلت إلى هدفك!"
+  },
+  "dualarResetConfirm": {
+    "tr": "Sayaç sıfırlansın mı?",
+    "en": "Reset the counter?",
+    "ar": "هل تريد إعادة ضبط العداد؟"
+  },
+  "dualarVibrationOn": {
+    "tr": "Titreşim açıldı",
+    "en": "Vibration on",
+    "ar": "تم تشغيل الاهتزاز"
+  },
+  "dualarVibrationOff": {
+    "tr": "Titreşim kapatıldı",
+    "en": "Vibration off",
+    "ar": "تم إيقاف الاهتزاز"
+  },
+  "dualarTargetZero": {
+    "tr": "Hedefiniz 0 olamaz!",
+    "en": "Your target cannot be 0!",
+    "ar": "لا يمكن أن يكون هدفك 0!"
+  },
+  "dualarTargetTooBig": {
+    "tr": "Hedefiniz 99999'dan büyük olamaz!",
+    "en": "Your target cannot be greater than 99999!",
+    "ar": "لا يمكن أن يتجاوز هدفك 99999!"
+  },
+  "dualarTargetSet": {
+    "tr": "Hedefiniz {target} olarak belirlendi!",
+    "en": "Your target is set to {target}!",
+    "ar": "تم تحديد هدفك: {target}!",
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarSetTargetTitle": {
+    "tr": "Kendinize bir hedef belirleyin.",
+    "en": "Set yourself a target.",
+    "ar": "حدّد لنفسك هدفًا."
+  },
+  "dualarTargetHint": {
+    "tr": "Örn. 500",
+    "en": "e.g. 500",
+    "ar": "مثال: 500"
+  },
+  "dualarEnterTarget": {
+    "tr": "Lütfen bir hedef belirleyin!",
+    "en": "Please set a target!",
+    "ar": "يرجى تحديد هدف!"
+  },
+  "dualarStartFromTitle": {
+    "tr": "Nereden başlayıp çekmek istiyorsunuz?",
+    "en": "Which number do you want to start counting from?",
+    "ar": "من أي رقم تريد أن تبدأ العد؟"
+  },
+  "dualarStartNumberHint": {
+    "tr": "Başlangıç sayısı",
+    "en": "Starting number",
+    "ar": "رقم البداية"
+  },
+  "dualarEnterNumber": {
+    "tr": "Lütfen bir sayı giriniz!",
+    "en": "Please enter a number!",
+    "ar": "يرجى إدخال رقم!"
+  },
+  "dualarSaveAsTitle": {
+    "tr": "Listeye hangi adla kaydedeceksiniz?",
+    "en": "What name should it be saved under?",
+    "ar": "بأي اسم تريد حفظه في القائمة؟"
+  },
+  "dualarZikirNameHint": {
+    "tr": "Örn. Sübhanallah",
+    "en": "e.g. Subhanallah",
+    "ar": "مثال: سبحان الله"
+  },
+  "dualarEnterName": {
+    "tr": "Lütfen bir isim giriniz!",
+    "en": "Please enter a name!",
+    "ar": "يرجى إدخال اسم!"
+  },
+  "dualarZikirSaved": {
+    "tr": "Zikriniz Başarıyla Kaydedildi!",
+    "en": "Your dhikr was saved successfully!",
+    "ar": "تم حفظ ذكرك بنجاح!"
+  },
+  "dualarZikirSavedCount": {
+    "tr": "\"{name}\" kaydedildi ({count})",
+    "en": "\"{name}\" saved ({count})",
+    "ar": "تم حفظ «{name}» ({count})",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarViewList": {
+    "tr": "Listeyi Gör",
+    "en": "View List",
+    "ar": "عرض القائمة"
+  },
+  "dualarThemeColor": {
+    "tr": "Tema rengi",
+    "en": "Theme color",
+    "ar": "لون السمة"
+  },
+  "dualarNewZikir": {
+    "tr": "Yeni zikir",
+    "en": "New dhikr",
+    "ar": "ذكر جديد"
+  },
+  "dualarChangeStartNumber": {
+    "tr": "Başlangıç sayısını değiştir",
+    "en": "Change starting number",
+    "ar": "تغيير رقم البداية"
+  },
+  "dualarTap": {
+    "tr": "Dokun",
+    "en": "Tap",
+    "ar": "اضغط"
+  },
+  "dualarYourTarget": {
+    "tr": "Hedefiniz: {target}",
+    "en": "Your target: {target}",
+    "ar": "هدفك: {target}",
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarRoundsCompleted": {
+    "tr": "{count} tur tamamlandı",
+    "en": "{count} rounds completed",
+    "ar": "{count, plural, =1{اكتملت دورة واحدة} =2{اكتملت دورتان} few{اكتملت {count} دورات} many{اكتملت {count} دورةً} other{اكتملت {count} دورة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarUndo": {
+    "tr": "Geri al",
+    "en": "Undo",
+    "ar": "تراجع"
+  },
+  "dualarVibration": {
+    "tr": "Titreşim",
+    "en": "Vibration",
+    "ar": "اهتزاز"
+  },
+  "dualarSilent": {
+    "tr": "Sessiz",
+    "en": "Silent",
+    "ar": "صامت"
+  },
+  "dualarCustom": {
+    "tr": "Özel",
+    "en": "Custom",
+    "ar": "مخصص"
+  },
+  "dualarCustomValue": {
+    "tr": "Özel ({value})",
+    "en": "Custom ({value})",
+    "ar": "مخصص ({value})",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarContinue": {
+    "tr": "Devam Et",
+    "en": "Continue",
+    "ar": "متابعة"
+  },
+  "dualarOptions": {
+    "tr": "Seçenekler",
+    "en": "Options",
+    "ar": "خيارات"
+  },
+  "dualarNoSavedZikir": {
+    "tr": "Henüz kayıtlı zikriniz yok",
+    "en": "You have no saved dhikr yet",
+    "ar": "لا توجد أذكار محفوظة بعد"
+  },
+  "dualarNoSavedZikirHint": {
+    "tr": "Zikirmatik'te çektiğiniz zikri \"Kaydet\" ile bu listeye ekleyebilirsiniz.",
+    "en": "Use \"Save\" in the Tasbih Counter to add your dhikr to this list.",
+    "ar": "استخدم «حفظ» في المسبحة لإضافة ذكرك إلى هذه القائمة."
+  },
+  "dualarContinueFrom": {
+    "tr": "{count} sayısından devam et",
+    "en": "Continue from {count}",
+    "ar": "المتابعة من {count}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dualarDeleteZikirTitle": {
+    "tr": "Zikri Sil",
+    "en": "Delete Dhikr",
+    "ar": "حذف الذكر"
+  },
+  "dualarDeleteZikirConfirm": {
+    "tr": "{name} adlı zikri silmek istediğinize emin misiniz?",
+    "en": "Are you sure you want to delete the dhikr \"{name}\"?",
+    "ar": "هل أنت متأكد من حذف ذكر «{name}»؟",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dualarEditZikirTitle": {
+    "tr": "Zikri Düzenle",
+    "en": "Edit Dhikr",
+    "ar": "تعديل الذكر"
+  },
+  "dualarZikirName": {
+    "tr": "Zikir Adı",
+    "en": "Dhikr Name",
+    "ar": "اسم الذكر"
+  },
+  "dualarZikirCount": {
+    "tr": "Zikir Sayısı",
+    "en": "Dhikr Count",
+    "ar": "عدد الذكر"
+  },
+  "dualarFillAllFields": {
+    "tr": "Lütfen Boş Alan Bırakmayınız.",
+    "en": "Please do not leave any field empty.",
+    "ar": "يرجى عدم ترك أي حقل فارغ."
+  },
+  "quranTitle": {
+    "tr": "Kur'an-ı Kerim",
+    "en": "The Holy Quran",
+    "ar": "القرآن الكريم"
+  },
+  "quranSubtitle": {
+    "tr": "Huzur bulmak için oku, anlamak için yaşa.",
+    "en": "Read to find peace, live to understand.",
+    "ar": "اقرأ لتجد السكينة، وعِش لتفهم."
+  },
+  "quranBack": {
+    "tr": "Geri",
+    "en": "Back",
+    "ar": "رجوع"
+  },
+  "quranSettings": {
+    "tr": "Ayarlar",
+    "en": "Settings",
+    "ar": "الإعدادات"
+  },
+  "quranSearchHint": {
+    "tr": "Sure veya ayet ara",
+    "en": "Search surah or verse",
+    "ar": "ابحث عن سورة أو آية"
+  },
+  "quranFilter": {
+    "tr": "Filtrele",
+    "en": "Filter",
+    "ar": "تصفية"
+  },
+  "quranFilterAll": {
+    "tr": "Tüm sureler",
+    "en": "All surahs",
+    "ar": "جميع السور"
+  },
+  "quranFilterMeccan": {
+    "tr": "Mekki sureler",
+    "en": "Meccan surahs",
+    "ar": "السور المكية"
+  },
+  "quranFilterMedinan": {
+    "tr": "Medeni sureler",
+    "en": "Medinan surahs",
+    "ar": "السور المدنية"
+  },
+  "quranMeccanAdj": {
+    "tr": "Mekki",
+    "en": "Meccan",
+    "ar": "مكية"
+  },
+  "quranMedinanAdj": {
+    "tr": "Medeni",
+    "en": "Medinan",
+    "ar": "مدنية"
+  },
+  "quranPlaceMeccan": {
+    "tr": "Mekke",
+    "en": "Meccan",
+    "ar": "مكية"
+  },
+  "quranPlaceMedinan": {
+    "tr": "Medine",
+    "en": "Medinan",
+    "ar": "مدنية"
+  },
+  "quranSurahCount": {
+    "tr": "{count} sure",
+    "en": "{count} surahs",
+    "ar": "{count, plural, =1{سورة واحدة} =2{سورتان} few{{count} سور} many{{count} سورةً} other{{count} سورة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranSurahTitle": {
+    "tr": "{name} Suresi",
+    "en": "{name}",
+    "ar": "سورة {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    },
+    "description": "Sure başlığı. name: tr Türkçe ad, en İngilizce transliterasyon, ar Arapça ad."
+  },
+  "quranAyahCount": {
+    "tr": "{count} ayet",
+    "en": "{count} verses",
+    "ar": "{count, plural, =1{آية واحدة} =2{آيتان} few{{count} آيات} many{{count} آيةً} other{{count} آية}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranNoResults": {
+    "tr": "Sonuç bulunamadı",
+    "en": "No results found",
+    "ar": "لا توجد نتائج"
+  },
+  "quranNoResultsHint": {
+    "tr": "Sure adını (ör. Yasin) ya da numarasını (ör. 36 veya 2:255) yazmayı deneyin.",
+    "en": "Try typing the surah name (e.g. Ya-Sin) or its number (e.g. 36 or 2:255).",
+    "ar": "جرّب كتابة اسم السورة (مثل يس) أو رقمها (مثل 36 أو 2:255)."
+  },
+  "quranJuz": {
+    "tr": "{number}. Cüz",
+    "en": "Juz {number}",
+    "ar": "الجزء {number}",
+    "placeholders": {
+      "number": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranJuzSubtitle": {
+    "tr": "{surah}, {ayah}. ayet • Sayfa {page}",
+    "en": "{surah}, verse {ayah} • Page {page}",
+    "ar": "{surah}، الآية {ayah} • الصفحة {page}",
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      },
+      "ayah": {
+        "type": "int"
+      },
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranNoHistory": {
+    "tr": "Henüz kayıt yok",
+    "en": "No history yet",
+    "ar": "لا يوجد سجل بعد"
+  },
+  "quranNoHistoryHint": {
+    "tr": "Okuduğunuz ve dinlediğiniz sureler burada görünecek.",
+    "en": "Surahs you read and listen to will appear here.",
+    "ar": "ستظهر هنا السور التي قرأتها أو استمعت إليها."
+  },
+  "quranLast10": {
+    "tr": "Son 10 kayıt",
+    "en": "Last 10 entries",
+    "ar": "آخر 10 سجلات"
+  },
+  "quranClear": {
+    "tr": "Temizle",
+    "en": "Clear",
+    "ar": "مسح"
+  },
+  "quranListened": {
+    "tr": "Dinlendi",
+    "en": "Listened",
+    "ar": "تم الاستماع"
+  },
+  "quranPage": {
+    "tr": "Sayfa {page}",
+    "en": "Page {page}",
+    "ar": "الصفحة {page}",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranListen": {
+    "tr": "Dinle",
+    "en": "Listen",
+    "ar": "استماع"
+  },
+  "quranStop": {
+    "tr": "Durdur",
+    "en": "Stop",
+    "ar": "إيقاف"
+  },
+  "quranNoBookmarks": {
+    "tr": "Yer işareti yok",
+    "en": "No bookmarks",
+    "ar": "لا توجد علامات"
+  },
+  "quranNoBookmarksHint": {
+    "tr": "Sure listesindeki ya da okuyucudaki yer işareti simgesine dokunarak ekleyebilirsiniz.",
+    "en": "Add one by tapping the bookmark icon in the surah list or in the reader.",
+    "ar": "يمكنك الإضافة بالضغط على رمز العلامة في قائمة السور أو في القارئ."
+  },
+  "quranTabSurahs": {
+    "tr": "Sureler",
+    "en": "Surahs",
+    "ar": "السور"
+  },
+  "quranTabJuz": {
+    "tr": "Cüzler",
+    "en": "Juz",
+    "ar": "الأجزاء"
+  },
+  "quranTabRecents": {
+    "tr": "Son Okunanlar",
+    "en": "Recent",
+    "ar": "آخر ما قُرئ"
+  },
+  "quranTabBookmarks": {
+    "tr": "Yer İşaretleri",
+    "en": "Bookmarks",
+    "ar": "العلامات"
+  },
+  "quranPagesLabel": {
+    "tr": "Sayfalar",
+    "en": "Pages",
+    "ar": "الصفحات"
+  },
+  "quranRemoveBookmark": {
+    "tr": "Yer işaretini kaldır",
+    "en": "Remove bookmark",
+    "ar": "إزالة العلامة"
+  },
+  "quranAddBookmark": {
+    "tr": "Yer işareti ekle",
+    "en": "Add bookmark",
+    "ar": "إضافة علامة"
+  },
+  "quranBookmarkPage": {
+    "tr": "Sayfaya yer işareti koy",
+    "en": "Bookmark this page",
+    "ar": "وضع علامة على الصفحة"
+  },
+  "quranSurahBookmarkAdded": {
+    "tr": "{surah} yer işaretlerine eklendi",
+    "en": "{surah} added to bookmarks",
+    "ar": "تمت إضافة {surah} إلى العلامات",
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      }
+    }
+  },
+  "quranSurahBookmarkRemoved": {
+    "tr": "{surah} yer işaretlerinden çıkarıldı",
+    "en": "{surah} removed from bookmarks",
+    "ar": "تمت إزالة {surah} من العلامات",
+    "placeholders": {
+      "surah": {
+        "type": "String"
+      }
+    }
+  },
+  "quranPageBookmarkAdded": {
+    "tr": "Sayfa {page} yer işaretlerine eklendi",
+    "en": "Page {page} added to bookmarks",
+    "ar": "تمت إضافة الصفحة {page} إلى العلامات",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPageBookmarkRemoved": {
+    "tr": "Sayfa {page} yer işaretlerinden çıkarıldı",
+    "en": "Page {page} removed from bookmarks",
+    "ar": "تمت إزالة الصفحة {page} من العلامات",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAgoJustNow": {
+    "tr": "Az önce",
+    "en": "Just now",
+    "ar": "الآن"
+  },
+  "quranAgoMinutes": {
+    "tr": "{count} dk önce",
+    "en": "{count} min ago",
+    "ar": "{count, plural, =1{منذ دقيقة} =2{منذ دقيقتين} few{منذ {count} دقائق} many{منذ {count} دقيقةً} other{منذ {count} دقيقة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAgoHours": {
+    "tr": "{count} saat önce",
+    "en": "{count} h ago",
+    "ar": "{count, plural, =1{منذ ساعة} =2{منذ ساعتين} few{منذ {count} ساعات} many{منذ {count} ساعةً} other{منذ {count} ساعة}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranAgoDays": {
+    "tr": "{count} gün önce",
+    "en": "{count} days ago",
+    "ar": "{count, plural, =1{منذ يوم} =2{منذ يومين} few{منذ {count} أيام} many{منذ {count} يومًا} other{منذ {count} يوم}}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quranContinueReading": {
+    "tr": "Okumaya Devam Et",
+    "en": "Continue Reading",
+    "ar": "متابعة القراءة"
+  },
+  "quranStartReading": {
+    "tr": "Okumaya Başla",
+    "en": "Start Reading",
+    "ar": "ابدأ القراءة"
+  },
+  "quranPageJuz": {
+    "tr": "Sayfa {page} • {juz}. Cüz",
+    "en": "Page {page} • Juz {juz}",
+    "ar": "الصفحة {page} • الجزء {juz}",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "juz": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranPageOfTotalJuz": {
+    "tr": "Sayfa {page} / {total} • {juz}. Cüz",
+    "en": "Page {page} / {total} • Juz {juz}",
+    "ar": "الصفحة {page} / {total} • الجزء {juz}",
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "juz": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "quranGoToPage": {
+    "tr": "Sayfaya git",
+    "en": "Go to page",
+    "ar": "الانتقال إلى صفحة"
+  },
+  "quranGo": {
+    "tr": "Git",
+    "en": "Go",
+    "ar": "انتقال"
+  },
+  "quranPrevSurah": {
+    "tr": "Önceki sure",
+    "en": "Previous surah",
+    "ar": "السورة السابقة"
+  },
+  "quranNextSurah": {
+    "tr": "Sonraki sure",
+    "en": "Next surah",
+    "ar": "السورة التالية"
+  },
+  "quranArabicFontSize": {
+    "tr": "Arapça yazı boyutu",
+    "en": "Arabic font size",
+    "ar": "حجم الخط العربي"
+  },
+  "quranReciterSelection": {
+    "tr": "İmam seçimi",
+    "en": "Reciter",
+    "ar": "اختيار القارئ"
+  },
+  "quranStreamingNote": {
+    "tr": "Sesli okumalar internetten akış olarak çalınır.",
+    "en": "Recitations are streamed from the internet.",
+    "ar": "تُبث التلاوات مباشرة عبر الإنترنت."
+  },
+  "quranReciterStyleHafsMurattal": {
+    "tr": "Hafs • Murattal",
+    "en": "Hafs • Murattal",
+    "ar": "حفص • مرتل"
+  },
+  "quranPercent": {
+    "tr": "%{value}",
+    "en": "{value}%",
+    "ar": "{value}٪",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "quranPlayFailed": {
+    "tr": "Ses çalınamadı. Lütfen tekrar deneyin.",
+    "en": "Audio could not be played. Please try again.",
+    "ar": "تعذّر تشغيل الصوت. يرجى المحاولة مرة أخرى."
+  },
+  "quranNightMode": {
+    "tr": "Gece modu",
+    "en": "Night mode",
+    "ar": "الوضع الليلي"
+  },
+  "quranDayMode": {
+    "tr": "Gündüz modu",
+    "en": "Day mode",
+    "ar": "الوضع النهاري"
+  },
+  "quranPreparing": {
+    "tr": "Mushaf hazırlanıyor…",
+    "en": "Preparing the Mushaf…",
+    "ar": "جارٍ تجهيز المصحف…"
+  },
+  "quranTextLoadFailed": {
+    "tr": "Kur'an metni yüklenemedi.",
+    "en": "The Quran text could not be loaded.",
+    "ar": "تعذّر تحميل نص القرآن."
+  },
+  "quranMeal": {
+    "tr": "Meal",
+    "en": "Translation",
+    "ar": "الترجمة"
+  },
+  "quranMealSource": {
+    "tr": "Kaynak: {source}",
+    "en": "Source: {source}",
+    "ar": "المصدر: {source}",
+    "placeholders": {
+      "source": {
+        "type": "String"
+      }
+    }
+  },
+  "quranMealOffline": {
+    "tr": "Meal için internet bağlantısı gerekli. Bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "An internet connection is needed for the translation. Check your connection and try again.",
+    "ar": "يلزم اتصال بالإنترنت لعرض الترجمة. تحقق من اتصالك وحاول مرة أخرى."
+  },
+  "quranMealFailed": {
+    "tr": "Meal alınamadı. Daha sonra tekrar deneyin.",
+    "en": "The translation could not be loaded. Please try again later.",
+    "ar": "تعذّر تحميل الترجمة. حاول لاحقًا."
+  },
+  "quranListenAyah": {
+    "tr": "Bu ayeti dinle",
+    "en": "Listen to this verse",
+    "ar": "استمع إلى هذه الآية"
+  },
+  "quranStopAyah": {
+    "tr": "Durdur",
+    "en": "Stop",
+    "ar": "إيقاف"
+  },
+  "quranNoAyahAudio": {
+    "tr": "Bu imamın ayet kaydı yok",
+    "en": "This reciter has no verse-by-verse recording",
+    "ar": "لا يوجد تسجيل لكل آية لهذا القارئ"
+  },
+  "quranBookmarkAyah": {
+    "tr": "Ayeti işaretle",
+    "en": "Bookmark verse",
+    "ar": "علامة على الآية"
+  },
+  "quranAyahBookmarkAdded": {
+    "tr": "{ref} yer işaretlerine eklendi",
+    "en": "{ref} added to bookmarks",
+    "ar": "أُضيفت {ref} إلى العلامات",
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranAyahBookmarkRemoved": {
+    "tr": "{ref} yer işaretlerinden çıkarıldı",
+    "en": "{ref} removed from bookmarks",
+    "ar": "أُزيلت {ref} من العلامات",
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "quranCopy": {
+    "tr": "Kopyala",
+    "en": "Copy",
+    "ar": "نسخ"
+  },
+  "quranCopied": {
+    "tr": "Ayet panoya kopyalandı",
+    "en": "Verse copied to clipboard",
+    "ar": "نُسخت الآية"
+  },
+  "quranAyahsLabel": {
+    "tr": "Ayetler",
+    "en": "Verses",
+    "ar": "الآيات"
+  },
+  "quranTextSource": {
+    "tr": "Metin kaynağı",
+    "en": "Text source",
+    "ar": "مصدر النص"
+  },
+  "quranTextSourceBody": {
+    "tr": "Kur'an metni: Tanzil Projesi (tanzil.net), Hafs rivayeti, Osmanlı hattı. Sayfa düzeni: 604 sayfalık Medine Mushafı. Yazı tipi: Amiri Quran (SIL Open Font License). Mealler: quran.com.",
+    "en": "Quran text: Tanzil Project (tanzil.net), Hafs narration, Uthmani script. Page layout: 604-page Madinah Mushaf. Font: Amiri Quran (SIL Open Font License). Translations: quran.com.",
+    "ar": "نص القرآن: مشروع تنزيل (tanzil.net)، رواية حفص، بالرسم العثماني. ترتيب الصفحات: مصحف المدينة (٦٠٤ صفحات). الخط: Amiri Quran (رخصة SIL المفتوحة). الترجمات: quran.com."
+  },
+  "quranAyahActions": {
+    "tr": "Ayet seçenekleri",
+    "en": "Verse options",
+    "ar": "خيارات الآية"
+  }
+}

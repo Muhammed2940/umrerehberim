@@ -1,0 +1,103 @@
+{
+  "ccMsgTitle": { "tr": "Acente Mesajları", "en": "Agency Messages", "ar": "رسائل الوكالات" },
+  "ccMsgSubtitle": { "tr": "Merkez ↔ Acente iletişimi", "en": "HQ ↔ Agency communication", "ar": "التواصل بين المركز والوكالات" },
+  "ccMsgMenu": { "tr": "Merkez Mesajları", "en": "HQ Messages", "ar": "رسائل المركز" },
+  "ccMsgMenuSub": { "tr": "Merkezle yazışın", "en": "Chat with headquarters", "ar": "تواصل مع المركز" },
+  "ccMsgHq": { "tr": "Merkez", "en": "Headquarters", "ar": "المركز" },
+  "ccMsgHqSub": { "tr": "Umre Rehberim Merkez Ofis", "en": "Umre Rehberim Head Office", "ar": "المكتب الرئيسي لـ Umre Rehberim" },
+  "ccMsgSearch": { "tr": "Acente ara…", "en": "Search agencies…", "ar": "ابحث عن وكالة…" },
+  "ccMsgAgencies": { "tr": "Acenteler", "en": "Agencies", "ar": "الوكالات" },
+  "ccMsgNoAgencies": { "tr": "Acente bulunamadı.", "en": "No agencies found.", "ar": "لم يتم العثور على وكالات." },
+  "ccMsgNoMessagesYet": { "tr": "Henüz mesaj yok", "en": "No messages yet", "ar": "لا توجد رسائل بعد" },
+  "ccMsgEmptyThread": { "tr": "Henüz mesaj yok. İlk mesajı siz yazın.", "en": "No messages yet. Write the first one.", "ar": "لا توجد رسائل بعد. اكتب أول رسالة." },
+  "ccMsgLoadFailed": { "tr": "Mesajlar yüklenemedi.", "en": "Messages could not be loaded.", "ar": "تعذر تحميل الرسائل." },
+  "ccMsgSendFailed": { "tr": "Mesaj gönderilemedi.", "en": "Message could not be sent.", "ar": "تعذر إرسال الرسالة." },
+  "ccMsgSent": { "tr": "Mesaj gönderildi.", "en": "Message sent.", "ar": "تم إرسال الرسالة." },
+  "ccMsgTitleHint": { "tr": "Başlık (isteğe bağlı)", "en": "Title (optional)", "ar": "العنوان (اختياري)" },
+  "ccMsgBodyHint": { "tr": "Mesaj yazın…", "en": "Type a message…", "ar": "اكتب رسالة…" },
+  "ccMsgAddTitle": { "tr": "Başlık ekle", "en": "Add title", "ar": "إضافة عنوان" },
+  "ccMsgSend": { "tr": "Gönder", "en": "Send", "ar": "إرسال" },
+  "ccMsgToday": { "tr": "Bugün", "en": "Today", "ar": "اليوم" },
+  "ccMsgYesterday": { "tr": "Dün", "en": "Yesterday", "ar": "أمس" },
+  "ccMsgYou": { "tr": "Siz", "en": "You", "ar": "أنت" },
+  "ccMsgBroadcastTag": { "tr": "Toplu", "en": "Broadcast", "ar": "جماعية" },
+  "ccMsgUnreadTotal": {
+    "tr": "{count} okunmamış", "en": "{count} unread", "ar": "{count} غير مقروءة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgAllRead": { "tr": "Tümü okundu", "en": "All read", "ar": "تمت قراءة الكل" },
+  "ccMsgFilterAll": { "tr": "Tümü", "en": "All", "ar": "الكل" },
+  "ccMsgFilterUnread": { "tr": "Okunmamış", "en": "Unread", "ar": "غير مقروءة" },
+  "ccMsgBroadcast": { "tr": "Toplu Mesaj", "en": "Broadcast", "ar": "رسالة جماعية" },
+  "ccMsgBroadcastSub": { "tr": "Birden çok acenteye aynı anda gönderin", "en": "Send to several agencies at once", "ar": "أرسل إلى عدة وكالات دفعة واحدة" },
+  "ccMsgRecipients": { "tr": "Alıcılar", "en": "Recipients", "ar": "المستلمون" },
+  "ccMsgAllAgencies": { "tr": "Tüm acenteler", "en": "All agencies", "ar": "جميع الوكالات" },
+  "ccMsgSelectedAgencies": { "tr": "Seçili acenteler", "en": "Selected agencies", "ar": "وكالات محددة" },
+  "ccMsgSelectedCount": {
+    "tr": "{count} acente seçildi", "en": "{count} agencies selected", "ar": "تم اختيار {count} وكالة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgSelectAll": { "tr": "Tümünü seç", "en": "Select all", "ar": "تحديد الكل" },
+  "ccMsgClearSelection": { "tr": "Temizle", "en": "Clear", "ar": "مسح" },
+  "ccMsgTemplates": { "tr": "Hazır şablonlar", "en": "Quick templates", "ar": "قوالب جاهزة" },
+  "ccMsgMessage": { "tr": "Mesaj", "en": "Message", "ar": "الرسالة" },
+  "ccMsgTitleLabel": { "tr": "Başlık", "en": "Title", "ar": "العنوان" },
+  "ccMsgBodyLabel": { "tr": "Mesaj metni", "en": "Message text", "ar": "نص الرسالة" },
+  "ccMsgBodyRequired": { "tr": "Mesaj metni boş olamaz.", "en": "Message text cannot be empty.", "ar": "لا يمكن أن يكون نص الرسالة فارغًا." },
+  "ccMsgNoRecipients": { "tr": "En az bir acente seçin.", "en": "Select at least one agency.", "ar": "اختر وكالة واحدة على الأقل." },
+  "ccMsgBroadcastSend": {
+    "tr": "{count} acenteye gönder", "en": "Send to {count} agencies", "ar": "إرسال إلى {count} وكالة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgBroadcastConfirm": {
+    "tr": "Mesaj {count} acenteye gönderilecek. Onaylıyor musunuz?", "en": "The message will be sent to {count} agencies. Continue?", "ar": "سيتم إرسال الرسالة إلى {count} وكالة. هل تتابع؟",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgBroadcastDone": {
+    "tr": "Mesaj {count} acenteye gönderildi.", "en": "Message sent to {count} agencies.", "ar": "تم إرسال الرسالة إلى {count} وكالة.",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgCancel": { "tr": "Vazgeç", "en": "Cancel", "ar": "إلغاء" },
+  "ccMsgPreview": { "tr": "Önizleme", "en": "Preview", "ar": "معاينة" },
+  "ccMsgTplWelcome": { "tr": "Hoş geldiniz", "en": "Welcome", "ar": "أهلاً بكم" },
+  "ccMsgTplWelcomeTitle": { "tr": "Umre Rehberim'e hoş geldiniz", "en": "Welcome to Umre Rehberim", "ar": "مرحبًا بكم في Umre Rehberim" },
+  "ccMsgTplWelcomeBody": {
+    "tr": "Değerli iş ortağımız, Umre Rehberim ailesine hoş geldiniz. Panelinizden misafirlerinizi, seferlerinizi ve otellerinizi yönetebilirsiniz. Her türlü sorunuz için bu kanaldan bize yazabilirsiniz.",
+    "en": "Dear partner, welcome to the Umre Rehberim family. You can manage your guests, trips and hotels from your panel. Feel free to write to us here with any questions.",
+    "ar": "شريكنا العزيز، أهلاً بكم في عائلة Umre Rehberim. يمكنكم إدارة الضيوف والرحلات والفنادق من لوحتكم. لا تترددوا في مراسلتنا هنا لأي استفسار."
+  },
+  "ccMsgTplPayment": { "tr": "Ödeme hatırlatma", "en": "Payment reminder", "ar": "تذكير بالدفع" },
+  "ccMsgTplPaymentTitle": { "tr": "Ödeme hatırlatması", "en": "Payment reminder", "ar": "تذكير بالدفع" },
+  "ccMsgTplPaymentBody": {
+    "tr": "Değerli iş ortağımız, dönem hizmet bedelinizin son ödeme tarihi yaklaşmaktadır. Ödemenizi zamanında yapmanızı rica eder, ödeme yaptıysanız bu mesajı dikkate almamanızı rica ederiz.",
+    "en": "Dear partner, the due date for this period's service fee is approaching. Please complete your payment on time; if you have already paid, kindly disregard this message.",
+    "ar": "شريكنا العزيز، يقترب موعد سداد رسوم الخدمة لهذه الفترة. نرجو إتمام الدفع في الوقت المحدد، وإن كنتم قد دفعتم فيرجى تجاهل هذه الرسالة."
+  },
+  "ccMsgTplCampaign": { "tr": "Kampanya duyurusu", "en": "Campaign announcement", "ar": "إعلان حملة" },
+  "ccMsgTplCampaignTitle": { "tr": "Yeni kampanya", "en": "New campaign", "ar": "حملة جديدة" },
+  "ccMsgTplCampaignBody": {
+    "tr": "Değerli iş ortağımız, anlaşmalı esnaf ağımızda misafirlerinize özel yeni bir puan kampanyası başlattık. Ayrıntılar için panelinizi inceleyebilir, misafirlerinizi bilgilendirebilirsiniz.",
+    "en": "Dear partner, we have launched a new points campaign for your guests across our partner merchant network. Check your panel for details and let your guests know.",
+    "ar": "شريكنا العزيز، أطلقنا حملة نقاط جديدة لضيوفكم في شبكة التجار المتعاقدين. يمكنكم الاطلاع على التفاصيل في لوحتكم وإبلاغ ضيوفكم."
+  },
+  "ccMsgTplMaintenance": { "tr": "Sistem bakımı", "en": "System maintenance", "ar": "صيانة النظام" },
+  "ccMsgTplMaintenanceTitle": { "tr": "Planlı sistem bakımı", "en": "Scheduled maintenance", "ar": "صيانة مجدولة" },
+  "ccMsgTplMaintenanceBody": {
+    "tr": "Değerli iş ortağımız, sistemimizde planlı bakım çalışması yapılacaktır. Bakım süresince uygulamada kısa süreli kesintiler yaşanabilir. Anlayışınız için teşekkür ederiz.",
+    "en": "Dear partner, scheduled maintenance will be performed on our system. Brief interruptions may occur in the app during this time. Thank you for your understanding.",
+    "ar": "شريكنا العزيز، ستُجرى صيانة مجدولة لنظامنا. قد تحدث انقطاعات قصيرة في التطبيق خلال هذه الفترة. شكرًا لتفهمكم."
+  },
+  "ccMsgTplDocument": { "tr": "Belge talebi", "en": "Document request", "ar": "طلب مستندات" },
+  "ccMsgTplDocumentTitle": { "tr": "Belge talebi", "en": "Document request", "ar": "طلب مستندات" },
+  "ccMsgTplDocumentBody": {
+    "tr": "Değerli iş ortağımız, kayıtlarınızın güncellenmesi için güncel TÜRSAB belgenizi ve vergi levhanızı en kısa sürede iletmenizi rica ederiz.",
+    "en": "Dear partner, please send us your current TÜRSAB certificate and tax certificate as soon as possible so we can update your records.",
+    "ar": "شريكنا العزيز، نرجو إرسال شهادة TÜRSAB الحالية والشهادة الضريبية في أقرب وقت لتحديث سجلاتكم."
+  },
+  "ccMsgInboxBannerTitle": { "tr": "Merkezden yeni mesaj", "en": "New message from HQ", "ar": "رسالة جديدة من المركز" },
+  "ccMsgInboxBannerBody": {
+    "tr": "{count} okunmamış mesajınız var", "en": "You have {count} unread messages", "ar": "لديك {count} رسائل غير مقروءة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "ccMsgNoAgency": { "tr": "Hesabınıza bağlı bir acente bulunamadı.", "en": "No agency is linked to your account.", "ar": "لا توجد وكالة مرتبطة بحسابك." }
+}

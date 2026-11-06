@@ -1,0 +1,8 @@
+# Çeviri dosyaları: lib/l10n/parts/*.json → (node tool/l10n_merge.js) → lib/l10n/app_*.arb
+# Sonra: flutter gen-l10n  (pubspec'te generate: true olduğu için flutter run/build da üretir)
+arb-dir: lib/l10n
+template-arb-file: app_tr.arb
+output-dir: lib/l10n/gen
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+nullable-getter: false

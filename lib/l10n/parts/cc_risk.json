@@ -1,0 +1,162 @@
+{
+  "ccRiskTitle": { "tr": "Risk ve Dolandırıcılık", "en": "Risk & Fraud", "ar": "المخاطر والاحتيال" },
+  "ccRiskSubtitle": { "tr": "Son 90 günün kural tabanlı alarmları", "en": "Rule-based alarms for the last 90 days", "ar": "تنبيهات قائمة على القواعد لآخر 90 يومًا" },
+  "ccRiskRefresh": { "tr": "Yenile", "en": "Refresh", "ar": "تحديث" },
+  "ccRiskLoadError": { "tr": "Risk verileri yüklenemedi", "en": "Risk data could not be loaded", "ar": "تعذر تحميل بيانات المخاطر" },
+  "ccRiskActionError": { "tr": "İşlem başarısız oldu", "en": "The operation failed", "ar": "فشلت العملية" },
+  "ccRiskSevHigh": { "tr": "Yüksek", "en": "High", "ar": "مرتفع" },
+  "ccRiskSevMedium": { "tr": "Orta", "en": "Medium", "ar": "متوسط" },
+  "ccRiskSevLow": { "tr": "Düşük", "en": "Low", "ar": "منخفض" },
+  "ccRiskStatusNew": { "tr": "Yeni", "en": "New", "ar": "جديد" },
+  "ccRiskStatusReviewed": { "tr": "İncelendi", "en": "Reviewed", "ar": "تمت المراجعة" },
+  "ccRiskStatusFalse": { "tr": "Yanlış alarm", "en": "False alarm", "ar": "إنذار كاذب" },
+  "ccRiskStatusConfirmed": { "tr": "Onaylandı", "en": "Confirmed", "ar": "مؤكد" },
+  "ccRiskKpiOpen": { "tr": "İncelenmemiş", "en": "Unreviewed", "ar": "غير مراجَع" },
+  "ccRiskFilterAll": { "tr": "Tümü", "en": "All", "ar": "الكل" },
+  "ccRiskFilterSeverity": { "tr": "Önem", "en": "Severity", "ar": "الخطورة" },
+  "ccRiskFilterStatus": { "tr": "Durum", "en": "Status", "ar": "الحالة" },
+  "ccRiskFilterType": { "tr": "Tür", "en": "Type", "ar": "النوع" },
+  "ccRiskAlarmsTitle": { "tr": "Alarmlar", "en": "Alarms", "ar": "التنبيهات" },
+  "ccRiskEmpty": { "tr": "Filtreye uyan alarm yok", "en": "No alarms match the filter", "ar": "لا توجد تنبيهات مطابقة" },
+  "ccRiskSupportNote": { "tr": "İşlem tabanlı alarmlar (alışveriş, puan ve kupon verisi) yalnız süper admin tarafından hesaplanır. Aşağıda yapılan incelemeleri görebilirsiniz.", "en": "Transaction-based alarms (purchase, points and coupon data) are computed only for the super admin. You can see the reviews below.", "ar": "تُحسب التنبيهات القائمة على المعاملات (المشتريات والنقاط والقسائم) للمشرف العام فقط. يمكنك رؤية المراجعات أدناه." },
+  "ccRiskReviewsTitle": { "tr": "İnceleme kayıtları", "en": "Review records", "ar": "سجلات المراجعة" },
+  "ccRiskReviewsEmpty": { "tr": "Henüz inceleme yok", "en": "No reviews yet", "ar": "لا توجد مراجعات بعد" },
+  "ccRiskReviewedBy": {
+    "tr": "{name} · {date}",
+    "en": "{name} · {date}",
+    "ar": "{name} · {date}",
+    "placeholders": { "name": { "type": "String" }, "date": { "type": "String" } }
+  },
+  "ccRiskTypeVelocity": { "tr": "Kısa sürede çok işlem", "en": "Transaction velocity", "ar": "معاملات كثيرة في وقت قصير" },
+  "ccRiskTypeBigAmount": { "tr": "Yüksek tutarlı işlem", "en": "High-value transaction", "ar": "معاملة بمبلغ مرتفع" },
+  "ccRiskTypeBasket": { "tr": "Olağandışı sepet", "en": "Unusual basket", "ar": "سلة غير معتادة" },
+  "ccRiskTypeCancelRate": { "tr": "Yüksek iptal oranı", "en": "High cancellation rate", "ar": "نسبة إلغاء مرتفعة" },
+  "ccRiskTypeQuickCancel": { "tr": "Hızlı iptal", "en": "Quick cancellation", "ar": "إلغاء سريع" },
+  "ccRiskTypeBigPoints": { "tr": "Yüksek puan harcaması", "en": "Large points spend", "ar": "إنفاق نقاط كبير" },
+  "ccRiskTypePointsBurn": { "tr": "Hızlı puan tüketimi", "en": "Fast points burn", "ar": "استهلاك سريع للنقاط" },
+  "ccRiskTypeBigGrant": { "tr": "Büyük puan yüklemesi", "en": "Large points grant", "ar": "منح نقاط كبير" },
+  "ccRiskTypeFrequentGrants": { "tr": "Sık puan yüklemesi", "en": "Frequent points grants", "ar": "منح نقاط متكرر" },
+  "ccRiskTypeAdminGrants": { "tr": "Yönetici puan hacmi", "en": "Admin grant volume", "ar": "حجم منح المشرف للنقاط" },
+  "ccRiskTypeCouponValue": { "tr": "Yüksek değerli kupon", "en": "High-value coupon", "ar": "قسيمة عالية القيمة" },
+  "ccRiskTypeCouponUnlimited": { "tr": "Sınırsız kupon, yoğun kullanım", "en": "Unlimited coupon, heavy use", "ar": "قسيمة غير محدودة باستخدام كثيف" },
+  "ccRiskTypeNight": { "tr": "Gece işlemi", "en": "Night transaction", "ar": "معاملة ليلية" },
+  "ccRiskTypeConcentration": { "tr": "Ciro yoğunlaşması", "en": "Revenue concentration", "ar": "تركز الإيرادات" },
+  "ccRiskExpVelocity": {
+    "tr": "{guest}, {shop} dükkanında 24 saat içinde {count} işlem yaptı.",
+    "en": "{guest} made {count} transactions at {shop} within 24 hours.",
+    "ar": "أجرى {guest} عدد {count} معاملات في {shop} خلال 24 ساعة.",
+    "placeholders": { "guest": { "type": "String" }, "shop": { "type": "String" }, "count": { "type": "int" } }
+  },
+  "ccRiskExpBigAmount": {
+    "tr": "Tek işlem {amount}; azami tutarın (20.000 SAR) %80'ine ulaşıyor.",
+    "en": "Single transaction of {amount}; reaches 80% of the maximum (20,000 SAR).",
+    "ar": "معاملة واحدة بقيمة {amount}؛ تبلغ 80% من الحد الأقصى (20,000 ريال).",
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "ccRiskExpBasket": {
+    "tr": "İşlem {amount}; dükkanın ortalama sepeti {avg} (5 katından fazla).",
+    "en": "Transaction of {amount}; the shop's average basket is {avg} (over 5×).",
+    "ar": "معاملة بقيمة {amount}؛ متوسط سلة المتجر {avg} (أكثر من 5 أضعاف).",
+    "placeholders": { "amount": { "type": "String" }, "avg": { "type": "String" } }
+  },
+  "ccRiskExpCancelRate": {
+    "tr": "{shop} son 90 günde {count} işlemin %{rate}'ini iptal etti.",
+    "en": "{shop} cancelled {rate}% of {count} transactions in the last 90 days.",
+    "ar": "ألغى {shop} نسبة {rate}% من {count} معاملة خلال آخر 90 يومًا.",
+    "placeholders": { "shop": { "type": "String" }, "rate": { "type": "int" }, "count": { "type": "int" } }
+  },
+  "ccRiskExpQuickCancel": {
+    "tr": "İşlem oluşturulduktan {minutes} dakika sonra iptal edildi.",
+    "en": "The transaction was cancelled {minutes} minutes after creation.",
+    "ar": "أُلغيت المعاملة بعد {minutes} دقيقة من إنشائها.",
+    "placeholders": { "minutes": { "type": "int" } }
+  },
+  "ccRiskExpBigPoints": {
+    "tr": "Tek işlemde {points} puan harcandı.",
+    "en": "{points} points were spent in a single transaction.",
+    "ar": "أُنفقت {points} نقطة في معاملة واحدة.",
+    "placeholders": { "points": { "type": "String" } }
+  },
+  "ccRiskExpPointsBurn": {
+    "tr": "{guest} 90 günde {spent} puan harcadı, aynı dönemde yalnız {earned} puan kazandı.",
+    "en": "{guest} spent {spent} points in 90 days but earned only {earned} in the same period.",
+    "ar": "أنفق {guest} {spent} نقطة خلال 90 يومًا بينما كسب {earned} نقطة فقط في الفترة نفسها.",
+    "placeholders": { "guest": { "type": "String" }, "spent": { "type": "String" }, "earned": { "type": "String" } }
+  },
+  "ccRiskExpBigGrant": {
+    "tr": "{guest} misafirine tek seferde {points} puan yüklendi.",
+    "en": "{points} points were granted to {guest} in a single entry.",
+    "ar": "مُنح {guest} عدد {points} نقطة دفعة واحدة.",
+    "placeholders": { "guest": { "type": "String" }, "points": { "type": "String" } }
+  },
+  "ccRiskExpFrequentGrants": {
+    "tr": "{guest} misafirine 7 gün içinde {count} kez puan yüklendi.",
+    "en": "Points were granted to {guest} {count} times within 7 days.",
+    "ar": "مُنح {guest} نقاطًا {count} مرات خلال 7 أيام.",
+    "placeholders": { "guest": { "type": "String" }, "count": { "type": "int" } }
+  },
+  "ccRiskExpAdminGrants": {
+    "tr": "{admin} 7 gün içinde toplam {points} puan yükledi.",
+    "en": "{admin} granted a total of {points} points within 7 days.",
+    "ar": "منح {admin} ما مجموعه {points} نقطة خلال 7 أيام.",
+    "placeholders": { "admin": { "type": "String" }, "points": { "type": "String" } }
+  },
+  "ccRiskExpCouponValue": {
+    "tr": "{code} kuponu {value} indirim veriyor.",
+    "en": "Coupon {code} gives a {value} discount.",
+    "ar": "القسيمة {code} تمنح خصمًا بقيمة {value}.",
+    "placeholders": { "code": { "type": "String" }, "value": { "type": "String" } }
+  },
+  "ccRiskExpCouponUnlimited": {
+    "tr": "{code} kuponunun kullanım sınırı yok ve {count} kez kullanıldı.",
+    "en": "Coupon {code} has no usage limit and was used {count} times.",
+    "ar": "القسيمة {code} بلا حد للاستخدام واستُخدمت {count} مرة.",
+    "placeholders": { "code": { "type": "String" }, "count": { "type": "int" } }
+  },
+  "ccRiskExpNight": {
+    "tr": "İşlem gece saatinde ({time}) yapıldı.",
+    "en": "The transaction was made at night ({time}).",
+    "ar": "تمت المعاملة ليلًا ({time}).",
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "ccRiskExpConcentration": {
+    "tr": "{guest}, {shop} dükkanının cirosunun %{share}'ini tek başına oluşturuyor.",
+    "en": "{guest} alone accounts for {share}% of {shop}'s revenue.",
+    "ar": "يشكل {guest} وحده {share}% من إيرادات {shop}.",
+    "placeholders": { "guest": { "type": "String" }, "shop": { "type": "String" }, "share": { "type": "int" } }
+  },
+  "ccRiskExpSameAgency": { "tr": "Misafir ve dükkan aynı acenteye bağlı.", "en": "The guest and the shop belong to the same agency.", "ar": "الضيف والمتجر يتبعان الوكالة نفسها." },
+  "ccRiskPointsUnit": {
+    "tr": "{points} puan",
+    "en": "{points} points",
+    "ar": "{points} نقطة",
+    "placeholders": { "points": { "type": "String" } }
+  },
+  "ccRiskTime": { "tr": "Zaman", "en": "Time", "ar": "الوقت" },
+  "ccRiskAmount": { "tr": "Tutar", "en": "Amount", "ar": "المبلغ" },
+  "ccRiskEntities": { "tr": "İlgili kayıtlar", "en": "Involved entities", "ar": "الجهات المعنية" },
+  "ccRiskEntityShop": { "tr": "Dükkan", "en": "Shop", "ar": "المتجر" },
+  "ccRiskEntityGuest": { "tr": "Misafir", "en": "Guest", "ar": "الضيف" },
+  "ccRiskEntityAdmin": { "tr": "Yönetici", "en": "Admin", "ar": "المشرف" },
+  "ccRiskEntityCoupon": { "tr": "Kupon", "en": "Coupon", "ar": "القسيمة" },
+  "ccRiskEvidence": { "tr": "Kanıtlar", "en": "Evidence", "ar": "الأدلة" },
+  "ccRiskCouponInfo": {
+    "tr": "İndirim {value} · {used}/{max} kullanım",
+    "en": "Discount {value} · {used}/{max} uses",
+    "ar": "خصم {value} · {used}/{max} استخدام",
+    "placeholders": { "value": { "type": "String" }, "used": { "type": "int" }, "max": { "type": "String" } }
+  },
+  "ccRiskCouponActive": { "tr": "Aktif", "en": "Active", "ar": "نشط" },
+  "ccRiskCouponPassive": { "tr": "Pasif", "en": "Inactive", "ar": "غير نشط" },
+  "ccRiskReview": { "tr": "İnceleme", "en": "Review", "ar": "المراجعة" },
+  "ccRiskNoteHint": { "tr": "İnceleme notu", "en": "Review note", "ar": "ملاحظة المراجعة" },
+  "ccRiskSaveReview": { "tr": "İncelemeyi kaydet", "en": "Save review", "ar": "حفظ المراجعة" },
+  "ccRiskReviewSaved": { "tr": "İnceleme kaydedildi", "en": "Review saved", "ar": "تم حفظ المراجعة" },
+  "ccRiskCancelTx": { "tr": "İşlemi iptal et", "en": "Cancel transaction", "ar": "إلغاء المعاملة" },
+  "ccRiskCancelTitle": { "tr": "İşlem iptali", "en": "Cancel transaction", "ar": "إلغاء المعاملة" },
+  "ccRiskCancelReasonHint": { "tr": "İptal nedeni", "en": "Cancellation reason", "ar": "سبب الإلغاء" },
+  "ccRiskCancelReasonDefault": { "tr": "Risk incelemesi", "en": "Risk review", "ar": "مراجعة المخاطر" },
+  "ccRiskCancelled": { "tr": "İşlem iptal edildi", "en": "Transaction cancelled", "ar": "أُلغيت المعاملة" },
+  "ccRiskTxCancelledBadge": { "tr": "İptal", "en": "Cancelled", "ar": "ملغاة" },
+  "ccRiskCancel": { "tr": "Vazgeç", "en": "Back", "ar": "رجوع" }
+}

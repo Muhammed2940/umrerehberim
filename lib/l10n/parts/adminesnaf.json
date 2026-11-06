@@ -1,0 +1,521 @@
+{
+  "adminEsnafMenu": {
+    "tr": "Esnaf Raporları",
+    "en": "Merchant Reports",
+    "ar": "تقارير التجار"
+  },
+  "adminEsnafMenuSub": {
+    "tr": "Anlaşmalı esnaf satışları ve komisyon",
+    "en": "Partner shop sales and commission",
+    "ar": "مبيعات المتاجر المتعاقدة والعمولة"
+  },
+  "adminEsnafNoAgencyHint": {
+    "tr": "Raporu görmek için süper admin panelinden bir acente seçip yönetin.",
+    "en": "Select an agency to manage from the super admin panel to see the report.",
+    "ar": "اختر وكالة لإدارتها من لوحة المشرف العام لعرض التقرير."
+  },
+  "adminEsnafCommission": {
+    "tr": "Komisyon oranı (%)",
+    "en": "Commission rate (%)",
+    "ar": "نسبة العمولة (%)"
+  },
+  "adminEsnafCommissionHint": {
+    "tr": "0-30 arası, boş = 0",
+    "en": "0-30, empty = 0",
+    "ar": "من 0 إلى 30، الفارغ = 0"
+  },
+  "adminEsnafCommissionRange": {
+    "tr": "Komisyon 0 ile 30 arasında olmalı",
+    "en": "Commission must be between 0 and 30",
+    "ar": "يجب أن تكون العمولة بين 0 و30"
+  },
+  "adminEsnafCommissionShort": {
+    "tr": "Komisyon %{percent}",
+    "en": "Commission {percent}%",
+    "ar": "عمولة {percent}%",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafBadgeYes": {
+    "tr": "Esnaf hesabı var",
+    "en": "Merchant account",
+    "ar": "حساب تاجر مفعل"
+  },
+  "adminEsnafBadgeNo": {
+    "tr": "Esnaf hesabı yok",
+    "en": "No merchant account",
+    "ar": "لا يوجد حساب تاجر"
+  },
+  "adminEsnafAccountSection": {
+    "tr": "Esnaf Hesabı",
+    "en": "Merchant Account",
+    "ar": "حساب التاجر"
+  },
+  "adminEsnafAccountNone": {
+    "tr": "Bu dükkanın esnaf hesabı yok. Hesap açılınca esnaf kod ve PIN ile giriş yapar, misafirin QR kodunu okutarak indirimli satışı kaydeder.",
+    "en": "This shop has no merchant account. Once opened, the merchant signs in with a code and PIN and records discounted sales by scanning the guest's QR code.",
+    "ar": "لا يوجد حساب تاجر لهذا المتجر. بعد فتح الحساب يدخل التاجر بالرمز والرقم السري، ويسجل البيع المخفض بمسح رمز QR الخاص بالضيف."
+  },
+  "adminEsnafSaveFirst": {
+    "tr": "Esnaf hesabı açmak için önce dükkanı kaydedin.",
+    "en": "Save the shop first to open a merchant account.",
+    "ar": "احفظ المتجر أولاً لفتح حساب تاجر."
+  },
+  "adminEsnafCreate": {
+    "tr": "Esnaf hesabı oluştur",
+    "en": "Create merchant account",
+    "ar": "إنشاء حساب تاجر"
+  },
+  "adminEsnafCreated": {
+    "tr": "Esnaf hesabı oluşturuldu",
+    "en": "Merchant account created",
+    "ar": "تم إنشاء حساب التاجر"
+  },
+  "adminEsnafAccountActive": {
+    "tr": "Esnaf hesabı açık",
+    "en": "Merchant account is active",
+    "ar": "حساب التاجر مفعل"
+  },
+  "adminEsnafCodeLabel": {
+    "tr": "Esnaf kodu: {code}",
+    "en": "Merchant code: {code}",
+    "ar": "رمز التاجر: {code}",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafResetPin": {
+    "tr": "PIN sıfırla",
+    "en": "Reset PIN",
+    "ar": "إعادة تعيين الرقم السري"
+  },
+  "adminEsnafResetConfirm": {
+    "tr": "Yeni bir kod ve PIN oluşturulacak. Eski kod ve PIN ile giriş artık çalışmaz. Devam edilsin mi?",
+    "en": "A new code and PIN will be created. The old code and PIN will no longer work. Continue?",
+    "ar": "سيتم إنشاء رمز ورقم سري جديدين، ولن يعمل الرمز والرقم السري القديمان بعد ذلك. هل تريد المتابعة؟"
+  },
+  "adminEsnafClose": {
+    "tr": "Hesabı kapat",
+    "en": "Close account",
+    "ar": "إغلاق الحساب"
+  },
+  "adminEsnafCloseConfirm": {
+    "tr": "{name} için esnaf hesabı kapatılsın mı? Esnaf artık giriş yapamaz.",
+    "en": "Close the merchant account for {name}? The merchant will no longer be able to sign in.",
+    "ar": "هل تريد إغلاق حساب التاجر لـ {name}؟ لن يتمكن التاجر من الدخول بعد ذلك.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafClosed": {
+    "tr": "Esnaf hesabı kapatıldı",
+    "en": "Merchant account closed",
+    "ar": "تم إغلاق حساب التاجر"
+  },
+  "adminEsnafCodeExists": {
+    "tr": "Bu kod başka bir hesapta kullanılıyor. Tekrar deneyin.",
+    "en": "This code is already used by another account. Please try again.",
+    "ar": "هذا الرمز مستخدم في حساب آخر. حاول مرة أخرى."
+  },
+  "adminEsnafFailed": {
+    "tr": "İşlem başarısız: {error}",
+    "en": "Operation failed: {error}",
+    "ar": "فشلت العملية: {error}",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafPinRandom": {
+    "tr": "Rastgele PIN üret",
+    "en": "Generate a random PIN",
+    "ar": "إنشاء رقم سري عشوائي"
+  },
+  "adminEsnafPinManual": {
+    "tr": "PIN'i ben gireyim",
+    "en": "I'll enter the PIN",
+    "ar": "سأدخل الرقم السري بنفسي"
+  },
+  "adminEsnafPinField": {
+    "tr": "6 haneli PIN",
+    "en": "6-digit PIN",
+    "ar": "رقم سري من 6 أرقام"
+  },
+  "adminEsnafPinInvalid": {
+    "tr": "PIN 6 haneli rakam olmalı",
+    "en": "PIN must be 6 digits",
+    "ar": "يجب أن يتكون الرقم السري من 6 أرقام"
+  },
+  "adminEsnafContinue": {
+    "tr": "Devam",
+    "en": "Continue",
+    "ar": "متابعة"
+  },
+  "adminEsnafCredsTitle": {
+    "tr": "Esnaf giriş bilgileri",
+    "en": "Merchant sign-in details",
+    "ar": "بيانات دخول التاجر"
+  },
+  "adminEsnafCredsWarning": {
+    "tr": "Bu bilgileri esnafa iletin. PIN bir daha gösterilmeyecek.",
+    "en": "Send these details to the merchant. The PIN will not be shown again.",
+    "ar": "أرسل هذه البيانات إلى التاجر. لن يظهر الرقم السري مرة أخرى."
+  },
+  "adminEsnafCode": {
+    "tr": "Kod",
+    "en": "Code",
+    "ar": "الرمز"
+  },
+  "adminEsnafPin": {
+    "tr": "PIN",
+    "en": "PIN",
+    "ar": "الرقم السري"
+  },
+  "adminEsnafCopy": {
+    "tr": "Kopyala",
+    "en": "Copy",
+    "ar": "نسخ"
+  },
+  "adminEsnafCopied": {
+    "tr": "Panoya kopyalandı",
+    "en": "Copied to clipboard",
+    "ar": "تم النسخ"
+  },
+  "adminEsnafShareWhatsapp": {
+    "tr": "WhatsApp ile paylaş",
+    "en": "Share via WhatsApp",
+    "ar": "مشاركة عبر واتساب"
+  },
+  "adminEsnafWhatsappFailed": {
+    "tr": "WhatsApp açılamadı; bilgiler panoya kopyalandı",
+    "en": "Could not open WhatsApp; details copied to clipboard",
+    "ar": "تعذر فتح واتساب؛ تم نسخ البيانات"
+  },
+  "adminEsnafDone": {
+    "tr": "Tamam",
+    "en": "Done",
+    "ar": "تم"
+  },
+  "adminEsnafShareMessage": {
+    "tr": "السلام عليكم\nتم إنشاء حساب التاجر لمتجر {shop} في تطبيق Umre Rehberim.\n1) ثبّت تطبيق Umre Rehberim على هاتفك.\n2) افتح التطبيق واختر «تاجر».\n3) الرمز: {code}\n4) الرقم السري (PIN): {pin}\nلا تشارك الرقم السري مع أحد.\n\nSelamün aleyküm\n{shop} için Umre Rehberim esnaf hesabınız açıldı.\n1) Umre Rehberim uygulamasını telefonunuza yükleyin.\n2) Uygulamayı açıp giriş tipi olarak \"Esnaf\"ı seçin.\n3) Kod: {code}\n4) PIN: {pin}\nPIN'inizi kimseyle paylaşmayın.",
+    "en": "السلام عليكم\nتم إنشاء حساب التاجر لمتجر {shop} في تطبيق Umre Rehberim.\n1) ثبّت تطبيق Umre Rehberim على هاتفك.\n2) افتح التطبيق واختر «تاجر».\n3) الرمز: {code}\n4) الرقم السري (PIN): {pin}\nلا تشارك الرقم السري مع أحد.\n\nSelamün aleyküm\n{shop} için Umre Rehberim esnaf hesabınız açıldı.\n1) Umre Rehberim uygulamasını telefonunuza yükleyin.\n2) Uygulamayı açıp giriş tipi olarak \"Esnaf\"ı seçin.\n3) Kod: {code}\n4) PIN: {pin}\nPIN'inizi kimseyle paylaşmayın.",
+    "ar": "السلام عليكم\nتم إنشاء حساب التاجر لمتجر {shop} في تطبيق Umre Rehberim.\n1) ثبّت تطبيق Umre Rehberim على هاتفك.\n2) افتح التطبيق واختر «تاجر».\n3) الرمز: {code}\n4) الرقم السري (PIN): {pin}\nلا تشارك الرقم السري مع أحد.\n\nSelamün aleyküm\n{shop} için Umre Rehberim esnaf hesabınız açıldı.\n1) Umre Rehberim uygulamasını telefonunuza yükleyin.\n2) Uygulamayı açıp giriş tipi olarak \"Esnaf\"ı seçin.\n3) Kod: {code}\n4) PIN: {pin}\nPIN'inizi kimseyle paylaşmayın.",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      },
+      "pin": {
+        "type": "String"
+      }
+    },
+    "description": "Esnafa WhatsApp ile gönderilen giriş mesajı; her dilde Arapça + Türkçe birlikte."
+  },
+  "adminEsnafPeriodThisMonth": {
+    "tr": "Bu ay",
+    "en": "This month",
+    "ar": "هذا الشهر"
+  },
+  "adminEsnafPeriodLastMonth": {
+    "tr": "Geçen ay",
+    "en": "Last month",
+    "ar": "الشهر الماضي"
+  },
+  "adminEsnafPeriod30": {
+    "tr": "Son 30 gün",
+    "en": "Last 30 days",
+    "ar": "آخر 30 يوماً"
+  },
+  "adminEsnafPeriodCustom": {
+    "tr": "Özel aralık",
+    "en": "Custom range",
+    "ar": "فترة مخصصة"
+  },
+  "adminEsnafRange": {
+    "tr": "{from} – {to}",
+    "en": "{from} – {to}",
+    "ar": "{from} – {to}",
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafLoyaltyInfo": {
+    "tr": "Sadakat puanı: 1 SAR = {points} puan, 100 puan = {sar} SAR",
+    "en": "Loyalty points: 1 SAR = {points} point, 100 points = {sar} SAR",
+    "ar": "نقاط الولاء: 1 ريال = {points} نقطة، 100 نقطة = {sar} ريال",
+    "placeholders": {
+      "points": {
+        "type": "int"
+      },
+      "sar": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafLoadFailed": {
+    "tr": "Rapor yüklenemedi. Aşağı çekerek yenileyin.",
+    "en": "Report could not be loaded. Pull down to refresh.",
+    "ar": "تعذر تحميل التقرير. اسحب للأسفل للتحديث."
+  },
+  "adminEsnafEmpty": {
+    "tr": "Bu dönemde anlaşmalı esnafta alışveriş yok.",
+    "en": "No purchases at partner shops in this period.",
+    "ar": "لا توجد مشتريات من المتاجر المتعاقدة في هذه الفترة."
+  },
+  "adminEsnafSumCount": {
+    "tr": "Alışveriş sayısı",
+    "en": "Purchases",
+    "ar": "عدد المشتريات"
+  },
+  "adminEsnafSumGross": {
+    "tr": "Brüt ciro",
+    "en": "Gross sales",
+    "ar": "إجمالي المبيعات"
+  },
+  "adminEsnafSumDiscount": {
+    "tr": "Misafirlere sağlanan indirim",
+    "en": "Discount given to guests",
+    "ar": "الخصم المقدم للضيوف"
+  },
+  "adminEsnafSumNet": {
+    "tr": "Net ciro",
+    "en": "Net sales",
+    "ar": "صافي المبيعات"
+  },
+  "adminEsnafSumCommission": {
+    "tr": "Biriken komisyon",
+    "en": "Accrued commission",
+    "ar": "العمولة المستحقة"
+  },
+  "adminEsnafSumPointsEarned": {
+    "tr": "Dağıtılan puan",
+    "en": "Points issued",
+    "ar": "النقاط الممنوحة"
+  },
+  "adminEsnafSumPointsSpent": {
+    "tr": "Harcanan puan",
+    "en": "Points redeemed",
+    "ar": "النقاط المستخدمة"
+  },
+  "adminEsnafDailyChart": {
+    "tr": "Günlük net ciro (SAR)",
+    "en": "Daily net sales (SAR)",
+    "ar": "صافي المبيعات اليومية (ريال)"
+  },
+  "adminEsnafMethodChart": {
+    "tr": "Ödeme türü dağılımı",
+    "en": "Payment method breakdown",
+    "ar": "توزيع طرق الدفع"
+  },
+  "adminEsnafMethodCash": {
+    "tr": "Nakit",
+    "en": "Cash",
+    "ar": "نقداً"
+  },
+  "adminEsnafMethodCard": {
+    "tr": "Kart",
+    "en": "Card",
+    "ar": "بطاقة"
+  },
+  "adminEsnafMethodPoints": {
+    "tr": "Puan",
+    "en": "Points",
+    "ar": "نقاط"
+  },
+  "adminEsnafByShop": {
+    "tr": "Dükkan bazında",
+    "en": "By shop",
+    "ar": "حسب المتجر"
+  },
+  "adminEsnafShopRow": {
+    "tr": "{count} işlem · Net {net} · %{percent} → {commission}",
+    "en": "{count} sales · Net {net} · {percent}% → {commission}",
+    "ar": "{count} عملية · الصافي {net} · {percent}% ← {commission}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "net": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      },
+      "commission": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafAlerts": {
+    "tr": "Uyarılar",
+    "en": "Alerts",
+    "ar": "تنبيهات"
+  },
+  "adminEsnafNoAlerts": {
+    "tr": "Şüpheli işlem yok.",
+    "en": "No suspicious transactions.",
+    "ar": "لا توجد عمليات مشبوهة."
+  },
+  "adminEsnafAlertManyTx": {
+    "tr": "{guest} – {shop}: {date} tarihinde {count} işlem",
+    "en": "{guest} – {shop}: {count} sales on {date}",
+    "ar": "{guest} – {shop}: {count} عمليات بتاريخ {date}",
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafAlertBigTx": {
+    "tr": "{guest} – {shop}: tek işlemde {amount}",
+    "en": "{guest} – {shop}: {amount} in a single sale",
+    "ar": "{guest} – {shop}: {amount} في عملية واحدة",
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafAlertQuickCancel": {
+    "tr": "{guest} – {shop}: {amount} tutarlı işlem 24 saat içinde iptal edildi",
+    "en": "{guest} – {shop}: a {amount} sale was cancelled within 24 hours",
+    "ar": "{guest} – {shop}: أُلغيت عملية بقيمة {amount} خلال 24 ساعة",
+    "placeholders": {
+      "guest": {
+        "type": "String"
+      },
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafTransactions": {
+    "tr": "İşlemler",
+    "en": "Transactions",
+    "ar": "العمليات"
+  },
+  "adminEsnafShowAll": {
+    "tr": "Tümünü göster ({count})",
+    "en": "Show all ({count})",
+    "ar": "عرض الكل ({count})",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminEsnafCancelled": {
+    "tr": "İptal",
+    "en": "Cancelled",
+    "ar": "ملغاة"
+  },
+  "adminEsnafCancelTx": {
+    "tr": "İşlemi iptal et",
+    "en": "Cancel transaction",
+    "ar": "إلغاء العملية"
+  },
+  "adminEsnafCancelReason": {
+    "tr": "İptal sebebi",
+    "en": "Cancellation reason",
+    "ar": "سبب الإلغاء"
+  },
+  "adminEsnafCancelReasonRequired": {
+    "tr": "Sebep girin",
+    "en": "Enter a reason",
+    "ar": "أدخل السبب"
+  },
+  "adminEsnafCancelReasonLabel": {
+    "tr": "Sebep: {reason}",
+    "en": "Reason: {reason}",
+    "ar": "السبب: {reason}",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafCancelDone": {
+    "tr": "İşlem iptal edildi",
+    "en": "Transaction cancelled",
+    "ar": "تم إلغاء العملية"
+  },
+  "adminEsnafShare": {
+    "tr": "Komisyon dökümü paylaş",
+    "en": "Share commission statement",
+    "ar": "مشاركة كشف العمولة"
+  },
+  "adminEsnafShareCopied": {
+    "tr": "Komisyon dökümü panoya kopyalandı",
+    "en": "Commission statement copied to clipboard",
+    "ar": "تم نسخ كشف العمولة"
+  },
+  "adminEsnafShareHeader": {
+    "tr": "Esnaf Komisyon Dökümü",
+    "en": "Merchant Commission Statement",
+    "ar": "كشف عمولة التجار"
+  },
+  "adminEsnafSharePeriod": {
+    "tr": "Dönem: {range}",
+    "en": "Period: {range}",
+    "ar": "الفترة: {range}",
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafShareTotals": {
+    "tr": "Toplam: {count} işlem, net ciro {net}, komisyon {commission}",
+    "en": "Total: {count} sales, net {net}, commission {commission}",
+    "ar": "الإجمالي: {count} عملية، الصافي {net}، العمولة {commission}",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "net": {
+        "type": "String"
+      },
+      "commission": {
+        "type": "String"
+      }
+    }
+  },
+  "adminEsnafShareByShop": {
+    "tr": "Dükkan bazında:",
+    "en": "By shop:",
+    "ar": "حسب المتجر:"
+  }
+}
