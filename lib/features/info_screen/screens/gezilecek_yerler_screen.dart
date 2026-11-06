@@ -146,11 +146,6 @@ class _BolgeSekmesiState extends State<_BolgeSekmesi> with AutomaticKeepAliveCli
           icon: Icons.place_rounded,
         ),
         for (final y in _yerler) _GeziKart(yer: y, konum: widget.konum, onTap: () => _ac(y)),
-        const SizedBox(height: 4),
-        Text(
-          GeziMetin.kaynakNotu.of(context),
-          style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted),
-        ),
       ],
     );
   }

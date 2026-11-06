@@ -122,11 +122,6 @@ class _MikatScreenState extends State<MikatScreen> {
                 InfoNote(t.infoMiqatAlignNote),
                 InfoSectionLabel(t.infoMiqatFive, icon: Icons.list_alt_rounded),
                 for (var i = 0; i < kMikatlar.length; i++) _mikatKart(i),
-                const SizedBox(height: 4),
-                Text(
-                  t.infoMiqatSource,
-                  style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted),
-                ),
               ],
             ),
           ),

@@ -5,6 +5,7 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../data/l10n_text.dart';
 import '../widgets/info_widgets.dart';
+import '../widgets/yakinda_widgets.dart';
 
 /// Rehberdeki tek madde: kalın başlık + metin.
 class _M {
@@ -22,7 +23,11 @@ class _Bolum {
     required this.subtitle,
     required this.items,
     this.guncellik = false,
+    this.yakinda,
   });
+
+  /// Bölümün en üstünde "Çok yakında" vurgulu kutusu (başlık, açıklama).
+  final (L10nText, L10nText)? yakinda;
 
   final IconData icon;
   final L10nText title;
@@ -201,6 +206,17 @@ class SeyahatRehberiScreen extends StatelessWidget {
       icon: Icons.sim_card_rounded,
       title: L10nText(tr: 'İletişim', en: 'Communication', ar: 'الاتصالات'),
       subtitle: L10nText(tr: 'SIM kart, eSIM, internet', en: 'SIM card, eSIM, internet', ar: 'شريحة SIM، eSIM، الإنترنت'),
+      yakinda: (
+        L10nText(tr: 'Umre Cell E-SIM', en: 'Umre Cell eSIM', ar: 'شريحة Umre Cell الإلكترونية'),
+        L10nText(
+          tr: 'Suudi Arabistan\'a özel internet ve arama paketleri doğrudan uygulamadan. Yola çıkmadan kurun, '
+              'iner inmez bağlanın; hat almak için kuyrukta beklemeyin.',
+          en: 'Saudi Arabia internet and calling packages right in the app. Install before you travel and get connected '
+              'the moment you land; no queuing for a SIM card.',
+          ar: 'باقات إنترنت ومكالمات خاصة بالسعودية مباشرة من التطبيق. ثبّتها قبل السفر واتصل فور وصولك، '
+              'دون انتظار في طوابير شراء الشرائح.',
+        ),
+      ),
       items: [
         _M(
           L10nText(tr: 'SIM kart:', en: 'SIM card:', ar: 'شريحة SIM:'),
@@ -428,11 +444,6 @@ class SeyahatRehberiScreen extends StatelessWidget {
               InfoNote(t.infoCheckBeforeTravel, warning: true),
             ],
           ),
-          const SizedBox(height: 4),
-          Text(
-            t.infoGuideSources,
-            style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted),
-          ),
         ],
       ),
     );
@@ -445,6 +456,7 @@ class SeyahatRehberiScreen extends StatelessWidget {
       subtitle: b.subtitle.of(context),
       initiallyExpanded: ilk,
       children: [
+        if (b.yakinda != null) YakindaKutusu(baslik: b.yakinda!.$1.of(context), aciklama: b.yakinda!.$2.of(context)),
         for (final m in b.items) BulletText(m.text.of(context), bold: m.bold.of(context)),
         if (b.guncellik) InfoNote(context.l10n.infoCheckBeforeTravel, warning: true),
       ],

@@ -173,11 +173,6 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
             onPressed: _toggleBookmark,
           ),
           IconButton(tooltip: l.quranGoToPage, icon: const Icon(Icons.pin_outlined), onPressed: _openPageJump),
-          IconButton(
-            tooltip: l.quranTextSource,
-            icon: const Icon(Icons.info_outline_rounded),
-            onPressed: _showSource,
-          ),
         ],
       ),
       body: _buildBody(quran, c),
@@ -233,18 +228,6 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
           selectedKey: _selectedKey,
           onAyahTap: _onAyahTap,
         ),
-      ),
-    );
-  }
-
-  void _showSource() {
-    final l = context.l10n;
-    showDialog<void>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(l.quranTextSource),
-        content: Text(l.quranTextSourceBody, style: const TextStyle(height: 1.45)),
-        actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l.commonClose))],
       ),
     );
   }

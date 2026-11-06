@@ -342,8 +342,6 @@ class _TavafSimulasyonuScreenState extends State<TavafSimulasyonuScreen> with Si
         children: [
           BolumBasligi(context.l10n.simTawafEssentials, ikon: Icons.info_outline_rounded),
           MaddeListesi(maddeler: [for (final m in _TavafMetinleri.bilgiMaddeleri) m.of(context)]),
-          const SizedBox(height: 8),
-          Text(context.l10n.simTawafSource, style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted)),
         ],
       ),
     );

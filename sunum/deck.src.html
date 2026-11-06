@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umre Rehberim — Government Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --e900:#051F20;--e800:#0B2B26;--e700:#163832;--e600:#235347;--sage:#8EB69B;--mint:#DAF1DE;
+  --gold:#B8963E;--gold2:#D9BD72;--paper:#F6FAF7;--ink:#0E1B18;--muted:#5E7A6E;--line:#DCE8E0;
+  --red:#B5473A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0f0e;height:100%}
+body{font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;overflow:hidden}
+.ar{font-family:Amiri,"Traditional Arabic","Segoe UI",serif;direction:rtl}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.slide{position:absolute;width:1920px;height:1080px;background:var(--paper);overflow:hidden;display:none;transform-origin:center center}
+.slide.on{display:block}
+/* ---------- common ---------- */
+.pad{padding:84px 110px 0 110px}
+.kicker{display:flex;white-space:nowrap;align-items:center;gap:18px;font-size:22px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--e600)}
+.kicker::before{content:"";width:46px;height:4px;border-radius:2px;background:var(--gold)}
+.kicker .ar{letter-spacing:0;text-transform:none;font-size:30px;color:var(--gold);font-weight:700;margin-left:auto}
+h1.t{font-size:64px;line-height:1.08;font-weight:800;color:var(--e900);margin-top:22px;letter-spacing:-.02em;max-width:1500px}
+h1.t em{font-style:normal;color:var(--e600)}
+.lead{font-size:28px;line-height:1.5;color:var(--muted);margin-top:22px;max-width:1450px}
+.foot{position:absolute;left:110px;right:110px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:18px;color:#8aa197}
+.foot b{color:var(--e600);font-weight:700}
+.dark{background:radial-gradient(1200px 700px at 85% 10%,#1d4a3f 0%,transparent 60%),linear-gradient(135deg,var(--e900),var(--e800) 55%,var(--e700));color:#fff}
+.dark h1.t{color:#fff}.dark h1.t em{color:var(--gold2)}.dark .lead{color:#b9d3c4}.dark .kicker{color:var(--sage)}.dark .foot{color:#6f9585}.dark .foot b{color:var(--sage)}
+.grid{display:grid;gap:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 36px;box-shadow:0 10px 30px rgba(5,31,32,.06)}
+.card h3{font-size:28px;font-weight:700;color:var(--e900);margin-bottom:10px}
+.card p,.card li{font-size:21px;line-height:1.5;color:#46605a}
+.card ul{list-style:none}.card li{padding-left:28px;position:relative;margin:7px 0}
+.card li::before{content:"";position:absolute;left:4px;top:13px;width:9px;height:9px;border-radius:50%;background:var(--sage)}
+.ico{width:64px;height:64px;border-radius:18px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.ico svg{width:34px;height:34px;stroke:var(--e600);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dark .card{background:rgba(255,255,255,.06);border-color:rgba(142,182,155,.22);box-shadow:none}
+.dark .card h3{color:#fff}.dark .card p,.dark .card li{color:#b9d3c4}
+.dark .ico{background:rgba(142,182,155,.16)}.dark .ico svg{stroke:var(--gold2)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;font-size:18px;font-weight:600;background:var(--mint);color:var(--e700)}
+.pill.gold{background:#F4EBD3;color:#7a5f1c}.pill.red{background:#F6E1DD;color:var(--red)}.pill.dk{background:var(--e700);color:#fff}
+/* phones */
+.phone{width:300px;border-radius:40px;background:#0b1f1c;padding:9px;box-shadow:0 30px 60px rgba(5,31,32,.28),0 0 0 1px rgba(255,255,255,.06) inset;flex:none}
+.phone img{display:block;width:100%;border-radius:32px}
+.phone.sm{width:318px;border-radius:40px;padding:9px}.phone.sm img{border-radius:32px}
+.phone.lg{width:340px}
+.cap{margin-top:16px;text-align:center;font-size:19px;font-weight:600;color:var(--e700)}
+.dark .cap{color:var(--sage)}
+.phones{display:flex;gap:34px;align-items:flex-start}
+/* stat */
+.stat{font-size:64px;font-weight:800;color:var(--e900);letter-spacing:-.02em;line-height:1}
+.stat small{font-size:28px;font-weight:700;color:var(--e600)}
+.statl{font-size:20px;color:var(--muted);margin-top:10px;line-height:1.4}
+.dark .stat{color:#fff}.dark .statl{color:#9fbfae}
+.tbc{background:#FFF3C4;color:#7a5a00;border-radius:10px;padding:0 10px;font-size:.6em;vertical-align:middle;font-weight:700;letter-spacing:.02em}
+table.tb{width:100%;border-collapse:separate;border-spacing:0;font-size:20px}
+table.tb th{text-align:left;font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 18px;border-bottom:2px solid var(--line)}
+table.tb td{padding:14px 18px;border-bottom:1px solid var(--line);color:#2c4640;vertical-align:top}
+table.tb td b{color:var(--e900)}
+.check{color:var(--e600);font-weight:800}
+/* nav */
+#nav{position:fixed;right:18px;bottom:14px;display:flex;gap:8px;align-items:center;font:600 13px Inter,sans-serif;color:#9bb;z-index:9;opacity:.35;transition:.2s}
+#nav:hover{opacity:1}
+#nav button{background:#163832;color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;font:inherit}
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{background:#fff;overflow:visible;height:auto}
+  #stage{position:static;display:block}
+  .slide{display:block!important;position:relative;transform:none!important;page-break-after:always;break-after:page}
+  #nav{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+/* diagram */
+.node{position:absolute;border-radius:22px;padding:22px 26px;background:#fff;border:1.5px solid var(--line);box-shadow:0 8px 24px rgba(5,31,32,.07)}
+.node h4{font-size:23px;color:var(--e900);margin-bottom:6px}
+.node p{font-size:17px;color:var(--muted);line-height:1.45}
+.node.dk{background:var(--e700);border-color:var(--e700)}.node.dk h4{color:#fff}.node.dk p{color:#b9d3c4}
+.node.gd{background:#FBF6E8;border-color:#E9D9AE}
+.step{display:flex;gap:22px;align-items:flex-start}
+.num{flex:none;width:52px;height:52px;border-radius:50%;background:var(--e600);color:#fff;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center}
+.dark .num{background:var(--gold);color:var(--e900)}
+.phase{border-radius:24px;padding:30px 30px 26px;color:#fff;position:relative}
+.phase h3{font-size:27px;margin:10px 0 12px}
+.phase li{font-size:19px;line-height:1.45;margin:6px 0;color:#d8eadf;list-style:none;padding-left:22px;position:relative}
+.phase li::before{content:"›";position:absolute;left:0;color:var(--gold2);font-weight:800}
+.phase .when{font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);font-weight:700}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide dark" style="background:linear-gradient(100deg,rgba(5,31,32,.97) 0%,rgba(5,31,32,.9) 45%,rgba(11,43,38,.55) 100%),url('img:bg_kabe.jpg') center/cover">
+  <div style="position:absolute;left:110px;top:96px;display:flex;align-items:center;gap:22px">
+    <div style="width:92px;height:92px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="img:logo.png" style="width:74px"></div>
+    <div><div style="font-size:30px;font-weight:800;letter-spacing:.02em">Umre Rehberim</div><div style="font-size:18px;color:var(--sage);letter-spacing:.2em;text-transform:uppercase;margin-top:4px">Smart Pilgrim Platform</div></div>
+  </div>
+  <div style="position:absolute;left:110px;top:330px;width:1050px">
+    <div class="ar" style="font-size:46px;color:var(--gold2);text-align:left;direction:rtl;unicode-bidi:plaintext">خدمة ضيوف الرحمن بتقنية ذكية متكاملة</div>
+    <h1 style="font-size:92px;line-height:1.02;font-weight:800;letter-spacing:-.03em;margin-top:26px">One platform for every pilgrim, guide, merchant <span style="color:var(--gold2)">and authority.</span></h1>
+    <p style="font-size:30px;line-height:1.5;color:#b9d3c4;margin-top:34px;max-width:960px">An integrated mobile platform for Umrah &amp; Hajj journey management: safety, guidance, worship tools and a regulated merchant ecosystem.</p>
+  </div>
+  <div style="position:absolute;right:120px;top:150px;display:flex;gap:26px;transform:rotate(-4deg)">
+    <div class="phone" style="margin-top:120px"><img src="img:g_01_home.jpg"></div>
+    <div class="phone"><img src="img:ar_01_home.jpg"></div>
+  </div>
+  <div class="foot" style="color:#8fb3a2"><span>Presentation to the Government of the Kingdom of Saudi Arabia &nbsp;·&nbsp; November 2026</span><span>Confidential</span></div>
+</section>
+
+<!-- 2 AGENDA -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">Agenda <span class="ar">جدول الأعمال</span></div>
+    <h1 class="t">What we will cover today</h1>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:100px;gap:84px 50px">
+      <div class="step"><div class="num">1</div><div><h3 style="font-size:34px;margin-bottom:6px">Project overview</h3><p class="statl">The system and its key advantages</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3 style="font-size:34px;margin-bottom:6px">Visual walkthrough</h3><p class="statl">Real screens, workflows, live demo</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3 style="font-size:34px;margin-bottom:6px">Pilot report</h3><p class="statl">700-user pilot: performance, success, issues solved</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3 style="font-size:34px;margin-bottom:6px">Current status</h3><p class="statl">Completed features and pending modules</p></div></div>
+      <div class="step"><div class="num">5</div><div><h3 style="font-size:34px;margin-bottom:6px">Technical details</h3><p class="statl">Architecture, security, scalability, infrastructure</p></div></div>
+      <div class="step"><div class="num">6</div><div><h3 style="font-size:34px;margin-bottom:6px">Benefits to the Kingdom</h3><p class="statl">Pilgrim management, safety and operations</p></div></div>
+      <div class="step"><div class="num">7</div><div><h3 style="font-size:34px;margin-bottom:6px">Implementation plan</h3><p class="statl">Timeline, requirements, estimated cost</p></div></div>
+      <div class="step"><div class="num">8</div><div><h3 style="font-size:34px;margin-bottom:6px">Commercial readiness</h3><p class="statl">Support and investment required</p></div></div>
+      <div class="step"><div class="num">9</div><div><h3 style="font-size:34px;margin-bottom:6px">Live demonstration</h3><p class="statl">On a real device, all four roles</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>02</span></div>
+</section>
+
+<!-- 3 CHALLENGE -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="kicker">The challenge <span class="ar">التحدي</span></div>
+    <h1 class="t">Growing pilgrim numbers demand <em>digital coordination</em> at every step.</h1>
+    <p class="lead">Vision 2030 aims to welcome 30 million Umrah pilgrims a year. Each journey depends on dozens of actors (agencies, guides, hotels, transport, merchants) who often still coordinate by phone and messaging groups.</p>
+    <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:64px">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg></div><h3>Lost &amp; separated pilgrims</h3><p>Crowded sites, elderly first-time travelers and no live view of where a group member is.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H8l-4 4z"/></svg></div><h3>Fragmented communication</h3><p>Announcements spread through informal chats; guides cannot reach a whole group instantly.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.5 0c-1 5-4.5 8.5-7.5 10M6 9c1.5 3 4 5 8 6"/><path d="m13 21 4-9 4 9m-7-3h6"/></svg></div><h3>Language barriers</h3><p>Pilgrims arrive from dozens of countries; ritual and site guidance is rarely in their language.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 9h18l-2-5H5zM5 9v11h14V9M9 20v-6h6v6"/></svg></div><h3>Unregulated commerce</h3><p>Little visibility into pilgrim spending, pricing fairness or merchant conduct around the holy sites.</p></div>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>03</span></div>
+</section>
+
+<!-- 4 SOLUTION OVERVIEW -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">Project overview <span class="ar">نظرة عامة على المشروع</span></div>
+    <h1 class="t">One connected platform, <em>four roles</em>, every step of the journey.</h1>
+    <p class="lead">Umre Rehberim links pilgrims, their agency and guide, partner merchants and a central control center in real time. Each person sees exactly what their role allows.</p>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:430px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+    <div class="card" style="border-top:6px solid var(--e600)"><span class="pill">Pilgrim</span><h3 style="margin-top:18px">Pilgrim app</h3><ul><li>Trip countdown, hotel &amp; room</li><li>Prayer times, Quran, duas, qibla</li><li>Guided places with audio guide</li><li>Live radio from the guide</li><li>Discounts at verified shops</li></ul></div>
+    <div class="card" style="border-top:6px solid var(--sage)"><span class="pill">Agency · Guide</span><h3 style="margin-top:18px">Agency panel</h3><ul><li>Pilgrims, trips, hotels, rooms</li><li>Live location map of the group</li><li>Push announcements</li><li>One-to-many voice broadcast</li><li>Programme calendar &amp; analytics</li></ul></div>
+    <div class="card" style="border-top:6px solid var(--gold)"><span class="pill gold">Merchant</span><h3 style="margin-top:18px">Merchant panel</h3><ul><li>Verified shop profile &amp; location</li><li>QR-based pilgrim discounts</li><li>Loyalty points &amp; coupons</li><li>Sales &amp; commission history</li></ul></div>
+    <div class="card" style="border-top:6px solid var(--e900)"><span class="pill dk">Authority</span><h3 style="margin-top:18px">Control center</h3><ul><li>Platform-wide analytics (DAU/MAU)</li><li>Risk &amp; fraud alarms</li><li>Audit log: who did what, when</li><li>Finance, settlements, staff</li></ul></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>04</span></div>
+</section>
+
+<!-- 5 KEY ADVANTAGES -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="kicker">Key advantages <span class="ar">المزايا الرئيسية</span></div>
+    <h1 class="t">Why Umre Rehberim is different</h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:330px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Safety first</h3><p>Live group location with accuracy indicator, guide-to-group voice broadcast and instant push alerts.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M8 15h3"/></svg></div><h3>End-to-end, one app</h3><p>Worship, guidance, logistics, communication and commerce, so there is no switching between five apps and chat groups.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><h3>Multilingual by design</h3><p>Turkish, English and Arabic live today with full right-to-left support; 11 more languages are already in the framework.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div><h3>Data for decision makers</h3><p>Real-time dashboards on users, activity, spending and risk, giving authorities a live view instead of after-the-fact reports.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1 12H5zM9 7a3 3 0 0 1 6 0"/></svg></div><h3>Regulated commerce</h3><p>Verified partner shops, transparent discounts, loyalty points, commission tracking and fraud rules.</p></div>
+    <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Works in the field</h3><p>Offline cache for trip, hotel and prayer data; background audio; lock-screen controls; low-bandwidth design.</p></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>05</span></div>
+</section>
+
+<!-- 6 PILGRIM HOME -->
+<section class="slide">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Pilgrim experience <span class="ar" style="margin-left:24px">تجربة المعتمر</span></div>
+    <h1 class="t" style="font-size:58px">Everything a pilgrim needs, <em>on one screen.</em></h1>
+    <p class="lead" style="font-size:25px">Login with national ID and explicit privacy consent. The home screen gives a live countdown to departure, assigned hotel and room, Makkah &amp; Madinah prayer times with the next prayer highlighted, live exchange rates and one-tap access to every service.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+      <span class="pill">Trip countdown</span><span class="pill">Hotel &amp; room</span><span class="pill">Prayer times</span><span class="pill">Hijri date</span><span class="pill">Live FX (SAR)</span><span class="pill">8 quick actions</span><span class="pill gold">Privacy consent</span>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:login_02.jpg"></div><div class="cap">Secure login</div></div>
+    <div><div class="phone sm"><img src="img:g_01_home.jpg"></div><div class="cap">Home</div></div>
+    <div><div class="phone sm"><img src="img:g_03_hizli.jpg"></div><div class="cap">Quick access &amp; FX</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>06</span></div>
+</section>
+
+<!-- 7 WORSHIP -->
+<section class="slide">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Worship tools <span class="ar" style="margin-left:24px">أدوات العبادة</span></div>
+    <h1 class="t" style="font-size:58px">A complete <em>Mushaf</em>, duas and qibla, built in.</h1>
+    <div style="margin-top:40px;display:grid;gap:22px">
+      <div class="step"><div class="num">1</div><div><h3 style="font-size:26px">Full Quran text, not images</h3><p class="statl">All 604 pages in Uthmani script (Tanzil, verified source), page-accurate layout, night mode, bookmarks, verse-by-verse translation.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3 style="font-size:26px">15 renowned reciters</h3><p class="statl">Surah and verse-level audio with background playback and lock-screen controls.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3 style="font-size:26px">Tawaf &amp; Sa'i duas, dhikr counter</h3><p class="statl">Arabic, transliteration and meaning for each circuit, verified against scholarly sources.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3 style="font-size:26px">Qibla compass</h3><p class="statl">Magnetic-declination corrected, distance to the Ka'bah.</p></div></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:g_04_kuran.jpg"></div><div class="cap">Quran library</div></div>
+    <div><div class="phone sm"><img src="img:g_05_mushaf.jpg"></div><div class="cap">Mushaf page</div></div>
+    <div><div class="phone sm"><img src="img:g_07_kible.jpg"></div><div class="cap">Qibla</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>07</span></div>
+</section>
+
+<!-- 8 GUIDANCE -->
+<section class="slide dark">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Guidance &amp; education <span class="ar" style="margin-left:24px">الإرشاد والتوعية</span></div>
+    <h1 class="t" style="font-size:58px">A knowledgeable guide <em>in every pocket.</em></h1>
+    <p class="lead" style="font-size:25px">26 historic and religious sites across Makkah, Madinah and the wider region (Badr, Taif, Hudaybiyyah, Khaybar, Historic Jeddah), each with history, key events, etiquette, maps and directions.</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:40px;gap:22px">
+      <div><div class="stat">26</div><div class="statl">sites with detail pages</div></div>
+      <div><div class="stat">3</div><div class="statl">languages of narrated audio guide</div></div>
+      <div><div class="stat">7</div><div class="statl">circuit Tawaf simulation</div></div>
+      <div><div class="stat">5</div><div class="statl">Miqat locations with maps</div></div>
+    </div>
+    <p class="statl" style="margin-top:30px;font-size:18px">Content sourced from established religious encyclopedias and authorities; narrations without strong sources are clearly marked.</p>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:g_12_gezi.jpg"></div><div class="cap">Sites on the map</div></div>
+    <div><div class="phone sm"><img src="img:g_14_detay.jpg"></div><div class="cap">Audio guide</div></div>
+    <div><div class="phone sm"><img src="img:g_18_tavaf.jpg"></div><div class="cap">Tawaf simulation</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>08</span></div>
+</section>
+
+<!-- 9 SAFETY -->
+<section class="slide">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Safety &amp; communication <span class="ar" style="margin-left:24px">السلامة والتواصل</span></div>
+    <h1 class="t" style="font-size:58px">No pilgrim <em>left behind.</em></h1>
+    <div style="margin-top:40px;display:grid;gap:24px">
+      <div class="card" style="padding:26px 30px"><h3 style="font-size:25px">Live group location</h3><p>Pilgrims share their location (with consent) in the background; the guide sees the whole group on a map with accuracy circles. Pilgrims always see where their guide is.</p></div>
+      <div class="card" style="padding:26px 30px"><h3 style="font-size:25px">Guide radio</h3><p>One-to-many live voice broadcast over the internet. The guide speaks and the group listens on earphones, even with the screen locked. Replaces rented radio-guide devices.</p></div>
+      <div class="card" style="padding:26px 30px"><h3 style="font-size:25px">Instant announcements</h3><p>Targeted push notifications per agency or trip: meeting times, document reminders, emergencies.</p></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:ac_03_harita.jpg"></div><div class="cap">Guide: live map</div></div>
+    <div><div class="phone sm"><img src="img:ac_08_telsiz.jpg"></div><div class="cap">Radio broadcast</div></div>
+    <div><div class="phone sm"><img src="img:g_20_rehber.jpg"></div><div class="cap">Pilgrim: guide contact</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>09</span></div>
+</section>
+
+<!-- 10 AGENCY PANEL -->
+<section class="slide">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Agency management <span class="ar" style="margin-left:24px">إدارة الوكالات</span></div>
+    <h1 class="t" style="font-size:58px">Run an entire group <em>from a phone.</em></h1>
+    <p class="lead" style="font-size:25px">Agencies and guides manage pilgrims, trips, hotels, room assignments, exchange rates and the programme calendar, and send targeted notifications, all from the same app.</p>
+    <table class="tb" style="margin-top:36px">
+      <tr><td><b>People</b></td><td>Create and list pilgrims, staff accounts by national ID</td></tr>
+      <tr><td><b>Trips</b></td><td>Makkah / Madinah trips, dates, assignments</td></tr>
+      <tr><td><b>Hotels &amp; rooms</b></td><td>Capacity, occupancy, room allocation</td></tr>
+      <tr><td><b>Notifications</b></td><td>Whole agency or per trip, with history</td></tr>
+      <tr><td><b>Analytics</b></td><td>Demographics, assignment status, occupancy</td></tr>
+    </table>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:ac_02_dash.jpg"></div><div class="cap">Agency dashboard</div></div>
+    <div><div class="phone sm"><img src="img:ac_06_bildirim.jpg"></div><div class="cap">Push announcements</div></div>
+    <div><div class="phone sm"><img src="img:ac_07_analiz.jpg"></div><div class="cap">Agency analytics</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>10</span></div>
+</section>
+
+<!-- 11 MERCHANTS -->
+<section class="slide dark">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Merchant ecosystem <span class="ar" style="margin-left:24px">منظومة المتاجر المتعاقدة</span></div>
+    <h1 class="t" style="font-size:58px">Fair, transparent commerce <em>around the holy sites.</em></h1>
+    <p class="lead" style="font-size:25px">Verified partner shops in Makkah, Madinah and Jeddah offer pilgrim discounts. Every purchase is recorded through a QR code, which builds loyalty points for the pilgrim and a full, auditable sales record for the platform.</p>
+    <div style="display:flex;gap:16px;margin-top:40px;flex-wrap:wrap">
+      <span class="pill dk">QR verification</span><span class="pill dk">Discount rules</span><span class="pill dk">Loyalty points</span><span class="pill dk">Coupons</span><span class="pill dk">Commission split</span><span class="pill dk">Merchant reviews</span>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:46px">
+      <div><div class="stat" style="font-size:52px">QR</div><div class="statl">pilgrim shows code, merchant scans</div></div>
+      <div><div class="stat" style="font-size:52px">100%</div><div class="statl">of transactions logged and auditable</div></div>
+      <div><div class="stat" style="font-size:52px">SAR</div><div class="statl">native currency, settlement reports</div></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:g_09_dukkan.jpg"></div><div class="cap">Partner shops</div></div>
+    <div><div class="phone sm"><img src="img:g_10_dukkandetay.jpg"></div><div class="cap">Shop &amp; discount</div></div>
+    <div><div class="phone sm"><img src="img:g_11_cuzdan.jpg"></div><div class="cap">Points &amp; spending</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>11</span></div>
+</section>
+
+<!-- 12 CONTROL CENTER -->
+<section class="slide">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Control center <span class="ar" style="margin-left:24px">مركز التحكم</span></div>
+    <h1 class="t" style="font-size:58px">The platform's <em>pulse on one screen.</em></h1>
+    <p class="lead" style="font-size:25px">A central authority view across every agency, pilgrim and merchant: growth and engagement metrics, transaction volume, rule-based fraud alarms, a complete audit trail and settlement management.</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:18px;margin-top:34px">
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Analytics &amp; BI</h3><p style="font-size:18px">DAU, WAU, MAU, stickiness, roles, trends</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Risk &amp; fraud</h3><p style="font-size:18px">Severity-ranked alarms with review workflow</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Audit log</h3><p style="font-size:18px">Who did what, and when, for every sensitive action</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Finance</h3><p style="font-size:18px">Commission split, settlements, period closing</p></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:sa_01_kontrol.jpg"></div><div class="cap">Control center</div></div>
+    <div><div class="phone sm"><img src="img:sa_risk.jpg"></div><div class="cap">Risk &amp; fraud</div></div>
+    <div><div class="phone sm"><img src="img:sa_finans.jpg"></div><div class="cap">Finance &amp; settlement</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>12</span></div>
+</section>
+
+<!-- 13 MULTILINGUAL -->
+<section class="slide dark">
+  <div class="pad" style="width:790px;padding-right:0">
+    <div class="kicker">Multilingual <span class="ar" style="margin-left:24px">تعدد اللغات</span></div>
+    <h1 class="t" style="font-size:58px">Speaks the pilgrim's language, <em>including Arabic.</em></h1>
+    <p class="lead" style="font-size:25px">The entire interface, including site content and the narrated audio guide, is available in Turkish, English and Arabic, with full right-to-left layout. The language can be switched at any time without logging out.</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:40px;gap:24px">
+      <div><div class="stat">~2,000</div><div class="statl">interface texts per language</div></div>
+      <div><div class="stat">3 <small>live</small></div><div class="statl">Turkish · English · Arabic</div></div>
+      <div><div class="stat">+11</div><div class="statl">languages prepared in the framework: Urdu, Indonesian, Malay, Bengali, French, Russian and more</div></div>
+      <div><div class="stat">RTL</div><div class="statl">native right-to-left support</div></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:70px;top:175px;gap:24px">
+    <div><div class="phone sm"><img src="img:ar_02_home.jpg"></div><div class="cap">Arabic home</div></div>
+    <div><div class="phone sm"><img src="img:ar_03_gezi.jpg"></div><div class="cap">Arabic sites</div></div>
+    <div><div class="phone sm"><img src="img:g_23_dilsec.jpg"></div><div class="cap">Language picker</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>13</span></div>
+</section>
+
+<!-- 14 WORKFLOWS -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">System workflows <span class="ar">سير العمل</span></div>
+    <h1 class="t">How the system works in practice</h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:300px;display:grid;grid-template-rows:repeat(3,1fr);gap:30px;height:660px">
+    <div style="display:grid;grid-template-columns:260px repeat(5,1fr);gap:16px;align-items:stretch">
+      <div style="display:flex;flex-direction:column;justify-content:center"><span class="pill">Pilgrim journey</span><p class="statl" style="font-size:17px">From registration to return</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">1 · Registration</b><p style="font-size:19px;margin-top:8px">Agency registers pilgrim by ID, assigns trip, hotel, room</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">2 · First login</b><p style="font-size:19px;margin-top:8px">ID login, privacy consent, language choice</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">3 · Pre-departure</b><p style="font-size:19px;margin-top:8px">Countdown, checklist, Miqat &amp; ritual training</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">4 · In the Kingdom</b><p style="font-size:19px;margin-top:8px">Live location, radio, programme, sites, worship tools</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">5 · Return</b><p style="font-size:19px;margin-top:8px">Spending history, feedback, data retention rules</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:260px repeat(5,1fr);gap:16px">
+      <div style="display:flex;flex-direction:column;justify-content:center"><span class="pill red">Separated pilgrim</span><p class="statl" style="font-size:17px">Safety workflow</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">1 · Detect</b><p style="font-size:19px;margin-top:8px">Guide sees a member far from the group on the live map</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">2 · Locate</b><p style="font-size:19px;margin-top:8px">Last position, accuracy, time of last update</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">3 · Contact</b><p style="font-size:19px;margin-top:8px">One-tap call or WhatsApp from the map</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">4 · Guide</b><p style="font-size:19px;margin-top:8px">Pilgrim opens the guide's location and gets directions</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">5 · Broadcast</b><p style="font-size:19px;margin-top:8px">Radio or push to the whole group if needed</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:260px repeat(5,1fr);gap:16px">
+      <div style="display:flex;flex-direction:column;justify-content:center"><span class="pill gold">Shop purchase</span><p class="statl" style="font-size:17px">Regulated commerce</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">1 · Discover</b><p style="font-size:19px;margin-top:8px">Pilgrim finds verified shop by city, category, map</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">2 · Show code</b><p style="font-size:19px;margin-top:8px">Personal discount QR in the app</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">3 · Scan</b><p style="font-size:19px;margin-top:8px">Merchant scans, enters amount, discount applied</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">4 · Reward</b><p style="font-size:19px;margin-top:8px">Points credited; transaction in both histories</p></div>
+      <div class="card" style="padding:22px 24px"><b style="font-size:24px;color:var(--e900)">5 · Oversee</b><p style="font-size:19px;margin-top:8px">Commission, risk rules and audit log in the control center</p></div>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>14</span></div>
+</section>
+
+<!-- 15 ARCHITECTURE -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">System architecture <span class="ar">البنية التقنية</span></div>
+    <h1 class="t">Cloud-native, real-time, <em>single codebase.</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:290px;height:700px">
+    <svg width="1700" height="700" style="position:absolute;inset:0" fill="none" stroke="#8EB69B" stroke-width="2.5" stroke-dasharray="7 7">
+      <path d="M380 350 H560"/><path d="M820 350 H930"/>
+      <path d="M1180 120 H1250"/><path d="M1180 290 H1250"/><path d="M1180 460 H1250"/><path d="M1180 620 H1250"/>
+      <path d="M1180 120 V620"/>
+    </svg>
+    <div class="node dk" style="left:0;top:110px;width:380px;height:480px">
+      <h4 style="font-size:26px">Mobile clients</h4><p style="margin-bottom:18px">One Flutter codebase → Android &amp; iOS</p>
+      <div style="display:grid;gap:12px">
+        <span class="pill" style="justify-content:flex-start">Pilgrim app</span><span class="pill" style="justify-content:flex-start">Agency / guide panel</span><span class="pill" style="justify-content:flex-start">Merchant panel</span><span class="pill gold" style="justify-content:flex-start">Control center</span>
+      </div>
+      <p style="margin-top:20px">Offline cache · background location · background audio · RTL</p>
+    </div>
+    <div class="node gd" style="left:560px;top:230px;width:260px;height:240px">
+      <h4>Security layer</h4><p>Authentication<br>Role-based access rules<br>Privacy consent<br>Audit logging</p>
+    </div>
+    <div class="node" style="left:930px;top:40px;width:250px;height:620px;background:var(--mint);border-color:#bfdcc8">
+      <h4>Core cloud</h4><p style="margin-bottom:14px">Google Firebase</p>
+      <p><b style="color:var(--e700)">Cloud Firestore</b><br>users, agencies, trips, hotels, shops, transactions, audit</p><br>
+      <p><b style="color:var(--e700)">Realtime Database</b><br>live locations per agency</p><br>
+      <p><b style="color:var(--e700)">Cloud Messaging</b><br>topic-based push</p><br>
+      <p><b style="color:var(--e700)">Authentication</b></p>
+    </div>
+    <div class="node" style="left:1250px;top:60px;width:450px;height:120px"><h4>Live audio (WebRTC)</h4><p>LiveKit cloud SFU: guide radio broadcast</p></div>
+    <div class="node" style="left:1250px;top:230px;width:450px;height:120px"><h4>Maps</h4><p>OpenStreetMap tiles · device GPS · compass</p></div>
+    <div class="node" style="left:1250px;top:400px;width:450px;height:120px"><h4>Content services</h4><p>Quran recitation audio · translations · exchange rates</p></div>
+    <div class="node" style="left:1250px;top:560px;width:450px;height:120px;border-style:dashed"><h4>Planned integrations</h4><p>Government platforms, payments, e-invoice (subject to approval)</p></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>15</span></div>
+</section>
+
+<!-- 16 SECURITY -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="kicker">Security &amp; privacy <span class="ar">الأمن وحماية البيانات</span></div>
+    <h1 class="t">Built on <em>least privilege</em> and full traceability.</h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:320px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div class="card"><h3>Identity &amp; access</h3><ul><li>Managed authentication per user</li><li>Roles: pilgrim, guide/agency admin, general manager, super admin, merchant, staff</li><li>Server-side access rules on every collection; an agency only sees its own data</li></ul></div>
+    <div class="card"><h3>Privacy</h3><ul><li>Explicit consent screen before first use</li><li>National ID masked in the interface</li><li>Location sharing opt-in, visible to own agency only</li><li>Ready to align with the Saudi PDPL</li></ul></div>
+    <div class="card"><h3>Oversight</h3><ul><li>Audit log of sensitive actions (who, what, when)</li><li>Rule-based fraud alarms with review states</li><li>Merchant transactions tamper-evident and traceable</li><li>Secrets kept out of source control</li></ul></div>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:800px" class="card">
+    <h3 style="font-size:24px">Hardening roadmap before national rollout</h3>
+    <p style="font-size:20px">Hosting in a Saudi cloud region or sovereign cloud · independent penetration test · server-side token service for the radio · NCA-aligned controls · encrypted backups and disaster recovery · 24/7 monitoring.</p>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>16</span></div>
+</section>
+
+<!-- 17 SCALABILITY -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">Scalability &amp; infrastructure <span class="ar">قابلية التوسع والبنية التحتية</span></div>
+    <h1 class="t">From a 700-user pilot to <em>millions of pilgrims.</em></h1>
+    <p class="lead">Serverless, auto-scaling managed services: no servers to provision, capacity grows with demand. Data is partitioned by agency, so load spreads naturally.</p>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:440px">
+    <table class="tb">
+      <tr><th>Tier</th><th>Active pilgrims</th><th>Infrastructure</th><th>Indicative cloud cost / month*</th></tr>
+      <tr><td><b>Pilot</b></td><td>≈ 700</td><td>Managed cloud (current setup)</td><td>USD 50 – 150</td></tr>
+      <tr><td><b>Regional</b></td><td>10,000 – 50,000</td><td>Production plan, server functions, monitoring, Saudi-hosted data</td><td>USD 2,000 – 8,000</td></tr>
+      <tr><td><b>National season</b></td><td>500,000 – 1,000,000+</td><td>Multi-region, dedicated media servers for radio, CDN, 24/7 ops</td><td>USD 25,000 – 70,000</td></tr>
+    </table>
+    <p class="statl" style="margin-top:22px;font-size:17px">* Estimates based on public pricing of the cloud services used and expected usage patterns; to be validated by load testing before each scale step.</p>
+    <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:36px;gap:22px">
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Mobile</h3><p style="font-size:18px">Android 8+ / iOS 13+, ~4G or Wi-Fi</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Cloud</h3><p style="font-size:18px">Managed DB, realtime DB, push, functions</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Media</h3><p style="font-size:18px">WebRTC SFU for live radio</p></div>
+      <div class="card" style="padding:22px 26px"><h3 style="font-size:22px">Operations</h3><p style="font-size:18px">Monitoring, crash reporting, support desk</p></div>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>17</span></div>
+</section>
+
+<!-- 18 PILOT REPORT -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="kicker">Pilot report <span class="ar">تقرير المرحلة التجريبية</span></div>
+    <h1 class="t">700-user pilot: <em>results</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:300px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px">
+    <div class="card"><div class="stat">700</div><div class="statl">pilot users</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">agencies / groups</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">successful logins / activation rate</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">daily active users (avg.)</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">crash-free sessions</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">location updates delivered</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">radio broadcast minutes</div></div>
+    <div class="card"><div class="stat"><span class="tbc">TBC</span></div><div class="statl">user satisfaction score</div></div>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:690px;display:grid;grid-template-columns:1fr 1fr;gap:26px">
+    <div class="card"><h3 style="font-size:24px">Issues found and solved during development &amp; testing</h3><ul>
+      <li>Location shown ~400 m off: stale positions discarded, accuracy filter, high-precision mode, accuracy circle on map</li>
+      <li>Startup failure on some devices: initialization made fault-tolerant with a recovery screen</li>
+      <li>Live radio reliability: build and release pipeline standardized and verified on devices</li></ul></div>
+    <div class="card"><h3 style="font-size:24px">Pilot scope</h3><ul>
+      <li>Period: <span class="tbc">TBC</span> · Location: <span class="tbc">TBC</span></li>
+      <li>Roles tested: pilgrim, guide/agency, merchant, control center</li>
+      <li>Full detail in the accompanying Pilot Report document</li></ul></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>18</span></div>
+</section>
+
+<!-- 19 CURRENT STATUS -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">Current status <span class="ar">الوضع الحالي</span></div>
+    <h1 class="t">A working product today, <em>ready to scale.</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:300px;display:grid;grid-template-columns:1.25fr 1fr;gap:34px">
+    <div class="card">
+      <h3 style="display:flex;align-items:center;gap:14px"><span class="pill">Completed</span> on Android, running on real devices</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:10px">
+        <ul>
+          <li>ID login, consent, 4-role access</li><li>Home: countdown, hotel, prayer times, FX</li><li>Quran Mushaf, 15 reciters</li><li>Tawaf/Sa'i duas, dhikr counter</li><li>Qibla compass</li><li>26 sites + 3-language audio guide</li><li>Tawaf &amp; route simulations, Miqat</li><li>Turkish, English, Arabic (RTL)</li>
+        </ul>
+        <ul>
+          <li>Live background location &amp; map</li><li>Guide radio broadcast</li><li>Push notifications by agency/trip</li><li>Agency panel: people, trips, hotels, rooms</li><li>Partner shops, QR discounts, loyalty</li><li>Merchant panel</li><li>Control center: analytics, risk, audit, finance</li><li>Offline cache</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="border:2px dashed #E9D9AE;background:#FFFCF3">
+      <h3 style="display:flex;align-items:center;gap:14px"><span class="pill gold">Pending</span> next modules</h3>
+      <ul style="margin-top:10px">
+        <li>iOS release and App Store / Play Store publishing</li>
+        <li>Production backend: server functions, automated push, radio token service</li>
+        <li>Saudi-region data hosting, PDPL &amp; security certification</li>
+        <li>Payment distribution &amp; e-invoicing</li>
+        <li>Step counter, offline maps</li>
+        <li>11 additional languages</li>
+        <li>Integration with government platforms (subject to approval)</li>
+        <li>Large-scale load testing</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>19</span></div>
+</section>
+
+<!-- 20 BENEFITS -->
+<section class="slide dark" style="background:linear-gradient(100deg,rgba(5,31,32,.97) 0%,rgba(5,31,32,.93) 55%,rgba(11,43,38,.75) 100%),url('img:bg_medine.jpg') center/cover">
+  <div class="pad">
+    <div class="kicker">Benefits to the Kingdom <span class="ar">الفوائد للمملكة</span></div>
+    <h1 class="t">Better-served guests of Allah, <em>safer sites, smarter operations.</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:350px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div class="card"><h3>Pilgrim management</h3><ul><li>Every pilgrim tied to a licensed agency, trip and hotel</li><li>Real-time headcount and distribution</li><li>Programme and announcements in their language</li></ul></div>
+    <div class="card"><h3>Safety &amp; security</h3><ul><li>Faster reunification of separated pilgrims</li><li>Instant mass communication to groups</li><li>Visibility of group movements around crowded sites</li></ul></div>
+    <div class="card"><h3>Operations &amp; economy</h3><ul><li>Transparent, regulated merchant activity</li><li>Spending and visitor analytics for planning</li><li>Supports Vision 2030 and the Pilgrim Experience goals</li></ul></div>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:800px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+    <div><div class="stat" style="font-size:52px">Live</div><div class="statl">group visibility instead of phone calls</div></div>
+    <div><div class="stat" style="font-size:52px">1 tap</div><div class="statl">to reach a whole group</div></div>
+    <div><div class="stat" style="font-size:52px">100%</div><div class="statl">traceable partner transactions</div></div>
+    <div><div class="stat" style="font-size:52px">AR·EN·TR</div><div class="statl">from day one, more to come</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>20</span></div>
+</section>
+
+<!-- 21 IMPLEMENTATION PLAN -->
+<section class="slide">
+  <div class="pad">
+    <div class="kicker">Implementation plan <span class="ar">خطة التنفيذ</span></div>
+    <h1 class="t">Full deployment in <em>four phases.</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:300px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+    <div class="phase" style="background:var(--e600)"><div class="when">Phase 1 · 0–3 months</div><h3>Production readiness</h3><ul><li>Production backend &amp; Saudi hosting</li><li>iOS app, store publishing</li><li>Security audit, PDPL alignment</li><li>Arabic content review</li></ul></div>
+    <div class="phase" style="background:var(--e700)"><div class="when">Phase 2 · 3–6 months</div><h3>Expanded pilot</h3><ul><li>10,000+ pilgrims, 20+ agencies</li><li>Makkah, Madinah, Jeddah merchants</li><li>Payments &amp; e-invoice</li><li>Load testing, 24/7 support</li></ul></div>
+    <div class="phase" style="background:var(--e800)"><div class="when">Phase 3 · 6–12 months</div><h3>National rollout</h3><ul><li>Integration with government platforms</li><li>11 more languages</li><li>Authority dashboards</li><li>Season-scale infrastructure</li></ul></div>
+    <div class="phase" style="background:var(--e900)"><div class="when">Phase 4 · 12+ months</div><h3>Intelligence &amp; growth</h3><ul><li>Crowd-flow analytics</li><li>AI multilingual assistant</li><li>Hajj season operations</li><li>International agency network</li></ul></div>
+  </div>
+  <div style="position:absolute;left:110px;right:110px;top:660px" class="grid" >
+    <div class="card" style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding:30px 36px">
+      <div><h3 style="font-size:23px">Technical requirements</h3><p style="font-size:18px">Saudi-region cloud account, store developer accounts, media server capacity, domain &amp; SMS/e-mail services</p></div>
+      <div><h3 style="font-size:23px">From the authority</h3><p style="font-size:18px">Data-hosting and security requirements, licensing framework, integration access, pilot partner agencies</p></div>
+      <div><h3 style="font-size:23px">Team</h3><p style="font-size:18px">Mobile, backend, security, QA, DevOps, Arabic content &amp; support: around 10–14 people at full scale</p></div>
+    </div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>21</span></div>
+</section>
+
+<!-- 22 COST & INVESTMENT -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="kicker">Estimated cost &amp; commercial readiness <span class="ar">التكلفة والجاهزية التجارية</span></div>
+    <h1 class="t">Investment required for <em>national-scale readiness</em></h1>
+  </div>
+  <div style="position:absolute;left:110px;top:320px;width:1040px">
+    <table class="tb" style="color:#fff">
+      <tr><th style="color:#9fbfae;border-color:rgba(142,182,155,.3)">Item (first 12 months)</th><th style="color:#9fbfae;border-color:rgba(142,182,155,.3);text-align:right">Indicative budget (USD)</th></tr>
+      <tr><td style="color:#d8eadf;border-color:rgba(142,182,155,.18)"><b style="color:#fff">Product &amp; engineering team</b><br><span style="font-size:17px">10–14 people, phased</span></td><td style="text-align:right;color:#fff;border-color:rgba(142,182,155,.18)"><b style="color:#fff">700k – 1.1M</b></td></tr>
+      <tr><td style="color:#d8eadf;border-color:rgba(142,182,155,.18)"><b style="color:#fff">Cloud &amp; media infrastructure</b></td><td style="text-align:right;border-color:rgba(142,182,155,.18)"><b style="color:#fff">100k – 300k</b></td></tr>
+      <tr><td style="color:#d8eadf;border-color:rgba(142,182,155,.18)"><b style="color:#fff">Security, compliance &amp; certification</b></td><td style="text-align:right;border-color:rgba(142,182,155,.18)"><b style="color:#fff">80k – 150k</b></td></tr>
+      <tr><td style="color:#d8eadf;border-color:rgba(142,182,155,.18)"><b style="color:#fff">Localization &amp; religious content review</b></td><td style="text-align:right;border-color:rgba(142,182,155,.18)"><b style="color:#fff">50k – 100k</b></td></tr>
+      <tr><td style="color:#d8eadf;border-color:rgba(142,182,155,.18)"><b style="color:#fff">Onboarding, training &amp; 24/7 support</b></td><td style="text-align:right;border-color:rgba(142,182,155,.18)"><b style="color:#fff">120k – 250k</b></td></tr>
+      <tr><td style="border:0;padding-top:22px"><b style="color:var(--gold2);font-size:26px">Total</b></td><td style="text-align:right;border:0;padding-top:22px"><b style="color:var(--gold2);font-size:30px">≈ 1.05M – 1.9M</b></td></tr>
+    </table>
+    <p class="statl" style="font-size:16px;margin-top:14px">Indicative figures for discussion; to be finalized with the scope, hosting and integration requirements agreed with the authority.</p>
+  </div>
+  <div style="position:absolute;left:1220px;right:110px;top:320px;display:grid;gap:24px">
+    <div class="card"><h3 style="font-size:25px">Commercial model</h3><ul><li>Per-pilgrim licence paid by agencies</li><li>Commission on partner-shop sales (configurable split)</li><li>Authority dashboards under government agreement</li></ul></div>
+    <div class="card"><h3 style="font-size:25px">What we ask</h3><ul><li>Endorsement for an expanded pilot</li><li>Access to partner agencies and merchants</li><li>Strategic investment / funding partnership</li></ul></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>22</span></div>
+</section>
+
+<!-- 23 LIVE DEMO -->
+<section class="slide">
+  <div class="pad" style="width:900px">
+    <div class="kicker">Live demonstration <span class="ar" style="margin-left:24px">عرض حي</span></div>
+    <h1 class="t" style="font-size:58px">Seeing is believing: <em>a 10-minute demo.</em></h1>
+    <div style="margin-top:44px;display:grid;gap:22px">
+      <div class="step"><div class="num">1</div><div><h3 style="font-size:25px">Pilgrim logs in, switches to Arabic</h3><p class="statl">Home, prayer times, Quran Mushaf with recitation</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3 style="font-size:25px">Opens a historic site</h3><p class="statl">Map, history and narrated audio guide in Arabic</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3 style="font-size:25px">Guide starts the radio, sends an announcement</h3><p class="statl">Second phone hears the guide live and receives the push</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3 style="font-size:25px">Live location of the group</h3><p class="statl">Both phones appear on the guide's map</p></div></div>
+      <div class="step"><div class="num">5</div><div><h3 style="font-size:25px">Shop purchase with QR, then control center</h3><p class="statl">Transaction, points, risk alarm and audit trail appear instantly</p></div></div>
+    </div>
+  </div>
+  <div class="phones" style="position:absolute;right:110px;top:150px;gap:30px">
+    <div style="margin-top:80px"><div class="phone"><img src="img:ar_05_kuran.jpg"></div><div class="cap">Pilgrim device</div></div>
+    <div><div class="phone"><img src="img:sa_01_kontrol.jpg"></div><div class="cap">Control center device</div></div>
+  </div>
+  <div class="foot"><b>Umre Rehberim</b><span>23</span></div>
+</section>
+
+<!-- 24 THANK YOU -->
+<section class="slide dark" style="background:linear-gradient(180deg,rgba(5,31,32,.9),rgba(5,31,32,.97)),url('img:bg_kabe.jpg') center/cover">
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+    <div style="width:130px;height:130px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="img:logo.png" style="width:104px"></div>
+    <div class="ar" style="font-size:72px;color:var(--gold2);margin-top:40px">شكراً لكم</div>
+    <h1 style="font-size:80px;font-weight:800;margin-top:6px;letter-spacing:-.02em">Thank you</h1>
+    <p style="font-size:30px;color:#b9d3c4;margin-top:24px;max-width:1200px;line-height:1.5">Together we can turn Umre Rehberim into a flagship digital service for the guests of Allah, in Makkah, Madinah and across the Kingdom.</p>
+    <p class="ar" style="font-size:34px;color:#cfe3d7;margin-top:30px">معاً نحو تجربة أفضل لضيوف الرحمن</p>
+  </div>
+  <div class="foot" style="color:#8fb3a2"><span>Umre Rehberim · November 2026</span><span>Confidential</span></div>
+</section>
+
+</div>
+<div id="nav"><button onclick="go(-1)">‹</button><span id="pg"></span><button onclick="go(1)">›</button><button onclick="fs()">⛶</button></div>
+<script>
+const S=[...document.querySelectorAll('.slide')];let i=0;
+function fit(){const k=Math.min(innerWidth/1920,innerHeight/1080);S.forEach(s=>s.style.transform='scale('+k+')')}
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,j)=>s.classList.toggle('on',j===i));document.getElementById('pg').textContent=(i+1)+' / '+S.length;try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+function go(d){show(i+d)}
+function fs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))go(1);if(['ArrowLeft','PageUp'].includes(e.key))go(-1);if(e.key==='f')fs();if(e.key==='Home')show(0);if(e.key==='End')show(S.length-1)});
+addEventListener('click',e=>{if(e.target.closest('#nav'))return;go(e.clientX>innerWidth/3?1:-1)});
+addEventListener('resize',fit);fit();show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>

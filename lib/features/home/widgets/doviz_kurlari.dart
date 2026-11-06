@@ -183,7 +183,7 @@ class _LiveCurrencyCardState extends State<LiveCurrencyCard> {
         const SizedBox(width: 6),
         Expanded(
           child: Text(
-            r == null ? context.l10n.homeRatesLive : '${r.source} • $when',
+            r == null ? context.l10n.homeRatesLive : '${context.l10n.homeRatesLive} • $when',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 11.5, color: AppColors.textMuted),

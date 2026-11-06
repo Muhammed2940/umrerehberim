@@ -1,9 +1,12 @@
 import 'package:latlong2/latlong.dart';
 
+import 'gezi_diger_b_data.dart';
 import 'gezi_diger_data.dart';
+import 'gezi_medine_b_data.dart';
 import 'gezi_medine_data.dart';
 import 'gezi_mekke_a_data.dart';
 import 'gezi_mekke_b_data.dart';
+import 'gezi_mekke_c_data.dart';
 import 'l10n_text.dart';
 
 /// Gezilecek yerlerin bölgesi (ekrandaki sekmeler).
@@ -122,8 +125,11 @@ class GeziYeri {
 final List<GeziYeri> kGeziYerleri = [
   ...kMekkeYerleriA,
   ...kMekkeYerleriB,
+  ...kMekkeYerleriC,
   ...kMedineYerleri,
+  ...kMedineYerleriB,
   ...kDigerYerler,
+  ...kDigerYerleriB,
 ];
 
 List<GeziYeri> geziYerleriOf(GeziBolge b) => kGeziYerleri.where((y) => y.bolge == b).toList();

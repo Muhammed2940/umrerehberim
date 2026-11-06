@@ -5,6 +5,7 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../info_screen/screens/ihram_restrictions_screen.dart';
+import '../../info_screen/widgets/yakinda_widgets.dart';
 
 class InfoCardData {
   const InfoCardData({
@@ -126,8 +127,9 @@ class _GeneralInfoScreenState extends State<GeneralInfoScreen> {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
-        itemCount: cards.length,
-        itemBuilder: (context, i) => InfoCard(data: cards[i]),
+        itemCount: cards.length + 1,
+        // En üstte "Çok Yakında" tanıtım alanı, ardından bilgi kartları.
+        itemBuilder: (context, i) => i == 0 ? const YakindaBolumu() : InfoCard(data: cards[i - 1]),
       ),
     );
   }

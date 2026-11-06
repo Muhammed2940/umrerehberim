@@ -66,15 +66,6 @@ class _GeziDetayScreenState extends State<GeziDetayScreen> {
     }
   }
 
-  Future<void> _linkAc(String url) async {
-    final ok = await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    if (!ok && mounted) {
-      ScaffoldMessenger.of(context)
-        ..hideCurrentSnackBar()
-        ..showSnackBar(SnackBar(content: Text(context.l10n.infoCouldNotOpen)));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final yer = _yer;
@@ -134,19 +125,8 @@ class _GeziDetayScreenState extends State<GeziDetayScreen> {
                       InfoNote(context.l10n.infoCheckBeforeTravel, warning: true),
                     ],
                   ),
+                // Kaynaklar veri dosyasında tutulur, kullanıcıya gösterilmez.
                 _haritaKarti(yer),
-                ExpandableInfoCard(
-                  icon: Icons.menu_book_rounded,
-                  title: GeziMetin.kaynaklar.of(context),
-                  children: [
-                    for (final k in yer.kaynaklar) _kaynakSatiri(k),
-                    const SizedBox(height: 6),
-                    Text(
-                      GeziMetin.kaynakNotu.of(context),
-                      style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
@@ -323,40 +303,6 @@ class _GeziDetayScreenState extends State<GeziDetayScreen> {
     );
   }
 
-  Widget _kaynakSatiri(GeziKaynak k) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
-      onTap: () => _linkAc(k.url),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 7),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsetsDirectional.only(top: 2, end: 10),
-              child: Icon(Icons.link_rounded, size: 18, color: AppColors.primary),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(k.baslik, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.text)),
-                  Text(
-                    k.url,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textDirection: TextDirection.ltr,
-                    style: const TextStyle(fontSize: 12, color: AppColors.primary),
-                  ),
-                ],
-              ),
-            ),
-            const Icon(Icons.open_in_new_rounded, size: 16, color: AppColors.textMuted),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 /// Önemli olaylar: dikey zaman çizelgesi.
