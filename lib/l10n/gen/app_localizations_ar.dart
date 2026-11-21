@@ -3642,7 +3642,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get coreUnknownPage => 'صفحة غير معروفة';
 
   @override
+  String get cuzdanAdjustmentReason => 'ملاحظة';
+
+  @override
+  String get cuzdanAnalysisEmpty => 'لا يوجد إنفاق في هذه الفترة.';
+
+  @override
+  String get cuzdanAnalysisTitle => 'تحليل الإنفاق';
+
+  @override
+  String get cuzdanBalanceLabel => 'رصيد نقاطي';
+
+  @override
+  String get cuzdanCancelReason => 'سبب الإلغاء';
+
+  @override
   String get cuzdanCancelled => 'أُلغيت';
+
+  @override
+  String get cuzdanCancelledShort => 'ملغى';
+
+  @override
+  String get cuzdanCardBrand => 'Umre Rehberim';
+
+  @override
+  String get cuzdanCardHolder => 'حامل البطاقة';
+
+  @override
+  String get cuzdanCardPoints => 'النقاط';
+
+  @override
+  String get cuzdanCardSubtitle => 'بطاقة الولاء';
 
   @override
   String get cuzdanClose => 'إغلاق';
@@ -3690,6 +3720,12 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponCode => 'رمز القسيمة';
+
+  @override
+  String get cuzdanCouponDetails => 'تفاصيل القسيمة';
+
+  @override
   String get cuzdanCouponHowTo =>
       'لاستخدامها افتح رمز الخصم في المتجر واختر القسيمة. تُستخدم كل قسيمة مرة واحدة.';
 
@@ -3712,6 +3748,9 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponTapHint => 'اضغط للتفاصيل';
+
+  @override
   String get cuzdanCouponUse => 'استخدم قسيمة';
 
   @override
@@ -3722,6 +3761,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String cuzdanCouponValidUntil(String date) {
     return 'حتى $date';
+  }
+
+  @override
+  String cuzdanDaysAgo(int days) {
+    return 'قبل $days أيام';
   }
 
   @override
@@ -3748,6 +3792,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cuzdanGross => 'المبلغ';
+
+  @override
+  String get cuzdanHideBalance => 'إخفاء الرصيد';
 
   @override
   String get cuzdanHowEarn =>
@@ -3789,7 +3836,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cuzdanMyPurchases => 'مشترياتي';
 
   @override
+  String get cuzdanMyQr => 'رمزي';
+
+  @override
   String get cuzdanNoFilterMatch => 'لا توجد عمليات تطابق هذا الفلتر.';
+
+  @override
+  String get cuzdanNoShops => 'لم يتم العثور على متاجر شريكة.';
 
   @override
   String cuzdanNotifEarned(String shop, String amount, int points) {
@@ -3805,7 +3858,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cuzdanPaid => 'المدفوع';
 
   @override
+  String get cuzdanPaidWithPoints => 'المدفوع بالنقاط';
+
+  @override
   String get cuzdanPaymentMethod => 'طريقة الدفع';
+
+  @override
+  String get cuzdanPickShopHint => 'يُنشأ رمزك للمتجر الذي تختاره.';
+
+  @override
+  String get cuzdanPickShopTitle => 'في أي متجر أنت؟';
+
+  @override
+  String cuzdanPointsAmount(String points) {
+    return '$points نقطة';
+  }
 
   @override
   String get cuzdanPointsCorrection => 'تعديل النقاط';
@@ -3844,6 +3911,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cuzdanPurchaseCount => 'المشتريات';
+
+  @override
+  String get cuzdanPurchaseCountLabel => 'عدد المشتريات';
 
   @override
   String get cuzdanRetry => 'حاول مرة أخرى';
@@ -3893,6 +3963,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cuzdanReviewThanks => 'شكرًا على تقييمك!';
 
   @override
+  String get cuzdanReviewThis => 'قيّم هذا الشراء';
+
+  @override
   String get cuzdanReviewTitle => 'قيّم عملية الشراء';
 
   @override
@@ -3904,16 +3977,51 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanShopDiscount => 'خصم المتجر';
+
+  @override
+  String cuzdanShopDiscountPct(int percent) {
+    return 'خصم المتجر $percent%';
+  }
+
+  @override
+  String get cuzdanShops => 'المتاجر';
+
+  @override
+  String get cuzdanShowBalance => 'إظهار الرصيد';
+
+  @override
   String get cuzdanSuccessTitle => 'تم تسجيل الشراء';
 
   @override
   String get cuzdanTitle => 'مشترياتي ونقاطي';
 
   @override
+  String get cuzdanToday => 'اليوم';
+
+  @override
   String get cuzdanTotalDiscount => 'الخصم المكتسب';
 
   @override
   String get cuzdanTotalSpent => 'إجمالي الإنفاق';
+
+  @override
+  String cuzdanTxEarnedBig(int points) {
+    return 'ربحت +$points نقطة';
+  }
+
+  @override
+  String cuzdanTxSpentBig(int points) {
+    return 'استخدمت $points نقطة';
+  }
+
+  @override
+  String cuzdanWorthRiyal(String value) {
+    return '≈ بقيمة $value ريال';
+  }
+
+  @override
+  String get cuzdanYesterday => 'أمس';
 
   @override
   String get dualarAllFilesDownloaded => 'تم تنزيل جميع الملفات بنجاح!';
@@ -4711,6 +4819,349 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get esnafTxTitle => 'عملية جديدة';
+
+  @override
+  String get hatimCancel => 'إلغاء';
+
+  @override
+  String get hatimCardSubtitle => 'اختموا القرآن معًا وتقاسموا الأجزاء';
+
+  @override
+  String get hatimCompletedBadge => 'مكتملة';
+
+  @override
+  String get hatimCompletedBanner => 'اكتملت الختمة، تقبّل الله';
+
+  @override
+  String get hatimConfirm => 'نعم';
+
+  @override
+  String get hatimCreateButton => 'إنشاء المجموعة';
+
+  @override
+  String get hatimCreateTitle => 'مجموعة ختمة جديدة';
+
+  @override
+  String get hatimCreated => 'تم إنشاء مجموعة الختمة';
+
+  @override
+  String hatimDeadline(String date) {
+    return 'الموعد: $date';
+  }
+
+  @override
+  String get hatimDeadlineClear => 'إزالة';
+
+  @override
+  String get hatimDeadlineLabel => 'التاريخ المستهدف (اختياري)';
+
+  @override
+  String get hatimDeadlineNone => 'لم يُحدَّد تاريخ';
+
+  @override
+  String get hatimDelete => 'حذف المجموعة';
+
+  @override
+  String get hatimDeleteConfirm => 'ستُحذف المجموعة وكل تقدّمها. هل أنت متأكد؟';
+
+  @override
+  String hatimDoneBy(String name) {
+    return 'قرأه: $name';
+  }
+
+  @override
+  String get hatimDoneToast => 'تقبّل الله!';
+
+  @override
+  String get hatimEdit => 'تعديل';
+
+  @override
+  String get hatimEditTitle => 'تعديل المجموعة';
+
+  @override
+  String get hatimEmptyDiscover =>
+      'لا توجد مجموعات أخرى يمكنك الانضمام إليها حاليًا.';
+
+  @override
+  String get hatimEmptyMine =>
+      'ليس لديك مجموعات ختمة بعد. أنشئ مجموعة جديدة أو انضم إلى مجموعة من تبويب الاستكشاف.';
+
+  @override
+  String get hatimErrAlreadyDone => 'تمت قراءة هذا الجزء بالفعل';
+
+  @override
+  String get hatimErrFull => 'المجموعة ممتلئة (200 عضو كحد أقصى)';
+
+  @override
+  String get hatimErrGeneric => 'تعذّر إتمام العملية. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get hatimErrNetwork => 'مشكلة في الاتصال. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get hatimErrNotActive => 'اكتملت هذه الختمة. انتظر بدء ختمة جديدة.';
+
+  @override
+  String get hatimErrNotSignedIn =>
+      'لم يتم العثور على جلسة. يرجى تسجيل الدخول مجددًا.';
+
+  @override
+  String get hatimErrNotYours => 'لم يعد هذا الجزء لك';
+
+  @override
+  String get hatimErrPermission => 'ليست لديك صلاحية لهذا الإجراء';
+
+  @override
+  String get hatimErrTakenCuz => 'أخذ شخص آخر هذا الجزء للتو';
+
+  @override
+  String get hatimErrTakenSayfa => 'أخذ شخص آخر هذه الصفحة للتو';
+
+  @override
+  String get hatimEvCompleted => 'اكتملت الختمة! تقبّل الله';
+
+  @override
+  String hatimEvCreate(String name) {
+    return 'أنشأ $name المجموعة';
+  }
+
+  @override
+  String hatimEvDoneCuz(String name, int n, int done, int total) {
+    return 'أنهى $name الجزء $n ($done/$total)';
+  }
+
+  @override
+  String hatimEvDoneSayfa(String name, int n, int done, int total) {
+    return 'أنهى $name الصفحة $n ($done/$total)';
+  }
+
+  @override
+  String hatimEvJoin(String name) {
+    return 'انضم $name إلى المجموعة';
+  }
+
+  @override
+  String hatimEvLeave(String name) {
+    return 'غادر $name المجموعة';
+  }
+
+  @override
+  String hatimEvNewRound(int round) {
+    return 'بدأت الختمة رقم $round';
+  }
+
+  @override
+  String hatimEvRelease(String name) {
+    return 'تخلّى $name عن جزء';
+  }
+
+  @override
+  String hatimEvTakeCuz(String name, int n) {
+    return 'أخذ $name الجزء $n';
+  }
+
+  @override
+  String hatimEvTakeSayfa(String name, int n) {
+    return 'أخذ $name الصفحة $n';
+  }
+
+  @override
+  String get hatimFieldName => 'اسم المجموعة';
+
+  @override
+  String get hatimFieldNameHint => 'مثال: ختمة لوالدتي';
+
+  @override
+  String get hatimFieldNiyet => 'النية / الدعاء (اختياري)';
+
+  @override
+  String get hatimFieldNiyetHint => 'لمن هذه الختمة وبأي نية؟';
+
+  @override
+  String get hatimGroupNotFound => 'لم يُعثر على المجموعة أو تم حذفها.';
+
+  @override
+  String get hatimInviteCopied => 'تم نسخ نص الدعوة';
+
+  @override
+  String hatimInviteText(String name) {
+    return 'انضم إلى مجموعة الختمة \"$name\"! تجدها في تطبيق Umre Rehberim ضمن الأدعية > الختمة الجماعية.';
+  }
+
+  @override
+  String get hatimJoin => 'انضم إلى المجموعة';
+
+  @override
+  String get hatimJoined => 'انضممت إلى المجموعة';
+
+  @override
+  String get hatimLastEvent => 'آخر النشاطات';
+
+  @override
+  String get hatimLeave => 'مغادرة المجموعة';
+
+  @override
+  String get hatimLeaveConfirm => 'هل تريد مغادرة هذه المجموعة؟';
+
+  @override
+  String get hatimLegendDone => 'منتهٍ';
+
+  @override
+  String get hatimLegendFree => 'متاح';
+
+  @override
+  String get hatimLegendMine => 'لي';
+
+  @override
+  String get hatimLegendTaken => 'مأخوذ';
+
+  @override
+  String get hatimLoadError => 'تعذّر تحميل المجموعات';
+
+  @override
+  String get hatimMarkDone => 'أنهيت';
+
+  @override
+  String hatimMembers(int count) {
+    return '$count عضو';
+  }
+
+  @override
+  String get hatimNameInvalid => 'يجب أن يكون اسم المجموعة بين 3 و60 حرفًا';
+
+  @override
+  String get hatimNewGroup => 'مجموعة ختمة جديدة';
+
+  @override
+  String get hatimNewRound => 'بدء ختمة جديدة';
+
+  @override
+  String get hatimNewRoundConfirm =>
+      'هل تبدأ ختمة جديدة بالمجموعة نفسها؟ سيُعاد ضبط التقدّم.';
+
+  @override
+  String get hatimNiyetInvalid => 'يجب ألا تتجاوز النية 300 حرف';
+
+  @override
+  String get hatimNotMember => 'انضم إلى المجموعة أولًا لتأخذ جزءًا.';
+
+  @override
+  String hatimOwner(String name) {
+    return 'أنشأها: $name';
+  }
+
+  @override
+  String hatimPartCuz(int n) {
+    return 'الجزء $n';
+  }
+
+  @override
+  String hatimPartSayfa(int n) {
+    return 'الصفحة $n';
+  }
+
+  @override
+  String get hatimPrivateBadge => 'خاصة بالوكالة';
+
+  @override
+  String get hatimPrivateDesc =>
+      'لا يرى المجموعة ولا ينضم إليها إلا من هم في وكالتك نفسها.';
+
+  @override
+  String get hatimPrivateTitle => 'وكالتي فقط';
+
+  @override
+  String hatimProgress(int done, int total) {
+    return '$done/$total';
+  }
+
+  @override
+  String get hatimPublicBadge => 'عامة';
+
+  @override
+  String get hatimPublicDesc =>
+      'يرى جميع مستخدمي التطبيق المجموعة في الاستكشاف ويمكنهم الانضمام.';
+
+  @override
+  String get hatimPublicTitle => 'عامة';
+
+  @override
+  String get hatimRelease => 'تخلَّ عنه';
+
+  @override
+  String get hatimReleaseOther => 'تحرير هذا الجزء';
+
+  @override
+  String hatimReleaseOtherConfirm(String name) {
+    return 'هل تريد تحرير الجزء الذي أخذه $name؟';
+  }
+
+  @override
+  String hatimRound(int round) {
+    return 'الختمة رقم $round';
+  }
+
+  @override
+  String get hatimSave => 'حفظ';
+
+  @override
+  String get hatimShare => 'دعوة';
+
+  @override
+  String get hatimStartReading => 'ابدأ القراءة';
+
+  @override
+  String get hatimTabDiscover => 'استكشاف';
+
+  @override
+  String get hatimTabMine => 'مجموعاتي';
+
+  @override
+  String get hatimTake => 'خذ';
+
+  @override
+  String hatimTakeConfirmCuz(int n) {
+    return 'هل تريد أخذ الجزء $n؟';
+  }
+
+  @override
+  String hatimTakeConfirmSayfa(int n) {
+    return 'هل تريد أخذ الصفحة $n؟';
+  }
+
+  @override
+  String hatimTakenBy(String name) {
+    return 'أخذه: $name';
+  }
+
+  @override
+  String get hatimTakenToast => 'أصبح الجزء لك. قراءة مباركة!';
+
+  @override
+  String get hatimTitle => 'الختمة الجماعية';
+
+  @override
+  String get hatimUnitCuz => 'جزء';
+
+  @override
+  String get hatimUnitCuzDesc => '30 جزءًا. يأخذ كل عضو جزءًا أو أكثر.';
+
+  @override
+  String get hatimUnitLabel => 'كيف تُقسَّم الختمة؟';
+
+  @override
+  String get hatimUnitLocked =>
+      'لا يمكن تغيير وحدة التقسيم بعد إنشاء المجموعة.';
+
+  @override
+  String get hatimUnitSayfa => 'صفحة';
+
+  @override
+  String get hatimUnitSayfaDesc =>
+      '604 صفحات. تنتهي سريعًا مع المجموعات الكبيرة.';
+
+  @override
+  String get hatimVisibilityLabel => 'من يمكنه رؤيتها؟';
 
   @override
   String get homeAnnouncement => 'إعلان';

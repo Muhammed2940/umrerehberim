@@ -361,6 +361,355 @@ service cloud.firestore {
       allow delete: if isSuper();
     }
 
+    // TOPLU HATİM -------------------------------------------------------------
+    // Şema ve işlemler: tool/HATIM_SEMA.md. Sunucu kodu yok; sayaç bütünlüğü
+    // (bir parça bir kez sayılır) ve kota (holds) parça belgesi + grup güncellemesinin
+    // aynı batch'te get()/getAfter() ile çapraz doğrulanmasına dayanır.
+    //
+    // Maliyet notu: grup update kuralı önce ucuz alanlarla (changed() ve
+    // last_event.type) TEK bir dala yönlenir; get()/getAfter() yalnız o dalda,
+    // en sonda çalışır. Böylece reddedilen isteklerde de tüm dallar değerlendirilmez
+    // (1000 ifade sınırı) ve istek başına belge okuma sayısı küçük kalır.
+
+    // Grup oluşturma hız sınırı: kullanıcı başına bir belge, son oluşturma zamanı.
+    // Grup, bu belgeyle aynı batch'te ve en az 60 sn arayla oluşturulabilir.
+    match /hatim_rate/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['last_create_at'])
+        && request.resource.data.last_create_at == request.time;
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['last_create_at'])
+        && request.resource.data.last_create_at == request.time
+        && request.time > resource.data.last_create_at + duration.value(60, 's');
+      allow delete: if false;
+    }
+
+    match /hatim_groups/{gid} {
+      function hgOld() { return resource.data; }
+      function hgNew() { return request.resource.data; }
+      // Okuma: herkese açık, aynı acente, üye, genel admin veya destek.
+      // (acente_admin ve muhasebe başka acentenin özel grubunu OKUYAMAZ.)
+      function hgCanRead(d) {
+        return d.is_public == true
+            || (agency() != '' && d.agency_id == agency())
+            || request.auth.uid in d.members
+            || isGlobal()
+            || isSupport();
+      }
+      // last_event: yalnız bilinen anahtarlar; kimlik ve zaman sunucudan doğrulanır.
+      // unit her olayda tamsayı ve 0..604 (büyük metin yazılamaz).
+      function hgEvent(kind) {
+        let e = hgNew().last_event;
+        return e is map
+            && e.keys().hasOnly(['type', 'uid', 'name', 'unit', 'round', 'at'])
+            && e.type == kind
+            && e.uid == request.auth.uid
+            && e.at == request.time
+            && e.get('unit', 0) is int
+            && e.get('unit', 0) >= 0
+            && e.get('unit', 0) <= 604
+            && e.get('round', hgNew().round) == hgNew().round
+            && hgNew().updated_at == request.time
+            && e.name == me().user_name;
+      }
+      function hgPartPath(round, n) {
+        return /databases/$(database)/documents/hatim_groups/$(gid)/parts/$(string(round) + '_' + string(n));
+      }
+      function hgNameOk(v)  { return v is string && v.size() >= 3 && v.size() <= 60; }
+      function hgNiyetOk(v) { return v is string && v.size() <= 300; }
+      function hgDeadlineOk(v) { return v == null || v is timestamp; }
+
+      // Kota: holds = { uid: o an 'taken' durumundaki parça sayısı }.
+      function hgHolds(d)   { return d.get('holds', {}); }
+      function hgHoldsDiff() { return hgHolds(hgNew()).diff(hgHolds(hgOld())).affectedKeys(); }
+      function hgDec(n)     { return n > 0 ? n - 1 : 0; }
+      function hgCap()      { return hgOld().unit == 'cuz' ? 3 : 20; }
+      // Parça olaylarında unit = parça numarası (1..total).
+      function hgUnitOk() {
+        let u = hgNew().last_event.get('unit', null);
+        return u is int && u >= 1 && u <= hgOld().total;
+      }
+
+      allow get, list: if signedIn() && hgCanRead(resource.data);
+
+      allow create: if signedIn()
+        && hgNew().keys().hasOnly(['name', 'niyet', 'unit', 'total', 'is_public', 'agency_id', 'owner_uid',
+                                   'owner_name', 'members', 'member_count', 'round', 'done_count', 'status',
+                                   'holds', 'deadline', 'last_event', 'created_at', 'updated_at'])
+        && hgNew().keys().hasAll(['name', 'unit', 'total', 'is_public', 'agency_id', 'owner_uid', 'owner_name',
+                                  'members', 'member_count', 'round', 'done_count', 'status', 'holds',
+                                  'last_event', 'created_at', 'updated_at'])
+        && hgNew().owner_uid == request.auth.uid
+        && hgNew().members is list
+        && hgNew().members == [request.auth.uid]
+        && hgNew().member_count is int && hgNew().member_count == 1
+        && hgNew().round is int && hgNew().round == 1
+        && hgNew().done_count is int && hgNew().done_count == 0
+        && hgNew().status == 'active'
+        && hgNew().holds is map && hgNew().holds.size() == 0
+        && ((hgNew().unit == 'cuz' && hgNew().total is int && hgNew().total == 30)
+            || (hgNew().unit == 'sayfa' && hgNew().total is int && hgNew().total == 604))
+        && hgNameOk(hgNew().name)
+        && hgNiyetOk(hgNew().get('niyet', ''))
+        && hgNew().is_public is bool
+        && hgDeadlineOk(hgNew().get('deadline', null))
+        && hgNew().created_at == request.time
+        && hgEvent('create')
+        && role() != 'esnaf'
+        && hgNew().agency_id is string && hgNew().agency_id == agency()
+        && hgNew().owner_name == me().user_name
+        // Hız sınırı: aynı batch'te hatim_rate/{ben} = request.time yazılmış olmalı.
+        && getAfter(/databases/$(database)/documents/hatim_rate/$(request.auth.uid)).data.last_create_at == request.time;
+
+      // --- update dalları (her biri yalnız dispatcher seçtiğinde çalışır) ---
+
+      // Düzenle: yalnız sahip, yalnız vitrin alanları.
+      function hgEditOk() {
+        return hgOld().owner_uid == request.auth.uid
+          && hgNameOk(hgNew().name)
+          && hgNiyetOk(hgNew().get('niyet', ''))
+          && hgNew().is_public is bool
+          && hgDeadlineOk(hgNew().get('deadline', null))
+          && hgNew().updated_at == request.time;
+      }
+
+      // Katıl kendi ayrılışının hemen ardından ise 30 sn beklenir (bildirim spam'i).
+      function hgRejoinOk() {
+        let le = hgOld().get('last_event', {});
+        return !(le.get('type', '') == 'leave' && le.get('uid', '') == request.auth.uid)
+            || request.time > le.at + duration.value(30, 's');
+      }
+
+      // Katıl: yalnız kendi uid'si eklenir.
+      function hgJoinOk() {
+        return changed().hasOnly(['members', 'member_count', 'last_event', 'updated_at'])
+          && hgNew().members is list
+          && !(request.auth.uid in hgOld().members)
+          && hgNew().members.size() == hgOld().members.size() + 1
+          && hgNew().members.size() <= 200
+          && hgNew().members.hasAll(hgOld().members)
+          && request.auth.uid in hgNew().members
+          && hgNew().member_count is int
+          && hgNew().member_count == hgNew().members.size()
+          && hgRejoinOk()
+          && hgEvent('join')
+          && (hgOld().is_public == true || (agency() != '' && hgOld().agency_id == agency()));
+      }
+
+      // Ayrıl: yalnız kendi uid'si çıkar; sahip ayrılamaz. holds dokunulmaz
+      // (geri dönerse kotası aynı kalır).
+      function hgLeaveOk() {
+        return changed().hasOnly(['members', 'member_count', 'last_event', 'updated_at'])
+          && hgNew().members is list
+          && request.auth.uid in hgOld().members
+          && request.auth.uid != hgOld().owner_uid
+          && !(request.auth.uid in hgNew().members)
+          && hgNew().members.size() == hgOld().members.size() - 1
+          && hgOld().members.hasAll(hgNew().members)
+          && hgNew().member_count is int
+          && hgNew().member_count == hgNew().members.size()
+          && hgEvent('leave');
+      }
+
+      // Üyeyi çıkar: sahip (veya genel admin) tam olarak bir üyeyi (sahip değil) çıkarır;
+      // o üyenin holds anahtarı silinir. Parçalarını sahip önceden 'release' ile boşaltır.
+      function hgKickOk() {
+        let gone = hgOld().members.removeAll(hgNew().members);
+        return changed().hasOnly(['members', 'member_count', 'holds', 'last_event', 'updated_at'])
+          && hgNew().members is list
+          && hgNew().members.size() == hgOld().members.size() - 1
+          && hgOld().members.hasAll(hgNew().members)
+          && gone.size() == 1
+          && gone[0] != hgOld().owner_uid
+          && hgNew().member_count is int
+          && hgNew().member_count == hgNew().members.size()
+          && !(gone[0] in hgHolds(hgNew()))
+          && hgHoldsDiff().hasOnly([gone[0]])
+          && hgNew().last_event.get('unit', 0) == 0
+          && (hgOld().owner_uid == request.auth.uid || isGlobal())
+          && hgEvent('kick');
+      }
+
+      // Parça al: parça (batch öncesi yok) aynı batch'te benim adıma 'taken' oluşur,
+      // holds[ben] +1 ve kota (cüz 3 / sayfa 20) aşılmaz.
+      function hgTakePartOk(path) {
+        return !exists(path)
+          && getAfter(path).data.uid == request.auth.uid
+          && getAfter(path).data.status == 'taken';
+      }
+      function hgTakeOk() {
+        return changed().hasOnly(['holds', 'last_event', 'updated_at'])
+          && hgOld().status == 'active'
+          && request.auth.uid in hgOld().members
+          && hgUnitOk()
+          && hgHoldsDiff().hasOnly([request.auth.uid])
+          && hgHolds(hgNew()).get(request.auth.uid, 0) is int
+          && hgHolds(hgNew()).get(request.auth.uid, 0) == hgHolds(hgOld()).get(request.auth.uid, 0) + 1
+          && hgHolds(hgNew()).get(request.auth.uid, 0) <= hgCap()
+          && hgEvent('take')
+          && hgTakePartOk(hgPartPath(hgOld().round, hgNew().last_event.unit));
+      }
+
+      // Parça bırak: parça batch öncesi var ve 'taken', batch sonrası yok; yapan parça
+      // sahibi, grup sahibi veya genel admin; holds[parça sahibi] −1.
+      function hgReleasePartOk(path) {
+        let p = get(path).data;
+        return p.status == 'taken'
+          && !existsAfter(path)
+          && hgHoldsDiff().hasOnly([p.uid])
+          && hgHolds(hgNew()).get(p.uid, 0) == hgDec(hgHolds(hgOld()).get(p.uid, 0))
+          && (p.uid == request.auth.uid || hgOld().owner_uid == request.auth.uid || isGlobal());
+      }
+      function hgReleaseOk() {
+        return changed().hasOnly(['holds', 'last_event', 'updated_at'])
+          && hgOld().status == 'active'
+          && hgUnitOk()
+          && hgEvent('release')
+          && exists(hgPartPath(hgOld().round, hgNew().last_event.unit))
+          && hgReleasePartOk(hgPartPath(hgOld().round, hgNew().last_event.unit));
+      }
+
+      // Bitirdim: parça taken→done ile aynı batch'te sayaç +1, holds[ben] −1.
+      // Parça batch öncesi 'taken', bende ve en az 60 sn önce alınmış; batch sonrası 'done'.
+      function hgDonePartOk(path) {
+        let b = get(path).data;
+        let a = getAfter(path).data;
+        return b.status == 'taken'
+          && b.uid == request.auth.uid
+          && request.time > b.taken_at + duration.value(60, 's')
+          && a.status == 'done'
+          && a.uid == request.auth.uid;
+      }
+      function hgDoneOk() {
+        return changed().hasOnly(['done_count', 'holds', 'status', 'completed_at', 'last_event', 'updated_at'])
+          && hgOld().status == 'active'
+          && request.auth.uid in hgOld().members
+          && hgNew().done_count is int
+          && hgNew().done_count == hgOld().done_count + 1
+          && hgNew().done_count <= hgOld().total
+          && hgUnitOk()
+          && hgHoldsDiff().hasOnly([request.auth.uid])
+          && hgHolds(hgNew()).get(request.auth.uid, 0) == hgDec(hgHolds(hgOld()).get(request.auth.uid, 0))
+          && (hgNew().done_count == hgOld().total
+              ? (hgNew().status == 'completed'
+                 && hgNew().completed_at == request.time
+                 && hgEvent('completed'))
+              : (!changed().hasAny(['status', 'completed_at'])
+                 && hgEvent('done')))
+          && hgDonePartOk(hgPartPath(hgOld().round, hgNew().last_event.unit));
+      }
+
+      // Yeni tur: yalnız sahip (veya genel admin), tamamlanmış grupta; holds sıfırlanır.
+      function hgNewRoundOk() {
+        return changed().hasOnly(['round', 'done_count', 'status', 'completed_at', 'holds', 'last_event', 'updated_at'])
+          && hgOld().status == 'completed'
+          && hgNew().round is int
+          && hgNew().round == hgOld().round + 1
+          && hgNew().done_count is int && hgNew().done_count == 0
+          && hgNew().status == 'active'
+          && hgNew().get('completed_at', null) == null
+          && hgHolds(hgNew()) is map && hgHolds(hgNew()).size() == 0
+          && (hgOld().owner_uid == request.auth.uid || isGlobal())
+          && hgEvent('new_round');
+      }
+
+      // Olay tipine göre tek dal (ucuz seçim).
+      function hgByType(t) {
+        return t == 'join' ? hgJoinOk()
+          : (t == 'leave' ? hgLeaveOk()
+          : (t == 'take' ? hgTakeOk()
+          : (t == 'release' ? hgReleaseOk()
+          : ((t == 'done' || t == 'completed') ? hgDoneOk()
+          : (t == 'kick' ? hgKickOk()
+          : (t == 'new_round' ? hgNewRoundOk()
+          : false))))));
+      }
+      function hgUpdateOk() {
+        let c = changed();
+        return c.hasOnly(['name', 'niyet', 'deadline', 'is_public', 'updated_at'])
+          ? hgEditOk()
+          : (c.hasAny(['last_event']) && hgNew().last_event is map
+              ? hgByType(hgNew().last_event.get('type', ''))
+              : false);
+      }
+
+      allow update: if signedIn() && hgUpdateOk();
+
+      // Not: alt koleksiyon (parts) belgeleri grup silinince otomatik silinmez; istemci
+      // önce bırakılabilir parçaları siler. Bitmiş parçalar yalnız grup silindikten
+      // sonra (sahipsiz) süper admince silinir.
+      allow delete: if signedIn()
+        && (hgOld().owner_uid == request.auth.uid
+            || isGlobal()
+            || (isAgencyAdmin() && hgOld().agency_id != '' && hgOld().agency_id == agency()));
+
+      match /parts/{pid} {
+        function pgPath() { return /databases/$(database)/documents/hatim_groups/$(gid); }
+        function pg()  { return get(pgPath()).data; }
+        function pga() { return getAfter(pgPath()).data; }
+        function pNew() { return request.resource.data; }
+
+        // Sahipsiz (grubu silinmiş) parçalar temizlik için süper admince okunur.
+        allow get, list: if signedIn() && (hgCanRead(pg()) || isSuper());
+
+        // Parça al: belge id'si '<tur>_<n>' tekil olduğundan aynı parça iki kişiye verilmez.
+        // Aynı batch'te grup: last_event take (unit = n) ve holds[ben] = eski + 1.
+        // (Tek grup güncellemesi tek parçaya bağlanır; iki parça tek +1 ile alınamaz.)
+        function pTakeBound() {
+          let a = pga();
+          return a.last_event.type == 'take'
+            && a.last_event.unit == pNew().n
+            && a.round == pNew().round
+            && a.get('holds', {}).get(request.auth.uid, -1) == pg().get('holds', {}).get(request.auth.uid, 0) + 1;
+        }
+        allow create: if signedIn()
+          && pNew().keys().hasOnly(['n', 'round', 'uid', 'name', 'status', 'taken_at', 'done_at'])
+          && pNew().keys().hasAll(['n', 'round', 'uid', 'name', 'status', 'taken_at', 'done_at'])
+          && pNew().uid == request.auth.uid
+          && pNew().status == 'taken'
+          && pNew().taken_at == request.time
+          && pNew().done_at == null
+          && pNew().n is int
+          && pNew().round is int
+          && pid == string(pNew().round) + '_' + string(pNew().n)
+          && pg().status == 'active'
+          && request.auth.uid in pg().members
+          && pNew().n >= 1 && pNew().n <= pg().total
+          && pNew().round == pg().round
+          && pNew().name == me().user_name
+          && pTakeBound();
+
+        // Bitirdim: yalnız parça sahibi, taken→done, alındıktan en az 60 sn sonra.
+        // Aynı batch'te grup sayacı +1 VE grubun last_event'i tam bu parçayı gösterir.
+        function pDoneBound() {
+          let a = pga();
+          return a.last_event.type in ['done', 'completed']
+            && a.last_event.unit == resource.data.n
+            && a.round == resource.data.round
+            && a.done_count == pg().done_count + 1;
+        }
+        allow update: if signedIn()
+          && resource.data.uid == request.auth.uid
+          && resource.data.status == 'taken'
+          && changed().hasOnly(['status', 'done_at'])
+          && pNew().status == 'done'
+          && pNew().done_at == request.time
+          && request.time > resource.data.taken_at + duration.value(60, 's')
+          && pDoneBound();
+
+        // Bırak: yalnız 'taken' parça; sahibi, grup sahibi veya genel admin.
+        // Bitmiş parça kimse tarafından silinemez (yeniden alınıp iki kez sayılmasın);
+        // yalnız grup silindikten sonra sahipsiz kalan parçayı süper admin temizler.
+        allow delete: if signedIn() && (
+          (resource.data.status == 'taken'
+            && (resource.data.uid == request.auth.uid
+                || pg().owner_uid == request.auth.uid
+                || isGlobal()))
+          || (isSuper() && !exists(pgPath())));
+      }
+    }
+
     // Ezan vakitleri (orijinal koleksiyon adları): herkes okur, süper admin yazar.
     match /mekke_prayer_times/{id}  { allow read: if true; allow write: if isSuper(); }
     match /medine_prayer_times/{id} { allow read: if true; allow write: if isSuper(); }

@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/app_theme.dart';
@@ -71,6 +73,15 @@ class _DualarState extends State<Dualar> {
                 colors: const [AppColors.emerald900, AppColors.emerald700],
                 onTap: () => Navigator.pushNamed(context, '/kuran'),
               ),
+              // Toplu Hatim (esnaf hesapları bu ekranı görmez; yine de gizli).
+              if (context.watch<AppStateProvider>().currentUser?.isMerchant != true)
+                _buildModernCard(
+                  icon: Icons.groups_rounded,
+                  title: l.hatimTitle,
+                  subtitle: l.hatimCardSubtitle,
+                  colors: const [AppColors.emerald600, AppColors.emerald800],
+                  onTap: () => Navigator.pushNamed(context, '/hatim'),
+                ),
               const SizedBox(height: 12),
               _buildQuote(),
               const SizedBox(height: 20),

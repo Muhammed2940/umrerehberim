@@ -3643,7 +3643,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get coreUnknownPage => 'Unknown page';
 
   @override
+  String get cuzdanAdjustmentReason => 'Note';
+
+  @override
+  String get cuzdanAnalysisEmpty => 'No spending in this period.';
+
+  @override
+  String get cuzdanAnalysisTitle => 'Spending analysis';
+
+  @override
+  String get cuzdanBalanceLabel => 'My points balance';
+
+  @override
+  String get cuzdanCancelReason => 'Cancellation reason';
+
+  @override
   String get cuzdanCancelled => 'Cancelled';
+
+  @override
+  String get cuzdanCancelledShort => 'Cancelled';
+
+  @override
+  String get cuzdanCardBrand => 'Umre Rehberim';
+
+  @override
+  String get cuzdanCardHolder => 'CARD HOLDER';
+
+  @override
+  String get cuzdanCardPoints => 'POINTS';
+
+  @override
+  String get cuzdanCardSubtitle => 'Loyalty Card';
 
   @override
   String get cuzdanClose => 'Close';
@@ -3691,6 +3721,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponCode => 'Coupon code';
+
+  @override
+  String get cuzdanCouponDetails => 'Coupon details';
+
+  @override
   String get cuzdanCouponHowTo =>
       'To use one, open the discount code at the shop and pick the coupon. Each coupon can be used once.';
 
@@ -3713,6 +3749,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponTapHint => 'Tap for details';
+
+  @override
   String get cuzdanCouponUse => 'Use a coupon';
 
   @override
@@ -3723,6 +3762,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String cuzdanCouponValidUntil(String date) {
     return 'Until $date';
+  }
+
+  @override
+  String cuzdanDaysAgo(int days) {
+    return '$days days ago';
   }
 
   @override
@@ -3749,6 +3793,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cuzdanGross => 'Amount';
+
+  @override
+  String get cuzdanHideBalance => 'Hide balance';
 
   @override
   String get cuzdanHowEarn =>
@@ -3791,7 +3838,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cuzdanMyPurchases => 'My Purchases';
 
   @override
+  String get cuzdanMyQr => 'My QR';
+
+  @override
   String get cuzdanNoFilterMatch => 'No purchases match this filter.';
+
+  @override
+  String get cuzdanNoShops => 'No partner shops found.';
 
   @override
   String cuzdanNotifEarned(String shop, String amount, int points) {
@@ -3807,7 +3860,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cuzdanPaid => 'Paid';
 
   @override
+  String get cuzdanPaidWithPoints => 'Paid with points';
+
+  @override
   String get cuzdanPaymentMethod => 'Payment method';
+
+  @override
+  String get cuzdanPickShopHint =>
+      'Your QR code is created for the shop you choose.';
+
+  @override
+  String get cuzdanPickShopTitle => 'Which shop are you at?';
+
+  @override
+  String cuzdanPointsAmount(String points) {
+    return '$points points';
+  }
 
   @override
   String get cuzdanPointsCorrection => 'Points adjustment';
@@ -3846,6 +3914,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cuzdanPurchaseCount => 'Purchases';
+
+  @override
+  String get cuzdanPurchaseCountLabel => 'Number of purchases';
 
   @override
   String get cuzdanRetry => 'Try again';
@@ -3896,6 +3967,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cuzdanReviewThanks => 'Thanks for your review!';
 
   @override
+  String get cuzdanReviewThis => 'Rate this purchase';
+
+  @override
   String get cuzdanReviewTitle => 'Rate your purchase';
 
   @override
@@ -3907,16 +3981,51 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get cuzdanShopDiscount => 'Shop discount';
+
+  @override
+  String cuzdanShopDiscountPct(int percent) {
+    return 'Shop discount $percent%';
+  }
+
+  @override
+  String get cuzdanShops => 'Shops';
+
+  @override
+  String get cuzdanShowBalance => 'Show balance';
+
+  @override
   String get cuzdanSuccessTitle => 'Purchase recorded';
 
   @override
   String get cuzdanTitle => 'My Purchases and Points';
 
   @override
+  String get cuzdanToday => 'Today';
+
+  @override
   String get cuzdanTotalDiscount => 'Discount earned';
 
   @override
   String get cuzdanTotalSpent => 'Total spent';
+
+  @override
+  String cuzdanTxEarnedBig(int points) {
+    return 'You earned +$points points';
+  }
+
+  @override
+  String cuzdanTxSpentBig(int points) {
+    return 'You used $points points';
+  }
+
+  @override
+  String cuzdanWorthRiyal(String value) {
+    return '≈ worth $value riyals';
+  }
+
+  @override
+  String get cuzdanYesterday => 'Yesterday';
 
   @override
   String get dualarAllFilesDownloaded => 'All files downloaded successfully!';
@@ -4706,6 +4815,355 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get esnafTxTitle => 'New transaction';
+
+  @override
+  String get hatimCancel => 'Cancel';
+
+  @override
+  String get hatimCardSubtitle =>
+      'Complete the Quran together, share it part by part';
+
+  @override
+  String get hatimCompletedBadge => 'Completed';
+
+  @override
+  String get hatimCompletedBanner =>
+      'The khatm is complete, may Allah accept it';
+
+  @override
+  String get hatimConfirm => 'Yes';
+
+  @override
+  String get hatimCreateButton => 'Create group';
+
+  @override
+  String get hatimCreateTitle => 'New khatm group';
+
+  @override
+  String get hatimCreated => 'Khatm group created';
+
+  @override
+  String hatimDeadline(String date) {
+    return 'Target: $date';
+  }
+
+  @override
+  String get hatimDeadlineClear => 'Clear';
+
+  @override
+  String get hatimDeadlineLabel => 'Target date (optional)';
+
+  @override
+  String get hatimDeadlineNone => 'No date selected';
+
+  @override
+  String get hatimDelete => 'Delete group';
+
+  @override
+  String get hatimDeleteConfirm =>
+      'The group and all its progress will be deleted. Are you sure?';
+
+  @override
+  String hatimDoneBy(String name) {
+    return 'Read by $name';
+  }
+
+  @override
+  String get hatimDoneToast => 'May Allah accept it!';
+
+  @override
+  String get hatimEdit => 'Edit';
+
+  @override
+  String get hatimEditTitle => 'Edit group';
+
+  @override
+  String get hatimEmptyDiscover =>
+      'There are no other groups you can join right now.';
+
+  @override
+  String get hatimEmptyMine =>
+      'You have no khatm groups yet. Create a new one or join a group from the Discover tab.';
+
+  @override
+  String get hatimErrAlreadyDone => 'This part has already been read';
+
+  @override
+  String get hatimErrFull => 'The group is full (200 members max)';
+
+  @override
+  String get hatimErrGeneric =>
+      'The action could not be completed. Please try again.';
+
+  @override
+  String get hatimErrNetwork => 'Connection problem. Please try again.';
+
+  @override
+  String get hatimErrNotActive =>
+      'This khatm is complete. Wait for a new one to start.';
+
+  @override
+  String get hatimErrNotSignedIn => 'No session found. Please sign in again.';
+
+  @override
+  String get hatimErrNotYours => 'This part is no longer yours';
+
+  @override
+  String get hatimErrPermission => 'You are not allowed to do this';
+
+  @override
+  String get hatimErrTakenCuz => 'This juz was just taken by someone else';
+
+  @override
+  String get hatimErrTakenSayfa => 'This page was just taken by someone else';
+
+  @override
+  String get hatimEvCompleted => 'The khatm is complete! May Allah accept it';
+
+  @override
+  String hatimEvCreate(String name) {
+    return '$name created the group';
+  }
+
+  @override
+  String hatimEvDoneCuz(String name, int n, int done, int total) {
+    return '$name finished juz $n ($done/$total)';
+  }
+
+  @override
+  String hatimEvDoneSayfa(String name, int n, int done, int total) {
+    return '$name finished page $n ($done/$total)';
+  }
+
+  @override
+  String hatimEvJoin(String name) {
+    return '$name joined the group';
+  }
+
+  @override
+  String hatimEvLeave(String name) {
+    return '$name left the group';
+  }
+
+  @override
+  String hatimEvNewRound(int round) {
+    return 'Khatm #$round has started';
+  }
+
+  @override
+  String hatimEvRelease(String name) {
+    return '$name released a part';
+  }
+
+  @override
+  String hatimEvTakeCuz(String name, int n) {
+    return '$name took juz $n';
+  }
+
+  @override
+  String hatimEvTakeSayfa(String name, int n) {
+    return '$name took page $n';
+  }
+
+  @override
+  String get hatimFieldName => 'Group name';
+
+  @override
+  String get hatimFieldNameHint => 'E.g. Khatm for my mother';
+
+  @override
+  String get hatimFieldNiyet => 'Intention / prayer (optional)';
+
+  @override
+  String get hatimFieldNiyetHint =>
+      'Who is this khatm for, and with what intention?';
+
+  @override
+  String get hatimGroupNotFound =>
+      'The group was not found or has been deleted.';
+
+  @override
+  String get hatimInviteCopied => 'Invitation text copied to clipboard';
+
+  @override
+  String hatimInviteText(String name) {
+    return 'Join the \"$name\" khatm group! Find it in the Umre Rehberim app under Duas > Group Khatm.';
+  }
+
+  @override
+  String get hatimJoin => 'Join group';
+
+  @override
+  String get hatimJoined => 'You joined the group';
+
+  @override
+  String get hatimLastEvent => 'Latest activity';
+
+  @override
+  String get hatimLeave => 'Leave group';
+
+  @override
+  String get hatimLeaveConfirm => 'Do you want to leave this group?';
+
+  @override
+  String get hatimLegendDone => 'Done';
+
+  @override
+  String get hatimLegendFree => 'Free';
+
+  @override
+  String get hatimLegendMine => 'Mine';
+
+  @override
+  String get hatimLegendTaken => 'Taken';
+
+  @override
+  String get hatimLoadError => 'Groups could not be loaded';
+
+  @override
+  String get hatimMarkDone => 'I finished';
+
+  @override
+  String hatimMembers(int count) {
+    return '$count members';
+  }
+
+  @override
+  String get hatimNameInvalid => 'The group name must be 3 to 60 characters';
+
+  @override
+  String get hatimNewGroup => 'New khatm group';
+
+  @override
+  String get hatimNewRound => 'Start a new khatm';
+
+  @override
+  String get hatimNewRoundConfirm =>
+      'Start a new khatm with the same group? Progress will be reset.';
+
+  @override
+  String get hatimNiyetInvalid => 'The intention can be at most 300 characters';
+
+  @override
+  String get hatimNotMember => 'Join the group first to take a part.';
+
+  @override
+  String hatimOwner(String name) {
+    return 'Created by $name';
+  }
+
+  @override
+  String hatimPartCuz(int n) {
+    return 'Juz $n';
+  }
+
+  @override
+  String hatimPartSayfa(int n) {
+    return 'Page $n';
+  }
+
+  @override
+  String get hatimPrivateBadge => 'Agency only';
+
+  @override
+  String get hatimPrivateDesc =>
+      'Only people in the same agency as you can see and join the group.';
+
+  @override
+  String get hatimPrivateTitle => 'My agency only';
+
+  @override
+  String hatimProgress(int done, int total) {
+    return '$done/$total';
+  }
+
+  @override
+  String get hatimPublicBadge => 'Public';
+
+  @override
+  String get hatimPublicDesc =>
+      'Everyone using the app sees the group in Discover and can join.';
+
+  @override
+  String get hatimPublicTitle => 'Public';
+
+  @override
+  String get hatimRelease => 'Release';
+
+  @override
+  String get hatimReleaseOther => 'Free this part';
+
+  @override
+  String hatimReleaseOtherConfirm(String name) {
+    return 'Free the part taken by $name?';
+  }
+
+  @override
+  String hatimRound(int round) {
+    return 'Khatm #$round';
+  }
+
+  @override
+  String get hatimSave => 'Save';
+
+  @override
+  String get hatimShare => 'Invite';
+
+  @override
+  String get hatimStartReading => 'Start reading';
+
+  @override
+  String get hatimTabDiscover => 'Discover';
+
+  @override
+  String get hatimTabMine => 'My groups';
+
+  @override
+  String get hatimTake => 'Take';
+
+  @override
+  String hatimTakeConfirmCuz(int n) {
+    return 'Do you want to take juz $n?';
+  }
+
+  @override
+  String hatimTakeConfirmSayfa(int n) {
+    return 'Do you want to take page $n?';
+  }
+
+  @override
+  String hatimTakenBy(String name) {
+    return 'Taken by $name';
+  }
+
+  @override
+  String get hatimTakenToast => 'The part is yours. Blessed reading!';
+
+  @override
+  String get hatimTitle => 'Group Khatm';
+
+  @override
+  String get hatimUnitCuz => 'Juz';
+
+  @override
+  String get hatimUnitCuzDesc => '30 juz. Each member takes one or more juz.';
+
+  @override
+  String get hatimUnitLabel => 'How should it be shared?';
+
+  @override
+  String get hatimUnitLocked =>
+      'The sharing unit cannot be changed after the group is created.';
+
+  @override
+  String get hatimUnitSayfa => 'Page';
+
+  @override
+  String get hatimUnitSayfaDesc =>
+      '604 pages. Finishes quickly with large groups.';
+
+  @override
+  String get hatimVisibilityLabel => 'Who can see it?';
 
   @override
   String get homeAnnouncement => 'Announcement';

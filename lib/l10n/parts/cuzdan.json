@@ -8,7 +8,11 @@
     "tr": "{points} puan · alışveriş geçmişi",
     "en": "{points} points · purchase history",
     "ar": "{points} نقطة · سجل المشتريات",
-    "placeholders": { "points": { "type": "int" } }
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
   },
   "cuzdanLoyaltyPoints": {
     "tr": "Sadakat Puanı",
@@ -19,7 +23,11 @@
     "tr": "≈ {value} SAR değerinde",
     "en": "≈ worth {value} SAR",
     "ar": "≈ بقيمة {value} ريال",
-    "placeholders": { "value": { "type": "String" } }
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
   },
   "cuzdanTotalSpent": {
     "tr": "Toplam harcama",
@@ -95,19 +103,31 @@
     "tr": "{amount} SAR",
     "en": "{amount} SAR",
     "ar": "{amount} ريال",
-    "placeholders": { "amount": { "type": "String" } }
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
   },
   "cuzdanPointsPlus": {
     "tr": "+{points} puan",
     "en": "+{points} pts",
     "ar": "+{points} نقطة",
-    "placeholders": { "points": { "type": "int" } }
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
   },
   "cuzdanPointsMinus": {
     "tr": "−{points} puan",
     "en": "−{points} pts",
     "ar": "−{points} نقطة",
-    "placeholders": { "points": { "type": "int" } }
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
   },
   "cuzdanPointsEarned": {
     "tr": "Kazanılan puan",
@@ -173,7 +193,11 @@
     "tr": "Bu kod tek kullanımlıktır ve {minutes} dakikada yenilenir.",
     "en": "This code can be used once and renews every {minutes} minutes.",
     "ar": "هذا الرمز للاستخدام مرة واحدة ويتجدد كل {minutes} دقيقة.",
-    "placeholders": { "minutes": { "type": "int" } }
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
   },
   "cuzdanCodeCreating": {
     "tr": "Kod hazırlanıyor…",
@@ -194,7 +218,11 @@
     "tr": "Puanınız: {points}",
     "en": "Your points: {points}",
     "ar": "نقاطك: {points}",
-    "placeholders": { "points": { "type": "int" } }
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
   },
   "cuzdanCodeShowStatic": {
     "tr": "Dükkanın kendi QR kodunu göster",
@@ -231,9 +259,15 @@
     "en": "{shop}: {amount} SAR paid, you earned {points} points.",
     "ar": "{shop}: تم دفع {amount} ريال، وكسبت {points} نقطة.",
     "placeholders": {
-      "shop": { "type": "String" },
-      "amount": { "type": "String" },
-      "points": { "type": "int" }
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
     }
   },
   "cuzdanNotifSpent": {
@@ -241,9 +275,15 @@
     "en": "{shop}: {amount} SAR paid with {points} points.",
     "ar": "{shop}: تم دفع {amount} ريال باستخدام {points} نقطة.",
     "placeholders": {
-      "shop": { "type": "String" },
-      "amount": { "type": "String" },
-      "points": { "type": "int" }
+      "shop": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "points": {
+        "type": "int"
+      }
     }
   },
   "cuzdanMyCoupons": {
@@ -435,5 +475,195 @@
     "tr": "Değerlendirmen",
     "en": "Your rating",
     "ar": "تقييمك"
+  },
+  "cuzdanBalanceLabel": {
+    "tr": "Puan bakiyem",
+    "en": "My points balance",
+    "ar": "رصيد نقاطي"
+  },
+  "cuzdanPointsAmount": {
+    "tr": "{points} puan",
+    "en": "{points} points",
+    "ar": "{points} نقطة",
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanWorthRiyal": {
+    "tr": "≈ {value} riyal değerinde",
+    "en": "≈ worth {value} riyals",
+    "ar": "≈ بقيمة {value} ريال",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanHideBalance": {
+    "tr": "Bakiyeyi gizle",
+    "en": "Hide balance",
+    "ar": "إخفاء الرصيد"
+  },
+  "cuzdanShowBalance": {
+    "tr": "Bakiyeyi göster",
+    "en": "Show balance",
+    "ar": "إظهار الرصيد"
+  },
+  "cuzdanMyQr": {
+    "tr": "QR'ım",
+    "en": "My QR",
+    "ar": "رمزي"
+  },
+  "cuzdanShops": {
+    "tr": "Dükkanlar",
+    "en": "Shops",
+    "ar": "المتاجر"
+  },
+  "cuzdanCardBrand": {
+    "tr": "Umre Rehberim",
+    "en": "Umre Rehberim",
+    "ar": "Umre Rehberim"
+  },
+  "cuzdanCardSubtitle": {
+    "tr": "Sadakat Kartı",
+    "en": "Loyalty Card",
+    "ar": "بطاقة الولاء"
+  },
+  "cuzdanCardPoints": {
+    "tr": "PUAN",
+    "en": "POINTS",
+    "ar": "النقاط"
+  },
+  "cuzdanCardHolder": {
+    "tr": "KART SAHİBİ",
+    "en": "CARD HOLDER",
+    "ar": "حامل البطاقة"
+  },
+  "cuzdanCouponCode": {
+    "tr": "Kupon kodu",
+    "en": "Coupon code",
+    "ar": "رمز القسيمة"
+  },
+  "cuzdanCouponDetails": {
+    "tr": "Kupon ayrıntıları",
+    "en": "Coupon details",
+    "ar": "تفاصيل القسيمة"
+  },
+  "cuzdanCouponTapHint": {
+    "tr": "Ayrıntılar için dokun",
+    "en": "Tap for details",
+    "ar": "اضغط للتفاصيل"
+  },
+  "cuzdanAnalysisTitle": {
+    "tr": "Harcama analizi",
+    "en": "Spending analysis",
+    "ar": "تحليل الإنفاق"
+  },
+  "cuzdanAnalysisEmpty": {
+    "tr": "Bu dönemde harcama yok.",
+    "en": "No spending in this period.",
+    "ar": "لا يوجد إنفاق في هذه الفترة."
+  },
+  "cuzdanPurchaseCountLabel": {
+    "tr": "Alışveriş sayısı",
+    "en": "Number of purchases",
+    "ar": "عدد المشتريات"
+  },
+  "cuzdanToday": {
+    "tr": "Bugün",
+    "en": "Today",
+    "ar": "اليوم"
+  },
+  "cuzdanYesterday": {
+    "tr": "Dün",
+    "en": "Yesterday",
+    "ar": "أمس"
+  },
+  "cuzdanDaysAgo": {
+    "tr": "{days} gün önce",
+    "en": "{days} days ago",
+    "ar": "قبل {days} أيام",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPickShopTitle": {
+    "tr": "Hangi dükkândasınız?",
+    "en": "Which shop are you at?",
+    "ar": "في أي متجر أنت؟"
+  },
+  "cuzdanPickShopHint": {
+    "tr": "QR kodunuz seçtiğiniz dükkân için oluşturulur.",
+    "en": "Your QR code is created for the shop you choose.",
+    "ar": "يُنشأ رمزك للمتجر الذي تختاره."
+  },
+  "cuzdanNoShops": {
+    "tr": "Anlaşmalı dükkân bulunamadı.",
+    "en": "No partner shops found.",
+    "ar": "لم يتم العثور على متاجر شريكة."
+  },
+  "cuzdanTxEarnedBig": {
+    "tr": "+{points} puan kazandınız",
+    "en": "You earned +{points} points",
+    "ar": "ربحت +{points} نقطة",
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanTxSpentBig": {
+    "tr": "{points} puan kullandınız",
+    "en": "You used {points} points",
+    "ar": "استخدمت {points} نقطة",
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanShopDiscount": {
+    "tr": "Dükkân indirimi",
+    "en": "Shop discount",
+    "ar": "خصم المتجر"
+  },
+  "cuzdanShopDiscountPct": {
+    "tr": "Dükkân indirimi %{percent}",
+    "en": "Shop discount {percent}%",
+    "ar": "خصم المتجر {percent}%",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanPaidWithPoints": {
+    "tr": "Puanla ödenen",
+    "en": "Paid with points",
+    "ar": "المدفوع بالنقاط"
+  },
+  "cuzdanCancelReason": {
+    "tr": "İptal sebebi",
+    "en": "Cancellation reason",
+    "ar": "سبب الإلغاء"
+  },
+  "cuzdanReviewThis": {
+    "tr": "Bu alışverişi değerlendir",
+    "en": "Rate this purchase",
+    "ar": "قيّم هذا الشراء"
+  },
+  "cuzdanCancelledShort": {
+    "tr": "İptal",
+    "en": "Cancelled",
+    "ar": "ملغى"
+  },
+  "cuzdanAdjustmentReason": {
+    "tr": "Açıklama",
+    "en": "Note",
+    "ar": "ملاحظة"
   }
 }

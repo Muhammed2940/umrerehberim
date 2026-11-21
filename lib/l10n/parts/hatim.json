@@ -1,0 +1,167 @@
+{
+  "hatimTitle": { "tr": "Toplu Hatim", "en": "Group Khatm", "ar": "الختمة الجماعية" },
+  "hatimCardSubtitle": { "tr": "Birlikte hatim indirin, cüz cüz paylaşın", "en": "Complete the Quran together, share it part by part", "ar": "اختموا القرآن معًا وتقاسموا الأجزاء" },
+  "hatimTabMine": { "tr": "Gruplarım", "en": "My groups", "ar": "مجموعاتي" },
+  "hatimTabDiscover": { "tr": "Keşfet", "en": "Discover", "ar": "استكشاف" },
+  "hatimNewGroup": { "tr": "Yeni hatim grubu", "en": "New khatm group", "ar": "مجموعة ختمة جديدة" },
+  "hatimUnitCuz": { "tr": "Cüz", "en": "Juz", "ar": "جزء" },
+  "hatimUnitSayfa": { "tr": "Sayfa", "en": "Page", "ar": "صفحة" },
+  "hatimMembers": {
+    "tr": "{count} üye", "en": "{count} members", "ar": "{count} عضو",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "hatimRound": {
+    "tr": "{round}. hatim", "en": "Khatm #{round}", "ar": "الختمة رقم {round}",
+    "placeholders": { "round": { "type": "int" } }
+  },
+  "hatimDeadline": {
+    "tr": "Hedef: {date}", "en": "Target: {date}", "ar": "الموعد: {date}",
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "hatimProgress": {
+    "tr": "{done}/{total}", "en": "{done}/{total}", "ar": "{done}/{total}",
+    "placeholders": { "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "hatimEmptyMine": { "tr": "Henüz bir hatim grubunuz yok. Yeni bir grup kurun ya da Keşfet sekmesinden bir gruba katılın.", "en": "You have no khatm groups yet. Create a new one or join a group from the Discover tab.", "ar": "ليس لديك مجموعات ختمة بعد. أنشئ مجموعة جديدة أو انضم إلى مجموعة من تبويب الاستكشاف." },
+  "hatimEmptyDiscover": { "tr": "Şu an katılabileceğiniz başka grup yok.", "en": "There are no other groups you can join right now.", "ar": "لا توجد مجموعات أخرى يمكنك الانضمام إليها حاليًا." },
+  "hatimLoadError": { "tr": "Gruplar yüklenemedi", "en": "Groups could not be loaded", "ar": "تعذّر تحميل المجموعات" },
+  "hatimCompletedBadge": { "tr": "Tamamlandı", "en": "Completed", "ar": "مكتملة" },
+  "hatimPrivateBadge": { "tr": "Acenteye özel", "en": "Agency only", "ar": "خاصة بالوكالة" },
+  "hatimPublicBadge": { "tr": "Herkese açık", "en": "Public", "ar": "عامة" },
+  "hatimCreateTitle": { "tr": "Yeni hatim grubu", "en": "New khatm group", "ar": "مجموعة ختمة جديدة" },
+  "hatimEditTitle": { "tr": "Grubu düzenle", "en": "Edit group", "ar": "تعديل المجموعة" },
+  "hatimFieldName": { "tr": "Grup adı", "en": "Group name", "ar": "اسم المجموعة" },
+  "hatimFieldNameHint": { "tr": "Örn: Annem için hatim", "en": "E.g. Khatm for my mother", "ar": "مثال: ختمة لوالدتي" },
+  "hatimNameInvalid": { "tr": "Grup adı 3 ile 60 karakter arasında olmalı", "en": "The group name must be 3 to 60 characters", "ar": "يجب أن يكون اسم المجموعة بين 3 و60 حرفًا" },
+  "hatimFieldNiyet": { "tr": "Niyet / dua (isteğe bağlı)", "en": "Intention / prayer (optional)", "ar": "النية / الدعاء (اختياري)" },
+  "hatimFieldNiyetHint": { "tr": "Hatim kimin için, hangi niyetle okunuyor?", "en": "Who is this khatm for, and with what intention?", "ar": "لمن هذه الختمة وبأي نية؟" },
+  "hatimNiyetInvalid": { "tr": "Niyet en fazla 300 karakter olabilir", "en": "The intention can be at most 300 characters", "ar": "يجب ألا تتجاوز النية 300 حرف" },
+  "hatimUnitLabel": { "tr": "Nasıl paylaşılsın?", "en": "How should it be shared?", "ar": "كيف تُقسَّم الختمة؟" },
+  "hatimUnitCuzDesc": { "tr": "30 cüz. Her üye bir veya birkaç cüz alır.", "en": "30 juz. Each member takes one or more juz.", "ar": "30 جزءًا. يأخذ كل عضو جزءًا أو أكثر." },
+  "hatimUnitSayfaDesc": { "tr": "604 sayfa. Kalabalık gruplarla kısa sürede biter.", "en": "604 pages. Finishes quickly with large groups.", "ar": "604 صفحات. تنتهي سريعًا مع المجموعات الكبيرة." },
+  "hatimUnitLocked": { "tr": "Paylaşım birimi grup kurulduktan sonra değiştirilemez.", "en": "The sharing unit cannot be changed after the group is created.", "ar": "لا يمكن تغيير وحدة التقسيم بعد إنشاء المجموعة." },
+  "hatimVisibilityLabel": { "tr": "Kimler görebilir?", "en": "Who can see it?", "ar": "من يمكنه رؤيتها؟" },
+  "hatimPublicTitle": { "tr": "Herkese açık", "en": "Public", "ar": "عامة" },
+  "hatimPublicDesc": { "tr": "Uygulamayı kullanan herkes grubu Keşfet sekmesinde görür ve katılabilir.", "en": "Everyone using the app sees the group in Discover and can join.", "ar": "يرى جميع مستخدمي التطبيق المجموعة في الاستكشاف ويمكنهم الانضمام." },
+  "hatimPrivateTitle": { "tr": "Yalnız acentem", "en": "My agency only", "ar": "وكالتي فقط" },
+  "hatimPrivateDesc": { "tr": "Grubu yalnızca sizinle aynı acentedeki kişiler görür ve katılabilir.", "en": "Only people in the same agency as you can see and join the group.", "ar": "لا يرى المجموعة ولا ينضم إليها إلا من هم في وكالتك نفسها." },
+  "hatimDeadlineLabel": { "tr": "Hedef tarih (isteğe bağlı)", "en": "Target date (optional)", "ar": "التاريخ المستهدف (اختياري)" },
+  "hatimDeadlineNone": { "tr": "Tarih seçilmedi", "en": "No date selected", "ar": "لم يُحدَّد تاريخ" },
+  "hatimDeadlineClear": { "tr": "Kaldır", "en": "Clear", "ar": "إزالة" },
+  "hatimCreateButton": { "tr": "Grubu oluştur", "en": "Create group", "ar": "إنشاء المجموعة" },
+  "hatimSave": { "tr": "Kaydet", "en": "Save", "ar": "حفظ" },
+  "hatimCreated": { "tr": "Hatim grubu oluşturuldu", "en": "Khatm group created", "ar": "تم إنشاء مجموعة الختمة" },
+  "hatimJoin": { "tr": "Gruba katıl", "en": "Join group", "ar": "انضم إلى المجموعة" },
+  "hatimJoined": { "tr": "Gruba katıldınız", "en": "You joined the group", "ar": "انضممت إلى المجموعة" },
+  "hatimLeave": { "tr": "Gruptan ayrıl", "en": "Leave group", "ar": "مغادرة المجموعة" },
+  "hatimLeaveConfirm": { "tr": "Bu gruptan ayrılmak istiyor musunuz?", "en": "Do you want to leave this group?", "ar": "هل تريد مغادرة هذه المجموعة؟" },
+  "hatimEdit": { "tr": "Düzenle", "en": "Edit", "ar": "تعديل" },
+  "hatimDelete": { "tr": "Grubu sil", "en": "Delete group", "ar": "حذف المجموعة" },
+  "hatimDeleteConfirm": { "tr": "Grup ve tüm ilerlemesi silinecek. Emin misiniz?", "en": "The group and all its progress will be deleted. Are you sure?", "ar": "ستُحذف المجموعة وكل تقدّمها. هل أنت متأكد؟" },
+  "hatimShare": { "tr": "Davet et", "en": "Invite", "ar": "دعوة" },
+  "hatimInviteText": {
+    "tr": "\"{name}\" hatim grubuna sen de katıl! Umre Rehberim uygulamasında Dualar > Toplu Hatim bölümünden gruba ulaşabilirsin.",
+    "en": "Join the \"{name}\" khatm group! Find it in the Umre Rehberim app under Duas > Group Khatm.",
+    "ar": "انضم إلى مجموعة الختمة \"{name}\"! تجدها في تطبيق Umre Rehberim ضمن الأدعية > الختمة الجماعية.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimInviteCopied": { "tr": "Davet metni panoya kopyalandı", "en": "Invitation text copied to clipboard", "ar": "تم نسخ نص الدعوة" },
+  "hatimTakeConfirmCuz": {
+    "tr": "{n}. cüzü almak istiyor musunuz?", "en": "Do you want to take juz {n}?", "ar": "هل تريد أخذ الجزء {n}؟",
+    "placeholders": { "n": { "type": "int" } }
+  },
+  "hatimTakeConfirmSayfa": {
+    "tr": "{n}. sayfayı almak istiyor musunuz?", "en": "Do you want to take page {n}?", "ar": "هل تريد أخذ الصفحة {n}؟",
+    "placeholders": { "n": { "type": "int" } }
+  },
+  "hatimTake": { "tr": "Al", "en": "Take", "ar": "خذ" },
+  "hatimCancel": { "tr": "Vazgeç", "en": "Cancel", "ar": "إلغاء" },
+  "hatimConfirm": { "tr": "Evet", "en": "Yes", "ar": "نعم" },
+  "hatimPartCuz": {
+    "tr": "{n}. cüz", "en": "Juz {n}", "ar": "الجزء {n}",
+    "placeholders": { "n": { "type": "int" } }
+  },
+  "hatimPartSayfa": {
+    "tr": "{n}. sayfa", "en": "Page {n}", "ar": "الصفحة {n}",
+    "placeholders": { "n": { "type": "int" } }
+  },
+  "hatimStartReading": { "tr": "Okumaya başla", "en": "Start reading", "ar": "ابدأ القراءة" },
+  "hatimMarkDone": { "tr": "Bitirdim", "en": "I finished", "ar": "أنهيت" },
+  "hatimRelease": { "tr": "Bırak", "en": "Release", "ar": "تخلَّ عنه" },
+  "hatimReleaseOther": { "tr": "Parçayı boşa çıkar", "en": "Free this part", "ar": "تحرير هذا الجزء" },
+  "hatimReleaseOtherConfirm": {
+    "tr": "{name} adlı kişinin aldığı parça boşa çıkarılsın mı?", "en": "Free the part taken by {name}?", "ar": "هل تريد تحرير الجزء الذي أخذه {name}؟",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimTakenBy": {
+    "tr": "Alan: {name}", "en": "Taken by {name}", "ar": "أخذه: {name}",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimDoneBy": {
+    "tr": "Okuyan: {name}", "en": "Read by {name}", "ar": "قرأه: {name}",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimTakenToast": { "tr": "Parça size ayrıldı. Hayırlı okumalar!", "en": "The part is yours. Blessed reading!", "ar": "أصبح الجزء لك. قراءة مباركة!" },
+  "hatimDoneToast": { "tr": "Allah kabul etsin!", "en": "May Allah accept it!", "ar": "تقبّل الله!" },
+  "hatimCompletedBanner": { "tr": "Hatim tamamlandı, Allah kabul etsin", "en": "The khatm is complete, may Allah accept it", "ar": "اكتملت الختمة، تقبّل الله" },
+  "hatimNewRound": { "tr": "Yeni hatim başlat", "en": "Start a new khatm", "ar": "بدء ختمة جديدة" },
+  "hatimNewRoundConfirm": { "tr": "Aynı grupla yeni bir hatme başlansın mı? İlerleme sıfırlanır.", "en": "Start a new khatm with the same group? Progress will be reset.", "ar": "هل تبدأ ختمة جديدة بالمجموعة نفسها؟ سيُعاد ضبط التقدّم." },
+  "hatimLastEvent": { "tr": "Son hareketler", "en": "Latest activity", "ar": "آخر النشاطات" },
+  "hatimNotMember": { "tr": "Parça almak için önce gruba katılın.", "en": "Join the group first to take a part.", "ar": "انضم إلى المجموعة أولًا لتأخذ جزءًا." },
+  "hatimLegendFree": { "tr": "Boş", "en": "Free", "ar": "متاح" },
+  "hatimLegendTaken": { "tr": "Alındı", "en": "Taken", "ar": "مأخوذ" },
+  "hatimLegendMine": { "tr": "Benim", "en": "Mine", "ar": "لي" },
+  "hatimLegendDone": { "tr": "Bitti", "en": "Done", "ar": "منتهٍ" },
+  "hatimOwner": {
+    "tr": "Grubu kuran: {name}", "en": "Created by {name}", "ar": "أنشأها: {name}",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimGroupNotFound": { "tr": "Grup bulunamadı ya da silinmiş.", "en": "The group was not found or has been deleted.", "ar": "لم يُعثر على المجموعة أو تم حذفها." },
+  "hatimEvCreate": {
+    "tr": "{name} grubu kurdu", "en": "{name} created the group", "ar": "أنشأ {name} المجموعة",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimEvJoin": {
+    "tr": "{name} gruba katıldı", "en": "{name} joined the group", "ar": "انضم {name} إلى المجموعة",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimEvLeave": {
+    "tr": "{name} gruptan ayrıldı", "en": "{name} left the group", "ar": "غادر {name} المجموعة",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimEvTakeCuz": {
+    "tr": "{name} {n}. cüzü aldı", "en": "{name} took juz {n}", "ar": "أخذ {name} الجزء {n}",
+    "placeholders": { "name": { "type": "String" }, "n": { "type": "int" } }
+  },
+  "hatimEvTakeSayfa": {
+    "tr": "{name} {n}. sayfayı aldı", "en": "{name} took page {n}", "ar": "أخذ {name} الصفحة {n}",
+    "placeholders": { "name": { "type": "String" }, "n": { "type": "int" } }
+  },
+  "hatimEvRelease": {
+    "tr": "{name} bir parçayı bıraktı", "en": "{name} released a part", "ar": "تخلّى {name} عن جزء",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimEvDoneCuz": {
+    "tr": "{name} {n}. cüzü bitirdi ({done}/{total})", "en": "{name} finished juz {n} ({done}/{total})", "ar": "أنهى {name} الجزء {n} ({done}/{total})",
+    "placeholders": { "name": { "type": "String" }, "n": { "type": "int" }, "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "hatimEvDoneSayfa": {
+    "tr": "{name} {n}. sayfayı bitirdi ({done}/{total})", "en": "{name} finished page {n} ({done}/{total})", "ar": "أنهى {name} الصفحة {n} ({done}/{total})",
+    "placeholders": { "name": { "type": "String" }, "n": { "type": "int" }, "done": { "type": "int" }, "total": { "type": "int" } }
+  },
+  "hatimEvCompleted": { "tr": "Hatim tamamlandı! Allah kabul etsin", "en": "The khatm is complete! May Allah accept it", "ar": "اكتملت الختمة! تقبّل الله" },
+  "hatimEvNewRound": {
+    "tr": "{round}. hatim başladı", "en": "Khatm #{round} has started", "ar": "بدأت الختمة رقم {round}",
+    "placeholders": { "round": { "type": "int" } }
+  },
+  "hatimErrTakenCuz": { "tr": "Bu cüz az önce başkası tarafından alındı", "en": "This juz was just taken by someone else", "ar": "أخذ شخص آخر هذا الجزء للتو" },
+  "hatimErrTakenSayfa": { "tr": "Bu sayfa az önce başkası tarafından alındı", "en": "This page was just taken by someone else", "ar": "أخذ شخص آخر هذه الصفحة للتو" },
+  "hatimErrPermission": { "tr": "Bu işlem için yetkiniz yok", "en": "You are not allowed to do this", "ar": "ليست لديك صلاحية لهذا الإجراء" },
+  "hatimErrNetwork": { "tr": "Bağlantı sorunu. Lütfen tekrar deneyin.", "en": "Connection problem. Please try again.", "ar": "مشكلة في الاتصال. يرجى المحاولة مرة أخرى." },
+  "hatimErrGeneric": { "tr": "İşlem tamamlanamadı. Lütfen tekrar deneyin.", "en": "The action could not be completed. Please try again.", "ar": "تعذّر إتمام العملية. يرجى المحاولة مرة أخرى." },
+  "hatimErrFull": { "tr": "Grup dolu (en fazla 200 üye)", "en": "The group is full (200 members max)", "ar": "المجموعة ممتلئة (200 عضو كحد أقصى)" },
+  "hatimErrAlreadyDone": { "tr": "Bu parça zaten okunmuş", "en": "This part has already been read", "ar": "تمت قراءة هذا الجزء بالفعل" },
+  "hatimErrNotActive": { "tr": "Bu hatim tamamlandı. Yeni hatim başlatılmasını bekleyin.", "en": "This khatm is complete. Wait for a new one to start.", "ar": "اكتملت هذه الختمة. انتظر بدء ختمة جديدة." },
+  "hatimErrNotSignedIn": { "tr": "Oturum bulunamadı. Lütfen tekrar giriş yapın.", "en": "No session found. Please sign in again.", "ar": "لم يتم العثور على جلسة. يرجى تسجيل الدخول مجددًا." },
+  "hatimErrNotYours": { "tr": "Bu parça artık sizde değil", "en": "This part is no longer yours", "ar": "لم يعد هذا الجزء لك" }
+}

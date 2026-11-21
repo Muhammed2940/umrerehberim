@@ -103,6 +103,16 @@ Widget buildAdminDrawer(BuildContext context) {
                     Navigator.of(context).pushNamed(m.route);
                   },
                 ),
+              // Toplu Hatim: yöneticiler de grup kurup katılabilir.
+              DrawerMenuCard(
+                title: t.hatimTitle,
+                subtitle: t.hatimCardSubtitle,
+                icon: Icons.groups_rounded,
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushNamed('/hatim');
+                },
+              ),
             ],
           ),
         ),

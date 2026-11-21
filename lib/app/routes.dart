@@ -57,6 +57,9 @@ import '../features/control_center/messages/cc_messages_screen.dart';
 import '../features/control_center/messages/agency_inbox_screen.dart';
 import '../features/control_center/audit/cc_audit_screen.dart';
 import '../features/control_center/staff/cc_staff_screen.dart';
+import '../features/hatim/screens/hatim_create_screen.dart';
+import '../features/hatim/screens/hatim_group_screen.dart';
+import '../features/hatim/screens/hatim_home_screen.dart';
 import 'app_wrapper.dart';
 
 /// Rota adları orijinal uygulamayla aynı. Parametre gereken ekranlar
@@ -95,6 +98,10 @@ class AppRoutes {
         '/technical-support': (_) => const TechnicalSupportScreen(),
         '/dualar': (_) => const Dualar(),
         '/kuran': (_) => const QuranPage(),
+        // Toplu Hatim ('/hatim/create' düzenleme için HatimGroup, '/hatim/group' gid argümanı alır)
+        '/hatim': (_) => const HatimHomeScreen(),
+        '/hatim/create': (_) => const HatimCreateScreen(),
+        '/hatim/group': (_) => const HatimGroupScreen(),
         '/rehber_iletisim': (_) => const RehberIletisimPage(),
         '/bildirimler': (_) => const BildirimlerScreen(),
         '/telsiz': (_) => const TelsizScreen(),

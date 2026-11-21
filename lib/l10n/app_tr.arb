@@ -2075,7 +2075,17 @@
   "coreStartFailed": "Uygulama başlatılamadı",
   "coreStarting": "Başlatılıyor...",
   "coreUnknownPage": "Bilinmeyen sayfa",
+  "cuzdanAdjustmentReason": "Açıklama",
+  "cuzdanAnalysisEmpty": "Bu dönemde harcama yok.",
+  "cuzdanAnalysisTitle": "Harcama analizi",
+  "cuzdanBalanceLabel": "Puan bakiyem",
+  "cuzdanCancelReason": "İptal sebebi",
   "cuzdanCancelled": "İptal edildi",
+  "cuzdanCancelledShort": "İptal",
+  "cuzdanCardBrand": "Umre Rehberim",
+  "cuzdanCardHolder": "KART SAHİBİ",
+  "cuzdanCardPoints": "PUAN",
+  "cuzdanCardSubtitle": "Sadakat Kartı",
   "cuzdanClose": "Kapat",
   "cuzdanCodeCreating": "Kod hazırlanıyor…",
   "cuzdanCodeError": "Kod oluşturulamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
@@ -2116,6 +2126,8 @@
       }
     }
   },
+  "cuzdanCouponCode": "Kupon kodu",
+  "cuzdanCouponDetails": "Kupon ayrıntıları",
   "cuzdanCouponHowTo": "Kullanmak için dükkanda indirim kodunu açıp kuponu seç. Her kupon bir kez kullanılır.",
   "cuzdanCouponNone": "Kupon kullanma",
   "cuzdanCouponOff": "İNDİRİM",
@@ -2129,6 +2141,7 @@
       }
     }
   },
+  "cuzdanCouponTapHint": "Ayrıntılar için dokun",
   "cuzdanCouponUse": "Kupon kullan",
   "cuzdanCouponUsed": "Kupon {code}",
   "@cuzdanCouponUsed": {
@@ -2146,6 +2159,14 @@
       }
     }
   },
+  "cuzdanDaysAgo": "{days} gün önce",
+  "@cuzdanDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "cuzdanDiscount": "İndirim",
   "cuzdanEmpty": "Henüz alışveriş yok. Anlaşmalı dükkanlarda QR kodunuzu göstererek indirim ve puan kazanın.",
   "cuzdanFilterAll": "Tümü",
@@ -2154,6 +2175,7 @@
   "cuzdanGiftPoints": "Hediye puan",
   "cuzdanGoShops": "Anlaşmalı Dükkanlar",
   "cuzdanGross": "Tutar",
+  "cuzdanHideBalance": "Bakiyeyi gizle",
   "cuzdanHowEarn": "Anlaşmalı dükkanlarda harcadığınız her 1 SAR için 1 puan kazanırsınız.",
   "cuzdanHowPay": "Puanla ödediğinizde dükkanın indirimi yine uygulanır.",
   "cuzdanHowRecord": "Uygulama ödeme almaz; yalnızca alışverişinizi kaydeder.",
@@ -2166,7 +2188,9 @@
   "cuzdanMethodPoints": "Puan",
   "cuzdanMyCoupons": "Kuponlarım",
   "cuzdanMyPurchases": "Harcamalarım",
+  "cuzdanMyQr": "QR'ım",
   "cuzdanNoFilterMatch": "Bu filtreye uygun işlem yok.",
+  "cuzdanNoShops": "Anlaşmalı dükkân bulunamadı.",
   "cuzdanNotifEarned": "{shop}: {amount} SAR ödendi, {points} puan kazandınız.",
   "@cuzdanNotifEarned": {
     "placeholders": {
@@ -2196,7 +2220,18 @@
     }
   },
   "cuzdanPaid": "Ödenen",
+  "cuzdanPaidWithPoints": "Puanla ödenen",
   "cuzdanPaymentMethod": "Ödeme türü",
+  "cuzdanPickShopHint": "QR kodunuz seçtiğiniz dükkân için oluşturulur.",
+  "cuzdanPickShopTitle": "Hangi dükkândasınız?",
+  "cuzdanPointsAmount": "{points} puan",
+  "@cuzdanPointsAmount": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      }
+    }
+  },
   "cuzdanPointsCorrection": "Puan düzeltmesi",
   "cuzdanPointsEarned": "Kazanılan puan",
   "cuzdanPointsMinus": "−{points} puan",
@@ -2235,6 +2270,7 @@
     }
   },
   "cuzdanPurchaseCount": "Alışveriş",
+  "cuzdanPurchaseCountLabel": "Alışveriş sayısı",
   "cuzdanRetry": "Tekrar dene",
   "cuzdanReviewAction": "Değerlendir",
   "cuzdanReviewComment": "Yorumun (isteğe bağlı)",
@@ -2250,6 +2286,7 @@
   "cuzdanReviewStar4": "İyi",
   "cuzdanReviewStar5": "Mükemmel",
   "cuzdanReviewThanks": "Değerlendirmen için teşekkürler!",
+  "cuzdanReviewThis": "Bu alışverişi değerlendir",
   "cuzdanReviewTitle": "Alışverişi değerlendir",
   "cuzdanReviewYours": "Değerlendirmen",
   "cuzdanSar": "{amount} SAR",
@@ -2260,10 +2297,47 @@
       }
     }
   },
+  "cuzdanShopDiscount": "Dükkân indirimi",
+  "cuzdanShopDiscountPct": "Dükkân indirimi %{percent}",
+  "@cuzdanShopDiscountPct": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanShops": "Dükkanlar",
+  "cuzdanShowBalance": "Bakiyeyi göster",
   "cuzdanSuccessTitle": "Alışveriş kaydedildi",
   "cuzdanTitle": "Harcamalarım ve Puanlarım",
+  "cuzdanToday": "Bugün",
   "cuzdanTotalDiscount": "Kazanılan indirim",
   "cuzdanTotalSpent": "Toplam harcama",
+  "cuzdanTxEarnedBig": "+{points} puan kazandınız",
+  "@cuzdanTxEarnedBig": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanTxSpentBig": "{points} puan kullandınız",
+  "@cuzdanTxSpentBig": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "cuzdanWorthRiyal": "≈ {value} riyal değerinde",
+  "@cuzdanWorthRiyal": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "cuzdanYesterday": "Dün",
   "dualarAllFilesDownloaded": "Tüm dosyalar başarıyla indirildi!",
   "dualarArabicText": "Arapça Metin",
   "dualarBookPageView": "Kitap sayfası görünümü",
@@ -2776,6 +2850,284 @@
   "esnafTitle": "Esnaf Paneli",
   "esnafTodaySummary": "Bugünün özeti",
   "esnafTxTitle": "Yeni işlem",
+  "hatimCancel": "Vazgeç",
+  "hatimCardSubtitle": "Birlikte hatim indirin, cüz cüz paylaşın",
+  "hatimCompletedBadge": "Tamamlandı",
+  "hatimCompletedBanner": "Hatim tamamlandı, Allah kabul etsin",
+  "hatimConfirm": "Evet",
+  "hatimCreateButton": "Grubu oluştur",
+  "hatimCreateTitle": "Yeni hatim grubu",
+  "hatimCreated": "Hatim grubu oluşturuldu",
+  "hatimDeadline": "Hedef: {date}",
+  "@hatimDeadline": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimDeadlineClear": "Kaldır",
+  "hatimDeadlineLabel": "Hedef tarih (isteğe bağlı)",
+  "hatimDeadlineNone": "Tarih seçilmedi",
+  "hatimDelete": "Grubu sil",
+  "hatimDeleteConfirm": "Grup ve tüm ilerlemesi silinecek. Emin misiniz?",
+  "hatimDoneBy": "Okuyan: {name}",
+  "@hatimDoneBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimDoneToast": "Allah kabul etsin!",
+  "hatimEdit": "Düzenle",
+  "hatimEditTitle": "Grubu düzenle",
+  "hatimEmptyDiscover": "Şu an katılabileceğiniz başka grup yok.",
+  "hatimEmptyMine": "Henüz bir hatim grubunuz yok. Yeni bir grup kurun ya da Keşfet sekmesinden bir gruba katılın.",
+  "hatimErrAlreadyDone": "Bu parça zaten okunmuş",
+  "hatimErrFull": "Grup dolu (en fazla 200 üye)",
+  "hatimErrGeneric": "İşlem tamamlanamadı. Lütfen tekrar deneyin.",
+  "hatimErrNetwork": "Bağlantı sorunu. Lütfen tekrar deneyin.",
+  "hatimErrNotActive": "Bu hatim tamamlandı. Yeni hatim başlatılmasını bekleyin.",
+  "hatimErrNotSignedIn": "Oturum bulunamadı. Lütfen tekrar giriş yapın.",
+  "hatimErrNotYours": "Bu parça artık sizde değil",
+  "hatimErrPermission": "Bu işlem için yetkiniz yok",
+  "hatimErrTakenCuz": "Bu cüz az önce başkası tarafından alındı",
+  "hatimErrTakenSayfa": "Bu sayfa az önce başkası tarafından alındı",
+  "hatimEvCompleted": "Hatim tamamlandı! Allah kabul etsin",
+  "hatimEvCreate": "{name} grubu kurdu",
+  "@hatimEvCreate": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimEvDoneCuz": "{name} {n}. cüzü bitirdi ({done}/{total})",
+  "@hatimEvDoneCuz": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      },
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimEvDoneSayfa": "{name} {n}. sayfayı bitirdi ({done}/{total})",
+  "@hatimEvDoneSayfa": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      },
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimEvJoin": "{name} gruba katıldı",
+  "@hatimEvJoin": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimEvLeave": "{name} gruptan ayrıldı",
+  "@hatimEvLeave": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimEvNewRound": "{round}. hatim başladı",
+  "@hatimEvNewRound": {
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimEvRelease": "{name} bir parçayı bıraktı",
+  "@hatimEvRelease": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimEvTakeCuz": "{name} {n}. cüzü aldı",
+  "@hatimEvTakeCuz": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimEvTakeSayfa": "{name} {n}. sayfayı aldı",
+  "@hatimEvTakeSayfa": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimFieldName": "Grup adı",
+  "hatimFieldNameHint": "Örn: Annem için hatim",
+  "hatimFieldNiyet": "Niyet / dua (isteğe bağlı)",
+  "hatimFieldNiyetHint": "Hatim kimin için, hangi niyetle okunuyor?",
+  "hatimGroupNotFound": "Grup bulunamadı ya da silinmiş.",
+  "hatimInviteCopied": "Davet metni panoya kopyalandı",
+  "hatimInviteText": "\"{name}\" hatim grubuna sen de katıl! Umre Rehberim uygulamasında Dualar > Toplu Hatim bölümünden gruba ulaşabilirsin.",
+  "@hatimInviteText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimJoin": "Gruba katıl",
+  "hatimJoined": "Gruba katıldınız",
+  "hatimLastEvent": "Son hareketler",
+  "hatimLeave": "Gruptan ayrıl",
+  "hatimLeaveConfirm": "Bu gruptan ayrılmak istiyor musunuz?",
+  "hatimLegendDone": "Bitti",
+  "hatimLegendFree": "Boş",
+  "hatimLegendMine": "Benim",
+  "hatimLegendTaken": "Alındı",
+  "hatimLoadError": "Gruplar yüklenemedi",
+  "hatimMarkDone": "Bitirdim",
+  "hatimMembers": "{count} üye",
+  "@hatimMembers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimNameInvalid": "Grup adı 3 ile 60 karakter arasında olmalı",
+  "hatimNewGroup": "Yeni hatim grubu",
+  "hatimNewRound": "Yeni hatim başlat",
+  "hatimNewRoundConfirm": "Aynı grupla yeni bir hatme başlansın mı? İlerleme sıfırlanır.",
+  "hatimNiyetInvalid": "Niyet en fazla 300 karakter olabilir",
+  "hatimNotMember": "Parça almak için önce gruba katılın.",
+  "hatimOwner": "Grubu kuran: {name}",
+  "@hatimOwner": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimPartCuz": "{n}. cüz",
+  "@hatimPartCuz": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimPartSayfa": "{n}. sayfa",
+  "@hatimPartSayfa": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimPrivateBadge": "Acenteye özel",
+  "hatimPrivateDesc": "Grubu yalnızca sizinle aynı acentedeki kişiler görür ve katılabilir.",
+  "hatimPrivateTitle": "Yalnız acentem",
+  "hatimProgress": "{done}/{total}",
+  "@hatimProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimPublicBadge": "Herkese açık",
+  "hatimPublicDesc": "Uygulamayı kullanan herkes grubu Keşfet sekmesinde görür ve katılabilir.",
+  "hatimPublicTitle": "Herkese açık",
+  "hatimRelease": "Bırak",
+  "hatimReleaseOther": "Parçayı boşa çıkar",
+  "hatimReleaseOtherConfirm": "{name} adlı kişinin aldığı parça boşa çıkarılsın mı?",
+  "@hatimReleaseOtherConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimRound": "{round}. hatim",
+  "@hatimRound": {
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimSave": "Kaydet",
+  "hatimShare": "Davet et",
+  "hatimStartReading": "Okumaya başla",
+  "hatimTabDiscover": "Keşfet",
+  "hatimTabMine": "Gruplarım",
+  "hatimTake": "Al",
+  "hatimTakeConfirmCuz": "{n}. cüzü almak istiyor musunuz?",
+  "@hatimTakeConfirmCuz": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimTakeConfirmSayfa": "{n}. sayfayı almak istiyor musunuz?",
+  "@hatimTakeConfirmSayfa": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "hatimTakenBy": "Alan: {name}",
+  "@hatimTakenBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimTakenToast": "Parça size ayrıldı. Hayırlı okumalar!",
+  "hatimTitle": "Toplu Hatim",
+  "hatimUnitCuz": "Cüz",
+  "hatimUnitCuzDesc": "30 cüz. Her üye bir veya birkaç cüz alır.",
+  "hatimUnitLabel": "Nasıl paylaşılsın?",
+  "hatimUnitLocked": "Paylaşım birimi grup kurulduktan sonra değiştirilemez.",
+  "hatimUnitSayfa": "Sayfa",
+  "hatimUnitSayfaDesc": "604 sayfa. Kalabalık gruplarla kısa sürede biter.",
+  "hatimVisibilityLabel": "Kimler görebilir?",
   "homeAnnouncement": "Duyuru",
   "homeBirthDate": "Doğum Tarihi",
   "homeCalendarNoAgency": "Acente bilginiz tanımlandığında program burada görünecek.",

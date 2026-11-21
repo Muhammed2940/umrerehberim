@@ -3,5 +3,5 @@
 Set-Location $PSScriptRoot
 Copy-Item -Path (Join-Path $PSScriptRoot '..\..\firestore.rules') -Destination (Join-Path $PSScriptRoot 'firestore.rules') -Force
 $env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
-$env:Path = "$env:JAVA_HOME\bin;$env:Path"
-firebase emulators:exec --only firestore --project demo-esnaf "node esnaf_rules.test.mjs && node cc_rules.test.mjs"
+$env:Path = "$env:JAVA_HOME\bin;$env:APPDATA\npm;$env:Path"
+& (Join-Path $PSScriptRoot 'node_modules\.bin\firebase.cmd') emulators:exec --only firestore --project demo-esnaf "node esnaf_rules.test.mjs && node cc_rules.test.mjs && node hatim_rules.test.mjs"

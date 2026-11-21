@@ -3599,7 +3599,37 @@ class AppLocalizationsTr extends AppLocalizations {
   String get coreUnknownPage => 'Bilinmeyen sayfa';
 
   @override
+  String get cuzdanAdjustmentReason => 'Açıklama';
+
+  @override
+  String get cuzdanAnalysisEmpty => 'Bu dönemde harcama yok.';
+
+  @override
+  String get cuzdanAnalysisTitle => 'Harcama analizi';
+
+  @override
+  String get cuzdanBalanceLabel => 'Puan bakiyem';
+
+  @override
+  String get cuzdanCancelReason => 'İptal sebebi';
+
+  @override
   String get cuzdanCancelled => 'İptal edildi';
+
+  @override
+  String get cuzdanCancelledShort => 'İptal';
+
+  @override
+  String get cuzdanCardBrand => 'Umre Rehberim';
+
+  @override
+  String get cuzdanCardHolder => 'KART SAHİBİ';
+
+  @override
+  String get cuzdanCardPoints => 'PUAN';
+
+  @override
+  String get cuzdanCardSubtitle => 'Sadakat Kartı';
 
   @override
   String get cuzdanClose => 'Kapat';
@@ -3647,6 +3677,12 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponCode => 'Kupon kodu';
+
+  @override
+  String get cuzdanCouponDetails => 'Kupon ayrıntıları';
+
+  @override
   String get cuzdanCouponHowTo =>
       'Kullanmak için dükkanda indirim kodunu açıp kuponu seç. Her kupon bir kez kullanılır.';
 
@@ -3669,6 +3705,9 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanCouponTapHint => 'Ayrıntılar için dokun';
+
+  @override
   String get cuzdanCouponUse => 'Kupon kullan';
 
   @override
@@ -3679,6 +3718,11 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String cuzdanCouponValidUntil(String date) {
     return 'Son gün $date';
+  }
+
+  @override
+  String cuzdanDaysAgo(int days) {
+    return '$days gün önce';
   }
 
   @override
@@ -3705,6 +3749,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get cuzdanGross => 'Tutar';
+
+  @override
+  String get cuzdanHideBalance => 'Bakiyeyi gizle';
 
   @override
   String get cuzdanHowEarn =>
@@ -3747,7 +3794,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cuzdanMyPurchases => 'Harcamalarım';
 
   @override
+  String get cuzdanMyQr => 'QR\'ım';
+
+  @override
   String get cuzdanNoFilterMatch => 'Bu filtreye uygun işlem yok.';
+
+  @override
+  String get cuzdanNoShops => 'Anlaşmalı dükkân bulunamadı.';
 
   @override
   String cuzdanNotifEarned(String shop, String amount, int points) {
@@ -3763,7 +3816,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cuzdanPaid => 'Ödenen';
 
   @override
+  String get cuzdanPaidWithPoints => 'Puanla ödenen';
+
+  @override
   String get cuzdanPaymentMethod => 'Ödeme türü';
+
+  @override
+  String get cuzdanPickShopHint =>
+      'QR kodunuz seçtiğiniz dükkân için oluşturulur.';
+
+  @override
+  String get cuzdanPickShopTitle => 'Hangi dükkândasınız?';
+
+  @override
+  String cuzdanPointsAmount(String points) {
+    return '$points puan';
+  }
 
   @override
   String get cuzdanPointsCorrection => 'Puan düzeltmesi';
@@ -3802,6 +3870,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get cuzdanPurchaseCount => 'Alışveriş';
+
+  @override
+  String get cuzdanPurchaseCountLabel => 'Alışveriş sayısı';
 
   @override
   String get cuzdanRetry => 'Tekrar dene';
@@ -3852,6 +3923,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cuzdanReviewThanks => 'Değerlendirmen için teşekkürler!';
 
   @override
+  String get cuzdanReviewThis => 'Bu alışverişi değerlendir';
+
+  @override
   String get cuzdanReviewTitle => 'Alışverişi değerlendir';
 
   @override
@@ -3863,16 +3937,51 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get cuzdanShopDiscount => 'Dükkân indirimi';
+
+  @override
+  String cuzdanShopDiscountPct(int percent) {
+    return 'Dükkân indirimi %$percent';
+  }
+
+  @override
+  String get cuzdanShops => 'Dükkanlar';
+
+  @override
+  String get cuzdanShowBalance => 'Bakiyeyi göster';
+
+  @override
   String get cuzdanSuccessTitle => 'Alışveriş kaydedildi';
 
   @override
   String get cuzdanTitle => 'Harcamalarım ve Puanlarım';
 
   @override
+  String get cuzdanToday => 'Bugün';
+
+  @override
   String get cuzdanTotalDiscount => 'Kazanılan indirim';
 
   @override
   String get cuzdanTotalSpent => 'Toplam harcama';
+
+  @override
+  String cuzdanTxEarnedBig(int points) {
+    return '+$points puan kazandınız';
+  }
+
+  @override
+  String cuzdanTxSpentBig(int points) {
+    return '$points puan kullandınız';
+  }
+
+  @override
+  String cuzdanWorthRiyal(String value) {
+    return '≈ $value riyal değerinde';
+  }
+
+  @override
+  String get cuzdanYesterday => 'Dün';
 
   @override
   String get dualarAllFilesDownloaded => 'Tüm dosyalar başarıyla indirildi!';
@@ -4660,6 +4769,350 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get esnafTxTitle => 'Yeni işlem';
+
+  @override
+  String get hatimCancel => 'Vazgeç';
+
+  @override
+  String get hatimCardSubtitle => 'Birlikte hatim indirin, cüz cüz paylaşın';
+
+  @override
+  String get hatimCompletedBadge => 'Tamamlandı';
+
+  @override
+  String get hatimCompletedBanner => 'Hatim tamamlandı, Allah kabul etsin';
+
+  @override
+  String get hatimConfirm => 'Evet';
+
+  @override
+  String get hatimCreateButton => 'Grubu oluştur';
+
+  @override
+  String get hatimCreateTitle => 'Yeni hatim grubu';
+
+  @override
+  String get hatimCreated => 'Hatim grubu oluşturuldu';
+
+  @override
+  String hatimDeadline(String date) {
+    return 'Hedef: $date';
+  }
+
+  @override
+  String get hatimDeadlineClear => 'Kaldır';
+
+  @override
+  String get hatimDeadlineLabel => 'Hedef tarih (isteğe bağlı)';
+
+  @override
+  String get hatimDeadlineNone => 'Tarih seçilmedi';
+
+  @override
+  String get hatimDelete => 'Grubu sil';
+
+  @override
+  String get hatimDeleteConfirm =>
+      'Grup ve tüm ilerlemesi silinecek. Emin misiniz?';
+
+  @override
+  String hatimDoneBy(String name) {
+    return 'Okuyan: $name';
+  }
+
+  @override
+  String get hatimDoneToast => 'Allah kabul etsin!';
+
+  @override
+  String get hatimEdit => 'Düzenle';
+
+  @override
+  String get hatimEditTitle => 'Grubu düzenle';
+
+  @override
+  String get hatimEmptyDiscover => 'Şu an katılabileceğiniz başka grup yok.';
+
+  @override
+  String get hatimEmptyMine =>
+      'Henüz bir hatim grubunuz yok. Yeni bir grup kurun ya da Keşfet sekmesinden bir gruba katılın.';
+
+  @override
+  String get hatimErrAlreadyDone => 'Bu parça zaten okunmuş';
+
+  @override
+  String get hatimErrFull => 'Grup dolu (en fazla 200 üye)';
+
+  @override
+  String get hatimErrGeneric => 'İşlem tamamlanamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get hatimErrNetwork => 'Bağlantı sorunu. Lütfen tekrar deneyin.';
+
+  @override
+  String get hatimErrNotActive =>
+      'Bu hatim tamamlandı. Yeni hatim başlatılmasını bekleyin.';
+
+  @override
+  String get hatimErrNotSignedIn =>
+      'Oturum bulunamadı. Lütfen tekrar giriş yapın.';
+
+  @override
+  String get hatimErrNotYours => 'Bu parça artık sizde değil';
+
+  @override
+  String get hatimErrPermission => 'Bu işlem için yetkiniz yok';
+
+  @override
+  String get hatimErrTakenCuz => 'Bu cüz az önce başkası tarafından alındı';
+
+  @override
+  String get hatimErrTakenSayfa => 'Bu sayfa az önce başkası tarafından alındı';
+
+  @override
+  String get hatimEvCompleted => 'Hatim tamamlandı! Allah kabul etsin';
+
+  @override
+  String hatimEvCreate(String name) {
+    return '$name grubu kurdu';
+  }
+
+  @override
+  String hatimEvDoneCuz(String name, int n, int done, int total) {
+    return '$name $n. cüzü bitirdi ($done/$total)';
+  }
+
+  @override
+  String hatimEvDoneSayfa(String name, int n, int done, int total) {
+    return '$name $n. sayfayı bitirdi ($done/$total)';
+  }
+
+  @override
+  String hatimEvJoin(String name) {
+    return '$name gruba katıldı';
+  }
+
+  @override
+  String hatimEvLeave(String name) {
+    return '$name gruptan ayrıldı';
+  }
+
+  @override
+  String hatimEvNewRound(int round) {
+    return '$round. hatim başladı';
+  }
+
+  @override
+  String hatimEvRelease(String name) {
+    return '$name bir parçayı bıraktı';
+  }
+
+  @override
+  String hatimEvTakeCuz(String name, int n) {
+    return '$name $n. cüzü aldı';
+  }
+
+  @override
+  String hatimEvTakeSayfa(String name, int n) {
+    return '$name $n. sayfayı aldı';
+  }
+
+  @override
+  String get hatimFieldName => 'Grup adı';
+
+  @override
+  String get hatimFieldNameHint => 'Örn: Annem için hatim';
+
+  @override
+  String get hatimFieldNiyet => 'Niyet / dua (isteğe bağlı)';
+
+  @override
+  String get hatimFieldNiyetHint => 'Hatim kimin için, hangi niyetle okunuyor?';
+
+  @override
+  String get hatimGroupNotFound => 'Grup bulunamadı ya da silinmiş.';
+
+  @override
+  String get hatimInviteCopied => 'Davet metni panoya kopyalandı';
+
+  @override
+  String hatimInviteText(String name) {
+    return '\"$name\" hatim grubuna sen de katıl! Umre Rehberim uygulamasında Dualar > Toplu Hatim bölümünden gruba ulaşabilirsin.';
+  }
+
+  @override
+  String get hatimJoin => 'Gruba katıl';
+
+  @override
+  String get hatimJoined => 'Gruba katıldınız';
+
+  @override
+  String get hatimLastEvent => 'Son hareketler';
+
+  @override
+  String get hatimLeave => 'Gruptan ayrıl';
+
+  @override
+  String get hatimLeaveConfirm => 'Bu gruptan ayrılmak istiyor musunuz?';
+
+  @override
+  String get hatimLegendDone => 'Bitti';
+
+  @override
+  String get hatimLegendFree => 'Boş';
+
+  @override
+  String get hatimLegendMine => 'Benim';
+
+  @override
+  String get hatimLegendTaken => 'Alındı';
+
+  @override
+  String get hatimLoadError => 'Gruplar yüklenemedi';
+
+  @override
+  String get hatimMarkDone => 'Bitirdim';
+
+  @override
+  String hatimMembers(int count) {
+    return '$count üye';
+  }
+
+  @override
+  String get hatimNameInvalid => 'Grup adı 3 ile 60 karakter arasında olmalı';
+
+  @override
+  String get hatimNewGroup => 'Yeni hatim grubu';
+
+  @override
+  String get hatimNewRound => 'Yeni hatim başlat';
+
+  @override
+  String get hatimNewRoundConfirm =>
+      'Aynı grupla yeni bir hatme başlansın mı? İlerleme sıfırlanır.';
+
+  @override
+  String get hatimNiyetInvalid => 'Niyet en fazla 300 karakter olabilir';
+
+  @override
+  String get hatimNotMember => 'Parça almak için önce gruba katılın.';
+
+  @override
+  String hatimOwner(String name) {
+    return 'Grubu kuran: $name';
+  }
+
+  @override
+  String hatimPartCuz(int n) {
+    return '$n. cüz';
+  }
+
+  @override
+  String hatimPartSayfa(int n) {
+    return '$n. sayfa';
+  }
+
+  @override
+  String get hatimPrivateBadge => 'Acenteye özel';
+
+  @override
+  String get hatimPrivateDesc =>
+      'Grubu yalnızca sizinle aynı acentedeki kişiler görür ve katılabilir.';
+
+  @override
+  String get hatimPrivateTitle => 'Yalnız acentem';
+
+  @override
+  String hatimProgress(int done, int total) {
+    return '$done/$total';
+  }
+
+  @override
+  String get hatimPublicBadge => 'Herkese açık';
+
+  @override
+  String get hatimPublicDesc =>
+      'Uygulamayı kullanan herkes grubu Keşfet sekmesinde görür ve katılabilir.';
+
+  @override
+  String get hatimPublicTitle => 'Herkese açık';
+
+  @override
+  String get hatimRelease => 'Bırak';
+
+  @override
+  String get hatimReleaseOther => 'Parçayı boşa çıkar';
+
+  @override
+  String hatimReleaseOtherConfirm(String name) {
+    return '$name adlı kişinin aldığı parça boşa çıkarılsın mı?';
+  }
+
+  @override
+  String hatimRound(int round) {
+    return '$round. hatim';
+  }
+
+  @override
+  String get hatimSave => 'Kaydet';
+
+  @override
+  String get hatimShare => 'Davet et';
+
+  @override
+  String get hatimStartReading => 'Okumaya başla';
+
+  @override
+  String get hatimTabDiscover => 'Keşfet';
+
+  @override
+  String get hatimTabMine => 'Gruplarım';
+
+  @override
+  String get hatimTake => 'Al';
+
+  @override
+  String hatimTakeConfirmCuz(int n) {
+    return '$n. cüzü almak istiyor musunuz?';
+  }
+
+  @override
+  String hatimTakeConfirmSayfa(int n) {
+    return '$n. sayfayı almak istiyor musunuz?';
+  }
+
+  @override
+  String hatimTakenBy(String name) {
+    return 'Alan: $name';
+  }
+
+  @override
+  String get hatimTakenToast => 'Parça size ayrıldı. Hayırlı okumalar!';
+
+  @override
+  String get hatimTitle => 'Toplu Hatim';
+
+  @override
+  String get hatimUnitCuz => 'Cüz';
+
+  @override
+  String get hatimUnitCuzDesc => '30 cüz. Her üye bir veya birkaç cüz alır.';
+
+  @override
+  String get hatimUnitLabel => 'Nasıl paylaşılsın?';
+
+  @override
+  String get hatimUnitLocked =>
+      'Paylaşım birimi grup kurulduktan sonra değiştirilemez.';
+
+  @override
+  String get hatimUnitSayfa => 'Sayfa';
+
+  @override
+  String get hatimUnitSayfaDesc =>
+      '604 sayfa. Kalabalık gruplarla kısa sürede biter.';
+
+  @override
+  String get hatimVisibilityLabel => 'Kimler görebilir?';
 
   @override
   String get homeAnnouncement => 'Duyuru';

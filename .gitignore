@@ -28,3 +28,7 @@ tool/rules-test/firestore.rules
 
 # Öykünücü/firebase logları
 *.log
+
+# Kural testi çıktıları
+tool/rules-test/sonuc.txt
+tool/rules-test/firestore-debug.log

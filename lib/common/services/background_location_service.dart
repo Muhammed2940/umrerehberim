@@ -14,6 +14,7 @@ import '../../core/providers/app_state_provider.dart';
 import '../../core/providers/locale_provider.dart';
 import '../../core/services/local_cache_service.dart';
 import '../../features/auth/models/user_model.dart';
+import '../../features/hatim/data/hatim_watcher.dart';
 import '../../core/utils/firebase_init.dart';
 import 'local_notification_service.dart';
 import 'location_firebase_service.dart';
@@ -115,6 +116,8 @@ class BackgroundLocationService {
     _busy = true;
     _ensuredFor = user.id;
     _user = user;
+    // Toplu Hatim bildirimleri: her zaman ana isolate'te (esnaf buraya gelmez).
+    if (!user.isMerchant) HatimWatcher.startFor(user.id);
     try {
       // Genel adminler ve platform personeli (destek/muhasebe) konum paylaşmaz.
       final canShare = !user.isGlobalAdmin && !user.isPlatformStaff && (user.agencyId ?? '').isNotEmpty;
@@ -167,6 +170,7 @@ class BackgroundLocationService {
     }
     await _mainWatcher?.stop();
     _mainWatcher = null;
+    await HatimWatcher.stop(); // Toplu Hatim dinleyicisi de oturumla kapanır.
   }
 
   static Future<void> _start() async {

@@ -6674,11 +6674,71 @@ abstract class AppLocalizations {
   /// **'Bilinmeyen sayfa'**
   String get coreUnknownPage;
 
+  /// No description provided for @cuzdanAdjustmentReason.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açıklama'**
+  String get cuzdanAdjustmentReason;
+
+  /// No description provided for @cuzdanAnalysisEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu dönemde harcama yok.'**
+  String get cuzdanAnalysisEmpty;
+
+  /// No description provided for @cuzdanAnalysisTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Harcama analizi'**
+  String get cuzdanAnalysisTitle;
+
+  /// No description provided for @cuzdanBalanceLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Puan bakiyem'**
+  String get cuzdanBalanceLabel;
+
+  /// No description provided for @cuzdanCancelReason.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal sebebi'**
+  String get cuzdanCancelReason;
+
   /// No description provided for @cuzdanCancelled.
   ///
   /// In tr, this message translates to:
   /// **'İptal edildi'**
   String get cuzdanCancelled;
+
+  /// No description provided for @cuzdanCancelledShort.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal'**
+  String get cuzdanCancelledShort;
+
+  /// No description provided for @cuzdanCardBrand.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Rehberim'**
+  String get cuzdanCardBrand;
+
+  /// No description provided for @cuzdanCardHolder.
+  ///
+  /// In tr, this message translates to:
+  /// **'KART SAHİBİ'**
+  String get cuzdanCardHolder;
+
+  /// No description provided for @cuzdanCardPoints.
+  ///
+  /// In tr, this message translates to:
+  /// **'PUAN'**
+  String get cuzdanCardPoints;
+
+  /// No description provided for @cuzdanCardSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sadakat Kartı'**
+  String get cuzdanCardSubtitle;
 
   /// No description provided for @cuzdanClose.
   ///
@@ -6752,6 +6812,18 @@ abstract class AppLocalizations {
   /// **'Bu dükkanda {count} kupon kullanılabilir'**
   String cuzdanCouponAvailable(int count);
 
+  /// No description provided for @cuzdanCouponCode.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kupon kodu'**
+  String get cuzdanCouponCode;
+
+  /// No description provided for @cuzdanCouponDetails.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kupon ayrıntıları'**
+  String get cuzdanCouponDetails;
+
   /// No description provided for @cuzdanCouponHowTo.
   ///
   /// In tr, this message translates to:
@@ -6788,6 +6860,12 @@ abstract class AppLocalizations {
   /// **'Kupon: {code}'**
   String cuzdanCouponSelected(String code);
 
+  /// No description provided for @cuzdanCouponTapHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayrıntılar için dokun'**
+  String get cuzdanCouponTapHint;
+
   /// No description provided for @cuzdanCouponUse.
   ///
   /// In tr, this message translates to:
@@ -6805,6 +6883,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Son gün {date}'**
   String cuzdanCouponValidUntil(String date);
+
+  /// No description provided for @cuzdanDaysAgo.
+  ///
+  /// In tr, this message translates to:
+  /// **'{days} gün önce'**
+  String cuzdanDaysAgo(int days);
 
   /// No description provided for @cuzdanDiscount.
   ///
@@ -6853,6 +6937,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Tutar'**
   String get cuzdanGross;
+
+  /// No description provided for @cuzdanHideBalance.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakiyeyi gizle'**
+  String get cuzdanHideBalance;
 
   /// No description provided for @cuzdanHowEarn.
   ///
@@ -6926,11 +7016,23 @@ abstract class AppLocalizations {
   /// **'Harcamalarım'**
   String get cuzdanMyPurchases;
 
+  /// No description provided for @cuzdanMyQr.
+  ///
+  /// In tr, this message translates to:
+  /// **'QR\'ım'**
+  String get cuzdanMyQr;
+
   /// No description provided for @cuzdanNoFilterMatch.
   ///
   /// In tr, this message translates to:
   /// **'Bu filtreye uygun işlem yok.'**
   String get cuzdanNoFilterMatch;
+
+  /// No description provided for @cuzdanNoShops.
+  ///
+  /// In tr, this message translates to:
+  /// **'Anlaşmalı dükkân bulunamadı.'**
+  String get cuzdanNoShops;
 
   /// No description provided for @cuzdanNotifEarned.
   ///
@@ -6950,11 +7052,35 @@ abstract class AppLocalizations {
   /// **'Ödenen'**
   String get cuzdanPaid;
 
+  /// No description provided for @cuzdanPaidWithPoints.
+  ///
+  /// In tr, this message translates to:
+  /// **'Puanla ödenen'**
+  String get cuzdanPaidWithPoints;
+
   /// No description provided for @cuzdanPaymentMethod.
   ///
   /// In tr, this message translates to:
   /// **'Ödeme türü'**
   String get cuzdanPaymentMethod;
+
+  /// No description provided for @cuzdanPickShopHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'QR kodunuz seçtiğiniz dükkân için oluşturulur.'**
+  String get cuzdanPickShopHint;
+
+  /// No description provided for @cuzdanPickShopTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangi dükkândasınız?'**
+  String get cuzdanPickShopTitle;
+
+  /// No description provided for @cuzdanPointsAmount.
+  ///
+  /// In tr, this message translates to:
+  /// **'{points} puan'**
+  String cuzdanPointsAmount(String points);
 
   /// No description provided for @cuzdanPointsCorrection.
   ///
@@ -7015,6 +7141,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Alışveriş'**
   String get cuzdanPurchaseCount;
+
+  /// No description provided for @cuzdanPurchaseCountLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Alışveriş sayısı'**
+  String get cuzdanPurchaseCountLabel;
 
   /// No description provided for @cuzdanRetry.
   ///
@@ -7106,6 +7238,12 @@ abstract class AppLocalizations {
   /// **'Değerlendirmen için teşekkürler!'**
   String get cuzdanReviewThanks;
 
+  /// No description provided for @cuzdanReviewThis.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu alışverişi değerlendir'**
+  String get cuzdanReviewThis;
+
   /// No description provided for @cuzdanReviewTitle.
   ///
   /// In tr, this message translates to:
@@ -7124,6 +7262,30 @@ abstract class AppLocalizations {
   /// **'{amount} SAR'**
   String cuzdanSar(String amount);
 
+  /// No description provided for @cuzdanShopDiscount.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dükkân indirimi'**
+  String get cuzdanShopDiscount;
+
+  /// No description provided for @cuzdanShopDiscountPct.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dükkân indirimi %{percent}'**
+  String cuzdanShopDiscountPct(int percent);
+
+  /// No description provided for @cuzdanShops.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dükkanlar'**
+  String get cuzdanShops;
+
+  /// No description provided for @cuzdanShowBalance.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakiyeyi göster'**
+  String get cuzdanShowBalance;
+
   /// No description provided for @cuzdanSuccessTitle.
   ///
   /// In tr, this message translates to:
@@ -7136,6 +7298,12 @@ abstract class AppLocalizations {
   /// **'Harcamalarım ve Puanlarım'**
   String get cuzdanTitle;
 
+  /// No description provided for @cuzdanToday.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün'**
+  String get cuzdanToday;
+
   /// No description provided for @cuzdanTotalDiscount.
   ///
   /// In tr, this message translates to:
@@ -7147,6 +7315,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Toplam harcama'**
   String get cuzdanTotalSpent;
+
+  /// No description provided for @cuzdanTxEarnedBig.
+  ///
+  /// In tr, this message translates to:
+  /// **'+{points} puan kazandınız'**
+  String cuzdanTxEarnedBig(int points);
+
+  /// No description provided for @cuzdanTxSpentBig.
+  ///
+  /// In tr, this message translates to:
+  /// **'{points} puan kullandınız'**
+  String cuzdanTxSpentBig(int points);
+
+  /// No description provided for @cuzdanWorthRiyal.
+  ///
+  /// In tr, this message translates to:
+  /// **'≈ {value} riyal değerinde'**
+  String cuzdanWorthRiyal(String value);
+
+  /// No description provided for @cuzdanYesterday.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dün'**
+  String get cuzdanYesterday;
 
   /// No description provided for @dualarAllFilesDownloaded.
   ///
@@ -8515,6 +8707,588 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Yeni işlem'**
   String get esnafTxTitle;
+
+  /// No description provided for @hatimCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get hatimCancel;
+
+  /// No description provided for @hatimCardSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Birlikte hatim indirin, cüz cüz paylaşın'**
+  String get hatimCardSubtitle;
+
+  /// No description provided for @hatimCompletedBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamamlandı'**
+  String get hatimCompletedBadge;
+
+  /// No description provided for @hatimCompletedBanner.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hatim tamamlandı, Allah kabul etsin'**
+  String get hatimCompletedBanner;
+
+  /// No description provided for @hatimConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Evet'**
+  String get hatimConfirm;
+
+  /// No description provided for @hatimCreateButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu oluştur'**
+  String get hatimCreateButton;
+
+  /// No description provided for @hatimCreateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni hatim grubu'**
+  String get hatimCreateTitle;
+
+  /// No description provided for @hatimCreated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hatim grubu oluşturuldu'**
+  String get hatimCreated;
+
+  /// No description provided for @hatimDeadline.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hedef: {date}'**
+  String hatimDeadline(String date);
+
+  /// No description provided for @hatimDeadlineClear.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaldır'**
+  String get hatimDeadlineClear;
+
+  /// No description provided for @hatimDeadlineLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hedef tarih (isteğe bağlı)'**
+  String get hatimDeadlineLabel;
+
+  /// No description provided for @hatimDeadlineNone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarih seçilmedi'**
+  String get hatimDeadlineNone;
+
+  /// No description provided for @hatimDelete.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu sil'**
+  String get hatimDelete;
+
+  /// No description provided for @hatimDeleteConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup ve tüm ilerlemesi silinecek. Emin misiniz?'**
+  String get hatimDeleteConfirm;
+
+  /// No description provided for @hatimDoneBy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Okuyan: {name}'**
+  String hatimDoneBy(String name);
+
+  /// No description provided for @hatimDoneToast.
+  ///
+  /// In tr, this message translates to:
+  /// **'Allah kabul etsin!'**
+  String get hatimDoneToast;
+
+  /// No description provided for @hatimEdit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düzenle'**
+  String get hatimEdit;
+
+  /// No description provided for @hatimEditTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu düzenle'**
+  String get hatimEditTitle;
+
+  /// No description provided for @hatimEmptyDiscover.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şu an katılabileceğiniz başka grup yok.'**
+  String get hatimEmptyDiscover;
+
+  /// No description provided for @hatimEmptyMine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bir hatim grubunuz yok. Yeni bir grup kurun ya da Keşfet sekmesinden bir gruba katılın.'**
+  String get hatimEmptyMine;
+
+  /// No description provided for @hatimErrAlreadyDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu parça zaten okunmuş'**
+  String get hatimErrAlreadyDone;
+
+  /// No description provided for @hatimErrFull.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup dolu (en fazla 200 üye)'**
+  String get hatimErrFull;
+
+  /// No description provided for @hatimErrGeneric.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem tamamlanamadı. Lütfen tekrar deneyin.'**
+  String get hatimErrGeneric;
+
+  /// No description provided for @hatimErrNetwork.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantı sorunu. Lütfen tekrar deneyin.'**
+  String get hatimErrNetwork;
+
+  /// No description provided for @hatimErrNotActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hatim tamamlandı. Yeni hatim başlatılmasını bekleyin.'**
+  String get hatimErrNotActive;
+
+  /// No description provided for @hatimErrNotSignedIn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oturum bulunamadı. Lütfen tekrar giriş yapın.'**
+  String get hatimErrNotSignedIn;
+
+  /// No description provided for @hatimErrNotYours.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu parça artık sizde değil'**
+  String get hatimErrNotYours;
+
+  /// No description provided for @hatimErrPermission.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu işlem için yetkiniz yok'**
+  String get hatimErrPermission;
+
+  /// No description provided for @hatimErrTakenCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu cüz az önce başkası tarafından alındı'**
+  String get hatimErrTakenCuz;
+
+  /// No description provided for @hatimErrTakenSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu sayfa az önce başkası tarafından alındı'**
+  String get hatimErrTakenSayfa;
+
+  /// No description provided for @hatimEvCompleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hatim tamamlandı! Allah kabul etsin'**
+  String get hatimEvCompleted;
+
+  /// No description provided for @hatimEvCreate.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} grubu kurdu'**
+  String hatimEvCreate(String name);
+
+  /// No description provided for @hatimEvDoneCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} {n}. cüzü bitirdi ({done}/{total})'**
+  String hatimEvDoneCuz(String name, int n, int done, int total);
+
+  /// No description provided for @hatimEvDoneSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} {n}. sayfayı bitirdi ({done}/{total})'**
+  String hatimEvDoneSayfa(String name, int n, int done, int total);
+
+  /// No description provided for @hatimEvJoin.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} gruba katıldı'**
+  String hatimEvJoin(String name);
+
+  /// No description provided for @hatimEvLeave.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} gruptan ayrıldı'**
+  String hatimEvLeave(String name);
+
+  /// No description provided for @hatimEvNewRound.
+  ///
+  /// In tr, this message translates to:
+  /// **'{round}. hatim başladı'**
+  String hatimEvNewRound(int round);
+
+  /// No description provided for @hatimEvRelease.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} bir parçayı bıraktı'**
+  String hatimEvRelease(String name);
+
+  /// No description provided for @hatimEvTakeCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} {n}. cüzü aldı'**
+  String hatimEvTakeCuz(String name, int n);
+
+  /// No description provided for @hatimEvTakeSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} {n}. sayfayı aldı'**
+  String hatimEvTakeSayfa(String name, int n);
+
+  /// No description provided for @hatimFieldName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup adı'**
+  String get hatimFieldName;
+
+  /// No description provided for @hatimFieldNameHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örn: Annem için hatim'**
+  String get hatimFieldNameHint;
+
+  /// No description provided for @hatimFieldNiyet.
+  ///
+  /// In tr, this message translates to:
+  /// **'Niyet / dua (isteğe bağlı)'**
+  String get hatimFieldNiyet;
+
+  /// No description provided for @hatimFieldNiyetHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hatim kimin için, hangi niyetle okunuyor?'**
+  String get hatimFieldNiyetHint;
+
+  /// No description provided for @hatimGroupNotFound.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup bulunamadı ya da silinmiş.'**
+  String get hatimGroupNotFound;
+
+  /// No description provided for @hatimInviteCopied.
+  ///
+  /// In tr, this message translates to:
+  /// **'Davet metni panoya kopyalandı'**
+  String get hatimInviteCopied;
+
+  /// No description provided for @hatimInviteText.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"{name}\" hatim grubuna sen de katıl! Umre Rehberim uygulamasında Dualar > Toplu Hatim bölümünden gruba ulaşabilirsin.'**
+  String hatimInviteText(String name);
+
+  /// No description provided for @hatimJoin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruba katıl'**
+  String get hatimJoin;
+
+  /// No description provided for @hatimJoined.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruba katıldınız'**
+  String get hatimJoined;
+
+  /// No description provided for @hatimLastEvent.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son hareketler'**
+  String get hatimLastEvent;
+
+  /// No description provided for @hatimLeave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruptan ayrıl'**
+  String get hatimLeave;
+
+  /// No description provided for @hatimLeaveConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu gruptan ayrılmak istiyor musunuz?'**
+  String get hatimLeaveConfirm;
+
+  /// No description provided for @hatimLegendDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bitti'**
+  String get hatimLegendDone;
+
+  /// No description provided for @hatimLegendFree.
+  ///
+  /// In tr, this message translates to:
+  /// **'Boş'**
+  String get hatimLegendFree;
+
+  /// No description provided for @hatimLegendMine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Benim'**
+  String get hatimLegendMine;
+
+  /// No description provided for @hatimLegendTaken.
+  ///
+  /// In tr, this message translates to:
+  /// **'Alındı'**
+  String get hatimLegendTaken;
+
+  /// No description provided for @hatimLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruplar yüklenemedi'**
+  String get hatimLoadError;
+
+  /// No description provided for @hatimMarkDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bitirdim'**
+  String get hatimMarkDone;
+
+  /// No description provided for @hatimMembers.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} üye'**
+  String hatimMembers(int count);
+
+  /// No description provided for @hatimNameInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup adı 3 ile 60 karakter arasında olmalı'**
+  String get hatimNameInvalid;
+
+  /// No description provided for @hatimNewGroup.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni hatim grubu'**
+  String get hatimNewGroup;
+
+  /// No description provided for @hatimNewRound.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni hatim başlat'**
+  String get hatimNewRound;
+
+  /// No description provided for @hatimNewRoundConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aynı grupla yeni bir hatme başlansın mı? İlerleme sıfırlanır.'**
+  String get hatimNewRoundConfirm;
+
+  /// No description provided for @hatimNiyetInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Niyet en fazla 300 karakter olabilir'**
+  String get hatimNiyetInvalid;
+
+  /// No description provided for @hatimNotMember.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parça almak için önce gruba katılın.'**
+  String get hatimNotMember;
+
+  /// No description provided for @hatimOwner.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu kuran: {name}'**
+  String hatimOwner(String name);
+
+  /// No description provided for @hatimPartCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'{n}. cüz'**
+  String hatimPartCuz(int n);
+
+  /// No description provided for @hatimPartSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'{n}. sayfa'**
+  String hatimPartSayfa(int n);
+
+  /// No description provided for @hatimPrivateBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acenteye özel'**
+  String get hatimPrivateBadge;
+
+  /// No description provided for @hatimPrivateDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu yalnızca sizinle aynı acentedeki kişiler görür ve katılabilir.'**
+  String get hatimPrivateDesc;
+
+  /// No description provided for @hatimPrivateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yalnız acentem'**
+  String get hatimPrivateTitle;
+
+  /// No description provided for @hatimProgress.
+  ///
+  /// In tr, this message translates to:
+  /// **'{done}/{total}'**
+  String hatimProgress(int done, int total);
+
+  /// No description provided for @hatimPublicBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese açık'**
+  String get hatimPublicBadge;
+
+  /// No description provided for @hatimPublicDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulamayı kullanan herkes grubu Keşfet sekmesinde görür ve katılabilir.'**
+  String get hatimPublicDesc;
+
+  /// No description provided for @hatimPublicTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese açık'**
+  String get hatimPublicTitle;
+
+  /// No description provided for @hatimRelease.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bırak'**
+  String get hatimRelease;
+
+  /// No description provided for @hatimReleaseOther.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parçayı boşa çıkar'**
+  String get hatimReleaseOther;
+
+  /// No description provided for @hatimReleaseOtherConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} adlı kişinin aldığı parça boşa çıkarılsın mı?'**
+  String hatimReleaseOtherConfirm(String name);
+
+  /// No description provided for @hatimRound.
+  ///
+  /// In tr, this message translates to:
+  /// **'{round}. hatim'**
+  String hatimRound(int round);
+
+  /// No description provided for @hatimSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get hatimSave;
+
+  /// No description provided for @hatimShare.
+  ///
+  /// In tr, this message translates to:
+  /// **'Davet et'**
+  String get hatimShare;
+
+  /// No description provided for @hatimStartReading.
+  ///
+  /// In tr, this message translates to:
+  /// **'Okumaya başla'**
+  String get hatimStartReading;
+
+  /// No description provided for @hatimTabDiscover.
+  ///
+  /// In tr, this message translates to:
+  /// **'Keşfet'**
+  String get hatimTabDiscover;
+
+  /// No description provided for @hatimTabMine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruplarım'**
+  String get hatimTabMine;
+
+  /// No description provided for @hatimTake.
+  ///
+  /// In tr, this message translates to:
+  /// **'Al'**
+  String get hatimTake;
+
+  /// No description provided for @hatimTakeConfirmCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'{n}. cüzü almak istiyor musunuz?'**
+  String hatimTakeConfirmCuz(int n);
+
+  /// No description provided for @hatimTakeConfirmSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'{n}. sayfayı almak istiyor musunuz?'**
+  String hatimTakeConfirmSayfa(int n);
+
+  /// No description provided for @hatimTakenBy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Alan: {name}'**
+  String hatimTakenBy(String name);
+
+  /// No description provided for @hatimTakenToast.
+  ///
+  /// In tr, this message translates to:
+  /// **'Parça size ayrıldı. Hayırlı okumalar!'**
+  String get hatimTakenToast;
+
+  /// No description provided for @hatimTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim'**
+  String get hatimTitle;
+
+  /// No description provided for @hatimUnitCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'Cüz'**
+  String get hatimUnitCuz;
+
+  /// No description provided for @hatimUnitCuzDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'30 cüz. Her üye bir veya birkaç cüz alır.'**
+  String get hatimUnitCuzDesc;
+
+  /// No description provided for @hatimUnitLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Nasıl paylaşılsın?'**
+  String get hatimUnitLabel;
+
+  /// No description provided for @hatimUnitLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaşım birimi grup kurulduktan sonra değiştirilemez.'**
+  String get hatimUnitLocked;
+
+  /// No description provided for @hatimUnitSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sayfa'**
+  String get hatimUnitSayfa;
+
+  /// No description provided for @hatimUnitSayfaDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'604 sayfa. Kalabalık gruplarla kısa sürede biter.'**
+  String get hatimUnitSayfaDesc;
+
+  /// No description provided for @hatimVisibilityLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kimler görebilir?'**
+  String get hatimVisibilityLabel;
 
   /// No description provided for @homeAnnouncement.
   ///
