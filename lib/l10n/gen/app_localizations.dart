@@ -8834,6 +8834,12 @@ abstract class AppLocalizations {
   /// **'Bu parça zaten okunmuş'**
   String get hatimErrAlreadyDone;
 
+  /// No description provided for @hatimErrCreateTooSoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni bir grup kurmak için 1 dakika bekleyin.'**
+  String get hatimErrCreateTooSoon;
+
   /// No description provided for @hatimErrFull.
   ///
   /// In tr, this message translates to:
@@ -8876,6 +8882,24 @@ abstract class AppLocalizations {
   /// **'Bu işlem için yetkiniz yok'**
   String get hatimErrPermission;
 
+  /// No description provided for @hatimErrQuotaCuz.
+  ///
+  /// In tr, this message translates to:
+  /// **'En fazla 3 cüz alabilirsiniz. Önce aldıklarınızı bitirin.'**
+  String get hatimErrQuotaCuz;
+
+  /// No description provided for @hatimErrQuotaSayfa.
+  ///
+  /// In tr, this message translates to:
+  /// **'En fazla 20 sayfa alabilirsiniz. Önce aldıklarınızı bitirin.'**
+  String get hatimErrQuotaSayfa;
+
+  /// No description provided for @hatimErrRejoinTooSoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruba tekrar katılmak için biraz bekleyin.'**
+  String get hatimErrRejoinTooSoon;
+
   /// No description provided for @hatimErrTakenCuz.
   ///
   /// In tr, this message translates to:
@@ -8887,6 +8911,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Bu sayfa az önce başkası tarafından alındı'**
   String get hatimErrTakenSayfa;
+
+  /// No description provided for @hatimErrTooSoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Okumak için biraz zaman tanıyın. Parçayı aldıktan en az 1 dakika sonra bitirebilirsiniz.'**
+  String get hatimErrTooSoon;
 
   /// No description provided for @hatimEvCompleted.
   ///
@@ -8917,6 +8947,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'{name} gruba katıldı'**
   String hatimEvJoin(String name);
+
+  /// No description provided for @hatimEvKick.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} bir üyeyi gruptan çıkardı'**
+  String hatimEvKick(String name);
 
   /// No description provided for @hatimEvLeave.
   ///
@@ -9001,6 +9037,24 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Gruba katıldınız'**
   String get hatimJoined;
+
+  /// No description provided for @hatimKick.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üyeyi çıkar'**
+  String get hatimKick;
+
+  /// No description provided for @hatimKickConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} gruptan çıkarılsın mı? Aldığı ve bitirmediği parçalar boşa çıkarılır.'**
+  String hatimKickConfirm(String name);
+
+  /// No description provided for @hatimKicked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Üye gruptan çıkarıldı'**
+  String get hatimKicked;
 
   /// No description provided for @hatimLastEvent.
   ///
@@ -9157,6 +9211,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Herkese açık'**
   String get hatimPublicTitle;
+
+  /// No description provided for @hatimQuotaInfo.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sizde {held}/{max}'**
+  String hatimQuotaInfo(int held, int max);
 
   /// No description provided for @hatimRelease.
   ///

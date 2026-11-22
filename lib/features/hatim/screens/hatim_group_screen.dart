@@ -101,6 +101,10 @@ class _HatimGroupScreenState extends State<HatimGroupScreen> {
     if (p == null) {
       if (!g.isMember(me.id)) return GlobalSnackbar.showInfo(l.hatimNotMember);
       if (g.isCompleted) return GlobalSnackbar.showInfo(l.hatimErrNotActive);
+      // Kota (kuralla aynı): cüz 3, sayfa 20 bitmemiş parça.
+      if (g.holdsOf(me.id) >= g.maxHolds) {
+        return GlobalSnackbar.showInfo(g.isCuz ? l.hatimErrQuotaCuz : l.hatimErrQuotaSayfa);
+      }
       final ok = await _confirm(g.isCuz ? l.hatimTakeConfirmCuz(n) : l.hatimTakeConfirmSayfa(n), ok: l.hatimTake);
       if (ok) await _run(() => _service.takePart(g.id, n, me), success: l.hatimTakenToast);
       return;
@@ -154,14 +158,52 @@ class _HatimGroupScreenState extends State<HatimGroupScreen> {
     }
   }
 
+  /// Grup sahibi / genel admin: başkasının alınmış parçası → boşa çıkar ya da
+  /// parçayı tutan üyeyi gruptan çıkar (parçaları da boşaltılır).
   Future<void> _showModerateSheet(HatimGroup g, HatimPart p, UserModel me) async {
     final l = context.l10n;
-    final ok = await _confirm(
-      '${_partLabel(l, g, p.n)}\n${l.hatimReleaseOtherConfirm(p.name)}',
-      ok: l.hatimReleaseOther,
-      danger: true,
+    final canKick = g.isMember(p.uid) && !g.isOwner(p.uid);
+    final action = await showModalBottomSheet<String>(
+      context: context,
+      showDragHandle: true,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (ctx) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(_partLabel(l, g, p.n), style: AppTextStyles.sectionTitle),
+            const SizedBox(height: 4),
+            Text(l.hatimTakenBy(p.name), style: AppTextStyles.muted),
+            const SizedBox(height: 8),
+            ListTile(
+              leading: const Icon(Icons.undo_rounded, color: AppColors.error),
+              title: Text(l.hatimReleaseOther),
+              onTap: () => Navigator.pop(ctx, 'release'),
+            ),
+            if (canKick)
+              ListTile(
+                leading: const Icon(Icons.person_remove_rounded, color: AppColors.error),
+                title: Text(l.hatimKick),
+                onTap: () => Navigator.pop(ctx, 'kick'),
+              ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
     );
-    if (ok) await _run(() => _service.releasePart(g, p, me));
+    if (!mounted) return;
+    switch (action) {
+      case 'release':
+        final ok = await _confirm(
+          '${_partLabel(l, g, p.n)}\n${l.hatimReleaseOtherConfirm(p.name)}',
+          ok: l.hatimReleaseOther,
+          danger: true,
+        );
+        if (ok) await _run(() => _service.releasePart(g, p, me));
+      case 'kick':
+        final ok = await _confirm(l.hatimKickConfirm(p.name), ok: l.hatimKick, danger: true);
+        if (ok) await _run(() => _service.kick(g, p.uid, me), success: l.hatimKicked);
+    }
   }
 
   Future<void> _onMenu(_Menu m, HatimGroup g, UserModel me) async {
@@ -213,6 +255,10 @@ class _HatimGroupScreenState extends State<HatimGroupScreen> {
         final isMember = g.isMember(me.id);
         final isOwner = g.isOwner(me.id);
         final isAdmin = me.isGlobalAdmin;
+        // Acente admini kendi acentesinin gruplarını silebilir (moderasyon; kuralla aynı).
+        final canDelete = isOwner ||
+            isAdmin ||
+            (me.isAgencyAdmin && g.agencyId.isNotEmpty && g.agencyId == (me.agencyId ?? ''));
         return Scaffold(
           appBar: AppBar(
             title: Text(g.name, overflow: TextOverflow.ellipsis),
@@ -229,7 +275,7 @@ class _HatimGroupScreenState extends State<HatimGroupScreen> {
                   if ((isOwner || isAdmin) && g.isCompleted)
                     PopupMenuItem(value: _Menu.newRound, child: Text(l.hatimNewRound)),
                   if (isMember && !isOwner) PopupMenuItem(value: _Menu.leave, child: Text(l.hatimLeave)),
-                  if (isOwner || isAdmin)
+                  if (canDelete)
                     PopupMenuItem(
                       value: _Menu.delete,
                       child: Text(l.hatimDelete, style: const TextStyle(color: AppColors.error)),
@@ -265,7 +311,7 @@ class _HatimGroupScreenState extends State<HatimGroupScreen> {
                 children: [
                   CustomScrollView(
                     slivers: [
-                      SliverToBoxAdapter(child: _Header(group: g)),
+                      SliverToBoxAdapter(child: _Header(group: g, held: isMember ? g.holdsOf(me.id) : null)),
                       if (g.isCompleted)
                         SliverToBoxAdapter(
                           child: _CompletedBanner(
@@ -475,8 +521,11 @@ class _Legend extends StatelessWidget {
 // -----------------------------------------------------------------------------
 
 class _Header extends StatelessWidget {
-  const _Header({required this.group});
+  const _Header({required this.group, this.held});
   final HatimGroup group;
+
+  /// Bende bitmemiş parça sayısı (kota göstergesi); üye değilsem null.
+  final int? held;
 
   @override
   Widget build(BuildContext context) {
@@ -540,6 +589,12 @@ class _Header extends StatelessWidget {
                     HatimBadge(text: g.isCuz ? l.hatimUnitCuz : l.hatimUnitSayfa, color: Colors.white),
                     HatimBadge(text: l.hatimRound(g.round), color: Colors.white, icon: Icons.replay_rounded),
                     HatimBadge(text: l.hatimMembers(g.memberCount), color: Colors.white, icon: Icons.people_alt_rounded),
+                    if (held != null && !g.isCompleted)
+                      HatimBadge(
+                        text: l.hatimQuotaInfo(held!, g.maxHolds),
+                        color: Colors.white,
+                        icon: Icons.bookmark_rounded,
+                      ),
                     if (g.deadline != null)
                       HatimBadge(
                         text: l.hatimDeadline(DateFormat.yMMMd(locale).format(g.deadline!)),
@@ -575,6 +630,7 @@ String hatimEventText(AppLocalizations l, HatimGroup g) {
         : l.hatimEvDoneSayfa(e.name, e.unit, g.doneCount, g.total),
     'completed' => l.hatimEvCompleted,
     'new_round' => l.hatimEvNewRound(e.round),
+    'kick' => l.hatimEvKick(e.name),
     _ => '',
   };
 }

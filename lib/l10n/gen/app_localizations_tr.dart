@@ -4840,6 +4840,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hatimErrAlreadyDone => 'Bu parça zaten okunmuş';
 
   @override
+  String get hatimErrCreateTooSoon =>
+      'Yeni bir grup kurmak için 1 dakika bekleyin.';
+
+  @override
   String get hatimErrFull => 'Grup dolu (en fazla 200 üye)';
 
   @override
@@ -4863,10 +4867,26 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hatimErrPermission => 'Bu işlem için yetkiniz yok';
 
   @override
+  String get hatimErrQuotaCuz =>
+      'En fazla 3 cüz alabilirsiniz. Önce aldıklarınızı bitirin.';
+
+  @override
+  String get hatimErrQuotaSayfa =>
+      'En fazla 20 sayfa alabilirsiniz. Önce aldıklarınızı bitirin.';
+
+  @override
+  String get hatimErrRejoinTooSoon =>
+      'Gruba tekrar katılmak için biraz bekleyin.';
+
+  @override
   String get hatimErrTakenCuz => 'Bu cüz az önce başkası tarafından alındı';
 
   @override
   String get hatimErrTakenSayfa => 'Bu sayfa az önce başkası tarafından alındı';
+
+  @override
+  String get hatimErrTooSoon =>
+      'Okumak için biraz zaman tanıyın. Parçayı aldıktan en az 1 dakika sonra bitirebilirsiniz.';
 
   @override
   String get hatimEvCompleted => 'Hatim tamamlandı! Allah kabul etsin';
@@ -4889,6 +4909,11 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String hatimEvJoin(String name) {
     return '$name gruba katıldı';
+  }
+
+  @override
+  String hatimEvKick(String name) {
+    return '$name bir üyeyi gruptan çıkardı';
   }
 
   @override
@@ -4944,6 +4969,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get hatimJoined => 'Gruba katıldınız';
+
+  @override
+  String get hatimKick => 'Üyeyi çıkar';
+
+  @override
+  String hatimKickConfirm(String name) {
+    return '$name gruptan çıkarılsın mı? Aldığı ve bitirmediği parçalar boşa çıkarılır.';
+  }
+
+  @override
+  String get hatimKicked => 'Üye gruptan çıkarıldı';
 
   @override
   String get hatimLastEvent => 'Son hareketler';
@@ -5035,6 +5071,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get hatimPublicTitle => 'Herkese açık';
+
+  @override
+  String hatimQuotaInfo(int held, int max) {
+    return 'Sizde $held/$max';
+  }
 
   @override
   String get hatimRelease => 'Bırak';

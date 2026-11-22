@@ -42,6 +42,10 @@ class HatimGroup {
   static const statusCompleted = 'completed';
   static const maxMembers = 200;
 
+  /// Kişi başı aynı anda alınabilecek (bitmemiş) parça sayısı; kuralla aynı.
+  static const maxHoldsCuz = 3;
+  static const maxHoldsSayfa = 20;
+
   final String id;
   final String name;
   final String niyet;
@@ -56,6 +60,9 @@ class HatimGroup {
   final int round;
   final int doneCount;
   final String status;
+
+  /// `holds`: uid → o an 'taken' durumundaki parça sayısı (kota).
+  final Map<String, int> holds;
   final DateTime? deadline;
   final HatimEvent? lastEvent;
   final DateTime? createdAt;
@@ -77,6 +84,7 @@ class HatimGroup {
     required this.round,
     required this.doneCount,
     required this.status,
+    this.holds = const {},
     this.deadline,
     this.lastEvent,
     this.createdAt,
@@ -89,11 +97,18 @@ class HatimGroup {
   double get progress => total <= 0 ? 0 : (doneCount / total).clamp(0, 1).toDouble();
   bool isMember(String uid) => members.contains(uid);
   bool isOwner(String uid) => ownerUid == uid;
+  int holdsOf(String uid) => holds[uid] ?? 0;
+  int get maxHolds => isCuz ? maxHoldsCuz : maxHoldsSayfa;
 
   static int totalFor(String unit) => unit == unitSayfa ? 604 : 30;
 
   factory HatimGroup.fromMap(String id, Map<String, dynamic> d) {
     final unit = toStr(d['unit'], unitCuz);
+    final rawHolds = d['holds'];
+    final holds = <String, int>{
+      if (rawHolds is Map)
+        for (final e in rawHolds.entries) e.key.toString(): toInt(e.value),
+    };
     final members = (d['members'] as List?)?.map((e) => e.toString()).toList() ?? const <String>[];
     return HatimGroup(
       id: id,
@@ -110,6 +125,7 @@ class HatimGroup {
       round: toInt(d['round'], 1),
       doneCount: toInt(d['done_count']),
       status: toStr(d['status'], statusActive),
+      holds: holds,
       deadline: toDateTime(d['deadline']),
       lastEvent: HatimEvent.fromMap(d['last_event']),
       createdAt: toDateTime(d['created_at']),

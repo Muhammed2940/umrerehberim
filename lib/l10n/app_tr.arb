@@ -2885,6 +2885,7 @@
   "hatimEmptyDiscover": "Şu an katılabileceğiniz başka grup yok.",
   "hatimEmptyMine": "Henüz bir hatim grubunuz yok. Yeni bir grup kurun ya da Keşfet sekmesinden bir gruba katılın.",
   "hatimErrAlreadyDone": "Bu parça zaten okunmuş",
+  "hatimErrCreateTooSoon": "Yeni bir grup kurmak için 1 dakika bekleyin.",
   "hatimErrFull": "Grup dolu (en fazla 200 üye)",
   "hatimErrGeneric": "İşlem tamamlanamadı. Lütfen tekrar deneyin.",
   "hatimErrNetwork": "Bağlantı sorunu. Lütfen tekrar deneyin.",
@@ -2892,8 +2893,12 @@
   "hatimErrNotSignedIn": "Oturum bulunamadı. Lütfen tekrar giriş yapın.",
   "hatimErrNotYours": "Bu parça artık sizde değil",
   "hatimErrPermission": "Bu işlem için yetkiniz yok",
+  "hatimErrQuotaCuz": "En fazla 3 cüz alabilirsiniz. Önce aldıklarınızı bitirin.",
+  "hatimErrQuotaSayfa": "En fazla 20 sayfa alabilirsiniz. Önce aldıklarınızı bitirin.",
+  "hatimErrRejoinTooSoon": "Gruba tekrar katılmak için biraz bekleyin.",
   "hatimErrTakenCuz": "Bu cüz az önce başkası tarafından alındı",
   "hatimErrTakenSayfa": "Bu sayfa az önce başkası tarafından alındı",
+  "hatimErrTooSoon": "Okumak için biraz zaman tanıyın. Parçayı aldıktan en az 1 dakika sonra bitirebilirsiniz.",
   "hatimEvCompleted": "Hatim tamamlandı! Allah kabul etsin",
   "hatimEvCreate": "{name} grubu kurdu",
   "@hatimEvCreate": {
@@ -2939,6 +2944,14 @@
   },
   "hatimEvJoin": "{name} gruba katıldı",
   "@hatimEvJoin": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimEvKick": "{name} bir üyeyi gruptan çıkardı",
+  "@hatimEvKick": {
     "placeholders": {
       "name": {
         "type": "String"
@@ -3007,6 +3020,16 @@
   },
   "hatimJoin": "Gruba katıl",
   "hatimJoined": "Gruba katıldınız",
+  "hatimKick": "Üyeyi çıkar",
+  "hatimKickConfirm": "{name} gruptan çıkarılsın mı? Aldığı ve bitirmediği parçalar boşa çıkarılır.",
+  "@hatimKickConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "hatimKicked": "Üye gruptan çıkarıldı",
   "hatimLastEvent": "Son hareketler",
   "hatimLeave": "Gruptan ayrıl",
   "hatimLeaveConfirm": "Bu gruptan ayrılmak istiyor musunuz?",
@@ -3071,6 +3094,17 @@
   "hatimPublicBadge": "Herkese açık",
   "hatimPublicDesc": "Uygulamayı kullanan herkes grubu Keşfet sekmesinde görür ve katılabilir.",
   "hatimPublicTitle": "Herkese açık",
+  "hatimQuotaInfo": "Sizde {held}/{max}",
+  "@hatimQuotaInfo": {
+    "placeholders": {
+      "held": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
   "hatimRelease": "Bırak",
   "hatimReleaseOther": "Parçayı boşa çıkar",
   "hatimReleaseOtherConfirm": "{name} adlı kişinin aldığı parça boşa çıkarılsın mı?",

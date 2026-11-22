@@ -28,6 +28,18 @@ class HatimService {
   CollectionReference<Map<String, dynamic>> get _groups => _db.collection('hatim_groups');
   DocumentReference<Map<String, dynamic>> _group(String gid) => _groups.doc(gid);
   CollectionReference<Map<String, dynamic>> _parts(String gid) => _group(gid).collection('parts');
+  DocumentReference<Map<String, dynamic>> _rate(String uid) => _db.collection('hatim_rate').doc(uid);
+
+  /// Kuralla aynı süreler (firestore.rules TOPLU HATİM).
+  static const createCooldown = Duration(seconds: 60);
+  static const rejoinCooldown = Duration(seconds: 30);
+  static const minReadTime = Duration(seconds: 60);
+
+  /// Grup silerken parça silme batch boyutu (kural değerlendirmesi istek başına okuma sayar).
+  static const _deleteBatchSize = 100;
+
+  /// `holds.<uid>` alan yolu (update içinde noktalı yol, iç içe harita anahtarıdır).
+  static String _holdsKey(String uid) => 'holds.$uid';
 
   /// Bekleyen (henüz sunucu zamanı atanmamış) yazımlar null tarih taşır; sıralamada en üste çıkar.
   static HatimGroup _fromDoc(DocumentSnapshot<Map<String, dynamic>> d) => HatimGroup.fromDoc(d);
@@ -67,8 +79,10 @@ class HatimService {
   /// üyesi olduklarım hariç.
   Stream<List<HatimGroup>> discover(String uid, String? agencyId) {
     final queries = <Query<Map<String, dynamic>>>[
-      _groups.where('is_public', isEqualTo: true).limit(100),
-      if ((agencyId ?? '').isNotEmpty) _groups.where('agency_id', isEqualTo: agencyId).limit(100),
+      // Bileşik indeksler: is_public+updated_at desc, agency_id+updated_at desc (firestore.indexes.json).
+      _groups.where('is_public', isEqualTo: true).orderBy('updated_at', descending: true).limit(100),
+      if ((agencyId ?? '').isNotEmpty)
+        _groups.where('agency_id', isEqualTo: agencyId).orderBy('updated_at', descending: true).limit(100),
     ];
     final latest = List<List<HatimGroup>?>.filled(queries.length, null);
     final subs = <StreamSubscription<QuerySnapshot<Map<String, dynamic>>>>[];
@@ -125,7 +139,8 @@ class HatimService {
   // Grup işlemleri
   // ---------------------------------------------------------------------------
 
-  /// Yeni grup; oluşan gid'i döner.
+  /// Yeni grup; oluşan gid'i döner. Hız sınırı: grup, `hatim_rate/{uid}` belgesiyle
+  /// aynı batch'te yazılır; kural son oluşturmadan 60 sn geçmiş olmasını ister.
   Future<String> create({
     required UserModel me,
     required String name,
@@ -136,7 +151,17 @@ class HatimService {
   }) async {
     final ref = _groups.doc();
     final now = FieldValue.serverTimestamp();
-    await _guard(() => ref.set({
+    Timestamp? lastCreate;
+    await _guard(() async {
+      final rate = await _rate(me.id).get();
+      final last = rate.data()?['last_create_at'];
+      if (last is Timestamp) lastCreate = last;
+      if (last is Timestamp && DateTime.now().difference(last.toDate()) < createCooldown) {
+        throw HatimException(l10n.hatimErrCreateTooSoon);
+      }
+      final batch = _db.batch()
+        ..set(_rate(me.id), {'last_create_at': now})
+        ..set(ref, {
           'name': name.trim(),
           'niyet': niyet.trim(),
           'unit': unit,
@@ -150,23 +175,39 @@ class HatimService {
           'round': 1,
           'done_count': 0,
           'status': HatimGroup.statusActive,
+          'holds': <String, int>{},
           // İsteğe bağlı alan: seçilmediyse hiç yazılmaz.
           if (deadline != null) 'deadline': Timestamp.fromDate(deadline),
           'last_event': _event('create', me, round: 1),
           'created_at': now,
           'updated_at': now,
-        }));
+        });
+      await batch.commit();
+    }, onPermissionDenied: () async {
+      // Yalnız son oluşturma yakınsa hız sınırı mesajı; değilse genel yetki mesajı.
+      final t = lastCreate;
+      final recent = t != null && DateTime.now().difference(t.toDate()) < createCooldown * 2;
+      return recent ? l10n.hatimErrCreateTooSoon : null;
+    });
     return ref.id;
   }
 
   Future<void> join(HatimGroup g, UserModel me) async {
     if (g.memberCount >= HatimGroup.maxMembers) throw HatimException(l10n.hatimErrFull);
-    await _guard(() => _group(g.id).update({
-          'members': FieldValue.arrayUnion([me.id]),
-          'member_count': FieldValue.increment(1),
-          'last_event': _event('join', me, round: g.round),
-          'updated_at': FieldValue.serverTimestamp(),
-        }));
+    // Kural: kendi ayrılışımın ardından 30 sn içinde tekrar katılamam.
+    final e = g.lastEvent;
+    final leftByMe = e != null && e.type == 'leave' && e.uid == me.id;
+    if (leftByMe && e.at != null && DateTime.now().difference(e.at!) < rejoinCooldown + const Duration(seconds: 3)) {
+      throw HatimException(l10n.hatimErrRejoinTooSoon);
+    }
+    await _guard(
+        () => _group(g.id).update({
+              'members': FieldValue.arrayUnion([me.id]),
+              'member_count': FieldValue.increment(1),
+              'last_event': _event('join', me, round: g.round),
+              'updated_at': FieldValue.serverTimestamp(),
+            }),
+        onPermissionDenied: () async => leftByMe ? l10n.hatimErrRejoinTooSoon : null);
   }
 
   Future<void> leave(HatimGroup g, UserModel me) => _guard(() => _group(g.id).update({
@@ -192,16 +233,22 @@ class HatimService {
             'updated_at': FieldValue.serverTimestamp(),
           }));
 
-  /// Sahip veya yönetici. Önce `taken` parçalar silinir (kural gereği); bitmiş
-  /// (`done`) parçalar silinemez, alt koleksiyonda sahipsiz kalır.
+  /// Sahip, genel yönetici veya grubun acentesinin admini. Önce `taken` parçalar
+  /// küçük batch'lerle silinir; bu adım başarısız olsa da (ör. acente admininin parça
+  /// silme yetkisi yok) grup yine silinir. Bitmiş (`done`) parçalar silinemez,
+  /// alt koleksiyonda sahipsiz kalır (yalnız süper admin temizler).
   Future<void> delete(HatimGroup g) => _guard(() async {
-        final taken = await _parts(g.id).where('status', isEqualTo: HatimPart.statusTaken).get();
-        for (var i = 0; i < taken.docs.length; i += 400) {
-          final batch = _db.batch();
-          for (final d in taken.docs.skip(i).take(400)) {
-            batch.delete(d.reference);
+        try {
+          final taken = await _parts(g.id).where('status', isEqualTo: HatimPart.statusTaken).get();
+          for (var i = 0; i < taken.docs.length; i += _deleteBatchSize) {
+            final batch = _db.batch();
+            for (final d in taken.docs.skip(i).take(_deleteBatchSize)) {
+              batch.delete(d.reference);
+            }
+            await batch.commit();
           }
-          await batch.commit();
+        } catch (e) {
+          debugPrint('HatimService.delete parçalar: $e');
         }
         await _group(g.id).delete();
       });
@@ -212,6 +259,7 @@ class HatimService {
         'done_count': 0,
         'status': HatimGroup.statusActive,
         'completed_at': null,
+        'holds': <String, int>{},
         'last_event': _event('new_round', me, round: g.round + 1),
         'updated_at': FieldValue.serverTimestamp(),
       }));
@@ -232,6 +280,8 @@ class HatimService {
           unit = g.unit;
           if (!g.isMember(me.id)) throw HatimException(l10n.hatimNotMember);
           if (g.isCompleted) throw HatimException(l10n.hatimErrNotActive);
+          final held = g.holdsOf(me.id);
+          if (held >= g.maxHolds) throw HatimException(_quotaMsg(g.unit));
           final partRef = _parts(gid).doc(HatimPart.docId(g.round, n));
           final pSnap = await tx.get(partRef);
           if (pSnap.exists) throw HatimException(_takenMsg(g.unit));
@@ -245,31 +295,68 @@ class HatimService {
             'done_at': null,
           });
           tx.update(_group(gid), {
+            _holdsKey(me.id): held + 1,
             'last_event': _event('take', me, unit: n, round: g.round),
             'updated_at': FieldValue.serverTimestamp(),
           });
         }), onPermissionDenied: () async {
       // Yarış: işlem sırasında başkası oluşturduysa kural reddeder.
       final g = await _group(gid).get();
-      final round = HatimGroup.fromDoc(g).round;
-      final p = await _parts(gid).doc(HatimPart.docId(round, n)).get();
-      return p.exists ? _takenMsg(unit ?? HatimGroup.fromDoc(g).unit) : null;
+      final hg = HatimGroup.fromDoc(g);
+      final p = await _parts(gid).doc(HatimPart.docId(hg.round, n)).get();
+      if (p.exists) return _takenMsg(unit ?? hg.unit);
+      if (hg.holdsOf(me.id) >= hg.maxHolds) return _quotaMsg(hg.unit);
+      return null;
     });
   }
 
-  /// Alınmış (bitmemiş) parçayı boşa çıkarır: belge silinir + AYNI batch'te grup
-  /// `last_event` (release). Kural ayrı yazılan release olayını reddeder.
-  /// Parça sahibi ya da grup sahibi/admin yapabilir.
+  /// Alınmış (bitmemiş) parçayı boşa çıkarır: belge silinir + AYNI işlemde grup
+  /// `holds[parça sahibi]` −1 ve `last_event` (release). Grup işlem içinde taze
+  /// okunur (holds güncel olsun). Parça sahibi ya da grup sahibi/genel admin yapabilir.
   Future<void> releasePart(HatimGroup g, HatimPart p, UserModel me) async {
     if (p.isDone) throw HatimException(l10n.hatimErrAlreadyDone);
-    final batch = _db.batch()
-      ..delete(_parts(g.id).doc(p.id))
-      ..update(_group(g.id), {
-        'last_event': _event('release', me, unit: p.n, round: g.round),
-        'updated_at': FieldValue.serverTimestamp(),
-      });
-    await _guard(batch.commit);
+    await _guard(() => _releaseTx(g.id, p.n, me));
   }
+
+  Future<void> _releaseTx(String gid, int n, UserModel me) => _db.runTransaction((tx) async {
+        final gRef = _group(gid);
+        final gSnap = await tx.get(gRef);
+        if (!gSnap.exists) throw HatimException(l10n.hatimGroupNotFound);
+        final g = HatimGroup.fromDoc(gSnap);
+        if (g.isCompleted) throw HatimException(l10n.hatimErrNotActive);
+        final pRef = _parts(gid).doc(HatimPart.docId(g.round, n));
+        final pSnap = await tx.get(pRef);
+        if (!pSnap.exists) return; // zaten boş
+        final p = HatimPart.fromDoc(pSnap);
+        if (p.isDone) throw HatimException(l10n.hatimErrAlreadyDone);
+        final held = g.holdsOf(p.uid);
+        tx.delete(pRef);
+        tx.update(gRef, {
+          _holdsKey(p.uid): held > 0 ? held - 1 : 0,
+          'last_event': _event('release', me, unit: n, round: g.round),
+          'updated_at': FieldValue.serverTimestamp(),
+        });
+      });
+
+  /// Sahip (veya genel admin) bir üyeyi çıkarır: önce o üyenin bu turdaki alınmış
+  /// parçaları tek tek boşaltılır (her biri ayrı release işlemi; kural bir grup
+  /// güncellemesini tek parçaya bağlar), sonra üye `members`'tan çıkarılır ve
+  /// `holds` anahtarı silinir (last_event kick, uid = ben, unit 0).
+  Future<void> kick(HatimGroup g, String uid, UserModel me) => _guard(() async {
+        if (uid == g.ownerUid) throw HatimException(l10n.hatimErrPermission);
+        final snap = await _parts(g.id).where('round', isEqualTo: g.round).get();
+        for (final d in snap.docs) {
+          final p = HatimPart.fromDoc(d);
+          if (p.uid == uid && p.isTaken) await _releaseTx(g.id, p.n, me);
+        }
+        await _group(g.id).update({
+          'members': FieldValue.arrayRemove([uid]),
+          'member_count': FieldValue.increment(-1),
+          _holdsKey(uid): FieldValue.delete(),
+          'last_event': _event('kick', me, round: g.round),
+          'updated_at': FieldValue.serverTimestamp(),
+        });
+      });
 
   /// "Bitirdim": tek atomik işlem (transaction = kurallar için tek batch).
   /// Grup ve parça işlem içinde taze okunur; parça `taken → done`
@@ -288,6 +375,12 @@ class HatimService {
         final p = HatimPart.fromDoc(pSnap);
         if (p.isDone) throw HatimException(l10n.hatimErrAlreadyDone);
         if (p.uid != me.id) throw HatimException(l10n.hatimErrNotYours);
+        // Kural: alındıktan en az 60 sn sonra (sunucu zamanı); saat farkına küçük pay.
+        final takenAt = p.takenAt;
+        if (takenAt == null || DateTime.now().difference(takenAt) < minReadTime + const Duration(seconds: 3)) {
+          throw HatimException(l10n.hatimErrTooSoon);
+        }
+        final held = g.holdsOf(me.id);
 
         final newDone = g.doneCount + 1;
         final completed = newDone >= g.total;
@@ -297,6 +390,7 @@ class HatimService {
         });
         tx.update(gRef, {
           'done_count': newDone,
+          _holdsKey(me.id): held > 0 ? held - 1 : 0,
           'last_event': _event(completed ? 'completed' : 'done', me, unit: n, round: g.round),
           'updated_at': FieldValue.serverTimestamp(),
           if (completed) 'status': HatimGroup.statusCompleted,
@@ -307,6 +401,9 @@ class HatimService {
   // ---------------------------------------------------------------------------
   // Hata çevirisi
   // ---------------------------------------------------------------------------
+
+  static String _quotaMsg(String unit) =>
+      unit == HatimGroup.unitSayfa ? l10n.hatimErrQuotaSayfa : l10n.hatimErrQuotaCuz;
 
   static String _takenMsg(String unit) =>
       unit == HatimGroup.unitSayfa ? l10n.hatimErrTakenSayfa : l10n.hatimErrTakenCuz;

@@ -163,5 +163,24 @@
   "hatimErrAlreadyDone": { "tr": "Bu parça zaten okunmuş", "en": "This part has already been read", "ar": "تمت قراءة هذا الجزء بالفعل" },
   "hatimErrNotActive": { "tr": "Bu hatim tamamlandı. Yeni hatim başlatılmasını bekleyin.", "en": "This khatm is complete. Wait for a new one to start.", "ar": "اكتملت هذه الختمة. انتظر بدء ختمة جديدة." },
   "hatimErrNotSignedIn": { "tr": "Oturum bulunamadı. Lütfen tekrar giriş yapın.", "en": "No session found. Please sign in again.", "ar": "لم يتم العثور على جلسة. يرجى تسجيل الدخول مجددًا." },
-  "hatimErrNotYours": { "tr": "Bu parça artık sizde değil", "en": "This part is no longer yours", "ar": "لم يعد هذا الجزء لك" }
+  "hatimErrNotYours": { "tr": "Bu parça artık sizde değil", "en": "This part is no longer yours", "ar": "لم يعد هذا الجزء لك" },
+  "hatimErrQuotaCuz": { "tr": "En fazla 3 cüz alabilirsiniz. Önce aldıklarınızı bitirin.", "en": "You can hold at most 3 juz. Finish the ones you have first.", "ar": "يمكنك أخذ 3 أجزاء كحد أقصى. أنهِ ما لديك أولًا." },
+  "hatimErrQuotaSayfa": { "tr": "En fazla 20 sayfa alabilirsiniz. Önce aldıklarınızı bitirin.", "en": "You can hold at most 20 pages. Finish the ones you have first.", "ar": "يمكنك أخذ 20 صفحة كحد أقصى. أنهِ ما لديك أولًا." },
+  "hatimErrTooSoon": { "tr": "Okumak için biraz zaman tanıyın. Parçayı aldıktan en az 1 dakika sonra bitirebilirsiniz.", "en": "Give yourself some time to read. You can finish at least 1 minute after taking the part.", "ar": "امنح نفسك وقتًا للقراءة. يمكنك الإنهاء بعد دقيقة على الأقل من أخذ الجزء." },
+  "hatimErrCreateTooSoon": { "tr": "Yeni bir grup kurmak için 1 dakika bekleyin.", "en": "Please wait 1 minute before creating another group.", "ar": "يرجى الانتظار دقيقة قبل إنشاء مجموعة أخرى." },
+  "hatimErrRejoinTooSoon": { "tr": "Gruba tekrar katılmak için biraz bekleyin.", "en": "Please wait a moment before rejoining the group.", "ar": "يرجى الانتظار قليلًا قبل الانضمام إلى المجموعة مجددًا." },
+  "hatimKick": { "tr": "Üyeyi çıkar", "en": "Remove member", "ar": "إزالة العضو" },
+  "hatimKickConfirm": {
+    "tr": "{name} gruptan çıkarılsın mı? Aldığı ve bitirmediği parçalar boşa çıkarılır.", "en": "Remove {name} from the group? Their unfinished parts will be freed.", "ar": "هل تريد إزالة {name} من المجموعة؟ ستُحرَّر الأجزاء التي لم ينهها.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimKicked": { "tr": "Üye gruptan çıkarıldı", "en": "The member was removed", "ar": "تمت إزالة العضو" },
+  "hatimEvKick": {
+    "tr": "{name} bir üyeyi gruptan çıkardı", "en": "{name} removed a member", "ar": "أزال {name} عضوًا من المجموعة",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "hatimQuotaInfo": {
+    "tr": "Sizde {held}/{max}", "en": "You hold {held}/{max}", "ar": "لديك {held}/{max}",
+    "placeholders": { "held": { "type": "int" }, "max": { "type": "int" } }
+  }
 }

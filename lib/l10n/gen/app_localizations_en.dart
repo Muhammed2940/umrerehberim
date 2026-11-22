@@ -4889,6 +4889,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hatimErrAlreadyDone => 'This part has already been read';
 
   @override
+  String get hatimErrCreateTooSoon =>
+      'Please wait 1 minute before creating another group.';
+
+  @override
   String get hatimErrFull => 'The group is full (200 members max)';
 
   @override
@@ -4912,10 +4916,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hatimErrPermission => 'You are not allowed to do this';
 
   @override
+  String get hatimErrQuotaCuz =>
+      'You can hold at most 3 juz. Finish the ones you have first.';
+
+  @override
+  String get hatimErrQuotaSayfa =>
+      'You can hold at most 20 pages. Finish the ones you have first.';
+
+  @override
+  String get hatimErrRejoinTooSoon =>
+      'Please wait a moment before rejoining the group.';
+
+  @override
   String get hatimErrTakenCuz => 'This juz was just taken by someone else';
 
   @override
   String get hatimErrTakenSayfa => 'This page was just taken by someone else';
+
+  @override
+  String get hatimErrTooSoon =>
+      'Give yourself some time to read. You can finish at least 1 minute after taking the part.';
 
   @override
   String get hatimEvCompleted => 'The khatm is complete! May Allah accept it';
@@ -4938,6 +4958,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String hatimEvJoin(String name) {
     return '$name joined the group';
+  }
+
+  @override
+  String hatimEvKick(String name) {
+    return '$name removed a member';
   }
 
   @override
@@ -4995,6 +5020,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hatimJoined => 'You joined the group';
+
+  @override
+  String get hatimKick => 'Remove member';
+
+  @override
+  String hatimKickConfirm(String name) {
+    return 'Remove $name from the group? Their unfinished parts will be freed.';
+  }
+
+  @override
+  String get hatimKicked => 'The member was removed';
 
   @override
   String get hatimLastEvent => 'Latest activity';
@@ -5086,6 +5122,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hatimPublicTitle => 'Public';
+
+  @override
+  String hatimQuotaInfo(int held, int max) {
+    return 'You hold $held/$max';
+  }
 
   @override
   String get hatimRelease => 'Release';

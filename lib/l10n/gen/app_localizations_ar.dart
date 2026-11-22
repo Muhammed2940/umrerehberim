@@ -4890,6 +4890,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hatimErrAlreadyDone => 'تمت قراءة هذا الجزء بالفعل';
 
   @override
+  String get hatimErrCreateTooSoon =>
+      'يرجى الانتظار دقيقة قبل إنشاء مجموعة أخرى.';
+
+  @override
   String get hatimErrFull => 'المجموعة ممتلئة (200 عضو كحد أقصى)';
 
   @override
@@ -4912,10 +4916,26 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hatimErrPermission => 'ليست لديك صلاحية لهذا الإجراء';
 
   @override
+  String get hatimErrQuotaCuz =>
+      'يمكنك أخذ 3 أجزاء كحد أقصى. أنهِ ما لديك أولًا.';
+
+  @override
+  String get hatimErrQuotaSayfa =>
+      'يمكنك أخذ 20 صفحة كحد أقصى. أنهِ ما لديك أولًا.';
+
+  @override
+  String get hatimErrRejoinTooSoon =>
+      'يرجى الانتظار قليلًا قبل الانضمام إلى المجموعة مجددًا.';
+
+  @override
   String get hatimErrTakenCuz => 'أخذ شخص آخر هذا الجزء للتو';
 
   @override
   String get hatimErrTakenSayfa => 'أخذ شخص آخر هذه الصفحة للتو';
+
+  @override
+  String get hatimErrTooSoon =>
+      'امنح نفسك وقتًا للقراءة. يمكنك الإنهاء بعد دقيقة على الأقل من أخذ الجزء.';
 
   @override
   String get hatimEvCompleted => 'اكتملت الختمة! تقبّل الله';
@@ -4938,6 +4958,11 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String hatimEvJoin(String name) {
     return 'انضم $name إلى المجموعة';
+  }
+
+  @override
+  String hatimEvKick(String name) {
+    return 'أزال $name عضوًا من المجموعة';
   }
 
   @override
@@ -4993,6 +5018,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get hatimJoined => 'انضممت إلى المجموعة';
+
+  @override
+  String get hatimKick => 'إزالة العضو';
+
+  @override
+  String hatimKickConfirm(String name) {
+    return 'هل تريد إزالة $name من المجموعة؟ ستُحرَّر الأجزاء التي لم ينهها.';
+  }
+
+  @override
+  String get hatimKicked => 'تمت إزالة العضو';
 
   @override
   String get hatimLastEvent => 'آخر النشاطات';
@@ -5084,6 +5120,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get hatimPublicTitle => 'عامة';
+
+  @override
+  String hatimQuotaInfo(int held, int max) {
+    return 'لديك $held/$max';
+  }
 
   @override
   String get hatimRelease => 'تخلَّ عنه';
