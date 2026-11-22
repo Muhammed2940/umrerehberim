@@ -35,7 +35,14 @@ const Map<AuditCategory, List<String>> auditCategoryActions = {
   AuditCategory.points: [AuditAction.pointsGrant, AuditAction.pointsRevert, AuditAction.pointsBulk],
   AuditCategory.coupon: [AuditAction.couponCreate, AuditAction.couponUpdate, AuditAction.couponDelete],
   AuditCategory.finance: [AuditAction.settlementPaid, AuditAction.settlementUpdate, AuditAction.financeSettings],
-  AuditCategory.user: [AuditAction.userCreate, AuditAction.userUpdate, AuditAction.userDelete, AuditAction.roleChange],
+  AuditCategory.user: [
+    AuditAction.userCreate,
+    AuditAction.userUpdate,
+    AuditAction.userDelete,
+    AuditAction.roleChange,
+    AuditAction.secretReset,
+    AuditAction.authMigrate,
+  ],
   AuditCategory.agency: [AuditAction.agencyCreate, AuditAction.agencyUpdate, AuditAction.agencyDelete],
   AuditCategory.message: [AuditAction.messageSend],
   AuditCategory.risk: [AuditAction.riskReview],
@@ -168,6 +175,10 @@ String ccAuditActionLabel(BuildContext context, String action) {
       return t.ccActRiskReview;
     case AuditAction.txCancel:
       return t.ccActTxCancel;
+    case AuditAction.secretReset:
+      return t.authApiActSecretReset;
+    case AuditAction.authMigrate:
+      return t.authApiActMigrate;
   }
   return action;
 }

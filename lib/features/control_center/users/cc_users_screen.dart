@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/services/auth_api_service.dart';
+import '../../../common/widgets/auth_access_widgets.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -163,7 +165,7 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
                             _UserTile(
                               row: r,
                               agencyName: data.agencies[r.user.agencyId],
-                              onTap: () => _showDetail(r, data.agencies[r.user.agencyId]),
+                              onTap: () => _showDetail(r, data.agencies[r.user.agencyId], me),
                             ),
                         ],
                       ),
@@ -198,17 +200,20 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
         ),
       );
 
-  void _showDetail(_Row r, String? agencyName) {
+  void _showDetail(_Row r, String? agencyName, UserModel me) {
     final t = context.l10n;
     final u = r.user;
     final hasAgency = (u.agencyId ?? '').isNotEmpty;
+    final canReset = AuthApiService.canReset(me, u);
     showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
       backgroundColor: Colors.white,
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
       builder: (ctx) => SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
+          child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -233,6 +238,8 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
               ),
               const SizedBox(height: 18),
               _info(Icons.badge_outlined, t.ccUsrTc, u.userTc.isEmpty ? '-' : u.userTc),
+              // Kullanıcı ID (kopyalanabilir); PIN/şifre hiçbir zaman gösterilmez.
+              if (!u.isMerchant) LoginIdRow(loginId: u.loginId, iconColor: CcColors.mid, labelWidth: 110),
               _info(Icons.phone_outlined, t.ccUsrPhone, u.userTel.isEmpty ? '-' : u.userTel),
               _info(Icons.business_outlined, t.ccUsrAgency, hasAgency ? (agencyName ?? u.agencyId!) : t.ccUsrNoAgency),
               _info(Icons.bolt_rounded, t.ccUsrLastActive,
@@ -249,7 +256,23 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
                   label: Text(t.ccUsrOpenAgency),
                 ),
               ],
+              if (canReset) ...[
+                const SizedBox(height: 10),
+                ResetSecretButton(
+                  target: u,
+                  onIssued: (c) {
+                    // Servis login_id üretmiş olabilir; liste yenilensin.
+                    if ((u.loginId ?? '') != c.loginId && mounted) _refresh();
+                  },
+                ),
+              ],
+              // Süper admin: kullanıcının ekranını onun gözünden görme (henüz pasif).
+              if (me.isSuperAdmin) ...[
+                const SizedBox(height: 10),
+                const ViewAsUserButton(),
+              ],
             ],
+          ),
           ),
         ),
       ),

@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../common/services/auth_account_service.dart';
+import '../../../common/services/auth_api_service.dart';
 import '../../../common/services/firestore_service.dart';
+import '../../../core/config/auth_api_config.dart';
 import '../../auth/models/user_model.dart';
 import '../shared/audit_log.dart';
 
@@ -29,17 +31,31 @@ class StaffService {
   }
 
   /// Hesap açar; TC kayıtlıysa [AccountExistsException].
-  static Future<UserModel> create({
+  /// AUTH_API açıkken hesabı servis açar ve bir kez dönen giriş bilgisi de verilir
+  /// (kapalıyken `credentials` null).
+  static Future<({UserModel user, IssuedCredentials? credentials})> create({
     required UserModel actor,
     required String name,
     required String tc,
     required String phone,
     required String role,
+    IssuedCredentials? reuse,
   }) async {
     assert(editableTypes.contains(role));
     final existing = await FirestoreService.instance.getUserByTc(tc);
     if (existing != null) throw const AccountExistsException();
-    final uid = await AuthAccountService.createAccount(tc);
+    IssuedCredentials? issued;
+    final String uid;
+    if (authApiEnabled) {
+      // [reuse]: önceki denemede hesap açılıp belge yazılamadıysa aynı hesap kullanılır.
+      final base = reuse != null && reuse.userType == role
+          ? reuse
+          : await AuthApiService.createAccount(userType: role, agencyId: '');
+      issued = base.withUser(name, role);
+      uid = issued.uid;
+    } else {
+      uid = await AuthAccountService.createAccount(tc);
+    }
     final user = UserModel(
       id: uid,
       userName: name,
@@ -47,8 +63,14 @@ class StaffService {
       userTel: phone,
       userTc: tc,
       agencyId: '',
+      loginId: issued?.loginId,
     );
-    await _users.doc(uid).set(user.toFirestore(isNew: true));
+    try {
+      await _users.doc(uid).set(user.toFirestore(isNew: true));
+    } catch (e) {
+      if (issued == null) rethrow;
+      throw AccountDocWriteException(issued, e);
+    }
     await AuthAccountService.setRole(uid, role: role, agencyId: '');
     await AuditLog.write(
       action: AuditAction.userCreate,
@@ -58,7 +80,10 @@ class StaffService {
       targetName: name,
       details: {'user_type': role, 'staff': true},
     );
-    return UserModel.fromMap(uid, {...user.toJson(), 'created_at': DateTime.now().toIso8601String()});
+    return (
+      user: UserModel.fromMap(uid, {...user.toJson(), 'created_at': DateTime.now().toIso8601String()}),
+      credentials: issued,
+    );
   }
 
   static Future<void> changeRole({required UserModel actor, required UserModel target, required String role}) async {

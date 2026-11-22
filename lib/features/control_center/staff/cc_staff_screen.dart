@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/services/auth_account_service.dart';
+import '../../../common/services/auth_api_service.dart';
+import '../../../common/widgets/auth_access_widgets.dart';
+import '../../../common/widgets/credentials_sheet.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -176,6 +179,7 @@ class _CcStaffScreenState extends State<CcStaffScreen> {
     final color = ccRoleColor(u.userType);
     final isMe = u.id == me.id;
     final editable = StaffService.editableTypes.contains(u.userType) && !isMe;
+    final canReset = AuthApiService.canReset(me, u);
     final busy = _busy.contains(u.id);
     final initials = u.userName.trim().isEmpty
         ? '?'
@@ -209,6 +213,11 @@ class _CcStaffScreenState extends State<CcStaffScreen> {
                 const SizedBox(height: 2),
                 Text([tc, u.userTel].where((s) => s.isNotEmpty).join(' • '),
                     style: const TextStyle(fontSize: 12, color: AppColors.textMuted)),
+                // Kullanıcı ID (yeni giriş); gizli bilgi hiçbir zaman gösterilmez.
+                if ((u.loginId ?? '').isNotEmpty)
+                  Text('${t.authApiLoginIdLabel}: ${groupDigits(u.loginId!)}',
+                      textDirection: TextDirection.ltr,
+                      style: const TextStyle(fontSize: 12, color: AppColors.textMuted, fontWeight: FontWeight.w600)),
               ],
             ),
           ),
@@ -218,11 +227,29 @@ class _CcStaffScreenState extends State<CcStaffScreen> {
               padding: EdgeInsets.all(12),
               child: SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)),
             )
-          else if (editable)
+          else if (editable || canReset)
             PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert_rounded, color: AppColors.textMuted),
-              onSelected: (v) => v == 'delete' ? _delete(u) : _changeRole(u, v),
+              onSelected: (v) async {
+                if (v == 'delete') return _delete(u);
+                if (v == 'reset') {
+                  final issued = await confirmAndResetSecret(context, u);
+                  if (issued != null && (u.loginId ?? '').isEmpty) await _reload();
+                  return;
+                }
+                return _changeRole(u, v);
+              },
               itemBuilder: (_) => [
+                if (canReset)
+                  PopupMenuItem(
+                    value: 'reset',
+                    child: ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: const Icon(Icons.lock_reset_rounded, color: CcColors.mid),
+                      title: Text(AuthApiService.usesPin(u.userType) ? t.authApiResetPin : t.authApiResetPassword),
+                    ),
+                  ),
+                if (editable)
                 for (final r in StaffService.editableTypes)
                   if (r != u.userType)
                     PopupMenuItem(
@@ -233,6 +260,7 @@ class _CcStaffScreenState extends State<CcStaffScreen> {
                         title: Text('${t.ccStaffChangeRole}: ${ccRoleLabel(context, r)}'),
                       ),
                     ),
+                if (editable)
                 PopupMenuItem(
                   value: 'delete',
                   child: ListTile(
@@ -375,6 +403,7 @@ class _StaffFormState extends State<_StaffForm> {
   final _tel = TextEditingController();
   String _role = UserType.destek;
   bool _saving = false;
+  IssuedCredentials? _pending;
 
   @override
   void dispose() {
@@ -389,15 +418,26 @@ class _StaffFormState extends State<_StaffForm> {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _saving = true);
     try {
-      await StaffService.create(
+      final res = await StaffService.create(
         actor: widget.actor,
         name: _name.text.trim(),
         tc: _tc.text.trim(),
         phone: _tel.text.trim(),
         role: _role,
+        reuse: _pending,
       );
+      _pending = null;
       GlobalSnackbar.showSuccess(l10n.ccStaffCreated);
+      if (res.credentials != null && mounted) await showCredentialsSheet(context, res.credentials!);
       if (mounted) Navigator.pop(context, true);
+    } on AccountDocWriteException catch (e) {
+      // Bilgiler bir kez döndü: hata ile göster; tekrar kayıtta aynı hesap kullanılır.
+      debugPrint('CcStaff create doc: ${e.cause}');
+      _pending = e.credentials;
+      GlobalSnackbar.showError(l10n.authApiDocWriteFailed);
+      if (mounted) await showCredentialsSheet(context, e.credentials, errorText: l10n.authApiDocWriteFailed);
+    } on AuthApiException catch (e) {
+      GlobalSnackbar.showError(e.message);
     } on AccountExistsException {
       GlobalSnackbar.showError(l10n.ccStaffTcExists);
     } on FirebaseAuthException catch (e) {

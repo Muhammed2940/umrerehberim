@@ -49,6 +49,9 @@ class UserModel {
 
   /// Esnaf hesabının bağlı olduğu dükkan (`shops/{id}`); diğer tiplerde null.
   final String? shopId;
+
+  /// Yeni girişteki 7 haneli Kullanıcı ID (`login_id`). Eski (TC) hesaplarda null.
+  final String? loginId;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -71,6 +74,7 @@ class UserModel {
     this.mekkeOdaId,
     this.medineOdaId,
     this.shopId,
+    this.loginId,
     this.createdAt,
     this.updatedAt,
   });
@@ -121,6 +125,7 @@ class UserModel {
         mekkeOdaId: d['mekke_oda_id'] as String?,
         medineOdaId: d['medine_oda_id'] as String?,
         shopId: d['shop_id'] as String?,
+        loginId: _loginIdOf(d['login_id']),
         createdAt: toDateTime(d['created_at']),
         updatedAt: toDateTime(d['updated_at']),
       );
@@ -149,7 +154,14 @@ class UserModel {
         'mekke_oda_id': mekkeOdaId,
         'medine_oda_id': medineOdaId,
         if (shopId != null) 'shop_id': shopId,
+        // Yalnız doluysa yazılır: merge ile kaydedilen belgelerde mevcut değeri silmez.
+        if (loginId != null) 'login_id': loginId,
       };
+
+  static String? _loginIdOf(Object? v) {
+    final s = v?.toString().trim() ?? '';
+    return s.isEmpty ? null : s;
+  }
 
   Map<String, dynamic> toFirestore({bool isNew = false}) => {
         ..._base(),
@@ -177,6 +189,7 @@ class UserModel {
     String? medineOtelId,
     String? mekkeOdaId,
     String? medineOdaId,
+    String? loginId,
   }) =>
       UserModel(
         id: id,
@@ -197,6 +210,7 @@ class UserModel {
         mekkeOdaId: mekkeOdaId ?? this.mekkeOdaId,
         medineOdaId: medineOdaId ?? this.medineOdaId,
         shopId: shopId,
+        loginId: loginId ?? this.loginId,
         createdAt: createdAt,
         updatedAt: updatedAt,
       );

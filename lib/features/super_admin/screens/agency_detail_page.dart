@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/services/auth_api_service.dart';
 import '../../../common/services/firestore_service.dart';
+import '../../../common/widgets/auth_access_widgets.dart';
 import '../../../common/widgets/empty_state_widget.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
@@ -121,6 +123,46 @@ class _AgencyDetailPageState extends State<AgencyDetailPage> {
     await _load(a.id);
   }
 
+  /// Kişinin Kullanıcı ID'si ve (yetki varsa) "Yeni PIN ver / Yeni şifre ver".
+  void _showUserAccess(UserModel u, UserModel? me) {
+    final l = context.l10n;
+    final canReset = AuthApiService.canReset(me, u);
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(24))),
+      builder: (ctx) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                u.userName.isEmpty ? l.adminUnnamed : u.userName,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.text),
+              ),
+              Text(userTypeLabel(context, u.userType), style: const TextStyle(color: AppColors.textMuted)),
+              const SizedBox(height: 12),
+              if (!u.isMerchant) LoginIdRow(loginId: u.loginId),
+              if (canReset) ...[
+                const SizedBox(height: 12),
+                ResetSecretButton(
+                  target: u,
+                  onIssued: (c) {
+                    final a = _agency;
+                    if ((u.loginId ?? '') != c.loginId && a != null && mounted) _load(a.id);
+                  },
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final a = _agency;
@@ -135,6 +177,7 @@ class _AgencyDetailPageState extends State<AgencyDetailPage> {
         title: Text(u.userName.isEmpty ? l.adminUnnamed : u.userName),
         subtitle: Text(l.adminTcValue(u.userTc)),
         trailing: Text(userTypeLabel(context, u.userType)),
+        onTap: () => _showUserAccess(u, me),
       ),
     );
     if (staff) {

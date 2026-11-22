@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/widgets/change_secret_tile.dart';
 import '../../../common/widgets/language_picker.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
@@ -54,6 +55,11 @@ class _SettingsPageState extends State<SettingsPage> {
             margin: EdgeInsets.zero,
             child: LanguageSettingTile(),
           ),
+          if (user != null && !user.isMerchant) ...[
+            const SizedBox(height: 8),
+            // Yeni giriş: Şifremi değiştir (AUTH_API kapalıyken pasif).
+            ChangeSecretTile(userType: user.userType),
+          ],
           const SizedBox(height: 8),
           // Genel adminler (süper admin, yönetici) konum paylaşmaz.
           if (user?.isGlobalAdmin != true) LocationSharingCard(description: t.adminTrackingDescription),

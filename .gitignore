@@ -26,6 +26,15 @@ telsiz.env.json
 tool/rules-test/node_modules/
 tool/rules-test/firestore.rules
 
+# PHP kimlik servisi: GİZLİ dosyalar gite girmez (server/umre-api/private/)
+server/umre-api/private/config.php
+server/umre-api/private/service-account*.json
+server/umre-api/private/cache/
+server/umre-api/private/ratelimit/
+server/umre-api/*.zip
+server/umre-api/dist/
+server/umre-api/private-path.php
+
 # Öykünücü/firebase logları
 *.log
 

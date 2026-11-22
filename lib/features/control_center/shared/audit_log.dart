@@ -32,6 +32,10 @@ class AuditAction {
   static const messageSend = 'message_send';
   static const riskReview = 'risk_review';
   static const txCancel = 'tx_cancel';
+
+  /// Giriş servisi (PHP) yazar: yeni PIN/şifre ve toplu taşıma.
+  static const secretReset = 'secret_reset';
+  static const authMigrate = 'auth_migrate';
 }
 
 /// `audit_logs/{id}`: kim, ne zaman, neyi yaptı. Kurallar yalnız eklemeye izin verir

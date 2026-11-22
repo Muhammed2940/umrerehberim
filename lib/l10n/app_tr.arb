@@ -796,6 +796,153 @@
   "authAccountIsAdmin": "Bu hesap yönetici hesabıdır.",
   "authAccountIsGuest": "Bu hesap misafir hesabıdır.",
   "authAdmin": "Yönetici",
+  "authApiActMigrate": "Hesaplar yeni girişe taşındı",
+  "authApiActSecretReset": "PIN/şifre yenilendi",
+  "authApiCancel": "Vazgeç",
+  "authApiChangePassword": "Şifremi değiştir",
+  "authApiChangePin": "PIN'imi değiştir",
+  "authApiChangeSubtitle": "Giriş için kullandığınız gizli bilgiyi yenileyin",
+  "authApiCopied": "Panoya kopyalandı.",
+  "authApiCopy": "Kopyala",
+  "authApiCopyAllCsv": "Tümünü kopyala (CSV)",
+  "authApiCreate": "Oluştur",
+  "authApiCredName": "Ad Soyad",
+  "authApiCredTitle": "Giriş Bilgileri",
+  "authApiCredWarningPassword": "Bu şifre yalnızca şimdi görünür; kapatınca bir daha gösterilemez.",
+  "authApiCredWarningPin": "Bu PIN yalnızca şimdi görünür; kapatınca bir daha gösterilemez.",
+  "authApiDocWriteFailed": "Hesap açıldı ancak kişi kaydı yazılamadı. Aşağıdaki bilgileri not edin ve formu yeniden kaydedin; aynı hesap kullanılacak.",
+  "authApiErrAccountDisabled": "Bu hesap devre dışı bırakılmış. Rehberinize veya acentenize başvurun.",
+  "authApiErrAccountNotReady": "Hesabınızın kaydı henüz tamamlanmamış. Rehberinize veya acentenize başvurun.",
+  "authApiErrAgencyNotFound": "Acente bulunamadı.",
+  "authApiErrForbidden": "Bu işlem için yetkiniz yok.",
+  "authApiErrInvalidCredentials": "Kullanıcı ID veya PIN hatalı ya da çok fazla deneme yapıldı; biraz sonra tekrar deneyin.",
+  "authApiErrInvalidSecret": "Yeni PIN/şifre kurallara uymuyor.",
+  "authApiErrLocked": "Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; {minutes} dakika sonra tekrar deneyin.",
+  "@authApiErrLocked": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiErrLockedShort": "Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; biraz sonra tekrar deneyin.",
+  "authApiErrMigrationDone": "Taşıma tamamlanmış; bu işlem artık kapalı.",
+  "authApiErrNetwork": "Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edin.",
+  "authApiErrNoSecret": "Bu hesabın henüz PIN/şifresi yok. Rehberinizden yeni PIN isteyin.",
+  "authApiErrNotFound": "Kullanıcı bulunamadı.",
+  "authApiErrRateLimited": "Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar deneyin.",
+  "authApiErrRateLimitedWait": "Çok fazla deneme yapıldı. Lütfen {minutes} dakika sonra tekrar deneyin.",
+  "@authApiErrRateLimitedWait": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiErrReauth": "Güvenlik için çıkış yapıp yeniden giriş yapmanız gerekiyor.",
+  "authApiErrServer": "Sunucuda bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "authApiErrUnauthenticated": "Oturumunuz doğrulanamadı. Lütfen çıkış yapıp tekrar giriş yapın.",
+  "authApiErrUnknown": "Beklenmeyen bir hata oluştu.",
+  "authApiErrValidation": "Girilen bilgiler geçersiz.",
+  "authApiErrWeakSecret": "Bu PIN kolay tahmin edilir (ör. 123456, 111111). Başka bir PIN seçin.",
+  "authApiErrWrongOldSecret": "Mevcut PIN/şifre hatalı.",
+  "authApiFieldRequired": "Bu alan zorunludur.",
+  "authApiForgot": "Kullanıcı ID veya PIN'imi unuttum",
+  "authApiForgotBody": "Kullanıcı ID ve PIN'inizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun; size yeni bir PIN oluşturabilirler.",
+  "authApiForgotTitle": "Giriş bilgilerinizi mi unuttunuz?",
+  "authApiHideSecret": "Gizle",
+  "authApiLeave": "Çık",
+  "authApiLoginIdError": "Kullanıcı ID 7 haneli bir numara olmalıdır.",
+  "authApiLoginIdLabel": "Kullanıcı ID",
+  "authApiLoginIdNone": "Henüz yok",
+  "authApiMigrateConfirm": "{count} hesap yeni girişe taşınacak ve TC ile giriş kapanacak. Bu işlem geri alınamaz. Devam edilsin mi?",
+  "@authApiMigrateConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateCount": "{count} hesap taşınacak.",
+  "@authApiMigrateCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateDesc": "Kullanıcı ID ve PIN/şifre ile girişe geçiş",
+  "authApiMigrateDone": "{count} hesap taşındı.",
+  "@authApiMigrateDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateDryRun": "Önizle (değişiklik yapmaz)",
+  "authApiMigrateIntro": "Kullanıcı ID'si olmayan tüm hesaplara (esnaf hariç) Kullanıcı ID ve PIN/şifre üretilir ve TC ile giriş kapanır. Bu işlem bir kez yapılır. Önce önizleyin.",
+  "authApiMigrateLeaveBody": "Giriş bilgileri bir daha gösterilemez. Kopyaladığınızdan emin misiniz?",
+  "authApiMigrateLeaveTitle": "Sayfadan çıkılsın mı?",
+  "authApiMigrateNone": "Taşınacak hesap yok.",
+  "authApiMigrateOnceWarning": "DİKKAT: Bu giriş bilgileri yalnızca şimdi gösterilir ve bir daha görüntülenemez. Sayfayı kapatmadan önce \"Tümünü kopyala (CSV)\" ile kopyalayıp güvenli bir yerde saklayın.",
+  "authApiMigratePartial": "{count} hesap taşındı, {failed} hesap taşınamadı. Uyarıları okuyup taşımayı yeniden başlatın.",
+  "@authApiMigratePartial": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateRun": "Taşımayı başlat",
+  "authApiMigrateTitle": "Hesapları yeni girişe taşı",
+  "authApiMigrateWarnings": "Uyarılar",
+  "authApiMismatch": "Yeni değerler birbiriyle aynı değil.",
+  "authApiNewPassword": "Yeni şifre",
+  "authApiNewPin": "Yeni PIN",
+  "authApiNotConnected": "Sunucu henüz bağlı değil.",
+  "authApiOk": "Tamam",
+  "authApiOldPassword": "Mevcut şifre",
+  "authApiOldPin": "Mevcut PIN",
+  "authApiPasswordChanged": "Şifreniz değiştirildi.",
+  "authApiPasswordError": "Şifre en az 8 karakter olmalıdır.",
+  "authApiPasswordLabel": "Şifre",
+  "authApiPinChanged": "PIN'iniz değiştirildi.",
+  "authApiPinError": "PIN 6 haneli bir sayı olmalıdır.",
+  "authApiPinLabel": "PIN",
+  "authApiReloginPassword": "Şifre değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni şifre ile giriş yapın.",
+  "authApiReloginPin": "PIN değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni PIN ile giriş yapın.",
+  "authApiRepeatPassword": "Yeni şifre (tekrar)",
+  "authApiRepeatPin": "Yeni PIN (tekrar)",
+  "authApiResetPassword": "Yeni şifre ver",
+  "authApiResetPasswordConfirm": "{name} için yeni şifre oluşturulsun mu? Eski şifre geçersiz olur.",
+  "@authApiResetPasswordConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "authApiResetPin": "Yeni PIN ver",
+  "authApiResetPinConfirm": "{name} için yeni PIN oluşturulsun mu? Eski PIN geçersiz olur.",
+  "@authApiResetPinConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "authApiSameAsOld": "Yeni değer mevcut olanla aynı olamaz.",
+  "authApiSave": "Kaydet",
+  "authApiShareIntro": "Umre Rehberim giriş bilgileriniz",
+  "authApiShareWhatsapp": "WhatsApp ile paylaş",
+  "authApiShowSecret": "Göster",
+  "authApiSoon": "Yakında",
+  "authApiViewAs": "Kullanıcı gözünden görüntüle",
+  "authApiViewAsSoon": "Bu özellik yakında aktif olacak",
   "authFieldRequired": "Bu alan boş bırakılamaz",
   "authGreeting": "Selamün Aleyküm!",
   "authGuest": "Misafir",

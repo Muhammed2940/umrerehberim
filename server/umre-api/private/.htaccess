@@ -1,0 +1,2 @@
+# Güvenlik ağı: private/ asla web'den sunulmamalı (belge kökü public/ olmalı).
+Require all denied

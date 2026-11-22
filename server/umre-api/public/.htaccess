@@ -1,0 +1,32 @@
+# Umre Rehberim kimlik servisi: her istek index.php'ye gider.
+
+# HSTS başlığını index.php ekler (yalnız HTTPS yanıtlarında).
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+# Nokta ile başlayan dosyalar (.git, .env, .htaccess vb.) asla sunulmaz.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Yalnız HTTPS. Yönlendirme YALNIZ GET için (tarayıcıda /v1/health denemesi);
+    # HTTP ile gelen POST yönlendirilmez, index.php 403 https_required döner (gövde zaten
+    # açık ağdan geçmiştir; istemci yönlendirmeyi sessizce izleyip tekrar göndermesin).
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{REQUEST_METHOD} =GET
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Authorization başlığı PHP'ye ulaşsın (CGI/FastCGI'de düşebiliyor).
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Gizli dosya yolları.
+    RewriteRule (^|/)\. - [F,L]
+
+    # Her şey index.php'ye.
+    RewriteRule ^index\.php$ - [L]
+    RewriteRule ^ index.php [L]
+</IfModule>

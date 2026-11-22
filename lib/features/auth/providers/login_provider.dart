@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../common/services/auth_api_service.dart';
 import '../../../common/services/background_location_service.dart';
 import '../../../common/services/firestore_service.dart';
 import '../../../common/services/token_service.dart';
@@ -34,15 +35,48 @@ class LoginProvider extends ChangeNotifier {
     required String tc,
     required String userType,
     required AppStateProvider appState,
+  }) {
+    final cleanTc = tc.trim();
+    return _signInAndComplete(
+      () async => (await FirebaseAuth.instance
+              .signInWithEmailAndPassword(email: tcToEmail(cleanTc), password: tcToPassword(cleanTc)))
+          .user
+          ?.uid,
+      userType: userType,
+      appState: appState,
+    );
+  }
+
+  /// Yeni giriş (AUTH_API açıkken): Kullanıcı ID + PIN/şifre → servis custom token
+  /// verir → `signInWithCustomToken`. Sonrası TC girişiyle aynı yoldur.
+  Future<bool> handleApiLogin({
+    required String loginId,
+    required String secret,
+    required String userType,
+    required AppStateProvider appState,
+  }) {
+    return _signInAndComplete(
+      () async {
+        final token = await AuthApiService.login(loginId.trim(), secret);
+        return (await FirebaseAuth.instance.signInWithCustomToken(token)).user?.uid;
+      },
+      userType: userType,
+      appState: appState,
+    );
+  }
+
+  /// [signIn] Firebase oturumunu açıp uid döner; ardından ortak giriş sonrası akış:
+  /// users/{uid}, esnaf engeli, giriş tipi kontrolü, oturum verisi ve önbellek.
+  Future<bool> _signInAndComplete(
+    Future<String?> Function() signIn, {
+    required String userType,
+    required AppStateProvider appState,
   }) async {
     if (isLoading) return false;
     errorMessage = null;
     _setLoading(true);
     try {
-      final cleanTc = tc.trim();
-      final cred = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: tcToEmail(cleanTc), password: tcToPassword(cleanTc));
-      final uid = cred.user?.uid;
+      final uid = await signIn();
       final user = uid == null ? null : await FirestoreService.instance.getUserByToken(uid);
       if (user == null) {
         await FirebaseAuth.instance.signOut();
@@ -81,6 +115,9 @@ class LoginProvider extends ChangeNotifier {
       notifyListeners();
       SessionLoader.apply(appState, data);
       return true;
+    } on AuthApiException catch (e) {
+      debugPrint('Giriş hatası (servis): ${e.code}');
+      _fail(e.message);
     } on FirebaseAuthException catch (e) {
       debugPrint('Giriş hatası (auth): ${e.code} ${e.message}');
       _fail(_authMessage(e.code));

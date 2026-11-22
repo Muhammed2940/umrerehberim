@@ -2324,6 +2324,534 @@ abstract class AppLocalizations {
   /// **'Yönetici'**
   String get authAdmin;
 
+  /// No description provided for @authApiActMigrate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesaplar yeni girişe taşındı'**
+  String get authApiActMigrate;
+
+  /// No description provided for @authApiActSecretReset.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN/şifre yenilendi'**
+  String get authApiActSecretReset;
+
+  /// No description provided for @authApiCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get authApiCancel;
+
+  /// No description provided for @authApiChangePassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifremi değiştir'**
+  String get authApiChangePassword;
+
+  /// No description provided for @authApiChangePin.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN\'imi değiştir'**
+  String get authApiChangePin;
+
+  /// No description provided for @authApiChangeSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş için kullandığınız gizli bilgiyi yenileyin'**
+  String get authApiChangeSubtitle;
+
+  /// No description provided for @authApiCopied.
+  ///
+  /// In tr, this message translates to:
+  /// **'Panoya kopyalandı.'**
+  String get authApiCopied;
+
+  /// No description provided for @authApiCopy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kopyala'**
+  String get authApiCopy;
+
+  /// No description provided for @authApiCopyAllCsv.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümünü kopyala (CSV)'**
+  String get authApiCopyAllCsv;
+
+  /// No description provided for @authApiCreate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oluştur'**
+  String get authApiCreate;
+
+  /// No description provided for @authApiCredName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ad Soyad'**
+  String get authApiCredName;
+
+  /// No description provided for @authApiCredTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş Bilgileri'**
+  String get authApiCredTitle;
+
+  /// No description provided for @authApiCredWarningPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu şifre yalnızca şimdi görünür; kapatınca bir daha gösterilemez.'**
+  String get authApiCredWarningPassword;
+
+  /// No description provided for @authApiCredWarningPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu PIN yalnızca şimdi görünür; kapatınca bir daha gösterilemez.'**
+  String get authApiCredWarningPin;
+
+  /// No description provided for @authApiDocWriteFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap açıldı ancak kişi kaydı yazılamadı. Aşağıdaki bilgileri not edin ve formu yeniden kaydedin; aynı hesap kullanılacak.'**
+  String get authApiDocWriteFailed;
+
+  /// No description provided for @authApiErrAccountDisabled.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hesap devre dışı bırakılmış. Rehberinize veya acentenize başvurun.'**
+  String get authApiErrAccountDisabled;
+
+  /// No description provided for @authApiErrAccountNotReady.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınızın kaydı henüz tamamlanmamış. Rehberinize veya acentenize başvurun.'**
+  String get authApiErrAccountNotReady;
+
+  /// No description provided for @authApiErrAgencyNotFound.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acente bulunamadı.'**
+  String get authApiErrAgencyNotFound;
+
+  /// No description provided for @authApiErrForbidden.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu işlem için yetkiniz yok.'**
+  String get authApiErrForbidden;
+
+  /// No description provided for @authApiErrInvalidCredentials.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID veya PIN hatalı ya da çok fazla deneme yapıldı; biraz sonra tekrar deneyin.'**
+  String get authApiErrInvalidCredentials;
+
+  /// No description provided for @authApiErrInvalidSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni PIN/şifre kurallara uymuyor.'**
+  String get authApiErrInvalidSecret;
+
+  /// No description provided for @authApiErrLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; {minutes} dakika sonra tekrar deneyin.'**
+  String authApiErrLocked(int minutes);
+
+  /// No description provided for @authApiErrLockedShort.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; biraz sonra tekrar deneyin.'**
+  String get authApiErrLockedShort;
+
+  /// No description provided for @authApiErrMigrationDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taşıma tamamlanmış; bu işlem artık kapalı.'**
+  String get authApiErrMigrationDone;
+
+  /// No description provided for @authApiErrNetwork.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edin.'**
+  String get authApiErrNetwork;
+
+  /// No description provided for @authApiErrNoSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hesabın henüz PIN/şifresi yok. Rehberinizden yeni PIN isteyin.'**
+  String get authApiErrNoSecret;
+
+  /// No description provided for @authApiErrNotFound.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı bulunamadı.'**
+  String get authApiErrNotFound;
+
+  /// No description provided for @authApiErrRateLimited.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar deneyin.'**
+  String get authApiErrRateLimited;
+
+  /// No description provided for @authApiErrRateLimitedWait.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çok fazla deneme yapıldı. Lütfen {minutes} dakika sonra tekrar deneyin.'**
+  String authApiErrRateLimitedWait(int minutes);
+
+  /// No description provided for @authApiErrReauth.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güvenlik için çıkış yapıp yeniden giriş yapmanız gerekiyor.'**
+  String get authApiErrReauth;
+
+  /// No description provided for @authApiErrServer.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sunucuda bir hata oluştu. Lütfen daha sonra tekrar deneyin.'**
+  String get authApiErrServer;
+
+  /// No description provided for @authApiErrUnauthenticated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oturumunuz doğrulanamadı. Lütfen çıkış yapıp tekrar giriş yapın.'**
+  String get authApiErrUnauthenticated;
+
+  /// No description provided for @authApiErrUnknown.
+  ///
+  /// In tr, this message translates to:
+  /// **'Beklenmeyen bir hata oluştu.'**
+  String get authApiErrUnknown;
+
+  /// No description provided for @authApiErrValidation.
+  ///
+  /// In tr, this message translates to:
+  /// **'Girilen bilgiler geçersiz.'**
+  String get authApiErrValidation;
+
+  /// No description provided for @authApiErrWeakSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu PIN kolay tahmin edilir (ör. 123456, 111111). Başka bir PIN seçin.'**
+  String get authApiErrWeakSecret;
+
+  /// No description provided for @authApiErrWrongOldSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut PIN/şifre hatalı.'**
+  String get authApiErrWrongOldSecret;
+
+  /// No description provided for @authApiFieldRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu alan zorunludur.'**
+  String get authApiFieldRequired;
+
+  /// No description provided for @authApiForgot.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID veya PIN\'imi unuttum'**
+  String get authApiForgot;
+
+  /// No description provided for @authApiForgotBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID ve PIN\'inizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun; size yeni bir PIN oluşturabilirler.'**
+  String get authApiForgotBody;
+
+  /// No description provided for @authApiForgotTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş bilgilerinizi mi unuttunuz?'**
+  String get authApiForgotTitle;
+
+  /// No description provided for @authApiHideSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizle'**
+  String get authApiHideSecret;
+
+  /// No description provided for @authApiLeave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çık'**
+  String get authApiLeave;
+
+  /// No description provided for @authApiLoginIdError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID 7 haneli bir numara olmalıdır.'**
+  String get authApiLoginIdError;
+
+  /// No description provided for @authApiLoginIdLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID'**
+  String get authApiLoginIdLabel;
+
+  /// No description provided for @authApiLoginIdNone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz yok'**
+  String get authApiLoginIdNone;
+
+  /// No description provided for @authApiMigrateConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} hesap yeni girişe taşınacak ve TC ile giriş kapanacak. Bu işlem geri alınamaz. Devam edilsin mi?'**
+  String authApiMigrateConfirm(int count);
+
+  /// No description provided for @authApiMigrateCount.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} hesap taşınacak.'**
+  String authApiMigrateCount(int count);
+
+  /// No description provided for @authApiMigrateDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID ve PIN/şifre ile girişe geçiş'**
+  String get authApiMigrateDesc;
+
+  /// No description provided for @authApiMigrateDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} hesap taşındı.'**
+  String authApiMigrateDone(int count);
+
+  /// No description provided for @authApiMigrateDryRun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Önizle (değişiklik yapmaz)'**
+  String get authApiMigrateDryRun;
+
+  /// No description provided for @authApiMigrateIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID\'si olmayan tüm hesaplara (esnaf hariç) Kullanıcı ID ve PIN/şifre üretilir ve TC ile giriş kapanır. Bu işlem bir kez yapılır. Önce önizleyin.'**
+  String get authApiMigrateIntro;
+
+  /// No description provided for @authApiMigrateLeaveBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş bilgileri bir daha gösterilemez. Kopyaladığınızdan emin misiniz?'**
+  String get authApiMigrateLeaveBody;
+
+  /// No description provided for @authApiMigrateLeaveTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sayfadan çıkılsın mı?'**
+  String get authApiMigrateLeaveTitle;
+
+  /// No description provided for @authApiMigrateNone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taşınacak hesap yok.'**
+  String get authApiMigrateNone;
+
+  /// No description provided for @authApiMigrateOnceWarning.
+  ///
+  /// In tr, this message translates to:
+  /// **'DİKKAT: Bu giriş bilgileri yalnızca şimdi gösterilir ve bir daha görüntülenemez. Sayfayı kapatmadan önce \"Tümünü kopyala (CSV)\" ile kopyalayıp güvenli bir yerde saklayın.'**
+  String get authApiMigrateOnceWarning;
+
+  /// No description provided for @authApiMigratePartial.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} hesap taşındı, {failed} hesap taşınamadı. Uyarıları okuyup taşımayı yeniden başlatın.'**
+  String authApiMigratePartial(int count, int failed);
+
+  /// No description provided for @authApiMigrateRun.
+  ///
+  /// In tr, this message translates to:
+  /// **'Taşımayı başlat'**
+  String get authApiMigrateRun;
+
+  /// No description provided for @authApiMigrateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesapları yeni girişe taşı'**
+  String get authApiMigrateTitle;
+
+  /// No description provided for @authApiMigrateWarnings.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uyarılar'**
+  String get authApiMigrateWarnings;
+
+  /// No description provided for @authApiMismatch.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni değerler birbiriyle aynı değil.'**
+  String get authApiMismatch;
+
+  /// No description provided for @authApiNewPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni şifre'**
+  String get authApiNewPassword;
+
+  /// No description provided for @authApiNewPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni PIN'**
+  String get authApiNewPin;
+
+  /// No description provided for @authApiNotConnected.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sunucu henüz bağlı değil.'**
+  String get authApiNotConnected;
+
+  /// No description provided for @authApiOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamam'**
+  String get authApiOk;
+
+  /// No description provided for @authApiOldPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut şifre'**
+  String get authApiOldPassword;
+
+  /// No description provided for @authApiOldPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut PIN'**
+  String get authApiOldPin;
+
+  /// No description provided for @authApiPasswordChanged.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifreniz değiştirildi.'**
+  String get authApiPasswordChanged;
+
+  /// No description provided for @authApiPasswordError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre en az 8 karakter olmalıdır.'**
+  String get authApiPasswordError;
+
+  /// No description provided for @authApiPasswordLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre'**
+  String get authApiPasswordLabel;
+
+  /// No description provided for @authApiPinChanged.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN\'iniz değiştirildi.'**
+  String get authApiPinChanged;
+
+  /// No description provided for @authApiPinError.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN 6 haneli bir sayı olmalıdır.'**
+  String get authApiPinError;
+
+  /// No description provided for @authApiPinLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN'**
+  String get authApiPinLabel;
+
+  /// No description provided for @authApiReloginPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni şifre ile giriş yapın.'**
+  String get authApiReloginPassword;
+
+  /// No description provided for @authApiReloginPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'PIN değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni PIN ile giriş yapın.'**
+  String get authApiReloginPin;
+
+  /// No description provided for @authApiRepeatPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni şifre (tekrar)'**
+  String get authApiRepeatPassword;
+
+  /// No description provided for @authApiRepeatPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni PIN (tekrar)'**
+  String get authApiRepeatPin;
+
+  /// No description provided for @authApiResetPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni şifre ver'**
+  String get authApiResetPassword;
+
+  /// No description provided for @authApiResetPasswordConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} için yeni şifre oluşturulsun mu? Eski şifre geçersiz olur.'**
+  String authApiResetPasswordConfirm(String name);
+
+  /// No description provided for @authApiResetPin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni PIN ver'**
+  String get authApiResetPin;
+
+  /// No description provided for @authApiResetPinConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} için yeni PIN oluşturulsun mu? Eski PIN geçersiz olur.'**
+  String authApiResetPinConfirm(String name);
+
+  /// No description provided for @authApiSameAsOld.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni değer mevcut olanla aynı olamaz.'**
+  String get authApiSameAsOld;
+
+  /// No description provided for @authApiSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get authApiSave;
+
+  /// No description provided for @authApiShareIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Rehberim giriş bilgileriniz'**
+  String get authApiShareIntro;
+
+  /// No description provided for @authApiShareWhatsapp.
+  ///
+  /// In tr, this message translates to:
+  /// **'WhatsApp ile paylaş'**
+  String get authApiShareWhatsapp;
+
+  /// No description provided for @authApiShowSecret.
+  ///
+  /// In tr, this message translates to:
+  /// **'Göster'**
+  String get authApiShowSecret;
+
+  /// No description provided for @authApiSoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yakında'**
+  String get authApiSoon;
+
+  /// No description provided for @authApiViewAs.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı gözünden görüntüle'**
+  String get authApiViewAs;
+
+  /// No description provided for @authApiViewAsSoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik yakında aktif olacak'**
+  String get authApiViewAsSoon;
+
   /// No description provided for @authFieldRequired.
   ///
   /// In tr, this message translates to:

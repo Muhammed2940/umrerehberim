@@ -1265,6 +1265,310 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authAdmin => 'Manager';
 
   @override
+  String get authApiActMigrate => 'Accounts moved to new login';
+
+  @override
+  String get authApiActSecretReset => 'PIN/password renewed';
+
+  @override
+  String get authApiCancel => 'Cancel';
+
+  @override
+  String get authApiChangePassword => 'Change my password';
+
+  @override
+  String get authApiChangePin => 'Change my PIN';
+
+  @override
+  String get authApiChangeSubtitle => 'Renew the secret you use to log in';
+
+  @override
+  String get authApiCopied => 'Copied to clipboard.';
+
+  @override
+  String get authApiCopy => 'Copy';
+
+  @override
+  String get authApiCopyAllCsv => 'Copy all (CSV)';
+
+  @override
+  String get authApiCreate => 'Create';
+
+  @override
+  String get authApiCredName => 'Full name';
+
+  @override
+  String get authApiCredTitle => 'Login Details';
+
+  @override
+  String get authApiCredWarningPassword =>
+      'This password is shown only now; once closed it cannot be shown again.';
+
+  @override
+  String get authApiCredWarningPin =>
+      'This PIN is shown only now; once closed it cannot be shown again.';
+
+  @override
+  String get authApiDocWriteFailed =>
+      'The account was created but the person record could not be saved. Note the details below and save the form again; the same account will be used.';
+
+  @override
+  String get authApiErrAccountDisabled =>
+      'This account has been disabled. Please contact your guide or agency.';
+
+  @override
+  String get authApiErrAccountNotReady =>
+      'Your account setup is not complete yet. Please contact your guide or agency.';
+
+  @override
+  String get authApiErrAgencyNotFound => 'Agency not found.';
+
+  @override
+  String get authApiErrForbidden => 'You are not authorized for this action.';
+
+  @override
+  String get authApiErrInvalidCredentials =>
+      'The user ID or PIN is incorrect, or there were too many attempts; please try again a little later.';
+
+  @override
+  String get authApiErrInvalidSecret =>
+      'The new PIN/password does not meet the rules.';
+
+  @override
+  String authApiErrLocked(int minutes) {
+    return 'Too many failed attempts. The account is temporarily locked; try again in $minutes minutes.';
+  }
+
+  @override
+  String get authApiErrLockedShort =>
+      'Too many failed attempts. The account is temporarily locked; please try again later.';
+
+  @override
+  String get authApiErrMigrationDone =>
+      'The migration is complete; this action is now closed.';
+
+  @override
+  String get authApiErrNetwork =>
+      'Could not reach the server. Check your internet connection.';
+
+  @override
+  String get authApiErrNoSecret =>
+      'This account has no PIN/password yet. Ask your guide for a new PIN.';
+
+  @override
+  String get authApiErrNotFound => 'User not found.';
+
+  @override
+  String get authApiErrRateLimited =>
+      'Too many attempts. Please try again in a few minutes.';
+
+  @override
+  String authApiErrRateLimitedWait(int minutes) {
+    return 'Too many attempts. Please try again in $minutes minutes.';
+  }
+
+  @override
+  String get authApiErrReauth =>
+      'For security, please sign out and sign in again.';
+
+  @override
+  String get authApiErrServer =>
+      'A server error occurred. Please try again later.';
+
+  @override
+  String get authApiErrUnauthenticated =>
+      'Your session could not be verified. Please log out and log in again.';
+
+  @override
+  String get authApiErrUnknown => 'An unexpected error occurred.';
+
+  @override
+  String get authApiErrValidation => 'The entered information is invalid.';
+
+  @override
+  String get authApiErrWeakSecret =>
+      'This PIN is easy to guess (e.g. 123456, 111111). Please choose another PIN.';
+
+  @override
+  String get authApiErrWrongOldSecret =>
+      'The current PIN/password is incorrect.';
+
+  @override
+  String get authApiFieldRequired => 'This field is required.';
+
+  @override
+  String get authApiForgot => 'I forgot my User ID or PIN';
+
+  @override
+  String get authApiForgotBody =>
+      'Your User ID and PIN are given by your guide or agency. If you forgot them, please contact your guide or agency; they can create a new PIN for you.';
+
+  @override
+  String get authApiForgotTitle => 'Forgot your login details?';
+
+  @override
+  String get authApiHideSecret => 'Hide';
+
+  @override
+  String get authApiLeave => 'Leave';
+
+  @override
+  String get authApiLoginIdError => 'User ID must be a 7-digit number.';
+
+  @override
+  String get authApiLoginIdLabel => 'User ID';
+
+  @override
+  String get authApiLoginIdNone => 'Not yet';
+
+  @override
+  String authApiMigrateConfirm(int count) {
+    return '$count accounts will be moved to the new login and national ID login will be closed. This cannot be undone. Continue?';
+  }
+
+  @override
+  String authApiMigrateCount(int count) {
+    return '$count accounts will be moved.';
+  }
+
+  @override
+  String get authApiMigrateDesc => 'Switch to User ID and PIN/password login';
+
+  @override
+  String authApiMigrateDone(int count) {
+    return '$count accounts moved.';
+  }
+
+  @override
+  String get authApiMigrateDryRun => 'Preview (no changes)';
+
+  @override
+  String get authApiMigrateIntro =>
+      'A User ID and PIN/password are generated for every account without a User ID (merchants excluded), and login with national ID is closed. This is done once. Preview first.';
+
+  @override
+  String get authApiMigrateLeaveBody =>
+      'The login details cannot be shown again. Are you sure you copied them?';
+
+  @override
+  String get authApiMigrateLeaveTitle => 'Leave this page?';
+
+  @override
+  String get authApiMigrateNone => 'There are no accounts to move.';
+
+  @override
+  String get authApiMigrateOnceWarning =>
+      'WARNING: These login details are shown only now and can never be displayed again. Before closing this page, copy them with \"Copy all (CSV)\" and keep them in a safe place.';
+
+  @override
+  String authApiMigratePartial(int count, int failed) {
+    return '$count accounts moved, $failed could not be moved. Read the warnings and start the migration again.';
+  }
+
+  @override
+  String get authApiMigrateRun => 'Start moving';
+
+  @override
+  String get authApiMigrateTitle => 'Move accounts to new login';
+
+  @override
+  String get authApiMigrateWarnings => 'Warnings';
+
+  @override
+  String get authApiMismatch => 'The new values do not match.';
+
+  @override
+  String get authApiNewPassword => 'New password';
+
+  @override
+  String get authApiNewPin => 'New PIN';
+
+  @override
+  String get authApiNotConnected => 'The server is not connected yet.';
+
+  @override
+  String get authApiOk => 'OK';
+
+  @override
+  String get authApiOldPassword => 'Current password';
+
+  @override
+  String get authApiOldPin => 'Current PIN';
+
+  @override
+  String get authApiPasswordChanged => 'Your password has been changed.';
+
+  @override
+  String get authApiPasswordError => 'Password must be at least 8 characters.';
+
+  @override
+  String get authApiPasswordLabel => 'Password';
+
+  @override
+  String get authApiPinChanged => 'Your PIN has been changed.';
+
+  @override
+  String get authApiPinError => 'PIN must be 6 digits.';
+
+  @override
+  String get authApiPinLabel => 'PIN';
+
+  @override
+  String get authApiReloginPassword =>
+      'Your password was changed. For security all sessions were closed; sign in with your new password.';
+
+  @override
+  String get authApiReloginPin =>
+      'Your PIN was changed. For security all sessions were closed; sign in with your new PIN.';
+
+  @override
+  String get authApiRepeatPassword => 'New password (again)';
+
+  @override
+  String get authApiRepeatPin => 'New PIN (again)';
+
+  @override
+  String get authApiResetPassword => 'Issue new password';
+
+  @override
+  String authApiResetPasswordConfirm(String name) {
+    return 'Create a new password for $name? The old password will stop working.';
+  }
+
+  @override
+  String get authApiResetPin => 'Issue new PIN';
+
+  @override
+  String authApiResetPinConfirm(String name) {
+    return 'Create a new PIN for $name? The old PIN will stop working.';
+  }
+
+  @override
+  String get authApiSameAsOld =>
+      'The new value cannot be the same as the current one.';
+
+  @override
+  String get authApiSave => 'Save';
+
+  @override
+  String get authApiShareIntro => 'Your Umre Rehberim login details';
+
+  @override
+  String get authApiShareWhatsapp => 'Share via WhatsApp';
+
+  @override
+  String get authApiShowSecret => 'Show';
+
+  @override
+  String get authApiSoon => 'Soon';
+
+  @override
+  String get authApiViewAs => 'View as user';
+
+  @override
+  String get authApiViewAsSoon => 'This feature will be available soon';
+
+  @override
   String get authFieldRequired => 'This field cannot be empty';
 
   @override

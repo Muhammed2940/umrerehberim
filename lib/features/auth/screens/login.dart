@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/services/auth_api_service.dart';
 import '../../../common/widgets/language_picker.dart';
 import '../../../common/widgets/text_field.dart';
+import '../../../core/config/auth_api_config.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -15,7 +17,10 @@ import '../widgets/login_button.dart';
 import '../widgets/section_title.dart';
 import '../widgets/user_type_selector.dart';
 
-/// TC kimlik no + giriş tipi + KVKK onayı ile giriş ekranı.
+/// Giriş ekranı: giriş tipi + KVKK onayı ile
+/// - AUTH_API kapalıyken TC kimlik no,
+/// - açıkken Kullanıcı ID + PIN (misafir) / şifre (yönetici).
+/// Esnaf her iki durumda da dükkan kodu + PIN ile girer.
 /// Başarılı girişten sonra AppWrapper kullanıcı tipine göre ekranı değiştirir.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +34,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   final _tcController = TextEditingController();
   final _codeController = TextEditingController();
   final _pinController = TextEditingController();
+  final _loginIdController = TextEditingController();
+  final _secretController = TextEditingController();
   bool _pinVisible = false;
+  bool _secretVisible = false;
   String _userType = UserType.misafir;
   bool _kvkkAccepted = false;
 
@@ -50,6 +58,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     _tcController.dispose();
     _codeController.dispose();
     _pinController.dispose();
+    _loginIdController.dispose();
+    _secretController.dispose();
     super.dispose();
   }
 
@@ -61,6 +71,66 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   }
 
   bool get _isMerchant => _userType == UserType.esnaf;
+
+  /// Yeni giriş (Kullanıcı ID + PIN/şifre) kullanılıyor mu.
+  bool get _useApi => authApiEnabled && !_isMerchant;
+
+  bool get _usesPin => AuthApiService.usesPin(_userType);
+
+  String? _validateLoginId(String? v) {
+    final s = v?.trim() ?? '';
+    if (s.isEmpty) return context.l10n.authFieldRequired;
+    if (!AuthApiService.loginIdPattern.hasMatch(s)) return context.l10n.authApiLoginIdError;
+    return null;
+  }
+
+  String? _validateSecret(String? v) {
+    final s = v ?? '';
+    if (s.isEmpty) return context.l10n.authFieldRequired;
+    if (_usesPin) return AuthApiService.pinPattern.hasMatch(s) ? null : context.l10n.authApiPinError;
+    return s.length >= AuthApiService.minPasswordLength ? null : context.l10n.authApiPasswordError;
+  }
+
+  void _showForgot() {
+    final t = context.l10n;
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        icon: const Icon(Icons.support_agent_rounded, color: AppColors.primary, size: 36),
+        title: Text(t.authApiForgotTitle, textAlign: TextAlign.center),
+        content: Text(t.authApiForgotBody, style: const TextStyle(height: 1.4)),
+        actions: [
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: AppColors.primary),
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(t.authApiOk),
+          ),
+        ],
+      ),
+    );
+  }
+
+  InputDecoration _secretDecoration(String label, bool visible, VoidCallback toggle) => InputDecoration(
+        labelText: label,
+        prefixIcon: const Icon(Icons.lock_outline, color: AppColors.primary),
+        suffixIcon: IconButton(
+          tooltip: visible ? context.l10n.authApiHideSecret : context.l10n.authApiShowSecret,
+          icon: Icon(visible ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: AppColors.textMuted),
+          onPressed: toggle,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.divider),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.divider),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+        ),
+      );
 
   String? _validateCode(String? v) {
     final s = v?.trim() ?? '';
@@ -93,6 +163,15 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       await context.read<LoginProvider>().handleMerchantLogin(
             code: _codeController.text,
             pin: _pinController.text,
+            appState: context.read<AppStateProvider>(),
+          );
+      return;
+    }
+    if (_useApi) {
+      await context.read<LoginProvider>().handleApiLogin(
+            loginId: _loginIdController.text,
+            secret: _secretController.text,
+            userType: _userType,
             appState: context.read<AppStateProvider>(),
           );
       return;
@@ -158,7 +237,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   const SizedBox(height: 12),
                   UserTypeSelector(
                     selectedType: _userType,
-                    onChanged: (t) => setState(() => _userType = t),
+                    onChanged: (t) => setState(() {
+                      // PIN ile şifre farklı biçimde; tip değişince gizli alan temizlenir.
+                      if (t != _userType) _secretController.clear();
+                      _userType = t;
+                    }),
                   ),
                   const SizedBox(height: 24),
                   if (_isMerchant) ...[
@@ -217,6 +300,52 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     Text(
                       context.l10n.esnafLoginHint,
                       style: const TextStyle(fontSize: 12.5, color: AppColors.textMuted, height: 1.35),
+                    ),
+                  ] else if (_useApi) ...[
+                    AppTextField(
+                      key: const ValueKey('api-login-id'),
+                      controller: _loginIdController,
+                      label: context.l10n.authApiLoginIdLabel,
+                      hint: '1234567',
+                      icon: Icons.pin_outlined,
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(7),
+                      ],
+                      validator: _validateLoginId,
+                    ),
+                    const SizedBox(height: 14),
+                    TextFormField(
+                      key: ValueKey(_usesPin ? 'api-pin' : 'api-password'),
+                      controller: _secretController,
+                      obscureText: !_secretVisible,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: _usesPin ? TextInputType.number : TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.done,
+                      inputFormatters: _usesPin
+                          ? [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(6)]
+                          : null,
+                      validator: _validateSecret,
+                      onFieldSubmitted: (_) => _submit(),
+                      style: TextStyle(fontSize: 16, color: AppColors.text, letterSpacing: _usesPin ? 4 : 0.5),
+                      decoration: _secretDecoration(
+                        _usesPin ? context.l10n.authApiPinLabel : context.l10n.authApiPasswordLabel,
+                        _secretVisible,
+                        () => setState(() => _secretVisible = !_secretVisible),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: TextButton(
+                        onPressed: _showForgot,
+                        child: Text(
+                          context.l10n.authApiForgot,
+                          style: const TextStyle(fontSize: 13, color: AppColors.primary),
+                        ),
+                      ),
                     ),
                   ] else
                   AppTextField(

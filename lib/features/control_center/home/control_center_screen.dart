@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/widgets/change_secret_tile.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -9,6 +10,7 @@ import '../../admin/screens/super_admin_dashboard.dart';
 import '../../admin/widgets/confirm_dialog.dart';
 import '../../auth/models/user_model.dart';
 import '../../auth/providers/login_provider.dart';
+import '../accounts/cc_migrate_screen.dart';
 import '../audit/audit_entry_tile.dart';
 import '../audit/audit_labels.dart';
 import '../shared/audit_log.dart';
@@ -196,8 +198,12 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
     final staff = _Module(t.ccModStaff, t.ccModStaffDesc, Icons.admin_panel_settings_rounded, CcColors.mid,
         () => _go('/cc/staff'));
 
+    // Yeni giriş: eski (TC) hesapları Kullanıcı ID + PIN/şifreye taşıma (yalnız süper admin).
+    final migrate = _Module(t.authApiMigrateTitle, t.authApiMigrateDesc, Icons.swap_horiz_rounded, CcColors.info,
+        () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CcMigrateScreen())));
+
     if (u.isSuperAdmin) {
-      return [agencies, shops, reports, analytics, perf, loyalty, coupons, finance, risk, messages, audit, staff];
+      return [agencies, shops, reports, analytics, perf, loyalty, coupons, finance, risk, messages, audit, staff, migrate];
     }
     if (u.isSupport) return [agencies, messages, risk];
     if (u.isFinance) return [finance, reports, perf, loyalty, coupons];
@@ -287,6 +293,12 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
                   Expanded(
                     child: Text(t.ccTitle,
                         style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700)),
+                  ),
+                  // Süper admin, destek, muhasebe: Şifremi değiştir (yeni giriş).
+                  IconButton(
+                    tooltip: t.authApiChangePassword,
+                    onPressed: () => showChangeSecretDialog(context, u.userType),
+                    icon: const Icon(Icons.password_rounded, color: Colors.white),
                   ),
                   IconButton(
                     tooltip: t.ccLogout,

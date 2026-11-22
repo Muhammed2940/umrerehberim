@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../common/services/auth_account_service.dart';
+import '../../../common/services/auth_api_service.dart';
 import '../../../common/services/firestore_service.dart';
+import '../../../core/config/auth_api_config.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../auth/models/user_model.dart';
@@ -451,7 +453,22 @@ class AdminProvider extends ChangeNotifier {
         GlobalSnackbar.showError(l10n.adminUserTcExists);
         return false;
       }
-      final uid = await AuthAccountService.createAccount(userTc);
+      // AUTH_API açıkken hesabı servis açar (Kullanıcı ID + PIN/şifre); kapalıyken eski TC hesabı.
+      IssuedCredentials? issued;
+      final String uid;
+      if (authApiEnabled) {
+        // Önceki denemede hesap açılıp belge yazılamadıysa aynı hesap yeniden kullanılır.
+        final pending = _pendingAccount;
+        if (pending != null && pending.userType == userType && pending.agencyId == (a ?? '')) {
+          issued = pending.credentials.withUser(userName, userType);
+        } else {
+          issued = (await AuthApiService.createAccount(userType: userType, agencyId: a ?? ''))
+              .withUser(userName, userType);
+        }
+        uid = issued.uid;
+      } else {
+        uid = await AuthAccountService.createAccount(userTc);
+      }
       final user = UserModel(
         id: uid,
         userName: userName,
@@ -461,8 +478,23 @@ class AdminProvider extends ChangeNotifier {
         cinsiyet: cinsiyet,
         dogumTarihi: dogumTarihi,
         agencyId: a,
+        loginId: issued?.loginId,
       );
-      final id = await _service.createOrUpdateUser(user, isNew: true);
+      final String id;
+      try {
+        id = await _service.createOrUpdateUser(user, isNew: true);
+      } catch (e) {
+        if (issued == null) rethrow;
+        // Bilgiler yalnız bir kez döndü: hata ile birlikte gösterilsin, tekrar kayıtta aynı uid kullanılsın.
+        debugPrint('createUser users/{uid} yazılamadı: $e');
+        _pendingAccount = (credentials: issued, userType: userType, agencyId: a ?? '');
+        _issuedCredentials = issued;
+        issuedDocWriteFailed = true;
+        GlobalSnackbar.showError(l10n.authApiDocWriteFailed);
+        return false;
+      }
+      _pendingAccount = null;
+      issuedDocWriteFailed = false;
       await AuthAccountService.setRole(id, role: userType, agencyId: a);
       if (agencyId == null || a == agencyId) {
         final created = UserModel.fromMap(id, {...user.toJson(), 'created_at': DateTime.now().toIso8601String()});
@@ -476,8 +508,12 @@ class AdminProvider extends ChangeNotifier {
         targetName: userName,
         details: {'user_type': userType, 'agency_id': a ?? ''},
       );
+      _issuedCredentials = issued;
       GlobalSnackbar.showSuccess(l10n.adminUserCreated);
       return true;
+    } on AuthApiException catch (e) {
+      GlobalSnackbar.showError(e.message);
+      return false;
     } on AccountExistsException {
       GlobalSnackbar.showError(l10n.adminUserTcExists);
       return false;
@@ -494,6 +530,29 @@ class AdminProvider extends ChangeNotifier {
     } finally {
       _setSaving(false);
     }
+  }
+
+  IssuedCredentials? _issuedCredentials;
+
+  /// Hesabı servis açtı ama users belgesi yazılamadı; aynı tür/acente ile tekrar kayıtta kullanılır.
+  ({IssuedCredentials credentials, String userType, String agencyId})? _pendingAccount;
+
+  /// Son [takeIssuedCredentials] bilgisi, belge yazılamadığı için mi döndü.
+  bool issuedDocWriteFailed = false;
+
+  /// Son [createUser] çağrısında servisin bir kez döndürdüğü giriş bilgisini verir ve
+  /// unutur (AUTH_API kapalıyken hep null). Ekran bunu Giriş Bilgileri kartında gösterir.
+  IssuedCredentials? takeIssuedCredentials() {
+    final c = _issuedCredentials;
+    _issuedCredentials = null;
+    return c;
+  }
+
+  /// Yeni PIN/şifre sonrası (servis login_id üretmiş olabilir) yerel listeyi günceller.
+  void patchLoginId(String userId, String loginId) {
+    if (loginId.isEmpty) return;
+    users = users.map((u) => u.id == userId ? u.copyWith(loginId: loginId) : u).toList();
+    notifyListeners();
   }
 
   /// Ad, telefon, TC, tip, cinsiyet, doğum tarihi günceller.

@@ -3,6 +3,7 @@ import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/widgets/change_secret_tile.dart';
 import '../../../common/widgets/language_picker.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
@@ -247,6 +248,11 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
                         ),
                         const SizedBox(height: 16),
                         const LanguageSettingTile(),
+                        // Yeni giriş: PIN'imi değiştir / Şifremi değiştir (AUTH_API kapalıyken pasif).
+                        if (!user.isMerchant) ...[
+                          const SizedBox(height: 10),
+                          ChangeSecretTile(userType: user.userType),
+                        ],
                         SectionHeader(title: l.homeLocationTracking, icon: Icons.location_on_rounded),
                         const LocationSharingCard(),
                         const SizedBox(height: 20),

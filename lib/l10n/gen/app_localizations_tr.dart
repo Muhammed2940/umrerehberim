@@ -1245,6 +1245,309 @@ class AppLocalizationsTr extends AppLocalizations {
   String get authAdmin => 'Yönetici';
 
   @override
+  String get authApiActMigrate => 'Hesaplar yeni girişe taşındı';
+
+  @override
+  String get authApiActSecretReset => 'PIN/şifre yenilendi';
+
+  @override
+  String get authApiCancel => 'Vazgeç';
+
+  @override
+  String get authApiChangePassword => 'Şifremi değiştir';
+
+  @override
+  String get authApiChangePin => 'PIN\'imi değiştir';
+
+  @override
+  String get authApiChangeSubtitle =>
+      'Giriş için kullandığınız gizli bilgiyi yenileyin';
+
+  @override
+  String get authApiCopied => 'Panoya kopyalandı.';
+
+  @override
+  String get authApiCopy => 'Kopyala';
+
+  @override
+  String get authApiCopyAllCsv => 'Tümünü kopyala (CSV)';
+
+  @override
+  String get authApiCreate => 'Oluştur';
+
+  @override
+  String get authApiCredName => 'Ad Soyad';
+
+  @override
+  String get authApiCredTitle => 'Giriş Bilgileri';
+
+  @override
+  String get authApiCredWarningPassword =>
+      'Bu şifre yalnızca şimdi görünür; kapatınca bir daha gösterilemez.';
+
+  @override
+  String get authApiCredWarningPin =>
+      'Bu PIN yalnızca şimdi görünür; kapatınca bir daha gösterilemez.';
+
+  @override
+  String get authApiDocWriteFailed =>
+      'Hesap açıldı ancak kişi kaydı yazılamadı. Aşağıdaki bilgileri not edin ve formu yeniden kaydedin; aynı hesap kullanılacak.';
+
+  @override
+  String get authApiErrAccountDisabled =>
+      'Bu hesap devre dışı bırakılmış. Rehberinize veya acentenize başvurun.';
+
+  @override
+  String get authApiErrAccountNotReady =>
+      'Hesabınızın kaydı henüz tamamlanmamış. Rehberinize veya acentenize başvurun.';
+
+  @override
+  String get authApiErrAgencyNotFound => 'Acente bulunamadı.';
+
+  @override
+  String get authApiErrForbidden => 'Bu işlem için yetkiniz yok.';
+
+  @override
+  String get authApiErrInvalidCredentials =>
+      'Kullanıcı ID veya PIN hatalı ya da çok fazla deneme yapıldı; biraz sonra tekrar deneyin.';
+
+  @override
+  String get authApiErrInvalidSecret => 'Yeni PIN/şifre kurallara uymuyor.';
+
+  @override
+  String authApiErrLocked(int minutes) {
+    return 'Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; $minutes dakika sonra tekrar deneyin.';
+  }
+
+  @override
+  String get authApiErrLockedShort =>
+      'Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; biraz sonra tekrar deneyin.';
+
+  @override
+  String get authApiErrMigrationDone =>
+      'Taşıma tamamlanmış; bu işlem artık kapalı.';
+
+  @override
+  String get authApiErrNetwork =>
+      'Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edin.';
+
+  @override
+  String get authApiErrNoSecret =>
+      'Bu hesabın henüz PIN/şifresi yok. Rehberinizden yeni PIN isteyin.';
+
+  @override
+  String get authApiErrNotFound => 'Kullanıcı bulunamadı.';
+
+  @override
+  String get authApiErrRateLimited =>
+      'Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar deneyin.';
+
+  @override
+  String authApiErrRateLimitedWait(int minutes) {
+    return 'Çok fazla deneme yapıldı. Lütfen $minutes dakika sonra tekrar deneyin.';
+  }
+
+  @override
+  String get authApiErrReauth =>
+      'Güvenlik için çıkış yapıp yeniden giriş yapmanız gerekiyor.';
+
+  @override
+  String get authApiErrServer =>
+      'Sunucuda bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get authApiErrUnauthenticated =>
+      'Oturumunuz doğrulanamadı. Lütfen çıkış yapıp tekrar giriş yapın.';
+
+  @override
+  String get authApiErrUnknown => 'Beklenmeyen bir hata oluştu.';
+
+  @override
+  String get authApiErrValidation => 'Girilen bilgiler geçersiz.';
+
+  @override
+  String get authApiErrWeakSecret =>
+      'Bu PIN kolay tahmin edilir (ör. 123456, 111111). Başka bir PIN seçin.';
+
+  @override
+  String get authApiErrWrongOldSecret => 'Mevcut PIN/şifre hatalı.';
+
+  @override
+  String get authApiFieldRequired => 'Bu alan zorunludur.';
+
+  @override
+  String get authApiForgot => 'Kullanıcı ID veya PIN\'imi unuttum';
+
+  @override
+  String get authApiForgotBody =>
+      'Kullanıcı ID ve PIN\'inizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun; size yeni bir PIN oluşturabilirler.';
+
+  @override
+  String get authApiForgotTitle => 'Giriş bilgilerinizi mi unuttunuz?';
+
+  @override
+  String get authApiHideSecret => 'Gizle';
+
+  @override
+  String get authApiLeave => 'Çık';
+
+  @override
+  String get authApiLoginIdError =>
+      'Kullanıcı ID 7 haneli bir numara olmalıdır.';
+
+  @override
+  String get authApiLoginIdLabel => 'Kullanıcı ID';
+
+  @override
+  String get authApiLoginIdNone => 'Henüz yok';
+
+  @override
+  String authApiMigrateConfirm(int count) {
+    return '$count hesap yeni girişe taşınacak ve TC ile giriş kapanacak. Bu işlem geri alınamaz. Devam edilsin mi?';
+  }
+
+  @override
+  String authApiMigrateCount(int count) {
+    return '$count hesap taşınacak.';
+  }
+
+  @override
+  String get authApiMigrateDesc => 'Kullanıcı ID ve PIN/şifre ile girişe geçiş';
+
+  @override
+  String authApiMigrateDone(int count) {
+    return '$count hesap taşındı.';
+  }
+
+  @override
+  String get authApiMigrateDryRun => 'Önizle (değişiklik yapmaz)';
+
+  @override
+  String get authApiMigrateIntro =>
+      'Kullanıcı ID\'si olmayan tüm hesaplara (esnaf hariç) Kullanıcı ID ve PIN/şifre üretilir ve TC ile giriş kapanır. Bu işlem bir kez yapılır. Önce önizleyin.';
+
+  @override
+  String get authApiMigrateLeaveBody =>
+      'Giriş bilgileri bir daha gösterilemez. Kopyaladığınızdan emin misiniz?';
+
+  @override
+  String get authApiMigrateLeaveTitle => 'Sayfadan çıkılsın mı?';
+
+  @override
+  String get authApiMigrateNone => 'Taşınacak hesap yok.';
+
+  @override
+  String get authApiMigrateOnceWarning =>
+      'DİKKAT: Bu giriş bilgileri yalnızca şimdi gösterilir ve bir daha görüntülenemez. Sayfayı kapatmadan önce \"Tümünü kopyala (CSV)\" ile kopyalayıp güvenli bir yerde saklayın.';
+
+  @override
+  String authApiMigratePartial(int count, int failed) {
+    return '$count hesap taşındı, $failed hesap taşınamadı. Uyarıları okuyup taşımayı yeniden başlatın.';
+  }
+
+  @override
+  String get authApiMigrateRun => 'Taşımayı başlat';
+
+  @override
+  String get authApiMigrateTitle => 'Hesapları yeni girişe taşı';
+
+  @override
+  String get authApiMigrateWarnings => 'Uyarılar';
+
+  @override
+  String get authApiMismatch => 'Yeni değerler birbiriyle aynı değil.';
+
+  @override
+  String get authApiNewPassword => 'Yeni şifre';
+
+  @override
+  String get authApiNewPin => 'Yeni PIN';
+
+  @override
+  String get authApiNotConnected => 'Sunucu henüz bağlı değil.';
+
+  @override
+  String get authApiOk => 'Tamam';
+
+  @override
+  String get authApiOldPassword => 'Mevcut şifre';
+
+  @override
+  String get authApiOldPin => 'Mevcut PIN';
+
+  @override
+  String get authApiPasswordChanged => 'Şifreniz değiştirildi.';
+
+  @override
+  String get authApiPasswordError => 'Şifre en az 8 karakter olmalıdır.';
+
+  @override
+  String get authApiPasswordLabel => 'Şifre';
+
+  @override
+  String get authApiPinChanged => 'PIN\'iniz değiştirildi.';
+
+  @override
+  String get authApiPinError => 'PIN 6 haneli bir sayı olmalıdır.';
+
+  @override
+  String get authApiPinLabel => 'PIN';
+
+  @override
+  String get authApiReloginPassword =>
+      'Şifre değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni şifre ile giriş yapın.';
+
+  @override
+  String get authApiReloginPin =>
+      'PIN değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni PIN ile giriş yapın.';
+
+  @override
+  String get authApiRepeatPassword => 'Yeni şifre (tekrar)';
+
+  @override
+  String get authApiRepeatPin => 'Yeni PIN (tekrar)';
+
+  @override
+  String get authApiResetPassword => 'Yeni şifre ver';
+
+  @override
+  String authApiResetPasswordConfirm(String name) {
+    return '$name için yeni şifre oluşturulsun mu? Eski şifre geçersiz olur.';
+  }
+
+  @override
+  String get authApiResetPin => 'Yeni PIN ver';
+
+  @override
+  String authApiResetPinConfirm(String name) {
+    return '$name için yeni PIN oluşturulsun mu? Eski PIN geçersiz olur.';
+  }
+
+  @override
+  String get authApiSameAsOld => 'Yeni değer mevcut olanla aynı olamaz.';
+
+  @override
+  String get authApiSave => 'Kaydet';
+
+  @override
+  String get authApiShareIntro => 'Umre Rehberim giriş bilgileriniz';
+
+  @override
+  String get authApiShareWhatsapp => 'WhatsApp ile paylaş';
+
+  @override
+  String get authApiShowSecret => 'Göster';
+
+  @override
+  String get authApiSoon => 'Yakında';
+
+  @override
+  String get authApiViewAs => 'Kullanıcı gözünden görüntüle';
+
+  @override
+  String get authApiViewAsSoon => 'Bu özellik yakında aktif olacak';
+
+  @override
   String get authFieldRequired => 'Bu alan boş bırakılamaz';
 
   @override

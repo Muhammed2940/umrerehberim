@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../common/services/auth_api_service.dart';
+import '../../../../common/widgets/auth_access_widgets.dart';
 import '../../../../common/widgets/empty_state_widget.dart';
+import '../../../../core/providers/app_state_provider.dart';
 import '../../../../core/providers/locale_provider.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../auth/models/user_model.dart';
@@ -53,6 +56,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
       );
     }
     final isManager = user.userType != UserType.misafir;
+    final me = context.watch<AppStateProvider>().currentUser;
+    final canReset = AuthApiService.canReset(me, user);
 
     return Scaffold(
       appBar: AppBar(
@@ -98,6 +103,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                     user.userTc.isEmpty ? l.adminTcUnspecified : user.userTc,
                     ltr: true,
                   ),
+                  // Kullanıcı ID (yeni giriş). PIN/şifre hiçbir zaman gösterilmez.
+                  if (!user.isMerchant) LoginIdRow(loginId: user.loginId),
                   _info(Icons.phone, l.adminPhone, user.userTel.isEmpty ? '-' : user.userTel, ltr: true),
                   _info(Icons.wc, l.adminGender, user.cinsiyet == null ? '-' : genderLabel(context, user.cinsiyet!)),
                   _info(Icons.cake, l.adminBirthDate, user.dogumTarihi ?? '-'),
@@ -115,6 +122,13 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
               ),
             ),
           ),
+          if (canReset) ...[
+            const SizedBox(height: 12),
+            ResetSecretButton(
+              target: user,
+              onIssued: (c) => p.patchLoginId(user.id, c.loginId),
+            ),
+          ],
           const SizedBox(height: 16),
           SegmentedButton<String>(
             segments: [

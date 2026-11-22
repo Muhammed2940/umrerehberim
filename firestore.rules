@@ -9,6 +9,9 @@ service cloud.firestore {
     // giriş yapıp ilk verileri (kendi users belgesi dahil) yazar; o anda henüz
     // users belgesi olmadığından rolü e-postadan tanınır. Hesap seed tarafından
     // bir kez oluşturulduktan sonra aynı e-postayla kimse yeniden kayıt olamaz.
+    // TODO root uid: kök hesabın uid'si belli olunca e-posta yerine
+    // request.auth.uid == '<kök uid>' kullanılmalı (sunucuda config 'root_uid' ile aynı).
+    // E-posta eşleşmesi şimdilik seed/bootstrap için korunuyor.
     function isRoot() {
       // get(): e-postası olmayan token'larda kural hata verip tümden reddetmesin.
       return signedIn() && request.auth.token.get('email', '') == '10000000146@umrerehberim.app';
@@ -52,34 +55,53 @@ service cloud.firestore {
 
     // Kullanıcılar:
     // - herkes kendini; genel adminler herkesi; acente admini kendi acentesini görür.
-    // - misafir, Rehber İletişim için kendi acentesindeki rehberleri (acente_admin/yonetici) okur
-    //   (sorgu where agency_id == <acente> içermeli).
+    // - misafir, Rehber İletişim için kendi acentesindeki rehberin (acente_admin/yonetici) belgesini
+    //   YALNIZ tek tek (get, id trip_managers'tan) okur; LİSTELEYEMEZ (personelin login_id/user_tc
+    //   alanları toplu dökülmesin). Alan bazlı gizleme kurallarla yapılamaz; ayrıntı tool/AUTH_SEMA.md.
     // Oluşturma/düzenleme/silme:
     // - süper admin: her tür
     // - yönetici (genel): misafir ve acente_admin, her acentede
     // - acente admini: yalnız kendi acentesine misafir
     // - esnaf hesabı yalnız süper admin
     function guestOrAgencyAdmin(t) { return t in ['misafir', 'acente_admin']; }
+    // Yeni users belgesinde kimlik alanları: auth_migrated ve disabled istemciden yazılamaz;
+    // login_id ya yoktur ya da kimlik servisinin login_ids/{id} kaydında BU uid'ye aittir
+    // (servis /v1/admin/accounts yanıtından önce yazar). Kural get()'i deny-all belgeyi okuyabilir.
+    function newUserAuthFieldsOk(uid) {
+      let d = request.resource.data;
+      return !d.keys().hasAny(['auth_migrated', 'disabled'])
+          && (!('login_id' in d)
+              || (d.login_id is string
+                  && d.login_id.matches('^[1-9][0-9]{6}$')
+                  && get(/databases/$(database)/documents/login_ids/$(d.login_id)).data.uid == uid));
+    }
     match /users/{uid} {
-      allow read: if signedIn() && (request.auth.uid == uid
+      allow get: if signedIn() && (request.auth.uid == uid
+                    || isGlobal() || isSupport() || isFinance()
+                    || (isAgencyAdmin() && resource.data.agency_id == agency())
+                    || (myAgency(resource.data) && resource.data.user_type in ['acente_admin', 'yonetici']));
+      allow list: if signedIn() && (request.auth.uid == uid
                      || isGlobal() || isSupport() || isFinance()
-                     || (isAgencyAdmin() && resource.data.agency_id == agency())
-                     || (myAgency(resource.data) && resource.data.user_type in ['acente_admin', 'yonetici']));
+                     || (isAgencyAdmin() && resource.data.agency_id == agency()));
 
-      allow create: if isSuper()
-                    || (isManager()
-                        && guestOrAgencyAdmin(request.resource.data.user_type)
-                        && request.resource.data.agency_id is string
-                        && request.resource.data.agency_id != '')
-                    || (isAgencyAdmin()
-                        && request.resource.data.agency_id == agency()
-                        && request.resource.data.user_type == 'misafir');
+      allow create: if newUserAuthFieldsOk(uid)
+                    && (isSuper()
+                        || (isManager()
+                            && guestOrAgencyAdmin(request.resource.data.user_type)
+                            && request.resource.data.agency_id is string
+                            && request.resource.data.agency_id != '')
+                        || (isAgencyAdmin()
+                            && request.resource.data.agency_id == agency()
+                            && request.resource.data.user_type == 'misafir'));
 
       // 1) Herkes kendi belgesinde yalnızca fcm_token, user_location, updated_at.
-      // 2) Kimse (kök hariç) kendi user_type / agency_id alanını değiştiremez.
+      // 2) Kimse (kök hariç) kendi user_type / agency_id / shop_id alanını değiştiremez.
+      // 3) login_id ve auth_migrated'ı HİÇ KİMSE değiştiremez (kök dahil): yalnız kimlik servisi
+      //    (servis hesabı, kuralları baypas eder) yazar; bkz. tool/AUTH_SEMA.md.
       allow update: if (signedIn() && request.auth.uid == uid
                          && changed().hasOnly(['fcm_token', 'user_location', 'updated_at', 'last_active_at']))
-                    || ((request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id']))
+                    || (!changed().hasAny(['login_id', 'auth_migrated'])
+                        && (request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id']))
                         && (isSuper()
                             || (isManager()
                                 && guestOrAgencyAdmin(resource.data.user_type)
@@ -95,6 +117,18 @@ service cloud.firestore {
                     || (isAgencyAdmin() && resource.data.agency_id == agency()
                         && resource.data.user_type == 'misafir');
     }
+
+    // KİMLİK SERVİSİ (server/umre-api, tool/AUTH_SEMA.md) ---------------------
+    // login_ids/{loginId} -> {uid, created_at} ve auth_secrets/{uid} -> {hash, kind, failed,
+    // locked_until, ...} YALNIZ PHP servisi tarafından (servis hesabıyla, kuralları baypas
+    // ederek) okunur/yazılır. İstemci erişimi yoktur; hash kimseye gösterilmez.
+    // (Genel /{col}/{id} kuralı bu koleksiyonları zaten listelemez; yine de açıkça kapalı.)
+    // auth_attempts/{hmac}: giriş deneme sayaçları ve (hesap, ağ) kilitleri.
+    // system/{doc}: servis durumu (ör. system/auth_migration {done}).
+    match /login_ids/{id}     { allow read, write: if false; }
+    match /auth_secrets/{id}  { allow read, write: if false; }
+    match /auth_attempts/{id} { allow read, write: if false; }
+    match /system/{id}        { allow read, write: if false; }
 
     // Acente ekleme/silme/düzenleme yalnız süper admin.
     match /agencies/{id} {

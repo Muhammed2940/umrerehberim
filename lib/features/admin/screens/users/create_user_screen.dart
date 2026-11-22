@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../common/widgets/credentials_sheet.dart';
 import '../../../../core/providers/locale_provider.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/global_snackbar.dart';
@@ -85,6 +86,13 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
         dogumTarihi: birth,
         agencyIdOverride: _agencyId,
       );
+      // Yeni girişte üretilen Kullanıcı ID + PIN/şifre bir kez gösterilir.
+      // Hesap açılıp belge yazılamadıysa da bilgiler (bir kez döndüğü için) hata ile gösterilir.
+      final docFailed = p.issuedDocWriteFailed;
+      final issued = p.takeIssuedCredentials();
+      if (issued != null && mounted) {
+        await showCredentialsSheet(context, issued, errorText: docFailed ? context.l10n.authApiDocWriteFailed : null);
+      }
     } else {
       ok = await p.updateUserDetails(
         _editing!,

@@ -1269,6 +1269,311 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authAdmin => 'مشرف';
 
   @override
+  String get authApiActMigrate => 'تم نقل الحسابات إلى الدخول الجديد';
+
+  @override
+  String get authApiActSecretReset => 'تم تجديد الرمز السري/كلمة المرور';
+
+  @override
+  String get authApiCancel => 'إلغاء';
+
+  @override
+  String get authApiChangePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get authApiChangePin => 'تغيير رمزي السري';
+
+  @override
+  String get authApiChangeSubtitle =>
+      'جدّد البيانات السرية التي تستخدمها لتسجيل الدخول';
+
+  @override
+  String get authApiCopied => 'تم النسخ إلى الحافظة.';
+
+  @override
+  String get authApiCopy => 'نسخ';
+
+  @override
+  String get authApiCopyAllCsv => 'نسخ الكل (CSV)';
+
+  @override
+  String get authApiCreate => 'إنشاء';
+
+  @override
+  String get authApiCredName => 'الاسم الكامل';
+
+  @override
+  String get authApiCredTitle => 'بيانات الدخول';
+
+  @override
+  String get authApiCredWarningPassword =>
+      'تظهر كلمة المرور هذه الآن فقط؛ بعد الإغلاق لا يمكن عرضها مرة أخرى.';
+
+  @override
+  String get authApiCredWarningPin =>
+      'يظهر هذا الرمز السري الآن فقط؛ بعد الإغلاق لا يمكن عرضه مرة أخرى.';
+
+  @override
+  String get authApiDocWriteFailed =>
+      'تم إنشاء الحساب لكن تعذّر حفظ سجل الشخص. دوّن البيانات أدناه واحفظ النموذج مرة أخرى؛ سيُستخدم الحساب نفسه.';
+
+  @override
+  String get authApiErrAccountDisabled =>
+      'تم تعطيل هذا الحساب. يرجى التواصل مع مرشدك أو وكالتك.';
+
+  @override
+  String get authApiErrAccountNotReady =>
+      'لم يكتمل إعداد حسابك بعد. يرجى التواصل مع مرشدك أو وكالتك.';
+
+  @override
+  String get authApiErrAgencyNotFound => 'لم يتم العثور على الوكالة.';
+
+  @override
+  String get authApiErrForbidden => 'ليست لديك صلاحية لهذا الإجراء.';
+
+  @override
+  String get authApiErrInvalidCredentials =>
+      'معرّف المستخدم أو الرمز السري غير صحيح، أو تمت محاولات كثيرة جدًا؛ حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get authApiErrInvalidSecret =>
+      'الرمز السري/كلمة المرور الجديدة لا تستوفي الشروط.';
+
+  @override
+  String authApiErrLocked(int minutes) {
+    return 'محاولات خاطئة كثيرة. تم قفل الحساب مؤقتًا؛ حاول مرة أخرى بعد $minutes دقيقة.';
+  }
+
+  @override
+  String get authApiErrLockedShort =>
+      'محاولات خاطئة كثيرة. تم قفل الحساب مؤقتًا؛ يرجى المحاولة لاحقًا.';
+
+  @override
+  String get authApiErrMigrationDone => 'اكتمل النقل؛ هذه العملية مغلقة الآن.';
+
+  @override
+  String get authApiErrNetwork =>
+      'تعذّر الوصول إلى الخادم. تحقق من اتصالك بالإنترنت.';
+
+  @override
+  String get authApiErrNoSecret =>
+      'لا يوجد رمز سري/كلمة مرور لهذا الحساب بعد. اطلب رمزًا جديدًا من مرشدك.';
+
+  @override
+  String get authApiErrNotFound => 'لم يتم العثور على المستخدم.';
+
+  @override
+  String get authApiErrRateLimited =>
+      'محاولات كثيرة جدًا. يرجى المحاولة بعد بضع دقائق.';
+
+  @override
+  String authApiErrRateLimitedWait(int minutes) {
+    return 'محاولات كثيرة جدًا. يرجى المحاولة بعد $minutes دقيقة.';
+  }
+
+  @override
+  String get authApiErrReauth =>
+      'لأسباب أمنية، يرجى تسجيل الخروج ثم تسجيل الدخول مرة أخرى.';
+
+  @override
+  String get authApiErrServer => 'حدث خطأ في الخادم. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get authApiErrUnauthenticated =>
+      'تعذّر التحقق من جلستك. يرجى تسجيل الخروج ثم الدخول مرة أخرى.';
+
+  @override
+  String get authApiErrUnknown => 'حدث خطأ غير متوقع.';
+
+  @override
+  String get authApiErrValidation => 'المعلومات المدخلة غير صالحة.';
+
+  @override
+  String get authApiErrWeakSecret =>
+      'هذا الرمز السري سهل التخمين (مثل 123456 أو 111111). اختر رمزًا آخر.';
+
+  @override
+  String get authApiErrWrongOldSecret =>
+      'الرمز السري/كلمة المرور الحالية غير صحيحة.';
+
+  @override
+  String get authApiFieldRequired => 'هذا الحقل مطلوب.';
+
+  @override
+  String get authApiForgot => 'نسيت معرّف المستخدم أو الرمز السري';
+
+  @override
+  String get authApiForgotBody =>
+      'يقدّم لك مرشدك أو وكالتك معرّف المستخدم والرمز السري. إذا نسيتهما، يرجى التواصل مع مرشدك أو وكالتك؛ يمكنهم إنشاء رمز سري جديد لك.';
+
+  @override
+  String get authApiForgotTitle => 'هل نسيت بيانات الدخول؟';
+
+  @override
+  String get authApiHideSecret => 'إخفاء';
+
+  @override
+  String get authApiLeave => 'مغادرة';
+
+  @override
+  String get authApiLoginIdError =>
+      'يجب أن يكون معرّف المستخدم رقمًا من 7 خانات.';
+
+  @override
+  String get authApiLoginIdLabel => 'معرّف المستخدم';
+
+  @override
+  String get authApiLoginIdNone => 'غير متوفر بعد';
+
+  @override
+  String authApiMigrateConfirm(int count) {
+    return 'سيتم نقل $count حساب إلى الدخول الجديد وإغلاق الدخول برقم الهوية. لا يمكن التراجع عن ذلك. هل تريد المتابعة؟';
+  }
+
+  @override
+  String authApiMigrateCount(int count) {
+    return 'سيتم نقل $count حساب.';
+  }
+
+  @override
+  String get authApiMigrateDesc =>
+      'التحول إلى الدخول بمعرّف المستخدم والرمز السري/كلمة المرور';
+
+  @override
+  String authApiMigrateDone(int count) {
+    return 'تم نقل $count حساب.';
+  }
+
+  @override
+  String get authApiMigrateDryRun => 'معاينة (بدون تغييرات)';
+
+  @override
+  String get authApiMigrateIntro =>
+      'يتم إنشاء معرّف مستخدم ورمز سري/كلمة مرور لكل حساب ليس له معرّف (باستثناء التجار)، ويُغلق الدخول برقم الهوية. تتم هذه العملية مرة واحدة. قم بالمعاينة أولًا.';
+
+  @override
+  String get authApiMigrateLeaveBody =>
+      'لا يمكن عرض بيانات الدخول مرة أخرى. هل أنت متأكد من أنك نسختها؟';
+
+  @override
+  String get authApiMigrateLeaveTitle => 'هل تريد مغادرة الصفحة؟';
+
+  @override
+  String get authApiMigrateNone => 'لا توجد حسابات للنقل.';
+
+  @override
+  String get authApiMigrateOnceWarning =>
+      'تنبيه: تُعرض بيانات الدخول هذه الآن فقط ولا يمكن عرضها مرة أخرى. قبل إغلاق الصفحة، انسخها عبر \"نسخ الكل (CSV)\" واحفظها في مكان آمن.';
+
+  @override
+  String authApiMigratePartial(int count, int failed) {
+    return 'تم نقل $count حساب، وتعذّر نقل $failed. اقرأ التحذيرات وأعد بدء النقل.';
+  }
+
+  @override
+  String get authApiMigrateRun => 'بدء النقل';
+
+  @override
+  String get authApiMigrateTitle => 'نقل الحسابات إلى الدخول الجديد';
+
+  @override
+  String get authApiMigrateWarnings => 'تنبيهات';
+
+  @override
+  String get authApiMismatch => 'القيمتان الجديدتان غير متطابقتين.';
+
+  @override
+  String get authApiNewPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get authApiNewPin => 'الرمز السري الجديد';
+
+  @override
+  String get authApiNotConnected => 'الخادم غير متصل بعد.';
+
+  @override
+  String get authApiOk => 'حسنًا';
+
+  @override
+  String get authApiOldPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get authApiOldPin => 'الرمز السري الحالي';
+
+  @override
+  String get authApiPasswordChanged => 'تم تغيير كلمة المرور.';
+
+  @override
+  String get authApiPasswordError => 'يجب ألا تقل كلمة المرور عن 8 أحرف.';
+
+  @override
+  String get authApiPasswordLabel => 'كلمة المرور';
+
+  @override
+  String get authApiPinChanged => 'تم تغيير رمزك السري.';
+
+  @override
+  String get authApiPinError => 'يجب أن يتكون الرمز السري من 6 أرقام.';
+
+  @override
+  String get authApiPinLabel => 'الرمز السري';
+
+  @override
+  String get authApiReloginPassword =>
+      'تم تغيير كلمة المرور. لأسباب أمنية أُغلقت جميع الجلسات؛ سجّل الدخول بكلمة المرور الجديدة.';
+
+  @override
+  String get authApiReloginPin =>
+      'تم تغيير الرمز السري. لأسباب أمنية أُغلقت جميع الجلسات؛ سجّل الدخول بالرمز الجديد.';
+
+  @override
+  String get authApiRepeatPassword => 'كلمة المرور الجديدة (مرة أخرى)';
+
+  @override
+  String get authApiRepeatPin => 'الرمز السري الجديد (مرة أخرى)';
+
+  @override
+  String get authApiResetPassword => 'إصدار كلمة مرور جديدة';
+
+  @override
+  String authApiResetPasswordConfirm(String name) {
+    return 'هل تريد إنشاء كلمة مرور جديدة لـ $name؟ ستصبح كلمة المرور القديمة غير صالحة.';
+  }
+
+  @override
+  String get authApiResetPin => 'إصدار رمز سري جديد';
+
+  @override
+  String authApiResetPinConfirm(String name) {
+    return 'هل تريد إنشاء رمز سري جديد لـ $name؟ سيصبح الرمز القديم غير صالح.';
+  }
+
+  @override
+  String get authApiSameAsOld =>
+      'لا يمكن أن تكون القيمة الجديدة مطابقة للحالية.';
+
+  @override
+  String get authApiSave => 'حفظ';
+
+  @override
+  String get authApiShareIntro => 'بيانات دخولك إلى Umre Rehberim';
+
+  @override
+  String get authApiShareWhatsapp => 'مشاركة عبر واتساب';
+
+  @override
+  String get authApiShowSecret => 'إظهار';
+
+  @override
+  String get authApiSoon => 'قريبًا';
+
+  @override
+  String get authApiViewAs => 'العرض كمستخدم';
+
+  @override
+  String get authApiViewAsSoon => 'ستتوفر هذه الميزة قريبًا';
+
+  @override
   String get authFieldRequired => 'لا يمكن ترك هذا الحقل فارغًا';
 
   @override

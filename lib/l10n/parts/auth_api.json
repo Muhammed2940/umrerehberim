@@ -1,0 +1,485 @@
+{
+  "authApiActMigrate": {
+    "tr": "Hesaplar yeni girişe taşındı",
+    "en": "Accounts moved to new login",
+    "ar": "تم نقل الحسابات إلى الدخول الجديد"
+  },
+  "authApiActSecretReset": {
+    "tr": "PIN/şifre yenilendi",
+    "en": "PIN/password renewed",
+    "ar": "تم تجديد الرمز السري/كلمة المرور"
+  },
+  "authApiCancel": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "ar": "إلغاء"
+  },
+  "authApiChangePassword": {
+    "tr": "Şifremi değiştir",
+    "en": "Change my password",
+    "ar": "تغيير كلمة المرور"
+  },
+  "authApiChangePin": {
+    "tr": "PIN'imi değiştir",
+    "en": "Change my PIN",
+    "ar": "تغيير رمزي السري"
+  },
+  "authApiChangeSubtitle": {
+    "tr": "Giriş için kullandığınız gizli bilgiyi yenileyin",
+    "en": "Renew the secret you use to log in",
+    "ar": "جدّد البيانات السرية التي تستخدمها لتسجيل الدخول"
+  },
+  "authApiCopied": {
+    "tr": "Panoya kopyalandı.",
+    "en": "Copied to clipboard.",
+    "ar": "تم النسخ إلى الحافظة."
+  },
+  "authApiCopy": {
+    "tr": "Kopyala",
+    "en": "Copy",
+    "ar": "نسخ"
+  },
+  "authApiCopyAllCsv": {
+    "tr": "Tümünü kopyala (CSV)",
+    "en": "Copy all (CSV)",
+    "ar": "نسخ الكل (CSV)"
+  },
+  "authApiCreate": {
+    "tr": "Oluştur",
+    "en": "Create",
+    "ar": "إنشاء"
+  },
+  "authApiCredName": {
+    "tr": "Ad Soyad",
+    "en": "Full name",
+    "ar": "الاسم الكامل"
+  },
+  "authApiCredTitle": {
+    "tr": "Giriş Bilgileri",
+    "en": "Login Details",
+    "ar": "بيانات الدخول"
+  },
+  "authApiCredWarningPassword": {
+    "tr": "Bu şifre yalnızca şimdi görünür; kapatınca bir daha gösterilemez.",
+    "en": "This password is shown only now; once closed it cannot be shown again.",
+    "ar": "تظهر كلمة المرور هذه الآن فقط؛ بعد الإغلاق لا يمكن عرضها مرة أخرى."
+  },
+  "authApiCredWarningPin": {
+    "tr": "Bu PIN yalnızca şimdi görünür; kapatınca bir daha gösterilemez.",
+    "en": "This PIN is shown only now; once closed it cannot be shown again.",
+    "ar": "يظهر هذا الرمز السري الآن فقط؛ بعد الإغلاق لا يمكن عرضه مرة أخرى."
+  },
+  "authApiDocWriteFailed": {
+    "tr": "Hesap açıldı ancak kişi kaydı yazılamadı. Aşağıdaki bilgileri not edin ve formu yeniden kaydedin; aynı hesap kullanılacak.",
+    "en": "The account was created but the person record could not be saved. Note the details below and save the form again; the same account will be used.",
+    "ar": "تم إنشاء الحساب لكن تعذّر حفظ سجل الشخص. دوّن البيانات أدناه واحفظ النموذج مرة أخرى؛ سيُستخدم الحساب نفسه."
+  },
+  "authApiErrAccountDisabled": {
+    "tr": "Bu hesap devre dışı bırakılmış. Rehberinize veya acentenize başvurun.",
+    "en": "This account has been disabled. Please contact your guide or agency.",
+    "ar": "تم تعطيل هذا الحساب. يرجى التواصل مع مرشدك أو وكالتك."
+  },
+  "authApiErrAccountNotReady": {
+    "tr": "Hesabınızın kaydı henüz tamamlanmamış. Rehberinize veya acentenize başvurun.",
+    "en": "Your account setup is not complete yet. Please contact your guide or agency.",
+    "ar": "لم يكتمل إعداد حسابك بعد. يرجى التواصل مع مرشدك أو وكالتك."
+  },
+  "authApiErrAgencyNotFound": {
+    "tr": "Acente bulunamadı.",
+    "en": "Agency not found.",
+    "ar": "لم يتم العثور على الوكالة."
+  },
+  "authApiErrForbidden": {
+    "tr": "Bu işlem için yetkiniz yok.",
+    "en": "You are not authorized for this action.",
+    "ar": "ليست لديك صلاحية لهذا الإجراء."
+  },
+  "authApiErrInvalidCredentials": {
+    "tr": "Kullanıcı ID veya PIN hatalı ya da çok fazla deneme yapıldı; biraz sonra tekrar deneyin.",
+    "en": "The user ID or PIN is incorrect, or there were too many attempts; please try again a little later.",
+    "ar": "معرّف المستخدم أو الرمز السري غير صحيح، أو تمت محاولات كثيرة جدًا؛ حاول مرة أخرى بعد قليل."
+  },
+  "authApiErrInvalidSecret": {
+    "tr": "Yeni PIN/şifre kurallara uymuyor.",
+    "en": "The new PIN/password does not meet the rules.",
+    "ar": "الرمز السري/كلمة المرور الجديدة لا تستوفي الشروط."
+  },
+  "authApiErrLocked": {
+    "tr": "Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; {minutes} dakika sonra tekrar deneyin.",
+    "en": "Too many failed attempts. The account is temporarily locked; try again in {minutes} minutes.",
+    "ar": "محاولات خاطئة كثيرة. تم قفل الحساب مؤقتًا؛ حاول مرة أخرى بعد {minutes} دقيقة.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiErrLockedShort": {
+    "tr": "Çok fazla hatalı deneme yapıldı. Hesap geçici olarak kilitlendi; biraz sonra tekrar deneyin.",
+    "en": "Too many failed attempts. The account is temporarily locked; please try again later.",
+    "ar": "محاولات خاطئة كثيرة. تم قفل الحساب مؤقتًا؛ يرجى المحاولة لاحقًا."
+  },
+  "authApiErrMigrationDone": {
+    "tr": "Taşıma tamamlanmış; bu işlem artık kapalı.",
+    "en": "The migration is complete; this action is now closed.",
+    "ar": "اكتمل النقل؛ هذه العملية مغلقة الآن."
+  },
+  "authApiErrNetwork": {
+    "tr": "Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edin.",
+    "en": "Could not reach the server. Check your internet connection.",
+    "ar": "تعذّر الوصول إلى الخادم. تحقق من اتصالك بالإنترنت."
+  },
+  "authApiErrNoSecret": {
+    "tr": "Bu hesabın henüz PIN/şifresi yok. Rehberinizden yeni PIN isteyin.",
+    "en": "This account has no PIN/password yet. Ask your guide for a new PIN.",
+    "ar": "لا يوجد رمز سري/كلمة مرور لهذا الحساب بعد. اطلب رمزًا جديدًا من مرشدك."
+  },
+  "authApiErrNotFound": {
+    "tr": "Kullanıcı bulunamadı.",
+    "en": "User not found.",
+    "ar": "لم يتم العثور على المستخدم."
+  },
+  "authApiErrRateLimited": {
+    "tr": "Çok fazla deneme yapıldı. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "en": "Too many attempts. Please try again in a few minutes.",
+    "ar": "محاولات كثيرة جدًا. يرجى المحاولة بعد بضع دقائق."
+  },
+  "authApiErrRateLimitedWait": {
+    "tr": "Çok fazla deneme yapıldı. Lütfen {minutes} dakika sonra tekrar deneyin.",
+    "en": "Too many attempts. Please try again in {minutes} minutes.",
+    "ar": "محاولات كثيرة جدًا. يرجى المحاولة بعد {minutes} دقيقة.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiErrReauth": {
+    "tr": "Güvenlik için çıkış yapıp yeniden giriş yapmanız gerekiyor.",
+    "en": "For security, please sign out and sign in again.",
+    "ar": "لأسباب أمنية، يرجى تسجيل الخروج ثم تسجيل الدخول مرة أخرى."
+  },
+  "authApiErrServer": {
+    "tr": "Sunucuda bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+    "en": "A server error occurred. Please try again later.",
+    "ar": "حدث خطأ في الخادم. يرجى المحاولة لاحقًا."
+  },
+  "authApiErrUnauthenticated": {
+    "tr": "Oturumunuz doğrulanamadı. Lütfen çıkış yapıp tekrar giriş yapın.",
+    "en": "Your session could not be verified. Please log out and log in again.",
+    "ar": "تعذّر التحقق من جلستك. يرجى تسجيل الخروج ثم الدخول مرة أخرى."
+  },
+  "authApiErrUnknown": {
+    "tr": "Beklenmeyen bir hata oluştu.",
+    "en": "An unexpected error occurred.",
+    "ar": "حدث خطأ غير متوقع."
+  },
+  "authApiErrValidation": {
+    "tr": "Girilen bilgiler geçersiz.",
+    "en": "The entered information is invalid.",
+    "ar": "المعلومات المدخلة غير صالحة."
+  },
+  "authApiErrWeakSecret": {
+    "tr": "Bu PIN kolay tahmin edilir (ör. 123456, 111111). Başka bir PIN seçin.",
+    "en": "This PIN is easy to guess (e.g. 123456, 111111). Please choose another PIN.",
+    "ar": "هذا الرمز السري سهل التخمين (مثل 123456 أو 111111). اختر رمزًا آخر."
+  },
+  "authApiErrWrongOldSecret": {
+    "tr": "Mevcut PIN/şifre hatalı.",
+    "en": "The current PIN/password is incorrect.",
+    "ar": "الرمز السري/كلمة المرور الحالية غير صحيحة."
+  },
+  "authApiFieldRequired": {
+    "tr": "Bu alan zorunludur.",
+    "en": "This field is required.",
+    "ar": "هذا الحقل مطلوب."
+  },
+  "authApiForgot": {
+    "tr": "Kullanıcı ID veya PIN'imi unuttum",
+    "en": "I forgot my User ID or PIN",
+    "ar": "نسيت معرّف المستخدم أو الرمز السري"
+  },
+  "authApiForgotBody": {
+    "tr": "Kullanıcı ID ve PIN'inizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun; size yeni bir PIN oluşturabilirler.",
+    "en": "Your User ID and PIN are given by your guide or agency. If you forgot them, please contact your guide or agency; they can create a new PIN for you.",
+    "ar": "يقدّم لك مرشدك أو وكالتك معرّف المستخدم والرمز السري. إذا نسيتهما، يرجى التواصل مع مرشدك أو وكالتك؛ يمكنهم إنشاء رمز سري جديد لك."
+  },
+  "authApiForgotTitle": {
+    "tr": "Giriş bilgilerinizi mi unuttunuz?",
+    "en": "Forgot your login details?",
+    "ar": "هل نسيت بيانات الدخول؟"
+  },
+  "authApiHideSecret": {
+    "tr": "Gizle",
+    "en": "Hide",
+    "ar": "إخفاء"
+  },
+  "authApiLeave": {
+    "tr": "Çık",
+    "en": "Leave",
+    "ar": "مغادرة"
+  },
+  "authApiLoginIdError": {
+    "tr": "Kullanıcı ID 7 haneli bir numara olmalıdır.",
+    "en": "User ID must be a 7-digit number.",
+    "ar": "يجب أن يكون معرّف المستخدم رقمًا من 7 خانات."
+  },
+  "authApiLoginIdLabel": {
+    "tr": "Kullanıcı ID",
+    "en": "User ID",
+    "ar": "معرّف المستخدم"
+  },
+  "authApiLoginIdNone": {
+    "tr": "Henüz yok",
+    "en": "Not yet",
+    "ar": "غير متوفر بعد"
+  },
+  "authApiMigrateConfirm": {
+    "tr": "{count} hesap yeni girişe taşınacak ve TC ile giriş kapanacak. Bu işlem geri alınamaz. Devam edilsin mi?",
+    "en": "{count} accounts will be moved to the new login and national ID login will be closed. This cannot be undone. Continue?",
+    "ar": "سيتم نقل {count} حساب إلى الدخول الجديد وإغلاق الدخول برقم الهوية. لا يمكن التراجع عن ذلك. هل تريد المتابعة؟",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateCount": {
+    "tr": "{count} hesap taşınacak.",
+    "en": "{count} accounts will be moved.",
+    "ar": "سيتم نقل {count} حساب.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateDesc": {
+    "tr": "Kullanıcı ID ve PIN/şifre ile girişe geçiş",
+    "en": "Switch to User ID and PIN/password login",
+    "ar": "التحول إلى الدخول بمعرّف المستخدم والرمز السري/كلمة المرور"
+  },
+  "authApiMigrateDone": {
+    "tr": "{count} hesap taşındı.",
+    "en": "{count} accounts moved.",
+    "ar": "تم نقل {count} حساب.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateDryRun": {
+    "tr": "Önizle (değişiklik yapmaz)",
+    "en": "Preview (no changes)",
+    "ar": "معاينة (بدون تغييرات)"
+  },
+  "authApiMigrateIntro": {
+    "tr": "Kullanıcı ID'si olmayan tüm hesaplara (esnaf hariç) Kullanıcı ID ve PIN/şifre üretilir ve TC ile giriş kapanır. Bu işlem bir kez yapılır. Önce önizleyin.",
+    "en": "A User ID and PIN/password are generated for every account without a User ID (merchants excluded), and login with national ID is closed. This is done once. Preview first.",
+    "ar": "يتم إنشاء معرّف مستخدم ورمز سري/كلمة مرور لكل حساب ليس له معرّف (باستثناء التجار)، ويُغلق الدخول برقم الهوية. تتم هذه العملية مرة واحدة. قم بالمعاينة أولًا."
+  },
+  "authApiMigrateLeaveBody": {
+    "tr": "Giriş bilgileri bir daha gösterilemez. Kopyaladığınızdan emin misiniz?",
+    "en": "The login details cannot be shown again. Are you sure you copied them?",
+    "ar": "لا يمكن عرض بيانات الدخول مرة أخرى. هل أنت متأكد من أنك نسختها؟"
+  },
+  "authApiMigrateLeaveTitle": {
+    "tr": "Sayfadan çıkılsın mı?",
+    "en": "Leave this page?",
+    "ar": "هل تريد مغادرة الصفحة؟"
+  },
+  "authApiMigrateNone": {
+    "tr": "Taşınacak hesap yok.",
+    "en": "There are no accounts to move.",
+    "ar": "لا توجد حسابات للنقل."
+  },
+  "authApiMigrateOnceWarning": {
+    "tr": "DİKKAT: Bu giriş bilgileri yalnızca şimdi gösterilir ve bir daha görüntülenemez. Sayfayı kapatmadan önce \"Tümünü kopyala (CSV)\" ile kopyalayıp güvenli bir yerde saklayın.",
+    "en": "WARNING: These login details are shown only now and can never be displayed again. Before closing this page, copy them with \"Copy all (CSV)\" and keep them in a safe place.",
+    "ar": "تنبيه: تُعرض بيانات الدخول هذه الآن فقط ولا يمكن عرضها مرة أخرى. قبل إغلاق الصفحة، انسخها عبر \"نسخ الكل (CSV)\" واحفظها في مكان آمن."
+  },
+  "authApiMigratePartial": {
+    "tr": "{count} hesap taşındı, {failed} hesap taşınamadı. Uyarıları okuyup taşımayı yeniden başlatın.",
+    "en": "{count} accounts moved, {failed} could not be moved. Read the warnings and start the migration again.",
+    "ar": "تم نقل {count} حساب، وتعذّر نقل {failed}. اقرأ التحذيرات وأعد بدء النقل.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "authApiMigrateRun": {
+    "tr": "Taşımayı başlat",
+    "en": "Start moving",
+    "ar": "بدء النقل"
+  },
+  "authApiMigrateTitle": {
+    "tr": "Hesapları yeni girişe taşı",
+    "en": "Move accounts to new login",
+    "ar": "نقل الحسابات إلى الدخول الجديد"
+  },
+  "authApiMigrateWarnings": {
+    "tr": "Uyarılar",
+    "en": "Warnings",
+    "ar": "تنبيهات"
+  },
+  "authApiMismatch": {
+    "tr": "Yeni değerler birbiriyle aynı değil.",
+    "en": "The new values do not match.",
+    "ar": "القيمتان الجديدتان غير متطابقتين."
+  },
+  "authApiNewPassword": {
+    "tr": "Yeni şifre",
+    "en": "New password",
+    "ar": "كلمة المرور الجديدة"
+  },
+  "authApiNewPin": {
+    "tr": "Yeni PIN",
+    "en": "New PIN",
+    "ar": "الرمز السري الجديد"
+  },
+  "authApiNotConnected": {
+    "tr": "Sunucu henüz bağlı değil.",
+    "en": "The server is not connected yet.",
+    "ar": "الخادم غير متصل بعد."
+  },
+  "authApiOk": {
+    "tr": "Tamam",
+    "en": "OK",
+    "ar": "حسنًا"
+  },
+  "authApiOldPassword": {
+    "tr": "Mevcut şifre",
+    "en": "Current password",
+    "ar": "كلمة المرور الحالية"
+  },
+  "authApiOldPin": {
+    "tr": "Mevcut PIN",
+    "en": "Current PIN",
+    "ar": "الرمز السري الحالي"
+  },
+  "authApiPasswordChanged": {
+    "tr": "Şifreniz değiştirildi.",
+    "en": "Your password has been changed.",
+    "ar": "تم تغيير كلمة المرور."
+  },
+  "authApiPasswordError": {
+    "tr": "Şifre en az 8 karakter olmalıdır.",
+    "en": "Password must be at least 8 characters.",
+    "ar": "يجب ألا تقل كلمة المرور عن 8 أحرف."
+  },
+  "authApiPasswordLabel": {
+    "tr": "Şifre",
+    "en": "Password",
+    "ar": "كلمة المرور"
+  },
+  "authApiPinChanged": {
+    "tr": "PIN'iniz değiştirildi.",
+    "en": "Your PIN has been changed.",
+    "ar": "تم تغيير رمزك السري."
+  },
+  "authApiPinError": {
+    "tr": "PIN 6 haneli bir sayı olmalıdır.",
+    "en": "PIN must be 6 digits.",
+    "ar": "يجب أن يتكون الرمز السري من 6 أرقام."
+  },
+  "authApiPinLabel": {
+    "tr": "PIN",
+    "en": "PIN",
+    "ar": "الرمز السري"
+  },
+  "authApiReloginPassword": {
+    "tr": "Şifre değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni şifre ile giriş yapın.",
+    "en": "Your password was changed. For security all sessions were closed; sign in with your new password.",
+    "ar": "تم تغيير كلمة المرور. لأسباب أمنية أُغلقت جميع الجلسات؛ سجّل الدخول بكلمة المرور الجديدة."
+  },
+  "authApiReloginPin": {
+    "tr": "PIN değiştirildi. Güvenlik için tüm oturumlar kapatıldı; yeni PIN ile giriş yapın.",
+    "en": "Your PIN was changed. For security all sessions were closed; sign in with your new PIN.",
+    "ar": "تم تغيير الرمز السري. لأسباب أمنية أُغلقت جميع الجلسات؛ سجّل الدخول بالرمز الجديد."
+  },
+  "authApiRepeatPassword": {
+    "tr": "Yeni şifre (tekrar)",
+    "en": "New password (again)",
+    "ar": "كلمة المرور الجديدة (مرة أخرى)"
+  },
+  "authApiRepeatPin": {
+    "tr": "Yeni PIN (tekrar)",
+    "en": "New PIN (again)",
+    "ar": "الرمز السري الجديد (مرة أخرى)"
+  },
+  "authApiResetPassword": {
+    "tr": "Yeni şifre ver",
+    "en": "Issue new password",
+    "ar": "إصدار كلمة مرور جديدة"
+  },
+  "authApiResetPasswordConfirm": {
+    "tr": "{name} için yeni şifre oluşturulsun mu? Eski şifre geçersiz olur.",
+    "en": "Create a new password for {name}? The old password will stop working.",
+    "ar": "هل تريد إنشاء كلمة مرور جديدة لـ {name}؟ ستصبح كلمة المرور القديمة غير صالحة.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "authApiResetPin": {
+    "tr": "Yeni PIN ver",
+    "en": "Issue new PIN",
+    "ar": "إصدار رمز سري جديد"
+  },
+  "authApiResetPinConfirm": {
+    "tr": "{name} için yeni PIN oluşturulsun mu? Eski PIN geçersiz olur.",
+    "en": "Create a new PIN for {name}? The old PIN will stop working.",
+    "ar": "هل تريد إنشاء رمز سري جديد لـ {name}؟ سيصبح الرمز القديم غير صالح.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "authApiSameAsOld": {
+    "tr": "Yeni değer mevcut olanla aynı olamaz.",
+    "en": "The new value cannot be the same as the current one.",
+    "ar": "لا يمكن أن تكون القيمة الجديدة مطابقة للحالية."
+  },
+  "authApiSave": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "ar": "حفظ"
+  },
+  "authApiShareIntro": {
+    "tr": "Umre Rehberim giriş bilgileriniz",
+    "en": "Your Umre Rehberim login details",
+    "ar": "بيانات دخولك إلى Umre Rehberim"
+  },
+  "authApiShareWhatsapp": {
+    "tr": "WhatsApp ile paylaş",
+    "en": "Share via WhatsApp",
+    "ar": "مشاركة عبر واتساب"
+  },
+  "authApiShowSecret": {
+    "tr": "Göster",
+    "en": "Show",
+    "ar": "إظهار"
+  },
+  "authApiSoon": {
+    "tr": "Yakında",
+    "en": "Soon",
+    "ar": "قريبًا"
+  },
+  "authApiViewAs": {
+    "tr": "Kullanıcı gözünden görüntüle",
+    "en": "View as user",
+    "ar": "العرض كمستخدم"
+  },
+  "authApiViewAsSoon": {
+    "tr": "Bu özellik yakında aktif olacak",
+    "en": "This feature will be available soon",
+    "ar": "ستتوفر هذه الميزة قريبًا"
+  }
+}
