@@ -1,0 +1,378 @@
+{
+  "ccModHatim": {
+    "tr": "Toplu Hatim Moderasyonu",
+    "en": "Group Hatim Moderation",
+    "ar": "إشراف الختمة الجماعية"
+  },
+  "ccModHatimDesc": {
+    "tr": "Grupları incele, sil, sahipsiz parçaları temizle",
+    "en": "Review groups, delete, clean orphan parts",
+    "ar": "مراجعة المجموعات وحذفها وتنظيف الأجزاء اليتيمة"
+  },
+  "ccModPrayer": {
+    "tr": "Ezan Vakitleri",
+    "en": "Prayer Times",
+    "ar": "مواقيت الصلاة"
+  },
+  "ccModPrayerDesc": {
+    "tr": "Mekke ve Medine vakitlerini düzenle",
+    "en": "Edit Makkah and Madinah times",
+    "ar": "تعديل مواقيت مكة والمدينة"
+  },
+  "ccModReviews": {
+    "tr": "Değerlendirme Moderasyonu",
+    "en": "Review Moderation",
+    "ar": "إشراف التقييمات"
+  },
+  "ccModReviewsDesc": {
+    "tr": "Dükkan puan ve yorumlarını denetle",
+    "en": "Moderate shop ratings and comments",
+    "ar": "مراقبة تقييمات وتعليقات المتاجر"
+  },
+  "ccModerTitle": {
+    "tr": "Toplu Hatim Moderasyonu",
+    "en": "Group Hatim Moderation",
+    "ar": "إشراف الختمة الجماعية"
+  },
+  "ccModerSubtitle": {
+    "tr": "Tüm hatim grupları",
+    "en": "All hatim groups",
+    "ar": "جميع مجموعات الختمة"
+  },
+  "ccModerSearchHint": {
+    "tr": "Grup adına göre ara",
+    "en": "Search by group name",
+    "ar": "ابحث باسم المجموعة"
+  },
+  "ccModerLoadError": {
+    "tr": "Gruplar yüklenemedi",
+    "en": "Groups could not be loaded",
+    "ar": "تعذر تحميل المجموعات"
+  },
+  "ccModerEmpty": {
+    "tr": "Grup bulunamadı",
+    "en": "No groups found",
+    "ar": "لا توجد مجموعات"
+  },
+  "ccModerMembers": {
+    "tr": "{count} üye",
+    "en": "{count} members",
+    "ar": "{count} عضو",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerPublic": {
+    "tr": "Herkese açık",
+    "en": "Public",
+    "ar": "عامة"
+  },
+  "ccModerPrivate": {
+    "tr": "Acenteye özel",
+    "en": "Agency only",
+    "ar": "خاصة بالوكالة"
+  },
+  "ccModerRound": {
+    "tr": "{round}. tur",
+    "en": "Round {round}",
+    "ar": "الجولة {round}",
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerProgress": {
+    "tr": "{done}/{total} parça",
+    "en": "{done}/{total} parts",
+    "ar": "{done}/{total} جزء",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerOwner": {
+    "tr": "Sahip: {name}",
+    "en": "Owner: {name}",
+    "ar": "المالك: {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerCreated": {
+    "tr": "Oluşturma: {date}",
+    "en": "Created: {date}",
+    "ar": "تاريخ الإنشاء: {date}",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerCompleted": {
+    "tr": "Tamamlandı",
+    "en": "Completed",
+    "ar": "مكتملة"
+  },
+  "ccModerActive": {
+    "tr": "Devam ediyor",
+    "en": "In progress",
+    "ar": "جارية"
+  },
+  "ccModerDelete": {
+    "tr": "Grubu sil",
+    "en": "Delete group",
+    "ar": "حذف المجموعة"
+  },
+  "ccModerDeleteTitle": {
+    "tr": "Grup silinsin mi?",
+    "en": "Delete this group?",
+    "ar": "هل تريد حذف المجموعة؟"
+  },
+  "ccModerDeleteBody": {
+    "tr": "\"{name}\" grubu ve tüm parçaları kalıcı olarak silinecek.",
+    "en": "The group \"{name}\" and all its parts will be permanently deleted.",
+    "ar": "سيتم حذف المجموعة \"{name}\" وجميع أجزائها نهائيًا.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerDeletedOk": {
+    "tr": "Grup silindi",
+    "en": "Group deleted",
+    "ar": "تم حذف المجموعة"
+  },
+  "ccModerDeleteError": {
+    "tr": "Grup silinemedi",
+    "en": "The group could not be deleted",
+    "ar": "تعذر حذف المجموعة"
+  },
+  "ccModerOrphanBtn": {
+    "tr": "Sahipsiz parçaları temizle",
+    "en": "Clean orphan parts",
+    "ar": "تنظيف الأجزاء اليتيمة"
+  },
+  "ccModerOrphanTitle": {
+    "tr": "Sahipsiz parçalar temizlensin mi?",
+    "en": "Clean orphan parts?",
+    "ar": "هل تريد تنظيف الأجزاء اليتيمة؟"
+  },
+  "ccModerOrphanBody": {
+    "tr": "Silinmiş gruplara ait kalan parça kayıtları taranıp silinecek.",
+    "en": "Remaining part records of deleted groups will be scanned and deleted.",
+    "ar": "سيتم فحص وحذف سجلات الأجزاء المتبقية للمجموعات المحذوفة."
+  },
+  "ccModerOrphanDone": {
+    "tr": "{count} parça silindi, {groups} grup tarandı",
+    "en": "{count} parts deleted, {groups} groups scanned",
+    "ar": "تم حذف {count} جزء، وفحص {groups} مجموعة",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "groups": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerOrphanNone": {
+    "tr": "Sahipsiz parça yok",
+    "en": "No orphan parts",
+    "ar": "لا توجد أجزاء يتيمة"
+  },
+  "ccModerOrphanNoPerm": {
+    "tr": "Tarama için sunucu kuralı gerekiyor (parts koleksiyon grubu okuma izni).",
+    "en": "A server rule is required for the scan (parts collection group read permission).",
+    "ar": "يلزم تعديل قواعد الخادم للفحص (إذن قراءة مجموعة parts)."
+  },
+  "ccModerOrphanError": {
+    "tr": "Temizlik tamamlanamadı",
+    "en": "Cleanup could not be completed",
+    "ar": "تعذر إكمال التنظيف"
+  },
+  "ccPrayerTitle": {
+    "tr": "Ezan Vakitleri",
+    "en": "Prayer Times",
+    "ar": "مواقيت الصلاة"
+  },
+  "ccPrayerSubtitle": {
+    "tr": "Mekke ve Medine günlük vakitleri",
+    "en": "Daily times for Makkah and Madinah",
+    "ar": "المواقيت اليومية لمكة والمدينة"
+  },
+  "ccPrayerMekke": {
+    "tr": "Mekke",
+    "en": "Makkah",
+    "ar": "مكة"
+  },
+  "ccPrayerMedine": {
+    "tr": "Medine",
+    "en": "Madinah",
+    "ar": "المدينة"
+  },
+  "ccPrayerDate": {
+    "tr": "Tarih",
+    "en": "Date",
+    "ar": "التاريخ"
+  },
+  "ccPrayerNewDoc": {
+    "tr": "Bu tarih için kayıt yok; kaydedince yeni oluşturulur.",
+    "en": "No record for this date; saving will create a new one.",
+    "ar": "لا يوجد سجل لهذا التاريخ؛ سيتم إنشاؤه عند الحفظ."
+  },
+  "ccPrayerDay": {
+    "tr": "Gün",
+    "en": "Day",
+    "ar": "اليوم"
+  },
+  "ccPrayerHicri": {
+    "tr": "Hicri tarih",
+    "en": "Hijri date",
+    "ar": "التاريخ الهجري"
+  },
+  "ccPrayerImsak": {
+    "tr": "İmsak",
+    "en": "Fajr (Imsak)",
+    "ar": "الإمساك"
+  },
+  "ccPrayerGunes": {
+    "tr": "Güneş",
+    "en": "Sunrise",
+    "ar": "الشروق"
+  },
+  "ccPrayerOgle": {
+    "tr": "Öğle",
+    "en": "Dhuhr",
+    "ar": "الظهر"
+  },
+  "ccPrayerIkindi": {
+    "tr": "İkindi",
+    "en": "Asr",
+    "ar": "العصر"
+  },
+  "ccPrayerAksam": {
+    "tr": "Akşam",
+    "en": "Maghrib",
+    "ar": "المغرب"
+  },
+  "ccPrayerYatsi": {
+    "tr": "Yatsı",
+    "en": "Isha",
+    "ar": "العشاء"
+  },
+  "ccPrayerSave": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "ar": "حفظ"
+  },
+  "ccPrayerSaved": {
+    "tr": "Vakitler kaydedildi",
+    "en": "Times saved",
+    "ar": "تم حفظ المواقيت"
+  },
+  "ccPrayerSaveError": {
+    "tr": "Vakitler kaydedilemedi",
+    "en": "Times could not be saved",
+    "ar": "تعذر حفظ المواقيت"
+  },
+  "ccPrayerLoadError": {
+    "tr": "Vakitler yüklenemedi",
+    "en": "Times could not be loaded",
+    "ar": "تعذر تحميل المواقيت"
+  },
+  "ccPrayerInvalid": {
+    "tr": "Vakitleri SS:DD biçiminde girin (ör. 05:12)",
+    "en": "Enter times as HH:mm (e.g. 05:12)",
+    "ar": "أدخل الأوقات بصيغة HH:mm (مثل 05:12)"
+  },
+  "ccReviewTitle": {
+    "tr": "Değerlendirme Moderasyonu",
+    "en": "Review Moderation",
+    "ar": "إشراف التقييمات"
+  },
+  "ccReviewSubtitle": {
+    "tr": "Dükkan puan ve yorumları",
+    "en": "Shop ratings and comments",
+    "ar": "تقييمات وتعليقات المتاجر"
+  },
+  "ccReviewFilterAll": {
+    "tr": "Tümü",
+    "en": "All",
+    "ar": "الكل"
+  },
+  "ccReviewFilterLow": {
+    "tr": "Düşük puan",
+    "en": "Low rating",
+    "ar": "تقييم منخفض"
+  },
+  "ccReviewFilterComment": {
+    "tr": "Yorumlu",
+    "en": "With comment",
+    "ar": "مع تعليق"
+  },
+  "ccReviewEmpty": {
+    "tr": "Değerlendirme bulunamadı",
+    "en": "No reviews found",
+    "ar": "لا توجد تقييمات"
+  },
+  "ccReviewLoadError": {
+    "tr": "Değerlendirmeler yüklenemedi",
+    "en": "Reviews could not be loaded",
+    "ar": "تعذر تحميل التقييمات"
+  },
+  "ccReviewNoComment": {
+    "tr": "Yorum yok",
+    "en": "No comment",
+    "ar": "لا يوجد تعليق"
+  },
+  "ccReviewComplaint": {
+    "tr": "Şikâyet",
+    "en": "Complaint",
+    "ar": "شكوى"
+  },
+  "ccReviewUnknownShop": {
+    "tr": "Bilinmeyen dükkan",
+    "en": "Unknown shop",
+    "ar": "متجر غير معروف"
+  },
+  "ccReviewDelete": {
+    "tr": "Sil",
+    "en": "Delete",
+    "ar": "حذف"
+  },
+  "ccReviewDeleteTitle": {
+    "tr": "Değerlendirme silinsin mi?",
+    "en": "Delete this review?",
+    "ar": "هل تريد حذف التقييم؟"
+  },
+  "ccReviewDeleteBody": {
+    "tr": "\"{shop}\" dükkanına ait bu değerlendirme kalıcı olarak silinecek.",
+    "en": "This review of \"{shop}\" will be permanently deleted.",
+    "ar": "سيتم حذف هذا التقييم الخاص بـ \"{shop}\" نهائيًا.",
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "ccReviewDeletedOk": {
+    "tr": "Değerlendirme silindi",
+    "en": "Review deleted",
+    "ar": "تم حذف التقييم"
+  },
+  "ccReviewDeleteError": {
+    "tr": "Değerlendirme silinemedi",
+    "en": "The review could not be deleted",
+    "ar": "تعذر حذف التقييم"
+  }
+}

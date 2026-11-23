@@ -1033,15 +1033,21 @@
   "ccActAgencyCreate": "Acente eklendi",
   "ccActAgencyDelete": "Acente silindi",
   "ccActAgencyUpdate": "Acente güncellendi",
+  "ccActContentUpdate": "İçerik güncelledi",
   "ccActCouponCreate": "Kupon oluşturuldu",
   "ccActCouponDelete": "Kupon silindi",
   "ccActCouponUpdate": "Kupon güncellendi",
+  "ccActEntitlementUpdate": "Paket hakkı güncelledi",
   "ccActFinanceSettings": "Finans ayarları değişti",
+  "ccActHatimModerate": "Toplu Hatim moderasyonu",
   "ccActMerchantCreate": "Esnaf hesabı açıldı",
   "ccActMessageSend": "Acenteye mesaj gönderildi",
+  "ccActPaymentsToggle": "Demo ödeme anahtarını değiştirdi",
+  "ccActPlatformSettings": "Platform ayarlarını güncelledi",
   "ccActPointsBulk": "Toplu puan yüklendi",
   "ccActPointsGrant": "Puan hareketi eklendi",
   "ccActPointsRevert": "Puan hareketi geri alındı",
+  "ccActReviewModerate": "Değerlendirme moderasyonu",
   "ccActRiskReview": "Risk alarmı incelendi",
   "ccActRoleChange": "Rol değiştirildi",
   "ccActSettlementPaid": "Hak ediş ödendi",
@@ -1206,6 +1212,7 @@
   "ccAuditCatCoupon": "Kupon",
   "ccAuditCatFinance": "Finans",
   "ccAuditCatMessage": "Mesaj",
+  "ccAuditCatPlatform": "Platform",
   "ccAuditCatPoints": "Puan",
   "ccAuditCatRisk": "Risk",
   "ccAuditCatShop": "Esnaf/Dükkan",
@@ -1714,6 +1721,8 @@
   "ccModCouponsDesc": "Kupon oluştur, kullanımı izle",
   "ccModFinance": "Finans & Hak Ediş",
   "ccModFinanceDesc": "Komisyon, hak ediş ve ödemeler",
+  "ccModHatim": "Toplu Hatim Moderasyonu",
+  "ccModHatimDesc": "Grupları incele, sil, sahipsiz parçaları temizle",
   "ccModLoyalty": "Sadakat & Puan",
   "ccModLoyaltyDesc": "Puan bakiyeleri ve hareketleri",
   "ccModMerchantPerf": "Esnaf Performansı",
@@ -1722,12 +1731,101 @@
   "ccModMerchantReportsDesc": "Alışveriş işlemleri ve iptaller",
   "ccModMessages": "Acente Mesajları",
   "ccModMessagesDesc": "Acentelerle yazışma ve duyuru",
+  "ccModPackages": "Paket Onayları",
+  "ccModPackagesDesc": "Bireysel paketler, Full onayı ve süre yönetimi",
+  "ccModPlatformSettings": "Platform Ayarları",
+  "ccModPlatformSettingsDesc": "Demo ödeme, bakım modu, güncelleme ve destek iletişimi",
+  "ccModPrayer": "Ezan Vakitleri",
+  "ccModPrayerDesc": "Mekke ve Medine vakitlerini düzenle",
+  "ccModReviews": "Değerlendirme Moderasyonu",
+  "ccModReviewsDesc": "Dükkan puan ve yorumlarını denetle",
   "ccModRisk": "Risk & Fraud",
   "ccModRiskDesc": "Şüpheli işlem alarmları",
   "ccModShops": "Anlaşmalı Dükkanlar",
   "ccModShopsDesc": "Dükkan, indirim ve esnaf hesapları",
   "ccModStaff": "Yetkili Personel",
   "ccModStaffDesc": "Destek ve muhasebe hesapları",
+  "ccModerActive": "Devam ediyor",
+  "ccModerCompleted": "Tamamlandı",
+  "ccModerCreated": "Oluşturma: {date}",
+  "@ccModerCreated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerDelete": "Grubu sil",
+  "ccModerDeleteBody": "\"{name}\" grubu ve tüm parçaları kalıcı olarak silinecek.",
+  "@ccModerDeleteBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerDeleteError": "Grup silinemedi",
+  "ccModerDeleteTitle": "Grup silinsin mi?",
+  "ccModerDeletedOk": "Grup silindi",
+  "ccModerEmpty": "Grup bulunamadı",
+  "ccModerLoadError": "Gruplar yüklenemedi",
+  "ccModerMembers": "{count} üye",
+  "@ccModerMembers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerOrphanBody": "Silinmiş gruplara ait kalan parça kayıtları taranıp silinecek.",
+  "ccModerOrphanBtn": "Sahipsiz parçaları temizle",
+  "ccModerOrphanDone": "{count} parça silindi, {groups} grup tarandı",
+  "@ccModerOrphanDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "groups": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerOrphanError": "Temizlik tamamlanamadı",
+  "ccModerOrphanNoPerm": "Tarama için sunucu kuralı gerekiyor (parts koleksiyon grubu okuma izni).",
+  "ccModerOrphanNone": "Sahipsiz parça yok",
+  "ccModerOrphanTitle": "Sahipsiz parçalar temizlensin mi?",
+  "ccModerOwner": "Sahip: {name}",
+  "@ccModerOwner": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccModerPrivate": "Acenteye özel",
+  "ccModerProgress": "{done}/{total} parça",
+  "@ccModerProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerPublic": "Herkese açık",
+  "ccModerRound": "{round}. tur",
+  "@ccModerRound": {
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "ccModerSearchHint": "Grup adına göre ara",
+  "ccModerSubtitle": "Tüm hatim grupları",
+  "ccModerTitle": "Toplu Hatim Moderasyonu",
   "ccMsgAddTitle": "Başlık ekle",
   "ccMsgAgencies": "Acenteler",
   "ccMsgAllAgencies": "Tüm acenteler",
@@ -1854,7 +1952,117 @@
   "ccPermRisk": "Risk ve fraud",
   "ccPermShops": "Dükkan ve esnaf yönetimi",
   "ccPermStaff": "Personel yönetimi",
+  "ccPkgActionError": "İşlem tamamlanamadı. Lütfen tekrar deneyin.",
+  "ccPkgApprove": "Onayla",
+  "ccPkgApproveHint": "Seyahat tarihlerini girin; kullanıcının ana sayfasında geri sayım bu tarihlerle çalışır.",
+  "ccPkgApproveTitle": "Full paketi onayla",
+  "ccPkgApprovedOk": "Paket onaylandı.",
+  "ccPkgApprovedSub": "Tarihleriniz yönetici tarafından girildi · değişiklik için iletişime geçin",
+  "ccPkgCheckIn": "Giriş",
+  "ccPkgCheckOut": "Çıkış",
+  "ccPkgConfirm": "Onayla",
+  "ccPkgDatesOrder": "Çıkış tarihi girişten önce olamaz.",
+  "ccPkgDatesPast": "Tarihler geçmişte; paket süresi bugünden sonra bitmeli.",
+  "ccPkgDatesRequired": "En az bir şehir için giriş ve çıkış tarihi girin.",
+  "ccPkgEditDates": "Tarihleri düzenle",
+  "ccPkgEmail": "E-posta",
+  "ccPkgEmptyActive": "Aktif paket yok.",
+  "ccPkgEmptyExpired": "Süresi dolmuş paket yok.",
+  "ccPkgEmptyPending": "Onay bekleyen paket yok.",
+  "ccPkgExtend": "+30 gün uzat",
+  "ccPkgExtendBody": "{name} için paket süresi 30 gün uzatılacak.",
+  "@ccPkgExtendBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccPkgExtendTitle": "Süre uzatılsın mı?",
+  "ccPkgExtendedOk": "Süre uzatıldı.",
+  "ccPkgFilterBireysel": "Bireysel",
+  "ccPkgFullActiveNote": "Full Umre Paketiniz sürüyor; değişiklik için bizimle iletişime geçin.",
+  "ccPkgGone": "Kullanıcı paketi iptal etmiş; liste yenilendi.",
+  "ccPkgHotel": "Otel (isteğe bağlı)",
+  "ccPkgKpiActive": "Aktif",
+  "ccPkgKpiExpired": "Süresi dolmuş",
+  "ccPkgKpiPending": "Onay bekleyen",
+  "ccPkgKpiTotal": "Toplam",
+  "ccPkgLoadError": "Paketler yüklenemedi.",
+  "ccPkgMedine": "Medine",
+  "ccPkgMekke": "Mekke",
+  "ccPkgPickDate": "Tarih seç",
+  "ccPkgRevoke": "İptal et",
+  "ccPkgRevokeBody": "{name} için paket hakkı silinir ve kullanıcı ücretsiz plana döner.",
+  "@ccPkgRevokeBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ccPkgRevokeTitle": "Paket iptal edilsin mi?",
+  "ccPkgRevokedOk": "Paket iptal edildi.",
+  "ccPkgSearch": "Ad veya e-posta ara",
+  "ccPkgStatusActive": "Aktif",
+  "ccPkgStatusExpired": "Süresi doldu",
+  "ccPkgStatusPending": "Onay bekliyor",
+  "ccPkgSubtitle": "Bireysel kullanıcı paketleri",
+  "ccPkgTitle": "Paket Onayları",
+  "ccPkgUnknownUser": "Bilinmeyen kullanıcı",
+  "ccPkgUntil": "Bitiş: {date}",
+  "@ccPkgUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ccPkgUserNoPackage": "Paket yok",
+  "ccPkgUserOpen": "Paket Onayları'nda aç",
+  "ccPkgUserPackage": "Paket",
+  "ccPrayerAksam": "Akşam",
+  "ccPrayerDate": "Tarih",
+  "ccPrayerDay": "Gün",
+  "ccPrayerGunes": "Güneş",
+  "ccPrayerHicri": "Hicri tarih",
+  "ccPrayerIkindi": "İkindi",
+  "ccPrayerImsak": "İmsak",
+  "ccPrayerInvalid": "Vakitleri SS:DD biçiminde girin (ör. 05:12)",
+  "ccPrayerLoadError": "Vakitler yüklenemedi",
+  "ccPrayerMedine": "Medine",
+  "ccPrayerMekke": "Mekke",
+  "ccPrayerNewDoc": "Bu tarih için kayıt yok; kaydedince yeni oluşturulur.",
+  "ccPrayerOgle": "Öğle",
+  "ccPrayerSave": "Kaydet",
+  "ccPrayerSaveError": "Vakitler kaydedilemedi",
+  "ccPrayerSaved": "Vakitler kaydedildi",
+  "ccPrayerSubtitle": "Mekke ve Medine günlük vakitleri",
+  "ccPrayerTitle": "Ezan Vakitleri",
+  "ccPrayerYatsi": "Yatsı",
   "ccReadOnly": "Salt okuma",
+  "ccReviewComplaint": "Şikâyet",
+  "ccReviewDelete": "Sil",
+  "ccReviewDeleteBody": "\"{shop}\" dükkanına ait bu değerlendirme kalıcı olarak silinecek.",
+  "@ccReviewDeleteBody": {
+    "placeholders": {
+      "shop": {
+        "type": "String"
+      }
+    }
+  },
+  "ccReviewDeleteError": "Değerlendirme silinemedi",
+  "ccReviewDeleteTitle": "Değerlendirme silinsin mi?",
+  "ccReviewDeletedOk": "Değerlendirme silindi",
+  "ccReviewEmpty": "Değerlendirme bulunamadı",
+  "ccReviewFilterAll": "Tümü",
+  "ccReviewFilterComment": "Yorumlu",
+  "ccReviewFilterLow": "Düşük puan",
+  "ccReviewLoadError": "Değerlendirmeler yüklenemedi",
+  "ccReviewNoComment": "Yorum yok",
+  "ccReviewSubtitle": "Dükkan puan ve yorumları",
+  "ccReviewTitle": "Değerlendirme Moderasyonu",
+  "ccReviewUnknownShop": "Bilinmeyen dükkan",
   "ccRiskActionError": "İşlem başarısız oldu",
   "ccRiskAlarmsTitle": "Alarmlar",
   "ccRiskAmount": "Tutar",
@@ -2107,6 +2315,58 @@
   "ccSectionOverview": "Genel Bakış",
   "ccSectionRecent": "Son İşlemler",
   "ccSeeAll": "Tümü",
+  "ccSetAppSection": "Uygulama",
+  "ccSetCancel": "Vazgeç",
+  "ccSetConfirm": "Onayla",
+  "ccSetDemoOff": "Demo kapalı: gerçek ödeme",
+  "ccSetDemoOn": "Demo açık: ödeme alınmıyor",
+  "ccSetDemoPayments": "Demo ödeme",
+  "ccSetDemoPaymentsDesc": "Açıkken bireysel kullanıcılar ödeme yapmadan paket alır. PayTR bağlanınca kapatılmalıdır.",
+  "ccSetEmail1": "E-posta 1",
+  "ccSetEmail2": "E-posta 2",
+  "ccSetInvalidEmail": "Geçerli bir e-posta girin.",
+  "ccSetInvalidPhone": "Geçerli bir telefon numarası girin.",
+  "ccSetInvalidUrl": "http/https ile başlayan geçerli bir bağlantı girin.",
+  "ccSetLoadError": "Ayarlar yüklenemedi.",
+  "ccSetMaintConfirmBody": "Kaydedince süper admin dışındaki tüm kullanıcılar bakım ekranını görecek.",
+  "ccSetMaintConfirmTitle": "Bakım modu açılsın mı?",
+  "ccSetMaintenance": "Bakım modu",
+  "ccSetMaintenanceDesc": "Açıkken süper admin dışındaki herkes bakım ekranını görür.",
+  "ccSetMaintenanceMsg": "Bakım mesajı (en çok 300 karakter)",
+  "ccSetMinBuild": "Asgari derleme numarası",
+  "ccSetMinBuildHint": "Mevcut derleme: {build}. Bundan küçük sürümler güncellemeye zorlanır; boş/0 = kapalı.",
+  "@ccSetMinBuildHint": {
+    "placeholders": {
+      "build": {
+        "type": "int"
+      }
+    }
+  },
+  "ccSetNoChange": "Değişiklik yok.",
+  "ccSetPayConfirmOff": "Demo ödeme KAPATILACAK. Paket alımı için gerçek ödeme gerekecek.",
+  "ccSetPayConfirmOn": "Demo ödeme AÇILACAK. Bireysel kullanıcılar ödeme yapmadan paket alabilecek.",
+  "ccSetPayConfirmTitle": "Demo ödeme değişsin mi?",
+  "ccSetPaymentsSection": "Ödeme",
+  "ccSetPhone1": "Telefon 1",
+  "ccSetPhone2": "Telefon 2",
+  "ccSetSave": "Kaydet",
+  "ccSetSaveError": "Kaydedilemedi. Tekrar deneyin.",
+  "ccSetSaved": "Ayarlar kaydedildi.",
+  "ccSetSubtitle": "Ödeme, bakım ve iletişim",
+  "ccSetSupportHint": "Boş bırakılan alanlarda uygulamadaki varsayılan bilgiler gösterilir.",
+  "ccSetSupportSection": "Destek iletişimi",
+  "ccSetTitle": "Platform Ayarları",
+  "ccSetUpdateConfirmBody": "Asgari derleme {build} olacak. Bu sürümü kullanan herkes güncelleme ekranında kalır (süper admin hariç).",
+  "@ccSetUpdateConfirmBody": {
+    "placeholders": {
+      "build": {
+        "type": "int"
+      }
+    }
+  },
+  "ccSetUpdateConfirmTitle": "Zorunlu güncelleme açılsın mı?",
+  "ccSetUpdateUrl": "Güncelleme bağlantısı (Play Store/APK)",
+  "ccSetWhatsapp": "WhatsApp numarası",
   "ccStaffActionFailed": "İşlem tamamlanamadı",
   "ccStaffAdd": "Personel ekle",
   "ccStaffChangeRole": "Rolü değiştir",
@@ -3970,6 +4230,15 @@
       }
     }
   },
+  "platformAdminLogin": "Yönetici girişi",
+  "platformAgencyInactive": "Acenteniz şu an pasif. Lütfen acentenizle iletişime geçin.",
+  "platformMaintenanceDefault": "Uygulama kısa süreliğine bakımda. Lütfen daha sonra tekrar deneyin.",
+  "platformMaintenanceTitle": "Bakımdayız",
+  "platformRetryFailed": "Bağlantı kurulamadı.",
+  "platformUpdateBody": "Uygulamayı kullanmaya devam etmek için lütfen yeni sürüme güncelleyin.",
+  "platformUpdateButton": "Güncelle",
+  "platformUpdateOpenFailed": "Bağlantı açılamadı.",
+  "platformUpdateTitle": "Güncelleme gerekli",
   "quranAddBookmark": "Yer işareti ekle",
   "quranAgoDays": "{count} gün önce",
   "@quranAgoDays": {

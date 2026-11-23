@@ -1832,6 +1832,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccActAgencyUpdate => 'Acente güncellendi';
 
   @override
+  String get ccActContentUpdate => 'İçerik güncelledi';
+
+  @override
   String get ccActCouponCreate => 'Kupon oluşturuldu';
 
   @override
@@ -1841,13 +1844,25 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccActCouponUpdate => 'Kupon güncellendi';
 
   @override
+  String get ccActEntitlementUpdate => 'Paket hakkı güncelledi';
+
+  @override
   String get ccActFinanceSettings => 'Finans ayarları değişti';
+
+  @override
+  String get ccActHatimModerate => 'Toplu Hatim moderasyonu';
 
   @override
   String get ccActMerchantCreate => 'Esnaf hesabı açıldı';
 
   @override
   String get ccActMessageSend => 'Acenteye mesaj gönderildi';
+
+  @override
+  String get ccActPaymentsToggle => 'Demo ödeme anahtarını değiştirdi';
+
+  @override
+  String get ccActPlatformSettings => 'Platform ayarlarını güncelledi';
 
   @override
   String get ccActPointsBulk => 'Toplu puan yüklendi';
@@ -1857,6 +1872,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ccActPointsRevert => 'Puan hareketi geri alındı';
+
+  @override
+  String get ccActReviewModerate => 'Değerlendirme moderasyonu';
 
   @override
   String get ccActRiskReview => 'Risk alarmı incelendi';
@@ -2197,6 +2215,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ccAuditCatMessage => 'Mesaj';
+
+  @override
+  String get ccAuditCatPlatform => 'Platform';
 
   @override
   String get ccAuditCatPoints => 'Puan';
@@ -3064,6 +3085,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccModFinanceDesc => 'Komisyon, hak ediş ve ödemeler';
 
   @override
+  String get ccModHatim => 'Toplu Hatim Moderasyonu';
+
+  @override
+  String get ccModHatimDesc =>
+      'Grupları incele, sil, sahipsiz parçaları temizle';
+
+  @override
   String get ccModLoyalty => 'Sadakat & Puan';
 
   @override
@@ -3088,6 +3116,32 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccModMessagesDesc => 'Acentelerle yazışma ve duyuru';
 
   @override
+  String get ccModPackages => 'Paket Onayları';
+
+  @override
+  String get ccModPackagesDesc =>
+      'Bireysel paketler, Full onayı ve süre yönetimi';
+
+  @override
+  String get ccModPlatformSettings => 'Platform Ayarları';
+
+  @override
+  String get ccModPlatformSettingsDesc =>
+      'Demo ödeme, bakım modu, güncelleme ve destek iletişimi';
+
+  @override
+  String get ccModPrayer => 'Ezan Vakitleri';
+
+  @override
+  String get ccModPrayerDesc => 'Mekke ve Medine vakitlerini düzenle';
+
+  @override
+  String get ccModReviews => 'Değerlendirme Moderasyonu';
+
+  @override
+  String get ccModReviewsDesc => 'Dükkan puan ve yorumlarını denetle';
+
+  @override
   String get ccModRisk => 'Risk & Fraud';
 
   @override
@@ -3104,6 +3158,100 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ccModStaffDesc => 'Destek ve muhasebe hesapları';
+
+  @override
+  String get ccModerActive => 'Devam ediyor';
+
+  @override
+  String get ccModerCompleted => 'Tamamlandı';
+
+  @override
+  String ccModerCreated(String date) {
+    return 'Oluşturma: $date';
+  }
+
+  @override
+  String get ccModerDelete => 'Grubu sil';
+
+  @override
+  String ccModerDeleteBody(String name) {
+    return '\"$name\" grubu ve tüm parçaları kalıcı olarak silinecek.';
+  }
+
+  @override
+  String get ccModerDeleteError => 'Grup silinemedi';
+
+  @override
+  String get ccModerDeleteTitle => 'Grup silinsin mi?';
+
+  @override
+  String get ccModerDeletedOk => 'Grup silindi';
+
+  @override
+  String get ccModerEmpty => 'Grup bulunamadı';
+
+  @override
+  String get ccModerLoadError => 'Gruplar yüklenemedi';
+
+  @override
+  String ccModerMembers(int count) {
+    return '$count üye';
+  }
+
+  @override
+  String get ccModerOrphanBody =>
+      'Silinmiş gruplara ait kalan parça kayıtları taranıp silinecek.';
+
+  @override
+  String get ccModerOrphanBtn => 'Sahipsiz parçaları temizle';
+
+  @override
+  String ccModerOrphanDone(int count, int groups) {
+    return '$count parça silindi, $groups grup tarandı';
+  }
+
+  @override
+  String get ccModerOrphanError => 'Temizlik tamamlanamadı';
+
+  @override
+  String get ccModerOrphanNoPerm =>
+      'Tarama için sunucu kuralı gerekiyor (parts koleksiyon grubu okuma izni).';
+
+  @override
+  String get ccModerOrphanNone => 'Sahipsiz parça yok';
+
+  @override
+  String get ccModerOrphanTitle => 'Sahipsiz parçalar temizlensin mi?';
+
+  @override
+  String ccModerOwner(String name) {
+    return 'Sahip: $name';
+  }
+
+  @override
+  String get ccModerPrivate => 'Acenteye özel';
+
+  @override
+  String ccModerProgress(int done, int total) {
+    return '$done/$total parça';
+  }
+
+  @override
+  String get ccModerPublic => 'Herkese açık';
+
+  @override
+  String ccModerRound(int round) {
+    return '$round. tur';
+  }
+
+  @override
+  String get ccModerSearchHint => 'Grup adına göre ara';
+
+  @override
+  String get ccModerSubtitle => 'Tüm hatim grupları';
+
+  @override
+  String get ccModerTitle => 'Toplu Hatim Moderasyonu';
 
   @override
   String get ccMsgAddTitle => 'Başlık ekle';
@@ -3375,7 +3523,267 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ccPermStaff => 'Personel yönetimi';
 
   @override
+  String get ccPkgActionError => 'İşlem tamamlanamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get ccPkgApprove => 'Onayla';
+
+  @override
+  String get ccPkgApproveHint =>
+      'Seyahat tarihlerini girin; kullanıcının ana sayfasında geri sayım bu tarihlerle çalışır.';
+
+  @override
+  String get ccPkgApproveTitle => 'Full paketi onayla';
+
+  @override
+  String get ccPkgApprovedOk => 'Paket onaylandı.';
+
+  @override
+  String get ccPkgApprovedSub =>
+      'Tarihleriniz yönetici tarafından girildi · değişiklik için iletişime geçin';
+
+  @override
+  String get ccPkgCheckIn => 'Giriş';
+
+  @override
+  String get ccPkgCheckOut => 'Çıkış';
+
+  @override
+  String get ccPkgConfirm => 'Onayla';
+
+  @override
+  String get ccPkgDatesOrder => 'Çıkış tarihi girişten önce olamaz.';
+
+  @override
+  String get ccPkgDatesPast =>
+      'Tarihler geçmişte; paket süresi bugünden sonra bitmeli.';
+
+  @override
+  String get ccPkgDatesRequired =>
+      'En az bir şehir için giriş ve çıkış tarihi girin.';
+
+  @override
+  String get ccPkgEditDates => 'Tarihleri düzenle';
+
+  @override
+  String get ccPkgEmail => 'E-posta';
+
+  @override
+  String get ccPkgEmptyActive => 'Aktif paket yok.';
+
+  @override
+  String get ccPkgEmptyExpired => 'Süresi dolmuş paket yok.';
+
+  @override
+  String get ccPkgEmptyPending => 'Onay bekleyen paket yok.';
+
+  @override
+  String get ccPkgExtend => '+30 gün uzat';
+
+  @override
+  String ccPkgExtendBody(String name) {
+    return '$name için paket süresi 30 gün uzatılacak.';
+  }
+
+  @override
+  String get ccPkgExtendTitle => 'Süre uzatılsın mı?';
+
+  @override
+  String get ccPkgExtendedOk => 'Süre uzatıldı.';
+
+  @override
+  String get ccPkgFilterBireysel => 'Bireysel';
+
+  @override
+  String get ccPkgFullActiveNote =>
+      'Full Umre Paketiniz sürüyor; değişiklik için bizimle iletişime geçin.';
+
+  @override
+  String get ccPkgGone => 'Kullanıcı paketi iptal etmiş; liste yenilendi.';
+
+  @override
+  String get ccPkgHotel => 'Otel (isteğe bağlı)';
+
+  @override
+  String get ccPkgKpiActive => 'Aktif';
+
+  @override
+  String get ccPkgKpiExpired => 'Süresi dolmuş';
+
+  @override
+  String get ccPkgKpiPending => 'Onay bekleyen';
+
+  @override
+  String get ccPkgKpiTotal => 'Toplam';
+
+  @override
+  String get ccPkgLoadError => 'Paketler yüklenemedi.';
+
+  @override
+  String get ccPkgMedine => 'Medine';
+
+  @override
+  String get ccPkgMekke => 'Mekke';
+
+  @override
+  String get ccPkgPickDate => 'Tarih seç';
+
+  @override
+  String get ccPkgRevoke => 'İptal et';
+
+  @override
+  String ccPkgRevokeBody(String name) {
+    return '$name için paket hakkı silinir ve kullanıcı ücretsiz plana döner.';
+  }
+
+  @override
+  String get ccPkgRevokeTitle => 'Paket iptal edilsin mi?';
+
+  @override
+  String get ccPkgRevokedOk => 'Paket iptal edildi.';
+
+  @override
+  String get ccPkgSearch => 'Ad veya e-posta ara';
+
+  @override
+  String get ccPkgStatusActive => 'Aktif';
+
+  @override
+  String get ccPkgStatusExpired => 'Süresi doldu';
+
+  @override
+  String get ccPkgStatusPending => 'Onay bekliyor';
+
+  @override
+  String get ccPkgSubtitle => 'Bireysel kullanıcı paketleri';
+
+  @override
+  String get ccPkgTitle => 'Paket Onayları';
+
+  @override
+  String get ccPkgUnknownUser => 'Bilinmeyen kullanıcı';
+
+  @override
+  String ccPkgUntil(String date) {
+    return 'Bitiş: $date';
+  }
+
+  @override
+  String get ccPkgUserNoPackage => 'Paket yok';
+
+  @override
+  String get ccPkgUserOpen => 'Paket Onayları\'nda aç';
+
+  @override
+  String get ccPkgUserPackage => 'Paket';
+
+  @override
+  String get ccPrayerAksam => 'Akşam';
+
+  @override
+  String get ccPrayerDate => 'Tarih';
+
+  @override
+  String get ccPrayerDay => 'Gün';
+
+  @override
+  String get ccPrayerGunes => 'Güneş';
+
+  @override
+  String get ccPrayerHicri => 'Hicri tarih';
+
+  @override
+  String get ccPrayerIkindi => 'İkindi';
+
+  @override
+  String get ccPrayerImsak => 'İmsak';
+
+  @override
+  String get ccPrayerInvalid => 'Vakitleri SS:DD biçiminde girin (ör. 05:12)';
+
+  @override
+  String get ccPrayerLoadError => 'Vakitler yüklenemedi';
+
+  @override
+  String get ccPrayerMedine => 'Medine';
+
+  @override
+  String get ccPrayerMekke => 'Mekke';
+
+  @override
+  String get ccPrayerNewDoc =>
+      'Bu tarih için kayıt yok; kaydedince yeni oluşturulur.';
+
+  @override
+  String get ccPrayerOgle => 'Öğle';
+
+  @override
+  String get ccPrayerSave => 'Kaydet';
+
+  @override
+  String get ccPrayerSaveError => 'Vakitler kaydedilemedi';
+
+  @override
+  String get ccPrayerSaved => 'Vakitler kaydedildi';
+
+  @override
+  String get ccPrayerSubtitle => 'Mekke ve Medine günlük vakitleri';
+
+  @override
+  String get ccPrayerTitle => 'Ezan Vakitleri';
+
+  @override
+  String get ccPrayerYatsi => 'Yatsı';
+
+  @override
   String get ccReadOnly => 'Salt okuma';
+
+  @override
+  String get ccReviewComplaint => 'Şikâyet';
+
+  @override
+  String get ccReviewDelete => 'Sil';
+
+  @override
+  String ccReviewDeleteBody(String shop) {
+    return '\"$shop\" dükkanına ait bu değerlendirme kalıcı olarak silinecek.';
+  }
+
+  @override
+  String get ccReviewDeleteError => 'Değerlendirme silinemedi';
+
+  @override
+  String get ccReviewDeleteTitle => 'Değerlendirme silinsin mi?';
+
+  @override
+  String get ccReviewDeletedOk => 'Değerlendirme silindi';
+
+  @override
+  String get ccReviewEmpty => 'Değerlendirme bulunamadı';
+
+  @override
+  String get ccReviewFilterAll => 'Tümü';
+
+  @override
+  String get ccReviewFilterComment => 'Yorumlu';
+
+  @override
+  String get ccReviewFilterLow => 'Düşük puan';
+
+  @override
+  String get ccReviewLoadError => 'Değerlendirmeler yüklenemedi';
+
+  @override
+  String get ccReviewNoComment => 'Yorum yok';
+
+  @override
+  String get ccReviewSubtitle => 'Dükkan puan ve yorumları';
+
+  @override
+  String get ccReviewTitle => 'Değerlendirme Moderasyonu';
+
+  @override
+  String get ccReviewUnknownShop => 'Bilinmeyen dükkan';
 
   @override
   String get ccRiskActionError => 'İşlem başarısız oldu';
@@ -3658,6 +4066,131 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get ccSeeAll => 'Tümü';
+
+  @override
+  String get ccSetAppSection => 'Uygulama';
+
+  @override
+  String get ccSetCancel => 'Vazgeç';
+
+  @override
+  String get ccSetConfirm => 'Onayla';
+
+  @override
+  String get ccSetDemoOff => 'Demo kapalı: gerçek ödeme';
+
+  @override
+  String get ccSetDemoOn => 'Demo açık: ödeme alınmıyor';
+
+  @override
+  String get ccSetDemoPayments => 'Demo ödeme';
+
+  @override
+  String get ccSetDemoPaymentsDesc =>
+      'Açıkken bireysel kullanıcılar ödeme yapmadan paket alır. PayTR bağlanınca kapatılmalıdır.';
+
+  @override
+  String get ccSetEmail1 => 'E-posta 1';
+
+  @override
+  String get ccSetEmail2 => 'E-posta 2';
+
+  @override
+  String get ccSetInvalidEmail => 'Geçerli bir e-posta girin.';
+
+  @override
+  String get ccSetInvalidPhone => 'Geçerli bir telefon numarası girin.';
+
+  @override
+  String get ccSetInvalidUrl =>
+      'http/https ile başlayan geçerli bir bağlantı girin.';
+
+  @override
+  String get ccSetLoadError => 'Ayarlar yüklenemedi.';
+
+  @override
+  String get ccSetMaintConfirmBody =>
+      'Kaydedince süper admin dışındaki tüm kullanıcılar bakım ekranını görecek.';
+
+  @override
+  String get ccSetMaintConfirmTitle => 'Bakım modu açılsın mı?';
+
+  @override
+  String get ccSetMaintenance => 'Bakım modu';
+
+  @override
+  String get ccSetMaintenanceDesc =>
+      'Açıkken süper admin dışındaki herkes bakım ekranını görür.';
+
+  @override
+  String get ccSetMaintenanceMsg => 'Bakım mesajı (en çok 300 karakter)';
+
+  @override
+  String get ccSetMinBuild => 'Asgari derleme numarası';
+
+  @override
+  String ccSetMinBuildHint(int build) {
+    return 'Mevcut derleme: $build. Bundan küçük sürümler güncellemeye zorlanır; boş/0 = kapalı.';
+  }
+
+  @override
+  String get ccSetNoChange => 'Değişiklik yok.';
+
+  @override
+  String get ccSetPayConfirmOff =>
+      'Demo ödeme KAPATILACAK. Paket alımı için gerçek ödeme gerekecek.';
+
+  @override
+  String get ccSetPayConfirmOn =>
+      'Demo ödeme AÇILACAK. Bireysel kullanıcılar ödeme yapmadan paket alabilecek.';
+
+  @override
+  String get ccSetPayConfirmTitle => 'Demo ödeme değişsin mi?';
+
+  @override
+  String get ccSetPaymentsSection => 'Ödeme';
+
+  @override
+  String get ccSetPhone1 => 'Telefon 1';
+
+  @override
+  String get ccSetPhone2 => 'Telefon 2';
+
+  @override
+  String get ccSetSave => 'Kaydet';
+
+  @override
+  String get ccSetSaveError => 'Kaydedilemedi. Tekrar deneyin.';
+
+  @override
+  String get ccSetSaved => 'Ayarlar kaydedildi.';
+
+  @override
+  String get ccSetSubtitle => 'Ödeme, bakım ve iletişim';
+
+  @override
+  String get ccSetSupportHint =>
+      'Boş bırakılan alanlarda uygulamadaki varsayılan bilgiler gösterilir.';
+
+  @override
+  String get ccSetSupportSection => 'Destek iletişimi';
+
+  @override
+  String get ccSetTitle => 'Platform Ayarları';
+
+  @override
+  String ccSetUpdateConfirmBody(int build) {
+    return 'Asgari derleme $build olacak. Bu sürümü kullanan herkes güncelleme ekranında kalır (süper admin hariç).';
+  }
+
+  @override
+  String get ccSetUpdateConfirmTitle => 'Zorunlu güncelleme açılsın mı?';
+
+  @override
+  String get ccSetUpdateUrl => 'Güncelleme bağlantısı (Play Store/APK)';
+
+  @override
+  String get ccSetWhatsapp => 'WhatsApp numarası';
 
   @override
   String get ccStaffActionFailed => 'İşlem tamamlanamadı';
@@ -6887,6 +7420,36 @@ class AppLocalizationsTr extends AppLocalizations {
   String paketlerYourPackage(String name) {
     return 'Paketiniz: $name';
   }
+
+  @override
+  String get platformAdminLogin => 'Yönetici girişi';
+
+  @override
+  String get platformAgencyInactive =>
+      'Acenteniz şu an pasif. Lütfen acentenizle iletişime geçin.';
+
+  @override
+  String get platformMaintenanceDefault =>
+      'Uygulama kısa süreliğine bakımda. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get platformMaintenanceTitle => 'Bakımdayız';
+
+  @override
+  String get platformRetryFailed => 'Bağlantı kurulamadı.';
+
+  @override
+  String get platformUpdateBody =>
+      'Uygulamayı kullanmaya devam etmek için lütfen yeni sürüme güncelleyin.';
+
+  @override
+  String get platformUpdateButton => 'Güncelle';
+
+  @override
+  String get platformUpdateOpenFailed => 'Bağlantı açılamadı.';
+
+  @override
+  String get platformUpdateTitle => 'Güncelleme gerekli';
 
   @override
   String get quranAddBookmark => 'Yer işareti ekle';

@@ -11,6 +11,11 @@ import '../../admin/widgets/confirm_dialog.dart';
 import '../../auth/models/user_model.dart';
 import '../../auth/providers/login_provider.dart';
 import '../accounts/cc_migrate_screen.dart';
+import '../moderation/cc_hatim_moderation_screen.dart';
+import '../moderation/cc_prayer_times_screen.dart';
+import '../moderation/cc_reviews_screen.dart';
+import '../packages/cc_packages_screen.dart';
+import '../settings/cc_platform_settings_screen.dart';
 import '../audit/audit_entry_tile.dart';
 import '../audit/audit_labels.dart';
 import '../shared/audit_log.dart';
@@ -202,8 +207,25 @@ class _ControlCenterScreenState extends State<ControlCenterScreen> {
     final migrate = _Module(t.authApiMigrateTitle, t.authApiMigrateDesc, Icons.swap_horiz_rounded, CcColors.info,
         () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CcMigrateScreen())));
 
+    // Platform yönetimi (yalnız süper admin): paketler, ayarlar, moderasyon, içerik.
+    Widget Function() page(Widget w) => () => w;
+    void open(Widget Function() b) => Navigator.push(context, MaterialPageRoute(builder: (_) => b()));
+    final packages = _Module(t.ccModPackages, t.ccModPackagesDesc, Icons.workspace_premium_rounded, CcColors.gold,
+        () => open(page(const CcPackagesScreen())));
+    final platform = _Module(t.ccModPlatformSettings, t.ccModPlatformSettingsDesc, Icons.tune_rounded, CcColors.info,
+        () => open(page(const CcPlatformSettingsScreen())));
+    final hatim = _Module(t.ccModHatim, t.ccModHatimDesc, Icons.groups_rounded, CcColors.mid,
+        () => open(page(const CcHatimModerationScreen())));
+    final prayer = _Module(t.ccModPrayer, t.ccModPrayerDesc, Icons.access_time_filled_rounded, CcColors.gold,
+        () => open(page(const CcPrayerTimesScreen())));
+    final reviews = _Module(t.ccModReviews, t.ccModReviewsDesc, Icons.rate_review_rounded, CcColors.info,
+        () => open(page(const CcReviewsScreen())));
+
     if (u.isSuperAdmin) {
-      return [agencies, shops, reports, analytics, perf, loyalty, coupons, finance, risk, messages, audit, staff, migrate];
+      return [
+        agencies, shops, packages, reports, analytics, perf, loyalty, coupons, finance, risk, reviews, messages,
+        hatim, prayer, platform, audit, staff, migrate,
+      ];
     }
     if (u.isSupport) return [agencies, messages, risk];
     if (u.isFinance) return [finance, reports, perf, loyalty, coupons];

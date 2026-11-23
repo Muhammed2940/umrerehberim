@@ -443,7 +443,9 @@ service cloud.firestore {
       allow read, write: if isSuper() || isFinance();
     }
     match /platform_settings/{id} {
-      allow read: if isSuper() || isFinance();
+      // 'app': bakım modu, en düşük sürüm, destek iletişim bilgileri → herkes okur
+      // (açılışta, girişten önce). Diğerleri (finance, payments) yalnız süper admin/muhasebe.
+      allow read: if id == 'app' || isSuper() || isFinance();
       allow write: if isSuper();
     }
 
@@ -460,6 +462,7 @@ service cloud.firestore {
     function paidBireysel() {
       let e = /databases/$(database)/documents/entitlements/$(request.auth.uid);
       return isGoogle() && agency() == '' && exists(e)
+          && get(e).data.get('paket', '') in ['umre', 'aile', 'full']
           && get(e).data.status == 'active'
           && get(e).data.paid_until > request.time;
     }
@@ -849,6 +852,11 @@ service cloud.firestore {
     }
 
     // Ezan vakitleri (orijinal koleksiyon adları): herkes okur, süper admin yazar.
+    // Toplu Hatim: sahipsiz parça taraması (collectionGroup('parts')) yalnız süper admin.
+    match /{path=**}/parts/{pid} {
+      allow read: if isSuper();
+    }
+
     match /mekke_prayer_times/{id}  { allow read: if true; allow write: if isSuper(); }
     match /medine_prayer_times/{id} { allow read: if true; allow write: if isSuper(); }
 

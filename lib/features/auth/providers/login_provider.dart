@@ -22,6 +22,7 @@ import '../../../core/utils/global_snackbar.dart';
 import '../../esnaf/esnaf_config.dart';
 import '../../hatim/data/hatim_service.dart';
 import '../../hatim/data/hatim_watcher.dart';
+import '../../control_center/settings/platform_settings_service.dart';
 import '../../splash/providers/splash_provider.dart';
 import '../models/user_model.dart';
 import '../../paketler/providers/personal_plan_provider.dart';
@@ -197,6 +198,13 @@ class LoginProvider extends ChangeNotifier {
         return false;
       }
 
+      // Pasif acente: misafir ve acente admini giremez (acente belgesi okunamazsa engellenmez).
+      if (await PlatformSettingsService.isAgencyInactive(user)) {
+        await _safeSignOut();
+        _fail(l10n.platformAgencyInactive);
+        return false;
+      }
+
       // Seçilen giriş tipi hesapla uyuşmalı (super_admin, yonetici ve acente_admin "Yönetici" girişidir).
       // Google girişinde tip seçilmez; rolü belge belirler, AppWrapper doğru ekrana geçer.
       if (userType != null) {
@@ -335,6 +343,7 @@ class LoginProvider extends ChangeNotifier {
     final appState = context.read<AppStateProvider>();
     final navigator = Navigator.of(context);
     final user = appState.currentUser;
+    context.read<SplashProvider>().adminLoginRequested = false;
 
     if (user != null && !user.isMerchant) {
       try {

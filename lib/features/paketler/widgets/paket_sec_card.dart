@@ -42,6 +42,14 @@ class PaketSecCard extends StatelessWidget {
             onTap: () => Navigator.of(context).pushNamed('/technical-support'),
           );
         }
+        if (personalPlan.isApprovedFull) {
+          return QuickActionCard(
+            icon: Icons.verified_rounded,
+            title: l.paketlerYourPackage(paketName(context, personalPlan.paket)),
+            subtitle: l.ccPkgApprovedSub,
+            onTap: () => Navigator.of(context).pushNamed('/technical-support'),
+          );
+        }
         return QuickActionCard(
           icon: Icons.edit_calendar_rounded,
           title: l.paketlerYourPackage(paketName(context, personalPlan.paket)),

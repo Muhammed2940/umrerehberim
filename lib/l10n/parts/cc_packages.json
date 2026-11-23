@@ -1,0 +1,85 @@
+{
+  "ccModPackages": { "tr": "Paket Onayları", "en": "Package Approvals", "ar": "موافقات الباقات" },
+  "ccModPackagesDesc": {
+    "tr": "Bireysel paketler, Full onayı ve süre yönetimi",
+    "en": "Individual packages, Full approvals and durations",
+    "ar": "الباقات الفردية وموافقات الباقة الكاملة والمدد"
+  },
+  "ccPkgTitle": { "tr": "Paket Onayları", "en": "Package Approvals", "ar": "موافقات الباقات" },
+  "ccPkgSubtitle": { "tr": "Bireysel kullanıcı paketleri", "en": "Individual user packages", "ar": "باقات المستخدمين الأفراد" },
+  "ccPkgLoadError": { "tr": "Paketler yüklenemedi.", "en": "Packages couldn't be loaded.", "ar": "تعذر تحميل الباقات." },
+  "ccPkgActionError": { "tr": "İşlem tamamlanamadı. Lütfen tekrar deneyin.", "en": "The action couldn't be completed. Please try again.", "ar": "تعذر إكمال العملية. حاول مرة أخرى." },
+  "ccPkgKpiPending": { "tr": "Onay bekleyen", "en": "Pending", "ar": "بانتظار الموافقة" },
+  "ccPkgKpiActive": { "tr": "Aktif", "en": "Active", "ar": "نشطة" },
+  "ccPkgKpiExpired": { "tr": "Süresi dolmuş", "en": "Expired", "ar": "منتهية" },
+  "ccPkgKpiTotal": { "tr": "Toplam", "en": "Total", "ar": "الإجمالي" },
+  "ccPkgSearch": { "tr": "Ad veya e-posta ara", "en": "Search name or email", "ar": "ابحث بالاسم أو البريد" },
+  "ccPkgEmptyPending": { "tr": "Onay bekleyen paket yok.", "en": "No packages awaiting approval.", "ar": "لا توجد باقات بانتظار الموافقة." },
+  "ccPkgEmptyActive": { "tr": "Aktif paket yok.", "en": "No active packages.", "ar": "لا توجد باقات نشطة." },
+  "ccPkgEmptyExpired": { "tr": "Süresi dolmuş paket yok.", "en": "No expired packages.", "ar": "لا توجد باقات منتهية." },
+  "ccPkgStatusPending": { "tr": "Onay bekliyor", "en": "Pending", "ar": "بانتظار الموافقة" },
+  "ccPkgStatusActive": { "tr": "Aktif", "en": "Active", "ar": "نشطة" },
+  "ccPkgStatusExpired": { "tr": "Süresi doldu", "en": "Expired", "ar": "منتهية" },
+  "ccPkgUnknownUser": { "tr": "Bilinmeyen kullanıcı", "en": "Unknown user", "ar": "مستخدم غير معروف" },
+  "ccPkgUntil": {
+    "tr": "Bitiş: {date}", "en": "Until: {date}", "ar": "حتى: {date}",
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "ccPkgApprove": { "tr": "Onayla", "en": "Approve", "ar": "موافقة" },
+  "ccPkgExtend": { "tr": "+30 gün uzat", "en": "Extend 30 days", "ar": "تمديد 30 يومًا" },
+  "ccPkgRevoke": { "tr": "İptal et", "en": "Cancel package", "ar": "إلغاء الباقة" },
+  "ccPkgEditDates": { "tr": "Tarihleri düzenle", "en": "Edit dates", "ar": "تعديل التواريخ" },
+  "ccPkgApproveTitle": { "tr": "Full paketi onayla", "en": "Approve Full package", "ar": "الموافقة على الباقة الكاملة" },
+  "ccPkgApproveHint": {
+    "tr": "Seyahat tarihlerini girin; kullanıcının ana sayfasında geri sayım bu tarihlerle çalışır.",
+    "en": "Enter the travel dates; the user's home countdown will use them.",
+    "ar": "أدخل تواريخ السفر؛ سيعمل العد التنازلي للمستخدم بها."
+  },
+  "ccPkgMekke": { "tr": "Mekke", "en": "Makkah", "ar": "مكة" },
+  "ccPkgMedine": { "tr": "Medine", "en": "Madinah", "ar": "المدينة" },
+  "ccPkgCheckIn": { "tr": "Giriş", "en": "Check-in", "ar": "الوصول" },
+  "ccPkgCheckOut": { "tr": "Çıkış", "en": "Check-out", "ar": "المغادرة" },
+  "ccPkgHotel": { "tr": "Otel (isteğe bağlı)", "en": "Hotel (optional)", "ar": "الفندق (اختياري)" },
+  "ccPkgPickDate": { "tr": "Tarih seç", "en": "Pick date", "ar": "اختر التاريخ" },
+  "ccPkgDatesRequired": {
+    "tr": "En az bir şehir için giriş ve çıkış tarihi girin.",
+    "en": "Enter check-in and check-out for at least one city.",
+    "ar": "أدخل تاريخ الوصول والمغادرة لمدينة واحدة على الأقل."
+  },
+  "ccPkgDatesOrder": {
+    "tr": "Çıkış tarihi girişten önce olamaz.",
+    "en": "Check-out can't be before check-in.",
+    "ar": "لا يمكن أن تكون المغادرة قبل الوصول."
+  },
+  "ccPkgExtendTitle": { "tr": "Süre uzatılsın mı?", "en": "Extend duration?", "ar": "تمديد المدة؟" },
+  "ccPkgExtendBody": {
+    "tr": "{name} için paket süresi 30 gün uzatılacak.",
+    "en": "{name}'s package will be extended by 30 days.",
+    "ar": "سيتم تمديد باقة {name} لمدة 30 يومًا.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "ccPkgRevokeTitle": { "tr": "Paket iptal edilsin mi?", "en": "Cancel this package?", "ar": "إلغاء هذه الباقة؟" },
+  "ccPkgRevokeBody": {
+    "tr": "{name} için paket hakkı silinir ve kullanıcı ücretsiz plana döner.",
+    "en": "{name}'s package is removed and the user returns to the free plan.",
+    "ar": "ستُحذف باقة {name} ويعود المستخدم إلى الخطة المجانية.",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "ccPkgApprovedOk": { "tr": "Paket onaylandı.", "en": "Package approved.", "ar": "تمت الموافقة على الباقة." },
+  "ccPkgExtendedOk": { "tr": "Süre uzatıldı.", "en": "Duration extended.", "ar": "تم تمديد المدة." },
+  "ccPkgRevokedOk": { "tr": "Paket iptal edildi.", "en": "Package cancelled.", "ar": "تم إلغاء الباقة." },
+  "ccPkgConfirm": { "tr": "Onayla", "en": "Confirm", "ar": "تأكيد" },
+  "ccPkgFilterBireysel": { "tr": "Bireysel", "en": "Individual", "ar": "فردي" },
+  "ccPkgUserPackage": { "tr": "Paket", "en": "Package", "ar": "الباقة" },
+  "ccPkgUserNoPackage": { "tr": "Paket yok", "en": "No package", "ar": "لا توجد باقة" },
+  "ccPkgGone": { "tr": "Kullanıcı paketi iptal etmiş; liste yenilendi.", "en": "The user cancelled the package; list refreshed.", "ar": "ألغى المستخدم الباقة؛ تم تحديث القائمة." },
+  "ccPkgDatesPast": { "tr": "Tarihler geçmişte; paket süresi bugünden sonra bitmeli.", "en": "Dates are in the past; the package must end after today.", "ar": "التواريخ في الماضي؛ يجب أن تنتهي الباقة بعد اليوم." },
+  "ccPkgFullActiveNote": { "tr": "Full Umre Paketiniz sürüyor; değişiklik için bizimle iletişime geçin.", "en": "Your Full Umrah Package is in progress; contact us for changes.", "ar": "باقتك الكاملة سارية؛ تواصل معنا لأي تغيير." },
+  "ccPkgEmail": { "tr": "E-posta", "en": "Email", "ar": "البريد" },
+  "ccPkgUserOpen": { "tr": "Paket Onayları'nda aç", "en": "Open in Package Approvals", "ar": "فتح في موافقات الباقات" },
+  "ccPkgApprovedSub": {
+    "tr": "Tarihleriniz yönetici tarafından girildi · değişiklik için iletişime geçin",
+    "en": "Your dates were set by the admin · contact us to change",
+    "ar": "أدخل المسؤول تواريخك · تواصل معنا للتعديل"
+  }
+}

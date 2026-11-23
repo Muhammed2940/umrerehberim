@@ -72,6 +72,9 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
       listenable: personalPlan,
       builder: (context, _) {
         final current = personalPlan.paket;
+        // Full (onay bekleyen ya da onaylı): hak yönetici verisidir; değişiklik iletişimle.
+        final locked = current == PaketId.full;
+        void contact() => Navigator.of(context).pushNamed('/technical-support');
         _PaketKart kart({
           required PaketId id,
           required IconData icon,
@@ -95,14 +98,16 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
               highlighted: highlighted,
               current: current == id,
               heroTag: 'paket-icon-${id.name}',
-              ctaLabel: id == PaketId.ucretsiz ? l.paketlerBackToFree : ctaLabel,
+              ctaLabel: id == PaketId.ucretsiz ? (locked ? l.paketlerContactUs : l.paketlerBackToFree) : ctaLabel,
               onCta: id == PaketId.ucretsiz
-                  ? _backToFree
-                  : () => _buy(OdemeArgs(id: id, icon: icon, name: name, price: price, period: period)),
-              editLabel: id == PaketId.full && personalPlan.awaitingApproval ? l.paketlerContactUs : null,
+                  ? (locked ? contact : _backToFree)
+                  : locked
+                      ? null
+                      : () => _buy(OdemeArgs(id: id, icon: icon, name: name, price: price, period: period)),
+              editLabel: id == PaketId.full && personalPlan.hasPaidPackage && current == id ? l.paketlerContactUs : null,
               onEdit: switch (id) {
                 PaketId.ucretsiz => null,
-                PaketId.full when personalPlan.awaitingApproval => () =>
+                PaketId.full when personalPlan.hasPaidPackage && current == id => () =>
                     Navigator.of(context).pushNamed('/technical-support'),
                 _ => () => Navigator.of(context).pushNamed('/yolculuk-bilgilerim'),
               },
@@ -116,6 +121,10 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
                 l.paketlerIntro,
                 style: const TextStyle(fontSize: 14, height: 1.45, color: AppColors.textMuted),
               ),
+              if (locked) ...[
+                const SizedBox(height: 10),
+                InfoNote(l.ccPkgFullActiveNote, icon: Icons.info_outline_rounded),
+              ],
               const SizedBox(height: 14),
               kart(
                 id: PaketId.ucretsiz,
@@ -195,7 +204,7 @@ class _PaketKart extends StatelessWidget {
   /// Kullanıcının mevcut planı: satın alma düğmesi yerine (varsa) düzenleme düğmesi.
   final bool current;
 
-  final VoidCallback onCta;
+  final VoidCallback? onCta;
 
   /// Paket ikonu ödeme sayfasına [Hero] ile uçar.
   final Object heroTag;
@@ -216,7 +225,7 @@ class _PaketKart extends StatelessWidget {
     this.ctaLabel,
     this.highlighted = false,
     this.current = false,
-    required this.onCta,
+    this.onCta,
     required this.heroTag,
     this.editLabel,
     this.onEdit,

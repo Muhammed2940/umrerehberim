@@ -1854,6 +1854,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccActAgencyUpdate => 'Agency updated';
 
   @override
+  String get ccActContentUpdate => 'Updated content';
+
+  @override
   String get ccActCouponCreate => 'Coupon created';
 
   @override
@@ -1863,13 +1866,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccActCouponUpdate => 'Coupon updated';
 
   @override
+  String get ccActEntitlementUpdate => 'Updated package entitlement';
+
+  @override
   String get ccActFinanceSettings => 'Finance settings changed';
+
+  @override
+  String get ccActHatimModerate => 'Group Khatm moderation';
 
   @override
   String get ccActMerchantCreate => 'Merchant account created';
 
   @override
   String get ccActMessageSend => 'Message sent to agency';
+
+  @override
+  String get ccActPaymentsToggle => 'Toggled demo payments';
+
+  @override
+  String get ccActPlatformSettings => 'Updated platform settings';
 
   @override
   String get ccActPointsBulk => 'Bulk points uploaded';
@@ -1879,6 +1894,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ccActPointsRevert => 'Point adjustment reverted';
+
+  @override
+  String get ccActReviewModerate => 'Review moderation';
 
   @override
   String get ccActRiskReview => 'Risk alert reviewed';
@@ -2219,6 +2237,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ccAuditCatMessage => 'Message';
+
+  @override
+  String get ccAuditCatPlatform => 'Platform';
 
   @override
   String get ccAuditCatPoints => 'Points';
@@ -3087,6 +3108,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccModFinanceDesc => 'Commission, settlements and payouts';
 
   @override
+  String get ccModHatim => 'Group Hatim Moderation';
+
+  @override
+  String get ccModHatimDesc => 'Review groups, delete, clean orphan parts';
+
+  @override
   String get ccModLoyalty => 'Loyalty & Points';
 
   @override
@@ -3112,6 +3139,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccModMessagesDesc => 'Messaging and announcements with agencies';
 
   @override
+  String get ccModPackages => 'Package Approvals';
+
+  @override
+  String get ccModPackagesDesc =>
+      'Individual packages, Full approvals and durations';
+
+  @override
+  String get ccModPlatformSettings => 'Platform Settings';
+
+  @override
+  String get ccModPlatformSettingsDesc =>
+      'Demo payments, maintenance, updates and support contacts';
+
+  @override
+  String get ccModPrayer => 'Prayer Times';
+
+  @override
+  String get ccModPrayerDesc => 'Edit Makkah and Madinah times';
+
+  @override
+  String get ccModReviews => 'Review Moderation';
+
+  @override
+  String get ccModReviewsDesc => 'Moderate shop ratings and comments';
+
+  @override
   String get ccModRisk => 'Risk & Fraud';
 
   @override
@@ -3128,6 +3181,100 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ccModStaffDesc => 'Support and finance accounts';
+
+  @override
+  String get ccModerActive => 'In progress';
+
+  @override
+  String get ccModerCompleted => 'Completed';
+
+  @override
+  String ccModerCreated(String date) {
+    return 'Created: $date';
+  }
+
+  @override
+  String get ccModerDelete => 'Delete group';
+
+  @override
+  String ccModerDeleteBody(String name) {
+    return 'The group \"$name\" and all its parts will be permanently deleted.';
+  }
+
+  @override
+  String get ccModerDeleteError => 'The group could not be deleted';
+
+  @override
+  String get ccModerDeleteTitle => 'Delete this group?';
+
+  @override
+  String get ccModerDeletedOk => 'Group deleted';
+
+  @override
+  String get ccModerEmpty => 'No groups found';
+
+  @override
+  String get ccModerLoadError => 'Groups could not be loaded';
+
+  @override
+  String ccModerMembers(int count) {
+    return '$count members';
+  }
+
+  @override
+  String get ccModerOrphanBody =>
+      'Remaining part records of deleted groups will be scanned and deleted.';
+
+  @override
+  String get ccModerOrphanBtn => 'Clean orphan parts';
+
+  @override
+  String ccModerOrphanDone(int count, int groups) {
+    return '$count parts deleted, $groups groups scanned';
+  }
+
+  @override
+  String get ccModerOrphanError => 'Cleanup could not be completed';
+
+  @override
+  String get ccModerOrphanNoPerm =>
+      'A server rule is required for the scan (parts collection group read permission).';
+
+  @override
+  String get ccModerOrphanNone => 'No orphan parts';
+
+  @override
+  String get ccModerOrphanTitle => 'Clean orphan parts?';
+
+  @override
+  String ccModerOwner(String name) {
+    return 'Owner: $name';
+  }
+
+  @override
+  String get ccModerPrivate => 'Agency only';
+
+  @override
+  String ccModerProgress(int done, int total) {
+    return '$done/$total parts';
+  }
+
+  @override
+  String get ccModerPublic => 'Public';
+
+  @override
+  String ccModerRound(int round) {
+    return 'Round $round';
+  }
+
+  @override
+  String get ccModerSearchHint => 'Search by group name';
+
+  @override
+  String get ccModerSubtitle => 'All hatim groups';
+
+  @override
+  String get ccModerTitle => 'Group Hatim Moderation';
 
   @override
   String get ccMsgAddTitle => 'Add title';
@@ -3399,7 +3546,268 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ccPermStaff => 'Staff management';
 
   @override
+  String get ccPkgActionError =>
+      'The action couldn\'t be completed. Please try again.';
+
+  @override
+  String get ccPkgApprove => 'Approve';
+
+  @override
+  String get ccPkgApproveHint =>
+      'Enter the travel dates; the user\'s home countdown will use them.';
+
+  @override
+  String get ccPkgApproveTitle => 'Approve Full package';
+
+  @override
+  String get ccPkgApprovedOk => 'Package approved.';
+
+  @override
+  String get ccPkgApprovedSub =>
+      'Your dates were set by the admin · contact us to change';
+
+  @override
+  String get ccPkgCheckIn => 'Check-in';
+
+  @override
+  String get ccPkgCheckOut => 'Check-out';
+
+  @override
+  String get ccPkgConfirm => 'Confirm';
+
+  @override
+  String get ccPkgDatesOrder => 'Check-out can\'t be before check-in.';
+
+  @override
+  String get ccPkgDatesPast =>
+      'Dates are in the past; the package must end after today.';
+
+  @override
+  String get ccPkgDatesRequired =>
+      'Enter check-in and check-out for at least one city.';
+
+  @override
+  String get ccPkgEditDates => 'Edit dates';
+
+  @override
+  String get ccPkgEmail => 'Email';
+
+  @override
+  String get ccPkgEmptyActive => 'No active packages.';
+
+  @override
+  String get ccPkgEmptyExpired => 'No expired packages.';
+
+  @override
+  String get ccPkgEmptyPending => 'No packages awaiting approval.';
+
+  @override
+  String get ccPkgExtend => 'Extend 30 days';
+
+  @override
+  String ccPkgExtendBody(String name) {
+    return '$name\'s package will be extended by 30 days.';
+  }
+
+  @override
+  String get ccPkgExtendTitle => 'Extend duration?';
+
+  @override
+  String get ccPkgExtendedOk => 'Duration extended.';
+
+  @override
+  String get ccPkgFilterBireysel => 'Individual';
+
+  @override
+  String get ccPkgFullActiveNote =>
+      'Your Full Umrah Package is in progress; contact us for changes.';
+
+  @override
+  String get ccPkgGone => 'The user cancelled the package; list refreshed.';
+
+  @override
+  String get ccPkgHotel => 'Hotel (optional)';
+
+  @override
+  String get ccPkgKpiActive => 'Active';
+
+  @override
+  String get ccPkgKpiExpired => 'Expired';
+
+  @override
+  String get ccPkgKpiPending => 'Pending';
+
+  @override
+  String get ccPkgKpiTotal => 'Total';
+
+  @override
+  String get ccPkgLoadError => 'Packages couldn\'t be loaded.';
+
+  @override
+  String get ccPkgMedine => 'Madinah';
+
+  @override
+  String get ccPkgMekke => 'Makkah';
+
+  @override
+  String get ccPkgPickDate => 'Pick date';
+
+  @override
+  String get ccPkgRevoke => 'Cancel package';
+
+  @override
+  String ccPkgRevokeBody(String name) {
+    return '$name\'s package is removed and the user returns to the free plan.';
+  }
+
+  @override
+  String get ccPkgRevokeTitle => 'Cancel this package?';
+
+  @override
+  String get ccPkgRevokedOk => 'Package cancelled.';
+
+  @override
+  String get ccPkgSearch => 'Search name or email';
+
+  @override
+  String get ccPkgStatusActive => 'Active';
+
+  @override
+  String get ccPkgStatusExpired => 'Expired';
+
+  @override
+  String get ccPkgStatusPending => 'Pending';
+
+  @override
+  String get ccPkgSubtitle => 'Individual user packages';
+
+  @override
+  String get ccPkgTitle => 'Package Approvals';
+
+  @override
+  String get ccPkgUnknownUser => 'Unknown user';
+
+  @override
+  String ccPkgUntil(String date) {
+    return 'Until: $date';
+  }
+
+  @override
+  String get ccPkgUserNoPackage => 'No package';
+
+  @override
+  String get ccPkgUserOpen => 'Open in Package Approvals';
+
+  @override
+  String get ccPkgUserPackage => 'Package';
+
+  @override
+  String get ccPrayerAksam => 'Maghrib';
+
+  @override
+  String get ccPrayerDate => 'Date';
+
+  @override
+  String get ccPrayerDay => 'Day';
+
+  @override
+  String get ccPrayerGunes => 'Sunrise';
+
+  @override
+  String get ccPrayerHicri => 'Hijri date';
+
+  @override
+  String get ccPrayerIkindi => 'Asr';
+
+  @override
+  String get ccPrayerImsak => 'Fajr (Imsak)';
+
+  @override
+  String get ccPrayerInvalid => 'Enter times as HH:mm (e.g. 05:12)';
+
+  @override
+  String get ccPrayerLoadError => 'Times could not be loaded';
+
+  @override
+  String get ccPrayerMedine => 'Madinah';
+
+  @override
+  String get ccPrayerMekke => 'Makkah';
+
+  @override
+  String get ccPrayerNewDoc =>
+      'No record for this date; saving will create a new one.';
+
+  @override
+  String get ccPrayerOgle => 'Dhuhr';
+
+  @override
+  String get ccPrayerSave => 'Save';
+
+  @override
+  String get ccPrayerSaveError => 'Times could not be saved';
+
+  @override
+  String get ccPrayerSaved => 'Times saved';
+
+  @override
+  String get ccPrayerSubtitle => 'Daily times for Makkah and Madinah';
+
+  @override
+  String get ccPrayerTitle => 'Prayer Times';
+
+  @override
+  String get ccPrayerYatsi => 'Isha';
+
+  @override
   String get ccReadOnly => 'Read only';
+
+  @override
+  String get ccReviewComplaint => 'Complaint';
+
+  @override
+  String get ccReviewDelete => 'Delete';
+
+  @override
+  String ccReviewDeleteBody(String shop) {
+    return 'This review of \"$shop\" will be permanently deleted.';
+  }
+
+  @override
+  String get ccReviewDeleteError => 'The review could not be deleted';
+
+  @override
+  String get ccReviewDeleteTitle => 'Delete this review?';
+
+  @override
+  String get ccReviewDeletedOk => 'Review deleted';
+
+  @override
+  String get ccReviewEmpty => 'No reviews found';
+
+  @override
+  String get ccReviewFilterAll => 'All';
+
+  @override
+  String get ccReviewFilterComment => 'With comment';
+
+  @override
+  String get ccReviewFilterLow => 'Low rating';
+
+  @override
+  String get ccReviewLoadError => 'Reviews could not be loaded';
+
+  @override
+  String get ccReviewNoComment => 'No comment';
+
+  @override
+  String get ccReviewSubtitle => 'Shop ratings and comments';
+
+  @override
+  String get ccReviewTitle => 'Review Moderation';
+
+  @override
+  String get ccReviewUnknownShop => 'Unknown shop';
 
   @override
   String get ccRiskActionError => 'The operation failed';
@@ -3683,6 +4091,129 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ccSeeAll => 'See all';
+
+  @override
+  String get ccSetAppSection => 'App';
+
+  @override
+  String get ccSetCancel => 'Cancel';
+
+  @override
+  String get ccSetConfirm => 'Confirm';
+
+  @override
+  String get ccSetDemoOff => 'Demo off: real payments';
+
+  @override
+  String get ccSetDemoOn => 'Demo on: no payment taken';
+
+  @override
+  String get ccSetDemoPayments => 'Demo payments';
+
+  @override
+  String get ccSetDemoPaymentsDesc =>
+      'When on, individual users get packages without paying. Turn off once PayTR is connected.';
+
+  @override
+  String get ccSetEmail1 => 'Email 1';
+
+  @override
+  String get ccSetEmail2 => 'Email 2';
+
+  @override
+  String get ccSetInvalidEmail => 'Enter a valid email.';
+
+  @override
+  String get ccSetInvalidPhone => 'Enter a valid phone number.';
+
+  @override
+  String get ccSetInvalidUrl => 'Enter a valid http/https link.';
+
+  @override
+  String get ccSetLoadError => 'Settings could not be loaded.';
+
+  @override
+  String get ccSetMaintConfirmBody =>
+      'After saving, all users except super admins will see the maintenance screen.';
+
+  @override
+  String get ccSetMaintConfirmTitle => 'Turn on maintenance mode?';
+
+  @override
+  String get ccSetMaintenance => 'Maintenance mode';
+
+  @override
+  String get ccSetMaintenanceDesc =>
+      'When on, everyone except super admins sees the maintenance screen.';
+
+  @override
+  String get ccSetMaintenanceMsg => 'Maintenance message (max 300 characters)';
+
+  @override
+  String get ccSetMinBuild => 'Minimum build number';
+
+  @override
+  String ccSetMinBuildHint(int build) {
+    return 'Current build: $build. Older builds are forced to update; empty/0 = off.';
+  }
+
+  @override
+  String get ccSetNoChange => 'No changes.';
+
+  @override
+  String get ccSetPayConfirmOff =>
+      'Demo payments will be turned OFF. Real payment will be required for packages.';
+
+  @override
+  String get ccSetPayConfirmOn =>
+      'Demo payments will be turned ON. Individual users can get packages without paying.';
+
+  @override
+  String get ccSetPayConfirmTitle => 'Change demo payments?';
+
+  @override
+  String get ccSetPaymentsSection => 'Payments';
+
+  @override
+  String get ccSetPhone1 => 'Phone 1';
+
+  @override
+  String get ccSetPhone2 => 'Phone 2';
+
+  @override
+  String get ccSetSave => 'Save';
+
+  @override
+  String get ccSetSaveError => 'Could not save. Try again.';
+
+  @override
+  String get ccSetSaved => 'Settings saved.';
+
+  @override
+  String get ccSetSubtitle => 'Payments, maintenance and contacts';
+
+  @override
+  String get ccSetSupportHint => 'Empty fields fall back to the app defaults.';
+
+  @override
+  String get ccSetSupportSection => 'Support contacts';
+
+  @override
+  String get ccSetTitle => 'Platform Settings';
+
+  @override
+  String ccSetUpdateConfirmBody(int build) {
+    return 'Minimum build will be $build. Everyone on older builds stays on the update screen (except super admins).';
+  }
+
+  @override
+  String get ccSetUpdateConfirmTitle => 'Force update?';
+
+  @override
+  String get ccSetUpdateUrl => 'Update link (Play Store/APK)';
+
+  @override
+  String get ccSetWhatsapp => 'WhatsApp number';
 
   @override
   String get ccStaffActionFailed => 'The action could not be completed';
@@ -6941,6 +7472,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String paketlerYourPackage(String name) {
     return 'Your package: $name';
   }
+
+  @override
+  String get platformAdminLogin => 'Admin sign-in';
+
+  @override
+  String get platformAgencyInactive =>
+      'Your agency is currently inactive. Please contact your agency.';
+
+  @override
+  String get platformMaintenanceDefault =>
+      'The app is briefly under maintenance. Please try again later.';
+
+  @override
+  String get platformMaintenanceTitle => 'Under maintenance';
+
+  @override
+  String get platformRetryFailed => 'Could not connect.';
+
+  @override
+  String get platformUpdateBody =>
+      'Please update to the latest version to keep using the app.';
+
+  @override
+  String get platformUpdateButton => 'Update';
+
+  @override
+  String get platformUpdateOpenFailed => 'Could not open the link.';
+
+  @override
+  String get platformUpdateTitle => 'Update required';
 
   @override
   String get quranAddBookmark => 'Add bookmark';

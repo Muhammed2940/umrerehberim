@@ -33,6 +33,9 @@ class PersonalPlanProvider extends ChangeNotifier {
   bool _approved = false;
 
   /// Esnaf indirimi, puan ve Harcamalarım: aktif (onaylı) ücretli paket.
+  /// Onaylı Full: tarihleri yönetici girdi, kullanıcı düzenleyemez (Teknik Destek'e yönlenir).
+  bool get isApprovedFull => _paket == PaketId.full && _approved;
+
   bool get canUseDiscounts => hasPaidPackage && !awaitingApproval;
   CityPlan get mekke => _mekke;
   CityPlan get medine => _medine;
@@ -79,6 +82,24 @@ class PersonalPlanProvider extends ChangeNotifier {
           ? PaketId.values.firstWhere((p) => p.name == d['paket'], orElse: () => PaketId.ucretsiz)
           : PaketId.ucretsiz;
       final approved = valid && d['status'] == 'active';
+      if (paket == PaketId.full && approved) {
+        // Full: tarih ve otel bilgisini yönetici girer (entitlements), kullanıcı değiştiremez.
+        CityPlan city(String p) {
+          final s = d['${p}_start'], e = d['${p}_end'];
+          return CityPlan(
+            start: s is Timestamp ? s.toDate() : null,
+            end: e is Timestamp ? e.toDate() : null,
+            hotel: (d['${p}_hotel'] as String?) ?? '',
+          );
+        }
+
+        _paket = paket;
+        _approved = true;
+        _mekke = city('mekke');
+        _medine = city('medine');
+        await _save();
+        return;
+      }
       if (paket == _paket && approved == _approved) return;
       _paket = paket;
       _approved = approved;
@@ -97,6 +118,8 @@ class PersonalPlanProvider extends ChangeNotifier {
   Future<void> selectPaket(PaketId p) async {
     final uid = _uid;
     if (uid == null) throw StateError('oturum yok');
+    // Full hakkı yönetici verisi: istemci üzerine yazmaz (iletişimle değişir).
+    if (_paket == PaketId.full) throw StateError('full hak istemciden değişmez');
     final ref = _entRef(uid);
     if (p == PaketId.ucretsiz) {
       await ref.delete().timeout(const Duration(seconds: 15));

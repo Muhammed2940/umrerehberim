@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart' show AppLifecycleState, WidgetsBinding, WidgetsBindingObserver;
 
 import '../../../common/services/firestore_service.dart';
 import '../../../common/services/google_auth_service.dart';
@@ -12,15 +13,26 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/services/local_cache_service.dart';
 import '../../../core/services/session_loader.dart';
 import '../../../core/utils/global_snackbar.dart';
+import '../../control_center/settings/platform_settings_service.dart';
 
 /// Açılış: internet kontrolü, oturum varsa veriyi yükleme (online) veya
 /// önbellekten açma (offline). Navigasyon yapmaz; AppWrapper [isLoading]'e bakar.
-class SplashProvider extends ChangeNotifier {
+class SplashProvider extends ChangeNotifier with WidgetsBindingObserver {
   bool isLoading = true;
   bool hasInternet = true;
   String statusMessage = '';
 
+  /// `platform_settings/app` (açılışta okunur; okunamazsa varsayılan, engelleme yok).
+  PlatformAppSettings appSettings = PlatformAppSettings.empty;
+
+  /// Bakım ekranındaki "Yönetici girişi" ile açılır; giriş ekranı gösterilir.
+  bool adminLoginRequested = false;
+
   bool _started = false;
+  AppStateProvider? _appState;
+  DateTime _lastSettingsRefresh = DateTime.now();
+  bool _agencyChecked = false;
+  bool _observing = false;
   static const _cacheMaxAge = Duration(days: 7);
   static const _minSplash = Duration(milliseconds: 1200);
 
@@ -37,6 +49,55 @@ class SplashProvider extends ChangeNotifier {
   void setHasInternet(bool v) {
     hasInternet = v;
     notifyListeners();
+  }
+
+  /// Bakım ekranından süper adminin giriş yapabilmesi için giriş ekranını açar.
+  void requestAdminLogin() {
+    adminLoginRequested = true;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    if (_observing) WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  /// Uygulama ön plana dönünce (en çok 60 sn'de bir) bakım/güncelleme ayarlarını yeniler.
+  /// Çevrimdışı açılmış oturumda, çevrimiçi olununca bir kez pasif acente denetimi yapılır.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed || isLoading) return;
+    if (DateTime.now().difference(_lastSettingsRefresh) < const Duration(seconds: 60)) return;
+    _lastSettingsRefresh = DateTime.now();
+    unawaited(_resumeRefresh());
+  }
+
+  Future<void> _resumeRefresh() async {
+    final s = await PlatformSettingsService.instance.fetchApp();
+    if (s == null) return; // çevrimdışı/okunamadı: mevcut ayarlar kalır
+    appSettings = s;
+    notifyListeners();
+    final app = _appState;
+    final user = app?.currentUser;
+    if (!_agencyChecked && app != null && user != null && app.isOffline) {
+      _agencyChecked = true;
+      if (await PlatformSettingsService.isAgencyInactive(user)) {
+        await _rejectInactiveAgency();
+        app.clear();
+      }
+    }
+  }
+
+  /// Bakım/güncelleme ekranında "Tekrar dene": ayarları yeniden okur. Okunamazsa true döner
+  /// ama ayar değişmez (ekran açık kalır); çağıran bağlantı hatası gösterebilir.
+  Future<bool> refreshAppSettings() async {
+    final s = await PlatformSettingsService.instance.fetchApp();
+    if (s != null) {
+      appSettings = s;
+      notifyListeners();
+    }
+    return s != null;
   }
 
   /// Uygulamanın ortak internet denetimi (DNS çözümü). Durum değiştirmez; başka
@@ -60,12 +121,19 @@ class SplashProvider extends ChangeNotifier {
   Future<void> initializeApp(AppStateProvider appState) async {
     if (_started) return;
     _started = true;
+    _appState = appState;
+    if (!_observing) {
+      _observing = true;
+      WidgetsBinding.instance.addObserver(this);
+    }
     final started = DateTime.now();
     try {
       _status(l10n.authSplashCheckingInternet);
       final online = await checkInternetConnection();
       if (online) {
+        final settingsFuture = PlatformSettingsService.instance.fetchApp();
         await userCheck(appState);
+        appSettings = await settingsFuture ?? appSettings;
       } else {
         _status(l10n.authSplashOfflineStart);
         await userCheckOffline(appState);
@@ -120,6 +188,11 @@ class SplashProvider extends ChangeNotifier {
       // Esnaf: misafir verisi, önbellek ve FCM aboneliği yok; doğrudan esnaf paneli.
       if (user.isMerchant) {
         appState.setUser(user);
+        return;
+      }
+      // Pasif acente: misafir ve acente admini girişte/açılışta engellenir.
+      if (await PlatformSettingsService.isAgencyInactive(user)) {
+        await _rejectInactiveAgency();
         return;
       }
       _status(l10n.authSplashLoadingData);
@@ -178,6 +251,20 @@ class SplashProvider extends ChangeNotifier {
       GlobalSnackbar.showError(l10n.authSplashDataStale);
     }
     SessionLoader.apply(appState, data, isOffline: true);
+  }
+
+  /// Acentesi pasif kullanıcı: çıkış, yerel oturum verisi silinir, mesaj, giriş ekranı.
+  Future<void> _rejectInactiveAgency() async {
+    await GoogleAuthService.signOutAll();
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (_) {}
+    await LocalCacheService.clear();
+    try {
+      await TokenService.clearToken();
+    } catch (_) {}
+    _status(l10n.platformAgencyInactive);
+    GlobalSnackbar.showError(l10n.platformAgencyInactive);
   }
 
   /// Bireysel olmayan belgeye düşen Google oturumu: Firebase + Google çıkışı, yerel

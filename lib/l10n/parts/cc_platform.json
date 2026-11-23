@@ -1,0 +1,37 @@
+{
+  "ccAuditCatPlatform": {
+    "tr": "Platform",
+    "en": "Platform",
+    "ar": "المنصة"
+  },
+  "ccActEntitlementUpdate": {
+    "tr": "Paket hakkı güncelledi",
+    "en": "Updated package entitlement",
+    "ar": "حدّث حق الباقة"
+  },
+  "ccActPaymentsToggle": {
+    "tr": "Demo ödeme anahtarını değiştirdi",
+    "en": "Toggled demo payments",
+    "ar": "غيّر مفتاح الدفع التجريبي"
+  },
+  "ccActPlatformSettings": {
+    "tr": "Platform ayarlarını güncelledi",
+    "en": "Updated platform settings",
+    "ar": "حدّث إعدادات المنصة"
+  },
+  "ccActHatimModerate": {
+    "tr": "Toplu Hatim moderasyonu",
+    "en": "Group Khatm moderation",
+    "ar": "إشراف على الختمة الجماعية"
+  },
+  "ccActContentUpdate": {
+    "tr": "İçerik güncelledi",
+    "en": "Updated content",
+    "ar": "حدّث المحتوى"
+  },
+  "ccActReviewModerate": {
+    "tr": "Değerlendirme moderasyonu",
+    "en": "Review moderation",
+    "ar": "إشراف على التقييمات"
+  }
+}

@@ -1856,6 +1856,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccActAgencyUpdate => 'تم تحديث وكالة';
 
   @override
+  String get ccActContentUpdate => 'حدّث المحتوى';
+
+  @override
   String get ccActCouponCreate => 'تم إنشاء قسيمة';
 
   @override
@@ -1865,13 +1868,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccActCouponUpdate => 'تم تحديث قسيمة';
 
   @override
+  String get ccActEntitlementUpdate => 'حدّث حق الباقة';
+
+  @override
   String get ccActFinanceSettings => 'تم تغيير إعدادات المالية';
+
+  @override
+  String get ccActHatimModerate => 'إشراف على الختمة الجماعية';
 
   @override
   String get ccActMerchantCreate => 'تم إنشاء حساب تاجر';
 
   @override
   String get ccActMessageSend => 'تم إرسال رسالة إلى وكالة';
+
+  @override
+  String get ccActPaymentsToggle => 'غيّر مفتاح الدفع التجريبي';
+
+  @override
+  String get ccActPlatformSettings => 'حدّث إعدادات المنصة';
 
   @override
   String get ccActPointsBulk => 'تم تحميل نقاط بالجملة';
@@ -1881,6 +1896,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ccActPointsRevert => 'تم التراجع عن تعديل النقاط';
+
+  @override
+  String get ccActReviewModerate => 'إشراف على التقييمات';
 
   @override
   String get ccActRiskReview => 'تمت مراجعة تنبيه مخاطر';
@@ -2221,6 +2239,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ccAuditCatMessage => 'الرسائل';
+
+  @override
+  String get ccAuditCatPlatform => 'المنصة';
 
   @override
   String get ccAuditCatPoints => 'النقاط';
@@ -3086,6 +3107,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccModFinanceDesc => 'العمولات والمستحقات والمدفوعات';
 
   @override
+  String get ccModHatim => 'إشراف الختمة الجماعية';
+
+  @override
+  String get ccModHatimDesc => 'مراجعة المجموعات وحذفها وتنظيف الأجزاء اليتيمة';
+
+  @override
   String get ccModLoyalty => 'الولاء والنقاط';
 
   @override
@@ -3110,6 +3137,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccModMessagesDesc => 'المراسلة والإعلانات مع الوكالات';
 
   @override
+  String get ccModPackages => 'موافقات الباقات';
+
+  @override
+  String get ccModPackagesDesc =>
+      'الباقات الفردية وموافقات الباقة الكاملة والمدد';
+
+  @override
+  String get ccModPlatformSettings => 'إعدادات المنصة';
+
+  @override
+  String get ccModPlatformSettingsDesc =>
+      'الدفع التجريبي والصيانة والتحديث وجهات الدعم';
+
+  @override
+  String get ccModPrayer => 'مواقيت الصلاة';
+
+  @override
+  String get ccModPrayerDesc => 'تعديل مواقيت مكة والمدينة';
+
+  @override
+  String get ccModReviews => 'إشراف التقييمات';
+
+  @override
+  String get ccModReviewsDesc => 'مراقبة تقييمات وتعليقات المتاجر';
+
+  @override
   String get ccModRisk => 'المخاطر والاحتيال';
 
   @override
@@ -3126,6 +3179,100 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ccModStaffDesc => 'حسابات الدعم والمحاسبة';
+
+  @override
+  String get ccModerActive => 'جارية';
+
+  @override
+  String get ccModerCompleted => 'مكتملة';
+
+  @override
+  String ccModerCreated(String date) {
+    return 'تاريخ الإنشاء: $date';
+  }
+
+  @override
+  String get ccModerDelete => 'حذف المجموعة';
+
+  @override
+  String ccModerDeleteBody(String name) {
+    return 'سيتم حذف المجموعة \"$name\" وجميع أجزائها نهائيًا.';
+  }
+
+  @override
+  String get ccModerDeleteError => 'تعذر حذف المجموعة';
+
+  @override
+  String get ccModerDeleteTitle => 'هل تريد حذف المجموعة؟';
+
+  @override
+  String get ccModerDeletedOk => 'تم حذف المجموعة';
+
+  @override
+  String get ccModerEmpty => 'لا توجد مجموعات';
+
+  @override
+  String get ccModerLoadError => 'تعذر تحميل المجموعات';
+
+  @override
+  String ccModerMembers(int count) {
+    return '$count عضو';
+  }
+
+  @override
+  String get ccModerOrphanBody =>
+      'سيتم فحص وحذف سجلات الأجزاء المتبقية للمجموعات المحذوفة.';
+
+  @override
+  String get ccModerOrphanBtn => 'تنظيف الأجزاء اليتيمة';
+
+  @override
+  String ccModerOrphanDone(int count, int groups) {
+    return 'تم حذف $count جزء، وفحص $groups مجموعة';
+  }
+
+  @override
+  String get ccModerOrphanError => 'تعذر إكمال التنظيف';
+
+  @override
+  String get ccModerOrphanNoPerm =>
+      'يلزم تعديل قواعد الخادم للفحص (إذن قراءة مجموعة parts).';
+
+  @override
+  String get ccModerOrphanNone => 'لا توجد أجزاء يتيمة';
+
+  @override
+  String get ccModerOrphanTitle => 'هل تريد تنظيف الأجزاء اليتيمة؟';
+
+  @override
+  String ccModerOwner(String name) {
+    return 'المالك: $name';
+  }
+
+  @override
+  String get ccModerPrivate => 'خاصة بالوكالة';
+
+  @override
+  String ccModerProgress(int done, int total) {
+    return '$done/$total جزء';
+  }
+
+  @override
+  String get ccModerPublic => 'عامة';
+
+  @override
+  String ccModerRound(int round) {
+    return 'الجولة $round';
+  }
+
+  @override
+  String get ccModerSearchHint => 'ابحث باسم المجموعة';
+
+  @override
+  String get ccModerSubtitle => 'جميع مجموعات الختمة';
+
+  @override
+  String get ccModerTitle => 'إشراف الختمة الجماعية';
 
   @override
   String get ccMsgAddTitle => 'إضافة عنوان';
@@ -3397,7 +3544,266 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ccPermStaff => 'إدارة الموظفين';
 
   @override
+  String get ccPkgActionError => 'تعذر إكمال العملية. حاول مرة أخرى.';
+
+  @override
+  String get ccPkgApprove => 'موافقة';
+
+  @override
+  String get ccPkgApproveHint =>
+      'أدخل تواريخ السفر؛ سيعمل العد التنازلي للمستخدم بها.';
+
+  @override
+  String get ccPkgApproveTitle => 'الموافقة على الباقة الكاملة';
+
+  @override
+  String get ccPkgApprovedOk => 'تمت الموافقة على الباقة.';
+
+  @override
+  String get ccPkgApprovedSub => 'أدخل المسؤول تواريخك · تواصل معنا للتعديل';
+
+  @override
+  String get ccPkgCheckIn => 'الوصول';
+
+  @override
+  String get ccPkgCheckOut => 'المغادرة';
+
+  @override
+  String get ccPkgConfirm => 'تأكيد';
+
+  @override
+  String get ccPkgDatesOrder => 'لا يمكن أن تكون المغادرة قبل الوصول.';
+
+  @override
+  String get ccPkgDatesPast =>
+      'التواريخ في الماضي؛ يجب أن تنتهي الباقة بعد اليوم.';
+
+  @override
+  String get ccPkgDatesRequired =>
+      'أدخل تاريخ الوصول والمغادرة لمدينة واحدة على الأقل.';
+
+  @override
+  String get ccPkgEditDates => 'تعديل التواريخ';
+
+  @override
+  String get ccPkgEmail => 'البريد';
+
+  @override
+  String get ccPkgEmptyActive => 'لا توجد باقات نشطة.';
+
+  @override
+  String get ccPkgEmptyExpired => 'لا توجد باقات منتهية.';
+
+  @override
+  String get ccPkgEmptyPending => 'لا توجد باقات بانتظار الموافقة.';
+
+  @override
+  String get ccPkgExtend => 'تمديد 30 يومًا';
+
+  @override
+  String ccPkgExtendBody(String name) {
+    return 'سيتم تمديد باقة $name لمدة 30 يومًا.';
+  }
+
+  @override
+  String get ccPkgExtendTitle => 'تمديد المدة؟';
+
+  @override
+  String get ccPkgExtendedOk => 'تم تمديد المدة.';
+
+  @override
+  String get ccPkgFilterBireysel => 'فردي';
+
+  @override
+  String get ccPkgFullActiveNote =>
+      'باقتك الكاملة سارية؛ تواصل معنا لأي تغيير.';
+
+  @override
+  String get ccPkgGone => 'ألغى المستخدم الباقة؛ تم تحديث القائمة.';
+
+  @override
+  String get ccPkgHotel => 'الفندق (اختياري)';
+
+  @override
+  String get ccPkgKpiActive => 'نشطة';
+
+  @override
+  String get ccPkgKpiExpired => 'منتهية';
+
+  @override
+  String get ccPkgKpiPending => 'بانتظار الموافقة';
+
+  @override
+  String get ccPkgKpiTotal => 'الإجمالي';
+
+  @override
+  String get ccPkgLoadError => 'تعذر تحميل الباقات.';
+
+  @override
+  String get ccPkgMedine => 'المدينة';
+
+  @override
+  String get ccPkgMekke => 'مكة';
+
+  @override
+  String get ccPkgPickDate => 'اختر التاريخ';
+
+  @override
+  String get ccPkgRevoke => 'إلغاء الباقة';
+
+  @override
+  String ccPkgRevokeBody(String name) {
+    return 'ستُحذف باقة $name ويعود المستخدم إلى الخطة المجانية.';
+  }
+
+  @override
+  String get ccPkgRevokeTitle => 'إلغاء هذه الباقة؟';
+
+  @override
+  String get ccPkgRevokedOk => 'تم إلغاء الباقة.';
+
+  @override
+  String get ccPkgSearch => 'ابحث بالاسم أو البريد';
+
+  @override
+  String get ccPkgStatusActive => 'نشطة';
+
+  @override
+  String get ccPkgStatusExpired => 'منتهية';
+
+  @override
+  String get ccPkgStatusPending => 'بانتظار الموافقة';
+
+  @override
+  String get ccPkgSubtitle => 'باقات المستخدمين الأفراد';
+
+  @override
+  String get ccPkgTitle => 'موافقات الباقات';
+
+  @override
+  String get ccPkgUnknownUser => 'مستخدم غير معروف';
+
+  @override
+  String ccPkgUntil(String date) {
+    return 'حتى: $date';
+  }
+
+  @override
+  String get ccPkgUserNoPackage => 'لا توجد باقة';
+
+  @override
+  String get ccPkgUserOpen => 'فتح في موافقات الباقات';
+
+  @override
+  String get ccPkgUserPackage => 'الباقة';
+
+  @override
+  String get ccPrayerAksam => 'المغرب';
+
+  @override
+  String get ccPrayerDate => 'التاريخ';
+
+  @override
+  String get ccPrayerDay => 'اليوم';
+
+  @override
+  String get ccPrayerGunes => 'الشروق';
+
+  @override
+  String get ccPrayerHicri => 'التاريخ الهجري';
+
+  @override
+  String get ccPrayerIkindi => 'العصر';
+
+  @override
+  String get ccPrayerImsak => 'الإمساك';
+
+  @override
+  String get ccPrayerInvalid => 'أدخل الأوقات بصيغة HH:mm (مثل 05:12)';
+
+  @override
+  String get ccPrayerLoadError => 'تعذر تحميل المواقيت';
+
+  @override
+  String get ccPrayerMedine => 'المدينة';
+
+  @override
+  String get ccPrayerMekke => 'مكة';
+
+  @override
+  String get ccPrayerNewDoc =>
+      'لا يوجد سجل لهذا التاريخ؛ سيتم إنشاؤه عند الحفظ.';
+
+  @override
+  String get ccPrayerOgle => 'الظهر';
+
+  @override
+  String get ccPrayerSave => 'حفظ';
+
+  @override
+  String get ccPrayerSaveError => 'تعذر حفظ المواقيت';
+
+  @override
+  String get ccPrayerSaved => 'تم حفظ المواقيت';
+
+  @override
+  String get ccPrayerSubtitle => 'المواقيت اليومية لمكة والمدينة';
+
+  @override
+  String get ccPrayerTitle => 'مواقيت الصلاة';
+
+  @override
+  String get ccPrayerYatsi => 'العشاء';
+
+  @override
   String get ccReadOnly => 'قراءة فقط';
+
+  @override
+  String get ccReviewComplaint => 'شكوى';
+
+  @override
+  String get ccReviewDelete => 'حذف';
+
+  @override
+  String ccReviewDeleteBody(String shop) {
+    return 'سيتم حذف هذا التقييم الخاص بـ \"$shop\" نهائيًا.';
+  }
+
+  @override
+  String get ccReviewDeleteError => 'تعذر حذف التقييم';
+
+  @override
+  String get ccReviewDeleteTitle => 'هل تريد حذف التقييم؟';
+
+  @override
+  String get ccReviewDeletedOk => 'تم حذف التقييم';
+
+  @override
+  String get ccReviewEmpty => 'لا توجد تقييمات';
+
+  @override
+  String get ccReviewFilterAll => 'الكل';
+
+  @override
+  String get ccReviewFilterComment => 'مع تعليق';
+
+  @override
+  String get ccReviewFilterLow => 'تقييم منخفض';
+
+  @override
+  String get ccReviewLoadError => 'تعذر تحميل التقييمات';
+
+  @override
+  String get ccReviewNoComment => 'لا يوجد تعليق';
+
+  @override
+  String get ccReviewSubtitle => 'تقييمات وتعليقات المتاجر';
+
+  @override
+  String get ccReviewTitle => 'إشراف التقييمات';
+
+  @override
+  String get ccReviewUnknownShop => 'متجر غير معروف';
 
   @override
   String get ccRiskActionError => 'فشلت العملية';
@@ -3680,6 +4086,129 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ccSeeAll => 'عرض الكل';
+
+  @override
+  String get ccSetAppSection => 'التطبيق';
+
+  @override
+  String get ccSetCancel => 'إلغاء';
+
+  @override
+  String get ccSetConfirm => 'تأكيد';
+
+  @override
+  String get ccSetDemoOff => 'التجريبي متوقف: دفع حقيقي';
+
+  @override
+  String get ccSetDemoOn => 'التجريبي مفعّل: لا يتم الدفع';
+
+  @override
+  String get ccSetDemoPayments => 'الدفع التجريبي';
+
+  @override
+  String get ccSetDemoPaymentsDesc =>
+      'عند التفعيل يحصل المستخدمون الأفراد على الباقات دون دفع. يجب إيقافه عند ربط PayTR.';
+
+  @override
+  String get ccSetEmail1 => 'البريد 1';
+
+  @override
+  String get ccSetEmail2 => 'البريد 2';
+
+  @override
+  String get ccSetInvalidEmail => 'أدخل بريدًا إلكترونيًا صالحًا.';
+
+  @override
+  String get ccSetInvalidPhone => 'أدخل رقم هاتف صالحًا.';
+
+  @override
+  String get ccSetInvalidUrl => 'أدخل رابط http/https صالحًا.';
+
+  @override
+  String get ccSetLoadError => 'تعذر تحميل الإعدادات.';
+
+  @override
+  String get ccSetMaintConfirmBody =>
+      'بعد الحفظ سيرى جميع المستخدمين شاشة الصيانة عدا المشرف العام.';
+
+  @override
+  String get ccSetMaintConfirmTitle => 'تفعيل وضع الصيانة؟';
+
+  @override
+  String get ccSetMaintenance => 'وضع الصيانة';
+
+  @override
+  String get ccSetMaintenanceDesc =>
+      'عند التفعيل يرى الجميع شاشة الصيانة عدا المشرف العام.';
+
+  @override
+  String get ccSetMaintenanceMsg => 'رسالة الصيانة (300 حرفًا كحد أقصى)';
+
+  @override
+  String get ccSetMinBuild => 'أدنى رقم إصدار';
+
+  @override
+  String ccSetMinBuildHint(int build) {
+    return 'الإصدار الحالي: $build. الإصدارات الأقدم تُجبر على التحديث؛ فارغ/0 = معطّل.';
+  }
+
+  @override
+  String get ccSetNoChange => 'لا توجد تغييرات.';
+
+  @override
+  String get ccSetPayConfirmOff =>
+      'سيتم إيقاف الدفع التجريبي. سيلزم دفع حقيقي لشراء الباقات.';
+
+  @override
+  String get ccSetPayConfirmOn =>
+      'سيتم تفعيل الدفع التجريبي. سيحصل الأفراد على الباقات دون دفع.';
+
+  @override
+  String get ccSetPayConfirmTitle => 'تغيير الدفع التجريبي؟';
+
+  @override
+  String get ccSetPaymentsSection => 'الدفع';
+
+  @override
+  String get ccSetPhone1 => 'الهاتف 1';
+
+  @override
+  String get ccSetPhone2 => 'الهاتف 2';
+
+  @override
+  String get ccSetSave => 'حفظ';
+
+  @override
+  String get ccSetSaveError => 'تعذر الحفظ. حاول مرة أخرى.';
+
+  @override
+  String get ccSetSaved => 'تم حفظ الإعدادات.';
+
+  @override
+  String get ccSetSubtitle => 'الدفع والصيانة والتواصل';
+
+  @override
+  String get ccSetSupportHint => 'تُعرض القيم الافتراضية للحقول الفارغة.';
+
+  @override
+  String get ccSetSupportSection => 'جهات الدعم';
+
+  @override
+  String get ccSetTitle => 'إعدادات المنصة';
+
+  @override
+  String ccSetUpdateConfirmBody(int build) {
+    return 'سيكون أدنى إصدار $build. سيبقى كل من يستخدم إصدارًا أقدم على شاشة التحديث (عدا المشرف العام).';
+  }
+
+  @override
+  String get ccSetUpdateConfirmTitle => 'فرض التحديث؟';
+
+  @override
+  String get ccSetUpdateUrl => 'رابط التحديث (Play Store/APK)';
+
+  @override
+  String get ccSetWhatsapp => 'رقم واتساب';
 
   @override
   String get ccStaffActionFailed => 'تعذر إكمال العملية';
@@ -6974,6 +7503,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String paketlerYourPackage(String name) {
     return 'باقتك: $name';
   }
+
+  @override
+  String get platformAdminLogin => 'دخول المشرف';
+
+  @override
+  String get platformAgencyInactive =>
+      'وكالتك غير نشطة حاليًا. يرجى التواصل مع وكالتك.';
+
+  @override
+  String get platformMaintenanceDefault =>
+      'التطبيق قيد الصيانة مؤقتًا. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get platformMaintenanceTitle => 'التطبيق قيد الصيانة';
+
+  @override
+  String get platformRetryFailed => 'تعذر الاتصال.';
+
+  @override
+  String get platformUpdateBody =>
+      'يرجى التحديث إلى أحدث إصدار لمتابعة استخدام التطبيق.';
+
+  @override
+  String get platformUpdateButton => 'تحديث';
+
+  @override
+  String get platformUpdateOpenFailed => 'تعذر فتح الرابط.';
+
+  @override
+  String get platformUpdateTitle => 'التحديث مطلوب';
 
   @override
   String get quranAddBookmark => 'إضافة علامة';

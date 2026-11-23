@@ -11,11 +11,12 @@ import '../features/control_center/home/control_center_screen.dart';
 import '../features/esnaf/screens/merchant_home_screen.dart';
 import '../features/main/screens/main_screen.dart';
 import '../features/splash/providers/splash_provider.dart';
+import '../features/splash/screens/app_gate_screens.dart';
 import '../features/splash/screens/splash_screen.dart';
 
 /// Kök ekran ('/'). Hangi ekranın görüneceğine durumdan karar verir:
 /// splash yükleniyor → SplashScreen; kullanıcı yok → LoginScreen;
-/// esnaf → MerchantHomeScreen; süper admin, destek, muhasebe → ControlCenterScreen;
+/// zorunlu güncelleme/bakım → AppGate ekranları; esnaf → MerchantHomeScreen; süper admin, destek, muhasebe → ControlCenterScreen;
 /// yönetici → SuperAdminDashboard (acente listesi, "Yönet" ile acente seçer);
 /// acente admini → AdminDashboardScreen (kendi acentesi); misafir → MainScreen.
 ///
@@ -44,6 +45,14 @@ class AppWrapper extends StatelessWidget {
             ActivityPing.maybePing(user);
           }
         });
+        // Zorunlu güncelleme: herkes için. Bakım: süper admin dışındaki herkes için;
+        // süper admin girebilsin diye bakım ekranındaki "Yönetici girişi" giriş ekranını açar.
+        // Giriş yapmış süper admin hiçbir kapıya takılmaz (ayarı düzeltebilsin).
+        final gated = !(user?.isSuperAdmin ?? false);
+        if (gated && (splash.appSettings.updateRequired || splash.appSettings.maintenanceMode)) {
+          if (user == null && splash.adminLoginRequested) return const LoginScreen();
+          return splash.appSettings.updateRequired ? const UpdateRequiredScreen() : const MaintenanceScreen();
+        }
         if (user == null) return const LoginScreen();
         if (user.isMerchant) return const MerchantHomeScreen();
         if (user.usesControlCenter) return const ControlCenterScreen();

@@ -21,7 +21,7 @@ UserModel? currentAuditActor() {
 }
 
 /// Denetim kaydı kategorileri (filtre çipleri).
-enum AuditCategory { shop, points, coupon, finance, user, agency, message, risk }
+enum AuditCategory { shop, points, coupon, finance, user, agency, message, risk, platform }
 
 const Map<AuditCategory, List<String>> auditCategoryActions = {
   AuditCategory.shop: [
@@ -46,6 +46,14 @@ const Map<AuditCategory, List<String>> auditCategoryActions = {
   AuditCategory.agency: [AuditAction.agencyCreate, AuditAction.agencyUpdate, AuditAction.agencyDelete],
   AuditCategory.message: [AuditAction.messageSend],
   AuditCategory.risk: [AuditAction.riskReview],
+  AuditCategory.platform: [
+    AuditAction.entitlementUpdate,
+    AuditAction.paymentsToggle,
+    AuditAction.platformSettings,
+    AuditAction.hatimModerate,
+    AuditAction.contentUpdate,
+    AuditAction.reviewModerate,
+  ],
 };
 
 AuditCategory? auditCategoryOf(String action) {
@@ -74,6 +82,8 @@ String auditCategoryLabel(BuildContext context, AuditCategory c) {
       return t.ccAuditCatMessage;
     case AuditCategory.risk:
       return t.ccAuditCatRisk;
+    case AuditCategory.platform:
+      return t.ccAuditCatPlatform;
   }
 }
 
@@ -95,6 +105,8 @@ IconData auditCategoryIcon(AuditCategory? c) {
       return Icons.forum_rounded;
     case AuditCategory.risk:
       return Icons.shield_rounded;
+    case AuditCategory.platform:
+      return Icons.tune_rounded;
     case null:
       return Icons.history_rounded;
   }
@@ -118,6 +130,8 @@ Color auditCategoryColor(AuditCategory? c) {
       return CcColors.sage;
     case AuditCategory.risk:
       return CcColors.danger;
+    case AuditCategory.platform:
+      return CcColors.info;
     case null:
       return CcColors.mid;
   }
@@ -179,6 +193,18 @@ String ccAuditActionLabel(BuildContext context, String action) {
       return t.authApiActSecretReset;
     case AuditAction.authMigrate:
       return t.authApiActMigrate;
+    case AuditAction.entitlementUpdate:
+      return t.ccActEntitlementUpdate;
+    case AuditAction.paymentsToggle:
+      return t.ccActPaymentsToggle;
+    case AuditAction.platformSettings:
+      return t.ccActPlatformSettings;
+    case AuditAction.hatimModerate:
+      return t.ccActHatimModerate;
+    case AuditAction.contentUpdate:
+      return t.ccActContentUpdate;
+    case AuditAction.reviewModerate:
+      return t.ccActReviewModerate;
   }
   return action;
 }

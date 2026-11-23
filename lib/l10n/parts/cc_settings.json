@@ -1,0 +1,257 @@
+{
+  "ccModPlatformSettings": {
+    "tr": "Platform Ayarları",
+    "en": "Platform Settings",
+    "ar": "إعدادات المنصة"
+  },
+  "ccModPlatformSettingsDesc": {
+    "tr": "Demo ödeme, bakım modu, güncelleme ve destek iletişimi",
+    "en": "Demo payments, maintenance, updates and support contacts",
+    "ar": "الدفع التجريبي والصيانة والتحديث وجهات الدعم"
+  },
+  "ccSetTitle": {
+    "tr": "Platform Ayarları",
+    "en": "Platform Settings",
+    "ar": "إعدادات المنصة"
+  },
+  "ccSetSubtitle": {
+    "tr": "Ödeme, bakım ve iletişim",
+    "en": "Payments, maintenance and contacts",
+    "ar": "الدفع والصيانة والتواصل"
+  },
+  "ccSetLoadError": {
+    "tr": "Ayarlar yüklenemedi.",
+    "en": "Settings could not be loaded.",
+    "ar": "تعذر تحميل الإعدادات."
+  },
+  "ccSetCancel": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "ar": "إلغاء"
+  },
+  "ccSetConfirm": {
+    "tr": "Onayla",
+    "en": "Confirm",
+    "ar": "تأكيد"
+  },
+  "ccSetSave": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "ar": "حفظ"
+  },
+  "ccSetSaved": {
+    "tr": "Ayarlar kaydedildi.",
+    "en": "Settings saved.",
+    "ar": "تم حفظ الإعدادات."
+  },
+  "ccSetNoChange": {
+    "tr": "Değişiklik yok.",
+    "en": "No changes.",
+    "ar": "لا توجد تغييرات."
+  },
+  "ccSetSaveError": {
+    "tr": "Kaydedilemedi. Tekrar deneyin.",
+    "en": "Could not save. Try again.",
+    "ar": "تعذر الحفظ. حاول مرة أخرى."
+  },
+  "ccSetPaymentsSection": {
+    "tr": "Ödeme",
+    "en": "Payments",
+    "ar": "الدفع"
+  },
+  "ccSetDemoPayments": {
+    "tr": "Demo ödeme",
+    "en": "Demo payments",
+    "ar": "الدفع التجريبي"
+  },
+  "ccSetDemoPaymentsDesc": {
+    "tr": "Açıkken bireysel kullanıcılar ödeme yapmadan paket alır. PayTR bağlanınca kapatılmalıdır.",
+    "en": "When on, individual users get packages without paying. Turn off once PayTR is connected.",
+    "ar": "عند التفعيل يحصل المستخدمون الأفراد على الباقات دون دفع. يجب إيقافه عند ربط PayTR."
+  },
+  "ccSetDemoOn": {
+    "tr": "Demo açık: ödeme alınmıyor",
+    "en": "Demo on: no payment taken",
+    "ar": "التجريبي مفعّل: لا يتم الدفع"
+  },
+  "ccSetDemoOff": {
+    "tr": "Demo kapalı: gerçek ödeme",
+    "en": "Demo off: real payments",
+    "ar": "التجريبي متوقف: دفع حقيقي"
+  },
+  "ccSetPayConfirmTitle": {
+    "tr": "Demo ödeme değişsin mi?",
+    "en": "Change demo payments?",
+    "ar": "تغيير الدفع التجريبي؟"
+  },
+  "ccSetPayConfirmOn": {
+    "tr": "Demo ödeme AÇILACAK. Bireysel kullanıcılar ödeme yapmadan paket alabilecek.",
+    "en": "Demo payments will be turned ON. Individual users can get packages without paying.",
+    "ar": "سيتم تفعيل الدفع التجريبي. سيحصل الأفراد على الباقات دون دفع."
+  },
+  "ccSetPayConfirmOff": {
+    "tr": "Demo ödeme KAPATILACAK. Paket alımı için gerçek ödeme gerekecek.",
+    "en": "Demo payments will be turned OFF. Real payment will be required for packages.",
+    "ar": "سيتم إيقاف الدفع التجريبي. سيلزم دفع حقيقي لشراء الباقات."
+  },
+  "ccSetAppSection": {
+    "tr": "Uygulama",
+    "en": "App",
+    "ar": "التطبيق"
+  },
+  "ccSetMaintenance": {
+    "tr": "Bakım modu",
+    "en": "Maintenance mode",
+    "ar": "وضع الصيانة"
+  },
+  "ccSetMaintenanceDesc": {
+    "tr": "Açıkken süper admin dışındaki herkes bakım ekranını görür.",
+    "en": "When on, everyone except super admins sees the maintenance screen.",
+    "ar": "عند التفعيل يرى الجميع شاشة الصيانة عدا المشرف العام."
+  },
+  "ccSetMaintenanceMsg": {
+    "tr": "Bakım mesajı (en çok 300 karakter)",
+    "en": "Maintenance message (max 300 characters)",
+    "ar": "رسالة الصيانة (300 حرفًا كحد أقصى)"
+  },
+  "ccSetMinBuild": {
+    "tr": "Asgari derleme numarası",
+    "en": "Minimum build number",
+    "ar": "أدنى رقم إصدار"
+  },
+  "ccSetMinBuildHint": {
+    "tr": "Mevcut derleme: {build}. Bundan küçük sürümler güncellemeye zorlanır; boş/0 = kapalı.",
+    "en": "Current build: {build}. Older builds are forced to update; empty/0 = off.",
+    "ar": "الإصدار الحالي: {build}. الإصدارات الأقدم تُجبر على التحديث؛ فارغ/0 = معطّل.",
+    "placeholders": {
+      "build": {
+        "type": "int"
+      }
+    }
+  },
+  "ccSetUpdateUrl": {
+    "tr": "Güncelleme bağlantısı (Play Store/APK)",
+    "en": "Update link (Play Store/APK)",
+    "ar": "رابط التحديث (Play Store/APK)"
+  },
+  "ccSetSupportSection": {
+    "tr": "Destek iletişimi",
+    "en": "Support contacts",
+    "ar": "جهات الدعم"
+  },
+  "ccSetSupportHint": {
+    "tr": "Boş bırakılan alanlarda uygulamadaki varsayılan bilgiler gösterilir.",
+    "en": "Empty fields fall back to the app defaults.",
+    "ar": "تُعرض القيم الافتراضية للحقول الفارغة."
+  },
+  "ccSetPhone1": {
+    "tr": "Telefon 1",
+    "en": "Phone 1",
+    "ar": "الهاتف 1"
+  },
+  "ccSetPhone2": {
+    "tr": "Telefon 2",
+    "en": "Phone 2",
+    "ar": "الهاتف 2"
+  },
+  "ccSetWhatsapp": {
+    "tr": "WhatsApp numarası",
+    "en": "WhatsApp number",
+    "ar": "رقم واتساب"
+  },
+  "ccSetEmail1": {
+    "tr": "E-posta 1",
+    "en": "Email 1",
+    "ar": "البريد 1"
+  },
+  "ccSetEmail2": {
+    "tr": "E-posta 2",
+    "en": "Email 2",
+    "ar": "البريد 2"
+  },
+  "ccSetInvalidPhone": {
+    "tr": "Geçerli bir telefon numarası girin.",
+    "en": "Enter a valid phone number.",
+    "ar": "أدخل رقم هاتف صالحًا."
+  },
+  "ccSetInvalidEmail": {
+    "tr": "Geçerli bir e-posta girin.",
+    "en": "Enter a valid email.",
+    "ar": "أدخل بريدًا إلكترونيًا صالحًا."
+  },
+  "ccSetInvalidUrl": {
+    "tr": "http/https ile başlayan geçerli bir bağlantı girin.",
+    "en": "Enter a valid http/https link.",
+    "ar": "أدخل رابط http/https صالحًا."
+  },
+  "ccSetMaintConfirmTitle": {
+    "tr": "Bakım modu açılsın mı?",
+    "en": "Turn on maintenance mode?",
+    "ar": "تفعيل وضع الصيانة؟"
+  },
+  "ccSetMaintConfirmBody": {
+    "tr": "Kaydedince süper admin dışındaki tüm kullanıcılar bakım ekranını görecek.",
+    "en": "After saving, all users except super admins will see the maintenance screen.",
+    "ar": "بعد الحفظ سيرى جميع المستخدمين شاشة الصيانة عدا المشرف العام."
+  },
+  "platformMaintenanceTitle": {
+    "tr": "Bakımdayız",
+    "en": "Under maintenance",
+    "ar": "التطبيق قيد الصيانة"
+  },
+  "platformMaintenanceDefault": {
+    "tr": "Uygulama kısa süreliğine bakımda. Lütfen daha sonra tekrar deneyin.",
+    "en": "The app is briefly under maintenance. Please try again later.",
+    "ar": "التطبيق قيد الصيانة مؤقتًا. يرجى المحاولة لاحقًا."
+  },
+  "platformAdminLogin": {
+    "tr": "Yönetici girişi",
+    "en": "Admin sign-in",
+    "ar": "دخول المشرف"
+  },
+  "platformRetryFailed": {
+    "tr": "Bağlantı kurulamadı.",
+    "en": "Could not connect.",
+    "ar": "تعذر الاتصال."
+  },
+  "platformUpdateTitle": {
+    "tr": "Güncelleme gerekli",
+    "en": "Update required",
+    "ar": "التحديث مطلوب"
+  },
+  "platformUpdateBody": {
+    "tr": "Uygulamayı kullanmaya devam etmek için lütfen yeni sürüme güncelleyin.",
+    "en": "Please update to the latest version to keep using the app.",
+    "ar": "يرجى التحديث إلى أحدث إصدار لمتابعة استخدام التطبيق."
+  },
+  "platformUpdateButton": {
+    "tr": "Güncelle",
+    "en": "Update",
+    "ar": "تحديث"
+  },
+  "platformUpdateOpenFailed": {
+    "tr": "Bağlantı açılamadı.",
+    "en": "Could not open the link.",
+    "ar": "تعذر فتح الرابط."
+  },
+  "platformAgencyInactive": {
+    "tr": "Acenteniz şu an pasif. Lütfen acentenizle iletişime geçin.",
+    "en": "Your agency is currently inactive. Please contact your agency.",
+    "ar": "وكالتك غير نشطة حاليًا. يرجى التواصل مع وكالتك."
+  },
+  "ccSetUpdateConfirmTitle": {
+    "tr": "Zorunlu güncelleme açılsın mı?",
+    "en": "Force update?",
+    "ar": "فرض التحديث؟"
+  },
+  "ccSetUpdateConfirmBody": {
+    "tr": "Asgari derleme {build} olacak. Bu sürümü kullanan herkes güncelleme ekranında kalır (süper admin hariç).",
+    "en": "Minimum build will be {build}. Everyone on older builds stays on the update screen (except super admins).",
+    "ar": "سيكون أدنى إصدار {build}. سيبقى كل من يستخدم إصدارًا أقدم على شاشة التحديث (عدا المشرف العام).",
+    "placeholders": {
+      "build": {
+        "type": "int"
+      }
+    }
+  }
+}

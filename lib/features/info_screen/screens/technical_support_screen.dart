@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../app/app_theme.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../splash/providers/splash_provider.dart';
 
 /// Teknik servis iletişim bilgileri (orijinal uygulamadaki numaralar / adresler).
 class TechnicalSupportScreen extends StatelessWidget {
@@ -18,6 +20,14 @@ class TechnicalSupportScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = context.l10n;
+    // Süper admin platform ayarlarında doldurduysa onlar, boşsa sabit varsayılanlar.
+    final cfg = context.watch<SplashProvider>().appSettings;
+    String pick(String remote, String fallback) => remote.trim().isEmpty ? fallback : remote.trim();
+    final telefon1 = pick(cfg.supportPhone1, _telefon1);
+    final telefon2 = pick(cfg.supportPhone2, _telefon2);
+    final eposta1 = pick(cfg.supportEmail1, _eposta1);
+    final eposta2 = pick(cfg.supportEmail2, _eposta2);
+    final whatsapp = cfg.supportWhatsapp.trim();
     return Scaffold(
       appBar: AppBar(title: Text(t.infoTechTitle)),
       body: SingleChildScrollView(
@@ -56,17 +66,17 @@ class TechnicalSupportScreen extends StatelessWidget {
               context,
               icon: Icons.phone_rounded,
               label: t.infoTechPhone1,
-              value: _telefon1,
-              onTap: () => _launchPhone(context, _telefon1),
-              onWhatsApp: () => _launchWhatsApp(context, _telefon1),
+              value: telefon1,
+              onTap: () => _launchPhone(context, telefon1),
+              onWhatsApp: () => _launchWhatsApp(context, whatsapp.isEmpty ? telefon1 : whatsapp),
             ),
             _buildContactCard(
               context,
               icon: Icons.phone_rounded,
               label: t.infoTechPhone2,
-              value: _telefon2,
-              onTap: () => _launchPhone(context, _telefon2),
-              onWhatsApp: () => _launchWhatsApp(context, _telefon2),
+              value: telefon2,
+              onTap: () => _launchPhone(context, telefon2),
+              onWhatsApp: () => _launchWhatsApp(context, whatsapp.isEmpty ? telefon2 : whatsapp),
             ),
             const SizedBox(height: 20),
             Text(t.infoTechEmails, style: AppTextStyles.sectionTitle),
@@ -75,15 +85,15 @@ class TechnicalSupportScreen extends StatelessWidget {
               context,
               icon: Icons.email_rounded,
               label: t.infoTechEmail1,
-              value: _eposta1,
-              onTap: () => _launchEmail(context, _eposta1),
+              value: eposta1,
+              onTap: () => _launchEmail(context, eposta1),
             ),
             _buildContactCard(
               context,
               icon: Icons.email_rounded,
               label: t.infoTechEmail2,
-              value: _eposta2,
-              onTap: () => _launchEmail(context, _eposta2),
+              value: eposta2,
+              onTap: () => _launchEmail(context, eposta2),
             ),
           ],
         ),

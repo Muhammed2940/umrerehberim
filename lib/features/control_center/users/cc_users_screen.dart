@@ -10,7 +10,10 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/firestore_utils.dart';
 import '../../admin/widgets/no_access_screen.dart';
 import '../../auth/models/user_model.dart';
+import '../../paketler/widgets/paket_sec_card.dart';
 import '../audit/audit_labels.dart';
+import '../packages/cc_packages_screen.dart';
+import '../packages/package_service.dart';
 import '../shared/cc_widgets.dart';
 
 /// Hangi filtreyle açılacağı (Genel Bakış kartından gelir).
@@ -35,6 +38,7 @@ class _Row {
 class _CcUsersScreenState extends State<CcUsersScreen> {
   late CcUserFilter _filter = widget.initialFilter;
   String? _role; // null = tüm roller
+  bool _bireyselOnly = false;
   String _query = '';
   late Future<({List<_Row> rows, Map<String, String> agencies})> _future = _load();
 
@@ -67,6 +71,7 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
     return rows.where((r) {
       final u = r.user;
       if (_role != null && u.userType != _role) return false;
+      if (_bireyselOnly && u.accountKind != AccountKind.bireysel) return false;
       if (_filter == CcUserFilter.active24 && !_activeWithin(r.lastActive, const Duration(hours: 24))) return false;
       if (_filter == CcUserFilter.active30 && !_activeWithin(r.lastActive, const Duration(days: 30))) return false;
       if (q.isEmpty) return true;
@@ -74,6 +79,7 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
       return u.userName.toLowerCase().contains(q) ||
           u.userTc.contains(q) ||
           u.userTel.contains(q) ||
+          (u.email ?? '').toLowerCase().contains(q) ||
           agency.toLowerCase().contains(q);
     }).toList();
   }
@@ -153,6 +159,7 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
               _chips([
                 (t.ccUsrAll, _role == null, () => setState(() => _role = null)),
                 for (final r in roles) (ccRoleLabel(context, r), _role == r, () => setState(() => _role = r)),
+                (t.ccPkgFilterBireysel, _bireyselOnly, () => setState(() => _bireyselOnly = !_bireyselOnly)),
               ]),
               const SizedBox(height: 12),
               CcSection(
@@ -245,6 +252,23 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
               _info(Icons.bolt_rounded, t.ccUsrLastActive,
                   r.lastActive == null ? t.ccUsrNeverActive : CcFmt.dateTime(r.lastActive)),
               _info(Icons.event_outlined, t.ccUsrCreated, CcFmt.date(u.createdAt)),
+              if (u.accountKind == AccountKind.bireysel) ...[
+                if ((u.email ?? '').isNotEmpty) _info(Icons.alternate_email_rounded, t.ccPkgEmail, u.email!),
+                _PackageInfo(uid: u.id, info: _info),
+                if (me.isSuperAdmin) ...[
+                  const SizedBox(height: 8),
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                      Navigator.of(context).push(MaterialPageRoute<void>(
+                        builder: (_) => CcPackagesScreen(initialQuery: (u.email ?? '').isNotEmpty ? u.email! : u.userName),
+                      ));
+                    },
+                    icon: const Icon(Icons.workspace_premium_rounded),
+                    label: Text(t.ccPkgUserOpen),
+                  ),
+                ],
+              ],
               if (hasAgency) ...[
                 const SizedBox(height: 14),
                 FilledButton.icon(
@@ -294,6 +318,34 @@ class _CcUsersScreenState extends State<CcUsersScreen> {
           ],
         ),
       );
+}
+
+/// Bireysel kullanıcının paket satırı (entitlements/{uid}); okunamazsa sessizce gizlenir.
+class _PackageInfo extends StatelessWidget {
+  final String uid;
+  final Widget Function(IconData, String, String) info;
+  const _PackageInfo({required this.uid, required this.info});
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.l10n;
+    return FutureBuilder<PackageRow?>(
+      future: PackageService.instance.forUser(uid),
+      builder: (context, snap) {
+        if (snap.connectionState != ConnectionState.done) return const SizedBox(height: 4);
+        if (snap.hasError) return const SizedBox.shrink();
+        final p = snap.data;
+        if (p == null) return info(Icons.workspace_premium_outlined, t.ccPkgUserPackage, t.ccPkgUserNoPackage);
+        final status = switch (p.tabAt(DateTime.now())) {
+          PackageTab.pending => t.ccPkgStatusPending,
+          PackageTab.active => t.ccPkgStatusActive,
+          PackageTab.expired => t.ccPkgStatusExpired,
+        };
+        return info(Icons.workspace_premium_rounded, t.ccPkgUserPackage,
+            '${PaketSecCard.paketName(context, p.paket)} · $status · ${CcFmt.date(p.paidUntil)}');
+      },
+    );
+  }
 }
 
 class _Avatar extends StatelessWidget {

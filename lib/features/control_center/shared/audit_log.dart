@@ -36,6 +36,15 @@ class AuditAction {
   /// Giriş servisi (PHP) yazar: yeni PIN/şifre ve toplu taşıma.
   static const secretReset = 'secret_reset';
   static const authMigrate = 'auth_migrate';
+
+  /// Platform yönetimi (Kontrol Merkezi): paket hakları, ödeme/uygulama ayarları,
+  /// Toplu Hatim moderasyonu, içerik (ezan vakitleri), değerlendirme moderasyonu.
+  static const entitlementUpdate = 'entitlement_update';
+  static const paymentsToggle = 'payments_toggle';
+  static const platformSettings = 'platform_settings';
+  static const hatimModerate = 'hatim_moderate';
+  static const contentUpdate = 'content_update';
+  static const reviewModerate = 'review_moderate';
 }
 
 /// `audit_logs/{id}`: kim, ne zaman, neyi yaptı. Kurallar yalnız eklemeye izin verir

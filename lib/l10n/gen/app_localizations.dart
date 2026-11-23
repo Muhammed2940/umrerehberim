@@ -3350,6 +3350,12 @@ abstract class AppLocalizations {
   /// **'Acente güncellendi'**
   String get ccActAgencyUpdate;
 
+  /// No description provided for @ccActContentUpdate.
+  ///
+  /// In tr, this message translates to:
+  /// **'İçerik güncelledi'**
+  String get ccActContentUpdate;
+
   /// No description provided for @ccActCouponCreate.
   ///
   /// In tr, this message translates to:
@@ -3368,11 +3374,23 @@ abstract class AppLocalizations {
   /// **'Kupon güncellendi'**
   String get ccActCouponUpdate;
 
+  /// No description provided for @ccActEntitlementUpdate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket hakkı güncelledi'**
+  String get ccActEntitlementUpdate;
+
   /// No description provided for @ccActFinanceSettings.
   ///
   /// In tr, this message translates to:
   /// **'Finans ayarları değişti'**
   String get ccActFinanceSettings;
+
+  /// No description provided for @ccActHatimModerate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim moderasyonu'**
+  String get ccActHatimModerate;
 
   /// No description provided for @ccActMerchantCreate.
   ///
@@ -3385,6 +3403,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Acenteye mesaj gönderildi'**
   String get ccActMessageSend;
+
+  /// No description provided for @ccActPaymentsToggle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme anahtarını değiştirdi'**
+  String get ccActPaymentsToggle;
+
+  /// No description provided for @ccActPlatformSettings.
+  ///
+  /// In tr, this message translates to:
+  /// **'Platform ayarlarını güncelledi'**
+  String get ccActPlatformSettings;
 
   /// No description provided for @ccActPointsBulk.
   ///
@@ -3403,6 +3433,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Puan hareketi geri alındı'**
   String get ccActPointsRevert;
+
+  /// No description provided for @ccActReviewModerate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme moderasyonu'**
+  String get ccActReviewModerate;
 
   /// No description provided for @ccActRiskReview.
   ///
@@ -4051,6 +4087,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Mesaj'**
   String get ccAuditCatMessage;
+
+  /// No description provided for @ccAuditCatPlatform.
+  ///
+  /// In tr, this message translates to:
+  /// **'Platform'**
+  String get ccAuditCatPlatform;
 
   /// No description provided for @ccAuditCatPoints.
   ///
@@ -5636,6 +5678,18 @@ abstract class AppLocalizations {
   /// **'Komisyon, hak ediş ve ödemeler'**
   String get ccModFinanceDesc;
 
+  /// No description provided for @ccModHatim.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim Moderasyonu'**
+  String get ccModHatim;
+
+  /// No description provided for @ccModHatimDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grupları incele, sil, sahipsiz parçaları temizle'**
+  String get ccModHatimDesc;
+
   /// No description provided for @ccModLoyalty.
   ///
   /// In tr, this message translates to:
@@ -5684,6 +5738,54 @@ abstract class AppLocalizations {
   /// **'Acentelerle yazışma ve duyuru'**
   String get ccModMessagesDesc;
 
+  /// No description provided for @ccModPackages.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket Onayları'**
+  String get ccModPackages;
+
+  /// No description provided for @ccModPackagesDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bireysel paketler, Full onayı ve süre yönetimi'**
+  String get ccModPackagesDesc;
+
+  /// No description provided for @ccModPlatformSettings.
+  ///
+  /// In tr, this message translates to:
+  /// **'Platform Ayarları'**
+  String get ccModPlatformSettings;
+
+  /// No description provided for @ccModPlatformSettingsDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme, bakım modu, güncelleme ve destek iletişimi'**
+  String get ccModPlatformSettingsDesc;
+
+  /// No description provided for @ccModPrayer.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ezan Vakitleri'**
+  String get ccModPrayer;
+
+  /// No description provided for @ccModPrayerDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke ve Medine vakitlerini düzenle'**
+  String get ccModPrayerDesc;
+
+  /// No description provided for @ccModReviews.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme Moderasyonu'**
+  String get ccModReviews;
+
+  /// No description provided for @ccModReviewsDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dükkan puan ve yorumlarını denetle'**
+  String get ccModReviewsDesc;
+
   /// No description provided for @ccModRisk.
   ///
   /// In tr, this message translates to:
@@ -5719,6 +5821,162 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Destek ve muhasebe hesapları'**
   String get ccModStaffDesc;
+
+  /// No description provided for @ccModerActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam ediyor'**
+  String get ccModerActive;
+
+  /// No description provided for @ccModerCompleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamamlandı'**
+  String get ccModerCompleted;
+
+  /// No description provided for @ccModerCreated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oluşturma: {date}'**
+  String ccModerCreated(String date);
+
+  /// No description provided for @ccModerDelete.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubu sil'**
+  String get ccModerDelete;
+
+  /// No description provided for @ccModerDeleteBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"{name}\" grubu ve tüm parçaları kalıcı olarak silinecek.'**
+  String ccModerDeleteBody(String name);
+
+  /// No description provided for @ccModerDeleteError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup silinemedi'**
+  String get ccModerDeleteError;
+
+  /// No description provided for @ccModerDeleteTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup silinsin mi?'**
+  String get ccModerDeleteTitle;
+
+  /// No description provided for @ccModerDeletedOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup silindi'**
+  String get ccModerDeletedOk;
+
+  /// No description provided for @ccModerEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup bulunamadı'**
+  String get ccModerEmpty;
+
+  /// No description provided for @ccModerLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gruplar yüklenemedi'**
+  String get ccModerLoadError;
+
+  /// No description provided for @ccModerMembers.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} üye'**
+  String ccModerMembers(int count);
+
+  /// No description provided for @ccModerOrphanBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Silinmiş gruplara ait kalan parça kayıtları taranıp silinecek.'**
+  String get ccModerOrphanBody;
+
+  /// No description provided for @ccModerOrphanBtn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sahipsiz parçaları temizle'**
+  String get ccModerOrphanBtn;
+
+  /// No description provided for @ccModerOrphanDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} parça silindi, {groups} grup tarandı'**
+  String ccModerOrphanDone(int count, int groups);
+
+  /// No description provided for @ccModerOrphanError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temizlik tamamlanamadı'**
+  String get ccModerOrphanError;
+
+  /// No description provided for @ccModerOrphanNoPerm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarama için sunucu kuralı gerekiyor (parts koleksiyon grubu okuma izni).'**
+  String get ccModerOrphanNoPerm;
+
+  /// No description provided for @ccModerOrphanNone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sahipsiz parça yok'**
+  String get ccModerOrphanNone;
+
+  /// No description provided for @ccModerOrphanTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sahipsiz parçalar temizlensin mi?'**
+  String get ccModerOrphanTitle;
+
+  /// No description provided for @ccModerOwner.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sahip: {name}'**
+  String ccModerOwner(String name);
+
+  /// No description provided for @ccModerPrivate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acenteye özel'**
+  String get ccModerPrivate;
+
+  /// No description provided for @ccModerProgress.
+  ///
+  /// In tr, this message translates to:
+  /// **'{done}/{total} parça'**
+  String ccModerProgress(int done, int total);
+
+  /// No description provided for @ccModerPublic.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese açık'**
+  String get ccModerPublic;
+
+  /// No description provided for @ccModerRound.
+  ///
+  /// In tr, this message translates to:
+  /// **'{round}. tur'**
+  String ccModerRound(int round);
+
+  /// No description provided for @ccModerSearchHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup adına göre ara'**
+  String get ccModerSearchHint;
+
+  /// No description provided for @ccModerSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tüm hatim grupları'**
+  String get ccModerSubtitle;
+
+  /// No description provided for @ccModerTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim Moderasyonu'**
+  String get ccModerTitle;
 
   /// No description provided for @ccMsgAddTitle.
   ///
@@ -6224,11 +6482,503 @@ abstract class AppLocalizations {
   /// **'Personel yönetimi'**
   String get ccPermStaff;
 
+  /// No description provided for @ccPkgActionError.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem tamamlanamadı. Lütfen tekrar deneyin.'**
+  String get ccPkgActionError;
+
+  /// No description provided for @ccPkgApprove.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onayla'**
+  String get ccPkgApprove;
+
+  /// No description provided for @ccPkgApproveHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seyahat tarihlerini girin; kullanıcının ana sayfasında geri sayım bu tarihlerle çalışır.'**
+  String get ccPkgApproveHint;
+
+  /// No description provided for @ccPkgApproveTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Full paketi onayla'**
+  String get ccPkgApproveTitle;
+
+  /// No description provided for @ccPkgApprovedOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket onaylandı.'**
+  String get ccPkgApprovedOk;
+
+  /// No description provided for @ccPkgApprovedSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarihleriniz yönetici tarafından girildi · değişiklik için iletişime geçin'**
+  String get ccPkgApprovedSub;
+
+  /// No description provided for @ccPkgCheckIn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş'**
+  String get ccPkgCheckIn;
+
+  /// No description provided for @ccPkgCheckOut.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çıkış'**
+  String get ccPkgCheckOut;
+
+  /// No description provided for @ccPkgConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onayla'**
+  String get ccPkgConfirm;
+
+  /// No description provided for @ccPkgDatesOrder.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çıkış tarihi girişten önce olamaz.'**
+  String get ccPkgDatesOrder;
+
+  /// No description provided for @ccPkgDatesPast.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarihler geçmişte; paket süresi bugünden sonra bitmeli.'**
+  String get ccPkgDatesPast;
+
+  /// No description provided for @ccPkgDatesRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'En az bir şehir için giriş ve çıkış tarihi girin.'**
+  String get ccPkgDatesRequired;
+
+  /// No description provided for @ccPkgEditDates.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarihleri düzenle'**
+  String get ccPkgEditDates;
+
+  /// No description provided for @ccPkgEmail.
+  ///
+  /// In tr, this message translates to:
+  /// **'E-posta'**
+  String get ccPkgEmail;
+
+  /// No description provided for @ccPkgEmptyActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aktif paket yok.'**
+  String get ccPkgEmptyActive;
+
+  /// No description provided for @ccPkgEmptyExpired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süresi dolmuş paket yok.'**
+  String get ccPkgEmptyExpired;
+
+  /// No description provided for @ccPkgEmptyPending.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekleyen paket yok.'**
+  String get ccPkgEmptyPending;
+
+  /// No description provided for @ccPkgExtend.
+  ///
+  /// In tr, this message translates to:
+  /// **'+30 gün uzat'**
+  String get ccPkgExtend;
+
+  /// No description provided for @ccPkgExtendBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} için paket süresi 30 gün uzatılacak.'**
+  String ccPkgExtendBody(String name);
+
+  /// No description provided for @ccPkgExtendTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süre uzatılsın mı?'**
+  String get ccPkgExtendTitle;
+
+  /// No description provided for @ccPkgExtendedOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süre uzatıldı.'**
+  String get ccPkgExtendedOk;
+
+  /// No description provided for @ccPkgFilterBireysel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bireysel'**
+  String get ccPkgFilterBireysel;
+
+  /// No description provided for @ccPkgFullActiveNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Full Umre Paketiniz sürüyor; değişiklik için bizimle iletişime geçin.'**
+  String get ccPkgFullActiveNote;
+
+  /// No description provided for @ccPkgGone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı paketi iptal etmiş; liste yenilendi.'**
+  String get ccPkgGone;
+
+  /// No description provided for @ccPkgHotel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Otel (isteğe bağlı)'**
+  String get ccPkgHotel;
+
+  /// No description provided for @ccPkgKpiActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aktif'**
+  String get ccPkgKpiActive;
+
+  /// No description provided for @ccPkgKpiExpired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süresi dolmuş'**
+  String get ccPkgKpiExpired;
+
+  /// No description provided for @ccPkgKpiPending.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekleyen'**
+  String get ccPkgKpiPending;
+
+  /// No description provided for @ccPkgKpiTotal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplam'**
+  String get ccPkgKpiTotal;
+
+  /// No description provided for @ccPkgLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketler yüklenemedi.'**
+  String get ccPkgLoadError;
+
+  /// No description provided for @ccPkgMedine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Medine'**
+  String get ccPkgMedine;
+
+  /// No description provided for @ccPkgMekke.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke'**
+  String get ccPkgMekke;
+
+  /// No description provided for @ccPkgPickDate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarih seç'**
+  String get ccPkgPickDate;
+
+  /// No description provided for @ccPkgRevoke.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal et'**
+  String get ccPkgRevoke;
+
+  /// No description provided for @ccPkgRevokeBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} için paket hakkı silinir ve kullanıcı ücretsiz plana döner.'**
+  String ccPkgRevokeBody(String name);
+
+  /// No description provided for @ccPkgRevokeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket iptal edilsin mi?'**
+  String get ccPkgRevokeTitle;
+
+  /// No description provided for @ccPkgRevokedOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket iptal edildi.'**
+  String get ccPkgRevokedOk;
+
+  /// No description provided for @ccPkgSearch.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ad veya e-posta ara'**
+  String get ccPkgSearch;
+
+  /// No description provided for @ccPkgStatusActive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aktif'**
+  String get ccPkgStatusActive;
+
+  /// No description provided for @ccPkgStatusExpired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süresi doldu'**
+  String get ccPkgStatusExpired;
+
+  /// No description provided for @ccPkgStatusPending.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekliyor'**
+  String get ccPkgStatusPending;
+
+  /// No description provided for @ccPkgSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bireysel kullanıcı paketleri'**
+  String get ccPkgSubtitle;
+
+  /// No description provided for @ccPkgTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket Onayları'**
+  String get ccPkgTitle;
+
+  /// No description provided for @ccPkgUnknownUser.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bilinmeyen kullanıcı'**
+  String get ccPkgUnknownUser;
+
+  /// No description provided for @ccPkgUntil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bitiş: {date}'**
+  String ccPkgUntil(String date);
+
+  /// No description provided for @ccPkgUserNoPackage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket yok'**
+  String get ccPkgUserNoPackage;
+
+  /// No description provided for @ccPkgUserOpen.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket Onayları\'nda aç'**
+  String get ccPkgUserOpen;
+
+  /// No description provided for @ccPkgUserPackage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket'**
+  String get ccPkgUserPackage;
+
+  /// No description provided for @ccPrayerAksam.
+  ///
+  /// In tr, this message translates to:
+  /// **'Akşam'**
+  String get ccPrayerAksam;
+
+  /// No description provided for @ccPrayerDate.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarih'**
+  String get ccPrayerDate;
+
+  /// No description provided for @ccPrayerDay.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gün'**
+  String get ccPrayerDay;
+
+  /// No description provided for @ccPrayerGunes.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güneş'**
+  String get ccPrayerGunes;
+
+  /// No description provided for @ccPrayerHicri.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hicri tarih'**
+  String get ccPrayerHicri;
+
+  /// No description provided for @ccPrayerIkindi.
+  ///
+  /// In tr, this message translates to:
+  /// **'İkindi'**
+  String get ccPrayerIkindi;
+
+  /// No description provided for @ccPrayerImsak.
+  ///
+  /// In tr, this message translates to:
+  /// **'İmsak'**
+  String get ccPrayerImsak;
+
+  /// No description provided for @ccPrayerInvalid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vakitleri SS:DD biçiminde girin (ör. 05:12)'**
+  String get ccPrayerInvalid;
+
+  /// No description provided for @ccPrayerLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vakitler yüklenemedi'**
+  String get ccPrayerLoadError;
+
+  /// No description provided for @ccPrayerMedine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Medine'**
+  String get ccPrayerMedine;
+
+  /// No description provided for @ccPrayerMekke.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke'**
+  String get ccPrayerMekke;
+
+  /// No description provided for @ccPrayerNewDoc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu tarih için kayıt yok; kaydedince yeni oluşturulur.'**
+  String get ccPrayerNewDoc;
+
+  /// No description provided for @ccPrayerOgle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öğle'**
+  String get ccPrayerOgle;
+
+  /// No description provided for @ccPrayerSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get ccPrayerSave;
+
+  /// No description provided for @ccPrayerSaveError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vakitler kaydedilemedi'**
+  String get ccPrayerSaveError;
+
+  /// No description provided for @ccPrayerSaved.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vakitler kaydedildi'**
+  String get ccPrayerSaved;
+
+  /// No description provided for @ccPrayerSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke ve Medine günlük vakitleri'**
+  String get ccPrayerSubtitle;
+
+  /// No description provided for @ccPrayerTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ezan Vakitleri'**
+  String get ccPrayerTitle;
+
+  /// No description provided for @ccPrayerYatsi.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yatsı'**
+  String get ccPrayerYatsi;
+
   /// No description provided for @ccReadOnly.
   ///
   /// In tr, this message translates to:
   /// **'Salt okuma'**
   String get ccReadOnly;
+
+  /// No description provided for @ccReviewComplaint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şikâyet'**
+  String get ccReviewComplaint;
+
+  /// No description provided for @ccReviewDelete.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sil'**
+  String get ccReviewDelete;
+
+  /// No description provided for @ccReviewDeleteBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"{shop}\" dükkanına ait bu değerlendirme kalıcı olarak silinecek.'**
+  String ccReviewDeleteBody(String shop);
+
+  /// No description provided for @ccReviewDeleteError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme silinemedi'**
+  String get ccReviewDeleteError;
+
+  /// No description provided for @ccReviewDeleteTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme silinsin mi?'**
+  String get ccReviewDeleteTitle;
+
+  /// No description provided for @ccReviewDeletedOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme silindi'**
+  String get ccReviewDeletedOk;
+
+  /// No description provided for @ccReviewEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme bulunamadı'**
+  String get ccReviewEmpty;
+
+  /// No description provided for @ccReviewFilterAll.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tümü'**
+  String get ccReviewFilterAll;
+
+  /// No description provided for @ccReviewFilterComment.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorumlu'**
+  String get ccReviewFilterComment;
+
+  /// No description provided for @ccReviewFilterLow.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düşük puan'**
+  String get ccReviewFilterLow;
+
+  /// No description provided for @ccReviewLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirmeler yüklenemedi'**
+  String get ccReviewLoadError;
+
+  /// No description provided for @ccReviewNoComment.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yorum yok'**
+  String get ccReviewNoComment;
+
+  /// No description provided for @ccReviewSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dükkan puan ve yorumları'**
+  String get ccReviewSubtitle;
+
+  /// No description provided for @ccReviewTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendirme Moderasyonu'**
+  String get ccReviewTitle;
+
+  /// No description provided for @ccReviewUnknownShop.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bilinmeyen dükkan'**
+  String get ccReviewUnknownShop;
 
   /// No description provided for @ccRiskActionError.
   ///
@@ -6721,6 +7471,234 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Tümü'**
   String get ccSeeAll;
+
+  /// No description provided for @ccSetAppSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulama'**
+  String get ccSetAppSection;
+
+  /// No description provided for @ccSetCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get ccSetCancel;
+
+  /// No description provided for @ccSetConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onayla'**
+  String get ccSetConfirm;
+
+  /// No description provided for @ccSetDemoOff.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo kapalı: gerçek ödeme'**
+  String get ccSetDemoOff;
+
+  /// No description provided for @ccSetDemoOn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo açık: ödeme alınmıyor'**
+  String get ccSetDemoOn;
+
+  /// No description provided for @ccSetDemoPayments.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme'**
+  String get ccSetDemoPayments;
+
+  /// No description provided for @ccSetDemoPaymentsDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açıkken bireysel kullanıcılar ödeme yapmadan paket alır. PayTR bağlanınca kapatılmalıdır.'**
+  String get ccSetDemoPaymentsDesc;
+
+  /// No description provided for @ccSetEmail1.
+  ///
+  /// In tr, this message translates to:
+  /// **'E-posta 1'**
+  String get ccSetEmail1;
+
+  /// No description provided for @ccSetEmail2.
+  ///
+  /// In tr, this message translates to:
+  /// **'E-posta 2'**
+  String get ccSetEmail2;
+
+  /// No description provided for @ccSetInvalidEmail.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçerli bir e-posta girin.'**
+  String get ccSetInvalidEmail;
+
+  /// No description provided for @ccSetInvalidPhone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geçerli bir telefon numarası girin.'**
+  String get ccSetInvalidPhone;
+
+  /// No description provided for @ccSetInvalidUrl.
+  ///
+  /// In tr, this message translates to:
+  /// **'http/https ile başlayan geçerli bir bağlantı girin.'**
+  String get ccSetInvalidUrl;
+
+  /// No description provided for @ccSetLoadError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayarlar yüklenemedi.'**
+  String get ccSetLoadError;
+
+  /// No description provided for @ccSetMaintConfirmBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedince süper admin dışındaki tüm kullanıcılar bakım ekranını görecek.'**
+  String get ccSetMaintConfirmBody;
+
+  /// No description provided for @ccSetMaintConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakım modu açılsın mı?'**
+  String get ccSetMaintConfirmTitle;
+
+  /// No description provided for @ccSetMaintenance.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakım modu'**
+  String get ccSetMaintenance;
+
+  /// No description provided for @ccSetMaintenanceDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açıkken süper admin dışındaki herkes bakım ekranını görür.'**
+  String get ccSetMaintenanceDesc;
+
+  /// No description provided for @ccSetMaintenanceMsg.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakım mesajı (en çok 300 karakter)'**
+  String get ccSetMaintenanceMsg;
+
+  /// No description provided for @ccSetMinBuild.
+  ///
+  /// In tr, this message translates to:
+  /// **'Asgari derleme numarası'**
+  String get ccSetMinBuild;
+
+  /// No description provided for @ccSetMinBuildHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut derleme: {build}. Bundan küçük sürümler güncellemeye zorlanır; boş/0 = kapalı.'**
+  String ccSetMinBuildHint(int build);
+
+  /// No description provided for @ccSetNoChange.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değişiklik yok.'**
+  String get ccSetNoChange;
+
+  /// No description provided for @ccSetPayConfirmOff.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme KAPATILACAK. Paket alımı için gerçek ödeme gerekecek.'**
+  String get ccSetPayConfirmOff;
+
+  /// No description provided for @ccSetPayConfirmOn.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme AÇILACAK. Bireysel kullanıcılar ödeme yapmadan paket alabilecek.'**
+  String get ccSetPayConfirmOn;
+
+  /// No description provided for @ccSetPayConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo ödeme değişsin mi?'**
+  String get ccSetPayConfirmTitle;
+
+  /// No description provided for @ccSetPaymentsSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme'**
+  String get ccSetPaymentsSection;
+
+  /// No description provided for @ccSetPhone1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Telefon 1'**
+  String get ccSetPhone1;
+
+  /// No description provided for @ccSetPhone2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Telefon 2'**
+  String get ccSetPhone2;
+
+  /// No description provided for @ccSetSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get ccSetSave;
+
+  /// No description provided for @ccSetSaveError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydedilemedi. Tekrar deneyin.'**
+  String get ccSetSaveError;
+
+  /// No description provided for @ccSetSaved.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayarlar kaydedildi.'**
+  String get ccSetSaved;
+
+  /// No description provided for @ccSetSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme, bakım ve iletişim'**
+  String get ccSetSubtitle;
+
+  /// No description provided for @ccSetSupportHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Boş bırakılan alanlarda uygulamadaki varsayılan bilgiler gösterilir.'**
+  String get ccSetSupportHint;
+
+  /// No description provided for @ccSetSupportSection.
+  ///
+  /// In tr, this message translates to:
+  /// **'Destek iletişimi'**
+  String get ccSetSupportSection;
+
+  /// No description provided for @ccSetTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Platform Ayarları'**
+  String get ccSetTitle;
+
+  /// No description provided for @ccSetUpdateConfirmBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Asgari derleme {build} olacak. Bu sürümü kullanan herkes güncelleme ekranında kalır (süper admin hariç).'**
+  String ccSetUpdateConfirmBody(int build);
+
+  /// No description provided for @ccSetUpdateConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Zorunlu güncelleme açılsın mı?'**
+  String get ccSetUpdateConfirmTitle;
+
+  /// No description provided for @ccSetUpdateUrl.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güncelleme bağlantısı (Play Store/APK)'**
+  String get ccSetUpdateUrl;
+
+  /// No description provided for @ccSetWhatsapp.
+  ///
+  /// In tr, this message translates to:
+  /// **'WhatsApp numarası'**
+  String get ccSetWhatsapp;
 
   /// No description provided for @ccStaffActionFailed.
   ///
@@ -12445,6 +13423,60 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Paketiniz: {name}'**
   String paketlerYourPackage(String name);
+
+  /// No description provided for @platformAdminLogin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yönetici girişi'**
+  String get platformAdminLogin;
+
+  /// No description provided for @platformAgencyInactive.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acenteniz şu an pasif. Lütfen acentenizle iletişime geçin.'**
+  String get platformAgencyInactive;
+
+  /// No description provided for @platformMaintenanceDefault.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulama kısa süreliğine bakımda. Lütfen daha sonra tekrar deneyin.'**
+  String get platformMaintenanceDefault;
+
+  /// No description provided for @platformMaintenanceTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bakımdayız'**
+  String get platformMaintenanceTitle;
+
+  /// No description provided for @platformRetryFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantı kurulamadı.'**
+  String get platformRetryFailed;
+
+  /// No description provided for @platformUpdateBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulamayı kullanmaya devam etmek için lütfen yeni sürüme güncelleyin.'**
+  String get platformUpdateBody;
+
+  /// No description provided for @platformUpdateButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güncelle'**
+  String get platformUpdateButton;
+
+  /// No description provided for @platformUpdateOpenFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantı açılamadı.'**
+  String get platformUpdateOpenFailed;
+
+  /// No description provided for @platformUpdateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güncelleme gerekli'**
+  String get platformUpdateTitle;
 
   /// No description provided for @quranAddBookmark.
   ///

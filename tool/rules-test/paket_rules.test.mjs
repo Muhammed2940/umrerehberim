@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
 import {
-  doc, setDoc, getDoc, updateDoc, deleteDoc, writeBatch, collection, serverTimestamp, Timestamp,
+  doc, setDoc, getDoc, getDocs, updateDoc, deleteDoc, writeBatch, collection, collectionGroup, serverTimestamp, Timestamp,
 } from 'firebase/firestore';
 
 const env = await initializeTestEnvironment({
@@ -108,6 +108,25 @@ await t('bireysel ödeme ayarını değiştiremez', () =>
   assertFails(setDoc(doc(google('bp'), 'platform_settings', 'payments'), { demo_payments: true })));
 await admin((db) => setDoc(doc(db, 'platform_settings', 'payments'), { demo_payments: true }));
 
+console.log('Platform ayarları:');
+await admin((db) => setDoc(doc(db, 'platform_settings', 'app'), { maintenance_mode: false, min_build: 1 }));
+await t('oturumsuz kullanıcı uygulama ayarını (bakım/sürüm) okur', () =>
+  assertSucceeds(getDoc(doc(env.unauthenticatedContext().firestore(), 'platform_settings', 'app'))));
+await t('bireysel uygulama ayarını okur', () => assertSucceeds(getDoc(doc(google('bf'), 'platform_settings', 'app'))));
+await t('bireysel ödeme ayarını OKUYAMAZ', () => assertFails(getDoc(doc(google('bf'), 'platform_settings', 'payments'))));
+await t('oturumsuz finans ayarını okuyamaz', () =>
+  assertFails(getDoc(doc(env.unauthenticatedContext().firestore(), 'platform_settings', 'finance'))));
+await t('acente hacısı uygulama ayarını yazamaz', () =>
+  assertFails(setDoc(doc(as('g1'), 'platform_settings', 'app'), { maintenance_mode: true })));
+await t('süper admin uygulama ayarını yazar', () =>
+  assertSucceeds(setDoc(doc(as('sa'), 'platform_settings', 'app'), { maintenance_mode: false, min_build: 2 })));
+
+console.log('Toplu Hatim sahipsiz parça taraması:');
+await admin((db) => setDoc(doc(db, 'hatim_groups', 'yok', 'parts', '1_1'), { status: 'done', uid: 'bx', name: 'X' }));
+await t('süper admin tüm parçaları (collectionGroup) okur', () => assertSucceeds(getDocs(collectionGroup(as('sa'), 'parts'))));
+await t('bireysel tüm parçaları okuyamaz', () => assertFails(getDocs(collectionGroup(google('bf'), 'parts'))));
+await t('acente hacısı tüm parçaları okuyamaz', () => assertFails(getDocs(collectionGroup(as('g1'), 'parts'))));
+
 console.log('Esnaf indirimi (QR kodu):');
 await t('paketli bireysel boş acenteyle kod oluşturur', () => newToken(google('bp'), 'bp', ''));
 await t('paketli bireysel başka acente adıyla kod oluşturamaz', () =>
@@ -115,6 +134,10 @@ await t('paketli bireysel başka acente adıyla kod oluşturamaz', () =>
 await t('ücretsiz bireysel kod oluşturamaz', () => assertFails(setDoc(doc(collection(google('bf'), 'shop_tokens')), tokenOf('bf', ''))));
 await t('süresi dolmuş paketle kod oluşturamaz', () => assertFails(setDoc(doc(collection(google('bexp'), 'shop_tokens')), tokenOf('bexp', ''))));
 await t('onay bekleyen Full ile kod oluşturamaz', () => assertFails(setDoc(doc(collection(google('bfull'), 'shop_tokens')), tokenOf('bfull', ''))));
+await admin((db) => setDoc(doc(db, 'entitlements', 'bghost'), { status: 'active', paid_until: gun(20), updated_at: ts }));
+await admin((db) => setDoc(doc(db, 'users', 'bghost'), { user_name: 'g', user_type: 'misafir', account_kind: 'bireysel', agency_id: '' }));
+await t('paket alanı olmayan (hayalet) hakla kod oluşturamaz', () =>
+  assertFails(setDoc(doc(collection(google('bghost'), 'shop_tokens')), tokenOf('bghost', ''))));
 await t('acente hacısı eskisi gibi kod oluşturur', () => newToken(as('g1'), 'g1', A));
 
 console.log('Esnaf işlemi:');
