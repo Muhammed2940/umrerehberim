@@ -6673,6 +6673,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerFreePrice => '0 TL';
 
   @override
+  String get paketlerFullBadge => 'Her şey dahil';
+
+  @override
+  String get paketlerFullCta => 'Bilgi al';
+
+  @override
+  String get paketlerFullF1 => 'Gidiş-dönüş uçak bileti';
+
+  @override
+  String get paketlerFullF2 => 'Umre vizesi';
+
+  @override
+  String get paketlerFullF3 => 'Mekke ve Medine\'de otel konaklaması';
+
+  @override
+  String get paketlerFullF4 => 'Yemek ve içecek';
+
+  @override
+  String get paketlerFullF5 => 'Havalimanı transferi ve şehirler arası ulaşım';
+
+  @override
+  String get paketlerFullF6 => 'Suudi Arabistan eSIM (internet)';
+
+  @override
+  String get paketlerFullF7 => 'Umre Paketi\'nin tüm uygulama özellikleri';
+
+  @override
+  String get paketlerFullName => 'Full Umre Paketi';
+
+  @override
+  String get paketlerFullPeriod => '10 gün · kişi başı';
+
+  @override
+  String get paketlerFullPrice => '1.500 \$';
+
+  @override
   String get paketlerIntro =>
       'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
 

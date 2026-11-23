@@ -12050,6 +12050,78 @@ abstract class AppLocalizations {
   /// **'0 TL'**
   String get paketlerFreePrice;
 
+  /// No description provided for @paketlerFullBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her şey dahil'**
+  String get paketlerFullBadge;
+
+  /// No description provided for @paketlerFullCta.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bilgi al'**
+  String get paketlerFullCta;
+
+  /// No description provided for @paketlerFullF1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gidiş-dönüş uçak bileti'**
+  String get paketlerFullF1;
+
+  /// No description provided for @paketlerFullF2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre vizesi'**
+  String get paketlerFullF2;
+
+  /// No description provided for @paketlerFullF3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke ve Medine\'de otel konaklaması'**
+  String get paketlerFullF3;
+
+  /// No description provided for @paketlerFullF4.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yemek ve içecek'**
+  String get paketlerFullF4;
+
+  /// No description provided for @paketlerFullF5.
+  ///
+  /// In tr, this message translates to:
+  /// **'Havalimanı transferi ve şehirler arası ulaşım'**
+  String get paketlerFullF5;
+
+  /// No description provided for @paketlerFullF6.
+  ///
+  /// In tr, this message translates to:
+  /// **'Suudi Arabistan eSIM (internet)'**
+  String get paketlerFullF6;
+
+  /// No description provided for @paketlerFullF7.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Paketi\'nin tüm uygulama özellikleri'**
+  String get paketlerFullF7;
+
+  /// No description provided for @paketlerFullName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Full Umre Paketi'**
+  String get paketlerFullName;
+
+  /// No description provided for @paketlerFullPeriod.
+  ///
+  /// In tr, this message translates to:
+  /// **'10 gün · kişi başı'**
+  String get paketlerFullPeriod;
+
+  /// No description provided for @paketlerFullPrice.
+  ///
+  /// In tr, this message translates to:
+  /// **'1.500 \$'**
+  String get paketlerFullPrice;
+
   /// No description provided for @paketlerIntro.
   ///
   /// In tr, this message translates to:

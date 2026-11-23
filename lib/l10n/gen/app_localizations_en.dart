@@ -6728,6 +6728,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerFreePrice => '€0';
 
   @override
+  String get paketlerFullBadge => 'All inclusive';
+
+  @override
+  String get paketlerFullCta => 'Get info';
+
+  @override
+  String get paketlerFullF1 => 'Return flight tickets';
+
+  @override
+  String get paketlerFullF2 => 'Umrah visa';
+
+  @override
+  String get paketlerFullF3 => 'Hotel stay in Makkah and Madinah';
+
+  @override
+  String get paketlerFullF4 => 'Food and drinks';
+
+  @override
+  String get paketlerFullF5 => 'Airport transfers and intercity transport';
+
+  @override
+  String get paketlerFullF6 => 'Saudi Arabia eSIM (data)';
+
+  @override
+  String get paketlerFullF7 => 'All app features of the Umrah Package';
+
+  @override
+  String get paketlerFullName => 'Full Umrah Package';
+
+  @override
+  String get paketlerFullPeriod => '10 days · per person';
+
+  @override
+  String get paketlerFullPrice => '\$1,500';
+
+  @override
   String get paketlerIntro =>
       'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
 

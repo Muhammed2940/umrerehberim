@@ -1,19 +1,39 @@
 {
-  "paketlerTitle": { "tr": "Paketler", "en": "Packages", "ar": "الباقات" },
+  "paketlerTitle": {
+    "tr": "Paketler",
+    "en": "Packages",
+    "ar": "الباقات"
+  },
   "paketlerIntro": {
     "tr": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
     "en": "Planning your Umrah on your own? Choose the package that suits you. The basics are always free.",
     "ar": "إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا."
   },
-  "paketlerBrowse": { "tr": "Paketleri incele", "en": "View packages", "ar": "عرض الباقات" },
+  "paketlerBrowse": {
+    "tr": "Paketleri incele",
+    "en": "View packages",
+    "ar": "عرض الباقات"
+  },
   "paketlerQuickSub": {
     "tr": "Umre ve Aile paketleri",
     "en": "Umrah and Family packages",
     "ar": "باقات العمرة والعائلة"
   },
-  "paketlerFreeName": { "tr": "Ücretsiz", "en": "Free", "ar": "مجاني" },
-  "paketlerFreePrice": { "tr": "0 TL", "en": "€0", "ar": "0 €" },
-  "paketlerCurrent": { "tr": "Mevcut planınız", "en": "Your current plan", "ar": "خطتك الحالية" },
+  "paketlerFreeName": {
+    "tr": "Ücretsiz",
+    "en": "Free",
+    "ar": "مجاني"
+  },
+  "paketlerFreePrice": {
+    "tr": "0 TL",
+    "en": "€0",
+    "ar": "0 €"
+  },
+  "paketlerCurrent": {
+    "tr": "Mevcut planınız",
+    "en": "Your current plan",
+    "ar": "خطتك الحالية"
+  },
   "paketlerFreeF1": {
     "tr": "Dualar, Kur'an-ı Kerim ve zikirmatik",
     "en": "Prayers, the Holy Quran and dhikr counter",
@@ -29,10 +49,26 @@
     "en": "Places to visit, Haram gates and transport information",
     "ar": "الأماكن التي تُزار وأبواب الحرم ومعلومات النقل"
   },
-  "paketlerFreeF4": { "tr": "Toplu Hatim grupları", "en": "Group Khatm circles", "ar": "مجموعات الختمة الجماعية" },
-  "paketlerUmreName": { "tr": "Umre Paketi", "en": "Umrah Package", "ar": "باقة العمرة" },
-  "paketlerUmrePrice": { "tr": "349,99 TL", "en": "€9.99", "ar": "9.99 €" },
-  "paketlerUmrePeriod": { "tr": "30 gün · tek kişi", "en": "30 days · 1 person", "ar": "30 يومًا · شخص واحد" },
+  "paketlerFreeF4": {
+    "tr": "Toplu Hatim grupları",
+    "en": "Group Khatm circles",
+    "ar": "مجموعات الختمة الجماعية"
+  },
+  "paketlerUmreName": {
+    "tr": "Umre Paketi",
+    "en": "Umrah Package",
+    "ar": "باقة العمرة"
+  },
+  "paketlerUmrePrice": {
+    "tr": "349,99 TL",
+    "en": "€9.99",
+    "ar": "9.99 €"
+  },
+  "paketlerUmrePeriod": {
+    "tr": "30 gün · tek kişi",
+    "en": "30 days · 1 person",
+    "ar": "30 يومًا · شخص واحد"
+  },
   "paketlerUmreF1": {
     "tr": "Profesyonel sesli rehber",
     "en": "Professional audio guide",
@@ -43,16 +79,36 @@
     "en": "Full offline use",
     "ar": "استخدام كامل دون إنترنت"
   },
-  "paketlerUmreF3": { "tr": "Kişisel umre planı", "en": "Personal Umrah plan", "ar": "خطة عمرة شخصية" },
+  "paketlerUmreF3": {
+    "tr": "Kişisel umre planı",
+    "en": "Personal Umrah plan",
+    "ar": "خطة عمرة شخصية"
+  },
   "paketlerUmreF4": {
     "tr": "Aile Takibi: evdekiler konumunuzu bir bağlantıyla görür",
     "en": "Family Tracking: loved ones at home see your location via a link",
     "ar": "متابعة العائلة: يرى أهلك موقعك عبر رابط"
   },
-  "paketlerUmreF5": { "tr": "Esnaf indirimleri", "en": "Merchant discounts", "ar": "خصومات المتاجر" },
-  "paketlerAileName": { "tr": "Aile / Arkadaş Paketi", "en": "Family / Friends Package", "ar": "باقة العائلة / الأصدقاء" },
-  "paketlerAilePrice": { "tr": "799,99 TL", "en": "€19.99", "ar": "19.99 €" },
-  "paketlerAilePeriod": { "tr": "30 gün · 6 kişiye kadar", "en": "30 days · up to 6 people", "ar": "30 يومًا · حتى 6 أشخاص" },
+  "paketlerUmreF5": {
+    "tr": "Esnaf indirimleri",
+    "en": "Merchant discounts",
+    "ar": "خصومات المتاجر"
+  },
+  "paketlerAileName": {
+    "tr": "Aile / Arkadaş Paketi",
+    "en": "Family / Friends Package",
+    "ar": "باقة العائلة / الأصدقاء"
+  },
+  "paketlerAilePrice": {
+    "tr": "799,99 TL",
+    "en": "€19.99",
+    "ar": "19.99 €"
+  },
+  "paketlerAilePeriod": {
+    "tr": "30 gün · 6 kişiye kadar",
+    "en": "30 days · up to 6 people",
+    "ar": "30 يومًا · حتى 6 أشخاص"
+  },
   "paketlerAileF1": {
     "tr": "Umre Paketi'ndeki her şey, 6 kişi için",
     "en": "Everything in the Umrah Package, for 6 people",
@@ -68,9 +124,21 @@
     "en": "In-group internet walkie-talkie",
     "ar": "لاسلكي عبر الإنترنت داخل المجموعة"
   },
-  "paketlerRecommended": { "tr": "Önerilen", "en": "Recommended", "ar": "موصى بها" },
-  "paketlerBestValue": { "tr": "Kişi başı en uygun", "en": "Best value per person", "ar": "الأوفر للشخص" },
-  "paketlerBuy": { "tr": "Satın al", "en": "Buy", "ar": "شراء" },
+  "paketlerRecommended": {
+    "tr": "Önerilen",
+    "en": "Recommended",
+    "ar": "موصى بها"
+  },
+  "paketlerBestValue": {
+    "tr": "Kişi başı en uygun",
+    "en": "Best value per person",
+    "ar": "الأوفر للشخص"
+  },
+  "paketlerBuy": {
+    "tr": "Satın al",
+    "en": "Buy",
+    "ar": "شراء"
+  },
   "paketlerBuySoon": {
     "tr": "Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.",
     "en": "Payments are coming very soon. Packages will be available through the app store.",
@@ -85,5 +153,65 @@
     "tr": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
     "en": "Packages do not renew automatically. The period starts when you purchase.",
     "ar": "لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء."
+  },
+  "paketlerFullName": {
+    "tr": "Full Umre Paketi",
+    "en": "Full Umrah Package",
+    "ar": "باقة العمرة الشاملة"
+  },
+  "paketlerFullPrice": {
+    "tr": "1.500 $",
+    "en": "$1,500",
+    "ar": "1500 $"
+  },
+  "paketlerFullPeriod": {
+    "tr": "10 gün · kişi başı",
+    "en": "10 days · per person",
+    "ar": "10 أيام · للشخص"
+  },
+  "paketlerFullBadge": {
+    "tr": "Her şey dahil",
+    "en": "All inclusive",
+    "ar": "شامل كل شيء"
+  },
+  "paketlerFullF1": {
+    "tr": "Gidiş-dönüş uçak bileti",
+    "en": "Return flight tickets",
+    "ar": "تذاكر طيران ذهابًا وإيابًا"
+  },
+  "paketlerFullF2": {
+    "tr": "Umre vizesi",
+    "en": "Umrah visa",
+    "ar": "تأشيرة العمرة"
+  },
+  "paketlerFullF3": {
+    "tr": "Mekke ve Medine'de otel konaklaması",
+    "en": "Hotel stay in Makkah and Madinah",
+    "ar": "الإقامة الفندقية في مكة والمدينة"
+  },
+  "paketlerFullF4": {
+    "tr": "Yemek ve içecek",
+    "en": "Food and drinks",
+    "ar": "الطعام والشراب"
+  },
+  "paketlerFullF5": {
+    "tr": "Havalimanı transferi ve şehirler arası ulaşım",
+    "en": "Airport transfers and intercity transport",
+    "ar": "النقل من المطار وبين المدن"
+  },
+  "paketlerFullF6": {
+    "tr": "Suudi Arabistan eSIM (internet)",
+    "en": "Saudi Arabia eSIM (data)",
+    "ar": "شريحة eSIM للسعودية (إنترنت)"
+  },
+  "paketlerFullF7": {
+    "tr": "Umre Paketi'nin tüm uygulama özellikleri",
+    "en": "All app features of the Umrah Package",
+    "ar": "جميع ميزات التطبيق في باقة العمرة"
+  },
+  "paketlerFullCta": {
+    "tr": "Bilgi al",
+    "en": "Get info",
+    "ar": "اطلب معلومات"
   }
 }

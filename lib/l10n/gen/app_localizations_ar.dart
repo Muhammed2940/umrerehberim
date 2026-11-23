@@ -6762,6 +6762,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerFreePrice => '0 €';
 
   @override
+  String get paketlerFullBadge => 'شامل كل شيء';
+
+  @override
+  String get paketlerFullCta => 'اطلب معلومات';
+
+  @override
+  String get paketlerFullF1 => 'تذاكر طيران ذهابًا وإيابًا';
+
+  @override
+  String get paketlerFullF2 => 'تأشيرة العمرة';
+
+  @override
+  String get paketlerFullF3 => 'الإقامة الفندقية في مكة والمدينة';
+
+  @override
+  String get paketlerFullF4 => 'الطعام والشراب';
+
+  @override
+  String get paketlerFullF5 => 'النقل من المطار وبين المدن';
+
+  @override
+  String get paketlerFullF6 => 'شريحة eSIM للسعودية (إنترنت)';
+
+  @override
+  String get paketlerFullF7 => 'جميع ميزات التطبيق في باقة العمرة';
+
+  @override
+  String get paketlerFullName => 'باقة العمرة الشاملة';
+
+  @override
+  String get paketlerFullPeriod => '10 أيام · للشخص';
+
+  @override
+  String get paketlerFullPrice => '1500 \$';
+
+  @override
   String get paketlerIntro =>
       'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
 

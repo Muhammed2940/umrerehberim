@@ -7,7 +7,8 @@ import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
 
 /// Bireysel kullanıcı paketleri (docs/plan/BIREYSEL_PLAN.md): Ücretsiz, Umre Paketi
-/// (30 gün, 349,99 TL / 9,99 €), Aile/Arkadaş Paketi (6 kişi, 30 gün, 799,99 TL / 19,99 €).
+/// (30 gün, 349,99 TL / 9,99 €), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel,
+/// yemek, ulaşım, eSIM dahil), Aile/Arkadaş Paketi (6 kişi, 30 gün, 799,99 TL / 19,99 €).
 /// Ödeme (Google Play / App Store) henüz bağlı değil: "Satın al" bilgi mesajı gösterir.
 /// Görünüm yeni değil: bilgi ekranlarının [InfoCardBox], [InfoIconBadge], [InfoChip],
 /// [InfoNote] bileşenleri ve profil başlığının yeşil degradesi.
@@ -40,6 +41,24 @@ class PaketlerScreen extends StatelessWidget {
               l.paketlerUmreF3,
               l.paketlerUmreF4,
               l.paketlerUmreF5,
+            ],
+          ),
+          _PaketKart(
+            icon: Icons.flight_takeoff_rounded,
+            name: l.paketlerFullName,
+            price: l.paketlerFullPrice,
+            period: l.paketlerFullPeriod,
+            badge: l.paketlerFullBadge,
+            highlighted: true,
+            ctaLabel: l.paketlerFullCta,
+            features: [
+              l.paketlerFullF1,
+              l.paketlerFullF2,
+              l.paketlerFullF3,
+              l.paketlerFullF4,
+              l.paketlerFullF5,
+              l.paketlerFullF6,
+              l.paketlerFullF7,
             ],
           ),
           _PaketKart(
@@ -79,6 +98,9 @@ class _PaketKart extends StatelessWidget {
   final String badge;
   final List<String> features;
 
+  /// Düğme yazısı; boşsa "Satın al".
+  final String? ctaLabel;
+
   /// Önerilen paket: üst kısım profil başlığındaki yeşil degradeyle.
   final bool highlighted;
 
@@ -92,6 +114,7 @@ class _PaketKart extends StatelessWidget {
     this.period,
     required this.badge,
     required this.features,
+    this.ctaLabel,
     this.highlighted = false,
     this.current = false,
   });
@@ -190,12 +213,12 @@ class _PaketKart extends StatelessWidget {
           highlighted
               ? ElevatedButton(
                   onPressed: () => GlobalSnackbar.showInfo(l.paketlerBuySoon),
-                  child: Text(l.paketlerBuy),
+                  child: Text(ctaLabel ?? l.paketlerBuy),
                 )
               : OutlinedButton(
                   onPressed: () => GlobalSnackbar.showInfo(l.paketlerBuySoon),
                   style: OutlinedButton.styleFrom(minimumSize: const Size(64, 48)),
-                  child: Text(l.paketlerBuy),
+                  child: Text(ctaLabel ?? l.paketlerBuy),
                 ),
         ],
       ],
