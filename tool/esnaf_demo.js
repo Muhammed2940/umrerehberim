@@ -72,7 +72,7 @@ async function main() {
   const now = new Date();
 
   const shop = {
-    agency_id: AGENCY_ID,
+    agency_id: "all", // tüm acentelere ve paketli bireysellere açık
     name: "Demo Hediyelik (Test)",
     category: "Hediyelik",
     description: "Esnaf paneli denemesi için demo dükkan. Tesbih, seccade, hurma ve hediyelik eşya.",
