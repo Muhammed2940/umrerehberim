@@ -11942,6 +11942,12 @@ abstract class AppLocalizations {
   /// **'Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.'**
   String get odemeDemoNote;
 
+  /// No description provided for @odemeFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.'**
+  String get odemeFailed;
+
   /// No description provided for @odemeFullNote.
   ///
   /// In tr, this message translates to:
@@ -12146,6 +12152,12 @@ abstract class AppLocalizations {
   /// **'Mevcut planınız'**
   String get paketlerCurrent;
 
+  /// No description provided for @paketlerDiscountLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Esnaf indirimi ücretli paketlerde kullanılabilir.'**
+  String get paketlerDiscountLocked;
+
   /// No description provided for @paketlerEditPlan.
   ///
   /// In tr, this message translates to:
@@ -12277,6 +12289,18 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.'**
   String get paketlerIntro;
+
+  /// No description provided for @paketlerOnlyBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.'**
+  String get paketlerOnlyBody;
+
+  /// No description provided for @paketlerOnlyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretli paketlere özel'**
+  String get paketlerOnlyTitle;
 
   /// No description provided for @paketlerPendingBadge.
   ///

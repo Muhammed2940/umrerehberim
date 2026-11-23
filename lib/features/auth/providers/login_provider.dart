@@ -451,6 +451,18 @@ class LoginProvider extends ChangeNotifier {
         throw _HatimCleanupFailed();
       }
 
+      // 1b) Paket hakkı (entitlements/{uid}): demo döneminde kullanıcı silebilir; kapalıysa
+      // kural reddeder, süper admin temizler (hata yok sayılır).
+      try {
+        await FirebaseFirestore.instance
+            .collection('entitlements')
+            .doc(me.id)
+            .delete()
+            .timeout(const Duration(seconds: 10));
+      } catch (e) {
+        debugPrint('Hesap silme: paket hakkı silinemedi: $e');
+      }
+
       // 2) users/{uid}. Yazım kuyruğu sunucuya ulaşana kadar beklenir; zaman aşımında belge
       // silinmiş sayılmaz ve Auth hesabı silinmez (sahipsiz belge kalmasın). Hata dinleyicisi
       // hemen bağlanır (bekleme sırasında yakalanmamış hata oluşmasın).

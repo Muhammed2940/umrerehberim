@@ -51,3 +51,11 @@
 
 ## KVKK sürümü (ileride)
 - `kvkk_version` kayıtta yazılır ve bireysel tarafından değiştirilemez. Aydınlatma metni değişince: uygulamada güncel sürüm sabiti artırılır; girişte belgedeki sürüm eskiyse yeniden onay ekranı gösterilir. Bunun için kurallara bireyselin yalnız `kvkk_version` + `kvkk_accepted_at == request.time` alanlarını güncelleyebildiği bir dal eklenmelidir (şimdilik YOK; Faz 1'de tek sürüm). Onay geçmişi gerekiyorsa `users/{uid}/consents/{version}` alt koleksiyonu düşünülebilir.
+
+## Paketler (demo ödeme, 23 Kasım 2026)
+- Paketler: Ücretsiz, Umre (349,99 TL, 30 gün), Aile/Arkadaş (799,99 TL, 6 kişi, 30 gün), Full Umre (1.500 $, 10 gün; uçak, vize, otel, yemek, ulaşım, eSIM). Ekran: `lib/features/paketler/`.
+- Hak: `entitlements/{uid}` = `{paket: umre|aile|full, status: active|pending_approval, paid_until, source, updated_at}`. Kurallar esnaf indirimini buna göre açar (`paidBireysel()`: Google + acentesiz + `status == 'active'` + `paid_until > now`).
+- Demo: `platform_settings/payments.demo_payments == true` iken bireysel kendi hakkını yazar/siler (source 'demo', en çok 31 gün; Umre/Aile `active`, Full yalnız `pending_approval`). Anahtar: `node tool/demo_odeme.js ac|kapat`. **PayTR bağlanınca kapatılır**; hak yalnız sunucu (PayTR bildirimi doğrulanınca) yazar.
+- Full paket: süper admin onaylayınca `status: 'active'` (panel ekranı henüz yok); tarihleri yönetici kullanıcıyla iletişime geçip belirler.
+- Ücretsiz: anlaşmalı dükkan listesi (agency_id 'all'). Aktif paket: indirim QR kodu (`shop_tokens.agency_id == ''`), yalnız 'all' dükkanlarda işlem; puan ve Harcamalarım. Boş acente, agency_id'si boş dükkan/kuponla eşleşmez.
+- Mekke/Medine tarih ve otel bilgisi yalnız cihazda (`personal_plan_<uid>`), çıkışta silinir. Testler: `tool/rules-test/paket_rules.test.mjs`.

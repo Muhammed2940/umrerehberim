@@ -413,5 +413,25 @@
     "tr": "Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.",
     "en": "Your request has been received. Our manager will contact you for approval and dates.",
     "ar": "تم استلام طلبك. سيتواصل معك مسؤولنا للموافقة وتحديد المواعيد."
+  },
+  "paketlerOnlyTitle": {
+    "tr": "Ücretli paketlere özel",
+    "en": "For paid packages",
+    "ar": "خاص بالباقات المدفوعة"
+  },
+  "paketlerOnlyBody": {
+    "tr": "Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.",
+    "en": "Merchant discounts, points and spending history are available with the Umrah, Family and Full packages.",
+    "ar": "تتوفر خصومات المتاجر والنقاط وسجل الإنفاق مع باقات العمرة والعائلة والشاملة."
+  },
+  "paketlerDiscountLocked": {
+    "tr": "Esnaf indirimi ücretli paketlerde kullanılabilir.",
+    "en": "Merchant discounts are available with paid packages.",
+    "ar": "خصومات المتاجر متاحة مع الباقات المدفوعة."
+  },
+  "odemeFailed": {
+    "tr": "İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "The operation could not be completed. Check your connection and try again.",
+    "ar": "تعذّر إتمام العملية. تحقق من اتصالك وحاول مرة أخرى."
   }
 }

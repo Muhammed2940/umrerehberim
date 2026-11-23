@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
 import '../providers/personal_plan_provider.dart';
 
@@ -59,7 +60,15 @@ class _OdemeScreenState extends State<OdemeScreen> {
     // bildirim (callback) sunucuda doğrulanınca paket sunucuda tanımlanır.
     await Future<void>.delayed(const Duration(milliseconds: 1800));
     if (!mounted) return;
-    await personalPlan.selectPaket(widget.args.id);
+    try {
+      await personalPlan.selectPaket(widget.args.id);
+    } catch (e) {
+      debugPrint('Paket etkinleştirilemedi: $e');
+      if (!mounted) return;
+      setState(() => _asama = _Asama.ozet);
+      GlobalSnackbar.showError(context.l10n.odemeFailed);
+      return;
+    }
     if (!mounted) return;
     setState(() => _asama = _Asama.basarili);
     await Future<void>.delayed(const Duration(milliseconds: 1600));

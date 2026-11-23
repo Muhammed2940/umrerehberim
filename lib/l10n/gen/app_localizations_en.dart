@@ -6671,6 +6671,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Demo version: no payment is taken; the package is activated on this device.';
 
   @override
+  String get odemeFailed =>
+      'The operation could not be completed. Check your connection and try again.';
+
+  @override
   String get odemeFullNote =>
       'After your payment, our manager approves your request and contacts you to set your travel dates.';
 
@@ -6782,6 +6786,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerCurrent => 'Your current plan';
 
   @override
+  String get paketlerDiscountLocked =>
+      'Merchant discounts are available with paid packages.';
+
+  @override
   String get paketlerEditPlan => 'Edit my dates and hotels';
 
   @override
@@ -6849,6 +6857,13 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
+
+  @override
+  String get paketlerOnlyBody =>
+      'Merchant discounts, points and spending history are available with the Umrah, Family and Full packages.';
+
+  @override
+  String get paketlerOnlyTitle => 'For paid packages';
 
   @override
   String get paketlerPendingBadge => 'Awaiting approval';

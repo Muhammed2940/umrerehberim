@@ -6706,6 +6706,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'نسخة تجريبية: لا يتم أخذ أي دفعة وتُفعَّل الباقة على هذا الجهاز.';
 
   @override
+  String get odemeFailed =>
+      'تعذّر إتمام العملية. تحقق من اتصالك وحاول مرة أخرى.';
+
+  @override
   String get odemeFullNote =>
       'بعد الدفع يوافق مسؤولنا على طلبك ويتواصل معك لتحديد مواعيد رحلتك.';
 
@@ -6817,6 +6821,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerCurrent => 'خطتك الحالية';
 
   @override
+  String get paketlerDiscountLocked =>
+      'خصومات المتاجر متاحة مع الباقات المدفوعة.';
+
+  @override
   String get paketlerEditPlan => 'تعديل التواريخ والفنادق';
 
   @override
@@ -6883,6 +6891,13 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
+
+  @override
+  String get paketlerOnlyBody =>
+      'تتوفر خصومات المتاجر والنقاط وسجل الإنفاق مع باقات العمرة والعائلة والشاملة.';
+
+  @override
+  String get paketlerOnlyTitle => 'خاص بالباقات المدفوعة';
 
   @override
   String get paketlerPendingBadge => 'بانتظار الموافقة';

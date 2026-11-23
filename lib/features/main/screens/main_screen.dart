@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../../common/widgets/acente_ozelligi_card.dart';
-import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../cuzdan/data/wallet_watcher.dart';
@@ -29,9 +27,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    // Esnaf işlemi gelince yerel bildirim. Bireysel kullanıcı esnaf indirimi kullanmaz.
-    final user = context.read<AppStateProvider>().currentUser;
-    if (user == null || !user.isBireysel) WalletWatcher.instance.start();
+    // Esnaf işlemi gelince yerel bildirim (paketli bireysel de indirim kullanır).
+    WalletWatcher.instance.start();
   }
 
   static final _screens = <Widget>[

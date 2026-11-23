@@ -30,6 +30,7 @@ import '../features/home/screens/rehber_iletisim.dart';
 import '../features/home/screens/takvim_screen.dart';
 import '../features/paketler/screens/paketler_screen.dart';
 import '../features/paketler/screens/yolculuk_bilgilerim_screen.dart';
+import '../features/paketler/widgets/paket_gate.dart';
 import '../features/info_screen/screens/gezilecek_yerler_screen.dart';
 import '../features/kible/screens/kible_screen.dart';
 import '../features/info_screen/screens/technical_support_screen.dart';
@@ -138,16 +139,13 @@ class AppRoutes {
         '/yolculuk-bilgilerim': (_) => const YolculukBilgilerimScreen(),
         '/rota-simulasyonu': (_) => const RotaSimulasyonuScreen(),
         '/tavaf-simulasyonu': (_) => const TavafSimulasyonuScreen(),
-        '/dukkanlar': (_) => AcenteOzelligiGate(
-              title: (c) => c.l10n.shopsTitle,
-              icon: Icons.storefront_rounded,
-              child: const ShopsScreen(),
-            ),
+        // Anlaşmalı dükkan listesi herkese açık; indirim kodu ücretli pakette (ShopDetailScreen).
+        '/dukkanlar': (_) => const ShopsScreen(),
         '/admin/dukkanlar': (_) => const ShopsAdminPage(),
         '/admin/shops': (_) => const ShopsAdminPage(),
         '/admin/shops/edit': (_) => const ShopEditScreen(),
         '/esnaf': (_) => const MerchantHomeScreen(),
-        '/cuzdan': (_) => AcenteOzelligiGate(
+        '/cuzdan': (_) => PaketGate(
               title: (c) => c.l10n.cuzdanTitle,
               icon: Icons.account_balance_wallet_rounded,
               child: const CuzdanScreen(),

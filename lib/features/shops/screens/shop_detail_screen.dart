@@ -10,6 +10,7 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../control_center/analytics/shop_view_counter.dart';
+import '../../paketler/providers/personal_plan_provider.dart';
 import '../models/shop_model.dart';
 import '../widgets/shop_widgets.dart';
 import 'shop_code_screen.dart';
@@ -172,10 +173,19 @@ class ShopDetailScreen extends StatelessWidget {
               ),
               icon: const Icon(Icons.qr_code_2_rounded, size: 28),
               label: Text(t.shopsShowMyCode),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                fullscreenDialog: true,
-                builder: (_) => ShopCodeScreen(shop: s),
-              )),
+              onPressed: () {
+                // Bireysel: indirim kodu yalnız aktif ücretli pakette (kurallar da denetler).
+                final bireysel = context.read<AppStateProvider>().currentUser?.isBireysel ?? false;
+                if (bireysel && !personalPlan.canUseDiscounts) {
+                  GlobalSnackbar.showInfo(t.paketlerDiscountLocked);
+                  Navigator.of(context).pushNamed('/paketler');
+                  return;
+                }
+                Navigator.of(context).push(MaterialPageRoute(
+                  fullscreenDialog: true,
+                  builder: (_) => ShopCodeScreen(shop: s),
+                ));
+              },
             ),
           ),
         ),

@@ -56,8 +56,13 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
       ),
     );
     if (ok != true || !mounted) return;
-    await personalPlan.selectPaket(PaketId.ucretsiz);
-    GlobalSnackbar.showInfo(l.paketlerBackToFreeDone);
+    try {
+      await personalPlan.selectPaket(PaketId.ucretsiz);
+      GlobalSnackbar.showInfo(l.paketlerBackToFreeDone);
+    } catch (e) {
+      debugPrint('Ücretsiz plana dönülemedi: $e');
+      GlobalSnackbar.showError(l.odemeFailed);
+    }
   }
 
   @override

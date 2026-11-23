@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,10 +11,11 @@ enum PaketId { ucretsiz, umre, aile, full }
 
 /// Bireysel kullanıcının seçtiği paket ve kendi girdiği Mekke/Medine yolculuk bilgisi.
 ///
-/// DEMO: Ödeme (Google Play / App Store) henüz bağlı değil. "Satın al" ödeme almadan
-/// paketi bu cihazda seçili sayar. Veri `personal_plan_<uid>` anahtarında yalnız bu
-/// cihazda tutulur; çıkışta ve hesap silmede temizlenir (LoginProvider._clearLocal).
-/// Gerçek ödemeye geçişte paket bilgisi sunucunun yazdığı `entitlements/{uid}`'den okunur.
+/// Paket hakkının doğru kaynağı Firestore `entitlements/{uid}` (kurallar esnaf indirimini
+/// buna göre açar). DEMO: ödeme henüz bağlı değil; `platform_settings/payments.demo_payments`
+/// açıkken bireysel kendi hakkını yazar (ödeme alınmaz). PayTR gelince yalnız sunucu yazar.
+/// Mekke/Medine tarih ve otel bilgisi ile son bilinen paket `personal_plan_<uid>` anahtarında
+/// bu cihazda tutulur (çevrimdışı açılış için); çıkışta ve hesap silmede temizlenir.
 class PersonalPlanProvider extends ChangeNotifier {
   static const keyPrefix = 'personal_plan_';
 
@@ -29,6 +31,9 @@ class PersonalPlanProvider extends ChangeNotifier {
   /// kullanıcıyla iletişime geçip belirler (kullanıcı kendisi girmez).
   bool get awaitingApproval => _paket == PaketId.full && !_approved;
   bool _approved = false;
+
+  /// Esnaf indirimi, puan ve Harcamalarım: aktif (onaylı) ücretli paket.
+  bool get canUseDiscounts => hasPaidPackage && !awaitingApproval;
   CityPlan get mekke => _mekke;
   CityPlan get medine => _medine;
   bool get hasAnyDates => _mekke.start != null || _medine.start != null;
@@ -55,9 +60,55 @@ class PersonalPlanProvider extends ChangeNotifier {
       debugPrint('Kişisel plan okunamadı: $e');
     }
     notifyListeners();
+    await _syncFromServer(uid);
   }
 
+  DocumentReference<Map<String, dynamic>> _entRef(String uid) =>
+      FirebaseFirestore.instance.collection('entitlements').doc(uid);
+
+  /// Sunucudaki hak yerel kopyanın önüne geçer (süresi dolmuş hak = ücretsiz).
+  /// Okunamazsa (çevrimdışı) son bilinen yerel durum kalır.
+  Future<void> _syncFromServer(String uid) async {
+    try {
+      final snap = await _entRef(uid).get(const GetOptions(source: Source.server));
+      if (_uid != uid) return;
+      final d = snap.data();
+      final until = d?['paid_until'];
+      final valid = d != null && until is Timestamp && until.toDate().isAfter(DateTime.now());
+      final paket = valid
+          ? PaketId.values.firstWhere((p) => p.name == d['paket'], orElse: () => PaketId.ucretsiz)
+          : PaketId.ucretsiz;
+      final approved = valid && d['status'] == 'active';
+      if (paket == _paket && approved == _approved) return;
+      _paket = paket;
+      _approved = approved;
+      if (paket == PaketId.ucretsiz || paket == PaketId.full && !approved) {
+        _mekke = const CityPlan();
+        _medine = const CityPlan();
+      }
+      await _save();
+    } catch (e) {
+      debugPrint('Paket hakkı sunucudan okunamadı: $e');
+    }
+  }
+
+  /// Paketi seçer: önce sunucudaki hak yazılır/silinir (başarısızsa hata fırlatır ve
+  /// yerel durum değişmez), sonra yerel kopya güncellenir.
   Future<void> selectPaket(PaketId p) async {
+    final uid = _uid;
+    if (uid == null) throw StateError('oturum yok');
+    final ref = _entRef(uid);
+    if (p == PaketId.ucretsiz) {
+      await ref.delete().timeout(const Duration(seconds: 15));
+    } else {
+      await ref.set({
+        'paket': p.name,
+        'status': p == PaketId.full ? 'pending_approval' : 'active',
+        'paid_until': Timestamp.fromDate(DateTime.now().add(const Duration(days: 30))),
+        'source': 'demo',
+        'updated_at': FieldValue.serverTimestamp(),
+      }).timeout(const Duration(seconds: 15));
+    }
     _paket = p;
     _approved = false;
     if (p == PaketId.ucretsiz || p == PaketId.full) {

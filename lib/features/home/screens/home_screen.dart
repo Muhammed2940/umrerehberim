@@ -283,7 +283,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   Widget _quickActions({required bool bireysel}) {
     final l = context.l10n;
-    // Bireysel: acente özellikleri (telsiz, dükkanlar, rehber, takvim) yerine ücretsiz içerikler.
+    // Bireysel: acente özellikleri (telsiz, rehber, takvim) yerine ücretsiz içerikler;
+    // anlaşmalı dükkan listesi herkese açık (indirim ücretli pakette).
     final items = bireysel
         ? <(IconData, String, String, Color)>[
             (FlutterIslamicIcons.solidQuran, l.homeQuickQuran, '/kuran', AppColors.emerald800),
@@ -293,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             (Icons.place_rounded, l.homeQuickPlaces, '/gezilecek-yerler', AppColors.emerald600),
             (Icons.luggage_rounded, l.infoCardTravelGuide, '/seyahat-rehberi', AppColors.emerald800),
             (Icons.checklist_rounded, l.infoCardNeedList, '/ihtiyac-listesi', AppColors.emerald700),
-            (Icons.place_outlined, l.infoCardMiqat, '/mikat', const Color(0xFF2F6655)),
+            (Icons.storefront_rounded, l.homeQuickShops, '/dukkanlar', const Color(0xFF2F6655)),
           ]
         : <(IconData, String, String, Color)>[
       (FlutterIslamicIcons.solidQuran, l.homeQuickQuran, '/kuran', AppColors.emerald800),

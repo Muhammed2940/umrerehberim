@@ -3872,6 +3872,7 @@
     }
   },
   "odemeDemoNote": "Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.",
+  "odemeFailed": "İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
   "odemeFullNote": "Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.",
   "odemePay": "{price} öde",
   "@odemePay": {
@@ -3913,6 +3914,7 @@
   "paketlerConfirm": "Evet, dön",
   "paketlerContactUs": "Bizimle iletişime geçin",
   "paketlerCurrent": "Mevcut planınız",
+  "paketlerDiscountLocked": "Esnaf indirimi ücretli paketlerde kullanılabilir.",
   "paketlerEditPlan": "Tarih ve otel bilgilerimi düzenle",
   "paketlerFootnote": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
   "paketlerFreeBadge": "Herkese açık",
@@ -3935,6 +3937,8 @@
   "paketlerFullPeriod": "10 gün · kişi başı",
   "paketlerFullPrice": "1.500 $",
   "paketlerIntro": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+  "paketlerOnlyBody": "Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.",
+  "paketlerOnlyTitle": "Ücretli paketlere özel",
   "paketlerPendingBadge": "Onay bekleniyor",
   "paketlerPendingBody": "Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.",
   "paketlerPendingShort": "Onay bekleniyor · bizimle iletişime geçin",

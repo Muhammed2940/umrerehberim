@@ -6616,6 +6616,10 @@ class AppLocalizationsTr extends AppLocalizations {
       'Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.';
 
   @override
+  String get odemeFailed =>
+      'İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.';
+
+  @override
   String get odemeFullNote =>
       'Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.';
 
@@ -6727,6 +6731,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerCurrent => 'Mevcut planınız';
 
   @override
+  String get paketlerDiscountLocked =>
+      'Esnaf indirimi ücretli paketlerde kullanılabilir.';
+
+  @override
   String get paketlerEditPlan => 'Tarih ve otel bilgilerimi düzenle';
 
   @override
@@ -6794,6 +6802,13 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
+
+  @override
+  String get paketlerOnlyBody =>
+      'Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.';
+
+  @override
+  String get paketlerOnlyTitle => 'Ücretli paketlere özel';
 
   @override
   String get paketlerPendingBadge => 'Onay bekleniyor';

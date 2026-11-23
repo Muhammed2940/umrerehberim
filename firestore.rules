@@ -262,8 +262,8 @@ service cloud.firestore {
     match /shop_tokens/{id} {
       allow create: if signedIn()
                     && request.resource.data.guest_uid == request.auth.uid
-                    && hasAgency()
-                    && request.resource.data.agency_id == agency()
+                    && ((hasAgency() && request.resource.data.agency_id == agency())
+                        || (paidBireysel() && request.resource.data.agency_id == ''))
                     && request.resource.data.created_at == request.time
                     && request.resource.data.used == false
                     && request.resource.data.points_available is int
@@ -299,7 +299,7 @@ service cloud.firestore {
                     && tok().agency_id == request.resource.data.guest_agency_id
                     // dükkan: aktif, misafirin acentesine açık; oranlar dükkandan
                     && shop().is_active != false
-                    && (shop().agency_id == 'all' || shop().agency_id == tok().agency_id)
+                    && (shop().agency_id == 'all' || (tok().agency_id != '' && shop().agency_id == tok().agency_id))
                     && request.resource.data.shop_agency_id == shop().agency_id
                     && request.resource.data.discount_percent == shop().discount_percent
                     && request.resource.data.commission_percent == shop().get('commission_percent', 0)
@@ -329,7 +329,7 @@ service cloud.firestore {
         let cap = c.type == 'percent' ? d.amount_gross * c.value / 100 : c.value;
         return c.active == true
             && request.time >= c.valid_from && request.time <= c.valid_until
-            && (c.agency_id == 'all' || c.agency_id == d.guest_agency_id)
+            && (c.agency_id == 'all' || (d.guest_agency_id != '' && c.agency_id == d.guest_agency_id))
             && (c.shop_id == 'all' || c.shop_id == d.shop_id)
             && d.amount_gross >= c.min_spend
             && (c.max_uses == 0 || c.used_count < c.max_uses)
@@ -445,6 +445,37 @@ service cloud.firestore {
     match /platform_settings/{id} {
       allow read: if isSuper() || isFinance();
       allow write: if isSuper();
+    }
+
+    // BİREYSEL PAKET HAKKI (tool/BIREYSEL_SEMA.md "Paketler") ------------------
+    // entitlements/{uid}: { paket: umre|aile|full, status: active|pending_approval,
+    //   paid_until: timestamp, source, updated_at }.
+    // Gerçek ödemede (PayTR) YALNIZ sunucu yazar. Demo döneminde
+    // platform_settings/payments.demo_payments == true iken bireysel kendi hakkını yazar
+    // (ödeme alınmaz); süper admin anahtarı kapatınca bu yol kapanır.
+    // Full paket "pending_approval" ile açılır; süper admin onaylayıp "active" yapar.
+    function demoPayments() {
+      return get(/databases/$(database)/documents/platform_settings/payments).data.get('demo_payments', false) == true;
+    }
+    function paidBireysel() {
+      let e = /databases/$(database)/documents/entitlements/$(request.auth.uid);
+      return isGoogle() && agency() == '' && exists(e)
+          && get(e).data.status == 'active'
+          && get(e).data.paid_until > request.time;
+    }
+    match /entitlements/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isSuper());
+      allow create, update: if isSuper()
+                    || (request.auth.uid == uid && isGoogle() && demoPayments()
+                        && request.resource.data.keys().hasOnly(['paket', 'status', 'paid_until', 'source', 'updated_at'])
+                        && request.resource.data.source == 'demo'
+                        && request.resource.data.updated_at == request.time
+                        && request.resource.data.paid_until is timestamp
+                        && request.resource.data.paid_until > request.time
+                        && request.resource.data.paid_until <= request.time + duration.value(31, 'd')
+                        && ((request.resource.data.paket in ['umre', 'aile'] && request.resource.data.status == 'active')
+                            || (request.resource.data.paket == 'full' && request.resource.data.status == 'pending_approval')));
+      allow delete: if isSuper() || (request.auth.uid == uid && isGoogle() && demoPayments());
     }
 
     // Risk alarmı incelemeleri (alarm id'si istemcide üretilir).

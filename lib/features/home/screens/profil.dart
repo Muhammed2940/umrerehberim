@@ -352,6 +352,13 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
         onTap: () => Navigator.of(context).pushNamed('/paketler'),
       ),
       const SizedBox(height: 10),
+      // Harcamalarım ve Puanlarım: aktif ücretli pakette.
+      ListenableBuilder(
+        listenable: personalPlan,
+        builder: (context, _) => personalPlan.canUseDiscounts
+            ? const Padding(padding: EdgeInsets.only(bottom: 10), child: WalletProfileCard())
+            : const SizedBox.shrink(),
+      ),
       // ChangeSecretTile'ın pasif görünümü + bilgi ekranlarının InfoChip rozeti.
       Card(
         margin: EdgeInsets.zero,
