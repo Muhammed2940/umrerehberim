@@ -6667,6 +6667,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String paketlerActivated(String name) {
+    return '$name activated.';
+  }
+
+  @override
   String get paketlerAgencyNote =>
       'If you travel with a partner agency, these features are provided free by your agency.';
 
@@ -6689,6 +6694,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerAilePrice => '€19.99';
 
   @override
+  String get paketlerBackToFree => 'Switch to free plan';
+
+  @override
+  String get paketlerBackToFreeBody =>
+      'Your package and the journey details you entered will be removed from this device.';
+
+  @override
+  String get paketlerBackToFreeDone => 'Switched to the free plan.';
+
+  @override
+  String get paketlerBackToFreeTitle => 'Switch to free plan';
+
+  @override
   String get paketlerBestValue => 'Best value per person';
 
   @override
@@ -6698,15 +6716,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerBuy => 'Buy';
 
   @override
-  String get paketlerBuySoon =>
-      'Payments are coming very soon. Packages will be available through the app store.';
+  String get paketlerCancel => 'Cancel';
+
+  @override
+  String get paketlerChooseSub =>
+      'Makkah and Madinah countdown, audio guide and more';
+
+  @override
+  String get paketlerChooseTitle => 'Choose your package';
+
+  @override
+  String get paketlerConfirm => 'Activate';
 
   @override
   String get paketlerCurrent => 'Your current plan';
 
   @override
+  String get paketlerDemoBody =>
+      'Demo version: the package will be activated on this device without payment. Once payments open, purchases will go through the app store.';
+
+  @override
+  String get paketlerEditPlan => 'Edit my dates and hotels';
+
+  @override
   String get paketlerFootnote =>
       'Packages do not renew automatically. The period starts when you purchase.';
+
+  @override
+  String get paketlerFreeBadge => 'For everyone';
 
   @override
   String get paketlerFreeF1 => 'Prayers, the Holy Quran and dhikr counter';
@@ -6731,7 +6768,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerFullBadge => 'All inclusive';
 
   @override
-  String get paketlerFullCta => 'Get info';
+  String get paketlerFullCta => 'Buy';
 
   @override
   String get paketlerFullF1 => 'Return flight tickets';
@@ -6768,6 +6805,31 @@ class AppLocalizationsEn extends AppLocalizations {
       'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
 
   @override
+  String get paketlerPlanHotel => 'Hotel name';
+
+  @override
+  String get paketlerPlanIntro =>
+      'Enter your stay dates and hotels in Makkah and Madinah. Your countdown cards on the home page use these details.';
+
+  @override
+  String get paketlerPlanMedine => 'Madinah';
+
+  @override
+  String get paketlerPlanMekke => 'Makkah';
+
+  @override
+  String get paketlerPlanPickDates => 'Select check-in and check-out dates';
+
+  @override
+  String get paketlerPlanSave => 'Save';
+
+  @override
+  String get paketlerPlanSaved => 'Your journey details were saved.';
+
+  @override
+  String get paketlerPlanTitle => 'My Journey';
+
+  @override
   String get paketlerQuickSub => 'Umrah and Family packages';
 
   @override
@@ -6800,6 +6862,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paketlerUmrePrice => '€9.99';
+
+  @override
+  String paketlerYourPackage(String name) {
+    return 'Your package: $name';
+  }
 
   @override
   String get quranAddBookmark => 'Add bookmark';

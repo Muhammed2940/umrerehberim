@@ -4,7 +4,8 @@ import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common/widgets/acente_ozelligi_card.dart';
+import '../../paketler/providers/personal_plan_provider.dart';
+import '../../paketler/widgets/paket_sec_card.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
@@ -80,6 +81,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       builder: (context, home, _) {
         final userName = app.currentUser?.userName.trim() ?? '';
         final bireysel = app.currentUser?.isBireysel ?? false;
+        // Bireysel: Kutsal Yolculuk kartları yalnız paket seçiliyse, kullanıcının kendi
+        // girdiği Mekke/Medine bilgisiyle (PersonalPlanProvider; ücretsizde bölüm yok).
+        final plan = context.watch<PersonalPlanProvider>();
+        final uid = app.currentUser?.id;
+        if (bireysel && uid != null) plan.loadFor(uid);
 
         return Scaffold(
           appBar: AppBar(
@@ -136,13 +142,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          SectionHeader(title: context.l10n.homeSectionJourney, icon: FlutterIslamicIcons.solidKaaba),
-                          if (bireysel)
-                            const AcenteOzelligiCard()
-                          else
-                            _countdownSwiper(app, home),
+                          if (!bireysel || plan.hasPaidPackage) ...[
+                            SectionHeader(title: context.l10n.homeSectionJourney, icon: FlutterIslamicIcons.solidKaaba),
+                            bireysel ? _personalCountdownSwiper(plan, home) : _countdownSwiper(app, home),
+                          ],
                           SectionHeader(title: context.l10n.homeSectionPrayerTimes, icon: FlutterIslamicIcons.solidMosque),
                           _prayerSwiper(app, home),
+                          if (bireysel) ...[const SizedBox(height: 12), const PaketSecCard()],
                           SectionHeader(title: context.l10n.homeSectionQuickAccess, icon: Icons.grid_view_rounded),
                           _quickActions(bireysel: bireysel),
                           SectionHeader(title: context.l10n.homeSectionCurrency, icon: Icons.currency_exchange_rounded),
@@ -166,6 +172,27 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
+  /// Bireysel paketli kullanıcının kendi girdiği Mekke/Medine konaklaması (oda yok).
+  Widget _personalCountdownSwiper(PersonalPlanProvider plan, HomeProvider home) {
+    final cards = [
+      ModernCountdownCard(
+        city: 'Mekke',
+        trip: plan.mekkeTrip,
+        totalDays: home.totalDays(plan.mekkeTrip),
+        daysLeft: home.daysLeft(plan.mekkeTrip),
+        hotelName: plan.mekke.hotel.isEmpty ? null : plan.mekke.hotel,
+      ),
+      ModernCountdownCard(
+        city: 'Medine',
+        trip: plan.medineTrip,
+        totalDays: home.totalDays(plan.medineTrip),
+        daysLeft: home.daysLeft(plan.medineTrip),
+        hotelName: plan.medine.hotel.isEmpty ? null : plan.medine.hotel,
+      ),
+    ];
+    return _swiperOf(cards);
+  }
+
   Widget _countdownSwiper(AppStateProvider app, HomeProvider home) {
     final cards = [
       ModernCountdownCard(
@@ -185,6 +212,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         roomNumber: app.medineOda?.roomNumber,
       ),
     ];
+    return _swiperOf(cards);
+  }
+
+  Widget _swiperOf(List<Widget> cards) {
     return SizedBox(
       height: 232,
       child: Swiper(

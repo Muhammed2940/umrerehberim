@@ -38,12 +38,6 @@ class AcenteOzelligiCard extends StatelessWidget {
                   l.bireyselAgencyOnlyBody,
                   style: const TextStyle(fontSize: 12.5, color: AppColors.textMuted),
                 ),
-                const SizedBox(height: 8),
-                // Bireysel kullanıcıyı paketlere yönlendirir.
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed('/paketler'),
-                  child: InfoChip(l.paketlerBrowse, icon: Icons.workspace_premium_rounded, strong: true),
-                ),
               ],
             ),
           ),

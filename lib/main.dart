@@ -27,6 +27,7 @@ import 'features/home/providers/home_provider.dart';
 import 'features/splash/providers/splash_provider.dart';
 import 'core/utils/firebase_init.dart';
 import 'l10n/gen/app_localizations.dart';
+import 'features/paketler/providers/personal_plan_provider.dart';
 
 /// Açılış: ekran HEMEN çizilir (logo + "Başlatılıyor..."), servisler arkadan
 /// süre sınırıyla başlatılır. Bir adım hata verirse siyah ekranda kalmak yerine
@@ -137,6 +138,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: localeProvider),
+        ChangeNotifierProvider.value(value: personalPlan),
         ChangeNotifierProvider(create: (_) => AppStateProvider()),
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => LoginProvider()),

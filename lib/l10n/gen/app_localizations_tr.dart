@@ -6612,6 +6612,11 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String paketlerActivated(String name) {
+    return '$name etkinleştirildi.';
+  }
+
+  @override
   String get paketlerAgencyNote =>
       'Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.';
 
@@ -6634,6 +6639,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerAilePrice => '799,99 TL';
 
   @override
+  String get paketlerBackToFree => 'Ücretsiz plana dön';
+
+  @override
+  String get paketlerBackToFreeBody =>
+      'Paketiniz ve girdiğiniz yolculuk bilgileri bu cihazdan kaldırılacak.';
+
+  @override
+  String get paketlerBackToFreeDone => 'Ücretsiz plana geçildi.';
+
+  @override
+  String get paketlerBackToFreeTitle => 'Ücretsiz plana dön';
+
+  @override
   String get paketlerBestValue => 'Kişi başı en uygun';
 
   @override
@@ -6643,15 +6661,34 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerBuy => 'Satın al';
 
   @override
-  String get paketlerBuySoon =>
-      'Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.';
+  String get paketlerCancel => 'Vazgeç';
+
+  @override
+  String get paketlerChooseSub =>
+      'Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası';
+
+  @override
+  String get paketlerChooseTitle => 'Paketinizi seçin';
+
+  @override
+  String get paketlerConfirm => 'Etkinleştir';
 
   @override
   String get paketlerCurrent => 'Mevcut planınız';
 
   @override
+  String get paketlerDemoBody =>
+      'Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.';
+
+  @override
+  String get paketlerEditPlan => 'Tarih ve otel bilgilerimi düzenle';
+
+  @override
   String get paketlerFootnote =>
       'Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.';
+
+  @override
+  String get paketlerFreeBadge => 'Herkese açık';
 
   @override
   String get paketlerFreeF1 => 'Dualar, Kur\'an-ı Kerim ve zikirmatik';
@@ -6676,7 +6713,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerFullBadge => 'Her şey dahil';
 
   @override
-  String get paketlerFullCta => 'Bilgi al';
+  String get paketlerFullCta => 'Satın al';
 
   @override
   String get paketlerFullF1 => 'Gidiş-dönüş uçak bileti';
@@ -6713,6 +6750,31 @@ class AppLocalizationsTr extends AppLocalizations {
       'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
 
   @override
+  String get paketlerPlanHotel => 'Otel adı';
+
+  @override
+  String get paketlerPlanIntro =>
+      'Mekke ve Medine\'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.';
+
+  @override
+  String get paketlerPlanMedine => 'Medine';
+
+  @override
+  String get paketlerPlanMekke => 'Mekke';
+
+  @override
+  String get paketlerPlanPickDates => 'Giriş ve çıkış tarihi seçin';
+
+  @override
+  String get paketlerPlanSave => 'Kaydet';
+
+  @override
+  String get paketlerPlanSaved => 'Yolculuk bilgileriniz kaydedildi.';
+
+  @override
+  String get paketlerPlanTitle => 'Yolculuk Bilgilerim';
+
+  @override
   String get paketlerQuickSub => 'Umre ve Aile paketleri';
 
   @override
@@ -6745,6 +6807,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get paketlerUmrePrice => '349,99 TL';
+
+  @override
+  String paketlerYourPackage(String name) {
+    return 'Paketiniz: $name';
+  }
 
   @override
   String get quranAddBookmark => 'Yer işareti ekle';

@@ -139,11 +139,6 @@
     "en": "Buy",
     "ar": "شراء"
   },
-  "paketlerBuySoon": {
-    "tr": "Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.",
-    "en": "Payments are coming very soon. Packages will be available through the app store.",
-    "ar": "سيتوفر الدفع قريبًا جدًا. ستتوفر الباقات عبر متجر التطبيقات."
-  },
   "paketlerAgencyNote": {
     "tr": "Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.",
     "en": "If you travel with a partner agency, these features are provided free by your agency.",
@@ -210,8 +205,123 @@
     "ar": "جميع ميزات التطبيق في باقة العمرة"
   },
   "paketlerFullCta": {
-    "tr": "Bilgi al",
-    "en": "Get info",
-    "ar": "اطلب معلومات"
+    "tr": "Satın al",
+    "en": "Buy",
+    "ar": "شراء"
+  },
+  "paketlerFreeBadge": {
+    "tr": "Herkese açık",
+    "en": "For everyone",
+    "ar": "متاح للجميع"
+  },
+  "paketlerBackToFree": {
+    "tr": "Ücretsiz plana dön",
+    "en": "Switch to free plan",
+    "ar": "العودة إلى الخطة المجانية"
+  },
+  "paketlerBackToFreeTitle": {
+    "tr": "Ücretsiz plana dön",
+    "en": "Switch to free plan",
+    "ar": "العودة إلى الخطة المجانية"
+  },
+  "paketlerBackToFreeBody": {
+    "tr": "Paketiniz ve girdiğiniz yolculuk bilgileri bu cihazdan kaldırılacak.",
+    "en": "Your package and the journey details you entered will be removed from this device.",
+    "ar": "ستُزال باقتك وبيانات الرحلة التي أدخلتها من هذا الجهاز."
+  },
+  "paketlerBackToFreeDone": {
+    "tr": "Ücretsiz plana geçildi.",
+    "en": "Switched to the free plan.",
+    "ar": "تم الانتقال إلى الخطة المجانية."
+  },
+  "paketlerDemoBody": {
+    "tr": "Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.",
+    "en": "Demo version: the package will be activated on this device without payment. Once payments open, purchases will go through the app store.",
+    "ar": "نسخة تجريبية: ستُفعَّل الباقة على هذا الجهاز دون دفع. عند إتاحة الدفع ستتم عمليات الشراء عبر المتجر."
+  },
+  "paketlerCancel": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "ar": "إلغاء"
+  },
+  "paketlerConfirm": {
+    "tr": "Etkinleştir",
+    "en": "Activate",
+    "ar": "تفعيل"
+  },
+  "paketlerActivated": {
+    "tr": "{name} etkinleştirildi.",
+    "en": "{name} activated.",
+    "ar": "تم تفعيل {name}.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "paketlerEditPlan": {
+    "tr": "Tarih ve otel bilgilerimi düzenle",
+    "en": "Edit my dates and hotels",
+    "ar": "تعديل التواريخ والفنادق"
+  },
+  "paketlerChooseTitle": {
+    "tr": "Paketinizi seçin",
+    "en": "Choose your package",
+    "ar": "اختر باقتك"
+  },
+  "paketlerChooseSub": {
+    "tr": "Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası",
+    "en": "Makkah and Madinah countdown, audio guide and more",
+    "ar": "العد التنازلي لمكة والمدينة والدليل الصوتي والمزيد"
+  },
+  "paketlerYourPackage": {
+    "tr": "Paketiniz: {name}",
+    "en": "Your package: {name}",
+    "ar": "باقتك: {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "paketlerPlanTitle": {
+    "tr": "Yolculuk Bilgilerim",
+    "en": "My Journey",
+    "ar": "بيانات رحلتي"
+  },
+  "paketlerPlanIntro": {
+    "tr": "Mekke ve Medine'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.",
+    "en": "Enter your stay dates and hotels in Makkah and Madinah. Your countdown cards on the home page use these details.",
+    "ar": "أدخل تواريخ إقامتك وفندقك في مكة والمدينة. تُعرض بطاقات العد التنازلي في الصفحة الرئيسية بهذه البيانات."
+  },
+  "paketlerPlanMekke": {
+    "tr": "Mekke",
+    "en": "Makkah",
+    "ar": "مكة"
+  },
+  "paketlerPlanMedine": {
+    "tr": "Medine",
+    "en": "Madinah",
+    "ar": "المدينة"
+  },
+  "paketlerPlanPickDates": {
+    "tr": "Giriş ve çıkış tarihi seçin",
+    "en": "Select check-in and check-out dates",
+    "ar": "اختر تاريخي الوصول والمغادرة"
+  },
+  "paketlerPlanHotel": {
+    "tr": "Otel adı",
+    "en": "Hotel name",
+    "ar": "اسم الفندق"
+  },
+  "paketlerPlanSave": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "ar": "حفظ"
+  },
+  "paketlerPlanSaved": {
+    "tr": "Yolculuk bilgileriniz kaydedildi.",
+    "en": "Your journey details were saved.",
+    "ar": "تم حفظ بيانات رحلتك."
   }
 }

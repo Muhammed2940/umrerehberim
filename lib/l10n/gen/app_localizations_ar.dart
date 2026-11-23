@@ -6702,6 +6702,11 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String paketlerActivated(String name) {
+    return 'تم تفعيل $name.';
+  }
+
+  @override
   String get paketlerAgencyNote =>
       'إذا كنت تسافر مع وكالة متعاقدة فستقدّم لك وكالتك هذه الميزات مجانًا.';
 
@@ -6724,6 +6729,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerAilePrice => '19.99 €';
 
   @override
+  String get paketlerBackToFree => 'العودة إلى الخطة المجانية';
+
+  @override
+  String get paketlerBackToFreeBody =>
+      'ستُزال باقتك وبيانات الرحلة التي أدخلتها من هذا الجهاز.';
+
+  @override
+  String get paketlerBackToFreeDone => 'تم الانتقال إلى الخطة المجانية.';
+
+  @override
+  String get paketlerBackToFreeTitle => 'العودة إلى الخطة المجانية';
+
+  @override
   String get paketlerBestValue => 'الأوفر للشخص';
 
   @override
@@ -6733,15 +6751,34 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerBuy => 'شراء';
 
   @override
-  String get paketlerBuySoon =>
-      'سيتوفر الدفع قريبًا جدًا. ستتوفر الباقات عبر متجر التطبيقات.';
+  String get paketlerCancel => 'إلغاء';
+
+  @override
+  String get paketlerChooseSub =>
+      'العد التنازلي لمكة والمدينة والدليل الصوتي والمزيد';
+
+  @override
+  String get paketlerChooseTitle => 'اختر باقتك';
+
+  @override
+  String get paketlerConfirm => 'تفعيل';
 
   @override
   String get paketlerCurrent => 'خطتك الحالية';
 
   @override
+  String get paketlerDemoBody =>
+      'نسخة تجريبية: ستُفعَّل الباقة على هذا الجهاز دون دفع. عند إتاحة الدفع ستتم عمليات الشراء عبر المتجر.';
+
+  @override
+  String get paketlerEditPlan => 'تعديل التواريخ والفنادق';
+
+  @override
   String get paketlerFootnote =>
       'لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء.';
+
+  @override
+  String get paketlerFreeBadge => 'متاح للجميع';
 
   @override
   String get paketlerFreeF1 => 'الأدعية والقرآن الكريم والمسبحة';
@@ -6765,7 +6802,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerFullBadge => 'شامل كل شيء';
 
   @override
-  String get paketlerFullCta => 'اطلب معلومات';
+  String get paketlerFullCta => 'شراء';
 
   @override
   String get paketlerFullF1 => 'تذاكر طيران ذهابًا وإيابًا';
@@ -6802,6 +6839,31 @@ class AppLocalizationsAr extends AppLocalizations {
       'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
 
   @override
+  String get paketlerPlanHotel => 'اسم الفندق';
+
+  @override
+  String get paketlerPlanIntro =>
+      'أدخل تواريخ إقامتك وفندقك في مكة والمدينة. تُعرض بطاقات العد التنازلي في الصفحة الرئيسية بهذه البيانات.';
+
+  @override
+  String get paketlerPlanMedine => 'المدينة';
+
+  @override
+  String get paketlerPlanMekke => 'مكة';
+
+  @override
+  String get paketlerPlanPickDates => 'اختر تاريخي الوصول والمغادرة';
+
+  @override
+  String get paketlerPlanSave => 'حفظ';
+
+  @override
+  String get paketlerPlanSaved => 'تم حفظ بيانات رحلتك.';
+
+  @override
+  String get paketlerPlanTitle => 'بيانات رحلتي';
+
+  @override
   String get paketlerQuickSub => 'باقات العمرة والعائلة';
 
   @override
@@ -6833,6 +6895,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get paketlerUmrePrice => '9.99 €';
+
+  @override
+  String paketlerYourPackage(String name) {
+    return 'باقتك: $name';
+  }
 
   @override
   String get quranAddBookmark => 'إضافة علامة';

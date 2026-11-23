@@ -1,91 +1,160 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
+import '../providers/personal_plan_provider.dart';
 
-/// Bireysel kullanıcı paketleri (docs/plan/BIREYSEL_PLAN.md): Ücretsiz, Umre Paketi
-/// (30 gün, 349,99 TL / 9,99 €), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel,
-/// yemek, ulaşım, eSIM dahil), Aile/Arkadaş Paketi (6 kişi, 30 gün, 799,99 TL / 19,99 €).
-/// Ödeme (Google Play / App Store) henüz bağlı değil: "Satın al" bilgi mesajı gösterir.
+/// Bireysel kullanıcı paketleri (docs/plan/BIREYSEL_PLAN.md), fiyata göre sıralı:
+/// Ücretsiz, Umre Paketi (30 gün, 349,99 TL / 9,99 €), Aile/Arkadaş Paketi (6 kişi, 30 gün,
+/// 799,99 TL / 19,99 €), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel, yemek,
+/// ulaşım, eSIM dahil).
+/// DEMO: Ödeme henüz bağlı değil; "Satın al" onaydan sonra ödeme almadan paketi bu cihazda
+/// seçer ([PersonalPlanProvider]) ve Yolculuk Bilgilerim ekranını açar.
 /// Görünüm yeni değil: bilgi ekranlarının [InfoCardBox], [InfoIconBadge], [InfoChip],
 /// [InfoNote] bileşenleri ve profil başlığının yeşil degradesi.
-class PaketlerScreen extends StatelessWidget {
+class PaketlerScreen extends StatefulWidget {
   const PaketlerScreen({super.key});
+
+  @override
+  State<PaketlerScreen> createState() => _PaketlerScreenState();
+}
+
+class _PaketlerScreenState extends State<PaketlerScreen> {
+  @override
+  void initState() {
+    super.initState();
+    final uid = context.read<AppStateProvider>().currentUser?.id;
+    if (uid != null) personalPlan.loadFor(uid);
+  }
+
+  Future<void> _select(PaketId p, String name) async {
+    final l = context.l10n;
+    final free = p == PaketId.ucretsiz;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: Text(free ? l.paketlerBackToFreeTitle : name),
+        content: Text(free ? l.paketlerBackToFreeBody : l.paketlerDemoBody),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c, false), child: Text(l.paketlerCancel)),
+          FilledButton(onPressed: () => Navigator.pop(c, true), child: Text(l.paketlerConfirm)),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    await personalPlan.selectPaket(p);
+    if (!mounted) return;
+    if (free) {
+      GlobalSnackbar.showInfo(l.paketlerBackToFreeDone);
+    } else {
+      GlobalSnackbar.showSuccess(l.paketlerActivated(name));
+      Navigator.of(context).pushNamed('/yolculuk-bilgilerim');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    return Scaffold(
-      appBar: AppBar(title: Text(l.paketlerTitle)),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
-        children: [
-          Text(
-            l.paketlerIntro,
-            style: const TextStyle(fontSize: 14, height: 1.45, color: AppColors.textMuted),
-          ),
-          const SizedBox(height: 14),
-          _PaketKart(
-            icon: FlutterIslamicIcons.solidKaaba,
-            name: l.paketlerUmreName,
-            price: l.paketlerUmrePrice,
-            period: l.paketlerUmrePeriod,
-            badge: l.paketlerRecommended,
-            highlighted: true,
-            features: [
-              l.paketlerUmreF1,
-              l.paketlerUmreF2,
-              l.paketlerUmreF3,
-              l.paketlerUmreF4,
-              l.paketlerUmreF5,
+    return ListenableBuilder(
+      listenable: personalPlan,
+      builder: (context, _) {
+        final current = personalPlan.paket;
+        _PaketKart kart({
+          required PaketId id,
+          required IconData icon,
+          required String name,
+          required String price,
+          String? period,
+          required String badge,
+          required List<String> features,
+          bool highlighted = false,
+          String? ctaLabel,
+        }) =>
+            _PaketKart(
+              icon: icon,
+              name: name,
+              price: price,
+              period: period,
+              badge: current == id ? l.paketlerCurrent : badge,
+              features: features,
+              highlighted: highlighted,
+              current: current == id,
+              ctaLabel: id == PaketId.ucretsiz ? l.paketlerBackToFree : ctaLabel,
+              onCta: () => _select(id, name),
+              onEdit: id == PaketId.ucretsiz ? null : () => Navigator.of(context).pushNamed('/yolculuk-bilgilerim'),
+            );
+        return Scaffold(
+          appBar: AppBar(title: Text(l.paketlerTitle)),
+          body: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
+            children: [
+              Text(
+                l.paketlerIntro,
+                style: const TextStyle(fontSize: 14, height: 1.45, color: AppColors.textMuted),
+              ),
+              const SizedBox(height: 14),
+              kart(
+                id: PaketId.ucretsiz,
+                icon: Icons.favorite_rounded,
+                name: l.paketlerFreeName,
+                price: l.paketlerFreePrice,
+                badge: l.paketlerFreeBadge,
+                features: [l.paketlerFreeF1, l.paketlerFreeF2, l.paketlerFreeF3, l.paketlerFreeF4],
+              ),
+              kart(
+                id: PaketId.umre,
+                icon: FlutterIslamicIcons.solidKaaba,
+                name: l.paketlerUmreName,
+                price: l.paketlerUmrePrice,
+                period: l.paketlerUmrePeriod,
+                badge: l.paketlerRecommended,
+                highlighted: true,
+                features: [l.paketlerUmreF1, l.paketlerUmreF2, l.paketlerUmreF3, l.paketlerUmreF4, l.paketlerUmreF5],
+              ),
+              kart(
+                id: PaketId.aile,
+                icon: Icons.groups_rounded,
+                name: l.paketlerAileName,
+                price: l.paketlerAilePrice,
+                period: l.paketlerAilePeriod,
+                badge: l.paketlerBestValue,
+                features: [l.paketlerAileF1, l.paketlerAileF2, l.paketlerAileF3],
+              ),
+              kart(
+                id: PaketId.full,
+                icon: Icons.flight_takeoff_rounded,
+                name: l.paketlerFullName,
+                price: l.paketlerFullPrice,
+                period: l.paketlerFullPeriod,
+                badge: l.paketlerFullBadge,
+                highlighted: true,
+                ctaLabel: l.paketlerFullCta,
+                features: [
+                  l.paketlerFullF1,
+                  l.paketlerFullF2,
+                  l.paketlerFullF3,
+                  l.paketlerFullF4,
+                  l.paketlerFullF5,
+                  l.paketlerFullF6,
+                  l.paketlerFullF7,
+                ],
+              ),
+              InfoNote(l.paketlerAgencyNote, icon: FlutterIslamicIcons.solidHadji),
+              const SizedBox(height: 4),
+              Text(
+                l.paketlerFootnote,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
+              ),
             ],
           ),
-          _PaketKart(
-            icon: Icons.flight_takeoff_rounded,
-            name: l.paketlerFullName,
-            price: l.paketlerFullPrice,
-            period: l.paketlerFullPeriod,
-            badge: l.paketlerFullBadge,
-            highlighted: true,
-            ctaLabel: l.paketlerFullCta,
-            features: [
-              l.paketlerFullF1,
-              l.paketlerFullF2,
-              l.paketlerFullF3,
-              l.paketlerFullF4,
-              l.paketlerFullF5,
-              l.paketlerFullF6,
-              l.paketlerFullF7,
-            ],
-          ),
-          _PaketKart(
-            icon: Icons.groups_rounded,
-            name: l.paketlerAileName,
-            price: l.paketlerAilePrice,
-            period: l.paketlerAilePeriod,
-            badge: l.paketlerBestValue,
-            features: [l.paketlerAileF1, l.paketlerAileF2, l.paketlerAileF3],
-          ),
-          _PaketKart(
-            icon: Icons.favorite_rounded,
-            name: l.paketlerFreeName,
-            price: l.paketlerFreePrice,
-            badge: l.paketlerCurrent,
-            current: true,
-            features: [l.paketlerFreeF1, l.paketlerFreeF2, l.paketlerFreeF3, l.paketlerFreeF4],
-          ),
-          InfoNote(l.paketlerAgencyNote, icon: FlutterIslamicIcons.solidHadji),
-          const SizedBox(height: 4),
-          Text(
-            l.paketlerFootnote,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 12, color: AppColors.textMuted),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -104,8 +173,13 @@ class _PaketKart extends StatelessWidget {
   /// Önerilen paket: üst kısım profil başlığındaki yeşil degradeyle.
   final bool highlighted;
 
-  /// Kullanıcının mevcut planı: satın alma düğmesi yok.
+  /// Kullanıcının mevcut planı: satın alma düğmesi yerine (varsa) düzenleme düğmesi.
   final bool current;
+
+  final VoidCallback onCta;
+
+  /// Mevcut paketse "Yolculuk bilgilerimi düzenle" (ücretsiz pakette yok).
+  final VoidCallback? onEdit;
 
   const _PaketKart({
     required this.icon,
@@ -117,6 +191,8 @@ class _PaketKart extends StatelessWidget {
     this.ctaLabel,
     this.highlighted = false,
     this.current = false,
+    required this.onCta,
+    this.onEdit,
   });
 
   @override
@@ -208,18 +284,23 @@ class _PaketKart extends StatelessWidget {
               ],
             ),
           ),
-        if (!current) ...[
+        if (!current || onEdit != null) ...[
           const SizedBox(height: 6),
-          highlighted
-              ? ElevatedButton(
-                  onPressed: () => GlobalSnackbar.showInfo(l.paketlerBuySoon),
-                  child: Text(ctaLabel ?? l.paketlerBuy),
-                )
-              : OutlinedButton(
-                  onPressed: () => GlobalSnackbar.showInfo(l.paketlerBuySoon),
-                  style: OutlinedButton.styleFrom(minimumSize: const Size(64, 48)),
-                  child: Text(ctaLabel ?? l.paketlerBuy),
-                ),
+          if (current)
+            OutlinedButton.icon(
+              onPressed: onEdit,
+              style: OutlinedButton.styleFrom(minimumSize: const Size(64, 48)),
+              icon: const Icon(Icons.edit_calendar_rounded),
+              label: Text(l.paketlerEditPlan),
+            )
+          else if (highlighted)
+            ElevatedButton(onPressed: onCta, child: Text(ctaLabel ?? l.paketlerBuy))
+          else
+            OutlinedButton(
+              onPressed: onCta,
+              style: OutlinedButton.styleFrom(minimumSize: const Size(64, 48)),
+              child: Text(ctaLabel ?? l.paketlerBuy),
+            ),
         ],
       ],
     );

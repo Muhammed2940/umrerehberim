@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/services/firestore_service.dart';
-import '../../../common/widgets/acente_ozelligi_card.dart';
 import '../../../common/widgets/change_secret_tile.dart';
 import '../../../common/widgets/language_picker.dart';
 import '../../../core/providers/app_state_provider.dart';
@@ -18,6 +17,8 @@ import '../../auth/models/user_model.dart';
 import '../../auth/providers/login_provider.dart';
 import '../../cuzdan/widgets/wallet_profile_card.dart';
 import '../../info_screen/widgets/info_widgets.dart' show InfoChip;
+import '../../paketler/providers/personal_plan_provider.dart';
+import '../../paketler/widgets/paket_sec_card.dart';
 import '../providers/home_provider.dart';
 import '../widgets/basliklar.dart';
 import '../widgets/info_card.dart';
@@ -376,8 +377,19 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
         title: l.homeRegistrationDate,
         value: _formatDate(user.createdAt),
       ),
-      SectionHeader(title: l.homeUmrahInfo, icon: FlutterIslamicIcons.solidKaaba),
-      const AcenteOzelligiCard(),
+      // Umre bilgileri yalnız paket seçiliyse (ücretsizde bölüm yok).
+      ListenableBuilder(
+        listenable: personalPlan,
+        builder: (context, _) => personalPlan.hasPaidPackage
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SectionHeader(title: l.homeUmrahInfo, icon: FlutterIslamicIcons.solidKaaba),
+                  const PaketSecCard(),
+                ],
+              )
+            : const SizedBox.shrink(),
+      ),
       const SizedBox(height: 16),
       const LanguageSettingTile(),
       SectionHeader(title: l.homeLocationTracking, icon: Icons.location_on_rounded),

@@ -3871,6 +3871,14 @@
       }
     }
   },
+  "paketlerActivated": "{name} etkinleştirildi.",
+  "@paketlerActivated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "paketlerAgencyNote": "Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.",
   "paketlerAileF1": "Umre Paketi'ndeki her şey, 6 kişi için",
   "paketlerAileF2": "Grubunuza özel canlı harita",
@@ -3878,12 +3886,22 @@
   "paketlerAileName": "Aile / Arkadaş Paketi",
   "paketlerAilePeriod": "30 gün · 6 kişiye kadar",
   "paketlerAilePrice": "799,99 TL",
+  "paketlerBackToFree": "Ücretsiz plana dön",
+  "paketlerBackToFreeBody": "Paketiniz ve girdiğiniz yolculuk bilgileri bu cihazdan kaldırılacak.",
+  "paketlerBackToFreeDone": "Ücretsiz plana geçildi.",
+  "paketlerBackToFreeTitle": "Ücretsiz plana dön",
   "paketlerBestValue": "Kişi başı en uygun",
   "paketlerBrowse": "Paketleri incele",
   "paketlerBuy": "Satın al",
-  "paketlerBuySoon": "Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.",
+  "paketlerCancel": "Vazgeç",
+  "paketlerChooseSub": "Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası",
+  "paketlerChooseTitle": "Paketinizi seçin",
+  "paketlerConfirm": "Etkinleştir",
   "paketlerCurrent": "Mevcut planınız",
+  "paketlerDemoBody": "Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.",
+  "paketlerEditPlan": "Tarih ve otel bilgilerimi düzenle",
   "paketlerFootnote": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
+  "paketlerFreeBadge": "Herkese açık",
   "paketlerFreeF1": "Dualar, Kur'an-ı Kerim ve zikirmatik",
   "paketlerFreeF2": "Ezan vakitleri ve kıble",
   "paketlerFreeF3": "Gezilecek yerler, Harem kapıları ve ulaşım bilgileri",
@@ -3891,7 +3909,7 @@
   "paketlerFreeName": "Ücretsiz",
   "paketlerFreePrice": "0 TL",
   "paketlerFullBadge": "Her şey dahil",
-  "paketlerFullCta": "Bilgi al",
+  "paketlerFullCta": "Satın al",
   "paketlerFullF1": "Gidiş-dönüş uçak bileti",
   "paketlerFullF2": "Umre vizesi",
   "paketlerFullF3": "Mekke ve Medine'de otel konaklaması",
@@ -3903,6 +3921,14 @@
   "paketlerFullPeriod": "10 gün · kişi başı",
   "paketlerFullPrice": "1.500 $",
   "paketlerIntro": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+  "paketlerPlanHotel": "Otel adı",
+  "paketlerPlanIntro": "Mekke ve Medine'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.",
+  "paketlerPlanMedine": "Medine",
+  "paketlerPlanMekke": "Mekke",
+  "paketlerPlanPickDates": "Giriş ve çıkış tarihi seçin",
+  "paketlerPlanSave": "Kaydet",
+  "paketlerPlanSaved": "Yolculuk bilgileriniz kaydedildi.",
+  "paketlerPlanTitle": "Yolculuk Bilgilerim",
   "paketlerQuickSub": "Umre ve Aile paketleri",
   "paketlerRecommended": "Önerilen",
   "paketlerTitle": "Paketler",
@@ -3914,6 +3940,14 @@
   "paketlerUmreName": "Umre Paketi",
   "paketlerUmrePeriod": "30 gün · tek kişi",
   "paketlerUmrePrice": "349,99 TL",
+  "paketlerYourPackage": "Paketiniz: {name}",
+  "@paketlerYourPackage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "quranAddBookmark": "Yer işareti ekle",
   "quranAgoDays": "{count} gün önce",
   "@quranAgoDays": {

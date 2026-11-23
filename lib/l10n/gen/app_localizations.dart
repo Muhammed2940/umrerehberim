@@ -11936,6 +11936,12 @@ abstract class AppLocalizations {
   /// **'Telefonu {degrees}° sağa çevirin'**
   String kibleTurnRight(int degrees);
 
+  /// No description provided for @paketlerActivated.
+  ///
+  /// In tr, this message translates to:
+  /// **'{name} etkinleştirildi.'**
+  String paketlerActivated(String name);
+
   /// No description provided for @paketlerAgencyNote.
   ///
   /// In tr, this message translates to:
@@ -11978,6 +11984,30 @@ abstract class AppLocalizations {
   /// **'799,99 TL'**
   String get paketlerAilePrice;
 
+  /// No description provided for @paketlerBackToFree.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz plana dön'**
+  String get paketlerBackToFree;
+
+  /// No description provided for @paketlerBackToFreeBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketiniz ve girdiğiniz yolculuk bilgileri bu cihazdan kaldırılacak.'**
+  String get paketlerBackToFreeBody;
+
+  /// No description provided for @paketlerBackToFreeDone.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz plana geçildi.'**
+  String get paketlerBackToFreeDone;
+
+  /// No description provided for @paketlerBackToFreeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz plana dön'**
+  String get paketlerBackToFreeTitle;
+
   /// No description provided for @paketlerBestValue.
   ///
   /// In tr, this message translates to:
@@ -11996,11 +12026,29 @@ abstract class AppLocalizations {
   /// **'Satın al'**
   String get paketlerBuy;
 
-  /// No description provided for @paketlerBuySoon.
+  /// No description provided for @paketlerCancel.
   ///
   /// In tr, this message translates to:
-  /// **'Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.'**
-  String get paketlerBuySoon;
+  /// **'Vazgeç'**
+  String get paketlerCancel;
+
+  /// No description provided for @paketlerChooseSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası'**
+  String get paketlerChooseSub;
+
+  /// No description provided for @paketlerChooseTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketinizi seçin'**
+  String get paketlerChooseTitle;
+
+  /// No description provided for @paketlerConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Etkinleştir'**
+  String get paketlerConfirm;
 
   /// No description provided for @paketlerCurrent.
   ///
@@ -12008,11 +12056,29 @@ abstract class AppLocalizations {
   /// **'Mevcut planınız'**
   String get paketlerCurrent;
 
+  /// No description provided for @paketlerDemoBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.'**
+  String get paketlerDemoBody;
+
+  /// No description provided for @paketlerEditPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tarih ve otel bilgilerimi düzenle'**
+  String get paketlerEditPlan;
+
   /// No description provided for @paketlerFootnote.
   ///
   /// In tr, this message translates to:
   /// **'Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.'**
   String get paketlerFootnote;
+
+  /// No description provided for @paketlerFreeBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Herkese açık'**
+  String get paketlerFreeBadge;
 
   /// No description provided for @paketlerFreeF1.
   ///
@@ -12059,7 +12125,7 @@ abstract class AppLocalizations {
   /// No description provided for @paketlerFullCta.
   ///
   /// In tr, this message translates to:
-  /// **'Bilgi al'**
+  /// **'Satın al'**
   String get paketlerFullCta;
 
   /// No description provided for @paketlerFullF1.
@@ -12128,6 +12194,54 @@ abstract class AppLocalizations {
   /// **'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.'**
   String get paketlerIntro;
 
+  /// No description provided for @paketlerPlanHotel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Otel adı'**
+  String get paketlerPlanHotel;
+
+  /// No description provided for @paketlerPlanIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke ve Medine\'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.'**
+  String get paketlerPlanIntro;
+
+  /// No description provided for @paketlerPlanMedine.
+  ///
+  /// In tr, this message translates to:
+  /// **'Medine'**
+  String get paketlerPlanMedine;
+
+  /// No description provided for @paketlerPlanMekke.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mekke'**
+  String get paketlerPlanMekke;
+
+  /// No description provided for @paketlerPlanPickDates.
+  ///
+  /// In tr, this message translates to:
+  /// **'Giriş ve çıkış tarihi seçin'**
+  String get paketlerPlanPickDates;
+
+  /// No description provided for @paketlerPlanSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get paketlerPlanSave;
+
+  /// No description provided for @paketlerPlanSaved.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yolculuk bilgileriniz kaydedildi.'**
+  String get paketlerPlanSaved;
+
+  /// No description provided for @paketlerPlanTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yolculuk Bilgilerim'**
+  String get paketlerPlanTitle;
+
   /// No description provided for @paketlerQuickSub.
   ///
   /// In tr, this message translates to:
@@ -12193,6 +12307,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'349,99 TL'**
   String get paketlerUmrePrice;
+
+  /// No description provided for @paketlerYourPackage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketiniz: {name}'**
+  String paketlerYourPackage(String name);
 
   /// No description provided for @quranAddBookmark.
   ///

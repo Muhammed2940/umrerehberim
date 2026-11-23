@@ -24,6 +24,7 @@ import '../../hatim/data/hatim_service.dart';
 import '../../hatim/data/hatim_watcher.dart';
 import '../../splash/providers/splash_provider.dart';
 import '../models/user_model.dart';
+import '../../paketler/providers/personal_plan_provider.dart';
 
 /// Giriş / çıkış akışı.
 class LoginProvider extends ChangeNotifier {
@@ -363,6 +364,7 @@ class LoginProvider extends ChangeNotifier {
 
     if (navigator.mounted) navigator.popUntil((r) => r.isFirst);
     appState.clear();
+    personalPlan.clear();
   }
 
   /// Oturuma bağlı yerel veriler: LocalCacheService anahtarları + kullanıcı token'ı +
@@ -379,8 +381,10 @@ class LoginProvider extends ChangeNotifier {
       for (final k in _userScopedKeys) {
         await prefs.remove(k);
       }
-      // ActivityPing: 'last_active_ping_<uid>' (kontrol merkezi etkinlik izi).
-      for (final k in prefs.getKeys().where((k) => k.startsWith('last_active_ping_')).toList()) {
+      // ActivityPing: 'last_active_ping_<uid>' (kontrol merkezi etkinlik izi) ve
+      // bireysel demo paket/yolculuk bilgisi 'personal_plan_<uid>'.
+      for (final k in prefs.getKeys().where((k) =>
+          k.startsWith('last_active_ping_') || k.startsWith(PersonalPlanProvider.keyPrefix)).toList()) {
         await prefs.remove(k);
       }
     } catch (e) {
@@ -529,6 +533,7 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
     if (navigator.mounted) navigator.popUntil((r) => r.isFirst);
     appState.clear();
+    personalPlan.clear();
     if (error != null) {
       GlobalSnackbar.showError(error);
       return false;
