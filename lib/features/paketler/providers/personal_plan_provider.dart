@@ -24,6 +24,11 @@ class PersonalPlanProvider extends ChangeNotifier {
 
   PaketId get paket => _paket;
   bool get hasPaidPackage => _paket != PaketId.ucretsiz;
+
+  /// Full Umre Paketi: ödemeden sonra yönetici onayı beklenir; tarihleri yönetici
+  /// kullanıcıyla iletişime geçip belirler (kullanıcı kendisi girmez).
+  bool get awaitingApproval => _paket == PaketId.full && !_approved;
+  bool _approved = false;
   CityPlan get mekke => _mekke;
   CityPlan get medine => _medine;
   bool get hasAnyDates => _mekke.start != null || _medine.start != null;
@@ -42,6 +47,7 @@ class PersonalPlanProvider extends ChangeNotifier {
       if (raw != null && _uid == uid) {
         final m = jsonDecode(raw) as Map<String, dynamic>;
         _paket = PaketId.values.firstWhere((p) => p.name == m['paket'], orElse: () => PaketId.ucretsiz);
+        _approved = m['approved'] == true;
         _mekke = CityPlan.fromJson(m['mekke']);
         _medine = CityPlan.fromJson(m['medine']);
       }
@@ -53,7 +59,8 @@ class PersonalPlanProvider extends ChangeNotifier {
 
   Future<void> selectPaket(PaketId p) async {
     _paket = p;
-    if (p == PaketId.ucretsiz) {
+    _approved = false;
+    if (p == PaketId.ucretsiz || p == PaketId.full) {
       _mekke = const CityPlan();
       _medine = const CityPlan();
     }
@@ -75,6 +82,7 @@ class PersonalPlanProvider extends ChangeNotifier {
 
   void _reset() {
     _paket = PaketId.ucretsiz;
+    _approved = false;
     _mekke = const CityPlan();
     _medine = const CityPlan();
   }
@@ -87,7 +95,7 @@ class PersonalPlanProvider extends ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(
         '$keyPrefix$uid',
-        jsonEncode({'paket': _paket.name, 'mekke': _mekke.toJson(), 'medine': _medine.toJson()}),
+        jsonEncode({'paket': _paket.name, 'approved': _approved, 'mekke': _mekke.toJson(), 'medine': _medine.toJson()}),
       );
     } catch (e) {
       debugPrint('Kişisel plan kaydedilemedi: $e');

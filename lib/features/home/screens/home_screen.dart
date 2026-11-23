@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../paketler/providers/personal_plan_provider.dart';
+import '../../paketler/widgets/onay_bekliyor_card.dart';
 import '../../paketler/widgets/paket_sec_card.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
@@ -144,7 +145,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         children: [
                           if (!bireysel || plan.hasPaidPackage) ...[
                             SectionHeader(title: context.l10n.homeSectionJourney, icon: FlutterIslamicIcons.solidKaaba),
-                            bireysel ? _personalCountdownSwiper(plan, home) : _countdownSwiper(app, home),
+                            if (!bireysel)
+                              _countdownSwiper(app, home)
+                            else if (plan.awaitingApproval)
+                              const OnayBekliyorCard()
+                            else
+                              _personalCountdownSwiper(plan, home),
                           ],
                           SectionHeader(title: context.l10n.homeSectionPrayerTimes, icon: FlutterIslamicIcons.solidMosque),
                           _prayerSwiper(app, home),

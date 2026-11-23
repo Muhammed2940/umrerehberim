@@ -3871,14 +3871,28 @@
       }
     }
   },
-  "paketlerActivated": "{name} etkinleştirildi.",
-  "@paketlerActivated": {
+  "odemeDemoNote": "Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.",
+  "odemeFullNote": "Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.",
+  "odemePay": "{price} öde",
+  "@odemePay": {
     "placeholders": {
-      "name": {
+      "price": {
         "type": "String"
       }
     }
   },
+  "odemePoweredBy": "PayTR güvenli ödeme altyapısı",
+  "odemeProcessing": "Ödeme işleniyor",
+  "odemeProcessingBody": "Lütfen bekleyin, sayfadan ayrılmayın.",
+  "odemeRowPackage": "Paket",
+  "odemeRowPeriod": "Süre",
+  "odemeRowTotal": "Toplam",
+  "odemeSecureNote": "Ödeme, PayTR güvenli ödeme sayfasında yapılır. Kart bilgileriniz uygulamada saklanmaz.",
+  "odemeSuccess": "Ödeme başarılı",
+  "odemeSuccessBody": "Paketiniz etkinleştirildi. Şimdi yolculuk bilgilerinizi girebilirsiniz.",
+  "odemeSuccessFull": "Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.",
+  "odemeSummary": "Sipariş özeti",
+  "odemeTitle": "Ödeme",
   "paketlerAgencyNote": "Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.",
   "paketlerAileF1": "Umre Paketi'ndeki her şey, 6 kişi için",
   "paketlerAileF2": "Grubunuza özel canlı harita",
@@ -3896,9 +3910,9 @@
   "paketlerCancel": "Vazgeç",
   "paketlerChooseSub": "Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası",
   "paketlerChooseTitle": "Paketinizi seçin",
-  "paketlerConfirm": "Etkinleştir",
+  "paketlerConfirm": "Evet, dön",
+  "paketlerContactUs": "Bizimle iletişime geçin",
   "paketlerCurrent": "Mevcut planınız",
-  "paketlerDemoBody": "Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.",
   "paketlerEditPlan": "Tarih ve otel bilgilerimi düzenle",
   "paketlerFootnote": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
   "paketlerFreeBadge": "Herkese açık",
@@ -3921,6 +3935,10 @@
   "paketlerFullPeriod": "10 gün · kişi başı",
   "paketlerFullPrice": "1.500 $",
   "paketlerIntro": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+  "paketlerPendingBadge": "Onay bekleniyor",
+  "paketlerPendingBody": "Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.",
+  "paketlerPendingShort": "Onay bekleniyor · bizimle iletişime geçin",
+  "paketlerPendingTitle": "Onay bekleniyor",
   "paketlerPlanHotel": "Otel adı",
   "paketlerPlanIntro": "Mekke ve Medine'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.",
   "paketlerPlanMedine": "Medine",

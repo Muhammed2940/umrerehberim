@@ -8,13 +8,14 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
 import '../providers/personal_plan_provider.dart';
+import 'odeme_screen.dart';
 
 /// Bireysel kullanıcı paketleri (docs/plan/BIREYSEL_PLAN.md), fiyata göre sıralı:
 /// Ücretsiz, Umre Paketi (30 gün, 349,99 TL / 9,99 €), Aile/Arkadaş Paketi (6 kişi, 30 gün,
 /// 799,99 TL / 19,99 €), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel, yemek,
 /// ulaşım, eSIM dahil).
-/// DEMO: Ödeme henüz bağlı değil; "Satın al" onaydan sonra ödeme almadan paketi bu cihazda
-/// seçer ([PersonalPlanProvider]) ve Yolculuk Bilgilerim ekranını açar.
+/// DEMO: Ödeme henüz bağlı değil; "Satın al" animasyonlu ödeme sayfasını açar ([OdemeScreen]),
+/// ödeme almadan paketi bu cihazda seçer ([PersonalPlanProvider]). Full: yönetici onayı.
 /// Görünüm yeni değil: bilgi ekranlarının [InfoCardBox], [InfoIconBadge], [InfoChip],
 /// [InfoNote] bileşenleri ve profil başlığının yeşil degradesi.
 class PaketlerScreen extends StatefulWidget {
@@ -32,14 +33,22 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
     if (uid != null) personalPlan.loadFor(uid);
   }
 
-  Future<void> _select(PaketId p, String name) async {
+  /// Ücretli paket: animasyonlu ödeme sayfası; başarılıysa Umre/Aile için Yolculuk
+  /// Bilgilerim açılır, Full için onay bekleniyor durumu gösterilir.
+  Future<void> _buy(OdemeArgs args) async {
+    final ok = await Navigator.of(context).push(odemeRoute(args));
+    if (ok != true || !mounted) return;
+    if (args.id != PaketId.full) Navigator.of(context).pushNamed('/yolculuk-bilgilerim');
+  }
+
+  /// Ücretsiz plana dönüş (onaylı).
+  Future<void> _backToFree() async {
     final l = context.l10n;
-    final free = p == PaketId.ucretsiz;
     final ok = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
-        title: Text(free ? l.paketlerBackToFreeTitle : name),
-        content: Text(free ? l.paketlerBackToFreeBody : l.paketlerDemoBody),
+        title: Text(l.paketlerBackToFreeTitle),
+        content: Text(l.paketlerBackToFreeBody),
         actions: [
           TextButton(onPressed: () => Navigator.pop(c, false), child: Text(l.paketlerCancel)),
           FilledButton(onPressed: () => Navigator.pop(c, true), child: Text(l.paketlerConfirm)),
@@ -47,14 +56,8 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
       ),
     );
     if (ok != true || !mounted) return;
-    await personalPlan.selectPaket(p);
-    if (!mounted) return;
-    if (free) {
-      GlobalSnackbar.showInfo(l.paketlerBackToFreeDone);
-    } else {
-      GlobalSnackbar.showSuccess(l.paketlerActivated(name));
-      Navigator.of(context).pushNamed('/yolculuk-bilgilerim');
-    }
+    await personalPlan.selectPaket(PaketId.ucretsiz);
+    GlobalSnackbar.showInfo(l.paketlerBackToFreeDone);
   }
 
   @override
@@ -80,13 +83,24 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
               name: name,
               price: price,
               period: period,
-              badge: current == id ? l.paketlerCurrent : badge,
+              badge: current == id
+                  ? (id == PaketId.full && personalPlan.awaitingApproval ? l.paketlerPendingBadge : l.paketlerCurrent)
+                  : badge,
               features: features,
               highlighted: highlighted,
               current: current == id,
+              heroTag: 'paket-icon-${id.name}',
               ctaLabel: id == PaketId.ucretsiz ? l.paketlerBackToFree : ctaLabel,
-              onCta: () => _select(id, name),
-              onEdit: id == PaketId.ucretsiz ? null : () => Navigator.of(context).pushNamed('/yolculuk-bilgilerim'),
+              onCta: id == PaketId.ucretsiz
+                  ? _backToFree
+                  : () => _buy(OdemeArgs(id: id, icon: icon, name: name, price: price, period: period)),
+              editLabel: id == PaketId.full && personalPlan.awaitingApproval ? l.paketlerContactUs : null,
+              onEdit: switch (id) {
+                PaketId.ucretsiz => null,
+                PaketId.full when personalPlan.awaitingApproval => () =>
+                    Navigator.of(context).pushNamed('/technical-support'),
+                _ => () => Navigator.of(context).pushNamed('/yolculuk-bilgilerim'),
+              },
             );
         return Scaffold(
           appBar: AppBar(title: Text(l.paketlerTitle)),
@@ -178,6 +192,12 @@ class _PaketKart extends StatelessWidget {
 
   final VoidCallback onCta;
 
+  /// Paket ikonu ödeme sayfasına [Hero] ile uçar.
+  final Object heroTag;
+
+  /// Düzenleme düğmesinin yazısı; boşsa "Tarih ve otel bilgilerimi düzenle".
+  final String? editLabel;
+
   /// Mevcut paketse "Yolculuk bilgilerimi düzenle" (ücretsiz pakette yok).
   final VoidCallback? onEdit;
 
@@ -192,6 +212,8 @@ class _PaketKart extends StatelessWidget {
     this.highlighted = false,
     this.current = false,
     required this.onCta,
+    required this.heroTag,
+    this.editLabel,
     this.onEdit,
   });
 
@@ -200,18 +222,20 @@ class _PaketKart extends StatelessWidget {
     final l = context.l10n;
     final header = Row(
       children: [
-        if (highlighted)
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.18),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(icon, color: Colors.white, size: 24),
-          )
-        else
-          InfoIconBadge(icon),
+        Hero(
+          tag: heroTag,
+          child: highlighted
+              ? Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.18),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Icon(icon, color: Colors.white, size: 24),
+                )
+              : InfoIconBadge(icon),
+        ),
         const SizedBox(width: 14),
         Expanded(
           child: Column(
@@ -291,7 +315,7 @@ class _PaketKart extends StatelessWidget {
               onPressed: onEdit,
               style: OutlinedButton.styleFrom(minimumSize: const Size(64, 48)),
               icon: const Icon(Icons.edit_calendar_rounded),
-              label: Text(l.paketlerEditPlan),
+              label: Text(editLabel ?? l.paketlerEditPlan),
             )
           else if (highlighted)
             ElevatedButton(onPressed: onCta, child: Text(ctaLabel ?? l.paketlerBuy))

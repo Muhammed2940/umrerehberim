@@ -6702,9 +6702,56 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String paketlerActivated(String name) {
-    return 'تم تفعيل $name.';
+  String get odemeDemoNote =>
+      'نسخة تجريبية: لا يتم أخذ أي دفعة وتُفعَّل الباقة على هذا الجهاز.';
+
+  @override
+  String get odemeFullNote =>
+      'بعد الدفع يوافق مسؤولنا على طلبك ويتواصل معك لتحديد مواعيد رحلتك.';
+
+  @override
+  String odemePay(String price) {
+    return 'ادفع $price';
   }
+
+  @override
+  String get odemePoweredBy => 'بنية الدفع الآمنة PayTR';
+
+  @override
+  String get odemeProcessing => 'جارٍ معالجة الدفع';
+
+  @override
+  String get odemeProcessingBody => 'يرجى الانتظار وعدم مغادرة الصفحة.';
+
+  @override
+  String get odemeRowPackage => 'الباقة';
+
+  @override
+  String get odemeRowPeriod => 'المدة';
+
+  @override
+  String get odemeRowTotal => 'الإجمالي';
+
+  @override
+  String get odemeSecureNote =>
+      'يتم الدفع عبر صفحة الدفع الآمنة PayTR. لا تُخزَّن بيانات بطاقتك في التطبيق.';
+
+  @override
+  String get odemeSuccess => 'تم الدفع بنجاح';
+
+  @override
+  String get odemeSuccessBody =>
+      'تم تفعيل باقتك. يمكنك الآن إدخال بيانات رحلتك.';
+
+  @override
+  String get odemeSuccessFull =>
+      'تم استلام طلبك. سيتواصل معك مسؤولنا للموافقة وتحديد المواعيد.';
+
+  @override
+  String get odemeSummary => 'ملخص الطلب';
+
+  @override
+  String get odemeTitle => 'الدفع';
 
   @override
   String get paketlerAgencyNote =>
@@ -6761,14 +6808,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerChooseTitle => 'اختر باقتك';
 
   @override
-  String get paketlerConfirm => 'تفعيل';
+  String get paketlerConfirm => 'نعم، انتقل';
+
+  @override
+  String get paketlerContactUs => 'تواصل معنا';
 
   @override
   String get paketlerCurrent => 'خطتك الحالية';
-
-  @override
-  String get paketlerDemoBody =>
-      'نسخة تجريبية: ستُفعَّل الباقة على هذا الجهاز دون دفع. عند إتاحة الدفع ستتم عمليات الشراء عبر المتجر.';
 
   @override
   String get paketlerEditPlan => 'تعديل التواريخ والفنادق';
@@ -6837,6 +6883,19 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
+
+  @override
+  String get paketlerPendingBadge => 'بانتظار الموافقة';
+
+  @override
+  String get paketlerPendingBody =>
+      'تم استلام طلب باقة العمرة الشاملة. بعد الموافقة سيتواصل معك مسؤولنا لتحديد مواعيد رحلتك.';
+
+  @override
+  String get paketlerPendingShort => 'بانتظار الموافقة · تواصل معنا';
+
+  @override
+  String get paketlerPendingTitle => 'بانتظار الموافقة';
 
   @override
   String get paketlerPlanHotel => 'اسم الفندق';

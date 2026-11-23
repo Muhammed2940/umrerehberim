@@ -11936,11 +11936,95 @@ abstract class AppLocalizations {
   /// **'Telefonu {degrees}° sağa çevirin'**
   String kibleTurnRight(int degrees);
 
-  /// No description provided for @paketlerActivated.
+  /// No description provided for @odemeDemoNote.
   ///
   /// In tr, this message translates to:
-  /// **'{name} etkinleştirildi.'**
-  String paketlerActivated(String name);
+  /// **'Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.'**
+  String get odemeDemoNote;
+
+  /// No description provided for @odemeFullNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.'**
+  String get odemeFullNote;
+
+  /// No description provided for @odemePay.
+  ///
+  /// In tr, this message translates to:
+  /// **'{price} öde'**
+  String odemePay(String price);
+
+  /// No description provided for @odemePoweredBy.
+  ///
+  /// In tr, this message translates to:
+  /// **'PayTR güvenli ödeme altyapısı'**
+  String get odemePoweredBy;
+
+  /// No description provided for @odemeProcessing.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme işleniyor'**
+  String get odemeProcessing;
+
+  /// No description provided for @odemeProcessingBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen bekleyin, sayfadan ayrılmayın.'**
+  String get odemeProcessingBody;
+
+  /// No description provided for @odemeRowPackage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paket'**
+  String get odemeRowPackage;
+
+  /// No description provided for @odemeRowPeriod.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süre'**
+  String get odemeRowPeriod;
+
+  /// No description provided for @odemeRowTotal.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplam'**
+  String get odemeRowTotal;
+
+  /// No description provided for @odemeSecureNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme, PayTR güvenli ödeme sayfasında yapılır. Kart bilgileriniz uygulamada saklanmaz.'**
+  String get odemeSecureNote;
+
+  /// No description provided for @odemeSuccess.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme başarılı'**
+  String get odemeSuccess;
+
+  /// No description provided for @odemeSuccessBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketiniz etkinleştirildi. Şimdi yolculuk bilgilerinizi girebilirsiniz.'**
+  String get odemeSuccessBody;
+
+  /// No description provided for @odemeSuccessFull.
+  ///
+  /// In tr, this message translates to:
+  /// **'Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.'**
+  String get odemeSuccessFull;
+
+  /// No description provided for @odemeSummary.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sipariş özeti'**
+  String get odemeSummary;
+
+  /// No description provided for @odemeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme'**
+  String get odemeTitle;
 
   /// No description provided for @paketlerAgencyNote.
   ///
@@ -12047,20 +12131,20 @@ abstract class AppLocalizations {
   /// No description provided for @paketlerConfirm.
   ///
   /// In tr, this message translates to:
-  /// **'Etkinleştir'**
+  /// **'Evet, dön'**
   String get paketlerConfirm;
+
+  /// No description provided for @paketlerContactUs.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bizimle iletişime geçin'**
+  String get paketlerContactUs;
 
   /// No description provided for @paketlerCurrent.
   ///
   /// In tr, this message translates to:
   /// **'Mevcut planınız'**
   String get paketlerCurrent;
-
-  /// No description provided for @paketlerDemoBody.
-  ///
-  /// In tr, this message translates to:
-  /// **'Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.'**
-  String get paketlerDemoBody;
 
   /// No description provided for @paketlerEditPlan.
   ///
@@ -12193,6 +12277,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.'**
   String get paketlerIntro;
+
+  /// No description provided for @paketlerPendingBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekleniyor'**
+  String get paketlerPendingBadge;
+
+  /// No description provided for @paketlerPendingBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.'**
+  String get paketlerPendingBody;
+
+  /// No description provided for @paketlerPendingShort.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekleniyor · bizimle iletişime geçin'**
+  String get paketlerPendingShort;
+
+  /// No description provided for @paketlerPendingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Onay bekleniyor'**
+  String get paketlerPendingTitle;
 
   /// No description provided for @paketlerPlanHotel.
   ///

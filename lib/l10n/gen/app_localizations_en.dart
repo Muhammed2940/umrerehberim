@@ -6667,9 +6667,56 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String paketlerActivated(String name) {
-    return '$name activated.';
+  String get odemeDemoNote =>
+      'Demo version: no payment is taken; the package is activated on this device.';
+
+  @override
+  String get odemeFullNote =>
+      'After your payment, our manager approves your request and contacts you to set your travel dates.';
+
+  @override
+  String odemePay(String price) {
+    return 'Pay $price';
   }
+
+  @override
+  String get odemePoweredBy => 'Secured by PayTR';
+
+  @override
+  String get odemeProcessing => 'Processing payment';
+
+  @override
+  String get odemeProcessingBody => 'Please wait and do not leave this page.';
+
+  @override
+  String get odemeRowPackage => 'Package';
+
+  @override
+  String get odemeRowPeriod => 'Period';
+
+  @override
+  String get odemeRowTotal => 'Total';
+
+  @override
+  String get odemeSecureNote =>
+      'Payment is made on the PayTR secure payment page. Your card details are not stored in the app.';
+
+  @override
+  String get odemeSuccess => 'Payment successful';
+
+  @override
+  String get odemeSuccessBody =>
+      'Your package is active. You can now enter your journey details.';
+
+  @override
+  String get odemeSuccessFull =>
+      'Your request has been received. Our manager will contact you for approval and dates.';
+
+  @override
+  String get odemeSummary => 'Order summary';
+
+  @override
+  String get odemeTitle => 'Payment';
 
   @override
   String get paketlerAgencyNote =>
@@ -6726,14 +6773,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerChooseTitle => 'Choose your package';
 
   @override
-  String get paketlerConfirm => 'Activate';
+  String get paketlerConfirm => 'Yes, switch';
+
+  @override
+  String get paketlerContactUs => 'Contact us';
 
   @override
   String get paketlerCurrent => 'Your current plan';
-
-  @override
-  String get paketlerDemoBody =>
-      'Demo version: the package will be activated on this device without payment. Once payments open, purchases will go through the app store.';
 
   @override
   String get paketlerEditPlan => 'Edit my dates and hotels';
@@ -6803,6 +6849,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
+
+  @override
+  String get paketlerPendingBadge => 'Awaiting approval';
+
+  @override
+  String get paketlerPendingBody =>
+      'Your Full Umrah Package request has been received. After approval, our manager will contact you to set your travel dates.';
+
+  @override
+  String get paketlerPendingShort => 'Awaiting approval · contact us';
+
+  @override
+  String get paketlerPendingTitle => 'Awaiting approval';
 
   @override
   String get paketlerPlanHotel => 'Hotel name';

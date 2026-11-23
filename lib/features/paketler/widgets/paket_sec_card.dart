@@ -34,6 +34,14 @@ class PaketSecCard extends StatelessWidget {
             onTap: () => Navigator.of(context).pushNamed('/paketler'),
           );
         }
+        if (personalPlan.awaitingApproval) {
+          return QuickActionCard(
+            icon: Icons.hourglass_top_rounded,
+            title: l.paketlerYourPackage(paketName(context, personalPlan.paket)),
+            subtitle: l.paketlerPendingShort,
+            onTap: () => Navigator.of(context).pushNamed('/technical-support'),
+          );
+        }
         return QuickActionCard(
           icon: Icons.edit_calendar_rounded,
           title: l.paketlerYourPackage(paketName(context, personalPlan.paket)),

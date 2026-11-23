@@ -234,30 +234,15 @@
     "en": "Switched to the free plan.",
     "ar": "تم الانتقال إلى الخطة المجانية."
   },
-  "paketlerDemoBody": {
-    "tr": "Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.",
-    "en": "Demo version: the package will be activated on this device without payment. Once payments open, purchases will go through the app store.",
-    "ar": "نسخة تجريبية: ستُفعَّل الباقة على هذا الجهاز دون دفع. عند إتاحة الدفع ستتم عمليات الشراء عبر المتجر."
-  },
   "paketlerCancel": {
     "tr": "Vazgeç",
     "en": "Cancel",
     "ar": "إلغاء"
   },
   "paketlerConfirm": {
-    "tr": "Etkinleştir",
-    "en": "Activate",
-    "ar": "تفعيل"
-  },
-  "paketlerActivated": {
-    "tr": "{name} etkinleştirildi.",
-    "en": "{name} activated.",
-    "ar": "تم تفعيل {name}.",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
+    "tr": "Evet, dön",
+    "en": "Yes, switch",
+    "ar": "نعم، انتقل"
   },
   "paketlerEditPlan": {
     "tr": "Tarih ve otel bilgilerimi düzenle",
@@ -323,5 +308,110 @@
     "tr": "Yolculuk bilgileriniz kaydedildi.",
     "en": "Your journey details were saved.",
     "ar": "تم حفظ بيانات رحلتك."
+  },
+  "paketlerPendingTitle": {
+    "tr": "Onay bekleniyor",
+    "en": "Awaiting approval",
+    "ar": "بانتظار الموافقة"
+  },
+  "paketlerPendingBody": {
+    "tr": "Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.",
+    "en": "Your Full Umrah Package request has been received. After approval, our manager will contact you to set your travel dates.",
+    "ar": "تم استلام طلب باقة العمرة الشاملة. بعد الموافقة سيتواصل معك مسؤولنا لتحديد مواعيد رحلتك."
+  },
+  "paketlerPendingBadge": {
+    "tr": "Onay bekleniyor",
+    "en": "Awaiting approval",
+    "ar": "بانتظار الموافقة"
+  },
+  "paketlerPendingShort": {
+    "tr": "Onay bekleniyor · bizimle iletişime geçin",
+    "en": "Awaiting approval · contact us",
+    "ar": "بانتظار الموافقة · تواصل معنا"
+  },
+  "paketlerContactUs": {
+    "tr": "Bizimle iletişime geçin",
+    "en": "Contact us",
+    "ar": "تواصل معنا"
+  },
+  "odemeTitle": {
+    "tr": "Ödeme",
+    "en": "Payment",
+    "ar": "الدفع"
+  },
+  "odemeSummary": {
+    "tr": "Sipariş özeti",
+    "en": "Order summary",
+    "ar": "ملخص الطلب"
+  },
+  "odemeRowPackage": {
+    "tr": "Paket",
+    "en": "Package",
+    "ar": "الباقة"
+  },
+  "odemeRowPeriod": {
+    "tr": "Süre",
+    "en": "Period",
+    "ar": "المدة"
+  },
+  "odemeRowTotal": {
+    "tr": "Toplam",
+    "en": "Total",
+    "ar": "الإجمالي"
+  },
+  "odemeFullNote": {
+    "tr": "Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.",
+    "en": "After your payment, our manager approves your request and contacts you to set your travel dates.",
+    "ar": "بعد الدفع يوافق مسؤولنا على طلبك ويتواصل معك لتحديد مواعيد رحلتك."
+  },
+  "odemeSecureNote": {
+    "tr": "Ödeme, PayTR güvenli ödeme sayfasında yapılır. Kart bilgileriniz uygulamada saklanmaz.",
+    "en": "Payment is made on the PayTR secure payment page. Your card details are not stored in the app.",
+    "ar": "يتم الدفع عبر صفحة الدفع الآمنة PayTR. لا تُخزَّن بيانات بطاقتك في التطبيق."
+  },
+  "odemeDemoNote": {
+    "tr": "Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.",
+    "en": "Demo version: no payment is taken; the package is activated on this device.",
+    "ar": "نسخة تجريبية: لا يتم أخذ أي دفعة وتُفعَّل الباقة على هذا الجهاز."
+  },
+  "odemePay": {
+    "tr": "{price} öde",
+    "en": "Pay {price}",
+    "ar": "ادفع {price}",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "odemePoweredBy": {
+    "tr": "PayTR güvenli ödeme altyapısı",
+    "en": "Secured by PayTR",
+    "ar": "بنية الدفع الآمنة PayTR"
+  },
+  "odemeProcessing": {
+    "tr": "Ödeme işleniyor",
+    "en": "Processing payment",
+    "ar": "جارٍ معالجة الدفع"
+  },
+  "odemeProcessingBody": {
+    "tr": "Lütfen bekleyin, sayfadan ayrılmayın.",
+    "en": "Please wait and do not leave this page.",
+    "ar": "يرجى الانتظار وعدم مغادرة الصفحة."
+  },
+  "odemeSuccess": {
+    "tr": "Ödeme başarılı",
+    "en": "Payment successful",
+    "ar": "تم الدفع بنجاح"
+  },
+  "odemeSuccessBody": {
+    "tr": "Paketiniz etkinleştirildi. Şimdi yolculuk bilgilerinizi girebilirsiniz.",
+    "en": "Your package is active. You can now enter your journey details.",
+    "ar": "تم تفعيل باقتك. يمكنك الآن إدخال بيانات رحلتك."
+  },
+  "odemeSuccessFull": {
+    "tr": "Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.",
+    "en": "Your request has been received. Our manager will contact you for approval and dates.",
+    "ar": "تم استلام طلبك. سيتواصل معك مسؤولنا للموافقة وتحديد المواعيد."
   }
 }

@@ -6612,9 +6612,56 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String paketlerActivated(String name) {
-    return '$name etkinleştirildi.';
+  String get odemeDemoNote =>
+      'Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.';
+
+  @override
+  String get odemeFullNote =>
+      'Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.';
+
+  @override
+  String odemePay(String price) {
+    return '$price öde';
   }
+
+  @override
+  String get odemePoweredBy => 'PayTR güvenli ödeme altyapısı';
+
+  @override
+  String get odemeProcessing => 'Ödeme işleniyor';
+
+  @override
+  String get odemeProcessingBody => 'Lütfen bekleyin, sayfadan ayrılmayın.';
+
+  @override
+  String get odemeRowPackage => 'Paket';
+
+  @override
+  String get odemeRowPeriod => 'Süre';
+
+  @override
+  String get odemeRowTotal => 'Toplam';
+
+  @override
+  String get odemeSecureNote =>
+      'Ödeme, PayTR güvenli ödeme sayfasında yapılır. Kart bilgileriniz uygulamada saklanmaz.';
+
+  @override
+  String get odemeSuccess => 'Ödeme başarılı';
+
+  @override
+  String get odemeSuccessBody =>
+      'Paketiniz etkinleştirildi. Şimdi yolculuk bilgilerinizi girebilirsiniz.';
+
+  @override
+  String get odemeSuccessFull =>
+      'Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.';
+
+  @override
+  String get odemeSummary => 'Sipariş özeti';
+
+  @override
+  String get odemeTitle => 'Ödeme';
 
   @override
   String get paketlerAgencyNote =>
@@ -6671,14 +6718,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paketlerChooseTitle => 'Paketinizi seçin';
 
   @override
-  String get paketlerConfirm => 'Etkinleştir';
+  String get paketlerConfirm => 'Evet, dön';
+
+  @override
+  String get paketlerContactUs => 'Bizimle iletişime geçin';
 
   @override
   String get paketlerCurrent => 'Mevcut planınız';
-
-  @override
-  String get paketlerDemoBody =>
-      'Demo sürüm: ödeme alınmadan paket bu cihazda etkinleştirilecek. Ödeme altyapısı açıldığında satın alma mağaza üzerinden yapılacak.';
 
   @override
   String get paketlerEditPlan => 'Tarih ve otel bilgilerimi düzenle';
@@ -6748,6 +6794,20 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
+
+  @override
+  String get paketlerPendingBadge => 'Onay bekleniyor';
+
+  @override
+  String get paketlerPendingBody =>
+      'Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.';
+
+  @override
+  String get paketlerPendingShort =>
+      'Onay bekleniyor · bizimle iletişime geçin';
+
+  @override
+  String get paketlerPendingTitle => 'Onay bekleniyor';
 
   @override
   String get paketlerPlanHotel => 'Otel adı';
