@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../common/widgets/acente_ozelligi_card.dart';
+import '../core/providers/locale_provider.dart';
+
 import '../features/admin/screens/admin_analytics_screen.dart';
 import '../features/admin/screens/all_locations_map_view.dart';
 import '../features/admin/screens/admin_dashboard_screen.dart';
@@ -75,7 +78,12 @@ class AppRoutes {
         '/home': (_) => const HomeScreen(),
         '/profil': (_) => const ProfilScreen(),
         '/info': (_) => const GeneralInfoScreen(),
-        '/takvim': (_) => const TakvimScreen(),
+        // Acente özellikleri: bireysel kullanıcıya AcenteOzelligiGate kibar kartı gösterir.
+        '/takvim': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.homeProgramCalendar,
+              icon: Icons.calendar_month_rounded,
+              child: const TakvimScreen(),
+            ),
         '/gezilecek-yerler': (_) => const GezilecekYerlerScreen(),
         '/admin': (_) => const AdminDashboardScreen(),
         '/admin/analytics': (_) => const AdminAnalyticsScreen(),
@@ -102,9 +110,21 @@ class AppRoutes {
         '/hatim': (_) => const HatimHomeScreen(),
         '/hatim/create': (_) => const HatimCreateScreen(),
         '/hatim/group': (_) => const HatimGroupScreen(),
-        '/rehber_iletisim': (_) => const RehberIletisimPage(),
-        '/bildirimler': (_) => const BildirimlerScreen(),
-        '/telsiz': (_) => const TelsizScreen(),
+        '/rehber_iletisim': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.homeContactGuide,
+              icon: Icons.support_agent_rounded,
+              child: const RehberIletisimPage(),
+            ),
+        '/bildirimler': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.homeNotificationsTitle,
+              icon: Icons.notifications_none_rounded,
+              child: const BildirimlerScreen(),
+            ),
+        '/telsiz': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.telsizTitle,
+              icon: Icons.settings_input_antenna_rounded,
+              child: const TelsizScreen(),
+            ),
         '/kible': (_) => const KibleScreen(),
         '/seyahat-rehberi': (_) => const SeyahatRehberiScreen(),
         '/ihtiyac-listesi': (_) => const IhtiyacListesiScreen(),
@@ -114,12 +134,20 @@ class AppRoutes {
         '/ulasim': (_) => const UlasimScreen(),
         '/rota-simulasyonu': (_) => const RotaSimulasyonuScreen(),
         '/tavaf-simulasyonu': (_) => const TavafSimulasyonuScreen(),
-        '/dukkanlar': (_) => const ShopsScreen(),
+        '/dukkanlar': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.shopsTitle,
+              icon: Icons.storefront_rounded,
+              child: const ShopsScreen(),
+            ),
         '/admin/dukkanlar': (_) => const ShopsAdminPage(),
         '/admin/shops': (_) => const ShopsAdminPage(),
         '/admin/shops/edit': (_) => const ShopEditScreen(),
         '/esnaf': (_) => const MerchantHomeScreen(),
-        '/cuzdan': (_) => const CuzdanScreen(),
+        '/cuzdan': (_) => AcenteOzelligiGate(
+              title: (c) => c.l10n.cuzdanTitle,
+              icon: Icons.account_balance_wallet_rounded,
+              child: const CuzdanScreen(),
+            ),
         '/admin/esnaf-rapor': (_) => const EsnafRaporScreen(),
         // Kontrol Merkezi (süper admin + destek/muhasebe)
         '/cc': (_) => const ControlCenterScreen(),

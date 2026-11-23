@@ -3,6 +3,8 @@ import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../../../common/services/firestore_service.dart';
+import '../../../common/widgets/acente_ozelligi_card.dart';
 import '../../../common/widgets/change_secret_tile.dart';
 import '../../../common/widgets/language_picker.dart';
 import '../../../core/providers/app_state_provider.dart';
@@ -15,6 +17,7 @@ import '../../admin/models/trip_model.dart';
 import '../../auth/models/user_model.dart';
 import '../../auth/providers/login_provider.dart';
 import '../../cuzdan/widgets/wallet_profile_card.dart';
+import '../../info_screen/widgets/info_widgets.dart' show InfoChip;
 import '../providers/home_provider.dart';
 import '../widgets/basliklar.dart';
 import '../widgets/info_card.dart';
@@ -112,6 +115,7 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
 
   String _userTypeLabel(UserModel u) {
     final l = context.l10n;
+    if (u.isBireysel) return l.bireyselAccountBadge;
     switch (u.userType) {
       case UserType.superAdmin:
         return l.homeUserTypeSuperAdmin;
@@ -167,6 +171,56 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
     }
   }
 
+  /// Bireysel "Hesabımı sil": onay → LoginProvider.deleteBireyselAccount (yeniden Google
+  /// doğrulaması ve silme sırası orada).
+  Future<void> _confirmDeleteAccount() async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        icon: const Icon(Icons.delete_forever_rounded, color: AppColors.error, size: 34),
+        title: Text(ctx.l10n.bireyselDeleteConfirmTitle, textAlign: TextAlign.center),
+        content: SingleChildScrollView(
+          child: Text(ctx.l10n.bireyselDeleteConfirmBody, style: const TextStyle(height: 1.4)),
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(ctx.l10n.commonCancel)),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: AppColors.error),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(ctx.l10n.bireyselDeleteConfirmButton),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+
+    setState(() => _loggingOut = true);
+    final home = context.read<HomeProvider>();
+    final appState = context.read<AppStateProvider>();
+    try {
+      await context.read<LoginProvider>().deleteBireyselAccount(context);
+    } finally {
+      // Oturum kapandıysa (silindi ya da belge silinip Auth silinemedi) ana sayfa verisi de sıfırlanır.
+      if (appState.currentUser == null) home.reset();
+      if (mounted) setState(() => _loggingOut = false);
+    }
+  }
+
+  /// Bireysel: konum için açık rıza (`location_consent`) tercihini günceller.
+  Future<void> _setLocationConsent(UserModel user, bool value) async {
+    final appState = context.read<AppStateProvider>();
+    try {
+      await FirestoreService.instance
+          .updateUserFields(user.id, {'location_consent': value}).timeout(const Duration(seconds: 15));
+      appState.setUser(user.copyWith(locationConsent: value));
+    } catch (e) {
+      debugPrint('location_consent: $e');
+      GlobalSnackbar.showError(l10n.bireyselConsentSaveFailed);
+    }
+  }
+
   // ---------------------------------------------------------------------------
   // Arayüz
   // ---------------------------------------------------------------------------
@@ -205,6 +259,7 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         _header(user),
+                        if (user.isBireysel) ..._bireyselSections(user) else ...[
                         SectionHeader(title: l.homeSectionQuickAccess, icon: Icons.bolt_rounded),
                         QuickActionCard(
                           title: l.homeContactGuide,
@@ -255,6 +310,7 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
                         ],
                         SectionHeader(title: l.homeLocationTracking, icon: Icons.location_on_rounded),
                         const LocationSharingCard(),
+                        ],
                         const SizedBox(height: 20),
                         OutlinedButton.icon(
                           onPressed: _confirmLogout,
@@ -265,12 +321,80 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
                           icon: const Icon(Icons.logout_rounded),
                           label: Text(l.homeLogout),
                         ),
+                        if (user.isBireysel) ...[
+                          const SizedBox(height: 10),
+                          TextButton.icon(
+                            onPressed: _confirmDeleteAccount,
+                            style: TextButton.styleFrom(foregroundColor: AppColors.error),
+                            icon: const Icon(Icons.delete_outline_rounded),
+                            label: Text(l.bireyselDeleteAccount),
+                          ),
+                        ],
                         _selectedQuote,
                       ],
                     ),
                   ),
                 ),
     );
+  }
+
+  /// Bireysel kullanıcının profil bölümleri: Acenteme katıl (Yakında), kişisel bilgiler
+  /// (Google e-postası), Umre bilgileri yerine acente kartı, dil, konum rızası.
+  List<Widget> _bireyselSections(UserModel user) {
+    final l = context.l10n;
+    return [
+      SectionHeader(title: l.homeSectionQuickAccess, icon: Icons.bolt_rounded),
+      // ChangeSecretTile'ın pasif görünümü + bilgi ekranlarının InfoChip rozeti.
+      Card(
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: ListTile(
+          leading: const CircleAvatar(
+            backgroundColor: AppColors.divider,
+            child: Icon(Icons.group_add_rounded, color: AppColors.textMuted),
+          ),
+          title: Text(
+            l.bireyselJoinAgency,
+            style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.textMuted),
+          ),
+          subtitle: Text(l.bireyselJoinAgencySub),
+          trailing: InfoChip(l.infoBadgeSoon),
+          onTap: () => GlobalSnackbar.showInfo(l.bireyselJoinAgencySnack),
+        ),
+      ),
+      SectionHeader(title: l.homePersonalInfo, icon: Icons.badge_rounded),
+      InfoCard(icon: Icons.mail_outline_rounded, title: l.bireyselEmail, value: _orDash(user.email)),
+      InfoCard(
+        icon: Icons.event_available_rounded,
+        title: l.homeRegistrationDate,
+        value: _formatDate(user.createdAt),
+      ),
+      SectionHeader(title: l.homeUmrahInfo, icon: FlutterIslamicIcons.solidKaaba),
+      const AcenteOzelligiCard(),
+      const SizedBox(height: 16),
+      const LanguageSettingTile(),
+      SectionHeader(title: l.homeLocationTracking, icon: Icons.location_on_rounded),
+      // LanguageSettingTile düzeni (beyaz, köşe 16, mint ikon kutusu); sağda anahtar.
+      Material(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        child: ListTile(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          onTap: () => _setLocationConsent(user, !(user.locationConsent ?? false)),
+          leading: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(color: AppColors.primaryLight, borderRadius: BorderRadius.circular(12)),
+            child: const Icon(Icons.location_on_outlined, color: AppColors.primary),
+          ),
+          title: Text(l.bireyselLocationConsentTitle, style: const TextStyle(fontWeight: FontWeight.w700)),
+          subtitle: Text(l.bireyselLocationConsentBody),
+          trailing: Switch(
+            value: user.locationConsent ?? false,
+            onChanged: (v) => _setLocationConsent(user, v),
+          ),
+        ),
+      ),
+    ];
   }
 
   Widget _header(UserModel user) {

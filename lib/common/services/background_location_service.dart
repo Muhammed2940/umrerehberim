@@ -118,6 +118,18 @@ class BackgroundLocationService {
     _user = user;
     // Toplu Hatim bildirimleri: her zaman ana isolate'te (esnaf buraya gelmez).
     if (!user.isMerchant) HatimWatcher.startFor(user.id);
+    // Bireysel kullanıcı (acentesiz): konum servisi ve duyuru dinleyicisi YOK
+    // (tool/BIREYSEL_SEMA.md). Yalnız Toplu Hatim bildirimleri için bildirim izni istenir.
+    if (user.isBireysel) {
+      try {
+        await LocationPermissionHelper.requestNotificationPermission();
+      } catch (e) {
+        debugPrint('ensureStarted (bireysel): $e');
+      } finally {
+        _busy = false;
+      }
+      return;
+    }
     try {
       // Genel adminler ve platform personeli (destek/muhasebe) konum paylaşmaz.
       final canShare = !user.isGlobalAdmin && !user.isPlatformStaff && (user.agencyId ?? '').isNotEmpty;
@@ -139,6 +151,7 @@ class BackgroundLocationService {
   /// Profil/ayarlar ekranındaki anahtar. Sonuçta paylaşımın açık olup olmadığını döner.
   static Future<bool> setSharingEnabled(BuildContext context, bool enabled) async {
     final user = context.read<AppStateProvider>().currentUser;
+    if (user != null && user.isBireysel) return false; // acentesi yok, paylaşacak yer yok
     _user = user ?? _user;
     final prefs = await SharedPreferences.getInstance();
     if (enabled) {
@@ -194,6 +207,7 @@ class BackgroundLocationService {
   }
 
   static void _startMainWatcher(UserModel u) {
+    if (u.isBireysel) return; // acente duyurusu yok
     if (_mainWatcher?.isRunning == true) return;
     _mainWatcher = NotificationWatcher.fromUserMap(u.id, u.toJson())?..start();
   }

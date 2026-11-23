@@ -1695,6 +1695,134 @@ class AppLocalizationsTr extends AppLocalizations {
   String get authUserNotFound => 'Kullanıcı bulunamadı. Lütfen kayıt olun.';
 
   @override
+  String get bireyselAccountBadge => 'Bireysel hesap';
+
+  @override
+  String get bireyselAgencyOnlyBody =>
+      'Bu özellik anlaşmalı acentelerle seyahat eden hacılara sunulur.';
+
+  @override
+  String get bireyselAgencyOnlyTitle => 'Acente hacılarına özel';
+
+  @override
+  String get bireyselConsentSaveFailed =>
+      'Tercihiniz kaydedilemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get bireyselDeleteAccount => 'Hesabımı sil';
+
+  @override
+  String get bireyselDeleteAccountSub =>
+      'Hesabınız ve bilgileriniz kalıcı olarak silinir';
+
+  @override
+  String get bireyselDeleteAuthPartial =>
+      'Verileriniz silindi, hesap kaydı kapatılamadı; tekrar giriş yapıp vazgeçerseniz tamamen silinir.';
+
+  @override
+  String get bireyselDeleteConfirmBody =>
+      'Hesabınız, profil bilgileriniz ve kurduğunuz Toplu Hatim grupları kalıcı olarak silinir; üyesi olduğunuz gruplardan ayrılırsınız. Bu işlem geri alınamaz.\n\nDevam etmek için Google hesabınızla yeniden doğrulama istenecek.';
+
+  @override
+  String get bireyselDeleteConfirmButton => 'Kalıcı olarak sil';
+
+  @override
+  String get bireyselDeleteConfirmTitle => 'Hesabınız silinsin mi?';
+
+  @override
+  String get bireyselDeleteFailed => 'Hesap silinemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get bireyselDeleteHatimFailed =>
+      'Toplu Hatim gruplarınızdan çıkılamadı; hesabınız silinmedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get bireyselDeleteOffline =>
+      'Hesap silmek için internet bağlantısı gerekir. Lütfen bağlantınızı kontrol edip tekrar deneyin.';
+
+  @override
+  String get bireyselDeleteRecentLogin =>
+      'Güvenlik için çıkış yapıp yeniden giriş yapın, sonra tekrar deneyin.';
+
+  @override
+  String get bireyselDeleteWrongAccount =>
+      'Lütfen bu uygulamada kullandığınız Google hesabını seçin.';
+
+  @override
+  String get bireyselDeleted => 'Hesabınız silindi.';
+
+  @override
+  String get bireyselDeleting => 'Hesabınız siliniyor…';
+
+  @override
+  String get bireyselEmail => 'E-posta';
+
+  @override
+  String get bireyselErrAccountExists =>
+      'Bu e-posta adresi başka bir giriş yöntemiyle kayıtlı.';
+
+  @override
+  String get bireyselErrEmailUnverified =>
+      'Google hesabınızın e-posta adresi doğrulanmamış.';
+
+  @override
+  String get bireyselErrGeneric =>
+      'Google ile giriş yapılamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get bireyselErrUnavailable =>
+      'Google ile giriş şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get bireyselGoogleContinue => 'Google ile devam et';
+
+  @override
+  String get bireyselJoinAgency => 'Acenteme katıl';
+
+  @override
+  String get bireyselJoinAgencySnack =>
+      'Bu özellik yakında kullanıma açılacak.';
+
+  @override
+  String get bireyselJoinAgencySub =>
+      'Acentenizle eşleşin, sefer bilgileriniz uygulamaya gelsin';
+
+  @override
+  String get bireyselLocationConsentBody =>
+      'İsteğe bağlı. Konum gerektiren özellikler için izin verirsiniz; dilediğiniz zaman profilden değiştirebilirsiniz.';
+
+  @override
+  String get bireyselLocationConsentTitle => 'Konum için açık rıza';
+
+  @override
+  String get bireyselNameError => 'Ad soyad 2 ile 60 karakter arasında olmalı';
+
+  @override
+  String get bireyselNameLabel => 'Ad Soyad';
+
+  @override
+  String get bireyselOrDivider => 'veya acentenizin verdiği bilgilerle girin';
+
+  @override
+  String get bireyselRegisterButton => 'Kaydı tamamla';
+
+  @override
+  String get bireyselRegisterFailed =>
+      'Kayıt tamamlanamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get bireyselRegisterIntro =>
+      'Hoş geldiniz! Hesabınızı oluşturmak için birkaç bilgi gerekiyor.';
+
+  @override
+  String get bireyselRegisterTitle => 'Kaydı Tamamla';
+
+  @override
+  String bireyselSignedInAs(String email) {
+    return 'Google hesabı: $email';
+  }
+
+  @override
   String get ccActAgencyCreate => 'Acente eklendi';
 
   @override

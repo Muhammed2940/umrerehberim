@@ -1,9 +1,9 @@
 {
   "project_info": {
     "project_number": "1067107936961",
+    "firebase_url": "https://umrerehberim-cc99e-default-rtdb.firebaseio.com",
     "project_id": "umrerehberim-cc99e",
-    "storage_bucket": "umrerehberim-cc99e.firebasestorage.app",
-    "firebase_url": "https://umrerehberim-cc99e-default-rtdb.firebaseio.com"
+    "storage_bucket": "umrerehberim-cc99e.firebasestorage.app"
   },
   "client": [
     {
@@ -13,7 +13,20 @@
           "package_name": "com.hekzapot.umrerehberim"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1067107936961-5jhri1k71pu1ou3j01o7m07g44j32r45.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hekzapot.umrerehberim",
+            "certificate_hash": "5427a87f5398aa89baa2d40a68776d7347984b7c"
+          }
+        },
+        {
+          "client_id": "1067107936961-c1jge0tvio4vlbehv2u915g3m29dd7n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA8X1JQfgxHrhtnEgfqVVK8Lktw9ga7AHI"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067107936961-c1jge0tvio4vlbehv2u915g3m29dd7n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

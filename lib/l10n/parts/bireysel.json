@@ -1,0 +1,187 @@
+{
+  "bireyselGoogleContinue": {
+    "tr": "Google ile devam et",
+    "en": "Continue with Google",
+    "ar": "المتابعة باستخدام Google"
+  },
+  "bireyselOrDivider": {
+    "tr": "veya acentenizin verdiği bilgilerle girin",
+    "en": "or sign in with the details from your agency",
+    "ar": "أو سجّل الدخول بالبيانات التي قدّمتها وكالتك"
+  },
+  "bireyselErrUnavailable": {
+    "tr": "Google ile giriş şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+    "en": "Google sign-in is not available right now. Please try again later.",
+    "ar": "تسجيل الدخول باستخدام Google غير متاح حاليًا. يرجى المحاولة لاحقًا."
+  },
+  "bireyselErrGeneric": {
+    "tr": "Google ile giriş yapılamadı. Lütfen tekrar deneyin.",
+    "en": "Could not sign in with Google. Please try again.",
+    "ar": "تعذّر تسجيل الدخول باستخدام Google. يرجى المحاولة مرة أخرى."
+  },
+  "bireyselErrAccountExists": {
+    "tr": "Bu e-posta adresi başka bir giriş yöntemiyle kayıtlı.",
+    "en": "This e-mail address is registered with another sign-in method.",
+    "ar": "عنوان البريد الإلكتروني هذا مسجّل بطريقة دخول أخرى."
+  },
+  "bireyselErrEmailUnverified": {
+    "tr": "Google hesabınızın e-posta adresi doğrulanmamış.",
+    "en": "The e-mail address of your Google account is not verified.",
+    "ar": "عنوان البريد الإلكتروني لحساب Google الخاص بك غير مُتحقَّق منه."
+  },
+  "bireyselRegisterTitle": {
+    "tr": "Kaydı Tamamla",
+    "en": "Complete Sign-up",
+    "ar": "إكمال التسجيل"
+  },
+  "bireyselRegisterIntro": {
+    "tr": "Hoş geldiniz! Hesabınızı oluşturmak için birkaç bilgi gerekiyor.",
+    "en": "Welcome! We need a few details to create your account.",
+    "ar": "مرحبًا بك! نحتاج إلى بعض المعلومات لإنشاء حسابك."
+  },
+  "bireyselSignedInAs": {
+    "tr": "Google hesabı: {email}",
+    "en": "Google account: {email}",
+    "ar": "حساب Google: {email}",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "bireyselNameLabel": {
+    "tr": "Ad Soyad",
+    "en": "Full name",
+    "ar": "الاسم الكامل"
+  },
+  "bireyselNameError": {
+    "tr": "Ad soyad 2 ile 60 karakter arasında olmalı",
+    "en": "Full name must be between 2 and 60 characters",
+    "ar": "يجب أن يكون الاسم الكامل بين 2 و60 حرفًا"
+  },
+  "bireyselLocationConsentTitle": {
+    "tr": "Konum için açık rıza",
+    "en": "Explicit consent for location",
+    "ar": "موافقة صريحة على استخدام الموقع"
+  },
+  "bireyselLocationConsentBody": {
+    "tr": "İsteğe bağlı. Konum gerektiren özellikler için izin verirsiniz; dilediğiniz zaman profilden değiştirebilirsiniz.",
+    "en": "Optional. You allow features that need your location; you can change this any time in your profile.",
+    "ar": "اختياري. تسمح للميزات التي تحتاج إلى موقعك؛ ويمكنك تغيير ذلك في أي وقت من الملف الشخصي."
+  },
+  "bireyselRegisterButton": {
+    "tr": "Kaydı tamamla",
+    "en": "Complete sign-up",
+    "ar": "إكمال التسجيل"
+  },
+  "bireyselRegisterFailed": {
+    "tr": "Kayıt tamamlanamadı. Lütfen tekrar deneyin.",
+    "en": "Sign-up could not be completed. Please try again.",
+    "ar": "تعذّر إكمال التسجيل. يرجى المحاولة مرة أخرى."
+  },
+  "bireyselAgencyOnlyTitle": {
+    "tr": "Acente hacılarına özel",
+    "en": "For agency pilgrims",
+    "ar": "خاص بحجاج الوكالات"
+  },
+  "bireyselAgencyOnlyBody": {
+    "tr": "Bu özellik anlaşmalı acentelerle seyahat eden hacılara sunulur.",
+    "en": "This feature is offered to pilgrims travelling with our partner agencies.",
+    "ar": "تُقدَّم هذه الميزة للحجاج المسافرين مع الوكالات المتعاقدة."
+  },
+  "bireyselEmail": {
+    "tr": "E-posta",
+    "en": "E-mail",
+    "ar": "البريد الإلكتروني"
+  },
+  "bireyselAccountBadge": {
+    "tr": "Bireysel hesap",
+    "en": "Individual account",
+    "ar": "حساب فردي"
+  },
+  "bireyselJoinAgency": {
+    "tr": "Acenteme katıl",
+    "en": "Join my agency",
+    "ar": "الانضمام إلى وكالتي"
+  },
+  "bireyselJoinAgencySub": {
+    "tr": "Acentenizle eşleşin, sefer bilgileriniz uygulamaya gelsin",
+    "en": "Link with your agency to see your trip details in the app",
+    "ar": "اربط حسابك بوكالتك لتظهر تفاصيل رحلتك في التطبيق"
+  },
+  "bireyselJoinAgencySnack": {
+    "tr": "Bu özellik yakında kullanıma açılacak.",
+    "en": "This feature will be available soon.",
+    "ar": "ستتوفر هذه الميزة قريبًا."
+  },
+  "bireyselDeleteAccount": {
+    "tr": "Hesabımı sil",
+    "en": "Delete my account",
+    "ar": "حذف حسابي"
+  },
+  "bireyselDeleteAccountSub": {
+    "tr": "Hesabınız ve bilgileriniz kalıcı olarak silinir",
+    "en": "Your account and details are permanently deleted",
+    "ar": "يُحذف حسابك وبياناتك نهائيًا"
+  },
+  "bireyselDeleteConfirmTitle": {
+    "tr": "Hesabınız silinsin mi?",
+    "en": "Delete your account?",
+    "ar": "هل تريد حذف حسابك؟"
+  },
+  "bireyselDeleteConfirmBody": {
+    "tr": "Hesabınız, profil bilgileriniz ve kurduğunuz Toplu Hatim grupları kalıcı olarak silinir; üyesi olduğunuz gruplardan ayrılırsınız. Bu işlem geri alınamaz.\n\nDevam etmek için Google hesabınızla yeniden doğrulama istenecek.",
+    "en": "Your account, profile details and the Group Khatm groups you created are permanently deleted, and you leave the groups you joined. This cannot be undone.\n\nYou will be asked to verify again with your Google account to continue.",
+    "ar": "سيتم حذف حسابك وبيانات ملفك الشخصي ومجموعات الختمة الجماعية التي أنشأتها نهائيًا، وستغادر المجموعات التي انضممت إليها. لا يمكن التراجع عن ذلك.\n\nسيُطلب منك التحقق مرة أخرى بحساب Google للمتابعة."
+  },
+  "bireyselDeleteConfirmButton": {
+    "tr": "Kalıcı olarak sil",
+    "en": "Delete permanently",
+    "ar": "حذف نهائي"
+  },
+  "bireyselDeleting": {
+    "tr": "Hesabınız siliniyor…",
+    "en": "Deleting your account…",
+    "ar": "جارٍ حذف حسابك…"
+  },
+  "bireyselDeleted": {
+    "tr": "Hesabınız silindi.",
+    "en": "Your account has been deleted.",
+    "ar": "تم حذف حسابك."
+  },
+  "bireyselDeleteFailed": {
+    "tr": "Hesap silinemedi. Lütfen tekrar deneyin.",
+    "en": "The account could not be deleted. Please try again.",
+    "ar": "تعذّر حذف الحساب. يرجى المحاولة مرة أخرى."
+  },
+  "bireyselDeleteWrongAccount": {
+    "tr": "Lütfen bu uygulamada kullandığınız Google hesabını seçin.",
+    "en": "Please choose the Google account you use in this app.",
+    "ar": "يرجى اختيار حساب Google الذي تستخدمه في هذا التطبيق."
+  },
+  "bireyselDeleteRecentLogin": {
+    "tr": "Güvenlik için çıkış yapıp yeniden giriş yapın, sonra tekrar deneyin.",
+    "en": "For security, sign out and sign in again, then try again.",
+    "ar": "لأسباب أمنية، سجّل الخروج ثم سجّل الدخول مجددًا وحاول مرة أخرى."
+  },
+  "bireyselConsentSaveFailed": {
+    "tr": "Tercihiniz kaydedilemedi. Lütfen tekrar deneyin.",
+    "en": "Your preference could not be saved. Please try again.",
+    "ar": "تعذّر حفظ تفضيلك. يرجى المحاولة مرة أخرى."
+  },
+  "bireyselDeleteHatimFailed": {
+    "tr": "Toplu Hatim gruplarınızdan çıkılamadı; hesabınız silinmedi. Lütfen tekrar deneyin.",
+    "en": "Could not leave your Group Khatm groups; your account was not deleted. Please try again.",
+    "ar": "تعذّر الخروج من مجموعات الختمة الجماعية؛ لم يُحذف حسابك. يرجى المحاولة مرة أخرى."
+  },
+  "bireyselDeleteAuthPartial": {
+    "tr": "Verileriniz silindi, hesap kaydı kapatılamadı; tekrar giriş yapıp vazgeçerseniz tamamen silinir.",
+    "en": "Your data was deleted but the account record could not be closed; sign in again and cancel to remove it completely.",
+    "ar": "حُذفت بياناتك لكن تعذّر إغلاق سجل الحساب؛ سجّل الدخول مرة أخرى ثم ألغِ ليُحذف بالكامل."
+  },
+  "bireyselDeleteOffline": {
+    "tr": "Hesap silmek için internet bağlantısı gerekir. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "An internet connection is required to delete your account. Please check your connection and try again.",
+    "ar": "يلزم الاتصال بالإنترنت لحذف حسابك. يرجى التحقق من الاتصال والمحاولة مرة أخرى."
+  }
+}

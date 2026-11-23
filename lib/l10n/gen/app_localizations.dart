@@ -3116,6 +3116,222 @@ abstract class AppLocalizations {
   /// **'Kullanıcı bulunamadı. Lütfen kayıt olun.'**
   String get authUserNotFound;
 
+  /// No description provided for @bireyselAccountBadge.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bireysel hesap'**
+  String get bireyselAccountBadge;
+
+  /// No description provided for @bireyselAgencyOnlyBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik anlaşmalı acentelerle seyahat eden hacılara sunulur.'**
+  String get bireyselAgencyOnlyBody;
+
+  /// No description provided for @bireyselAgencyOnlyTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acente hacılarına özel'**
+  String get bireyselAgencyOnlyTitle;
+
+  /// No description provided for @bireyselConsentSaveFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tercihiniz kaydedilemedi. Lütfen tekrar deneyin.'**
+  String get bireyselConsentSaveFailed;
+
+  /// No description provided for @bireyselDeleteAccount.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabımı sil'**
+  String get bireyselDeleteAccount;
+
+  /// No description provided for @bireyselDeleteAccountSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınız ve bilgileriniz kalıcı olarak silinir'**
+  String get bireyselDeleteAccountSub;
+
+  /// No description provided for @bireyselDeleteAuthPartial.
+  ///
+  /// In tr, this message translates to:
+  /// **'Verileriniz silindi, hesap kaydı kapatılamadı; tekrar giriş yapıp vazgeçerseniz tamamen silinir.'**
+  String get bireyselDeleteAuthPartial;
+
+  /// No description provided for @bireyselDeleteConfirmBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınız, profil bilgileriniz ve kurduğunuz Toplu Hatim grupları kalıcı olarak silinir; üyesi olduğunuz gruplardan ayrılırsınız. Bu işlem geri alınamaz.\n\nDevam etmek için Google hesabınızla yeniden doğrulama istenecek.'**
+  String get bireyselDeleteConfirmBody;
+
+  /// No description provided for @bireyselDeleteConfirmButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kalıcı olarak sil'**
+  String get bireyselDeleteConfirmButton;
+
+  /// No description provided for @bireyselDeleteConfirmTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınız silinsin mi?'**
+  String get bireyselDeleteConfirmTitle;
+
+  /// No description provided for @bireyselDeleteFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap silinemedi. Lütfen tekrar deneyin.'**
+  String get bireyselDeleteFailed;
+
+  /// No description provided for @bireyselDeleteHatimFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim gruplarınızdan çıkılamadı; hesabınız silinmedi. Lütfen tekrar deneyin.'**
+  String get bireyselDeleteHatimFailed;
+
+  /// No description provided for @bireyselDeleteOffline.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesap silmek için internet bağlantısı gerekir. Lütfen bağlantınızı kontrol edip tekrar deneyin.'**
+  String get bireyselDeleteOffline;
+
+  /// No description provided for @bireyselDeleteRecentLogin.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güvenlik için çıkış yapıp yeniden giriş yapın, sonra tekrar deneyin.'**
+  String get bireyselDeleteRecentLogin;
+
+  /// No description provided for @bireyselDeleteWrongAccount.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen bu uygulamada kullandığınız Google hesabını seçin.'**
+  String get bireyselDeleteWrongAccount;
+
+  /// No description provided for @bireyselDeleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınız silindi.'**
+  String get bireyselDeleted;
+
+  /// No description provided for @bireyselDeleting.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hesabınız siliniyor…'**
+  String get bireyselDeleting;
+
+  /// No description provided for @bireyselEmail.
+  ///
+  /// In tr, this message translates to:
+  /// **'E-posta'**
+  String get bireyselEmail;
+
+  /// No description provided for @bireyselErrAccountExists.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu e-posta adresi başka bir giriş yöntemiyle kayıtlı.'**
+  String get bireyselErrAccountExists;
+
+  /// No description provided for @bireyselErrEmailUnverified.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google hesabınızın e-posta adresi doğrulanmamış.'**
+  String get bireyselErrEmailUnverified;
+
+  /// No description provided for @bireyselErrGeneric.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile giriş yapılamadı. Lütfen tekrar deneyin.'**
+  String get bireyselErrGeneric;
+
+  /// No description provided for @bireyselErrUnavailable.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile giriş şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.'**
+  String get bireyselErrUnavailable;
+
+  /// No description provided for @bireyselGoogleContinue.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google ile devam et'**
+  String get bireyselGoogleContinue;
+
+  /// No description provided for @bireyselJoinAgency.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acenteme katıl'**
+  String get bireyselJoinAgency;
+
+  /// No description provided for @bireyselJoinAgencySnack.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik yakında kullanıma açılacak.'**
+  String get bireyselJoinAgencySnack;
+
+  /// No description provided for @bireyselJoinAgencySub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Acentenizle eşleşin, sefer bilgileriniz uygulamaya gelsin'**
+  String get bireyselJoinAgencySub;
+
+  /// No description provided for @bireyselLocationConsentBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'İsteğe bağlı. Konum gerektiren özellikler için izin verirsiniz; dilediğiniz zaman profilden değiştirebilirsiniz.'**
+  String get bireyselLocationConsentBody;
+
+  /// No description provided for @bireyselLocationConsentTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum için açık rıza'**
+  String get bireyselLocationConsentTitle;
+
+  /// No description provided for @bireyselNameError.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ad soyad 2 ile 60 karakter arasında olmalı'**
+  String get bireyselNameError;
+
+  /// No description provided for @bireyselNameLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ad Soyad'**
+  String get bireyselNameLabel;
+
+  /// No description provided for @bireyselOrDivider.
+  ///
+  /// In tr, this message translates to:
+  /// **'veya acentenizin verdiği bilgilerle girin'**
+  String get bireyselOrDivider;
+
+  /// No description provided for @bireyselRegisterButton.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydı tamamla'**
+  String get bireyselRegisterButton;
+
+  /// No description provided for @bireyselRegisterFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kayıt tamamlanamadı. Lütfen tekrar deneyin.'**
+  String get bireyselRegisterFailed;
+
+  /// No description provided for @bireyselRegisterIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hoş geldiniz! Hesabınızı oluşturmak için birkaç bilgi gerekiyor.'**
+  String get bireyselRegisterIntro;
+
+  /// No description provided for @bireyselRegisterTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydı Tamamla'**
+  String get bireyselRegisterTitle;
+
+  /// No description provided for @bireyselSignedInAs.
+  ///
+  /// In tr, this message translates to:
+  /// **'Google hesabı: {email}'**
+  String bireyselSignedInAs(String email);
+
   /// No description provided for @ccActAgencyCreate.
   ///
   /// In tr, this message translates to:

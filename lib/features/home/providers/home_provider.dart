@@ -5,11 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/services/exchange_rate_service.dart';
 import '../../../common/services/firestore_service.dart';
+import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../admin/models/event_model.dart';
 import '../../admin/models/notification_model.dart';
 import '../../admin/models/trip_model.dart';
 import '../../auth/models/user_model.dart';
+import '../models/prayer_time_model.dart';
 
 /// Ana sayfa ve takvim ekranının kendi verileri.
 ///
@@ -140,15 +142,36 @@ class HomeProvider extends ChangeNotifier {
   List<NotificationModel>? _notifications;
   List<NotificationModel>? get notifications => _notifications;
 
-  /// Ana sayfadaki aşağı çekip yenileme: duyurular ve takvim etkinlikleri.
-  Future<void> refresh(String? agencyId, {UserModel? user}) async {
-    if (agencyId == null || agencyId.isEmpty) return;
+  /// Ana sayfadaki aşağı çekip yenileme: kurlar ve ezan vakitleri HERKES için
+  /// (acentesiz bireysel dahil); duyurular ve takvim etkinlikleri yalnız acentesi olana.
+  Future<void> refresh(String? agencyId, {UserModel? user, AppStateProvider? app}) async {
+    final hasAgency = agencyId != null && agencyId.isNotEmpty;
     await Future.wait([
-      loadEvents(agencyId, force: true),
-      _refreshNotifications(agencyId),
       loadRates(),
-      if (user != null) loadInbox(user),
+      if (app != null) _refreshPrayerTimes(app),
+      if (hasAgency) loadEvents(agencyId, force: true),
+      if (hasAgency) _refreshNotifications(agencyId),
+      if (hasAgency && user != null) loadInbox(user),
     ]);
+  }
+
+  /// Bugünün Mekke/Medine ezan vakitleri; alınamayan şehir eski değerini korur.
+  Future<void> _refreshPrayerTimes(AppStateProvider app) async {
+    Future<PrayerTimeModel?> safe(Future<PrayerTimeModel> Function() f) async {
+      try {
+        return await f();
+      } catch (e) {
+        debugPrint('HomeProvider.refresh ezan vakitleri: $e');
+        return null;
+      }
+    }
+
+    final r = await Future.wait([
+      safe(FirestoreService.instance.getPrayerTimeMekkeByToday),
+      safe(FirestoreService.instance.getPrayerTimeMedineByToday),
+    ]);
+    if (r[0] == null && r[1] == null) return;
+    app.setSessionData(mekkePrayer: r[0], medinePrayer: r[1]);
   }
 
   Future<void> _refreshNotifications(String agencyId) async {

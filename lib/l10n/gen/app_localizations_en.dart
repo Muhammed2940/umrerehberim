@@ -1715,6 +1715,136 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authUserNotFound => 'User not found. Please register.';
 
   @override
+  String get bireyselAccountBadge => 'Individual account';
+
+  @override
+  String get bireyselAgencyOnlyBody =>
+      'This feature is offered to pilgrims travelling with our partner agencies.';
+
+  @override
+  String get bireyselAgencyOnlyTitle => 'For agency pilgrims';
+
+  @override
+  String get bireyselConsentSaveFailed =>
+      'Your preference could not be saved. Please try again.';
+
+  @override
+  String get bireyselDeleteAccount => 'Delete my account';
+
+  @override
+  String get bireyselDeleteAccountSub =>
+      'Your account and details are permanently deleted';
+
+  @override
+  String get bireyselDeleteAuthPartial =>
+      'Your data was deleted but the account record could not be closed; sign in again and cancel to remove it completely.';
+
+  @override
+  String get bireyselDeleteConfirmBody =>
+      'Your account, profile details and the Group Khatm groups you created are permanently deleted, and you leave the groups you joined. This cannot be undone.\n\nYou will be asked to verify again with your Google account to continue.';
+
+  @override
+  String get bireyselDeleteConfirmButton => 'Delete permanently';
+
+  @override
+  String get bireyselDeleteConfirmTitle => 'Delete your account?';
+
+  @override
+  String get bireyselDeleteFailed =>
+      'The account could not be deleted. Please try again.';
+
+  @override
+  String get bireyselDeleteHatimFailed =>
+      'Could not leave your Group Khatm groups; your account was not deleted. Please try again.';
+
+  @override
+  String get bireyselDeleteOffline =>
+      'An internet connection is required to delete your account. Please check your connection and try again.';
+
+  @override
+  String get bireyselDeleteRecentLogin =>
+      'For security, sign out and sign in again, then try again.';
+
+  @override
+  String get bireyselDeleteWrongAccount =>
+      'Please choose the Google account you use in this app.';
+
+  @override
+  String get bireyselDeleted => 'Your account has been deleted.';
+
+  @override
+  String get bireyselDeleting => 'Deleting your account…';
+
+  @override
+  String get bireyselEmail => 'E-mail';
+
+  @override
+  String get bireyselErrAccountExists =>
+      'This e-mail address is registered with another sign-in method.';
+
+  @override
+  String get bireyselErrEmailUnverified =>
+      'The e-mail address of your Google account is not verified.';
+
+  @override
+  String get bireyselErrGeneric =>
+      'Could not sign in with Google. Please try again.';
+
+  @override
+  String get bireyselErrUnavailable =>
+      'Google sign-in is not available right now. Please try again later.';
+
+  @override
+  String get bireyselGoogleContinue => 'Continue with Google';
+
+  @override
+  String get bireyselJoinAgency => 'Join my agency';
+
+  @override
+  String get bireyselJoinAgencySnack => 'This feature will be available soon.';
+
+  @override
+  String get bireyselJoinAgencySub =>
+      'Link with your agency to see your trip details in the app';
+
+  @override
+  String get bireyselLocationConsentBody =>
+      'Optional. You allow features that need your location; you can change this any time in your profile.';
+
+  @override
+  String get bireyselLocationConsentTitle => 'Explicit consent for location';
+
+  @override
+  String get bireyselNameError =>
+      'Full name must be between 2 and 60 characters';
+
+  @override
+  String get bireyselNameLabel => 'Full name';
+
+  @override
+  String get bireyselOrDivider =>
+      'or sign in with the details from your agency';
+
+  @override
+  String get bireyselRegisterButton => 'Complete sign-up';
+
+  @override
+  String get bireyselRegisterFailed =>
+      'Sign-up could not be completed. Please try again.';
+
+  @override
+  String get bireyselRegisterIntro =>
+      'Welcome! We need a few details to create your account.';
+
+  @override
+  String get bireyselRegisterTitle => 'Complete Sign-up';
+
+  @override
+  String bireyselSignedInAs(String email) {
+    return 'Google account: $email';
+  }
+
+  @override
   String get ccActAgencyCreate => 'Agency created';
 
   @override

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../../../common/widgets/acente_ozelligi_card.dart';
+import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../cuzdan/data/wallet_watcher.dart';
@@ -26,15 +29,23 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    WalletWatcher.instance.start(); // esnaf işlemi gelince yerel bildirim
+    // Esnaf işlemi gelince yerel bildirim. Bireysel kullanıcı esnaf indirimi kullanmaz.
+    final user = context.read<AppStateProvider>().currentUser;
+    if (user == null || !user.isBireysel) WalletWatcher.instance.start();
   }
 
-  static const _screens = <Widget>[
-    HomeScreen(),
-    Dualar(),
-    TakvimScreen(),
-    GeneralInfoScreen(),
-    ProfilScreen(),
+  static final _screens = <Widget>[
+    const HomeScreen(),
+    const Dualar(),
+    // Etkinlik takvimi acente özelliğidir; bireysel kullanıcı kibar kart görür.
+    AcenteOzelligiGate(
+      title: (c) => c.l10n.homeProgramCalendar,
+      icon: Icons.calendar_month_rounded,
+      showBack: false,
+      child: const TakvimScreen(),
+    ),
+    const GeneralInfoScreen(),
+    const ProfilScreen(),
   ];
 
   @override

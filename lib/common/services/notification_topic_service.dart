@@ -23,6 +23,8 @@ class NotificationTopicService {
   /// Acentesi olan herkes (acente admini dahil) kendi acentesinin topic'ine, misafirler ayrıca
   /// Mekke/Medine sefer topic'lerine abone olur. Acentesi olmayan genel admin hiçbir topic'e abone olmaz.
   static List<String> topicsFor(UserModel user) {
+    // Bireysel kullanıcı acente/sefer topic'ine abone olmaz (Faz 1'de genel duyuru yok).
+    if (user.isBireysel) return const [];
     final topics = <String>{
       if (_isSet(user.agencyId)) agencyTopic(user.agencyId!),
       if (!user.isAdmin && _isSet(user.mekkeSeferiId)) tripTopic(user.mekkeSeferiId!),

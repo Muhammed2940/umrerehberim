@@ -58,6 +58,8 @@ dependencies:
   image_picker: ^1.2.4
   mobile_scanner: ^7.5.0
   flutter_tts: ^4.2.5
+  # Bireysel kullanıcı Google girişi (v7 API; Android web client id google-services.json → default_web_client_id)
+  google_sign_in: 7.2.0
 
 dev_dependencies:
   flutter_test:

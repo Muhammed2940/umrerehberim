@@ -20,6 +20,16 @@ class UserType {
   static const muhasebe = 'muhasebe';
 }
 
+/// Hesap türü (`account_kind`). Eski/acente hesaplarında alan yoktur (null).
+class AccountKind {
+  /// Google ile kendi açtığı hesap; acentesi yok (tool/BIREYSEL_SEMA.md).
+  static const bireysel = 'bireysel';
+}
+
+/// Bireysel kayıtta onaylanan KVKK aydınlatma metninin sürümü (`kvkk_version`, ≤ 20 karakter).
+/// Metin değişince artırılır.
+const String currentKvkkVersion = '2026-11-v1';
+
 // ROLLER (firestore.rules ile aynı):
 //   super_admin  : her şey; anlaşmalı dükkan, esnaf, esnaf raporu, acente ekle/sil yalnız onda
 //   yonetici     : genel yardımcı admin; TÜM acentelerin verisini yönetir (acente seçerek),
@@ -52,6 +62,21 @@ class UserModel {
 
   /// Yeni girişteki 7 haneli Kullanıcı ID (`login_id`). Eski (TC) hesaplarda null.
   final String? loginId;
+
+  /// `account_kind`: 'bireysel' ya da null (acente/eski hesap).
+  final String? accountKind;
+
+  /// Google hesabının e-postası (yalnız bireysel).
+  final String? email;
+
+  /// `auth_provider`: 'google' (yalnız bireysel).
+  final String? authProvider;
+
+  /// Konum için açık rıza (`location_consent`, yalnız bireysel).
+  final bool? locationConsent;
+
+  /// Onaylanan KVKK metni sürümü (`kvkk_version`).
+  final String? kvkkVersion;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -75,6 +100,11 @@ class UserModel {
     this.medineOdaId,
     this.shopId,
     this.loginId,
+    this.accountKind,
+    this.email,
+    this.authProvider,
+    this.locationConsent,
+    this.kvkkVersion,
     this.createdAt,
     this.updatedAt,
   });
@@ -106,6 +136,11 @@ class UserModel {
   bool get isAgencyAdmin => userType == UserType.acenteAdmin;
   bool get isMerchant => userType == UserType.esnaf;
 
+  /// Google ile kendi kaydolan, acentesi olmayan hacı. Acente özelliklerini görmez
+  /// (sefer, otel/oda, duyuru, takvim, rehber, telsiz, canlı konum, esnaf).
+  bool get isBireysel =>
+      userType == UserType.misafir && (agencyId ?? '').isEmpty && accountKind == AccountKind.bireysel;
+
   factory UserModel.fromMap(String id, Map<String, dynamic> d) => UserModel(
         id: id,
         userName: toStr(d['user_name']),
@@ -126,6 +161,11 @@ class UserModel {
         medineOdaId: d['medine_oda_id'] as String?,
         shopId: d['shop_id'] as String?,
         loginId: _loginIdOf(d['login_id']),
+        accountKind: d['account_kind'] as String?,
+        email: d['email'] as String?,
+        authProvider: d['auth_provider'] as String?,
+        locationConsent: d['location_consent'] as bool?,
+        kvkkVersion: d['kvkk_version'] as String?,
         createdAt: toDateTime(d['created_at']),
         updatedAt: toDateTime(d['updated_at']),
       );
@@ -156,6 +196,34 @@ class UserModel {
         if (shopId != null) 'shop_id': shopId,
         // Yalnız doluysa yazılır: merge ile kaydedilen belgelerde mevcut değeri silmez.
         if (loginId != null) 'login_id': loginId,
+        // Bireysel alanlar: yalnız doluysa (acente hesaplarına null yazılmaz).
+        if (accountKind != null) 'account_kind': accountKind,
+        if (email != null) 'email': email,
+        if (authProvider != null) 'auth_provider': authProvider,
+        if (locationConsent != null) 'location_consent': locationConsent,
+        if (kvkkVersion != null) 'kvkk_version': kvkkVersion,
+      };
+
+  /// İlk Google girişinde istemcinin oluşturduğu `users/{uid}` belgesi. Alanlar
+  /// tool/BIREYSEL_SEMA.md'deki listeyle BİREBİR aynıdır (kural `hasOnly` ile denetler);
+  /// buraya alan eklenmez. Zamanlar sunucu zamanıdır (`request.time`).
+  static Map<String, dynamic> bireyselNewDoc({
+    required String userName,
+    required String email,
+    required bool locationConsent,
+  }) =>
+      {
+        'user_name': userName.trim(),
+        'user_type': UserType.misafir,
+        'account_kind': AccountKind.bireysel,
+        'agency_id': '',
+        'email': email,
+        'auth_provider': 'google',
+        'kvkk_version': currentKvkkVersion,
+        'kvkk_accepted_at': FieldValue.serverTimestamp(),
+        'location_consent': locationConsent,
+        'created_at': FieldValue.serverTimestamp(),
+        'updated_at': FieldValue.serverTimestamp(),
       };
 
   static String? _loginIdOf(Object? v) {
@@ -190,6 +258,7 @@ class UserModel {
     String? mekkeOdaId,
     String? medineOdaId,
     String? loginId,
+    bool? locationConsent,
   }) =>
       UserModel(
         id: id,
@@ -211,6 +280,11 @@ class UserModel {
         medineOdaId: medineOdaId ?? this.medineOdaId,
         shopId: shopId,
         loginId: loginId ?? this.loginId,
+        accountKind: accountKind,
+        email: email,
+        authProvider: authProvider,
+        locationConsent: locationConsent ?? this.locationConsent,
+        kvkkVersion: kvkkVersion,
         createdAt: createdAt,
         updatedAt: updatedAt,
       );

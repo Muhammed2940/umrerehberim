@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/app_theme.dart';
@@ -38,6 +40,8 @@ class _GeneralInfoScreenState extends State<GeneralInfoScreen> {
   @override
   Widget build(BuildContext context) {
     final t = context.l10n;
+    // Bireysel kullanıcının rehberi yok: "Rehber İletişim" kartı gösterilmez.
+    final bireysel = context.select<AppStateProvider, bool>((a) => a.currentUser?.isBireysel ?? false);
     final cards = <InfoCardData>[
       InfoCardData(
         title: t.infoCardIhram,
@@ -117,6 +121,7 @@ class _GeneralInfoScreenState extends State<GeneralInfoScreen> {
         color: AppColors.emerald800,
         onTap: () => Navigator.pushNamed(context, '/otel-restoran'),
       ),
+      if (!bireysel)
       InfoCardData(
         title: t.infoCardContactGuide,
         subtitle: t.infoTapForDetails,

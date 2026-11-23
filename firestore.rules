@@ -12,15 +12,38 @@ service cloud.firestore {
     // TODO root uid: kök hesabın uid'si belli olunca e-posta yerine
     // request.auth.uid == '<kök uid>' kullanılmalı (sunucuda config 'root_uid' ile aynı).
     // E-posta eşleşmesi şimdilik seed/bootstrap için korunuyor.
+    // Oturumun giriş sağlayıcısı (password / custom / google.com). get(): alan yoksa
+    // (ör. bazı custom token'lar) kural hata verip tümden reddetmesin.
+    function provider() { return request.auth.token.get('firebase', {}).get('sign_in_provider', ''); }
+    // Google ile giriş (bireysel kullanıcı, tool/BIREYSEL_SEMA.md).
+    function isGoogle() { return signedIn() && provider() == 'google.com'; }
+
+    // Kök: YALNIZ e-posta/şifre oturumu. Google token'ı aynı e-postayı taşısa bile
+    // (umrerehberim.app posta kutusu/alan adı ele geçirilirse doğrulanmış Google hesabı
+    // açılabilir) kök sayılmaz; PHP servisinin custom token'ları kök e-postasını taşımaz.
     function isRoot() {
       // get(): e-postası olmayan token'larda kural hata verip tümden reddetmesin.
-      return signedIn() && request.auth.token.get('email', '') == '10000000146@umrerehberim.app';
+      return signedIn()
+          && !isGoogle()
+          && provider() == 'password'
+          && request.auth.token.get('email', '') == '10000000146@umrerehberim.app';
     }
 
     function me()     { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
-    function role()   { return isRoot() ? 'super_admin' : me().get('user_type', ''); }
+    // Rol çözümü. Google token'ı users belgesinde ne yazarsa yazsın 'misafir'dır:
+    // e-postayla hesap bağlama (account linking) bir Google oturumuna yönetici/süper admin
+    // belgesinin uid'sini verse bile personel yetkisi açılmaz. Tüm rol fonksiyonları
+    // (isSuper/isManager/isAgencyAdmin/isSupport/isFinance/isMerchant) role()'den türer.
+    function role()   {
+      return isRoot() ? 'super_admin' : (isGoogle() ? 'misafir' : me().get('user_type', ''));
+    }
     // Genel yöneticinin acentesi olmayabilir; get() ile hata vermez.
-    function agency() { return me().get('agency_id', ''); }
+    // Google oturumu acentesiz sayılır (bireysel belgelerde zaten ''): bağlanmış bir
+    // acente hacısı belgesi Google token'ına acente verisini açmasın.
+    function agency() { return isGoogle() ? '' : me().get('agency_id', ''); }
+    // Acentesi olan kullanıcı mı? Boş acente ('' = bireysel kullanıcı, platform personeli)
+    // HİÇBİR "aynı acente" karşılaştırmasında eşleşmemeli; tüm acente kontrolleri bunu ister.
+    function hasAgency() { return agency() != ''; }
 
     // ROLLER
     //   super_admin  : her şey (acente ekle/sil, anlaşmalı dükkan, esnaf, esnaf raporu)
@@ -29,7 +52,7 @@ service cloud.firestore {
     //   acente_admin : yalnız kendi acentesi (ve oraya kayıtlı kişiler)
     //   esnaf        : yalnız kendi dükkanı
     //   misafir      : kendisi + acentesinin verisi
-    function isSuper()       { return signedIn() && (isRoot() || role() == 'super_admin'); }
+    function isSuper()       { return signedIn() && role() == 'super_admin'; }
     function isManager()     { return signedIn() && role() == 'yonetici'; }
     function isGlobal()      { return isSuper() || isManager(); }
     function isAgencyAdmin() { return signedIn() && role() == 'acente_admin'; }
@@ -43,9 +66,9 @@ service cloud.firestore {
     function isHq()          { return isGlobal() || isSupport(); }
     function isStaff()       { return isAdmin() || isSupport() || isFinance(); }
     // Yazma yetkisi: genel adminler her acente, acente admini yalnız kendi acentesi.
-    function sameAgency(d) { return isGlobal() || (isAgencyAdmin() && d.agency_id == agency()); }
+    function sameAgency(d) { return isGlobal() || (isAgencyAdmin() && hasAgency() && d.agency_id == agency()); }
     // Okuma: kendi acentesinin verisi.
-    function myAgency(d)   { return signedIn() && d.agency_id == agency(); }
+    function myAgency(d)   { return signedIn() && hasAgency() && d.agency_id == agency(); }
 
     function changed() { return request.resource.data.diff(resource.data).affectedKeys(); }
 
@@ -78,43 +101,92 @@ service cloud.firestore {
     match /users/{uid} {
       allow get: if signedIn() && (request.auth.uid == uid
                     || isGlobal() || isSupport() || isFinance()
-                    || (isAgencyAdmin() && resource.data.agency_id == agency())
+                    || (isAgencyAdmin() && hasAgency() && resource.data.agency_id == agency())
                     || (myAgency(resource.data) && resource.data.user_type in ['acente_admin', 'yonetici']));
       allow list: if signedIn() && (request.auth.uid == uid
                      || isGlobal() || isSupport() || isFinance()
-                     || (isAgencyAdmin() && resource.data.agency_id == agency()));
+                     || (isAgencyAdmin() && hasAgency() && resource.data.agency_id == agency()));
 
-      allow create: if newUserAuthFieldsOk(uid)
-                    && (isSuper()
-                        || (isManager()
-                            && guestOrAgencyAdmin(request.resource.data.user_type)
-                            && request.resource.data.agency_id is string
-                            && request.resource.data.agency_id != '')
-                        || (isAgencyAdmin()
-                            && request.resource.data.agency_id == agency()
-                            && request.resource.data.user_type == 'misafir'));
+      // Bireysel (Google ile giriş) kendi belgesini oluşturur; tool/BIREYSEL_SEMA.md.
+      // Yalnız sözleşmedeki alanlar; rol/acente sabit; sunucu zamanı ve doğrulanmış e-posta şart.
+      function bireyselCreateOk(uid) {
+        let d = request.resource.data;
+        let keys = ['user_name', 'user_type', 'account_kind', 'agency_id', 'email', 'auth_provider',
+                    'kvkk_version', 'kvkk_accepted_at', 'location_consent', 'created_at', 'updated_at'];
+        return request.auth.uid == uid
+            && isGoogle()
+            && request.auth.token.email_verified == true
+            && d.keys().hasOnly(keys)
+            && d.keys().hasAll(keys)
+            && d.user_name is string && d.user_name.size() >= 2 && d.user_name.size() <= 60
+            && d.user_type == 'misafir'
+            && d.account_kind == 'bireysel'
+            && d.agency_id == ''
+            && d.email is string && d.email == request.auth.token.email
+            && d.auth_provider == 'google'
+            && d.kvkk_version is string && d.kvkk_version.size() >= 1 && d.kvkk_version.size() <= 20
+            && d.kvkk_accepted_at == request.time
+            && d.location_consent is bool
+            && d.created_at == request.time
+            && d.updated_at == request.time;
+      }
+      // Bireysel kendi belgesinde yalnız bu alanları günceller (user_type/account_kind/agency_id sabit).
+      function bireyselSelfUpdateOk(uid) {
+        let d = request.resource.data;
+        return request.auth.uid == uid
+            && resource.data.get('account_kind', '') == 'bireysel'
+            && changed().hasOnly(['user_name', 'location_consent', 'fcm_token', 'user_location',
+                                  'updated_at', 'last_active_at'])
+            && (!('user_name' in changed())
+                || (d.user_name is string && d.user_name.size() >= 2 && d.user_name.size() <= 60))
+            && (!('location_consent' in changed()) || d.location_consent is bool);
+      }
+
+      // Not: bireysel dal ilk sırada; users belgesi henüz yokken rol çözümü (me()) hata verir,
+      // "||" içinde hata veren dal, diğer dal doğruysa sonucu bozmaz.
+      allow create: if bireyselCreateOk(uid)
+                    || (newUserAuthFieldsOk(uid)
+                        // Yönetici/acente admini bireysel işaretli belge açamaz (yalnız süper admin).
+                        && (isSuper() || request.resource.data.get('account_kind', '') != 'bireysel')
+                        && (isSuper()
+                            || (isManager()
+                                && guestOrAgencyAdmin(request.resource.data.user_type)
+                                && request.resource.data.agency_id is string
+                                && request.resource.data.agency_id != '')
+                            || (isAgencyAdmin()
+                                && hasAgency()
+                                && request.resource.data.agency_id == agency()
+                                && request.resource.data.user_type == 'misafir')));
 
       // 1) Herkes kendi belgesinde yalnızca fcm_token, user_location, updated_at.
       // 2) Kimse (kök hariç) kendi user_type / agency_id / shop_id alanını değiştiremez.
       // 3) login_id ve auth_migrated'ı HİÇ KİMSE değiştiremez (kök dahil): yalnız kimlik servisi
       //    (servis hesabı, kuralları baypas eder) yazar; bkz. tool/AUTH_SEMA.md.
+      // 4) Bireysel kendi belgesinde ek olarak user_name ve location_consent'i düzenler.
+      // 5) account_kind'ı yalnız süper admin değiştirebilir (yönetici/acente admini çeviremez).
       allow update: if (signedIn() && request.auth.uid == uid
                          && changed().hasOnly(['fcm_token', 'user_location', 'updated_at', 'last_active_at']))
+                    || (signedIn() && bireyselSelfUpdateOk(uid))
                     || (!changed().hasAny(['login_id', 'auth_migrated'])
-                        && (request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id']))
+                        && (request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id', 'account_kind']))
+                        && (isSuper() || !changed().hasAny(['account_kind']))
                         && (isSuper()
                             || (isManager()
                                 && guestOrAgencyAdmin(resource.data.user_type)
                                 && guestOrAgencyAdmin(request.resource.data.user_type))
                             || (isAgencyAdmin()
+                                && hasAgency()
                                 && resource.data.agency_id == agency()
                                 && resource.data.user_type == 'misafir'
                                 && request.resource.data.agency_id == agency()
                                 && request.resource.data.user_type == 'misafir')));
 
-      allow delete: if isSuper()
+      // Bireysel kendi hesabını siler (mağaza şartı); acente hacısı kendini silemez.
+      allow delete: if (signedIn() && request.auth.uid == uid
+                        && resource.data.get('account_kind', '') == 'bireysel')
+                    || isSuper()
                     || (isManager() && guestOrAgencyAdmin(resource.data.user_type))
-                    || (isAgencyAdmin() && resource.data.agency_id == agency()
+                    || (isAgencyAdmin() && hasAgency() && resource.data.agency_id == agency()
                         && resource.data.user_type == 'misafir');
     }
 
@@ -132,7 +204,7 @@ service cloud.firestore {
 
     // Acente ekleme/silme/düzenleme yalnız süper admin.
     match /agencies/{id} {
-      allow read: if signedIn() && (isGlobal() || isSupport() || isFinance() || agency() == id);
+      allow read: if signedIn() && (isGlobal() || isSupport() || isFinance() || (hasAgency() && agency() == id));
       allow write: if isSuper();
     }
 
@@ -190,6 +262,7 @@ service cloud.firestore {
     match /shop_tokens/{id} {
       allow create: if signedIn()
                     && request.resource.data.guest_uid == request.auth.uid
+                    && hasAgency()
                     && request.resource.data.agency_id == agency()
                     && request.resource.data.created_at == request.time
                     && request.resource.data.used == false
@@ -321,7 +394,7 @@ service cloud.firestore {
       allow read: if signedIn()
                   && (isSuper() || isFinance() || isMerchant()
                       || (resource.data.active == true
-                          && (resource.data.agency_id == 'all' || resource.data.agency_id == agency())));
+                          && (resource.data.agency_id == 'all' || (hasAgency() && resource.data.agency_id == agency()))));
       allow create, delete: if isSuper();
       allow update: if isSuper()
                     // Esnaf yalnız işlem kaydıyla aynı batch'te kullanım sayısını 1 artırır.
@@ -383,14 +456,14 @@ service cloud.firestore {
     // Acente admini yalnız kendi acentesinin mesajlarını görür
     // (sorgu where agency_id == <acente> içermeli) ve yalnız 'agency' tarafı olarak yazar.
     match /agency_messages/{id} {
-      allow read: if isHq() || (isAgencyAdmin() && resource.data.agency_id == agency());
+      allow read: if isHq() || (isAgencyAdmin() && hasAgency() && resource.data.agency_id == agency());
       allow create: if request.resource.data.from_uid == request.auth.uid
                     && request.resource.data.created_at == request.time
                     && ((isHq() && request.resource.data.from_side == 'hq')
-                        || (isAgencyAdmin() && request.resource.data.from_side == 'agency'
+                        || (isAgencyAdmin() && hasAgency() && request.resource.data.from_side == 'agency'
                             && request.resource.data.agency_id == agency()));
       allow update: if (isHq() && changed().hasOnly(['read_by_hq']))
-                    || (isAgencyAdmin() && resource.data.agency_id == agency()
+                    || (isAgencyAdmin() && hasAgency() && resource.data.agency_id == agency()
                         && changed().hasOnly(['read_by_agency']));
       allow delete: if isSuper();
     }

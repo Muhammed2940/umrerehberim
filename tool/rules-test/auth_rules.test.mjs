@@ -36,7 +36,10 @@ await env.withSecurityRulesDisabled(async (ctx) => {
 });
 
 const as = (uid) => env.authenticatedContext(uid, { email: `${uid}@x.test` }).firestore();
-const asRoot = () => env.authenticatedContext('rootuid', { email: '10000000146@umrerehberim.app' }).firestore();
+// Kök yalnız e-posta/şifre oturumuyla tanınır (firestore.rules isRoot: sign_in_provider == 'password').
+const asRoot = () => env.authenticatedContext('rootuid', {
+  email: '10000000146@umrerehberim.app', firebase: { sign_in_provider: 'password' },
+}).firestore();
 let pass = 0, fail = 0;
 async function t(name, fn) {
   try { await fn(); pass++; console.log('  OK  ', name); }

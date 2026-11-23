@@ -12,6 +12,8 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../models/user_model.dart';
 import '../providers/login_provider.dart';
+import 'kayit_tamamla.dart';
+import '../widgets/google_sign_in_button.dart';
 import '../widgets/kvkk_dialog.dart';
 import '../widgets/login_button.dart';
 import '../widgets/section_title.dart';
@@ -152,6 +154,20 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     setState(() => _kvkkAccepted = accepted);
   }
 
+  /// Bireysel (Google) giriş. KVKK onayı yeni hesapta Kayıt Tamamla ekranında alınır;
+  /// kayıtlı hesap onayı zaten vermiştir.
+  Future<void> _googleLogin() async {
+    FocusScope.of(context).unfocus();
+    final login = context.read<LoginProvider>();
+    final ok = await login.handleGoogleLogin(appState: context.read<AppStateProvider>());
+    if (ok || !mounted) return;
+    final pending = login.pendingGoogleUser;
+    if (pending == null) return;
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => KayitTamamlaScreen(googleUser: pending)),
+    );
+  }
+
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
     if (!(_formKey.currentState?.validate() ?? false)) return;
@@ -244,6 +260,32 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     }),
                   ),
                   const SizedBox(height: 24),
+                  // Bireysel hacı: Google ile kendi hesabını açar / girer.
+                  if (_userType == UserType.misafir) ...[
+                    GoogleSignInButton(
+                      onPressed: _googleLogin,
+                      loading: context.watch<LoginProvider>().isLoading,
+                    ),
+                    const SizedBox(height: 18),
+                    Row(
+                      children: [
+                        const Expanded(child: Divider(color: AppColors.divider, thickness: 1)),
+                        Flexible(
+                          flex: 3,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              context.l10n.bireyselOrDivider,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 12.5, color: AppColors.textMuted, height: 1.3),
+                            ),
+                          ),
+                        ),
+                        const Expanded(child: Divider(color: AppColors.divider, thickness: 1)),
+                      ],
+                    ),
+                    const SizedBox(height: 18),
+                  ],
                   if (_isMerchant) ...[
                     AppTextField(
                       key: const ValueKey('esnaf-code'),

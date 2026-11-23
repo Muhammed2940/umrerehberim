@@ -338,6 +338,35 @@ class HatimService {
         });
       });
 
+  /// Bireysel hesap silme (tool/BIREYSEL_SEMA.md) için Toplu Hatim temizliği. SIKI:
+  /// herhangi bir adım başarısızsa [HatimException] fırlatır; çağıran hesabı silmez.
+  /// - Gruplar ve parçalar SUNUCUDAN okunur (önbellekteki eksik liste yüzünden üyelik kalmasın).
+  /// - Her grupta önce bu turdaki alınmış (bitmemiş) parçalarım [_releaseTx] ile bırakılır
+  ///   (holds −1 aynı işlemde), sonra grup taze okunur: sahibiysem silinir, değilsem ayrılırım.
+  /// Bilinen sınır: bitmiş (`done`) parçalardaki ad ve `last_event.name` kalır (BIREYSEL_SEMA.md).
+  Future<void> cleanupForAccountDeletion(UserModel me) => _guard(() async {
+        const server = GetOptions(source: Source.server);
+        final snap = await _groups.where('members', arrayContains: me.id).get(server);
+        for (final d in snap.docs) {
+          final g = _fromDoc(d);
+          if (!g.isCompleted) {
+            final parts = await _parts(g.id).where('round', isEqualTo: g.round).get(server);
+            for (final pd in parts.docs) {
+              final p = HatimPart.fromDoc(pd);
+              if (p.uid == me.id && p.isTaken) await _releaseTx(g.id, p.n, me);
+            }
+          }
+          final fresh = await _group(g.id).get(server);
+          if (!fresh.exists) continue; // bu arada silinmiş
+          final fg = _fromDoc(fresh);
+          if (fg.isOwner(me.id)) {
+            await delete(fg);
+          } else if (fg.members.contains(me.id)) {
+            await leave(fg, me);
+          }
+        }
+      });
+
   /// Sahip (veya genel admin) bir üyeyi çıkarır: önce o üyenin bu turdaki alınmış
   /// parçaları tek tek boşaltılır (her biri ayrı release işlemi; kural bir grup
   /// güncellemesini tek parçaya bağlar), sonra üye `members`'tan çıkarılır ve

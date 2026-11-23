@@ -1719,6 +1719,134 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authUserNotFound => 'المستخدم غير موجود. يرجى التسجيل.';
 
   @override
+  String get bireyselAccountBadge => 'حساب فردي';
+
+  @override
+  String get bireyselAgencyOnlyBody =>
+      'تُقدَّم هذه الميزة للحجاج المسافرين مع الوكالات المتعاقدة.';
+
+  @override
+  String get bireyselAgencyOnlyTitle => 'خاص بحجاج الوكالات';
+
+  @override
+  String get bireyselConsentSaveFailed =>
+      'تعذّر حفظ تفضيلك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bireyselDeleteAccount => 'حذف حسابي';
+
+  @override
+  String get bireyselDeleteAccountSub => 'يُحذف حسابك وبياناتك نهائيًا';
+
+  @override
+  String get bireyselDeleteAuthPartial =>
+      'حُذفت بياناتك لكن تعذّر إغلاق سجل الحساب؛ سجّل الدخول مرة أخرى ثم ألغِ ليُحذف بالكامل.';
+
+  @override
+  String get bireyselDeleteConfirmBody =>
+      'سيتم حذف حسابك وبيانات ملفك الشخصي ومجموعات الختمة الجماعية التي أنشأتها نهائيًا، وستغادر المجموعات التي انضممت إليها. لا يمكن التراجع عن ذلك.\n\nسيُطلب منك التحقق مرة أخرى بحساب Google للمتابعة.';
+
+  @override
+  String get bireyselDeleteConfirmButton => 'حذف نهائي';
+
+  @override
+  String get bireyselDeleteConfirmTitle => 'هل تريد حذف حسابك؟';
+
+  @override
+  String get bireyselDeleteFailed =>
+      'تعذّر حذف الحساب. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bireyselDeleteHatimFailed =>
+      'تعذّر الخروج من مجموعات الختمة الجماعية؛ لم يُحذف حسابك. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bireyselDeleteOffline =>
+      'يلزم الاتصال بالإنترنت لحذف حسابك. يرجى التحقق من الاتصال والمحاولة مرة أخرى.';
+
+  @override
+  String get bireyselDeleteRecentLogin =>
+      'لأسباب أمنية، سجّل الخروج ثم سجّل الدخول مجددًا وحاول مرة أخرى.';
+
+  @override
+  String get bireyselDeleteWrongAccount =>
+      'يرجى اختيار حساب Google الذي تستخدمه في هذا التطبيق.';
+
+  @override
+  String get bireyselDeleted => 'تم حذف حسابك.';
+
+  @override
+  String get bireyselDeleting => 'جارٍ حذف حسابك…';
+
+  @override
+  String get bireyselEmail => 'البريد الإلكتروني';
+
+  @override
+  String get bireyselErrAccountExists =>
+      'عنوان البريد الإلكتروني هذا مسجّل بطريقة دخول أخرى.';
+
+  @override
+  String get bireyselErrEmailUnverified =>
+      'عنوان البريد الإلكتروني لحساب Google الخاص بك غير مُتحقَّق منه.';
+
+  @override
+  String get bireyselErrGeneric =>
+      'تعذّر تسجيل الدخول باستخدام Google. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bireyselErrUnavailable =>
+      'تسجيل الدخول باستخدام Google غير متاح حاليًا. يرجى المحاولة لاحقًا.';
+
+  @override
+  String get bireyselGoogleContinue => 'المتابعة باستخدام Google';
+
+  @override
+  String get bireyselJoinAgency => 'الانضمام إلى وكالتي';
+
+  @override
+  String get bireyselJoinAgencySnack => 'ستتوفر هذه الميزة قريبًا.';
+
+  @override
+  String get bireyselJoinAgencySub =>
+      'اربط حسابك بوكالتك لتظهر تفاصيل رحلتك في التطبيق';
+
+  @override
+  String get bireyselLocationConsentBody =>
+      'اختياري. تسمح للميزات التي تحتاج إلى موقعك؛ ويمكنك تغيير ذلك في أي وقت من الملف الشخصي.';
+
+  @override
+  String get bireyselLocationConsentTitle => 'موافقة صريحة على استخدام الموقع';
+
+  @override
+  String get bireyselNameError => 'يجب أن يكون الاسم الكامل بين 2 و60 حرفًا';
+
+  @override
+  String get bireyselNameLabel => 'الاسم الكامل';
+
+  @override
+  String get bireyselOrDivider =>
+      'أو سجّل الدخول بالبيانات التي قدّمتها وكالتك';
+
+  @override
+  String get bireyselRegisterButton => 'إكمال التسجيل';
+
+  @override
+  String get bireyselRegisterFailed =>
+      'تعذّر إكمال التسجيل. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get bireyselRegisterIntro =>
+      'مرحبًا بك! نحتاج إلى بعض المعلومات لإنشاء حسابك.';
+
+  @override
+  String get bireyselRegisterTitle => 'إكمال التسجيل';
+
+  @override
+  String bireyselSignedInAs(String email) {
+    return 'حساب Google: $email';
+  }
+
+  @override
   String get ccActAgencyCreate => 'تمت إضافة وكالة';
 
   @override

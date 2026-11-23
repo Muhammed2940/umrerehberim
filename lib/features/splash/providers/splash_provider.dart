@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../../common/services/firestore_service.dart';
+import '../../../common/services/google_auth_service.dart';
 import '../../../common/services/token_service.dart';
 import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
@@ -38,14 +39,19 @@ class SplashProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> checkInternetConnection() async {
-    bool ok;
+  /// Uygulamanın ortak internet denetimi (DNS çözümü). Durum değiştirmez; başka
+  /// akışlar da (ör. hesap silme) bunu kullanır.
+  static Future<bool> isOnline() async {
     try {
       final r = await InternetAddress.lookup('google.com').timeout(const Duration(seconds: 5));
-      ok = r.isNotEmpty && r.first.rawAddress.isNotEmpty;
+      return r.isNotEmpty && r.first.rawAddress.isNotEmpty;
     } catch (_) {
-      ok = false;
+      return false;
     }
+  }
+
+  Future<bool> checkInternetConnection() async {
+    final ok = await isOnline();
     setHasInternet(ok);
     return ok;
   }
@@ -88,12 +94,26 @@ class SplashProvider extends ChangeNotifier {
     _status(l10n.authSplashLoadingUser);
     try {
       final user = await FirestoreService.instance.getUserByToken(userId).timeout(const Duration(seconds: 15));
+      final viaGoogle = await GoogleAuthService.isGoogleSession(FirebaseAuth.instance.currentUser);
       if (user == null) {
-        _status(l10n.authSplashUserNotFound);
-        GlobalSnackbar.showError(l10n.authSplashUserNotFound);
-        await FirebaseAuth.instance.signOut();
+        if (viaGoogle) {
+          // Google ile girip Kayıt Tamamla'yı bitirmeden çıkan kullanıcı: Auth kaydı
+          // silinmeye çalışılır (hata yok sayılır), sessizce giriş ekranına.
+          await GoogleAuthService.discardUnregistered();
+        } else {
+          _status(l10n.authSplashUserNotFound);
+          GlobalSnackbar.showError(l10n.authSplashUserNotFound);
+          await FirebaseAuth.instance.signOut();
+        }
         await LocalCacheService.clear();
         await TokenService.clearToken();
+        return;
+      }
+      // İkinci savunma hattı (kurallar zaten Google token'ına personel yetkisi vermez):
+      // Google oturumu yalnız bireysel belgeyle açılır. E-postayla hesap bağlama yüzünden
+      // personel/acente hacısı belgesine düşen Google oturumu kapatılır.
+      if (viaGoogle && !user.isBireysel) {
+        await _rejectGoogleSession();
         return;
       }
       await TokenService.saveUserToken(user.id);
@@ -112,6 +132,10 @@ class SplashProvider extends ChangeNotifier {
       // Sunucuya ulaşılamadıysa önbellekle açmayı dene.
       final cached = await LocalCacheService.load();
       if (cached != null && cached.user.id == userId) {
+        if (!cached.user.isBireysel && await GoogleAuthService.isGoogleSession(FirebaseAuth.instance.currentUser)) {
+          await _rejectGoogleSession();
+          return;
+        }
         SessionLoader.apply(appState, cached, isOffline: true);
       } else {
         GlobalSnackbar.showError(l10n.authLoginFailed);
@@ -144,9 +168,28 @@ class SplashProvider extends ChangeNotifier {
       return;
     }
 
+    // Google oturumu yalnız bireysel belgeyle açılır (çevrimiçi yoldaki denetimle aynı).
+    if (!data.user.isBireysel && await GoogleAuthService.isGoogleSession(authUser)) {
+      await _rejectGoogleSession();
+      return;
+    }
+
     if (DateTime.now().difference(lastUpdate) > _cacheMaxAge) {
       GlobalSnackbar.showError(l10n.authSplashDataStale);
     }
     SessionLoader.apply(appState, data, isOffline: true);
+  }
+
+  /// Bireysel olmayan belgeye düşen Google oturumu: Firebase + Google çıkışı, yerel
+  /// oturum verisi silinir, giriş ekranı. Auth kaydı SİLİNMEZ (belge başkasına ait olabilir).
+  Future<void> _rejectGoogleSession() async {
+    debugPrint('Google oturumu bireysel olmayan belgeyle eşleşti; oturum kapatılıyor.');
+    await GoogleAuthService.signOutAll();
+    await LocalCacheService.clear();
+    try {
+      await TokenService.clearToken();
+    } catch (_) {}
+    _status(l10n.authSplashUserNotFound);
+    GlobalSnackbar.showError(l10n.authUserNotFound);
   }
 }
