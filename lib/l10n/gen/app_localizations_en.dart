@@ -6667,6 +6667,105 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get paketlerAgencyNote =>
+      'If you travel with a partner agency, these features are provided free by your agency.';
+
+  @override
+  String get paketlerAileF1 => 'Everything in the Umrah Package, for 6 people';
+
+  @override
+  String get paketlerAileF2 => 'A live map just for your group';
+
+  @override
+  String get paketlerAileF3 => 'In-group internet walkie-talkie';
+
+  @override
+  String get paketlerAileName => 'Family / Friends Package';
+
+  @override
+  String get paketlerAilePeriod => '30 days · up to 6 people';
+
+  @override
+  String get paketlerAilePrice => '€19.99';
+
+  @override
+  String get paketlerBestValue => 'Best value per person';
+
+  @override
+  String get paketlerBrowse => 'View packages';
+
+  @override
+  String get paketlerBuy => 'Buy';
+
+  @override
+  String get paketlerBuySoon =>
+      'Payments are coming very soon. Packages will be available through the app store.';
+
+  @override
+  String get paketlerCurrent => 'Your current plan';
+
+  @override
+  String get paketlerFootnote =>
+      'Packages do not renew automatically. The period starts when you purchase.';
+
+  @override
+  String get paketlerFreeF1 => 'Prayers, the Holy Quran and dhikr counter';
+
+  @override
+  String get paketlerFreeF2 => 'Prayer times and qibla';
+
+  @override
+  String get paketlerFreeF3 =>
+      'Places to visit, Haram gates and transport information';
+
+  @override
+  String get paketlerFreeF4 => 'Group Khatm circles';
+
+  @override
+  String get paketlerFreeName => 'Free';
+
+  @override
+  String get paketlerFreePrice => '€0';
+
+  @override
+  String get paketlerIntro =>
+      'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
+
+  @override
+  String get paketlerQuickSub => 'Umrah and Family packages';
+
+  @override
+  String get paketlerRecommended => 'Recommended';
+
+  @override
+  String get paketlerTitle => 'Packages';
+
+  @override
+  String get paketlerUmreF1 => 'Professional audio guide';
+
+  @override
+  String get paketlerUmreF2 => 'Full offline use';
+
+  @override
+  String get paketlerUmreF3 => 'Personal Umrah plan';
+
+  @override
+  String get paketlerUmreF4 =>
+      'Family Tracking: loved ones at home see your location via a link';
+
+  @override
+  String get paketlerUmreF5 => 'Merchant discounts';
+
+  @override
+  String get paketlerUmreName => 'Umrah Package';
+
+  @override
+  String get paketlerUmrePeriod => '30 days · 1 person';
+
+  @override
+  String get paketlerUmrePrice => '€9.99';
+
+  @override
   String get quranAddBookmark => 'Add bookmark';
 
   @override

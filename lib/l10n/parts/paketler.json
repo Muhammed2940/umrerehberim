@@ -1,0 +1,89 @@
+{
+  "paketlerTitle": { "tr": "Paketler", "en": "Packages", "ar": "الباقات" },
+  "paketlerIntro": {
+    "tr": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+    "en": "Planning your Umrah on your own? Choose the package that suits you. The basics are always free.",
+    "ar": "إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا."
+  },
+  "paketlerBrowse": { "tr": "Paketleri incele", "en": "View packages", "ar": "عرض الباقات" },
+  "paketlerQuickSub": {
+    "tr": "Umre ve Aile paketleri",
+    "en": "Umrah and Family packages",
+    "ar": "باقات العمرة والعائلة"
+  },
+  "paketlerFreeName": { "tr": "Ücretsiz", "en": "Free", "ar": "مجاني" },
+  "paketlerFreePrice": { "tr": "0 TL", "en": "€0", "ar": "0 €" },
+  "paketlerCurrent": { "tr": "Mevcut planınız", "en": "Your current plan", "ar": "خطتك الحالية" },
+  "paketlerFreeF1": {
+    "tr": "Dualar, Kur'an-ı Kerim ve zikirmatik",
+    "en": "Prayers, the Holy Quran and dhikr counter",
+    "ar": "الأدعية والقرآن الكريم والمسبحة"
+  },
+  "paketlerFreeF2": {
+    "tr": "Ezan vakitleri ve kıble",
+    "en": "Prayer times and qibla",
+    "ar": "مواقيت الصلاة والقبلة"
+  },
+  "paketlerFreeF3": {
+    "tr": "Gezilecek yerler, Harem kapıları ve ulaşım bilgileri",
+    "en": "Places to visit, Haram gates and transport information",
+    "ar": "الأماكن التي تُزار وأبواب الحرم ومعلومات النقل"
+  },
+  "paketlerFreeF4": { "tr": "Toplu Hatim grupları", "en": "Group Khatm circles", "ar": "مجموعات الختمة الجماعية" },
+  "paketlerUmreName": { "tr": "Umre Paketi", "en": "Umrah Package", "ar": "باقة العمرة" },
+  "paketlerUmrePrice": { "tr": "349,99 TL", "en": "€9.99", "ar": "9.99 €" },
+  "paketlerUmrePeriod": { "tr": "30 gün · tek kişi", "en": "30 days · 1 person", "ar": "30 يومًا · شخص واحد" },
+  "paketlerUmreF1": {
+    "tr": "Profesyonel sesli rehber",
+    "en": "Professional audio guide",
+    "ar": "دليل صوتي احترافي"
+  },
+  "paketlerUmreF2": {
+    "tr": "İnternetsiz tam kullanım",
+    "en": "Full offline use",
+    "ar": "استخدام كامل دون إنترنت"
+  },
+  "paketlerUmreF3": { "tr": "Kişisel umre planı", "en": "Personal Umrah plan", "ar": "خطة عمرة شخصية" },
+  "paketlerUmreF4": {
+    "tr": "Aile Takibi: evdekiler konumunuzu bir bağlantıyla görür",
+    "en": "Family Tracking: loved ones at home see your location via a link",
+    "ar": "متابعة العائلة: يرى أهلك موقعك عبر رابط"
+  },
+  "paketlerUmreF5": { "tr": "Esnaf indirimleri", "en": "Merchant discounts", "ar": "خصومات المتاجر" },
+  "paketlerAileName": { "tr": "Aile / Arkadaş Paketi", "en": "Family / Friends Package", "ar": "باقة العائلة / الأصدقاء" },
+  "paketlerAilePrice": { "tr": "799,99 TL", "en": "€19.99", "ar": "19.99 €" },
+  "paketlerAilePeriod": { "tr": "30 gün · 6 kişiye kadar", "en": "30 days · up to 6 people", "ar": "30 يومًا · حتى 6 أشخاص" },
+  "paketlerAileF1": {
+    "tr": "Umre Paketi'ndeki her şey, 6 kişi için",
+    "en": "Everything in the Umrah Package, for 6 people",
+    "ar": "كل ما في باقة العمرة لستة أشخاص"
+  },
+  "paketlerAileF2": {
+    "tr": "Grubunuza özel canlı harita",
+    "en": "A live map just for your group",
+    "ar": "خريطة مباشرة خاصة بمجموعتك"
+  },
+  "paketlerAileF3": {
+    "tr": "Grup içi internet telsizi",
+    "en": "In-group internet walkie-talkie",
+    "ar": "لاسلكي عبر الإنترنت داخل المجموعة"
+  },
+  "paketlerRecommended": { "tr": "Önerilen", "en": "Recommended", "ar": "موصى بها" },
+  "paketlerBestValue": { "tr": "Kişi başı en uygun", "en": "Best value per person", "ar": "الأوفر للشخص" },
+  "paketlerBuy": { "tr": "Satın al", "en": "Buy", "ar": "شراء" },
+  "paketlerBuySoon": {
+    "tr": "Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.",
+    "en": "Payments are coming very soon. Packages will be available through the app store.",
+    "ar": "سيتوفر الدفع قريبًا جدًا. ستتوفر الباقات عبر متجر التطبيقات."
+  },
+  "paketlerAgencyNote": {
+    "tr": "Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.",
+    "en": "If you travel with a partner agency, these features are provided free by your agency.",
+    "ar": "إذا كنت تسافر مع وكالة متعاقدة فستقدّم لك وكالتك هذه الميزات مجانًا."
+  },
+  "paketlerFootnote": {
+    "tr": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
+    "en": "Packages do not renew automatically. The period starts when you purchase.",
+    "ar": "لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء."
+  }
+}

@@ -6702,6 +6702,103 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get paketlerAgencyNote =>
+      'إذا كنت تسافر مع وكالة متعاقدة فستقدّم لك وكالتك هذه الميزات مجانًا.';
+
+  @override
+  String get paketlerAileF1 => 'كل ما في باقة العمرة لستة أشخاص';
+
+  @override
+  String get paketlerAileF2 => 'خريطة مباشرة خاصة بمجموعتك';
+
+  @override
+  String get paketlerAileF3 => 'لاسلكي عبر الإنترنت داخل المجموعة';
+
+  @override
+  String get paketlerAileName => 'باقة العائلة / الأصدقاء';
+
+  @override
+  String get paketlerAilePeriod => '30 يومًا · حتى 6 أشخاص';
+
+  @override
+  String get paketlerAilePrice => '19.99 €';
+
+  @override
+  String get paketlerBestValue => 'الأوفر للشخص';
+
+  @override
+  String get paketlerBrowse => 'عرض الباقات';
+
+  @override
+  String get paketlerBuy => 'شراء';
+
+  @override
+  String get paketlerBuySoon =>
+      'سيتوفر الدفع قريبًا جدًا. ستتوفر الباقات عبر متجر التطبيقات.';
+
+  @override
+  String get paketlerCurrent => 'خطتك الحالية';
+
+  @override
+  String get paketlerFootnote =>
+      'لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء.';
+
+  @override
+  String get paketlerFreeF1 => 'الأدعية والقرآن الكريم والمسبحة';
+
+  @override
+  String get paketlerFreeF2 => 'مواقيت الصلاة والقبلة';
+
+  @override
+  String get paketlerFreeF3 => 'الأماكن التي تُزار وأبواب الحرم ومعلومات النقل';
+
+  @override
+  String get paketlerFreeF4 => 'مجموعات الختمة الجماعية';
+
+  @override
+  String get paketlerFreeName => 'مجاني';
+
+  @override
+  String get paketlerFreePrice => '0 €';
+
+  @override
+  String get paketlerIntro =>
+      'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
+
+  @override
+  String get paketlerQuickSub => 'باقات العمرة والعائلة';
+
+  @override
+  String get paketlerRecommended => 'موصى بها';
+
+  @override
+  String get paketlerTitle => 'الباقات';
+
+  @override
+  String get paketlerUmreF1 => 'دليل صوتي احترافي';
+
+  @override
+  String get paketlerUmreF2 => 'استخدام كامل دون إنترنت';
+
+  @override
+  String get paketlerUmreF3 => 'خطة عمرة شخصية';
+
+  @override
+  String get paketlerUmreF4 => 'متابعة العائلة: يرى أهلك موقعك عبر رابط';
+
+  @override
+  String get paketlerUmreF5 => 'خصومات المتاجر';
+
+  @override
+  String get paketlerUmreName => 'باقة العمرة';
+
+  @override
+  String get paketlerUmrePeriod => '30 يومًا · شخص واحد';
+
+  @override
+  String get paketlerUmrePrice => '9.99 €';
+
+  @override
   String get quranAddBookmark => 'إضافة علامة';
 
   @override

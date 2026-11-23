@@ -38,6 +38,12 @@ class AcenteOzelligiCard extends StatelessWidget {
                   l.bireyselAgencyOnlyBody,
                   style: const TextStyle(fontSize: 12.5, color: AppColors.textMuted),
                 ),
+                const SizedBox(height: 8),
+                // Bireysel kullanıcıyı paketlere yönlendirir.
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed('/paketler'),
+                  child: InfoChip(l.paketlerBrowse, icon: Icons.workspace_premium_rounded, strong: true),
+                ),
               ],
             ),
           ),
@@ -94,7 +100,16 @@ class AcenteOzelligiScreen extends StatelessWidget {
     final l = context.l10n;
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: showBack, title: Text(title)),
-      body: EmptyStateWidget(icon: icon, message: l.bireyselAgencyOnlyTitle, subtitle: l.bireyselAgencyOnlyBody),
+      body: EmptyStateWidget(
+        icon: icon,
+        message: l.bireyselAgencyOnlyTitle,
+        subtitle: l.bireyselAgencyOnlyBody,
+        action: ElevatedButton.icon(
+          onPressed: () => Navigator.of(context).pushNamed('/paketler'),
+          icon: const Icon(Icons.workspace_premium_rounded),
+          label: Text(l.paketlerBrowse),
+        ),
+      ),
     );
   }
 }

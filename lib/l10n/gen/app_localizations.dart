@@ -11936,6 +11936,192 @@ abstract class AppLocalizations {
   /// **'Telefonu {degrees}° sağa çevirin'**
   String kibleTurnRight(int degrees);
 
+  /// No description provided for @paketlerAgencyNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.'**
+  String get paketlerAgencyNote;
+
+  /// No description provided for @paketlerAileF1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Paketi\'ndeki her şey, 6 kişi için'**
+  String get paketlerAileF1;
+
+  /// No description provided for @paketlerAileF2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grubunuza özel canlı harita'**
+  String get paketlerAileF2;
+
+  /// No description provided for @paketlerAileF3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Grup içi internet telsizi'**
+  String get paketlerAileF3;
+
+  /// No description provided for @paketlerAileName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aile / Arkadaş Paketi'**
+  String get paketlerAileName;
+
+  /// No description provided for @paketlerAilePeriod.
+  ///
+  /// In tr, this message translates to:
+  /// **'30 gün · 6 kişiye kadar'**
+  String get paketlerAilePeriod;
+
+  /// No description provided for @paketlerAilePrice.
+  ///
+  /// In tr, this message translates to:
+  /// **'799,99 TL'**
+  String get paketlerAilePrice;
+
+  /// No description provided for @paketlerBestValue.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişi başı en uygun'**
+  String get paketlerBestValue;
+
+  /// No description provided for @paketlerBrowse.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketleri incele'**
+  String get paketlerBrowse;
+
+  /// No description provided for @paketlerBuy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Satın al'**
+  String get paketlerBuy;
+
+  /// No description provided for @paketlerBuySoon.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.'**
+  String get paketlerBuySoon;
+
+  /// No description provided for @paketlerCurrent.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut planınız'**
+  String get paketlerCurrent;
+
+  /// No description provided for @paketlerFootnote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.'**
+  String get paketlerFootnote;
+
+  /// No description provided for @paketlerFreeF1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dualar, Kur\'an-ı Kerim ve zikirmatik'**
+  String get paketlerFreeF1;
+
+  /// No description provided for @paketlerFreeF2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ezan vakitleri ve kıble'**
+  String get paketlerFreeF2;
+
+  /// No description provided for @paketlerFreeF3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gezilecek yerler, Harem kapıları ve ulaşım bilgileri'**
+  String get paketlerFreeF3;
+
+  /// No description provided for @paketlerFreeF4.
+  ///
+  /// In tr, this message translates to:
+  /// **'Toplu Hatim grupları'**
+  String get paketlerFreeF4;
+
+  /// No description provided for @paketlerFreeName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz'**
+  String get paketlerFreeName;
+
+  /// No description provided for @paketlerFreePrice.
+  ///
+  /// In tr, this message translates to:
+  /// **'0 TL'**
+  String get paketlerFreePrice;
+
+  /// No description provided for @paketlerIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.'**
+  String get paketlerIntro;
+
+  /// No description provided for @paketlerQuickSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre ve Aile paketleri'**
+  String get paketlerQuickSub;
+
+  /// No description provided for @paketlerRecommended.
+  ///
+  /// In tr, this message translates to:
+  /// **'Önerilen'**
+  String get paketlerRecommended;
+
+  /// No description provided for @paketlerTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paketler'**
+  String get paketlerTitle;
+
+  /// No description provided for @paketlerUmreF1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profesyonel sesli rehber'**
+  String get paketlerUmreF1;
+
+  /// No description provided for @paketlerUmreF2.
+  ///
+  /// In tr, this message translates to:
+  /// **'İnternetsiz tam kullanım'**
+  String get paketlerUmreF2;
+
+  /// No description provided for @paketlerUmreF3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kişisel umre planı'**
+  String get paketlerUmreF3;
+
+  /// No description provided for @paketlerUmreF4.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aile Takibi: evdekiler konumunuzu bir bağlantıyla görür'**
+  String get paketlerUmreF4;
+
+  /// No description provided for @paketlerUmreF5.
+  ///
+  /// In tr, this message translates to:
+  /// **'Esnaf indirimleri'**
+  String get paketlerUmreF5;
+
+  /// No description provided for @paketlerUmreName.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Paketi'**
+  String get paketlerUmreName;
+
+  /// No description provided for @paketlerUmrePeriod.
+  ///
+  /// In tr, this message translates to:
+  /// **'30 gün · tek kişi'**
+  String get paketlerUmrePeriod;
+
+  /// No description provided for @paketlerUmrePrice.
+  ///
+  /// In tr, this message translates to:
+  /// **'349,99 TL'**
+  String get paketlerUmrePrice;
+
   /// No description provided for @quranAddBookmark.
   ///
   /// In tr, this message translates to:

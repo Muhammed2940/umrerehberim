@@ -28,6 +28,7 @@ import '../features/home/screens/info_screen.dart';
 import '../features/home/screens/profil.dart';
 import '../features/home/screens/rehber_iletisim.dart';
 import '../features/home/screens/takvim_screen.dart';
+import '../features/paketler/screens/paketler_screen.dart';
 import '../features/info_screen/screens/gezilecek_yerler_screen.dart';
 import '../features/kible/screens/kible_screen.dart';
 import '../features/info_screen/screens/technical_support_screen.dart';
@@ -132,6 +133,7 @@ class AppRoutes {
         '/otel-restoran': (_) => const OtelRestoranScreen(),
         '/harem-kapilari': (_) => const HaremKapilariScreen(),
         '/ulasim': (_) => const UlasimScreen(),
+        '/paketler': (_) => const PaketlerScreen(),
         '/rota-simulasyonu': (_) => const RotaSimulasyonuScreen(),
         '/tavaf-simulasyonu': (_) => const TavafSimulasyonuScreen(),
         '/dukkanlar': (_) => AcenteOzelligiGate(

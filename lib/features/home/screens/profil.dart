@@ -344,6 +344,13 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
     final l = context.l10n;
     return [
       SectionHeader(title: l.homeSectionQuickAccess, icon: Icons.bolt_rounded),
+      QuickActionCard(
+        icon: Icons.workspace_premium_rounded,
+        title: l.paketlerTitle,
+        subtitle: l.paketlerQuickSub,
+        onTap: () => Navigator.of(context).pushNamed('/paketler'),
+      ),
+      const SizedBox(height: 10),
       // ChangeSecretTile'ın pasif görünümü + bilgi ekranlarının InfoChip rozeti.
       Card(
         margin: EdgeInsets.zero,

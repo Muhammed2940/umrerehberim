@@ -6612,6 +6612,105 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get paketlerAgencyNote =>
+      'Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.';
+
+  @override
+  String get paketlerAileF1 => 'Umre Paketi\'ndeki her şey, 6 kişi için';
+
+  @override
+  String get paketlerAileF2 => 'Grubunuza özel canlı harita';
+
+  @override
+  String get paketlerAileF3 => 'Grup içi internet telsizi';
+
+  @override
+  String get paketlerAileName => 'Aile / Arkadaş Paketi';
+
+  @override
+  String get paketlerAilePeriod => '30 gün · 6 kişiye kadar';
+
+  @override
+  String get paketlerAilePrice => '799,99 TL';
+
+  @override
+  String get paketlerBestValue => 'Kişi başı en uygun';
+
+  @override
+  String get paketlerBrowse => 'Paketleri incele';
+
+  @override
+  String get paketlerBuy => 'Satın al';
+
+  @override
+  String get paketlerBuySoon =>
+      'Ödeme altyapısı çok yakında açılacak. Paketler mağaza üzerinden satın alınabilecek.';
+
+  @override
+  String get paketlerCurrent => 'Mevcut planınız';
+
+  @override
+  String get paketlerFootnote =>
+      'Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.';
+
+  @override
+  String get paketlerFreeF1 => 'Dualar, Kur\'an-ı Kerim ve zikirmatik';
+
+  @override
+  String get paketlerFreeF2 => 'Ezan vakitleri ve kıble';
+
+  @override
+  String get paketlerFreeF3 =>
+      'Gezilecek yerler, Harem kapıları ve ulaşım bilgileri';
+
+  @override
+  String get paketlerFreeF4 => 'Toplu Hatim grupları';
+
+  @override
+  String get paketlerFreeName => 'Ücretsiz';
+
+  @override
+  String get paketlerFreePrice => '0 TL';
+
+  @override
+  String get paketlerIntro =>
+      'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
+
+  @override
+  String get paketlerQuickSub => 'Umre ve Aile paketleri';
+
+  @override
+  String get paketlerRecommended => 'Önerilen';
+
+  @override
+  String get paketlerTitle => 'Paketler';
+
+  @override
+  String get paketlerUmreF1 => 'Profesyonel sesli rehber';
+
+  @override
+  String get paketlerUmreF2 => 'İnternetsiz tam kullanım';
+
+  @override
+  String get paketlerUmreF3 => 'Kişisel umre planı';
+
+  @override
+  String get paketlerUmreF4 =>
+      'Aile Takibi: evdekiler konumunuzu bir bağlantıyla görür';
+
+  @override
+  String get paketlerUmreF5 => 'Esnaf indirimleri';
+
+  @override
+  String get paketlerUmreName => 'Umre Paketi';
+
+  @override
+  String get paketlerUmrePeriod => '30 gün · tek kişi';
+
+  @override
+  String get paketlerUmrePrice => '349,99 TL';
+
+  @override
   String get quranAddBookmark => 'Yer işareti ekle';
 
   @override
