@@ -20,6 +20,8 @@ import 'local_notification_service.dart';
 import 'location_filter.dart';
 import 'location_firebase_service.dart';
 import 'location_permission.dart';
+import 'tracking_public_service.dart';
+import '../../features/aile_takibi/models/tracking_link.dart';
 import 'notification_watcher.dart';
 
 String get _notifTitle => l10n.appTitle;
@@ -122,6 +124,7 @@ class BackgroundLocationService {
     await prefs.setBool(familySharingKey, false);
     _service.invoke('stopService');
     await LocationFirebaseService.removePersonalLocation(user.id);
+    await TrackingPublicService.clearLocationsFor(user.id, user.userName);
     return false;
   }
 
@@ -266,6 +269,7 @@ Future<void> onStart(ServiceInstance service) async {
   }
 
   StreamSubscription<Position>? posSub;
+  StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? linksSub;
   Timer? timer;
   NotificationWatcher? watcher;
   var stopped = false;
@@ -275,6 +279,7 @@ Future<void> onStart(ServiceInstance service) async {
     stopped = true;
     timer?.cancel();
     await posSub?.cancel();
+    await linksSub?.cancel();
     await watcher?.stop();
     service.invoke('serviceStopped');
     await service.stopSelf();
@@ -360,6 +365,7 @@ Future<void> onStart(ServiceInstance service) async {
 
   Future<void> stopPersonal() async {
     await LocationFirebaseService.removePersonalLocation(uid);
+    await TrackingPublicService.removeAllFor(uid);
     await prefs.setBool(BackgroundLocationService.familySharingKey, false);
     await shutdown();
   }
@@ -372,6 +378,36 @@ Future<void> onStart(ServiceInstance service) async {
     return shutdown();
   }
   final userName = (userMap?['user_name']?.toString() ?? '').trim();
+
+  // Aile Takibi ara mod (PHP'siz): etkin bağlantıların web düğümlerine de yazılır.
+  var links = <TrackingLink>[];
+  Position? lastPos;
+  Future<void> publishLinks() async {
+    final p = lastPos;
+    for (final l in links) {
+      await TrackingPublicService.publish(
+        link: l,
+        ownerUid: uid,
+        userName: userName,
+        lat: p?.latitude,
+        lng: p?.longitude,
+        accuracy: p?.accuracy,
+      );
+    }
+  }
+
+  linksSub = FirebaseFirestore.instance
+      .collection('tracking_links')
+      .where('owner_uid', isEqualTo: uid)
+      .snapshots()
+      .listen((snap) {
+    final all = snap.docs.map((d) => TrackingLink.fromDoc(d.id, d.data())).toList();
+    for (final l in all.where((l) => !l.isActive())) {
+      TrackingPublicService.remove(l.hash);
+    }
+    links = all.where((l) => l.isActive()).toList();
+    publishLinks();
+  }, onError: (Object e) => debugPrint('Servis tracking_links: $e'));
 
   // Duyuru dinleyicisi bu isolate'te.
   if (!personal) watcher = NotificationWatcher.fromUserMap(uid, {...?userMap, 'agency_id': agencyId})?..start();
@@ -426,6 +462,8 @@ Future<void> onStart(ServiceInstance service) async {
       }
       final now = DateTime.now().millisecondsSinceEpoch;
       lastWriteMs = now;
+      lastPos = p;
+      await publishLinks();
       await prefs.setInt(BackgroundLocationService.lastSentKey, now);
       service.invoke('location', {'latitude': p.latitude, 'longitude': p.longitude, 'timestamp': now});
     } catch (e) {

@@ -481,5 +481,40 @@
     "tr": "Bu özellik yakında aktif olacak",
     "en": "This feature will be available soon",
     "ar": "ستتوفر هذه الميزة قريبًا"
+  },
+  "authFbErrInvalidCredentials": {
+    "tr": "Kullanıcı ID veya şifre hatalı.",
+    "en": "User ID or password is incorrect.",
+    "ar": "معرّف المستخدم أو كلمة المرور غير صحيحة."
+  },
+  "authFbErrWrongOldPassword": {
+    "tr": "Mevcut şifre hatalı.",
+    "en": "The current password is incorrect.",
+    "ar": "كلمة المرور الحالية غير صحيحة."
+  },
+  "authFbErrWeakPassword": {
+    "tr": "Bu şifre kolay tahmin edilir (ör. 12345678, yalnız rakam, ardışık veya tekrarlı karakterler). Harf ve rakam karıştırarak başka bir şifre seçin.",
+    "en": "This password is too easy to guess (e.g. 12345678, digits only, sequential or repeated characters). Choose another one mixing letters and digits.",
+    "ar": "كلمة المرور هذه سهلة التخمين (مثل 12345678 أو أرقام فقط أو أحرف متتابعة أو مكررة). اختر كلمة مرور أخرى تجمع بين الحروف والأرقام."
+  },
+  "authFbResetUnavailable": {
+    "tr": "Şifre sıfırlama sunucu kurulunca açılacak.",
+    "en": "Password reset will be available once the server is set up.",
+    "ar": "ستتوفر إعادة تعيين كلمة المرور بعد إعداد الخادم."
+  },
+  "authFbErrIdUnavailable": {
+    "tr": "Kullanıcı ID üretilemedi. Lütfen tekrar deneyin.",
+    "en": "Could not generate a User ID. Please try again.",
+    "ar": "تعذّر إنشاء معرّف المستخدم. يرجى المحاولة مرة أخرى."
+  },
+  "authFbForgot": {
+    "tr": "Kullanıcı ID veya şifremi unuttum",
+    "en": "I forgot my User ID or password",
+    "ar": "نسيت معرّف المستخدم أو كلمة المرور"
+  },
+  "authFbForgotBody": {
+    "tr": "Kullanıcı ID ve şifrenizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun.",
+    "en": "Your guide or agency gives you your User ID and password. If you forgot them, please contact your guide or agency.",
+    "ar": "يزوّدك مرشدك أو وكالتك بمعرّف المستخدم وكلمة المرور. إذا نسيتهما فيرجى التواصل مع مرشدك أو وكالتك."
   }
 }

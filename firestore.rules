@@ -144,6 +144,17 @@ service cloud.firestore {
 
       // Not: bireysel dal ilk sırada; users belgesi henüz yokken rol çözümü (me()) hata verir,
       // "||" içinde hata veren dal, diğer dal doğruysa sonucu bozmaz.
+      // PHP kurulunca kaldır: ara modda (Firebase kimlik modu) login_id eklemesi.
+      function loginIdBackfillOk(uid) {
+        let d = request.resource.data;
+        return isSuper()
+            && !changed().hasAny(['auth_migrated'])
+            && !('login_id' in resource.data)
+            && d.login_id is string
+            && d.login_id.matches('^[1-9][0-9]{6}$')
+            && get(/databases/$(database)/documents/login_ids/$(d.login_id)).data.uid == uid;
+      }
+
       allow create: if bireyselCreateOk(uid)
                     || (newUserAuthFieldsOk(uid)
                         // Yönetici/acente admini bireysel işaretli belge açamaz (yalnız süper admin).
@@ -162,12 +173,15 @@ service cloud.firestore {
       // 2) Kimse (kök hariç) kendi user_type / agency_id / shop_id alanını değiştiremez.
       // 3) login_id ve auth_migrated'ı HİÇ KİMSE değiştiremez (kök dahil): yalnız kimlik servisi
       //    (servis hesabı, kuralları baypas eder) yazar; bkz. tool/AUTH_SEMA.md.
+      //    İSTİSNA (ara mod, PHP kurulunca kaldır): süper admin, login_id'si OLMAYAN bir belgeye
+      //    login_ids/{id}.uid == uid kaydıyla login_id EKLEYEBİLİR (tool/id_gecis.js taşıması);
+      //    var olan login_id yine değişmez. auth_migrated her durumda yazılamaz.
       // 4) Bireysel kendi belgesinde ek olarak user_name ve location_consent'i düzenler.
       // 5) account_kind'ı yalnız süper admin değiştirebilir (yönetici/acente admini çeviremez).
       allow update: if (signedIn() && request.auth.uid == uid
                          && changed().hasOnly(['fcm_token', 'user_location', 'updated_at', 'last_active_at']))
                     || (signedIn() && bireyselSelfUpdateOk(uid))
-                    || (!changed().hasAny(['login_id', 'auth_migrated'])
+                    || ((!changed().hasAny(['login_id', 'auth_migrated']) || loginIdBackfillOk(uid))
                         && (request.auth.uid != uid || isRoot() || !changed().hasAny(['user_type', 'agency_id', 'shop_id', 'account_kind']))
                         && (isSuper() || !changed().hasAny(['account_kind']))
                         && (isSuper()
@@ -197,7 +211,34 @@ service cloud.firestore {
     // (Genel /{col}/{id} kuralı bu koleksiyonları zaten listelemez; yine de açıkça kapalı.)
     // auth_attempts/{hmac}: giriş deneme sayaçları ve (hesap, ağ) kilitleri.
     // system/{doc}: servis durumu (ör. system/auth_migration {done}).
-    match /login_ids/{id}     { allow read, write: if false; }
+    // ARA MOD (Firebase kimlik modu, AUTH_API boş) — PHP kurulunca KALDIR, eski `if false` kuralına dön:
+    // Sunucu yokken kişi açan personel login_ids/{id} = {uid} kaydını istemciden yazar
+    // (users belgesindeki login_id kuralı bu kaydı ister). Giriş için bu koleksiyon OKUNMAZ
+    // (e-posta `id<ID>@umrerehberim.app` kimlikten türer); okuma yalnız ID çakışma denetimi içindir.
+    // - get : kişi açabilen personel (süper admin, yönetici, acente admini); LİSTELEME yok.
+    // - create: yalnız {uid} alanı, id 7 haneli (1-9 ile başlar); kök ID'si (1000146) yalnız kökte.
+    //   Süper admin dışı personel, users belgesi ZATEN OLAN bir uid'e kayıt açamaz
+    //   (mevcut kişiye ID sokuşturulmasın); kayıt kişi belgesinden ÖNCE yazılır.
+    //   Hedef rol bu belgede yok; asıl sınır users create kuralındadır (kim hangi rolü açar).
+    // - update yok (kayıt değişmez).
+    // - delete: süper admin; diğer personel yalnız users belgesi artık OLMAYAN (sahipsiz) kayıtları siler.
+    match /login_ids/{id} {
+      allow get: if signedIn() && (isGlobal() || isAgencyAdmin());
+      allow list: if false;
+      allow create: if (isSuper() || ((isManager() || isAgencyAdmin())
+                                      && !exists(/databases/$(database)/documents/users/$(request.resource.data.uid))))
+                    && id.matches('^[1-9][0-9]{6}$')
+                    && (id != '1000146' || isRoot())
+                    && request.resource.data.keys().hasOnly(['uid'])
+                    && request.resource.data.keys().hasAll(['uid'])
+                    && request.resource.data.uid is string
+                    && request.resource.data.uid.size() >= 1
+                    && request.resource.data.uid.size() <= 128;
+      allow update: if false;
+      allow delete: if isSuper()
+                    || ((isManager() || isAgencyAdmin())
+                        && !exists(/databases/$(database)/documents/users/$(resource.data.uid)));
+    }
     match /auth_secrets/{id}  { allow read, write: if false; }
     match /auth_attempts/{id} { allow read, write: if false; }
     match /system/{id}        { allow read, write: if false; }

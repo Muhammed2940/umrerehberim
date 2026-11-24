@@ -85,6 +85,17 @@ class AuthApiException implements Exception {
         return t.authApiErrNetwork;
       case 'not_configured':
         return t.authApiNotConnected;
+      // Firebase kimlik modu (AUTH_API boş); PHP kurulunca bu kodlar kullanılmaz.
+      case 'fb_invalid_credentials':
+        return t.authFbErrInvalidCredentials;
+      case 'fb_wrong_old_password':
+        return t.authFbErrWrongOldPassword;
+      case 'fb_weak_password':
+        return t.authFbErrWeakPassword;
+      case 'fb_reset_unavailable':
+        return t.authFbResetUnavailable;
+      case 'fb_id_unavailable':
+        return t.authFbErrIdUnavailable;
       default:
         return t.authApiErrUnknown;
     }
@@ -180,8 +191,9 @@ class AuthApiService {
 
   static const _timeout = Duration(seconds: 20);
 
-  /// Misafir PIN kullanır (6 rakam); personel şifre (en az 8 karakter).
-  static bool usesPin(String userType) => userType == UserType.misafir;
+  /// PHP modunda misafir PIN kullanır (6 rakam); personel şifre (en az 8 karakter).
+  /// Firebase kimlik modunda (AUTH_API boş) herkes şifre kullanır (PIN yok).
+  static bool usesPin(String userType) => authApiEnabled && userType == UserType.misafir;
 
   static final RegExp loginIdPattern = RegExp(r'^[1-9][0-9]{6}$');
   static final RegExp pinPattern = RegExp(r'^[0-9]{6}$');

@@ -3,9 +3,15 @@
  * Umre Rehberim – demo verisi yükleyici (Spark planı: Admin SDK / servis hesabı YOK)
  *
  * Sadece Node 18+ `fetch` ile Firebase REST API'leri kullanılır:
- *   1) Identity Toolkit accounts:signUp ile demo kullanıcıları (e-posta <tc>@umrerehberim.app,
- *      şifre = TC). Hesap varsa (EMAIL_EXISTS) accounts:signInWithPassword ile uid alınır.
- *   2) Kök süper admin (TC 10000000146) olarak giriş, idToken.
+ *   1) Kök süper admin (TC 10000000146, e-posta <tc>@umrerehberim.app) olarak giriş, idToken.
+ *      Şifre: UMRE_KOK_SIFRE ortam değişkeni, yoksa sorulur, boşsa TC (ilk kurulum: hesap açılır).
+ *      Kökün sabit Kullanıcı ID'si 1000146 (login_ids/1000146 ve users.login_id yazılır).
+ *   2) Diğer demo kullanıcılar Firebase kimlik modunda (Kullanıcı ID + şifre): users belgesi TC ile
+ *      bulunursa uid ve login_id oradan alınır (hesaba dokunulmaz, şifre değişmez); yoksa
+ *      tekil 7 haneli ID + rastgele şifreyle `id<ID>@umrerehberim.app` hesabı açılır ve
+ *      login_ids/{ID} = {uid} yazılır. Yeni şifreler yalnız konsola ve
+ *      tool/seed_sonuc.local.md'ye (gizli, git'e girmez) yazılır; bir daha gösterilemez.
+ *      users belgesi eski TC hesabıyla duruyorsa (login_id yok) uyarı verilir: tool/id_gecis.js çalıştırın.
  *   3) Firestore REST documents:commit ile tüm belgeler (kurallar kök süper admin e-postasını tanır).
  *      users belgelerinin id'si Auth uid'si, diğerleri sabit demo_ id'leri.
  *   4) Realtime Database REST ile roles/{uid} = {role, agencyId}  (?auth=idToken).
@@ -17,7 +23,8 @@
  *   node seed.js --dry-run    Firebase'e bağlanmadan ne yazılacağını gösterir
  *   node seed.js --days 45    kaç günlük ezan vakti yazılacağı (varsayılan 45)
  *
- * Auth hesapları --reset ile silinmez (gerekmez; aynı uid'ler tekrar kullanılır).
+ * Auth hesapları ve users belgeleri --reset ile silinmez (aynı uid/login_id'ler tekrar kullanılır;
+ * users belgeleri zaten her çalıştırmada üzerine yazılır).
  * Saatler/tarihler Suudi Arabistan ve Türkiye saati olan UTC+3'e göredir.
  */
 "use strict";
@@ -44,9 +51,10 @@ const PROJECT_ID = "umrerehberim-cc99e";
 const API_KEY = "AIzaSyA8X1JQfgxHrhtnEgfqVVK8Lktw9ga7AHI";
 const RTDB_URL = "https://umrerehberim-cc99e-default-rtdb.firebaseio.com";
 const EMAIL_DOMAIN = "umrerehberim.app";
-const ROOT_TC = "10000000146";
+const K = require("./_kimlik_ortak");
+const ROOT_TC = K.ROOT_TC;
+const ROOT_LOGIN_ID = K.ROOT_LOGIN_ID;
 const tcToEmail = (tc) => `${tc}@${EMAIL_DOMAIN}`;
-const tcToPassword = (tc) => tc;
 
 // ---------------------------------------------------------------------------
 // Tarih yardımcıları (UTC+3)
@@ -210,8 +218,9 @@ const MEKKE_END = dayAt(19, 18, 0);
 const MEDINE_START = dayAt(19, 18, 0);
 const MEDINE_END = dayAt(24, 12, 0);
 
-/** [uids]: yerel kullanıcı anahtarı (demo_super_admin vb.) -> Auth uid. */
-function buildData(uids = {}) {
+/** [uids]: yerel kullanıcı anahtarı (demo_super_admin vb.) -> Auth uid.
+ *  [loginIds]: aynı anahtar -> 7 haneli Kullanıcı ID (bilinmiyorsa belgeye yazılmaz). */
+function buildData(uids = {}, loginIds = {}) {
   const uidOf = (key) => uids[key] || key;
   const now = new Date();
   const data = {}; // { koleksiyon: { id: belge } }
@@ -336,6 +345,8 @@ function buildData(uids = {}) {
     put("users", uidOf(id), {
       ...rest,
       user_tc: tc,
+      // Güvenlik kuralları login_id'nin sonradan değişmesine izin vermez; bilinen ID aynen korunur.
+      ...(loginIds[id] ? { login_id: loginIds[id] } : {}),
       agency_id: AGENCY_ID,
       user_token: null,
       fcm_token: null,
@@ -419,28 +430,35 @@ function buildData(uids = {}) {
 const TYPE_LABEL = { super_admin: "Süper Admin", yonetici: "Yönetici (genel)", acente_admin: "Acente Admini", misafir: "Misafir" };
 const LOGIN_TAB = { super_admin: "Yönetici", yonetici: "Yönetici", acente_admin: "Yönetici", misafir: "Misafir" };
 
-function accountsTable(users) {
-  const rows = users.map((u) => [u.tc, TYPE_LABEL[u.user_type], LOGIN_TAB[u.user_type], u.user_name, u.cinsiyet]);
+/** [loginIds]: demo anahtarı -> Kullanıcı ID (bilinmiyorsa "-"). */
+function accountsTable(users, loginIds = {}) {
+  const rows = users.map((u) => [
+    loginIds[u.id] || "-", TYPE_LABEL[u.user_type], LOGIN_TAB[u.user_type], u.user_name, u.cinsiyet, u.tc,
+  ]);
   return rows;
 }
 
-function printTable(users) {
-  console.log("\nGiriş için demo hesapları:");
-  console.table(accountsTable(users).map(([tc, tip, sekme, ad]) => ({ TC: tc, Tip: tip, "Giriş seçeneği": sekme, Ad: ad })));
+function printTable(users, loginIds = {}) {
+  console.log("\nGiriş için demo hesapları (şifreler yalnız yeni açılan hesaplar için yukarıda/seed_sonuc.local.md'de):");
+  console.table(
+    accountsTable(users, loginIds).map(([id, tip, sekme, ad, , tc]) => ({
+      "Kullanıcı ID": id, Tip: tip, "Giriş seçeneği": sekme, Ad: ad, "TC (yalnız kayıt)": tc,
+    })),
+  );
 }
 
-function writeAccountsMd(users, projectId) {
-  const rows = accountsTable(users)
-    .map(([tc, tip, sekme, ad, cins]) => `| \`${tc}\` | ${tip} | ${sekme} | ${ad} | ${cins} |`)
+function writeAccountsMd(users, projectId, loginIds = {}) {
+  const rows = accountsTable(users, loginIds)
+    .map(([id, tip, sekme, ad, cins, tc]) => `| \`${id}\` | ${tip} | ${sekme} | ${ad} | ${cins} | \`${tc}\` |`)
     .join("\n");
   const md = `# Demo hesapları
 
 \`tool/seed.js\` tarafından oluşturulur. Son yükleme: ${new Date().toISOString()}${projectId ? ` (proje: \`${projectId}\`)` : ""}
 
-TC numaraları **sahte test numaralarıdır**, yalnızca TC doğrulama algoritmasına uyarlar.
+TC numaraları **sahte test numaralarıdır**, yalnızca TC doğrulama algoritmasına uyarlar; **girişte kullanılmaz**, yalnız kayıttır.
 
-| TC kimlik no | Tip | Girişte seçilecek | Ad | Cinsiyet |
-|---|---|---|---|---|
+| Kullanıcı ID | Tip | Girişte seçilecek | Ad | Cinsiyet | TC (yalnız kayıt) |
+|---|---|---|---|---|---|
 ${rows}
 
 - Acente: **Hekzapot Turizm** (\`${AGENCY_ID}\`)
@@ -451,7 +469,10 @@ ${rows}
 - Ezan vakitleri: dünden itibaren ${PRAYER_DAYS} gün (\`mekke_prayer_times\`, \`medine_prayer_times\`). Süre dolunca betiği yeniden çalıştırın.
 - Bildirim topic'leri: \`agency_${AGENCY_ID}\`, \`trip_${TRIP_MEKKE}\`, \`trip_${TRIP_MEDINE}\`
 
-Giriş: e-posta \`<tc>@${EMAIL_DOMAIN}\`, şifre TC (uygulama bunu kendisi yapar, kullanıcı sadece TC girer).
+Giriş: **Kullanıcı ID + şifre** (uygulama e-postayı \`id<ID>@${EMAIL_DOMAIN}\` olarak kendisi kurar). Şifreleri betik belirler ve
+**bu dosyada tutulmaz**: yeni açılan hesapların şifresi \`tool/seed_sonuc.local.md\`'ye, \`tool/id_gecis.js\` ile taşınanlarınki
+\`tool/id_gecis_sonuc.local.md\`'ye yazılır (ikisi de gizli, git'e girmez). Kök süper adminin ID'si sabit **${ROOT_LOGIN_ID}**,
+şifresi kurulumdaki (değiştirdiyse güncel) şifredir.
 
 Yeniden yüklemek için: \`cd tool && node seed.js --reset\`
 `;
@@ -478,16 +499,63 @@ async function postJson(url, body, idToken) {
 }
 const errMsg = (r) => (r.json && r.json.error && (r.json.error.message || r.json.error)) || r.text || `HTTP ${r.status}`;
 
-/** Hesabı oluşturur ya da varsa giriş yapar. {uid, idToken, created} döner. */
-async function ensureAccount(tc) {
-  const body = { email: tcToEmail(tc), password: tcToPassword(tc), returnSecureToken: true };
+/** Kök süper admin: hesap yoksa açılır (şifre = [password]), varsa giriş yapılır. {uid, idToken, created} döner. */
+async function ensureRootAccount(password) {
+  const body = { email: tcToEmail(ROOT_TC), password, returnSecureToken: true };
   let r = await postJson(`${IDT}/accounts:signUp?key=${API_KEY}`, body);
   if (r.ok) return { uid: r.json.localId, idToken: r.json.idToken, created: true };
   const m = String(errMsg(r));
-  if (!m.startsWith("EMAIL_EXISTS")) throw new Error(`accounts:signUp (${tc}): ${m}`);
+  if (!m.startsWith("EMAIL_EXISTS")) throw new Error(`accounts:signUp (kök): ${m}`);
   r = await postJson(`${IDT}/accounts:signInWithPassword?key=${API_KEY}`, body);
-  if (!r.ok) throw new Error(`accounts:signInWithPassword (${tc}): ${errMsg(r)}`);
+  if (!r.ok) {
+    throw new Error(`Kök girişi başarısız (${errMsg(r)}). Kök şifresi TC değilse UMRE_KOK_SIFRE ortam değişkenini ayarlayın.`);
+  }
   return { uid: r.json.localId, idToken: r.json.idToken, created: false };
+}
+
+/** Demo kullanıcının mevcut users belgesi (TC ile): {uid, loginId} ya da null. */
+async function findUserByTc(tc, idToken) {
+  const rows = await K.runQuery({
+    from: [{ collectionId: "users" }],
+    where: { fieldFilter: { field: { fieldPath: "user_tc" }, op: "EQUAL", value: { stringValue: tc } } },
+    limit: 1,
+  }, idToken);
+  if (!rows.length) return null;
+  return { uid: rows[0].id, loginId: String(rows[0].data.login_id || "") };
+}
+
+/** Yeni demo hesabı: tekil ID + rastgele şifre, `id<ID>@` Auth hesabı, login_ids/{ID} = {uid}. */
+async function createIdAccount(u, idToken) {
+  const password = K.generatePassword(K.passwordLengthFor(u.user_type));
+  for (let i = 0; i < 20; i++) {
+    const loginId = K.generateLoginId();
+    if (await K.getDocument("login_ids", loginId, idToken)) continue;
+    const r = await K.signUp(K.loginIdToEmail(loginId), password);
+    if (!r.ok) {
+      if (r.error.startsWith("EMAIL_EXISTS")) continue;
+      throw new Error(`accounts:signUp (${u.user_name}): ${r.error}`);
+    }
+    await K.commit([K.loginIdCreateWrite(loginId, r.uid)], idToken);
+    return { uid: r.uid, loginId, password };
+  }
+  throw new Error(`Benzersiz Kullanıcı ID bulunamadı (${u.user_name})`);
+}
+
+/** Yeni açılan hesapların ID + şifreleri (gizli dosya; git'e girmez). */
+function writeSeedSecrets(created) {
+  if (!created.length) return;
+  const rows = created
+    .map((c) => `| ${c.name} | ${TYPE_LABEL[c.type]} | \`${c.loginId}\` | \`${c.password}\` | ${c.uid} |`)
+    .join("\n");
+  const md = `# seed.js ile yeni açılan hesaplar (GİZLİ — git'e girmez)
+
+Üretim: ${new Date().toISOString()}. Şifreler bir daha görüntülenemez.
+
+| Ad | Tip | Kullanıcı ID | Şifre | uid |
+|---|---|---|---|---|
+${rows}
+`;
+  fs.writeFileSync(path.join(__dirname, "seed_sonuc.local.md"), md, "utf8");
 }
 
 /** JS değeri -> Firestore REST Value. */
@@ -567,27 +635,53 @@ async function main() {
     for (const col of Object.keys(data)) console.log(`  ${col.padEnd(20)} ${Object.keys(data[col]).length}`);
     console.log("\nBugün Mekke:", data.mekke_prayer_times[ymd(dayAt(0, 12))]);
     console.log("Bugün Medine:", data.medine_prayer_times[ymd(dayAt(0, 12))]);
-    printTable(users);
+    printTable(users, { [root.id]: ROOT_LOGIN_ID });
+    console.log("(Diğer hesapların Kullanıcı ID + şifresi gerçek çalıştırmada üretilir/okunur.)");
     return;
   }
 
   console.log(`Proje: ${PROJECT_ID}`);
 
-  // (a) Auth hesapları  (b) kök süper admin idToken
+  // (a) kök süper admin girişi (ilk kurulumda hesap açılır) ve sabit ID kaydı
   const uids = {};
-  let rootToken = null;
-  for (const u of plainUsers) {
-    const acc = await ensureAccount(u.tc);
-    uids[u.id] = acc.uid;
-    if (u.tc === ROOT_TC) rootToken = acc.idToken;
-    console.log(`  Auth ${acc.created ? "oluşturuldu" : "mevcut     "}  ${u.tc}  ${u.user_type.padEnd(11)} uid=${acc.uid}`);
+  const loginIds = {};
+  const created = [];
+  const rootAcc = await ensureRootAccount(await K.rootPassword());
+  const rootToken = rootAcc.idToken;
+  uids[root.id] = rootAcc.uid;
+  loginIds[root.id] = ROOT_LOGIN_ID;
+  console.log(`  Auth ${rootAcc.created ? "oluşturuldu" : "mevcut     "}  kök  ${root.user_type.padEnd(11)} uid=${rootAcc.uid}  ID=${ROOT_LOGIN_ID}`);
+  if (!(await K.getDocument("login_ids", ROOT_LOGIN_ID, rootToken))) {
+    await K.commit([K.loginIdCreateWrite(ROOT_LOGIN_ID, rootAcc.uid)], rootToken);
   }
-  if (!rootToken) throw new Error("Kök süper admin idToken alınamadı");
 
-  const { data, users } = buildData(uids);
+  // (b) diğer demo hesaplar: mevcut users belgesinden uid + login_id; yoksa ID'li hesap aç
+  for (const u of plainUsers) {
+    if (u.id === root.id) continue;
+    const found = await findUserByTc(u.tc, rootToken);
+    if (found) {
+      uids[u.id] = found.uid;
+      if (found.loginId) {
+        loginIds[u.id] = found.loginId;
+        console.log(`  Auth mevcut       ${u.user_type.padEnd(12)} uid=${found.uid}  ID=${found.loginId}`);
+      } else {
+        console.warn(`  UYARI ${u.user_name}: eski TC hesabı (login_id yok); uygulamada girişi için önce tool/id_gecis.js --uygula çalıştırın.`);
+      }
+      continue;
+    }
+    const acc = await createIdAccount(u, rootToken);
+    uids[u.id] = acc.uid;
+    loginIds[u.id] = acc.loginId;
+    created.push({ name: u.user_name, type: u.user_type, loginId: acc.loginId, password: acc.password, uid: acc.uid });
+    console.log(`  Auth oluşturuldu  ${u.user_type.padEnd(12)} uid=${acc.uid}  ID=${acc.loginId}  şifre=${acc.password}`);
+  }
+  writeSeedSecrets(created);
+
+  const { data, users } = buildData(uids, loginIds);
   const collections = Object.keys(data);
 
-  if (RESET) await resetDemo(collections, rootToken, Object.values(uids));
+  // users belgeleri silinmez (login_id kuralı gereği aşağıda aynı ID'lerle üzerine yazılır).
+  if (RESET) await resetDemo(collections.filter((c) => c !== "users"), rootToken, Object.values(uids));
   if (RESET_ONLY) return;
 
   // (c) Firestore (kurallar kök süper admini e-postasından tanır)
@@ -610,8 +704,9 @@ async function main() {
     console.warn(`UYARI: RTDB roles yazılamadı (Realtime Database oluşturulmamış olabilir): ${e.message}`);
   }
 
-  printTable(users);
-  writeAccountsMd(users, PROJECT_ID);
+  printTable(users, loginIds);
+  writeAccountsMd(users, PROJECT_ID, loginIds);
+  if (created.length) console.log("Yeni hesapların şifreleri (bir daha görünmez): " + path.join(__dirname, "seed_sonuc.local.md"));
   console.log(`\nHesap listesi: ${path.join(__dirname, "DEMO_HESAPLARI.md")}`);
 }
 

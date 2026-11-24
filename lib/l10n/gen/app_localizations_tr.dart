@@ -1699,6 +1699,31 @@ class AppLocalizationsTr extends AppLocalizations {
   String get authApiViewAsSoon => 'Bu özellik yakında aktif olacak';
 
   @override
+  String get authFbErrIdUnavailable =>
+      'Kullanıcı ID üretilemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get authFbErrInvalidCredentials => 'Kullanıcı ID veya şifre hatalı.';
+
+  @override
+  String get authFbErrWeakPassword =>
+      'Bu şifre kolay tahmin edilir (ör. 12345678, yalnız rakam, ardışık veya tekrarlı karakterler). Harf ve rakam karıştırarak başka bir şifre seçin.';
+
+  @override
+  String get authFbErrWrongOldPassword => 'Mevcut şifre hatalı.';
+
+  @override
+  String get authFbForgot => 'Kullanıcı ID veya şifremi unuttum';
+
+  @override
+  String get authFbForgotBody =>
+      'Kullanıcı ID ve şifrenizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun.';
+
+  @override
+  String get authFbResetUnavailable =>
+      'Şifre sıfırlama sunucu kurulunca açılacak.';
+
+  @override
   String get authFieldRequired => 'Bu alan boş bırakılamaz';
 
   @override
@@ -1815,13 +1840,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get authSplashNoInternetLogin =>
-      'İnternet bağlantısı yok. Lütfen TC numaranız ile giriş yapın.';
+      'İnternet bağlantısı yok. Lütfen Kullanıcı ID\'niz ile giriş yapın.';
 
   @override
   String get authSplashOfflineStart => 'Offline modda başlatılıyor...';
 
   @override
-  String get authSplashPleaseLogin => 'Lütfen TC numaranız ile giriş yapın.';
+  String get authSplashPleaseLogin =>
+      'Lütfen Kullanıcı ID\'niz ile giriş yapın.';
 
   @override
   String get authSplashUserNotFound => 'Kullanıcı bulunamadı.';

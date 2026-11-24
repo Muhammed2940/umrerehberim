@@ -102,3 +102,29 @@ Hatalar (gövde `{error, message}`, mevcut umre-api biçimi):
 - Giriş: Profil → "Aile Takibi" kartı. Hakkı olmayan bireysel kullanıcı bu kartta `PaketGate` görür ve Paketler ekranına yönlendirilir (Aile/Full).
 - Ekran: konum paylaşımı anahtarı (bireysel); bağlantı listesi (etiket, kalan süre, yaklaşık, gizli rozetleri); "Yeni bağlantı" (etiket + yaklaşık seçeneği) → paylaş (`share_plus`); her bağlantıda Paylaş, 2 saat gizle / gizlemeyi kaldır, Yaklaşık konum anahtarı, İptal et; "Kim baktı" (views: zaman, cihaz, sayı).
 - Web kök adresi tek sabitten gelir (`ALAN` belli olunca değişir).
+
+---
+
+## ARA MOD: PHP'siz, yalnız Firebase (24 Kasım 2026)
+PHP sunucusu kurulana kadar web sayfası konumu **doğrudan Realtime Database'den** okur. PHP yolu silinmez; web `config.ts` içindeki bir anahtarla (`TAKIP_KAYNAK: 'firebase' | 'api'`) seçilir.
+
+### RTDB `tracking_public/{hash}` (hash = sha256(token) hex, 64 karakter)
+| Alan | Tür | Not |
+|---|---|---|
+| `owner` | string | sahibin uid'si (= auth.uid) |
+| `name` | string ≤ 40 | `user_name` ilk kelimesi |
+| `expires_at` | number (ms) | Firestore'daki `expires_at` |
+| `hidden_until` | number (ms) | 0 = gizli değil |
+| `approx` | bool | true ise lat/lng zaten 2 ondalığa yuvarlanmış, accuracy ≥ 1500 |
+| `lat`, `lng`, `accuracy`, `updated_at` | number | konum yoksa/gizliyken **hiç yazılmaz** |
+
+Kurallar: `tracking_public` kökü okunamaz (liste yok). `$hash` herkese okunur (hash bilinmeden erişilemez). Yazma/silme yalnız `owner == auth.uid`. İptal edilen bağlantının düğümü **silinir**.
+
+Yazan: uygulama. Arka plan konum servisi her konum yazışında sahibin etkin bağlantılarına (iptal edilmemiş, süresi geçmemiş) yazar; bağlantı listesi Firestore'dan canlı dinlenir. Ekrandan iptal → düğüm silinir; gizle → konum alanları silinir, `hidden_until` yazılır.
+
+### Web
+- `GET https://umrerehberim-cc99e-default-rtdb.firebaseio.com/tracking_public/<hash>.json` (hash tarayıcıda `crypto.subtle` SHA-256 ile token'dan hesaplanır; token ağa hiç çıkmaz).
+- Yanıt `null` → `not_found` (iptal edilen de bu olur; metin: "Bağlantı bulunamadı ya da iptal edildi").
+- `expires_at < şimdi` → `link_expired`. `hidden_until > şimdi` → `hidden`. `lat` yok → `no_location`. Aksi `ok`.
+- `place` (şehir, Harem'e mesafe) tarayıcıda hesaplanır (approx'ta `harem_m` yok). `server_time` yerine yanıtın `Date` başlığı, yoksa cihaz saati.
+- Bu modda "kim baktı" ve `plan_ended` YOK (paket bitince uygulama düğümleri siler; en geç 30 dk).

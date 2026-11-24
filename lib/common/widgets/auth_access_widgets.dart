@@ -10,11 +10,12 @@ import '../services/auth_api_service.dart';
 import 'credentials_sheet.dart';
 
 /// Onay → `reset-secret` → Giriş Bilgileri kartı. Başarılıysa üretilen bilgiyi döner.
-/// Servis bağlı değilse "Sunucu henüz bağlı değil" der.
+/// Firebase kimlik modunda (AUTH_API boş) başkasının şifresi Admin SDK olmadan sıfırlanamaz:
+/// "Şifre sıfırlama sunucu kurulunca açılacak" der. TODO PHP kurulunca bu dal kalkar.
 Future<IssuedCredentials?> confirmAndResetSecret(BuildContext context, UserModel target) async {
   final t = context.l10n;
   if (!authApiEnabled) {
-    GlobalSnackbar.showInfo(t.authApiNotConnected);
+    GlobalSnackbar.showInfo(t.authFbResetUnavailable);
     return null;
   }
   final pin = AuthApiService.usesPin(target.userType);

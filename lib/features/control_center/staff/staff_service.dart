@@ -8,7 +8,7 @@ import '../../auth/models/user_model.dart';
 import '../shared/audit_log.dart';
 
 /// Platform personeli (süper admin, destek, muhasebe) işlemleri.
-/// Personel hesabı TC ile açılır (e-posta `<tc>@umrerehberim.app`, şifre TC),
+/// Personel hesabı Kullanıcı ID + şifre ile açılır (PHP servisi ya da Firebase kimlik modu),
 /// `agency_id` boştur ve RTDB `roles/{uid}` kaydı yazılır.
 class StaffService {
   StaffService._();
@@ -31,8 +31,8 @@ class StaffService {
   }
 
   /// Hesap açar; TC kayıtlıysa [AccountExistsException].
-  /// AUTH_API açıkken hesabı servis açar ve bir kez dönen giriş bilgisi de verilir
-  /// (kapalıyken `credentials` null).
+  /// AUTH_API açıkken hesabı servis açar; kapalıyken Firebase kimlik modu (`id<loginId>@` hesabı +
+  /// login_ids kaydı). Bir kez dönen giriş bilgisi her iki modda da verilir.
   static Future<({UserModel user, IssuedCredentials? credentials})> create({
     required UserModel actor,
     required String name,
@@ -44,18 +44,14 @@ class StaffService {
     assert(editableTypes.contains(role));
     final existing = await FirestoreService.instance.getUserByTc(tc);
     if (existing != null) throw const AccountExistsException();
-    IssuedCredentials? issued;
-    final String uid;
-    if (authApiEnabled) {
-      // [reuse]: önceki denemede hesap açılıp belge yazılamadıysa aynı hesap kullanılır.
-      final base = reuse != null && reuse.userType == role
-          ? reuse
-          : await AuthApiService.createAccount(userType: role, agencyId: '');
-      issued = base.withUser(name, role);
-      uid = issued.uid;
-    } else {
-      uid = await AuthAccountService.createAccount(tc);
-    }
+    // [reuse]: önceki denemede hesap açılıp belge yazılamadıysa aynı hesap kullanılır.
+    final base = reuse != null && reuse.userType == role
+        ? reuse
+        : authApiEnabled
+            ? await AuthApiService.createAccount(userType: role, agencyId: '')
+            : await AuthAccountService.createIdAccount(userType: role);
+    final issued = base.withUser(name, role);
+    final uid = issued.uid;
     final user = UserModel(
       id: uid,
       userName: name,
@@ -63,12 +59,11 @@ class StaffService {
       userTel: phone,
       userTc: tc,
       agencyId: '',
-      loginId: issued?.loginId,
+      loginId: issued.loginId,
     );
     try {
       await _users.doc(uid).set(user.toFirestore(isNew: true));
     } catch (e) {
-      if (issued == null) rethrow;
       throw AccountDocWriteException(issued, e);
     }
     await AuthAccountService.setRole(uid, role: role, agencyId: '');

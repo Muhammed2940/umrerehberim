@@ -66,6 +66,44 @@
           ".validate": false
         }
       }
+    },
+    "tracking_public": {
+      "$hash": {
+        ".read": "$hash.matches(/^[0-9a-f]{64}$/)",
+        ".write": "auth != null && $hash.matches(/^[0-9a-f]{64}$/) && (data.exists() ? data.child('owner').val() == auth.uid : newData.child('owner').val() == auth.uid)",
+        ".validate": "newData.hasChildren(['owner', 'name', 'expires_at', 'hidden_until', 'approx']) && ((!newData.hasChild('lat') && !newData.hasChild('lng') && !newData.hasChild('accuracy') && !newData.hasChild('updated_at')) || newData.hasChildren(['lat', 'lng', 'accuracy', 'updated_at']))",
+        "owner": {
+          ".validate": "newData.isString() && newData.val() == auth.uid"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 40"
+        },
+        "expires_at": {
+          ".validate": "newData.isNumber() && newData.val() <= now + 2678400000"
+        },
+        "hidden_until": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= now + 7260000"
+        },
+        "approx": {
+          ".validate": "newData.isBoolean()"
+        },
+        "lat": {
+          ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+        },
+        "lng": {
+          ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+        },
+        "accuracy": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && (newData.parent().child('approx').val() == false || newData.val() >= 1500)"
+        },
+        "updated_at": {
+          ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 300000"
+        },
+        "$other": {
+          ".validate": false
+        }
+      },
+      ".read": false
     }
   }
 }

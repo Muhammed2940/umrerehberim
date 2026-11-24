@@ -1725,6 +1725,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get authApiViewAsSoon => 'ستتوفر هذه الميزة قريبًا';
 
   @override
+  String get authFbErrIdUnavailable =>
+      'تعذّر إنشاء معرّف المستخدم. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get authFbErrInvalidCredentials =>
+      'معرّف المستخدم أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get authFbErrWeakPassword =>
+      'كلمة المرور هذه سهلة التخمين (مثل 12345678 أو أرقام فقط أو أحرف متتابعة أو مكررة). اختر كلمة مرور أخرى تجمع بين الحروف والأرقام.';
+
+  @override
+  String get authFbErrWrongOldPassword => 'كلمة المرور الحالية غير صحيحة.';
+
+  @override
+  String get authFbForgot => 'نسيت معرّف المستخدم أو كلمة المرور';
+
+  @override
+  String get authFbForgotBody =>
+      'يزوّدك مرشدك أو وكالتك بمعرّف المستخدم وكلمة المرور. إذا نسيتهما فيرجى التواصل مع مرشدك أو وكالتك.';
+
+  @override
+  String get authFbResetUnavailable =>
+      'ستتوفر إعادة تعيين كلمة المرور بعد إعداد الخادم.';
+
+  @override
   String get authFieldRequired => 'لا يمكن ترك هذا الحقل فارغًا';
 
   @override
@@ -1840,13 +1866,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get authSplashNoInternetLogin =>
-      'لا يوجد اتصال بالإنترنت. يرجى تسجيل الدخول برقم هويتك.';
+      'لا يوجد اتصال بالإنترنت. يرجى تسجيل الدخول بمعرّف المستخدم.';
 
   @override
   String get authSplashOfflineStart => 'جارٍ التشغيل في وضع عدم الاتصال...';
 
   @override
-  String get authSplashPleaseLogin => 'يرجى تسجيل الدخول برقم هويتك.';
+  String get authSplashPleaseLogin => 'يرجى تسجيل الدخول بمعرّف المستخدم.';
 
   @override
   String get authSplashUserNotFound => 'المستخدم غير موجود.';

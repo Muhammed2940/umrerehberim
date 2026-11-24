@@ -3110,6 +3110,48 @@ abstract class AppLocalizations {
   /// **'Bu özellik yakında aktif olacak'**
   String get authApiViewAsSoon;
 
+  /// No description provided for @authFbErrIdUnavailable.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID üretilemedi. Lütfen tekrar deneyin.'**
+  String get authFbErrIdUnavailable;
+
+  /// No description provided for @authFbErrInvalidCredentials.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID veya şifre hatalı.'**
+  String get authFbErrInvalidCredentials;
+
+  /// No description provided for @authFbErrWeakPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu şifre kolay tahmin edilir (ör. 12345678, yalnız rakam, ardışık veya tekrarlı karakterler). Harf ve rakam karıştırarak başka bir şifre seçin.'**
+  String get authFbErrWeakPassword;
+
+  /// No description provided for @authFbErrWrongOldPassword.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mevcut şifre hatalı.'**
+  String get authFbErrWrongOldPassword;
+
+  /// No description provided for @authFbForgot.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID veya şifremi unuttum'**
+  String get authFbForgot;
+
+  /// No description provided for @authFbForgotBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanıcı ID ve şifrenizi rehberiniz veya acenteniz verir. Unuttuysanız rehberinize veya acentenize başvurun.'**
+  String get authFbForgotBody;
+
+  /// No description provided for @authFbResetUnavailable.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şifre sıfırlama sunucu kurulunca açılacak.'**
+  String get authFbResetUnavailable;
+
   /// No description provided for @authFieldRequired.
   ///
   /// In tr, this message translates to:
@@ -3317,7 +3359,7 @@ abstract class AppLocalizations {
   /// No description provided for @authSplashNoInternetLogin.
   ///
   /// In tr, this message translates to:
-  /// **'İnternet bağlantısı yok. Lütfen TC numaranız ile giriş yapın.'**
+  /// **'İnternet bağlantısı yok. Lütfen Kullanıcı ID\'niz ile giriş yapın.'**
   String get authSplashNoInternetLogin;
 
   /// No description provided for @authSplashOfflineStart.
@@ -3329,7 +3371,7 @@ abstract class AppLocalizations {
   /// No description provided for @authSplashPleaseLogin.
   ///
   /// In tr, this message translates to:
-  /// **'Lütfen TC numaranız ile giriş yapın.'**
+  /// **'Lütfen Kullanıcı ID\'niz ile giriş yapın.'**
   String get authSplashPleaseLogin;
 
   /// No description provided for @authSplashUserNotFound.

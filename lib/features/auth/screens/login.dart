@@ -19,10 +19,10 @@ import '../widgets/login_button.dart';
 import '../widgets/section_title.dart';
 import '../widgets/user_type_selector.dart';
 
-/// Giriş ekranı: giriş tipi + KVKK onayı ile
-/// - AUTH_API kapalıyken TC kimlik no,
-/// - açıkken Kullanıcı ID + PIN (misafir) / şifre (yönetici).
-/// Esnaf her iki durumda da dükkan kodu + PIN ile girer.
+/// Giriş ekranı: giriş tipi + KVKK onayı ile Kullanıcı ID + gizli bilgi
+/// - AUTH_API açıkken: PIN (misafir) / şifre (yönetici), PHP servisi,
+/// - AUTH_API kapalıyken (Firebase kimlik modu): herkes için şifre, Firebase Auth.
+/// TC ile giriş yoktur. Esnaf her iki durumda da dükkan kodu + PIN ile girer.
 /// Başarılı girişten sonra AppWrapper kullanıcı tipine göre ekranı değiştirir.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -33,7 +33,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
-  final _tcController = TextEditingController();
   final _codeController = TextEditingController();
   final _pinController = TextEditingController();
   final _loginIdController = TextEditingController();
@@ -57,7 +56,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   @override
   void dispose() {
     _controller.dispose();
-    _tcController.dispose();
     _codeController.dispose();
     _pinController.dispose();
     _loginIdController.dispose();
@@ -65,17 +63,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     super.dispose();
   }
 
-  String? _validateTc(String? v) {
-    final s = v?.trim() ?? '';
-    if (s.isEmpty) return context.l10n.authFieldRequired;
-    if (s.length != 11) return context.l10n.authTcLengthError;
-    return null;
-  }
-
   bool get _isMerchant => _userType == UserType.esnaf;
-
-  /// Yeni giriş (Kullanıcı ID + PIN/şifre) kullanılıyor mu.
-  bool get _useApi => authApiEnabled && !_isMerchant;
 
   bool get _usesPin => AuthApiService.usesPin(_userType);
 
@@ -100,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       builder: (ctx) => AlertDialog(
         icon: const Icon(Icons.support_agent_rounded, color: AppColors.primary, size: 36),
         title: Text(t.authApiForgotTitle, textAlign: TextAlign.center),
-        content: Text(t.authApiForgotBody, style: const TextStyle(height: 1.4)),
+        content: Text(authApiEnabled ? t.authApiForgotBody : t.authFbForgotBody, style: const TextStyle(height: 1.4)),
         actions: [
           FilledButton(
             style: FilledButton.styleFrom(backgroundColor: AppColors.primary),
@@ -183,20 +171,22 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           );
       return;
     }
-    if (_useApi) {
-      await context.read<LoginProvider>().handleApiLogin(
-            loginId: _loginIdController.text,
-            secret: _secretController.text,
-            userType: _userType,
-            appState: context.read<AppStateProvider>(),
-          );
+    final login = context.read<LoginProvider>();
+    if (authApiEnabled) {
+      await login.handleApiLogin(
+        loginId: _loginIdController.text,
+        secret: _secretController.text,
+        userType: _userType,
+        appState: context.read<AppStateProvider>(),
+      );
       return;
     }
-    await context.read<LoginProvider>().handleLogin(
-          tc: _tcController.text,
-          userType: _userType,
-          appState: context.read<AppStateProvider>(),
-        );
+    await login.handleFirebaseIdLogin(
+      loginId: _loginIdController.text,
+      password: _secretController.text,
+      userType: _userType,
+      appState: context.read<AppStateProvider>(),
+    );
   }
 
   @override
@@ -343,7 +333,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       context.l10n.esnafLoginHint,
                       style: const TextStyle(fontSize: 12.5, color: AppColors.textMuted, height: 1.35),
                     ),
-                  ] else if (_useApi) ...[
+                  ] else ...[
                     AppTextField(
                       key: const ValueKey('api-login-id'),
                       controller: _loginIdController,
@@ -384,25 +374,12 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       child: TextButton(
                         onPressed: _showForgot,
                         child: Text(
-                          context.l10n.authApiForgot,
+                          authApiEnabled ? context.l10n.authApiForgot : context.l10n.authFbForgot,
                           style: const TextStyle(fontSize: 13, color: AppColors.primary),
                         ),
                       ),
                     ),
-                  ] else
-                  AppTextField(
-                    controller: _tcController,
-                    label: context.l10n.authTcLabel,
-                    icon: Icons.badge_outlined,
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.done,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(11),
-                    ],
-                    validator: _validateTc,
-                    onFieldSubmitted: (_) => _submit(),
-                  ),
+                  ],
                   const SizedBox(height: 12),
                   Row(
                     children: [

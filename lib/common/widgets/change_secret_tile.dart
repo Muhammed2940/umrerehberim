@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -7,10 +8,12 @@ import '../../core/providers/locale_provider.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/global_snackbar.dart';
 import '../../features/auth/providers/login_provider.dart';
+import '../../core/utils/auth_utils.dart';
 import '../services/auth_api_service.dart';
+import '../services/firebase_id_auth_service.dart';
 
 /// Profil / ayarlar: "PIN'imi değiştir" (misafir) veya "Şifremi değiştir" (personel).
-/// Servis bağlı değilse soluk görünür ve "Sunucu henüz bağlı değil" der.
+/// Her iki modda çalışır: PHP servisi ya da Firebase kimlik modu (yeniden doğrulama + şifre güncelleme).
 class ChangeSecretTile extends StatelessWidget {
   final String userType;
   const ChangeSecretTile({super.key, required this.userType});
@@ -19,40 +22,28 @@ class ChangeSecretTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.l10n;
     final pin = AuthApiService.usesPin(userType);
-    final enabled = authApiEnabled;
     return Card(
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: enabled ? AppColors.primaryLight : AppColors.divider,
-          child: Icon(Icons.password_rounded, color: enabled ? AppColors.primary : AppColors.textMuted),
+          backgroundColor: AppColors.primaryLight,
+          child: const Icon(Icons.password_rounded, color: AppColors.primary),
         ),
         title: Text(
           pin ? t.authApiChangePin : t.authApiChangePassword,
-          style: TextStyle(fontWeight: FontWeight.w600, color: enabled ? AppColors.text : AppColors.textMuted),
+          style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.text),
         ),
-        subtitle: Text(enabled ? t.authApiChangeSubtitle : t.authApiNotConnected),
+        subtitle: Text(t.authApiChangeSubtitle),
         trailing: const Icon(Icons.chevron_right),
-        onTap: () {
-          if (!enabled) {
-            GlobalSnackbar.showInfo(t.authApiNotConnected);
-            return;
-          }
-          showChangeSecretDialog(context, userType);
-        },
+        onTap: () => showChangeSecretDialog(context, userType),
       ),
     );
   }
 }
 
 /// PIN/şifre değiştirme penceresi (Kontrol Merkezi gibi kart olmayan yerlerden de açılır).
-/// Servis bağlı değilse "Sunucu henüz bağlı değil" der.
 Future<void> showChangeSecretDialog(BuildContext context, String userType) async {
-  if (!authApiEnabled) {
-    GlobalSnackbar.showInfo(context.l10n.authApiNotConnected);
-    return;
-  }
   final pin = AuthApiService.usesPin(userType);
   final needsRelogin = await showDialog<bool>(
     context: context,
@@ -82,6 +73,9 @@ class _ChangeSecretDialogState extends State<_ChangeSecretDialog> {
   bool _visible = false;
   bool _saving = false;
 
+  /// Oturumdaki kullanıcının Kullanıcı ID'si (Auth e-postasından); şifrede ID geçmesin diye.
+  String? _ownLoginId() => loginIdFromEmail(FirebaseAuth.instance.currentUser?.email);
+
   @override
   void dispose() {
     _old.dispose();
@@ -98,12 +92,23 @@ class _ChangeSecretDialogState extends State<_ChangeSecretDialog> {
     return s.length >= AuthApiService.minPasswordLength ? null : t.authApiPasswordError;
   }
 
+  /// Firebase kimlik modunda yeni şifre kolay tahmin edilir olmamalı (deneme kilidi yok).
+  String? _validateNewPassword(String? v) {
+    final e = _validateFormat(v);
+    if (e != null) return e;
+    if (v == _old.text) return context.l10n.authApiSameAsOld;
+    if (authFirebaseIdMode && isWeakPassword(v!, loginId: _ownLoginId())) return context.l10n.authFbErrWeakPassword;
+    return null;
+  }
+
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
     if (!(_formKey.currentState?.validate() ?? false)) return;
     setState(() => _saving = true);
     try {
-      final relogged = await AuthApiService.changeSecret(_old.text, _new.text);
+      final relogged = authApiEnabled
+          ? await AuthApiService.changeSecret(_old.text, _new.text)
+          : await FirebaseIdAuthService.changePassword(_old.text, _new.text, loginId: _ownLoginId());
       if (relogged) GlobalSnackbar.showSuccess(widget.pin ? l10n.authApiPinChanged : l10n.authApiPasswordChanged);
       if (mounted) Navigator.pop(context, !relogged);
     } on AuthApiException catch (e) {
@@ -155,11 +160,7 @@ class _ChangeSecretDialogState extends State<_ChangeSecretDialog> {
             children: [
               _field(_old, pin ? t.authApiOldPin : t.authApiOldPassword,
                   (v) => (v ?? '').isEmpty ? t.authApiFieldRequired : null),
-              _field(_new, pin ? t.authApiNewPin : t.authApiNewPassword, (v) {
-                final e = _validateFormat(v);
-                if (e != null) return e;
-                return v == _old.text ? t.authApiSameAsOld : null;
-              }),
+              _field(_new, pin ? t.authApiNewPin : t.authApiNewPassword, _validateNewPassword),
               _field(_repeat, pin ? t.authApiRepeatPin : t.authApiRepeatPassword, (v) {
                 final e = _validateFormat(v);
                 if (e != null) return e;

@@ -6,7 +6,9 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/providers/locale_provider.dart';
 import '../../core/utils/auth_utils.dart';
+import '../../features/auth/models/user_model.dart';
 import '../../firebase_options.dart';
+import 'auth_api_service.dart';
 
 /// Bu TC ile kayıtlı (ve hâlâ `users` belgesi olan) bir hesap var.
 class AccountExistsException implements Exception {
@@ -33,13 +35,55 @@ class AuthAccountService {
     }
   }
 
-  /// TC için Auth hesabı açar ve uid'sini döner.
+  static const _maxLoginIdAttempts = 8;
+
+  /// Firebase kimlik modu (AUTH_API boş): Kullanıcı ID + rastgele şifre ile hesap açar.
   ///
-  /// E-posta zaten kayıtlıysa: şifre TC olduğundan ikincil uygulamada giriş
-  /// yapılıp uid bulunur. O uid'in `users` belgesi yoksa (kişi daha önce
-  /// silinmiş) aynı uid tekrar kullanılır; belge varsa [AccountExistsException].
-  static Future<String> createAccount(String tc) =>
-      createAccountWithCredentials(tcToEmail(tc), tcToPassword(tc));
+  /// 1) Tekil 7 haneli ID üretilir; `login_ids/{id}` doluysa ya da `id<ID>@umrerehberim.app`
+  ///    e-postası Auth'ta varsa yeni ID denenir.
+  /// 2) Hesap ikincil FirebaseApp'te açılır (ana oturum bozulmaz).
+  /// 3) `login_ids/{id}` = {uid} yazılır (users belgesindeki login_id kuralı bunu ister).
+  ///    Yazılamazsa Auth hesabı silinir (yarım hesap kalmaz).
+  /// Şifre misafirde 8, personelde 10 karakter (harf+rakam). `users/{uid}` belgesini çağıran yazar.
+  /// Bilgiler yalnız bu dönüşte bilinir; çağıran bir kez gösterir.
+  /// TODO PHP kurulunca kaldır: hesabı sunucu açar (AuthApiService.createAccount).
+  static Future<IssuedCredentials> createIdAccount({required String userType}) async {
+    final app = await _secondaryApp();
+    final auth = FirebaseAuth.instanceFor(app: app);
+    final password = generatePassword(length: userType == UserType.misafir ? 8 : 10);
+    try {
+      for (var i = 0; i < _maxLoginIdAttempts; i++) {
+        final loginId = generateLoginId();
+        final ref = FirebaseFirestore.instance.collection('login_ids').doc(loginId);
+        final taken = await ref.get(const GetOptions(source: Source.server)).timeout(const Duration(seconds: 15));
+        if (taken.exists) continue;
+
+        final UserCredential cred;
+        try {
+          cred = await auth.createUserWithEmailAndPassword(email: loginIdToEmail(loginId), password: password);
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'email-already-in-use') continue;
+          rethrow;
+        }
+        final user = cred.user!;
+        try {
+          await ref.set({'uid': user.uid}).timeout(const Duration(seconds: 20));
+        } catch (e) {
+          debugPrint('login_ids/$loginId yazılamadı, Auth hesabı siliniyor: $e');
+          try {
+            await user.delete();
+          } catch (_) {}
+          rethrow;
+        }
+        return IssuedCredentials(uid: user.uid, loginId: loginId, secret: password, userType: userType);
+      }
+      throw const AuthApiException('fb_id_unavailable');
+    } finally {
+      try {
+        await auth.signOut();
+      } catch (_) {}
+    }
+  }
 
   /// Verilen e-posta/şifre ile Auth hesabı açar ve uid'sini döner
   /// (esnaf hesabı: `esnaf_<kod>@umrerehberim.app` + `esnaf-<pin>`).

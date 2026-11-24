@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/services/auth_api_service.dart';
 import '../../../common/services/background_location_service.dart';
+import '../../../common/services/firebase_id_auth_service.dart';
 import '../../../common/services/firestore_service.dart';
 import '../../../common/services/google_auth_service.dart';
 import '../../../common/services/location_firebase_service.dart';
@@ -17,7 +18,6 @@ import '../../../core/providers/app_state_provider.dart';
 import '../../../core/providers/locale_provider.dart';
 import '../../../core/services/local_cache_service.dart';
 import '../../../core/services/session_loader.dart';
-import '../../../core/utils/auth_utils.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../esnaf/esnaf_config.dart';
 import '../../hatim/data/hatim_service.dart';
@@ -42,20 +42,18 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// TC + giriş tipi ile giriş yapar: `<tc>@umrerehberim.app` / şifre TC ile
-  /// FirebaseAuth girişi, ardından users/{uid} belgesi. Başarılıysa true döner; AppWrapper
-  /// [AppStateProvider.currentUser] değişince doğru ekrana geçer.
-  Future<bool> handleLogin({
-    required String tc,
+  /// Firebase kimlik modu (AUTH_API boş): Kullanıcı ID + şifre → `id<loginId>@umrerehberim.app`
+  /// ile FirebaseAuth girişi (kök ID'si kökün e-postasına gider), ardından users/{uid} belgesi.
+  /// Başarılıysa true döner; AppWrapper [AppStateProvider.currentUser] değişince doğru ekrana geçer.
+  /// TODO PHP kurulunca kaldır (AUTH_API doluyken [handleApiLogin] kullanılır).
+  Future<bool> handleFirebaseIdLogin({
+    required String loginId,
+    required String password,
     required String userType,
     required AppStateProvider appState,
   }) {
-    final cleanTc = tc.trim();
     return _signInAndComplete(
-      () async => (await FirebaseAuth.instance
-              .signInWithEmailAndPassword(email: tcToEmail(cleanTc), password: tcToPassword(cleanTc)))
-          .user
-          ?.uid,
+      () => FirebaseIdAuthService.signIn(loginId, password),
       userType: userType,
       appState: appState,
     );

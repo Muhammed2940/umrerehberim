@@ -7,6 +7,7 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../common/services/tracking_public_service.dart';
 import '../../auth/models/user_model.dart';
 import '../../paketler/providers/personal_plan_provider.dart';
 import '../models/tracking_link.dart';
@@ -120,24 +121,71 @@ class AileTakibiProvider extends ChangeNotifier {
     }).timeout(const Duration(seconds: 15));
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('$tokenKeyPrefix$hash', token);
+    // Ara mod: web'in okuyacağı düğüm (konumu arka plan servisi ekler).
+    await TrackingPublicService.publish(
+      link: TrackingLink(
+        hash: hash,
+        ownerUid: u.id,
+        kind: u.isBireysel ? 'bireysel' : 'acente',
+        agencyId: u.isBireysel ? '' : (u.agencyId ?? ''),
+        label: name,
+        approx: approx,
+        hiddenUntil: null,
+        revoked: false,
+        createdAt: now,
+        expiresAt: expires,
+      ),
+      ownerUid: u.id,
+      userName: u.userName,
+    );
     return token;
   }
 
   Future<void> _update(String hash, Map<String, dynamic> data) =>
       _col.doc(hash).update(data).timeout(const Duration(seconds: 15));
 
-  Future<void> setApprox(TrackingLink l, bool value) => _update(l.hash, {'approx': value});
+  /// Ara mod: Firestore değişikliğini web düğümüne de yansıtır.
+  Future<void> _mirror(TrackingLink l) async {
+    final u = _user;
+    if (u == null) return;
+    await TrackingPublicService.refreshMeta(link: l, ownerUid: u.id, userName: u.userName);
+  }
+
+  TrackingLink _with(TrackingLink l, {bool? approx, DateTime? hiddenUntil, bool clearHidden = false}) => TrackingLink(
+        hash: l.hash,
+        ownerUid: l.ownerUid,
+        kind: l.kind,
+        agencyId: l.agencyId,
+        label: l.label,
+        approx: approx ?? l.approx,
+        hiddenUntil: clearHidden ? null : (hiddenUntil ?? l.hiddenUntil),
+        revoked: l.revoked,
+        createdAt: l.createdAt,
+        expiresAt: l.expiresAt,
+      );
+
+  Future<void> setApprox(TrackingLink l, bool value) async {
+    await _update(l.hash, {'approx': value});
+    await _mirror(_with(l, approx: value));
+  }
 
   Future<void> setLabel(TrackingLink l, String label) => _update(l.hash, {'label': label.trim()});
 
-  Future<void> hideFor2Hours(TrackingLink l) =>
-      _update(l.hash, {'hidden_until': Timestamp.fromDate(DateTime.now().add(hideDuration))});
+  Future<void> hideFor2Hours(TrackingLink l) async {
+    final until = DateTime.now().add(hideDuration);
+    await _update(l.hash, {'hidden_until': Timestamp.fromDate(until)});
+    await _mirror(_with(l, hiddenUntil: until));
+  }
 
-  Future<void> unhide(TrackingLink l) => _update(l.hash, {'hidden_until': null});
+  Future<void> unhide(TrackingLink l) async {
+    await _update(l.hash, {'hidden_until': null});
+    await _mirror(_with(l, clearHidden: true));
+  }
 
   /// İptal geri alınamaz. Yerel token da silinir (paylaşılacak bir şey kalmaz).
   Future<void> revoke(TrackingLink l) async {
     await _update(l.hash, {'revoked': true});
+    await TrackingPublicService.remove(l.hash);
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('$tokenKeyPrefix${l.hash}');
@@ -158,6 +206,7 @@ class AileTakibiProvider extends ChangeNotifier {
     final col = FirebaseFirestore.instance.collection('tracking_links');
     final snap = await col.where('owner_uid', isEqualTo: uid).get();
     for (final d in snap.docs) {
+      await TrackingPublicService.remove(d.id);
       try {
         final views = await d.reference.collection('views').get();
         for (final v in views.docs) {

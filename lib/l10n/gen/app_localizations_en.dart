@@ -1722,6 +1722,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authApiViewAsSoon => 'This feature will be available soon';
 
   @override
+  String get authFbErrIdUnavailable =>
+      'Could not generate a User ID. Please try again.';
+
+  @override
+  String get authFbErrInvalidCredentials => 'User ID or password is incorrect.';
+
+  @override
+  String get authFbErrWeakPassword =>
+      'This password is too easy to guess (e.g. 12345678, digits only, sequential or repeated characters). Choose another one mixing letters and digits.';
+
+  @override
+  String get authFbErrWrongOldPassword => 'The current password is incorrect.';
+
+  @override
+  String get authFbForgot => 'I forgot my User ID or password';
+
+  @override
+  String get authFbForgotBody =>
+      'Your guide or agency gives you your User ID and password. If you forgot them, please contact your guide or agency.';
+
+  @override
+  String get authFbResetUnavailable =>
+      'Password reset will be available once the server is set up.';
+
+  @override
   String get authFieldRequired => 'This field cannot be empty';
 
   @override
@@ -1837,13 +1862,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authSplashNoInternetLogin =>
-      'No internet connection. Please log in with your ID number.';
+      'No internet connection. Please log in with your User ID.';
 
   @override
   String get authSplashOfflineStart => 'Starting in offline mode...';
 
   @override
-  String get authSplashPleaseLogin => 'Please log in with your ID number.';
+  String get authSplashPleaseLogin => 'Please log in with your User ID.';
 
   @override
   String get authSplashUserNotFound => 'User not found.';

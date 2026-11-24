@@ -162,3 +162,17 @@
   "yeni PIN ile giriş yapın" der ve çıkış yaptırır.
 - Taşıma ekranı partileri döngüyle çağırır, tüm bilgileri biriktirip bir kez gösterir; araya hata girse
   bile o ana kadar üretilenler ekranda kalır.
+
+## Ara mod: Firebase kimlik modu (AUTH_API boşken, PHP kurulana dek)
+- Seçim tek yerden: `lib/core/config/auth_api_config.dart` → `authMode` (`AuthMode.api` / `AuthMode.firebaseId`).
+  TC ile giriş hiçbir modda yok.
+- Giriş: Kullanıcı ID (7 hane) + **şifre** (misafir dahil herkes; PIN yok). E-posta `id<loginId>@umrerehberim.app`
+  (`auth_utils.dart`); kök ID'si `1000146` kökün TC'li e-postasına eşlenir (e-posta DEĞİŞMEZ, kurallardaki `isRoot()` ona bakar).
+- Şifre: üretilen misafir 8, personel 10 karakter (harf+rakam, 0/O/1/l/I yok). Kullanıcı değiştirirken en az 8 karakter,
+  zayıf şifre (yalnız rakam, ardışık/tekrarlı, yaygın liste, ID'yi içeren) reddedilir; Firebase yeniden doğrulama + `updatePassword`.
+- Hesap açma (yönetici/acente admini/süper admin): ikincil FirebaseApp'te `id<loginId>@` hesabı, ardından `login_ids/{id}` = `{uid}`
+  (istemci yazar), sonra `users/{uid}` (`login_id` ile). Şifre bir kez gösterilir.
+- Başkasının şifresini sıfırlama: Admin SDK olmadan yapılamaz → "Şifre sıfırlama sunucu kurulunca açılacak".
+- Kurallar (PHP kurulunca KALDIR; işaretli): `login_ids` get (kişi açan personel) + create (`{uid}` tek alan) + delete (sahipsiz kayıt);
+  `users` güncellemesinde süper admin boş `login_id`'yi ekleyebilir (taşıma). `auth_secrets` vb. hâlâ kapalı.
+- Taşıma/seed: `tool/id_gecis.js` (`--dry` varsayılan, `--uygula`), `tool/seed.js`; çıktılar `tool/*.local.md` (gizli).

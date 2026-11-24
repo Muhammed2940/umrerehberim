@@ -418,9 +418,9 @@ class AdminProvider extends ChangeNotifier {
   }
 
   // ------------------------------------------------------------ kişiler
-  /// Yeni kişi oluşturur: önce Auth hesabı (ikincil FirebaseApp, e-posta
-  /// `<tc>@umrerehberim.app`, şifre TC), sonra users/{uid} ve RTDB roles/{uid}.
-  /// TC kayıtlıysa hata verir.
+  /// Yeni kişi oluşturur: önce Auth hesabı (PHP servisi ya da ikincil FirebaseApp'te
+  /// `id<loginId>@umrerehberim.app` + rastgele şifre), sonra users/{uid} ve RTDB roles/{uid}.
+  /// TC kayıtlıysa hata verir (TC yalnız kayıttır, girişte kullanılmaz).
   Future<bool> createUser({
     required String userName,
     required String userTc,
@@ -453,22 +453,20 @@ class AdminProvider extends ChangeNotifier {
         GlobalSnackbar.showError(l10n.adminUserTcExists);
         return false;
       }
-      // AUTH_API açıkken hesabı servis açar (Kullanıcı ID + PIN/şifre); kapalıyken eski TC hesabı.
-      IssuedCredentials? issued;
-      final String uid;
-      if (authApiEnabled) {
-        // Önceki denemede hesap açılıp belge yazılamadıysa aynı hesap yeniden kullanılır.
-        final pending = _pendingAccount;
-        if (pending != null && pending.userType == userType && pending.agencyId == (a ?? '')) {
-          issued = pending.credentials.withUser(userName, userType);
-        } else {
-          issued = (await AuthApiService.createAccount(userType: userType, agencyId: a ?? ''))
-              .withUser(userName, userType);
-        }
-        uid = issued.uid;
+      // AUTH_API açıkken hesabı servis açar (Kullanıcı ID + PIN/şifre); kapalıyken (Firebase
+      // kimlik modu) ikincil FirebaseApp'te `id<loginId>@` hesabı + login_ids kaydı açılır.
+      // Önceki denemede hesap açılıp belge yazılamadıysa aynı hesap yeniden kullanılır.
+      final IssuedCredentials issued;
+      final pending = _pendingAccount;
+      if (pending != null && pending.userType == userType && pending.agencyId == (a ?? '')) {
+        issued = pending.credentials.withUser(userName, userType);
       } else {
-        uid = await AuthAccountService.createAccount(userTc);
+        issued = (authApiEnabled
+                ? await AuthApiService.createAccount(userType: userType, agencyId: a ?? '')
+                : await AuthAccountService.createIdAccount(userType: userType))
+            .withUser(userName, userType);
       }
+      final uid = issued.uid;
       final user = UserModel(
         id: uid,
         userName: userName,
@@ -478,13 +476,12 @@ class AdminProvider extends ChangeNotifier {
         cinsiyet: cinsiyet,
         dogumTarihi: dogumTarihi,
         agencyId: a,
-        loginId: issued?.loginId,
+        loginId: issued.loginId,
       );
       final String id;
       try {
         id = await _service.createOrUpdateUser(user, isNew: true);
       } catch (e) {
-        if (issued == null) rethrow;
         // Bilgiler yalnız bir kez döndü: hata ile birlikte gösterilsin, tekrar kayıtta aynı uid kullanılsın.
         debugPrint('createUser users/{uid} yazılamadı: $e');
         _pendingAccount = (credentials: issued, userType: userType, agencyId: a ?? '');
@@ -541,7 +538,7 @@ class AdminProvider extends ChangeNotifier {
   bool issuedDocWriteFailed = false;
 
   /// Son [createUser] çağrısında servisin bir kez döndürdüğü giriş bilgisini verir ve
-  /// unutur (AUTH_API kapalıyken hep null). Ekran bunu Giriş Bilgileri kartında gösterir.
+  /// unutur. Ekran bunu Giriş Bilgileri kartında gösterir.
   IssuedCredentials? takeIssuedCredentials() {
     final c = _issuedCredentials;
     _issuedCredentials = null;

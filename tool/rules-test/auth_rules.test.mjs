@@ -1,10 +1,11 @@
-// Kimlik alanları (login_id, auth_migrated, disabled) ve kimlik servisi koleksiyonları
-// için Firestore kuralları testi — yerel öykünücü; gerçek veritabanına dokunmaz.
+// Kimlik alanları (login_id, auth_migrated, disabled), kimlik servisi koleksiyonları ve
+// ara mod (Firebase kimlik modu: login_ids istemci yazımı) için Firestore kuralları testi
+// — yerel öykünücü; gerçek veritabanına dokunmaz.
 // Çalıştırma: calistir.ps1 (firebase emulators:exec ... "node auth_rules.test.mjs")
 import { readFileSync } from 'node:fs';
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
 import {
-  doc, setDoc, getDoc, updateDoc, collection, query, where, getDocs, serverTimestamp,
+  doc, setDoc, getDoc, updateDoc, deleteDoc, collection, query, where, getDocs, serverTimestamp,
 } from 'firebase/firestore';
 
 const env = await initializeTestEnvironment({
@@ -23,6 +24,9 @@ await env.withSecurityRulesDisabled(async (ctx) => {
   await u('mg', { user_type: 'yonetici', agency_id: A, user_name: 'Genel Yönetici' });
   await u('sa', { user_type: 'super_admin', agency_id: '' });
   await u('ds', { user_type: 'destek', agency_id: '' });
+  await u('gC', { user_type: 'misafir', agency_id: A, user_name: 'Can' });
+  await u('gD', { user_type: 'misafir', agency_id: A, user_name: 'Deniz' });
+  await u('gE', { user_type: 'misafir', agency_id: A, user_name: 'Elif' });
   await setDoc(doc(db, 'agencies', A), { name: 'A' });
   // Kimlik servisinin yazdığı kayıtlar (servis hesabı kuralları baypas eder).
   await setDoc(doc(db, 'login_ids', '1000001'), { uid: 'g1' });
@@ -30,6 +34,9 @@ await env.withSecurityRulesDisabled(async (ctx) => {
   await setDoc(doc(db, 'login_ids', '1234567'), { uid: 'yeni1' });
   await setDoc(doc(db, 'login_ids', '7654321'), { uid: 'baskasi' });
   await setDoc(doc(db, 'login_ids', '2345678'), { uid: 'yeniSa' });
+  await setDoc(doc(db, 'login_ids', '6666662'), { uid: 'gC' });
+  await setDoc(doc(db, 'login_ids', '4444441'), { uid: 'ghost' }); // sahipsiz (users belgesi yok)
+  await setDoc(doc(db, 'login_ids', '4444442'), { uid: 'ghost2' });
   await setDoc(doc(db, 'auth_secrets', 'g1'), { hash: '$2y$11$x', kind: 'pin' });
   await setDoc(doc(db, 'auth_attempts', 'abc'), { n: 1, uid: 'g1' });
   await setDoc(doc(db, 'system', 'auth_migration'), { done: false });
@@ -96,14 +103,118 @@ await t('acente admini kendi acentesini listeler', () =>
 await t('destek kullanıcıları listeler', () => assertSucceeds(getDocs(collection(as('ds'), 'users'))));
 
 console.log('kimlik servisi koleksiyonları (deny-all):');
-for (const [col, id] of [['login_ids', '1000001'], ['auth_secrets', 'g1'], ['auth_attempts', 'abc'], ['system', 'auth_migration']]) {
+for (const [col, id] of [['auth_secrets', 'g1'], ['auth_attempts', 'abc'], ['system', 'auth_migration']]) {
   await t(`süper admin ${col} OKUYAMAZ`, () => assertFails(getDoc(doc(as('sa'), col, id))));
   await t(`kök ${col} OKUYAMAZ`, () => assertFails(getDoc(doc(asRoot(), col, id))));
   await t(`kişi kendi ${col} kaydını OKUYAMAZ`, () => assertFails(getDoc(doc(as('g1'), col, id))));
   await t(`süper admin ${col} YAZAMAZ`, () => assertFails(setDoc(doc(as('sa'), col, 'yeni'), { uid: 'sa' })));
   await t(`${col} listelenemez`, () => assertFails(getDocs(collection(as('sa'), col))));
 }
-await t('misafir kendi login_id kaydını oluşturamaz', () => assertFails(setDoc(doc(as('g1'), 'login_ids', '9999999'), { uid: 'g1' })));
+// login_ids: aşağıdaki "ara mod" bölümünde (istemci yazımı bu modda açık).
+
+// ---------------------------------------------------------------------------
+// Ara mod (Firebase kimlik modu): login_ids/{id} = {uid} istemciden yazılır.
+// PHP kurulunca bu bölüm ve kuraldaki istisnalar kalkar (login_ids yine deny-all).
+// ---------------------------------------------------------------------------
+console.log('login_ids ara mod: okuma:');
+for (const [who, db] of [['süper admin', () => as('sa')], ['yönetici', () => as('mg')], ['acente admini', () => as('a1')], ['kök', () => asRoot()]]) {
+  await t(`${who} login_ids kaydını tek tek okur (ID çakışma denetimi)`, () => assertSucceeds(getDoc(doc(db(), 'login_ids', '1000001'))));
+}
+await t('olmayan login_ids kaydını da okuyabilir (boş)', () => assertSucceeds(getDoc(doc(as('mg'), 'login_ids', '8888888'))));
+await t('destek login_ids OKUYAMAZ', () => assertFails(getDoc(doc(as('ds'), 'login_ids', '1000001'))));
+await t('misafir login_ids OKUYAMAZ (kendi kaydı dahil)', () => assertFails(getDoc(doc(as('g1'), 'login_ids', '1000001'))));
+await t('login_ids listelenemez (süper admin)', () => assertFails(getDocs(collection(as('sa'), 'login_ids'))));
+await t('login_ids listelenemez (kök)', () => assertFails(getDocs(collection(asRoot(), 'login_ids'))));
+
+console.log('login_ids ara mod: oluşturma:');
+await t('yönetici yeni uid için kayıt açar', () => assertSucceeds(setDoc(doc(as('mg'), 'login_ids', '3333331'), { uid: 'newU1' })));
+await t('acente admini yeni uid için kayıt açar', () => assertSucceeds(setDoc(doc(as('a1'), 'login_ids', '3333332'), { uid: 'newU2' })));
+await t('süper admin yeni uid için kayıt açar', () => assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '3333333'), { uid: 'newU3' })));
+await t('destek kayıt AÇAMAZ', () => assertFails(setDoc(doc(as('ds'), 'login_ids', '3333334'), { uid: 'newU4' })));
+await t('misafir kayıt AÇAMAZ', () => assertFails(setDoc(doc(as('g1'), 'login_ids', '3333335'), { uid: 'newU5' })));
+await t('fazladan alanla (created_at) AÇILAMAZ', () =>
+  assertFails(setDoc(doc(as('mg'), 'login_ids', '3333337'), { uid: 'newU7', created_at: serverTimestamp() })));
+await t('uid alanı olmadan AÇILAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '3333338'), { x: 'y' })));
+await t('uid sayı tipinde AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '3333339'), { uid: 5 })));
+await t('uid boş AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '3333340'), { uid: '' })));
+for (const bad of ['0123456', '123456', '12345678', 'abcdefg', '1234 67']) {
+  await t(`biçimsiz id (${bad}) ile AÇILAMAZ (süper admin)`, () => assertFails(setDoc(doc(as('sa'), 'login_ids', bad), { uid: 'newB' })));
+}
+await t('yönetici, users belgesi OLAN uid için kayıt AÇAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '3333341'), { uid: 'g1' })));
+await t('acente admini, users belgesi OLAN uid için kayıt AÇAMAZ', () => assertFails(setDoc(doc(as('a1'), 'login_ids', '3333342'), { uid: 'gB' })));
+await t('süper admin, var olan uid için kayıt açar (taşıma)', () => assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '3333343'), { uid: 'gB' })));
+await t('var olan kaydın üzerine yazılamaz (süper admin)', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '1000001'), { uid: 'sa' })));
+await t('var olan kaydın üzerine yazılamaz (yönetici)', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '1234567'), { uid: 'zzz' })));
+await t('kök ID (1000146) süper admin tarafından AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '1000146'), { uid: 'sa' })));
+await t('kök ID (1000146) yönetici tarafından AÇILAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '1000146'), { uid: 'zz1' })));
+await t('kök ID (1000146) yalnız kök tarafından açılır', () => assertSucceeds(setDoc(doc(asRoot(), 'login_ids', '1000146'), { uid: 'rootuid' })));
+
+console.log('login_ids ara mod: güncelleme / silme:');
+await t('kayıt güncellenemez (süper admin)', () => assertFails(updateDoc(doc(as('sa'), 'login_ids', '1000001'), { uid: 'sa' })));
+await t('kayıt güncellenemez (kök)', () => assertFails(updateDoc(doc(asRoot(), 'login_ids', '1000001'), { uid: 'rootuid' })));
+await t('yönetici, kişisi VAR olan kaydı SİLEMEZ', () => assertFails(deleteDoc(doc(as('mg'), 'login_ids', '1000001'))));
+await t('acente admini, kişisi VAR olan kaydı SİLEMEZ', () => assertFails(deleteDoc(doc(as('a1'), 'login_ids', '1000001'))));
+await t('misafir kendi kaydını SİLEMEZ', () => assertFails(deleteDoc(doc(as('g1'), 'login_ids', '1000001'))));
+await t('destek sahipsiz kaydı SİLEMEZ', () => assertFails(deleteDoc(doc(as('ds'), 'login_ids', '4444441'))));
+await t('yönetici sahipsiz (kişisi silinmiş) kaydı siler', () => assertSucceeds(deleteDoc(doc(as('mg'), 'login_ids', '4444441'))));
+await t('acente admini sahipsiz kaydı siler', () => assertSucceeds(deleteDoc(doc(as('a1'), 'login_ids', '4444442'))));
+await t('süper admin kişisi olan kaydı da siler', () => assertSucceeds(deleteDoc(doc(as('sa'), 'login_ids', '1000002'))));
+
+console.log('ara mod: kişi açma (login_ids önce, users sonra):');
+await t('yönetici: kayıt + misafir belgesi (login_id ile)', async () => {
+  await assertSucceeds(setDoc(doc(as('mg'), 'login_ids', '5555551'), { uid: 'fbG1' }));
+  await assertSucceeds(setDoc(doc(as('mg'), 'users', 'fbG1'), guest({ login_id: '5555551' })));
+});
+await t('acente admini: kayıt + kendi acentesine misafir belgesi', async () => {
+  await assertSucceeds(setDoc(doc(as('a1'), 'login_ids', '5555552'), { uid: 'fbG2' }));
+  await assertSucceeds(setDoc(doc(as('a1'), 'users', 'fbG2'), guest({ login_id: '5555552' })));
+});
+await t('süper admin: kayıt + destek personeli belgesi', async () => {
+  await assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '5555553'), { uid: 'fbSt' }));
+  await assertSucceeds(setDoc(doc(as('sa'), 'users', 'fbSt'), { user_type: 'destek', agency_id: '', login_id: '5555553' }));
+});
+await t('acente admini kayıt açtı ama yönetici rolü belgesi AÇAMAZ', async () => {
+  await assertSucceeds(setDoc(doc(as('a1'), 'login_ids', '5555554'), { uid: 'fbBad' }));
+  await assertFails(setDoc(doc(as('a1'), 'users', 'fbBad'), { user_type: 'yonetici', agency_id: A, login_id: '5555554' }));
+});
+await t('yönetici kayıt açtı ama süper admin belgesi AÇAMAZ', async () => {
+  await assertSucceeds(setDoc(doc(as('mg'), 'login_ids', '5555555'), { uid: 'fbBad2' }));
+  await assertFails(setDoc(doc(as('mg'), 'users', 'fbBad2'), { user_type: 'super_admin', agency_id: '', login_id: '5555555' }));
+});
+await t('başkasının uid\'sine ait kayıtla belge açılamaz', () =>
+  assertFails(setDoc(doc(as('mg'), 'users', 'fbG3'), guest({ login_id: '5555551' }))));
+
+console.log('ara mod: users.login_id ekleme (yalnız süper admin, yalnız boşken):');
+await t('süper admin login_id\'si OLMAYAN belgeye kayıtlı login_id ekler', () =>
+  assertSucceeds(updateDoc(doc(as('sa'), 'users', 'gC'), { login_id: '6666662' })));
+await t('süper admin başka alanla birlikte login_id ekler (gB)', () =>
+  assertSucceeds(updateDoc(doc(as('sa'), 'users', 'gB'), { login_id: '3333343', user_name: 'Ali Veli' })));
+await t('kök de login_id ekler', async () => {
+  await assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '6666663'), { uid: 'gD' }));
+  await assertSucceeds(updateDoc(doc(asRoot(), 'users', 'gD'), { login_id: '6666663' }));
+});
+await t('süper admin başkasının kaydıyla login_id EKLEYEMEZ', () =>
+  assertFails(updateDoc(doc(as('sa'), 'users', 'mg'), { login_id: '7654321' })));
+await t('süper admin kayıtsız login_id EKLEYEMEZ', () =>
+  assertFails(updateDoc(doc(as('sa'), 'users', 'mg'), { login_id: '9090909' })));
+await t('süper admin biçimsiz login_id EKLEYEMEZ', () =>
+  assertFails(updateDoc(doc(as('sa'), 'users', 'mg'), { login_id: '../x' })));
+await t('süper admin sayı tipinde login_id EKLEYEMEZ', () =>
+  assertFails(updateDoc(doc(as('sa'), 'users', 'mg'), { login_id: 1234567 })));
+await t('süper admin var olan login_id\'yi DEĞİŞTİREMEZ', () =>
+  assertFails(updateDoc(doc(as('sa'), 'users', 'g1'), { login_id: '3333331' })));
+await t('süper admin login_id eklerken auth_migrated EKLEYEMEZ', async () => {
+  await assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '6666664'), { uid: 'mg' }));
+  await assertFails(updateDoc(doc(as('sa'), 'users', 'mg'), { login_id: '6666664', auth_migrated: true }));
+});
+await t('yönetici login_id EKLEYEMEZ (kayıt mevcut olsa da)', () =>
+  assertFails(updateDoc(doc(as('mg'), 'users', 'mg'), { login_id: '6666664' })));
+await t('acente admini misafire login_id EKLEYEMEZ (kayıt mevcut olsa da)', async () => {
+  await assertSucceeds(setDoc(doc(as('sa'), 'login_ids', '6666666'), { uid: 'gE' }));
+  await assertFails(updateDoc(doc(as('a1'), 'users', 'gE'), { login_id: '6666666' }));
+});
+await t('kişi kendi belgesine login_id EKLEYEMEZ (kayıt mevcut olsa da)', () =>
+  assertFails(updateDoc(doc(as('mg'), 'users', 'mg'), { login_id: '6666664', updated_at: serverTimestamp() })));
 
 console.log(`\nSonuç: ${pass} geçti, ${fail} başarısız`);
 await env.cleanup();

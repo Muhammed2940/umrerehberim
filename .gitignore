@@ -42,3 +42,8 @@ server/umre-api/private-path.php
 # Kural testi çıktıları
 tool/rules-test/sonuc.txt
 tool/rules-test/firestore-debug.log
+
+# Kimlik betiklerinin ürettiği ID/şifre çıktıları (GİZLİ)
+tool/id_gecis_sonuc.local.md
+tool/seed_sonuc.local.md
+tool/*.local.md
