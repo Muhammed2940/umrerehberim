@@ -23,10 +23,11 @@ $n = is_dir($privateDir . '/ratelimit') ? $rl->cleanup($now - 2 * 86400) : 0;
 
 // Yarım kalmış önbellek geçici dosyaları.
 $t = 0;
-foreach (glob($privateDir . '/cache/*.tmp') ?: [] as $f) {
+// Aile Takibi yanıt önbelleği (20 sn ömürlü) dosyaları da 1 günden sonra silinir.
+foreach (array_merge(glob($privateDir . '/cache/*.tmp') ?: [], glob($privateDir . '/cache/track_*.json') ?: []) as $f) {
     $m = @filemtime($f);
-    if ($m !== false && $m < $now - 3600 && @unlink($f)) {
+    if ($m !== false && $m < $now - (str_ends_with($f, '.tmp') ? 3600 : 86400) && @unlink($f)) {
         $t++;
     }
 }
-echo "Silinen hız sınırı dosyası: $n, geçici önbellek dosyası: $t\n";
+echo "Silinen hız sınırı dosyası: $n, geçici/takip önbellek dosyası: $t\n";

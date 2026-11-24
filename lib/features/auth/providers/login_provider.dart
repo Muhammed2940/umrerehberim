@@ -25,6 +25,7 @@ import '../../hatim/data/hatim_watcher.dart';
 import '../../control_center/settings/platform_settings_service.dart';
 import '../../splash/providers/splash_provider.dart';
 import '../models/user_model.dart';
+import '../../aile_takibi/providers/aile_takibi_provider.dart';
 import '../../paketler/providers/personal_plan_provider.dart';
 
 /// Giriş / çıkış akışı.
@@ -358,6 +359,10 @@ class LoginProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('Konum servisi durdurulamadı: $e');
     }
+    // Aile Takibi: çıkışta eski konum kaydı kalmasın (oturum açıkken silinmeli).
+    if (user != null && user.isBireysel) {
+      await LocationFirebaseService.removePersonalLocation(user.id).timeout(const Duration(seconds: 5), onTimeout: () {});
+    }
     try {
       await FirebaseAuth.instance.signOut();
     } catch (e) {
@@ -393,7 +398,9 @@ class LoginProvider extends ChangeNotifier {
       // ActivityPing: 'last_active_ping_<uid>' (kontrol merkezi etkinlik izi) ve
       // bireysel demo paket/yolculuk bilgisi 'personal_plan_<uid>'.
       for (final k in prefs.getKeys().where((k) =>
-          k.startsWith('last_active_ping_') || k.startsWith(PersonalPlanProvider.keyPrefix)).toList()) {
+          k.startsWith('last_active_ping_') ||
+          k.startsWith(PersonalPlanProvider.keyPrefix) ||
+          k.startsWith(AileTakibiProvider.tokenKeyPrefix)).toList()) {
         await prefs.remove(k);
       }
     } catch (e) {
@@ -409,6 +416,7 @@ class LoginProvider extends ChangeNotifier {
     NotificationWatcher.lastSeenKey, // last_seen_notification_ms
     BackgroundLocationService.sharingKey, // location_sharing_enabled
     BackgroundLocationService.lastSentKey, // last_location_sent_ms
+    BackgroundLocationService.familySharingKey, // family_sharing_enabled
     'notifications_last_read_ms', // HomeProvider._lastReadKey
     'cuzdan_hide_balance', // CuzdanScreen._hideKey
     'show_download_dialog_on_login',
@@ -471,6 +479,16 @@ class LoginProvider extends ChangeNotifier {
       } catch (e) {
         debugPrint('Hesap silme: paket hakkı silinemedi: $e');
       }
+
+      // 1c) Aile Takibi: kendi tracking_links belgeleri (+ views) ve personal_locations/{uid}.
+      // Başarısızlık silmeyi durdurmaz (kalan belge yalnız hash'tir; sahibi silindiği için
+      // web 410 plan_ended döner).
+      try {
+        await AileTakibiProvider.deleteAllFor(me.id).timeout(const Duration(seconds: 20));
+      } catch (e) {
+        debugPrint('Hesap silme: aile takibi bağlantıları silinemedi: $e');
+      }
+      await LocationFirebaseService.removePersonalLocation(me.id);
 
       // 2) users/{uid}. Yazım kuyruğu sunucuya ulaşana kadar beklenir; zaman aşımında belge
       // silinmiş sayılmaz ve Auth hesabı silinmez (sahipsiz belge kalmasın). Hata dinleyicisi

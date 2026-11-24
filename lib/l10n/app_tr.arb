@@ -792,6 +792,84 @@
       }
     }
   },
+  "aileAgencyShareNote": "Konum paylaşımınız Profil > Konum Takibi bölümünden yönetilir. Aşağıdan aileniz için bağlantı oluşturabilirsiniz.",
+  "aileApproxSub": "Tam nokta yerine yaklaşık 1 km'lik bölge gösterilir.",
+  "aileApproxTitle": "Yaklaşık konum",
+  "aileBadgeApprox": "Yaklaşık",
+  "aileBadgeExpired": "Süresi doldu",
+  "aileBadgeHidden": "Gizli",
+  "aileBadgeRevoked": "İptal edildi",
+  "aileCancel": "Vazgeç",
+  "aileCreateAndShare": "Oluştur ve paylaş",
+  "aileDaysLeft": "{count} gün kaldı",
+  "@aileDaysLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "aileDeviceDesktop": "Bilgisayar",
+  "aileDeviceMobile": "Telefon",
+  "aileEmpty": "Henüz bağlantı yok",
+  "aileEmptyBody": "Yeni bağlantı oluşturup WhatsApp ile ailenize gönderin.",
+  "aileError": "İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+  "aileGateBody": "Konumunuzu ailenizle bağlantı üzerinden paylaşmak için Aile/Arkadaş veya Full Umre paketini seçin.",
+  "aileGateTitle": "Aile Takibi, Aile ve Full paketlerde",
+  "aileHiddenUntil": "{time} saatine kadar gizli",
+  "@aileHiddenUntil": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "aileHide2h": "2 saat gizle",
+  "aileHoursLeft": "{count} saat kaldı",
+  "@aileHoursLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "aileIntro": "Evdeki yakınlarınız uygulama kurmadan, size özel bağlantıyla tarayıcıdan son konumunuzu görür. Geçmiş konumlar saklanmaz.",
+  "aileLabelField": "Kimin için? (ör. Annem)",
+  "aileLimitReached": "En fazla 5 etkin bağlantınız olabilir. Yenisi için birini iptal edin.",
+  "aileLinksTitle": "Bağlantılar",
+  "aileLocationDenied": "Konum izni verilmedi, paylaşım açılamadı.",
+  "aileNewLink": "Yeni bağlantı",
+  "aileNoToken": "Bu bağlantı başka bir cihazda oluşturulmuş; buradan yeniden paylaşılamaz. Yeni bir bağlantı oluşturun.",
+  "aileQuickSub": "Ailenizle konumunuzu bağlantıyla paylaşın",
+  "aileRevoke": "İptal et",
+  "aileRevokeBody": "Bu bağlantıyı bilen kimse artık konumunuzu göremez. Bu işlem geri alınamaz.",
+  "aileRevokeTitle": "Bağlantı iptal edilsin mi?",
+  "aileShare": "Paylaş",
+  "aileShareMessage": "Umre Rehberim: Konumumu bu bağlantıdan takip edebilirsin: {url}",
+  "@aileShareMessage": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "aileShareSwitchSub": "Açıkken konumunuz arka planda güncellenir. Bağlantıyı bilenler son konumunuzu görür.",
+  "aileShareSwitchTitle": "Konumumu paylaş",
+  "aileTitle": "Aile Takibi",
+  "aileUnavailableBody": "Aile Takibi, acente ile seyahat eden hacılara ve Aile/Full paket sahiplerine sunulur.",
+  "aileUnavailableTitle": "Bu özellik şu an hesabınız için kullanılamıyor",
+  "aileUnhide": "Gizlemeyi kaldır",
+  "aileViews": "Kim baktı",
+  "aileViewsCount": "{count} kez",
+  "@aileViewsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "aileViewsEmpty": "Henüz kimse bakmadı",
+  "aileViewsTitle": "Kim baktı",
   "appTitle": "Umre Rehberim",
   "authAccountIsAdmin": "Bu hesap yönetici hesabıdır.",
   "authAccountIsGuest": "Bu hesap misafir hesabıdır.",

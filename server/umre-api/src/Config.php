@@ -9,6 +9,9 @@ final class Config
     public const DEFAULT_SCOPES = [
         'https://www.googleapis.com/auth/datastore',
         'https://www.googleapis.com/auth/identitytoolkit',
+        // Aile Takibi: Realtime Database REST okuması (personal_locations, locations).
+        'https://www.googleapis.com/auth/firebase.database',
+        'https://www.googleapis.com/auth/userinfo.email',
     ];
 
     /**
@@ -58,6 +61,17 @@ final class Config
             // Firebase Web API anahtarı (herkese açık; yalnız bin/verify_legacy_closed.php kullanır).
             'api_key' => null,
             'oauth_scopes' => self::DEFAULT_SCOPES,
+            // Aile Takibi (POST /v1/track). Tarayıcıdan çağrıya izin verilen web kökenleri
+            // (ör. ['https://umrerehberim.app']); boşsa tarayıcı isteği reddedilir.
+            'web_origins' => [],
+            // Realtime DB adresi; null: https://<project_id>-default-rtdb.firebaseio.com
+            'rtdb_base' => null,
+            // IP (/64) başına dakikada en fazla bu kadar sorgu.
+            'track_limit' => 30,
+            'track_window' => 60,
+            // Bağlantı başına yanıt önbelleği (sn) ve aynı ziyaretçinin views güncelleme aralığı (sn).
+            'track_cache_ttl' => 20,
+            'track_view_interval' => 1800,
             // Hız sınırı klasöründe alt klasör (256 adet) başına en fazla dosya.
             'ratelimit_max_files' => 4000,
             'emulator' => false,

@@ -41,4 +41,26 @@ class LocationFirebaseService {
       debugPrint('removeUserLocation: $e');
     }
   }
+
+  // Aile Takibi (bireysel): `personal_locations/{uid} = {latitude, longitude, timestamp, accuracy}`
+  // (docs/plan/AILE_TAKIBI_SOZLESME.md). userName YOK; yazma yalnız sahibi + Google oturumu.
+  static DatabaseReference personalRef(String uid) =>
+      FirebaseDatabase.instanceFor(app: Firebase.app()).ref('personal_locations').child(uid);
+
+  static Future<void> updatePersonalLocation({required String uid, required Position position}) async {
+    await personalRef(uid).set({
+      'latitude': position.latitude,
+      'longitude': position.longitude,
+      'accuracy': position.accuracy,
+      'timestamp': ServerValue.timestamp,
+    });
+  }
+
+  static Future<void> removePersonalLocation(String uid) async {
+    try {
+      await personalRef(uid).remove();
+    } catch (e) {
+      debugPrint('removePersonalLocation: $e');
+    }
+  }
 }

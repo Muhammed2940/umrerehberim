@@ -19,6 +19,12 @@ final class Response
     public function send(): void
     {
         http_response_code($this->status);
+        if ($this->status === 204) {
+            foreach ($this->headers as $k => $v) {
+                header($k . ': ' . $v);
+            }
+            return;
+        }
         header('Content-Type: application/json; charset=utf-8');
         header('Cache-Control: no-store');
         header('X-Content-Type-Options: nosniff');

@@ -1257,6 +1257,157 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get aileAgencyShareNote =>
+      'تتم إدارة مشاركة الموقع من الملف الشخصي > تتبع الموقع. يمكنك إنشاء روابط لعائلتك أدناه.';
+
+  @override
+  String get aileApproxSub =>
+      'يعرض منطقة بحجم 1 كم تقريبًا بدلًا من النقطة الدقيقة.';
+
+  @override
+  String get aileApproxTitle => 'موقع تقريبي';
+
+  @override
+  String get aileBadgeApprox => 'تقريبي';
+
+  @override
+  String get aileBadgeExpired => 'انتهت الصلاحية';
+
+  @override
+  String get aileBadgeHidden => 'مخفي';
+
+  @override
+  String get aileBadgeRevoked => 'تم الإلغاء';
+
+  @override
+  String get aileCancel => 'رجوع';
+
+  @override
+  String get aileCreateAndShare => 'إنشاء ومشاركة';
+
+  @override
+  String aileDaysLeft(int count) {
+    return 'متبقي $count يوم';
+  }
+
+  @override
+  String get aileDeviceDesktop => 'حاسوب';
+
+  @override
+  String get aileDeviceMobile => 'هاتف';
+
+  @override
+  String get aileEmpty => 'لا توجد روابط بعد';
+
+  @override
+  String get aileEmptyBody =>
+      'أنشئ رابطًا جديدًا وأرسله إلى عائلتك عبر واتساب.';
+
+  @override
+  String get aileError =>
+      'تعذر إكمال العملية. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.';
+
+  @override
+  String get aileGateBody =>
+      'اختر باقة العائلة/الأصدقاء أو باقة العمرة الكاملة لمشاركة موقعك مع عائلتك عبر رابط.';
+
+  @override
+  String get aileGateTitle => 'تتبع العائلة ضمن باقتي العائلة والكاملة';
+
+  @override
+  String aileHiddenUntil(String time) {
+    return 'مخفي حتى $time';
+  }
+
+  @override
+  String get aileHide2h => 'إخفاء لساعتين';
+
+  @override
+  String aileHoursLeft(int count) {
+    return 'متبقي $count ساعة';
+  }
+
+  @override
+  String get aileIntro =>
+      'يرى أقاربك في المنزل آخر موقع لك في المتصفح عبر رابطك الخاص دون تثبيت أي تطبيق. لا يتم حفظ المواقع السابقة.';
+
+  @override
+  String get aileLabelField => 'لمن؟ (مثل: أمي)';
+
+  @override
+  String get aileLimitReached =>
+      'يمكن أن يكون لديك 5 روابط نشطة كحد أقصى. ألغِ أحدها لإنشاء رابط جديد.';
+
+  @override
+  String get aileLinksTitle => 'الروابط';
+
+  @override
+  String get aileLocationDenied =>
+      'لم يتم منح إذن الموقع، تعذر تفعيل المشاركة.';
+
+  @override
+  String get aileNewLink => 'رابط جديد';
+
+  @override
+  String get aileNoToken =>
+      'تم إنشاء هذا الرابط على جهاز آخر ولا يمكن مشاركته من هنا. أنشئ رابطًا جديدًا.';
+
+  @override
+  String get aileQuickSub => 'شارك موقعك مع عائلتك عبر رابط';
+
+  @override
+  String get aileRevoke => 'إلغاء الرابط';
+
+  @override
+  String get aileRevokeBody =>
+      'لن يتمكن أي شخص لديه هذا الرابط من رؤية موقعك بعد الآن. لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get aileRevokeTitle => 'هل تريد إلغاء الرابط؟';
+
+  @override
+  String get aileShare => 'مشاركة';
+
+  @override
+  String aileShareMessage(String url) {
+    return 'رفيق العمرة: يمكنك متابعة موقعي عبر هذا الرابط: $url';
+  }
+
+  @override
+  String get aileShareSwitchSub =>
+      'عند التفعيل يتم تحديث موقعك في الخلفية. كل من لديه الرابط يرى آخر موقع لك.';
+
+  @override
+  String get aileShareSwitchTitle => 'مشاركة موقعي';
+
+  @override
+  String get aileTitle => 'تتبع العائلة';
+
+  @override
+  String get aileUnavailableBody =>
+      'تُقدَّم ميزة تتبع العائلة للحجاج المسافرين مع وكالة ولأصحاب باقتي العائلة والكاملة.';
+
+  @override
+  String get aileUnavailableTitle => 'هذه الميزة غير متاحة لحسابك';
+
+  @override
+  String get aileUnhide => 'إلغاء الإخفاء';
+
+  @override
+  String get aileViews => 'من شاهد';
+
+  @override
+  String aileViewsCount(int count) {
+    return '$count مرة';
+  }
+
+  @override
+  String get aileViewsEmpty => 'لم يشاهده أحد بعد';
+
+  @override
+  String get aileViewsTitle => 'من شاهد';
+
+  @override
   String get appTitle => 'دليل العمرة';
 
   @override

@@ -2300,6 +2300,264 @@ abstract class AppLocalizations {
   /// **'Hoş geldiniz, {name}'**
   String adminWelcomeName(String name);
 
+  /// No description provided for @aileAgencyShareNote.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum paylaşımınız Profil > Konum Takibi bölümünden yönetilir. Aşağıdan aileniz için bağlantı oluşturabilirsiniz.'**
+  String get aileAgencyShareNote;
+
+  /// No description provided for @aileApproxSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tam nokta yerine yaklaşık 1 km\'lik bölge gösterilir.'**
+  String get aileApproxSub;
+
+  /// No description provided for @aileApproxTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaklaşık konum'**
+  String get aileApproxTitle;
+
+  /// No description provided for @aileBadgeApprox.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaklaşık'**
+  String get aileBadgeApprox;
+
+  /// No description provided for @aileBadgeExpired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süresi doldu'**
+  String get aileBadgeExpired;
+
+  /// No description provided for @aileBadgeHidden.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizli'**
+  String get aileBadgeHidden;
+
+  /// No description provided for @aileBadgeRevoked.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal edildi'**
+  String get aileBadgeRevoked;
+
+  /// No description provided for @aileCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get aileCancel;
+
+  /// No description provided for @aileCreateAndShare.
+  ///
+  /// In tr, this message translates to:
+  /// **'Oluştur ve paylaş'**
+  String get aileCreateAndShare;
+
+  /// No description provided for @aileDaysLeft.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} gün kaldı'**
+  String aileDaysLeft(int count);
+
+  /// No description provided for @aileDeviceDesktop.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bilgisayar'**
+  String get aileDeviceDesktop;
+
+  /// No description provided for @aileDeviceMobile.
+  ///
+  /// In tr, this message translates to:
+  /// **'Telefon'**
+  String get aileDeviceMobile;
+
+  /// No description provided for @aileEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz bağlantı yok'**
+  String get aileEmpty;
+
+  /// No description provided for @aileEmptyBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni bağlantı oluşturup WhatsApp ile ailenize gönderin.'**
+  String get aileEmptyBody;
+
+  /// No description provided for @aileError.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.'**
+  String get aileError;
+
+  /// No description provided for @aileGateBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konumunuzu ailenizle bağlantı üzerinden paylaşmak için Aile/Arkadaş veya Full Umre paketini seçin.'**
+  String get aileGateBody;
+
+  /// No description provided for @aileGateTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aile Takibi, Aile ve Full paketlerde'**
+  String get aileGateTitle;
+
+  /// No description provided for @aileHiddenUntil.
+  ///
+  /// In tr, this message translates to:
+  /// **'{time} saatine kadar gizli'**
+  String aileHiddenUntil(String time);
+
+  /// No description provided for @aileHide2h.
+  ///
+  /// In tr, this message translates to:
+  /// **'2 saat gizle'**
+  String get aileHide2h;
+
+  /// No description provided for @aileHoursLeft.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} saat kaldı'**
+  String aileHoursLeft(int count);
+
+  /// No description provided for @aileIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Evdeki yakınlarınız uygulama kurmadan, size özel bağlantıyla tarayıcıdan son konumunuzu görür. Geçmiş konumlar saklanmaz.'**
+  String get aileIntro;
+
+  /// No description provided for @aileLabelField.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kimin için? (ör. Annem)'**
+  String get aileLabelField;
+
+  /// No description provided for @aileLimitReached.
+  ///
+  /// In tr, this message translates to:
+  /// **'En fazla 5 etkin bağlantınız olabilir. Yenisi için birini iptal edin.'**
+  String get aileLimitReached;
+
+  /// No description provided for @aileLinksTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantılar'**
+  String get aileLinksTitle;
+
+  /// No description provided for @aileLocationDenied.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konum izni verilmedi, paylaşım açılamadı.'**
+  String get aileLocationDenied;
+
+  /// No description provided for @aileNewLink.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yeni bağlantı'**
+  String get aileNewLink;
+
+  /// No description provided for @aileNoToken.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu bağlantı başka bir cihazda oluşturulmuş; buradan yeniden paylaşılamaz. Yeni bir bağlantı oluşturun.'**
+  String get aileNoToken;
+
+  /// No description provided for @aileQuickSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ailenizle konumunuzu bağlantıyla paylaşın'**
+  String get aileQuickSub;
+
+  /// No description provided for @aileRevoke.
+  ///
+  /// In tr, this message translates to:
+  /// **'İptal et'**
+  String get aileRevoke;
+
+  /// No description provided for @aileRevokeBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu bağlantıyı bilen kimse artık konumunuzu göremez. Bu işlem geri alınamaz.'**
+  String get aileRevokeBody;
+
+  /// No description provided for @aileRevokeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bağlantı iptal edilsin mi?'**
+  String get aileRevokeTitle;
+
+  /// No description provided for @aileShare.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaş'**
+  String get aileShare;
+
+  /// No description provided for @aileShareMessage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Umre Rehberim: Konumumu bu bağlantıdan takip edebilirsin: {url}'**
+  String aileShareMessage(String url);
+
+  /// No description provided for @aileShareSwitchSub.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açıkken konumunuz arka planda güncellenir. Bağlantıyı bilenler son konumunuzu görür.'**
+  String get aileShareSwitchSub;
+
+  /// No description provided for @aileShareSwitchTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konumumu paylaş'**
+  String get aileShareSwitchTitle;
+
+  /// No description provided for @aileTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aile Takibi'**
+  String get aileTitle;
+
+  /// No description provided for @aileUnavailableBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aile Takibi, acente ile seyahat eden hacılara ve Aile/Full paket sahiplerine sunulur.'**
+  String get aileUnavailableBody;
+
+  /// No description provided for @aileUnavailableTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu özellik şu an hesabınız için kullanılamıyor'**
+  String get aileUnavailableTitle;
+
+  /// No description provided for @aileUnhide.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizlemeyi kaldır'**
+  String get aileUnhide;
+
+  /// No description provided for @aileViews.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kim baktı'**
+  String get aileViews;
+
+  /// No description provided for @aileViewsCount.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} kez'**
+  String aileViewsCount(int count);
+
+  /// No description provided for @aileViewsEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz kimse bakmadı'**
+  String get aileViewsEmpty;
+
+  /// No description provided for @aileViewsTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kim baktı'**
+  String get aileViewsTitle;
+
   /// No description provided for @appTitle.
   ///
   /// In tr, this message translates to:

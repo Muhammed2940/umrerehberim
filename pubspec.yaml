@@ -55,6 +55,9 @@ dependencies:
   flutter_compass: ^0.8.1
   geocoding: ^5.0.1
   qr_flutter: ^4.1.0
+  # Aile Takibi: bağlantı belirteci özeti (sha256) ve paylaşım
+  crypto: ^3.0.6
+  share_plus: ^12.0.0
   image_picker: ^1.2.4
   mobile_scanner: ^7.5.0
   flutter_tts: ^4.2.5

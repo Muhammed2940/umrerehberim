@@ -1233,6 +1233,157 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get aileAgencyShareNote =>
+      'Konum paylaşımınız Profil > Konum Takibi bölümünden yönetilir. Aşağıdan aileniz için bağlantı oluşturabilirsiniz.';
+
+  @override
+  String get aileApproxSub =>
+      'Tam nokta yerine yaklaşık 1 km\'lik bölge gösterilir.';
+
+  @override
+  String get aileApproxTitle => 'Yaklaşık konum';
+
+  @override
+  String get aileBadgeApprox => 'Yaklaşık';
+
+  @override
+  String get aileBadgeExpired => 'Süresi doldu';
+
+  @override
+  String get aileBadgeHidden => 'Gizli';
+
+  @override
+  String get aileBadgeRevoked => 'İptal edildi';
+
+  @override
+  String get aileCancel => 'Vazgeç';
+
+  @override
+  String get aileCreateAndShare => 'Oluştur ve paylaş';
+
+  @override
+  String aileDaysLeft(int count) {
+    return '$count gün kaldı';
+  }
+
+  @override
+  String get aileDeviceDesktop => 'Bilgisayar';
+
+  @override
+  String get aileDeviceMobile => 'Telefon';
+
+  @override
+  String get aileEmpty => 'Henüz bağlantı yok';
+
+  @override
+  String get aileEmptyBody =>
+      'Yeni bağlantı oluşturup WhatsApp ile ailenize gönderin.';
+
+  @override
+  String get aileError =>
+      'İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.';
+
+  @override
+  String get aileGateBody =>
+      'Konumunuzu ailenizle bağlantı üzerinden paylaşmak için Aile/Arkadaş veya Full Umre paketini seçin.';
+
+  @override
+  String get aileGateTitle => 'Aile Takibi, Aile ve Full paketlerde';
+
+  @override
+  String aileHiddenUntil(String time) {
+    return '$time saatine kadar gizli';
+  }
+
+  @override
+  String get aileHide2h => '2 saat gizle';
+
+  @override
+  String aileHoursLeft(int count) {
+    return '$count saat kaldı';
+  }
+
+  @override
+  String get aileIntro =>
+      'Evdeki yakınlarınız uygulama kurmadan, size özel bağlantıyla tarayıcıdan son konumunuzu görür. Geçmiş konumlar saklanmaz.';
+
+  @override
+  String get aileLabelField => 'Kimin için? (ör. Annem)';
+
+  @override
+  String get aileLimitReached =>
+      'En fazla 5 etkin bağlantınız olabilir. Yenisi için birini iptal edin.';
+
+  @override
+  String get aileLinksTitle => 'Bağlantılar';
+
+  @override
+  String get aileLocationDenied => 'Konum izni verilmedi, paylaşım açılamadı.';
+
+  @override
+  String get aileNewLink => 'Yeni bağlantı';
+
+  @override
+  String get aileNoToken =>
+      'Bu bağlantı başka bir cihazda oluşturulmuş; buradan yeniden paylaşılamaz. Yeni bir bağlantı oluşturun.';
+
+  @override
+  String get aileQuickSub => 'Ailenizle konumunuzu bağlantıyla paylaşın';
+
+  @override
+  String get aileRevoke => 'İptal et';
+
+  @override
+  String get aileRevokeBody =>
+      'Bu bağlantıyı bilen kimse artık konumunuzu göremez. Bu işlem geri alınamaz.';
+
+  @override
+  String get aileRevokeTitle => 'Bağlantı iptal edilsin mi?';
+
+  @override
+  String get aileShare => 'Paylaş';
+
+  @override
+  String aileShareMessage(String url) {
+    return 'Umre Rehberim: Konumumu bu bağlantıdan takip edebilirsin: $url';
+  }
+
+  @override
+  String get aileShareSwitchSub =>
+      'Açıkken konumunuz arka planda güncellenir. Bağlantıyı bilenler son konumunuzu görür.';
+
+  @override
+  String get aileShareSwitchTitle => 'Konumumu paylaş';
+
+  @override
+  String get aileTitle => 'Aile Takibi';
+
+  @override
+  String get aileUnavailableBody =>
+      'Aile Takibi, acente ile seyahat eden hacılara ve Aile/Full paket sahiplerine sunulur.';
+
+  @override
+  String get aileUnavailableTitle =>
+      'Bu özellik şu an hesabınız için kullanılamıyor';
+
+  @override
+  String get aileUnhide => 'Gizlemeyi kaldır';
+
+  @override
+  String get aileViews => 'Kim baktı';
+
+  @override
+  String aileViewsCount(int count) {
+    return '$count kez';
+  }
+
+  @override
+  String get aileViewsEmpty => 'Henüz kimse bakmadı';
+
+  @override
+  String get aileViewsTitle => 'Kim baktı';
+
+  @override
   String get appTitle => 'Umre Rehberim';
 
   @override

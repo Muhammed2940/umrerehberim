@@ -31,6 +31,17 @@ class PersonalPlanProvider extends ChangeNotifier {
   /// kullanıcıyla iletişime geçip belirler (kullanıcı kendisi girmez).
   bool get awaitingApproval => _paket == PaketId.full && !_approved;
   bool _approved = false;
+  DateTime? _paidUntil;
+
+  /// Paketin bitiş zamanı (sunucudaki `entitlements.paid_until`; geçerli hak yoksa null).
+  DateTime? get paidUntil => _paidUntil;
+
+  /// Aile Takibi hakkı: Aile veya Full paket, aktif (onaylı) ve süresi dolmamış.
+  bool get canUseFamilyTracking =>
+      (_paket == PaketId.aile || _paket == PaketId.full) &&
+      _approved &&
+      _paidUntil != null &&
+      _paidUntil!.isAfter(DateTime.now());
 
   /// Esnaf indirimi, puan ve Harcamalarım: aktif (onaylı) ücretli paket.
   /// Onaylı Full: tarihleri yönetici girdi, kullanıcı düzenleyemez (Teknik Destek'e yönlenir).
@@ -56,6 +67,8 @@ class PersonalPlanProvider extends ChangeNotifier {
         final m = jsonDecode(raw) as Map<String, dynamic>;
         _paket = PaketId.values.firstWhere((p) => p.name == m['paket'], orElse: () => PaketId.ucretsiz);
         _approved = m['approved'] == true;
+        final pu = m['paid_until'];
+        _paidUntil = pu is String ? DateTime.tryParse(pu) : null;
         _mekke = CityPlan.fromJson(m['mekke']);
         _medine = CityPlan.fromJson(m['medine']);
       }
@@ -82,6 +95,11 @@ class PersonalPlanProvider extends ChangeNotifier {
           ? PaketId.values.firstWhere((p) => p.name == d['paket'], orElse: () => PaketId.ucretsiz)
           : PaketId.ucretsiz;
       final approved = valid && d['status'] == 'active';
+      final newUntil = valid ? until.toDate() : null;
+      if (newUntil != _paidUntil) {
+        _paidUntil = newUntil;
+        await _save();
+      }
       if (paket == PaketId.full && approved) {
         // Full: tarih ve otel bilgisini yönetici girer (entitlements), kullanıcı değiştiremez.
         CityPlan city(String p) {
@@ -133,7 +151,8 @@ class PersonalPlanProvider extends ChangeNotifier {
       }).timeout(const Duration(seconds: 15));
     }
     _paket = p;
-    _approved = false;
+    _approved = p == PaketId.umre || p == PaketId.aile; // sunucuda 'active' yazıldı
+    _paidUntil = p == PaketId.ucretsiz || p == PaketId.full ? null : DateTime.now().add(const Duration(days: 30));
     if (p == PaketId.ucretsiz || p == PaketId.full) {
       _mekke = const CityPlan();
       _medine = const CityPlan();
@@ -157,6 +176,7 @@ class PersonalPlanProvider extends ChangeNotifier {
   void _reset() {
     _paket = PaketId.ucretsiz;
     _approved = false;
+    _paidUntil = null;
     _mekke = const CityPlan();
     _medine = const CityPlan();
   }
@@ -169,7 +189,13 @@ class PersonalPlanProvider extends ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(
         '$keyPrefix$uid',
-        jsonEncode({'paket': _paket.name, 'approved': _approved, 'mekke': _mekke.toJson(), 'medine': _medine.toJson()}),
+        jsonEncode({
+          'paket': _paket.name,
+          'approved': _approved,
+          'paid_until': _paidUntil?.toIso8601String(),
+          'mekke': _mekke.toJson(),
+          'medine': _medine.toJson(),
+        }),
       );
     } catch (e) {
       debugPrint('Kişisel plan kaydedilemedi: $e');

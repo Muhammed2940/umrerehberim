@@ -481,6 +481,76 @@ service cloud.firestore {
       allow delete: if isSuper() || (request.auth.uid == uid && isGoogle() && demoPayments());
     }
 
+    // Aile Takibi (docs/plan/AILE_TAKIBI_SOZLESME.md). Belge id'si = sha256(token) küçük hex;
+    // token hiçbir sunucuda saklanmaz. Hak: Aile/Full paketli bireysel VEYA acente misafiri.
+    function paidAile() {
+      let e = /databases/$(database)/documents/entitlements/$(request.auth.uid);
+      return isGoogle() && agency() == '' && exists(e)
+          && get(e).data.get('paket', '') in ['aile', 'full']
+          && get(e).data.status == 'active'
+          && get(e).data.paid_until > request.time;
+    }
+    function agencyGuest() {
+      return signedIn() && !isGoogle() && role() == 'misafir' && hasAgency();
+    }
+    match /tracking_links/{hash} {
+      function tlKeys() {
+        return ['owner_uid', 'kind', 'agency_id', 'label', 'approx', 'hidden_until', 'revoked',
+                'created_at', 'expires_at'];
+      }
+      function tlLabelOk(v) { return v is string && v.size() >= 1 && v.size() <= 30; }
+      function tlHiddenOk(v) { return v == null || (v is timestamp && v <= request.time + duration.value(121, 'm')); }
+      // Süre: en çok 30 gün; bireyselde ayrıca paket bitişinden sonrasına uzamaz.
+      function tlExpiryOk(d) {
+        return d.expires_at is timestamp
+            && d.expires_at > request.time
+            && d.expires_at <= request.time + duration.value(30, 'd')
+            && (d.kind != 'bireysel'
+                || d.expires_at <= get(/databases/$(database)/documents/entitlements/$(request.auth.uid)).data.paid_until);
+      }
+      function tlCreateOk() {
+        let d = request.resource.data;
+        return signedIn()
+            && hash.matches('^[0-9a-f]{64}$')
+            && d.keys().hasOnly(tlKeys())
+            && d.keys().hasAll(tlKeys())
+            && d.owner_uid == request.auth.uid
+            && ((d.kind == 'bireysel' && d.agency_id == '' && paidAile())
+                || (d.kind == 'acente' && agencyGuest() && d.agency_id == agency()))
+            && tlLabelOk(d.label)
+            && d.approx is bool
+            && d.hidden_until == null
+            && d.revoked == false
+            && d.created_at == request.time
+            && tlExpiryOk(d);
+      }
+      function tlUpdateOk() {
+        let d = request.resource.data;
+        return signedIn()
+            && resource.data.owner_uid == request.auth.uid
+            && resource.data.revoked == false
+            && changed().hasOnly(['label', 'approx', 'hidden_until', 'revoked'])
+            && tlLabelOk(d.label)
+            && d.approx is bool
+            && d.revoked is bool
+            && tlHiddenOk(d.hidden_until);
+      }
+      allow read: if signedIn() && (resource.data.owner_uid == request.auth.uid || isSuper());
+      allow create: if tlCreateOk();
+      allow update: if tlUpdateOk();
+      allow delete: if signedIn() && (resource.data.owner_uid == request.auth.uid || isSuper());
+
+      // Kim baktı: yalnız PHP servis hesabı yazar (kurallar atlanır); sahibi okur ve siler, istemci yazamaz.
+      match /views/{visitorKey} {
+        allow read: if signedIn()
+            && get(/databases/$(database)/documents/tracking_links/$(hash)).data.owner_uid == request.auth.uid;
+        allow create, update: if false;
+        // Hesap silme: sahibi kendi bağlantısının ziyaret kayıtlarını silebilir (üst belge silinmeden önce).
+        allow delete: if signedIn()
+            && get(/databases/$(database)/documents/tracking_links/$(hash)).data.owner_uid == request.auth.uid;
+      }
+    }
+
     // Risk alarmı incelemeleri (alarm id'si istemcide üretilir).
     match /risk_reviews/{id} {
       allow read, write: if isSuper() || isSupport();

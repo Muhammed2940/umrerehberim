@@ -1197,7 +1197,8 @@ test('GoogleAccessToken: dar kapsam, JWT ile jeton, önbellek', function () {
     same('urn:ietf:params:oauth:grant-type:jwt-bearer', $form['grant_type']);
     $p = Jwt::parse($form['assertion']);
     ok(Jwt::verifyRs256($p['input'], $p['sig'], $SA_PUB), 'assertion imzası');
-    same('https://www.googleapis.com/auth/datastore https://www.googleapis.com/auth/identitytoolkit', $p['claims']['scope'], 'cloud-platform yok');
+    same(implode(' ', Config::DEFAULT_SCOPES), $p['claims']['scope'], 'cloud-platform yok');
+    ok(!str_contains($p['claims']['scope'], 'cloud-platform'), 'geniş kapsam yok');
     ok(!str_contains($p['claims']['scope'], 'cloud-platform'), 'geniş kapsam yok');
     $clock->advance(3600 - 59);
     same('tok2', $t->token());
@@ -1281,6 +1282,478 @@ test('Öykünücü modu: imzasız custom token', function () {
     same('none', $p['header']['alg']);
     same('u1', $p['claims']['uid']);
     same(T0 + 3600, $p['claims']['exp']);
+});
+
+// ------------------------------------------------------------------ Aile Takibi (POST /v1/track)
+
+final class TrackEnv
+{
+    public Env $e;
+    public FakeRealtime $rt;
+    public string $cacheDir;
+}
+
+/** @param array<string,mixed> $cfg */
+function trackEnv(array $cfg = []): TrackEnv
+{
+    global $SA_PRIV;
+    $t = new TrackEnv();
+    $t->e = env($cfg + ['web_origins' => ['https://umrerehberim.app']]);
+    $t->rt = new FakeRealtime();
+    $t->cacheDir = tmpdir('umre-tc-');
+    $sa = new ServiceAccount('svc@' . PROJECT . '.iam.gserviceaccount.com', $SA_PRIV, PROJECT);
+    $t->e->api = new Api(
+        Config::withDefaults($cfg + ['web_origins' => ['https://umrerehberim.app'], 'bcrypt_cost' => 4, 'pepper' => PEPPER]),
+        $t->e->db, $t->e->idp, $t->e->verifier, new CustomTokenMinter($sa, $t->e->clock), $t->e->limiter, $t->e->clock,
+        null, new FileCache($t->cacheDir), $t->rt
+    );
+    return $t;
+}
+
+function newTrackToken(): string
+{
+    return rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
+}
+
+/** Bireysel (Aile paketli) bağlantı + kullanıcı + konum hazırlar; token döner. */
+function seedLink(TrackEnv $t, array $link = [], string $uid = 'bir1', array $user = [], ?array $ent = [], mixed $loc = null): string
+{
+    $tok = newTrackToken();
+    $db = $t->e->db;
+    $db->docs['users/' . $uid] = $user + ['user_name' => 'Ahmet Yılmaz', 'user_type' => 'misafir', 'account_kind' => 'bireysel', 'agency_id' => ''];
+    if ($ent !== null) {
+        $db->docs['entitlements/' . $uid] = $ent + ['paket' => 'aile', 'status' => 'active', 'paid_until' => new Ts(T0 + 86400 * 10)];
+    }
+    $db->docs['tracking_links/' . hash('sha256', $tok)] = $link + [
+        'owner_uid' => $uid, 'kind' => 'bireysel', 'agency_id' => '', 'label' => 'Annem', 'approx' => false,
+        'hidden_until' => null, 'revoked' => false, 'created_at' => new Ts(T0 - 100), 'expires_at' => new Ts(T0 + 86400 * 5),
+    ];
+    $t->rt->data['personal_locations/' . $uid] = $loc ?? ['latitude' => 21.42251, 'longitude' => 39.8262, 'timestamp' => (T0 - 120) * 1000, 'accuracy' => 18.4];
+    return $tok;
+}
+
+function track(TrackEnv $t, ?string $token, string $ip = '5.5.5.5', array $headers = []): array
+{
+    return call($t->e, 'POST', '/v1/track', ['token' => $token], null, $ip, null, $headers);
+}
+
+test('track: token biçimi ve gövde hataları 400 bad_request', function () {
+    $t = trackEnv();
+    foreach (['', 'kisa', str_repeat('a', 42), str_repeat('a', 44), str_repeat('a', 42) . '+', str_repeat('a', 42) . '/', str_repeat('a', 42) . '=', str_repeat('ğ', 22)] as $bad) {
+        [$st, $b] = track($t, $bad);
+        same(400, $st, $bad);
+        same('bad_request', $b['error']);
+    }
+    same(400, call($t->e, 'POST', '/v1/track', ['token' => 12345])[0]);
+    same(400, call($t->e, 'POST', '/v1/track', [])[0]);
+    same(400, call($t->e, 'POST', '/v1/track', null, null, '5.5.5.5', 'bozuk{')[0]);
+    same(400, call($t->e, 'POST', '/v1/track', ['token' => ['x']])[0]);
+    same([], $t->rt->reads, 'geçersiz token RTDB okutmaz');
+});
+
+test('track: bilinmeyen bağlantı 404 not_found', function () {
+    $t = trackEnv();
+    [$st, $b] = track($t, newTrackToken());
+    same(404, $st);
+    same('not_found', $b['error']);
+});
+
+test('track: bireysel Aile paketi 200 ok, alanlar sözleşmeye uygun', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    [$st, $b] = track($t, $tok);
+    same(200, $st);
+    same('ok', $b['status']);
+    same('Ahmet', $b['name']);
+    same(false, $b['approx']);
+    same(null, $b['hidden_until']);
+    same(21.42251, $b['location']['lat']);
+    same(39.8262, $b['location']['lng']);
+    same(18, $b['location']['accuracy']);
+    same((T0 - 120) * 1000, $b['location']['updated_at']);
+    same('mekke', $b['place']['city']);
+    same((int)round(\UmreApi\Tracking::distance(21.42251, 39.8262, 21.4225, 39.8262)), $b['place']['harem_m']);
+    ok(is_int($b['place']['harem_m']) && $b['place']['harem_m'] < 5);
+    same((T0 + 86400 * 5) * 1000, $b['expires_at']);
+    same(T0 * 1000, $b['server_time']);
+    same(60, $b['refresh_sec']);
+    same(['status', 'name', 'approx', 'hidden_until', 'location', 'place', 'expires_at', 'server_time', 'refresh_sec'], array_keys($b));
+    same(['lat', 'lng', 'accuracy', 'updated_at'], array_keys($b['location']));
+});
+
+test('track: Full paket de çalışır; umre/biten/bekleyen/hak yok plan_ended', function () {
+    $t = trackEnv();
+    same(200, track($t, seedLink($t, [], 'f1', [], ['paket' => 'full']))[0]);
+    foreach ([
+        'umre' => ['paket' => 'umre'],
+        'bitmis' => ['paid_until' => new Ts(T0 - 1)],
+        'tam_simdi' => ['paid_until' => new Ts(T0)],
+        'bekleyen' => ['paket' => 'full', 'status' => 'pending_approval'],
+        'iptal' => ['status' => 'cancelled'],
+        'bos_paket' => ['paket' => ''],
+    ] as $name => $ent) {
+        [$st, $b] = track($t, seedLink($t, [], 'p_' . $name, [], $ent));
+        same(410, $st, $name);
+        same('plan_ended', $b['error'], $name);
+    }
+    [$st, $b] = track($t, seedLink($t, [], 'hak_yok', [], null));
+    same([410, 'plan_ended'], [$st, $b['error']], 'entitlements belgesi yok');
+});
+
+test('track: kullanıcı silinmiş/devre dışı/acentesi var -> plan_ended', function () {
+    $t = trackEnv();
+    $tok = seedLink($t, [], 'u1');
+    unset($t->e->db->docs['users/u1']);
+    same('plan_ended', track($t, $tok)[1]['error']);
+    $tok = seedLink($t, [], 'u2', ['disabled' => true]);
+    same('plan_ended', track($t, $tok)[1]['error']);
+    $tok = seedLink($t, [], 'u3', ['agency_id' => 'A']);
+    same('plan_ended', track($t, $tok)[1]['error'], 'bireysel link, sahibi acenteye bağlanmış');
+});
+
+test('track: acente misafiri locations/{acente}/{uid} okur', function () {
+    $t = trackEnv();
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => 'A'], 'g1', ['user_name' => 'Ayşe', 'agency_id' => 'A'], null);
+    $t->rt->data['locations/A/g1'] = ['latitude' => 24.4672, 'longitude' => 39.6111, 'timestamp' => (T0 - 30) * 1000, 'accuracy' => 10, 'userName' => 'Ayşe K'];
+    [$st, $b] = track($t, $tok);
+    same(200, $st);
+    same('Ayşe', $b['name']);
+    same('medine', $b['place']['city']);
+    same(0, $b['place']['harem_m']);
+    same(['locations/A/g1'], $t->rt->reads);
+});
+
+test('track: acente misafiri artık acentede değil / misafir değil -> plan_ended', function () {
+    $t = trackEnv();
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => 'A'], 'g2', ['agency_id' => 'B'], null);
+    same([410, 'plan_ended'], [($r = track($t, $tok))[0], $r[1]['error']]);
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => 'A'], 'g3', ['agency_id' => ''], null);
+    same('plan_ended', track($t, $tok)[1]['error']);
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => 'A'], 'g4', ['agency_id' => 'A', 'user_type' => 'yonetici'], null);
+    same('plan_ended', track($t, $tok)[1]['error']);
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => ''], 'g5', ['agency_id' => ''], null);
+    same('plan_ended', track($t, $tok)[1]['error'], 'agency_id boş acente bağlantısı');
+    $tok = seedLink($t, ['kind' => 'acente', 'agency_id' => '../x'], 'g6', ['agency_id' => '../x'], null);
+    same('plan_ended', track($t, $tok)[1]['error'], 'yol enjeksiyonu');
+});
+
+test('track: bilinmeyen kind 404', function () {
+    $t = trackEnv();
+    same(404, track($t, seedLink($t, ['kind' => 'baska']))[0]);
+});
+
+test('track: revoked ve expired 410', function () {
+    $t = trackEnv();
+    [$st, $b] = track($t, seedLink($t, ['revoked' => true]));
+    same([410, 'link_revoked'], [$st, $b['error']]);
+    [$st, $b] = track($t, seedLink($t, ['expires_at' => new Ts(T0 - 1)]));
+    same([410, 'link_expired'], [$st, $b['error']]);
+    [$st, $b] = track($t, seedLink($t, ['expires_at' => new Ts(T0)]));
+    same([410, 'link_expired'], [$st, $b['error']]);
+    [$st, $b] = track($t, seedLink($t, ['expires_at' => null]));
+    same('link_expired', $b['error'], 'süresiz bağlantı kabul edilmez');
+});
+
+test('track: hidden_until gelecekteyse hidden, geçmişteyse ok', function () {
+    $t = trackEnv();
+    [$st, $b] = track($t, seedLink($t, ['hidden_until' => new Ts(T0 + 3600)]));
+    same(200, $st);
+    same('hidden', $b['status']);
+    same((T0 + 3600) * 1000, $b['hidden_until']);
+    same(null, $b['location']);
+    same(null, $b['place']);
+    same('Ahmet', $b['name']);
+    same([], $t->rt->reads, 'gizliyken konum okunmaz');
+    [$st, $b] = track($t, seedLink($t, ['hidden_until' => new Ts(T0 - 5)]));
+    same('ok', $b['status']);
+    same(null, $b['hidden_until']);
+});
+
+test('track: konum yoksa/bozuksa no_location', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    unset($t->rt->data['personal_locations/bir1']);
+    [$st, $b] = track($t, $tok);
+    same(200, $st);
+    same('no_location', $b['status']);
+    same(null, $b['location']);
+    same(null, $b['place']);
+    foreach ([['latitude' => 'x', 'longitude' => 1, 'timestamp' => 1], ['latitude' => 91, 'longitude' => 1, 'timestamp' => 1], ['latitude' => 1, 'longitude' => 1], 'metin'] as $i => $bad) {
+        $tok = seedLink($t, [], 'bad' . $i, [], ['paket' => 'full'], $bad);
+        same('no_location', track($t, $tok)[1]['status'], 'bozuk konum ' . $i);
+    }
+});
+
+test('track: approx -> 2 ondalık, accuracy>=1500, harem_m null', function () {
+    $t = trackEnv();
+    $tok = seedLink($t, ['approx' => true], 'ap1', [], ['paket' => 'aile'], ['latitude' => 21.42251, 'longitude' => 39.82629, 'timestamp' => (T0 - 5) * 1000, 'accuracy' => 12]);
+    [$st, $b] = track($t, $tok);
+    same(true, $b['approx']);
+    same(21.42, $b['location']['lat']);
+    same(39.83, $b['location']['lng']);
+    same(1500, $b['location']['accuracy']);
+    same('mekke', $b['place']['city']);
+    same(null, $b['place']['harem_m']);
+    $tok = seedLink($t, ['approx' => true], 'ap2', [], ['paket' => 'aile'], ['latitude' => 41.0, 'longitude' => 29.0, 'timestamp' => (T0 - 5) * 1000, 'accuracy' => 5000]);
+    same(5000, track($t, $tok)[1]['location']['accuracy'], 'daha kaba doğruluk korunur');
+});
+
+test('track: yer sınıflandırma (mekke/medine/diger) ve metre', function () {
+    same('mekke', \UmreApi\Tracking::place(21.4225, 39.8262, false)['city']);
+    same(0, \UmreApi\Tracking::place(21.4225, 39.8262, false)['harem_m']);
+    same('mekke', \UmreApi\Tracking::place(21.52, 39.8262, false)['city'], '~11 km');
+    same('diger', \UmreApi\Tracking::place(21.70, 39.8262, false)['city'], '~30 km');
+    same('medine', \UmreApi\Tracking::place(24.4672, 39.6111, false)['city']);
+    same('diger', \UmreApi\Tracking::place(41.0082, 28.9784, false)['city']);
+    $d = \UmreApi\Tracking::place(21.4247, 39.8262, false)['harem_m'];
+    ok($d >= 240 && $d <= 260, "~245 m beklenir: $d");
+    // Cidde yakını: Mekke'ye 70 km -> diger, harem_m en yakın mescide metre
+    $p = \UmreApi\Tracking::place(21.5433, 39.1728, false);
+    same('diger', $p['city']);
+    ok(is_int($p['harem_m']) && $p['harem_m'] > 60000);
+    same(null, \UmreApi\Tracking::place(21.4225, 39.8262, true)['harem_m']);
+});
+
+test('track: eksik accuracy varsayılan 50', function () {
+    $t = trackEnv();
+    $tok = seedLink($t, [], 'na1', [], ['paket' => 'aile'], ['latitude' => 21.4, 'longitude' => 39.8, 'timestamp' => (T0 - 5) * 1000]);
+    same(50, track($t, $tok)[1]['location']['accuracy']);
+});
+
+test('track: yanıt 20 sn önbelleklenir, sonra yenilenir', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    track($t, $tok);
+    same(1, count($t->rt->reads));
+    $t->e->clock->advance(10);
+    [$st, $b] = track($t, $tok);
+    same(1, count($t->rt->reads), '10 sn sonra önbellekten');
+    same((T0 + 10) * 1000, $b['server_time'], 'server_time güncel');
+    // Konum değişse de önbellek süresince eski görünür
+    $t->rt->data['personal_locations/bir1']['latitude'] = 21.5;
+    same(21.42251, track($t, $tok)[1]['location']['lat']);
+    $t->e->clock->advance(11);
+    same(21.5, track($t, $tok)[1]['location']['lat'], '21 sn sonra yeni konum');
+    same(2, count($t->rt->reads));
+    // İptal: önbellek bitince 410
+    $t->e->db->docs['tracking_links/' . hash('sha256', $tok)]['revoked'] = true;
+    $t->e->clock->advance(21);
+    same('link_revoked', track($t, $tok)[1]['error']);
+});
+
+test('track: hatalar önbelleğe yazılmaz', function () {
+    $t = trackEnv();
+    track($t, newTrackToken());
+    $tok = seedLink($t, ['revoked' => true]);
+    track($t, $tok);
+    same([], glob($t->cacheDir . '/track_*') ?: []);
+});
+
+test('track: token hiçbir yerde saklanmaz (belge, önbellek, views)', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    track($t, $tok, '7.7.7.7', ['user-agent' => 'Mozilla/5.0 (iPhone)']);
+    ok(!str_contains(json_encode(array_map(static fn($d) => array_map(static fn($v) => $v instanceof Ts ? $v->t : $v, $d), $t->e->db->docs)), $tok), 'Firestore');
+    foreach (glob($t->cacheDir . '/*') ?: [] as $f) {
+        ok(!str_contains((string)file_get_contents($f), $tok), $f);
+    }
+});
+
+test('track: ziyaret kaydı (views): oluşur, 30 dk içinde değişmez, sonra sayaç artar', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    $h = hash('sha256', $tok);
+    $ua = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) Mobile/15E148';
+    track($t, $tok, '7.7.7.7', ['user-agent' => $ua]);
+    $views = array_filter($t->e->db->docs, static fn($k) => str_starts_with($k, "tracking_links/$h/views/"), ARRAY_FILTER_USE_KEY);
+    same(1, count($views));
+    $key = basename((string)array_key_first($views));
+    ok(preg_match('/^[0-9a-f]{24}$/D', $key) === 1, 'visitorKey 24 hex');
+    $v = array_values($views)[0];
+    same(['first_at', 'last_at', 'count', 'device'], array_keys($v));
+    same(1, $v['count']);
+    same('mobil', $v['device']);
+    same(T0, $v['first_at']->t);
+    ok(!str_contains($key, '7.7.7.7'));
+    ok(!str_contains(json_encode($v['device']), '7.7.7.7'));
+    // 10 dk sonra: değişmez
+    $t->e->clock->advance(600);
+    track($t, $tok, '7.7.7.7', ['user-agent' => $ua]);
+    same(1, $t->e->db->docs["tracking_links/$h/views/$key"]['count']);
+    same(T0, $t->e->db->docs["tracking_links/$h/views/$key"]['last_at']->t);
+    // 31 dk sonra: sayaç ve last_at
+    $t->e->clock->advance(1260);
+    track($t, $tok, '7.7.7.7', ['user-agent' => $ua]);
+    same(2, $t->e->db->docs["tracking_links/$h/views/$key"]['count']);
+    same(T0 + 1860, $t->e->db->docs["tracking_links/$h/views/$key"]['last_at']->t);
+    same(T0, $t->e->db->docs["tracking_links/$h/views/$key"]['first_at']->t);
+});
+
+test('track: farklı ziyaretçi farklı views belgesi; masaüstü cihaz', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    $h = hash('sha256', $tok);
+    track($t, $tok, '7.7.7.7', ['user-agent' => 'Mozilla/5.0 (Windows NT 10.0) Chrome/120']);
+    track($t, $tok, '8.8.8.8', ['user-agent' => 'Mozilla/5.0 (Windows NT 10.0) Chrome/120']);
+    track($t, $tok, '8.8.8.8', ['user-agent' => 'Mozilla/5.0 (Android 14) Mobile']);
+    $views = array_filter($t->e->db->docs, static fn($k) => str_starts_with($k, "tracking_links/$h/views/"), ARRAY_FILTER_USE_KEY);
+    same(3, count($views));
+    $dev = array_map(static fn($v) => $v['device'], array_values($views));
+    sort($dev);
+    same(['masaustu', 'masaustu', 'mobil'], $dev);
+    // Ertesi gün aynı ziyaretçi yeni anahtar
+    $t->e->clock->advance(86400);
+    track($t, $tok, '7.7.7.7', ['user-agent' => 'Mozilla/5.0 (Windows NT 10.0) Chrome/120']);
+    same(4, count(array_filter($t->e->db->docs, static fn($k) => str_starts_with($k, "tracking_links/$h/views/"), ARRAY_FILTER_USE_KEY)));
+});
+
+test('track: hata yanıtlarında views yazılmaz', function () {
+    $t = trackEnv();
+    track($t, newTrackToken());
+    track($t, seedLink($t, ['revoked' => true]));
+    track($t, seedLink($t, [], 'x9', [], ['paket' => 'umre']));
+    same(0, count(array_filter($t->e->db->docs, static fn($k) => str_contains($k, '/views/'), ARRAY_FILTER_USE_KEY)));
+});
+
+test('track: RTDB çökerse 502 upstream_error', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    $t->rt->fail = true;
+    [$st, $b] = track($t, $tok);
+    same([502, 'upstream_error'], [$st, $b['error']]);
+});
+
+test('track: IP başına dakikada 30, sonra 429; başka IP etkilenmez; pencere sonra açılır', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    for ($i = 1; $i <= 30; $i++) {
+        same(200, track($t, $tok, '6.6.6.6')[0], "istek $i");
+    }
+    $r = track($t, $tok, '6.6.6.6');
+    same(429, $r[0]);
+    same('rate_limited', $r[1]['error']);
+    ok(isset($r[2]['Retry-After']), 'Retry-After');
+    same(200, track($t, $tok, '6.6.6.7')[0]);
+    // geçersiz token istekleri de sayılır
+    $t2 = trackEnv();
+    for ($i = 0; $i < 30; $i++) {
+        track($t2, 'kisa', '4.4.4.4');
+    }
+    same(429, track($t2, 'kisa', '4.4.4.4')[0]);
+    $t->e->clock->advance(61);
+    same(200, track($t, $tok, '6.6.6.6')[0]);
+});
+
+test('track: CORS yalnız yapılandırılmış kökene; hata yanıtlarında da', function () {
+    $t = trackEnv();
+    $tok = seedLink($t);
+    $o = ['origin' => 'https://umrerehberim.app'];
+    [$st, , $h] = track($t, $tok, '5.5.5.5', $o);
+    same(200, $st);
+    same('https://umrerehberim.app', $h['Access-Control-Allow-Origin']);
+    same('Origin', $h['Vary']);
+    [$st, $b, $h] = track($t, 'kisa', '5.5.5.5', $o);
+    same(400, $st);
+    same('https://umrerehberim.app', $h['Access-Control-Allow-Origin'], 'hata yanıtında da');
+    [$st, , $h] = track($t, newTrackToken(), '5.5.5.5', $o);
+    same(404, $st);
+    ok(isset($h['Access-Control-Allow-Origin']));
+    // yabancı köken
+    [$st, $b, $h] = track($t, $tok, '5.5.5.5', ['origin' => 'https://kotu.example']);
+    same([403, 'forbidden_origin'], [$st, $b['error']]);
+    ok(!isset($h['Access-Control-Allow-Origin']));
+    // alt alan / şema / son eğik çizgi farkı eşleşmez
+    foreach (['https://www.umrerehberim.app', 'http://umrerehberim.app', 'https://umrerehberim.app/', 'null', '*'] as $bad) {
+        same(403, track($t, $tok, '5.5.5.5', ['origin' => $bad])[0], $bad);
+    }
+    // Origin yok (curl vb.): CORS başlığı yok ama çalışır
+    [$st, , $h] = track($t, $tok);
+    same(200, $st);
+    ok(!isset($h['Access-Control-Allow-Origin']));
+});
+
+test('track: OPTIONS ön isteği 204 + CORS; yabancı köken 403; diğer uçlar tarayıcıya kapalı', function () {
+    $t = trackEnv();
+    $r = $t->e->api->handle(new Request('OPTIONS', '/v1/track', ['origin' => 'https://umrerehberim.app', 'access-control-request-method' => 'POST'], '', '5.5.5.5', true));
+    same(204, $r->status);
+    same('https://umrerehberim.app', $r->headers['Access-Control-Allow-Origin']);
+    same('POST, OPTIONS', $r->headers['Access-Control-Allow-Methods']);
+    same('Content-Type', $r->headers['Access-Control-Allow-Headers']);
+    same([], $r->body);
+    $r = $t->e->api->handle(new Request('OPTIONS', '/v1/track', ['origin' => 'https://kotu.example'], '', '5.5.5.5', true));
+    same(403, $r->status);
+    ok(!isset($r->headers['Access-Control-Allow-Origin']));
+    // OPTIONS başka uçta hâlâ reddedilir
+    $r = $t->e->api->handle(new Request('OPTIONS', '/v1/auth/login', ['origin' => 'https://umrerehberim.app'], '', '5.5.5.5', true));
+    same(403, $r->status);
+    same('forbidden_origin', $r->body['error']);
+    same(403, call($t->e, 'POST', '/v1/auth/login', ['login_id' => '1234567', 'secret' => 'x'], null, '5.5.5.5', null, ['origin' => 'https://umrerehberim.app'])[0]);
+    // web_origins boşken /v1/track tarayıcıya kapalı
+    $t0 = trackEnv(['web_origins' => []]);
+    same(403, track($t0, seedLink($t0), '5.5.5.5', ['origin' => 'https://umrerehberim.app'])[0]);
+});
+
+test('track: yöntem ve içerik türü denetimi', function () {
+    $t = trackEnv();
+    same(405, call($t->e, 'GET', '/v1/track')[0]);
+    same(415, call($t->e, 'POST', '/v1/track', ['token' => newTrackToken()], null, '5.5.5.5', null, ['content-type' => 'text/plain'])[0]);
+    same(403, call($t->e, 'POST', '/v1/track', ['token' => newTrackToken()], null, '5.5.5.5', null, [], false)[0], 'HTTPS şart');
+});
+
+test('track: Response 204 gövdesiz gönderilir', function () {
+    $r = new \UmreApi\Response(204, [], ['X-A' => 'b']);
+    same(204, $r->status);
+    same([], $r->body);
+});
+
+test('RtdbRest: URL, Authorization, 404/null, hata, yol doğrulama', function () {
+    $tr = new FakeTransport(static function ($m, $url) {
+        if (str_contains($url, '/yok.json')) {
+            return ['status' => 404, 'headers' => [], 'body' => ''];
+        }
+        if (str_contains($url, '/izinsiz.json')) {
+            return ['status' => 401, 'headers' => [], 'body' => '{"error":"Permission denied"}'];
+        }
+        if (str_contains($url, '/bos.json')) {
+            return ['status' => 200, 'headers' => [], 'body' => 'null'];
+        }
+        return ['status' => 200, 'headers' => [], 'body' => '{"latitude":21.4,"longitude":39.8,"timestamp":1}'];
+    });
+    $r = new \UmreApi\RtdbRest('https://x-default-rtdb.firebaseio.com/', new StaticToken('tok123'), $tr);
+    same(['latitude' => 21.4, 'longitude' => 39.8, 'timestamp' => 1], $r->get('personal_locations/u1'));
+    same('GET', $tr->requests[0]['method']);
+    same('https://x-default-rtdb.firebaseio.com/personal_locations/u1.json', $tr->requests[0]['url']);
+    ok(in_array('Authorization: Bearer tok123', $tr->requests[0]['headers'], true));
+    same(null, $r->get('a/yok'));
+    same(null, $r->get('a/bos'));
+    $thrown = false;
+    try {
+        $r->get('a/izinsiz');
+    } catch (UpstreamException $e) {
+        $thrown = true;
+    }
+    ok($thrown, '401 -> UpstreamException');
+    foreach (['a/../b', 'a/b.json?x=1', 'a//b', '', 'a/b#c', 'a/b?auth=1'] as $bad) {
+        $threw = false;
+        try {
+            $r->get($bad);
+        } catch (\InvalidArgumentException $e) {
+            $threw = true;
+        }
+        ok($threw, "yol reddedilmeli: $bad");
+    }
+    same(4, count($tr->requests), 'geçersiz yollar ağa çıkmaz');
+});
+
+test('Config: varsayılan kapsamlar RTDB için firebase.database + userinfo.email içerir', function () {
+    $s = Config::DEFAULT_SCOPES;
+    ok(in_array('https://www.googleapis.com/auth/firebase.database', $s, true));
+    ok(in_array('https://www.googleapis.com/auth/userinfo.email', $s, true));
+    ok(in_array('https://www.googleapis.com/auth/datastore', $s, true));
+    $c = Config::withDefaults([]);
+    same([], $c['web_origins']);
+    same(30, $c['track_limit']);
+    same(20, $c['track_cache_ttl']);
 });
 
 // ------------------------------------------------------------------ sonuç

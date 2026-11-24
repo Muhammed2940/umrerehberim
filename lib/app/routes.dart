@@ -19,6 +19,7 @@ import '../features/admin/screens/users/create_user_screen.dart';
 import '../features/admin/screens/users/user_detail_screen.dart';
 import '../features/admin/screens/user_selection_view.dart';
 import '../features/admin/screens/users/users_page.dart';
+import '../features/aile_takibi/screens/aile_takibi_screen.dart';
 import '../features/auth/screens/login.dart';
 import '../features/dualar/screens/kuran.dart';
 import '../features/home/screens/bildirimler_screen.dart';
@@ -80,6 +81,7 @@ class AppRoutes {
         '/main': (_) => const MainScreen(),
         '/home': (_) => const HomeScreen(),
         '/profil': (_) => const ProfilScreen(),
+        '/aile-takibi': (_) => const AileTakibiScreen(),
         '/info': (_) => const GeneralInfoScreen(),
         // Acente özellikleri: bireysel kullanıcıya AcenteOzelligiGate kibar kartı gösterir.
         '/takvim': (_) => AcenteOzelligiGate(

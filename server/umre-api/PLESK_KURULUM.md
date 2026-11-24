@@ -105,8 +105,9 @@ Firebase'in varsayılan "firebase-adminsdk" hesabı projede çok geniş yetkilid
    sunucuda imzalanır; ek rol gerekmez.)
 3. Hesabın **Anahtarlar** sekmesi > **Anahtar ekle** > JSON. Bunu `service-account.json` olarak kullanın.
 
-**Kapsamlar**: servis Google'dan yalnız `datastore` ve `identitytoolkit` kapsamlı jeton ister
-(`cloud-platform` değil). Kurulumdan sonra adım 11'deki "yeni PIN ver" denemesi `upstream_error` verir ve
+**Kapsamlar**: servis Google'dan yalnız `datastore`, `identitytoolkit`, `firebase.database` ve
+`userinfo.email` kapsamlı jeton ister (`cloud-platform` değil; son ikisi Aile Takibi'nin Realtime DB
+okuması içindir). `config.php`'de `oauth_scopes`'u kendiniz tanımladıysanız bu ikisini ekleyin. Kurulumdan sonra adım 11'deki "yeni PIN ver" denemesi `upstream_error` verir ve
 hata günlüğünde `ACCESS_TOKEN_SCOPE_INSUFFICIENT` / `insufficient authentication scopes` görürseniz,
 `config.php`'de `oauth_scopes` satırını açıp `https://www.googleapis.com/auth/firebase` ekleyin; o da
 yetmezse son çare olarak `https://www.googleapis.com/auth/cloud-platform` kullanın.
@@ -220,6 +221,22 @@ Süper admin olarak uygulamada **Kontrol Merkezi > Hesapları yeni girişe taş�
 | Aynı otelden çok misafir `rate_limited` alıyor | Hepsi otelin tek IP'sinden geliyor (IP başına 10 dk'da 30 deneme). Gerekirse `config.php`'de `ip_limit`'i artırın (ör. 60). **`ip_header` AYARLAMAYIN.** |
 | Yönetici işlemleri `reauth_required` | Oturum 12 saatten eski (taşımada 15 dk). Çıkış yapıp yeniden girin. |
 | Yönetici işlemleri `invalid_token` | Telefonun saati çok yanlış olabilir; ya da uygulamadaki Firebase projesi farklı. |
+
+## Aile Takibi (`POST /v1/track`)
+
+Evdeki aile `https://<web>/t/#<token>` sayfasını açar; sayfa token'ı POST gövdesinde bu servise yollar.
+Kurulum için tek şey: `config.php`'ye web sayfasının kökenini yazın (tam eşleşir, sonda `/` yok):
+
+```php
+'web_origins' => ['https://umrerehberim.app'],
+```
+
+Bu, yalnız `/v1/track` için tarayıcı (CORS) isteğine izin verir; diğer uçlar tarayıcıya kapalı kalır.
+`web_origins` boşsa web sayfası `forbidden_origin` alır. Servis hesabının Realtime DB okuyabilmesi için
+`oauth_scopes` varsayılan kalmalı (yukarıdaki "Kapsamlar"). IP başına dakikada 30 sorgu, bağlantı başına
+20 sn önbellek; `private/cache/track_*.json` ve `private/ratelimit` kendiliğinden oluşur (`bin/cleanup.php`
+eski hız sınırı dosyalarını siler). Token hiçbir yerde saklanmaz, yalnız sha256 özeti belge adıdır.
+Servis hesabı Firestore'a `tracking_links/{hash}/views` yazar (kurallar atlanır).
 
 ## Güvenlik özeti
 

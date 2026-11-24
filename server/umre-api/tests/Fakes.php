@@ -187,3 +187,22 @@ final class FakeTransport implements HttpTransport
         return ($this->handler)($method, $url, $headers, $body, count($this->requests));
     }
 }
+
+/** Bellekte çalışan sahte Realtime Database (yol => değer). */
+final class FakeRealtime implements \UmreApi\RealtimeClient
+{
+    /** @var array<string,mixed> */
+    public array $data = [];
+    /** @var array<int,string> */
+    public array $reads = [];
+    public bool $fail = false;
+
+    public function get(string $path)
+    {
+        $this->reads[] = $path;
+        if ($this->fail) {
+            throw new UpstreamException('RTDB kapalı');
+        }
+        return $this->data[$path] ?? null;
+    }
+}

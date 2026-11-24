@@ -31,7 +31,8 @@ final class Api
         private RateLimiter $limiter,
         private Clock $clock,
         ?callable $idGen = null,
-        private ?FileCache $cache = null
+        private ?FileCache $cache = null,
+        private ?RealtimeClient $rtdb = null
     ) {
         if (!Secrets::validPepper($cfg['pepper'] ?? null)) {
             throw new \RuntimeException('config.php: pepper eksik ya da 32 bayttan kısa.');
@@ -46,10 +47,10 @@ final class Api
     public function handle(Request $req): Response
     {
         try {
-            $r = $this->route($req);
+            $r = $this->withCors($req, $this->route($req));
         } catch (ApiException $e) {
             $h = isset($e->extra['retry_after']) ? ['Retry-After' => (string)$e->extra['retry_after']] : [];
-            $r = new Response($e->status, ['error' => $e->errorCode, 'message' => $e->getMessage()] + $e->extra, $h);
+            $r = $this->withCors($req, new Response($e->status, ['error' => $e->errorCode, 'message' => $e->getMessage()] + $e->extra, $h));
         } catch (UpstreamException $e) {
             error_log('Üst servis hatası: ' . $e->getMessage());
             $r = new Response(502, ['error' => 'upstream_error', 'message' => 'Sunucu şu an Google servislerine ulaşamıyor. Lütfen biraz sonra tekrar deneyin.']);
@@ -67,11 +68,16 @@ final class Api
     {
         $path = '/' . trim($req->path, '/');
         // Tarayıcıdan gelen (Origin taşıyan) istekler kabul edilmez: istemci yalnız mobil uygulama.
-        if ($req->hasHeader('origin')) {
+        // Tek istisna: Aile Takibi sayfası (/v1/track) için yapılandırmadaki web_origins.
+        if ($req->hasHeader('origin') && !($path === '/v1/track' && $this->originAllowed($req->header('origin')))) {
             throw new ApiException(403, 'forbidden_origin', 'Bu servis tarayıcıdan kullanılamaz.');
         }
         if (!$req->secure && !($path === '/v1/health' && $req->method === 'GET')) {
             throw new ApiException(403, 'https_required', 'Yalnız HTTPS ile bağlanılabilir.');
+        }
+        // CORS ön isteği (başlıklar handle() içinde eklenir).
+        if ($path === '/v1/track' && $req->method === 'OPTIONS') {
+            return new Response(204, []);
         }
         $routes = [
             '/v1/health' => ['GET', 'health'],
@@ -80,6 +86,7 @@ final class Api
             '/v1/admin/accounts' => ['POST', 'createAccount'],
             '/v1/admin/reset-secret' => ['POST', 'resetSecret'],
             '/v1/admin/migrate' => ['POST', 'migrate'],
+            '/v1/track' => ['POST', 'track'],
         ];
         if (!isset($routes[$path])) {
             throw new ApiException(404, 'not_found', 'Böyle bir adres yok.');
@@ -98,6 +105,30 @@ final class Api
             }
         }
         return $this->$fn($req);
+    }
+
+    // ---------------------------------------------------------------- CORS (yalnız /v1/track)
+
+    private function originAllowed(string $origin): bool
+    {
+        $list = array_filter((array)($this->cfg['web_origins'] ?? []), 'is_string');
+        return $origin !== '' && in_array($origin, $list, true);
+    }
+
+    /** İzinli web kökeninden gelen /v1/track isteğinin yanıtına (hata dahil) CORS başlıkları ekler. */
+    private function withCors(Request $req, Response $r): Response
+    {
+        if ('/' . trim($req->path, '/') !== '/v1/track' || !$this->originAllowed($req->header('origin'))) {
+            return $r;
+        }
+        $h = [
+            'Access-Control-Allow-Origin' => $req->header('origin'),
+            'Vary' => 'Origin',
+            'Access-Control-Allow-Methods' => 'POST, OPTIONS',
+            'Access-Control-Allow-Headers' => 'Content-Type',
+            'Access-Control-Max-Age' => '86400',
+        ];
+        return new Response($r->status, $r->body, $r->headers + $h);
     }
 
     // ---------------------------------------------------------------- yardımcılar
@@ -236,6 +267,27 @@ final class Api
     }
 
     // ---------------------------------------------------------------- uç noktalar
+
+    /** Aile Takibi: token'la hacının son konumu (herkese açık uç; yetki token'ın bilinmesidir). */
+    private function track(Request $req): Response
+    {
+        if ($this->cache === null || $this->rtdb === null) {
+            throw new \RuntimeException('Aile Takibi için önbellek ve Realtime DB istemcisi gerekli.');
+        }
+        $this->throttle('track:' . Request::ipKey($req->ip), (int)$this->cfg['track_limit'], (int)$this->cfg['track_window']);
+        try {
+            $j = $this->json($req);
+        } catch (ApiException $e) {
+            throw new ApiException(400, 'bad_request', 'Bağlantı geçersiz.');
+        }
+        $token = $j['token'] ?? null;
+        if (!is_string($token)) {
+            throw new ApiException(400, 'bad_request', 'Bağlantı geçersiz.');
+        }
+        $svc = new Tracking($this->db, $this->rtdb, $this->cache, $this->clock, $this->pepper,
+            (int)$this->cfg['track_cache_ttl'], (int)$this->cfg['track_view_interval']);
+        return $this->ok($svc->lookup($token, $req->ip, $req->header('user-agent')));
+    }
 
     private function health(Request $req): Response
     {

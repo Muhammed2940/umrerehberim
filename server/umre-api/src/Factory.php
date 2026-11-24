@@ -48,7 +48,7 @@ final class Factory
 
     /**
      * @param array<string,mixed> $cfg Config::withDefaults() çıktısı
-     * @return array{clock:Clock,http:CurlHttp,cache:FileCache,emulator:bool,sa:?ServiceAccount,db:FirestoreRest,idp:IdentityToolkit,verifier:IdTokenVerifier,minter:CustomTokenMinter,limiter:RateLimiter}
+     * @return array{clock:Clock,http:CurlHttp,cache:FileCache,emulator:bool,sa:?ServiceAccount,db:FirestoreRest,idp:IdentityToolkit,verifier:IdTokenVerifier,minter:CustomTokenMinter,limiter:RateLimiter,rtdb:RtdbRest}
      */
     public static function parts(array $cfg, string $privateDir, string $remoteAddr): array
     {
@@ -85,6 +85,11 @@ final class Factory
             'verifier' => new IdTokenVerifier($project, new GoogleCerts($http, $cache, $clock, (string)$cfg['certs_url']), $clock, $emulator),
             'minter' => new CustomTokenMinter($sa, $clock),
             'limiter' => new RateLimiter($privateDir . '/ratelimit', $clock, (int)$cfg['ratelimit_max_files']),
+            'rtdb' => new RtdbRest(
+                (string)($cfg['rtdb_base'] ?? ('https://' . $project . '-default-rtdb.firebaseio.com')),
+                $tokens,
+                $http
+            ),
         ];
     }
 
@@ -92,7 +97,7 @@ final class Factory
     public static function build(array $cfg, string $privateDir, string $remoteAddr): Api
     {
         $p = self::parts($cfg, $privateDir, $remoteAddr);
-        return new Api($cfg, $p['db'], $p['idp'], $p['verifier'], $p['minter'], $p['limiter'], $p['clock'], null, $p['cache']);
+        return new Api($cfg, $p['db'], $p['idp'], $p['verifier'], $p['minter'], $p['limiter'], $p['clock'], null, $p['cache'], $p['rtdb']);
     }
 
     /**

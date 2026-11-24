@@ -42,13 +42,24 @@ return [
     // yalnız bin/verify_legacy_closed.php kullanır.
     'api_key' => null,
 
-    // OAuth kapsamları. Varsayılan en dar küme: datastore + identitytoolkit. Yönetici işlemleri
+    // OAuth kapsamları. Varsayılan en dar küme: datastore + identitytoolkit + (Aile Takibi için Realtime DB
+    // okuması) firebase.database + userinfo.email. Bu satırı açarsanız ikisini de listeye KOYUN. Yönetici işlemleri
     // "ACCESS_TOKEN_SCOPE_INSUFFICIENT" ile 502 verirse önce firebase kapsamını ekleyin:
     // 'oauth_scopes' => [
     //     'https://www.googleapis.com/auth/datastore',
     //     'https://www.googleapis.com/auth/identitytoolkit',
     //     'https://www.googleapis.com/auth/firebase',
     // ],
+
+    // Aile Takibi (POST /v1/track): tarayıcıdan (web sayfası) çağrıya izin verilen kökenler. TAM eşleşir
+    // (şema + alan adı, sonda eğik çizgi yok). Boşsa /v1/track da yalnız tarayıcısız istemcilere açıktır.
+    'web_origins' => [
+        // 'https://umrerehberim.app',
+    ],
+    // Realtime DB adresi. null: https://<project_id>-default-rtdb.firebaseio.com
+    // 'rtdb_base' => 'https://umrerehberim-cc99e-default-rtdb.firebaseio.com',
+    // IP (/64) başına dakikada en fazla bu kadar sorgu (varsayılan 30).
+    // 'track_limit' => 30, 'track_window' => 60,
 
     // Taşıma uç noktası (bir kez kullanılır). Taşıma bitince kendiliğinden kapanır.
     'migrate_enabled' => true,

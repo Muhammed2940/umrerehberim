@@ -1,0 +1,130 @@
+{
+  "aileTitle": { "tr": "Aile Takibi", "en": "Family Tracking", "ar": "تتبع العائلة" },
+  "aileQuickSub": {
+    "tr": "Ailenizle konumunuzu bağlantıyla paylaşın",
+    "en": "Share your location with family through a link",
+    "ar": "شارك موقعك مع عائلتك عبر رابط"
+  },
+  "aileIntro": {
+    "tr": "Evdeki yakınlarınız uygulama kurmadan, size özel bağlantıyla tarayıcıdan son konumunuzu görür. Geçmiş konumlar saklanmaz.",
+    "en": "Your relatives at home see your latest location in a browser through your private link, without installing anything. Past locations are not stored.",
+    "ar": "يرى أقاربك في المنزل آخر موقع لك في المتصفح عبر رابطك الخاص دون تثبيت أي تطبيق. لا يتم حفظ المواقع السابقة."
+  },
+  "aileShareSwitchTitle": { "tr": "Konumumu paylaş", "en": "Share my location", "ar": "مشاركة موقعي" },
+  "aileShareSwitchSub": {
+    "tr": "Açıkken konumunuz arka planda güncellenir. Bağlantıyı bilenler son konumunuzu görür.",
+    "en": "While on, your location updates in the background. Anyone with the link sees your latest location.",
+    "ar": "عند التفعيل يتم تحديث موقعك في الخلفية. كل من لديه الرابط يرى آخر موقع لك."
+  },
+  "aileAgencyShareNote": {
+    "tr": "Konum paylaşımınız Profil > Konum Takibi bölümünden yönetilir. Aşağıdan aileniz için bağlantı oluşturabilirsiniz.",
+    "en": "Your location sharing is managed in Profile > Location Tracking. You can create links for your family below.",
+    "ar": "تتم إدارة مشاركة الموقع من الملف الشخصي > تتبع الموقع. يمكنك إنشاء روابط لعائلتك أدناه."
+  },
+  "aileLocationDenied": {
+    "tr": "Konum izni verilmedi, paylaşım açılamadı.",
+    "en": "Location permission was not granted; sharing could not be turned on.",
+    "ar": "لم يتم منح إذن الموقع، تعذر تفعيل المشاركة."
+  },
+  "aileLinksTitle": { "tr": "Bağlantılar", "en": "Links", "ar": "الروابط" },
+  "aileNewLink": { "tr": "Yeni bağlantı", "en": "New link", "ar": "رابط جديد" },
+  "aileCreateAndShare": { "tr": "Oluştur ve paylaş", "en": "Create and share", "ar": "إنشاء ومشاركة" },
+  "aileLabelField": { "tr": "Kimin için? (ör. Annem)", "en": "Who is it for? (e.g. Mom)", "ar": "لمن؟ (مثل: أمي)" },
+  "aileLimitReached": {
+    "tr": "En fazla 5 etkin bağlantınız olabilir. Yenisi için birini iptal edin.",
+    "en": "You can have at most 5 active links. Cancel one to create a new one.",
+    "ar": "يمكن أن يكون لديك 5 روابط نشطة كحد أقصى. ألغِ أحدها لإنشاء رابط جديد."
+  },
+  "aileEmpty": { "tr": "Henüz bağlantı yok", "en": "No links yet", "ar": "لا توجد روابط بعد" },
+  "aileEmptyBody": {
+    "tr": "Yeni bağlantı oluşturup WhatsApp ile ailenize gönderin.",
+    "en": "Create a new link and send it to your family on WhatsApp.",
+    "ar": "أنشئ رابطًا جديدًا وأرسله إلى عائلتك عبر واتساب."
+  },
+  "aileApproxTitle": { "tr": "Yaklaşık konum", "en": "Approximate location", "ar": "موقع تقريبي" },
+  "aileApproxSub": {
+    "tr": "Tam nokta yerine yaklaşık 1 km'lik bölge gösterilir.",
+    "en": "Shows an area of about 1 km instead of the exact point.",
+    "ar": "يعرض منطقة بحجم 1 كم تقريبًا بدلًا من النقطة الدقيقة."
+  },
+  "aileShare": { "tr": "Paylaş", "en": "Share", "ar": "مشاركة" },
+  "aileShareMessage": {
+    "tr": "Umre Rehberim: Konumumu bu bağlantıdan takip edebilirsin: {url}",
+    "en": "Umre Rehberim: You can follow my location with this link: {url}",
+    "ar": "رفيق العمرة: يمكنك متابعة موقعي عبر هذا الرابط: {url}",
+    "placeholders": { "url": { "type": "String" } }
+  },
+  "aileHide2h": { "tr": "2 saat gizle", "en": "Hide for 2 hours", "ar": "إخفاء لساعتين" },
+  "aileUnhide": { "tr": "Gizlemeyi kaldır", "en": "Show again", "ar": "إلغاء الإخفاء" },
+  "aileRevoke": { "tr": "İptal et", "en": "Cancel link", "ar": "إلغاء الرابط" },
+  "aileCancel": { "tr": "Vazgeç", "en": "Back", "ar": "رجوع" },
+  "aileRevokeTitle": { "tr": "Bağlantı iptal edilsin mi?", "en": "Cancel this link?", "ar": "هل تريد إلغاء الرابط؟" },
+  "aileRevokeBody": {
+    "tr": "Bu bağlantıyı bilen kimse artık konumunuzu göremez. Bu işlem geri alınamaz.",
+    "en": "Nobody with this link will be able to see your location anymore. This cannot be undone.",
+    "ar": "لن يتمكن أي شخص لديه هذا الرابط من رؤية موقعك بعد الآن. لا يمكن التراجع عن هذا الإجراء."
+  },
+  "aileViews": { "tr": "Kim baktı", "en": "Who viewed", "ar": "من شاهد" },
+  "aileViewsTitle": { "tr": "Kim baktı", "en": "Who viewed", "ar": "من شاهد" },
+  "aileViewsEmpty": { "tr": "Henüz kimse bakmadı", "en": "Nobody has viewed it yet", "ar": "لم يشاهده أحد بعد" },
+  "aileViewsCount": {
+    "tr": "{count} kez",
+    "en": "{count} times",
+    "ar": "{count} مرة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "aileDeviceMobile": { "tr": "Telefon", "en": "Phone", "ar": "هاتف" },
+  "aileDeviceDesktop": { "tr": "Bilgisayar", "en": "Computer", "ar": "حاسوب" },
+  "aileBadgeApprox": { "tr": "Yaklaşık", "en": "Approximate", "ar": "تقريبي" },
+  "aileBadgeHidden": { "tr": "Gizli", "en": "Hidden", "ar": "مخفي" },
+  "aileBadgeRevoked": { "tr": "İptal edildi", "en": "Cancelled", "ar": "تم الإلغاء" },
+  "aileBadgeExpired": { "tr": "Süresi doldu", "en": "Expired", "ar": "انتهت الصلاحية" },
+  "aileDaysLeft": {
+    "tr": "{count} gün kaldı",
+    "en": "{count} days left",
+    "ar": "متبقي {count} يوم",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "aileHoursLeft": {
+    "tr": "{count} saat kaldı",
+    "en": "{count} hours left",
+    "ar": "متبقي {count} ساعة",
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "aileHiddenUntil": {
+    "tr": "{time} saatine kadar gizli",
+    "en": "Hidden until {time}",
+    "ar": "مخفي حتى {time}",
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "aileNoToken": {
+    "tr": "Bu bağlantı başka bir cihazda oluşturulmuş; buradan yeniden paylaşılamaz. Yeni bir bağlantı oluşturun.",
+    "en": "This link was created on another device and cannot be shared again from here. Create a new link.",
+    "ar": "تم إنشاء هذا الرابط على جهاز آخر ولا يمكن مشاركته من هنا. أنشئ رابطًا جديدًا."
+  },
+  "aileError": {
+    "tr": "İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "The action could not be completed. Check your connection and try again.",
+    "ar": "تعذر إكمال العملية. تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+  },
+  "aileGateTitle": {
+    "tr": "Aile Takibi, Aile ve Full paketlerde",
+    "en": "Family Tracking is in the Family and Full packages",
+    "ar": "تتبع العائلة ضمن باقتي العائلة والكاملة"
+  },
+  "aileGateBody": {
+    "tr": "Konumunuzu ailenizle bağlantı üzerinden paylaşmak için Aile/Arkadaş veya Full Umre paketini seçin.",
+    "en": "Choose the Family/Friends or Full Umrah package to share your location with family through a link.",
+    "ar": "اختر باقة العائلة/الأصدقاء أو باقة العمرة الكاملة لمشاركة موقعك مع عائلتك عبر رابط."
+  },
+  "aileUnavailableTitle": {
+    "tr": "Bu özellik şu an hesabınız için kullanılamıyor",
+    "en": "This feature is not available for your account",
+    "ar": "هذه الميزة غير متاحة لحسابك"
+  },
+  "aileUnavailableBody": {
+    "tr": "Aile Takibi, acente ile seyahat eden hacılara ve Aile/Full paket sahiplerine sunulur.",
+    "en": "Family Tracking is offered to pilgrims travelling with an agency and to Family/Full package holders.",
+    "ar": "تُقدَّم ميزة تتبع العائلة للحجاج المسافرين مع وكالة ولأصحاب باقتي العائلة والكاملة."
+  }
+}

@@ -1253,6 +1253,159 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get aileAgencyShareNote =>
+      'Your location sharing is managed in Profile > Location Tracking. You can create links for your family below.';
+
+  @override
+  String get aileApproxSub =>
+      'Shows an area of about 1 km instead of the exact point.';
+
+  @override
+  String get aileApproxTitle => 'Approximate location';
+
+  @override
+  String get aileBadgeApprox => 'Approximate';
+
+  @override
+  String get aileBadgeExpired => 'Expired';
+
+  @override
+  String get aileBadgeHidden => 'Hidden';
+
+  @override
+  String get aileBadgeRevoked => 'Cancelled';
+
+  @override
+  String get aileCancel => 'Back';
+
+  @override
+  String get aileCreateAndShare => 'Create and share';
+
+  @override
+  String aileDaysLeft(int count) {
+    return '$count days left';
+  }
+
+  @override
+  String get aileDeviceDesktop => 'Computer';
+
+  @override
+  String get aileDeviceMobile => 'Phone';
+
+  @override
+  String get aileEmpty => 'No links yet';
+
+  @override
+  String get aileEmptyBody =>
+      'Create a new link and send it to your family on WhatsApp.';
+
+  @override
+  String get aileError =>
+      'The action could not be completed. Check your connection and try again.';
+
+  @override
+  String get aileGateBody =>
+      'Choose the Family/Friends or Full Umrah package to share your location with family through a link.';
+
+  @override
+  String get aileGateTitle =>
+      'Family Tracking is in the Family and Full packages';
+
+  @override
+  String aileHiddenUntil(String time) {
+    return 'Hidden until $time';
+  }
+
+  @override
+  String get aileHide2h => 'Hide for 2 hours';
+
+  @override
+  String aileHoursLeft(int count) {
+    return '$count hours left';
+  }
+
+  @override
+  String get aileIntro =>
+      'Your relatives at home see your latest location in a browser through your private link, without installing anything. Past locations are not stored.';
+
+  @override
+  String get aileLabelField => 'Who is it for? (e.g. Mom)';
+
+  @override
+  String get aileLimitReached =>
+      'You can have at most 5 active links. Cancel one to create a new one.';
+
+  @override
+  String get aileLinksTitle => 'Links';
+
+  @override
+  String get aileLocationDenied =>
+      'Location permission was not granted; sharing could not be turned on.';
+
+  @override
+  String get aileNewLink => 'New link';
+
+  @override
+  String get aileNoToken =>
+      'This link was created on another device and cannot be shared again from here. Create a new link.';
+
+  @override
+  String get aileQuickSub => 'Share your location with family through a link';
+
+  @override
+  String get aileRevoke => 'Cancel link';
+
+  @override
+  String get aileRevokeBody =>
+      'Nobody with this link will be able to see your location anymore. This cannot be undone.';
+
+  @override
+  String get aileRevokeTitle => 'Cancel this link?';
+
+  @override
+  String get aileShare => 'Share';
+
+  @override
+  String aileShareMessage(String url) {
+    return 'Umre Rehberim: You can follow my location with this link: $url';
+  }
+
+  @override
+  String get aileShareSwitchSub =>
+      'While on, your location updates in the background. Anyone with the link sees your latest location.';
+
+  @override
+  String get aileShareSwitchTitle => 'Share my location';
+
+  @override
+  String get aileTitle => 'Family Tracking';
+
+  @override
+  String get aileUnavailableBody =>
+      'Family Tracking is offered to pilgrims travelling with an agency and to Family/Full package holders.';
+
+  @override
+  String get aileUnavailableTitle =>
+      'This feature is not available for your account';
+
+  @override
+  String get aileUnhide => 'Show again';
+
+  @override
+  String get aileViews => 'Who viewed';
+
+  @override
+  String aileViewsCount(int count) {
+    return '$count times';
+  }
+
+  @override
+  String get aileViewsEmpty => 'Nobody has viewed it yet';
+
+  @override
+  String get aileViewsTitle => 'Who viewed';
+
+  @override
   String get appTitle => 'My Umrah Guide';
 
   @override

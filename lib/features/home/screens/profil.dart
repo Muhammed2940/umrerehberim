@@ -269,6 +269,8 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
                         ),
                         if (user.userType == UserType.misafir) ...[
                           const SizedBox(height: 10),
+                          _aileTakibiCard(),
+                          const SizedBox(height: 10),
                           const WalletProfileCard(),
                         ],
                         SectionHeader(title: l.homePersonalInfo, icon: Icons.badge_rounded),
@@ -339,6 +341,17 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
     );
   }
 
+  /// Aile Takibi girişi. Hakkı olmayan bireysel kullanıcı ekranda Paketler'e yönlendirilir.
+  Widget _aileTakibiCard() {
+    final l = context.l10n;
+    return QuickActionCard(
+      icon: Icons.family_restroom_rounded,
+      title: l.aileTitle,
+      subtitle: l.aileQuickSub,
+      onTap: () => Navigator.of(context).pushNamed('/aile-takibi'),
+    );
+  }
+
   /// Bireysel kullanıcının profil bölümleri: Acenteme katıl (Yakında), kişisel bilgiler
   /// (Google e-postası), Umre bilgileri yerine acente kartı, dil, konum rızası.
   List<Widget> _bireyselSections(UserModel user) {
@@ -351,6 +364,8 @@ class _ProfilScreenState extends State<ProfilScreen> with SingleTickerProviderSt
         subtitle: l.paketlerQuickSub,
         onTap: () => Navigator.of(context).pushNamed('/paketler'),
       ),
+      const SizedBox(height: 10),
+      _aileTakibiCard(),
       const SizedBox(height: 10),
       // Harcamalarım ve Puanlarım: aktif ücretli pakette.
       ListenableBuilder(

@@ -38,6 +38,9 @@ class BackgroundLocationService {
   /// Kullanıcının paylaşım tercihi (varsayılan açık).
   static const sharingKey = 'location_sharing_enabled';
 
+  /// Aile Takibi (bireysel): kullanıcı Aile Takibi ekranında paylaşımı açtı mı (varsayılan kapalı).
+  static const familySharingKey = 'family_sharing_enabled';
+
   /// Son başarılı gönderim zamanı (ms).
   static const lastSentKey = 'last_location_sent_ms';
 
@@ -93,6 +96,34 @@ class BackgroundLocationService {
     return prefs.getBool(sharingKey) ?? true;
   }
 
+  static Future<bool> isFamilySharingEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    return prefs.getBool(familySharingKey) ?? false;
+  }
+
+  /// Aile Takibi ekranındaki anahtar (yalnız hak sahibi bireysel kullanıcı için çağrılır).
+  /// Açınca izin akışı + servis; kapatınca servis durur ve `personal_locations/{uid}` silinir.
+  /// Sonuçta paylaşımın açık olup olmadığını döner.
+  static Future<bool> setFamilySharing(BuildContext context, bool enabled) async {
+    final user = context.read<AppStateProvider>().currentUser;
+    if (user == null || !user.isBireysel) return false;
+    _user = user;
+    final prefs = await SharedPreferences.getInstance();
+    if (enabled) {
+      if (!context.mounted) return false;
+      final access = await LocationPermissionHelper.checkLocationPermission(context, force: true);
+      if (!access.canTrack) return false;
+      await prefs.setBool(familySharingKey, true);
+      await _start();
+      return true;
+    }
+    await prefs.setBool(familySharingKey, false);
+    _service.invoke('stopService');
+    await LocationFirebaseService.removePersonalLocation(user.id);
+    return false;
+  }
+
   static Future<DateTime?> lastSentAt() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.reload();
@@ -123,6 +154,12 @@ class BackgroundLocationService {
     if (user.isBireysel) {
       try {
         await LocationPermissionHelper.requestNotificationPermission();
+        // Aile Takibi: paylaşım açıksa servis yeniden kurulur (hakkı servis kendisi doğrular).
+        if (await isFamilySharingEnabled()) {
+          if (!context.mounted) return;
+          final access = await LocationPermissionHelper.checkLocationPermission(context);
+          if (access.canTrack) await _start();
+        }
       } catch (e) {
         debugPrint('ensureStarted (bireysel): $e');
       } finally {
@@ -301,14 +338,42 @@ Future<void> onStart(ServiceInstance service) async {
       agencyId = claims?['agencyId']?.toString() ?? '';
     } catch (_) {}
   }
-  if (agencyId.isEmpty) {
+  // Aile Takibi (bireysel): acentesiz, yalnız paylaşım açık + hak varsa personal_locations'a yazar.
+  final personal = agencyId.isEmpty && userMap?['account_kind']?.toString() == 'bireysel';
+
+  /// Hak: entitlements/{uid} paket aile|full, status active, paid_until > now.
+  Future<bool> familyEntitled() async {
+    try {
+      final d = (await FirebaseFirestore.instance.collection('entitlements').doc(uid).get()).data();
+      final until = d?['paid_until'];
+      return d != null &&
+          (d['paket'] == 'aile' || d['paket'] == 'full') &&
+          d['status'] == 'active' &&
+          until is Timestamp &&
+          until.toDate().isAfter(DateTime.now());
+    } catch (e) {
+      debugPrint('Servis entitlements okunamadı: $e');
+      return true; // çevrimdışıyken kesme; kural ve web hakkı ayrıca denetler
+    }
+  }
+
+  Future<void> stopPersonal() async {
+    await LocationFirebaseService.removePersonalLocation(uid);
+    await prefs.setBool(BackgroundLocationService.familySharingKey, false);
+    await shutdown();
+  }
+
+  if (personal) {
+    if (prefs.getBool(BackgroundLocationService.familySharingKey) != true) return shutdown();
+    if (!await familyEntitled()) return stopPersonal();
+  } else if (agencyId.isEmpty) {
     debugPrint('Servis: agencyId yok, durduruluyor');
     return shutdown();
   }
   final userName = (userMap?['user_name']?.toString() ?? '').trim();
 
   // Duyuru dinleyicisi bu isolate'te.
-  watcher = NotificationWatcher.fromUserMap(uid, {...?userMap, 'agency_id': agencyId})?..start();
+  if (!personal) watcher = NotificationWatcher.fromUserMap(uid, {...?userMap, 'agency_id': agencyId})?..start();
 
   Position? last;
   var lastWriteMs = 0;
@@ -335,12 +400,16 @@ Future<void> onStart(ServiceInstance service) async {
     }
     writing = true;
     try {
-      await LocationFirebaseService.updateUserLocation(
-        agencyId: agencyId,
-        uid: uid,
-        userName: userName.isEmpty ? 'Kullanıcı' : userName,
-        position: p,
-      );
+      if (personal) {
+        await LocationFirebaseService.updatePersonalLocation(uid: uid, position: p);
+      } else {
+        await LocationFirebaseService.updateUserLocation(
+          agencyId: agencyId,
+          uid: uid,
+          userName: userName.isEmpty ? 'Kullanıcı' : userName,
+          position: p,
+        );
+      }
       final now = DateTime.now().millisecondsSinceEpoch;
       last = p;
       lastWriteMs = now;
@@ -400,4 +469,15 @@ Future<void> onStart(ServiceInstance service) async {
     final now = DateTime.now().millisecondsSinceEpoch;
     if (now - lastWriteMs >= const Duration(minutes: 2).inMilliseconds) writeCurrent();
   });
+
+  // Paket bitince (kullanıcı uygulamayı açmasa bile) paylaşım kapanır, kayıt silinir.
+  if (personal) {
+    Timer.periodic(const Duration(minutes: 30), (t) async {
+      if (stopped) return t.cancel();
+      if (!await familyEntitled()) {
+        t.cancel();
+        await stopPersonal();
+      }
+    });
+  }
 }
