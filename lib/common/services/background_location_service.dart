@@ -17,6 +17,7 @@ import '../../features/auth/models/user_model.dart';
 import '../../features/hatim/data/hatim_watcher.dart';
 import '../../core/utils/firebase_init.dart';
 import 'local_notification_service.dart';
+import 'location_filter.dart';
 import 'location_firebase_service.dart';
 import 'location_permission.dart';
 import 'notification_watcher.dart';
@@ -375,29 +376,42 @@ Future<void> onStart(ServiceInstance service) async {
   // Duyuru dinleyicisi bu isolate'te.
   if (!personal) watcher = NotificationWatcher.fromUserMap(uid, {...?userMap, 'agency_id': agencyId})?..start();
 
-  Position? last;
   var lastWriteMs = 0;
   var writing = false;
+  // Kaba ağ tahminlerini ve yansıma sıçramalarını atar, kalan ölçümleri birleştirir.
+  final filter = LocationFilter();
 
-  /// Kötü bir konum (ör. ±170 m ağ tahmini), kısa süre önce yazılmış iyi bir
-  /// konumun (ör. ±15 m GPS) üzerine yazılmasın. Kişi gerçekten uzaklaştıysa
-  /// (mesafe > iki doğruluk toplamı) ya da iyi konum 3 dakikadan eskiyse kabul edilir.
-  bool acceptable(Position p) {
-    final prev = last;
-    if (prev == null) return true;
-    final ageMs = DateTime.now().millisecondsSinceEpoch - lastWriteMs;
-    if (ageMs > const Duration(minutes: 3).inMilliseconds) return true;
-    if (p.accuracy <= prev.accuracy * 1.5 || p.accuracy <= 30) return true;
-    final moved = Geolocator.distanceBetween(prev.latitude, prev.longitude, p.latitude, p.longitude);
-    return moved > prev.accuracy + p.accuracy;
+  /// Ham ölçümü filtreden geçirir; yazılacak konum (filtrelenmiş) ya da null.
+  Position? filtered(Position raw) {
+    final f = filter.add(LocationFix(
+      lat: raw.latitude,
+      lng: raw.longitude,
+      accuracy: raw.accuracy,
+      time: raw.timestamp,
+    ));
+    if (f == null) {
+      debugPrint('Konum atlandı: ±${raw.accuracy.round()} m (tahmin ±${filter.estimate?.accuracy.round()} m)');
+      return null;
+    }
+    return Position(
+      latitude: f.lat,
+      longitude: f.lng,
+      accuracy: f.accuracy,
+      timestamp: f.time,
+      altitude: raw.altitude,
+      altitudeAccuracy: raw.altitudeAccuracy,
+      heading: raw.heading,
+      headingAccuracy: raw.headingAccuracy,
+      speed: raw.speed,
+      speedAccuracy: raw.speedAccuracy,
+      isMocked: raw.isMocked,
+    );
   }
 
-  Future<void> write(Position p) async {
+  Future<void> write(Position raw) async {
     if (stopped || writing) return;
-    if (!acceptable(p)) {
-      debugPrint('Konum atlandı: ±${p.accuracy.round()} m (önceki ±${last?.accuracy.round()} m)');
-      return;
-    }
+    final p = filtered(raw);
+    if (p == null) return;
     writing = true;
     try {
       if (personal) {
@@ -411,7 +425,6 @@ Future<void> onStart(ServiceInstance service) async {
         );
       }
       final now = DateTime.now().millisecondsSinceEpoch;
-      last = p;
       lastWriteMs = now;
       await prefs.setInt(BackgroundLocationService.lastSentKey, now);
       service.invoke('location', {'latitude': p.latitude, 'longitude': p.longitude, 'timestamp': now});
@@ -422,17 +435,41 @@ Future<void> onStart(ServiceInstance service) async {
     }
   }
 
+  /// getCurrentPosition çoğu zaman İLK gelen (kaba, ağ tabanlı) konumu döndürür.
+  /// Bunun yerine 25 sn boyunca ölçüm toplanır, en iyisi alınır; ±15 m'ye
+  /// inen ölçüm gelirse hemen bitirilir.
+  Future<Position?> bestFix() async {
+    Position? best;
+    final done = Completer<void>();
+    final sub = Geolocator.getPositionStream(
+      locationSettings: AndroidSettings(
+        accuracy: LocationAccuracy.best,
+        distanceFilter: 0,
+        intervalDuration: const Duration(seconds: 2),
+      ),
+    ).listen(
+      (p) {
+        final b = best;
+        if (b == null || p.accuracy < b.accuracy) best = p;
+        if (p.accuracy <= 15 && !done.isCompleted) done.complete();
+      },
+      onError: (Object e) {
+        debugPrint('bestFix: $e');
+        if (!done.isCompleted) done.complete();
+      },
+    );
+    await done.future.timeout(const Duration(seconds: 25), onTimeout: () {});
+    await sub.cancel();
+    return best;
+  }
+
   Future<void> writeCurrent() async {
     try {
-      final p = await Geolocator.getCurrentPosition(
-        locationSettings: AndroidSettings(
-          accuracy: LocationAccuracy.best,
-          timeLimit: const Duration(seconds: 30),
-        ),
-      );
+      final p = await bestFix();
+      if (p == null) throw StateError('ölçüm yok');
       await write(p);
     } catch (e) {
-      debugPrint('getCurrentPosition: $e');
+      debugPrint('bestFix: $e');
       // GPS cevap vermediyse yalnızca TAZE (≤2 dk) bir sistem konumu kullanılır.
       // Eski önbellek konumu asla "şimdiki konum" diye yazılmaz (yüzlerce metre
       // kayma ve saatler önceki yer görünmesi buna yol açıyordu).
