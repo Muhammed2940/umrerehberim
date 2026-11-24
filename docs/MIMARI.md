@@ -130,6 +130,10 @@ Sözleşme (tek kaynak): uygulama deposunda `docs/plan/AILE_TAKIBI_SOZLESME.md`.
 - Harita: Leaflet (npm) + OSM karoları (atıf üstte görünür). Karolar için CSP `img-src`'e
   `https://tile.openstreetmap.org` eklendi; karo isteği yalnız köken Referer'ı gönderir (OSM karo politikası).
 - `.htaccess`: `/t/` yolları için `Cache-Control: no-store`, `Referrer-Policy: no-referrer`, `X-Robots-Tag: noindex`.
+- **Ara mod (PHP'siz):** `config.ts` `TAKIP_KAYNAK = 'firebase'` (varsayılan) iken sayfa token'ın SHA-256 hex'ini
+  tarayıcıda hesaplar ve `GET {RTDB_URL}/tracking_public/<hash>.json` okur; `status`/`place` (Harem 20 km, haversine)
+  tarayıcıda türetilir, "kim baktı" ve `plan_ended` yok. `'api'` yapılırsa PHP yolu (yukarıdaki) kullanılır.
+  CSP `connect-src`'e RTDB adresi eklendi. Sözleşme: "ARA MOD" bölümü.
 - Demo: `/t/#demo`; sunum için ek durumlar `#demo-gizli`, `#demo-yok`, `#demo-eski`, `#demo-yaklasik`,
   `#demo-medine`, `#demo-iptal`, `#demo-suresi`, `#demo-bitti`, `#demo-sik`. Sunucuya istek gitmez.
 

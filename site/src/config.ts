@@ -7,6 +7,13 @@ export const ALAN = 'ALAN';
 export const SITE_URL = `https://www.${ALAN}`;
 export const API_URL = `https://api.${ALAN}`;
 
+/**
+ * Aile Takibi veri kaynağı. 'firebase' (ara mod): tarayıcı konumu doğrudan Realtime Database'den okur (PHP yok).
+ * 'api': PHP servisi (API_URL/v1/track). Sözleşme: uygulama deposu docs/plan/AILE_TAKIBI_SOZLESME.md
+ */
+export const TAKIP_KAYNAK: 'firebase' | 'api' = 'firebase';
+export const RTDB_URL = 'https://umrerehberim-cc99e-default-rtdb.firebaseio.com';
+
 export const SITE_ADI = 'Umre Rehberim';
 
 /** Firebase projesi (yalnız herkese açık platform_settings/app okuması için, derleme anında). */

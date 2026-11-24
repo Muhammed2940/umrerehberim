@@ -16,7 +16,7 @@ type Yanit = {
   server_time: number;
   refresh_sec: number;
 };
-type Ayar = { api: string; dil: string; metin: Record<string, string> };
+type Ayar = { api: string; kaynak?: 'firebase' | 'api'; rtdb?: string; dil: string; metin: Record<string, string> };
 type Hata = 'yok' | 'gecersiz' | 'bulunamadi' | 'iptal' | 'suresi' | 'bitti' | 'sik' | 'ag';
 
 const ESKI_KONUM_MS = 15 * 60 * 1000;
@@ -294,7 +294,89 @@ async function getir(zorla = false) {
   }
 }
 
+// ---- Ara mod: Realtime Database'den doğrudan okuma (sözleşme "ARA MOD") ----
+type Dugum = {
+  name?: string;
+  expires_at?: number;
+  hidden_until?: number;
+  approx?: boolean;
+  lat?: number;
+  lng?: number;
+  accuracy?: number;
+  updated_at?: number;
+};
+const HAREMLER = {
+  mekke: [21.4225, 39.8262],
+  medine: [24.4672, 39.6111],
+} as const;
+const HAREM_YARICAP_M = 20000;
+
+function mesafeM(a: readonly [number, number], b: readonly [number, number]): number {
+  const r = (d: number) => (d * Math.PI) / 180;
+  const h = Math.sin(r(b[0] - a[0]) / 2) ** 2 + Math.cos(r(a[0])) * Math.cos(r(b[0])) * Math.sin(r(b[1] - a[1]) / 2) ** 2;
+  return 2 * 6371000 * Math.asin(Math.sqrt(h));
+}
+
+function yerHesapla(lat: number, lng: number, approx: boolean): Yanit['place'] {
+  for (const sehir of ['mekke', 'medine'] as const) {
+    const m = mesafeM([lat, lng], HAREMLER[sehir]);
+    if (m <= HAREM_YARICAP_M) return { city: sehir, harem_m: approx ? null : Math.round(m) };
+  }
+  return { city: 'diger', harem_m: null };
+}
+
+async function tokenHash(t: string): Promise<string> {
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return Array.from(new Uint8Array(b), (x) => x.toString(16).padStart(2, '0')).join('');
+}
+
+async function istekFirebase(): Promise<Yanit | Hata> {
+  const kes = new AbortController();
+  const z = setTimeout(() => kes.abort(), 15000);
+  try {
+    const hash = await tokenHash(token);
+    const r = await fetch(`${ayar.rtdb}/tracking_public/${hash}.json`, {
+      cache: 'no-store',
+      credentials: 'omit',
+      referrerPolicy: 'no-referrer',
+      signal: kes.signal,
+    });
+    if (r.status === 429) return 'sik';
+    if (!r.ok) return 'ag';
+    const d = (await r.json()) as Dugum | null;
+    if (d === null) return 'bulunamadi';
+    if (typeof d !== 'object') return 'ag';
+    const tarih = r.headers.get('Date');
+    const sunucu = tarih && !Number.isNaN(Date.parse(tarih)) ? Date.parse(tarih) : Date.now();
+    const exp = Number(d.expires_at) || 0;
+    if (exp < sunucu) return 'suresi';
+    const gizli = Number(d.hidden_until) || 0;
+    const approx = d.approx === true;
+    const temel = {
+      name: String(d.name ?? ''),
+      approx,
+      hidden_until: gizli > 0 ? gizli : null,
+      expires_at: exp,
+      server_time: sunucu,
+      refresh_sec: 60,
+    };
+    if (gizli > sunucu) return { ...temel, status: 'hidden', location: null, place: null };
+    if (typeof d.lat !== 'number' || typeof d.lng !== 'number') return { ...temel, status: 'no_location', location: null, place: null };
+    return {
+      ...temel,
+      status: 'ok',
+      location: { lat: d.lat, lng: d.lng, accuracy: Number(d.accuracy) || 50, updated_at: Number(d.updated_at) || 0 },
+      place: yerHesapla(d.lat, d.lng, approx),
+    };
+  } catch {
+    return 'ag';
+  } finally {
+    clearTimeout(z);
+  }
+}
+
 async function istek(): Promise<Yanit | Hata> {
+  if (ayar.kaynak !== 'api') return istekFirebase();
   const kes = new AbortController();
   const z = setTimeout(() => kes.abort(), 15000);
   try {

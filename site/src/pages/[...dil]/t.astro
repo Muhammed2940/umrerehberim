@@ -9,14 +9,14 @@ import Ikon from '../../components/Ikon.astro';
 import { DILLER, DIL_ADI, YON, cevirmen, dilYollari, yol, type Dil } from '../../i18n';
 import { sayfaMetni } from '../../i18n/sayfa';
 import { TAKIP } from '../../i18n/sayfa/takip';
-import { API_URL, SITE_URL } from '../../config';
+import { API_URL, RTDB_URL, SITE_URL, TAKIP_KAYNAK } from '../../config';
 
 export const getStaticPaths = dilYollari;
 const { dil } = Astro.props as { dil: Dil };
 const t = cevirmen(dil);
 const T = sayfaMetni(dil, TAKIP);
 const metin = Object.fromEntries(Object.keys(TAKIP.tr).map((k) => [k, T[k as keyof typeof TAKIP.tr]]));
-const ayar = JSON.stringify({ api: API_URL, dil, metin }).replace(/</g, '\\u003c');
+const ayar = JSON.stringify({ api: API_URL, kaynak: TAKIP_KAYNAK, rtdb: RTDB_URL, dil, metin }).replace(/</g, '\\u003c');
 const baslik = `${T.baslik} | ${t('site.ad')}`;
 ---
 
