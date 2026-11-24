@@ -1,0 +1,163 @@
+---
+// Hakkımızda: onaylı görsel 08-hakkimizda. İsim/ortak/sayı/unvan yok (onaylı içerikte yok).
+import Base from '../../layouts/Base.astro';
+import Ikon from '../../components/Ikon.astro';
+import { dilYollari, yol, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { HAKKIMIZDA } from '../../i18n/sayfa/hakkimizda';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const T = sayfaMetni(dil, HAKKIMIZDA);
+
+const degerler = [
+  { ikon: 'kitap', baslik: T.d1Baslik, metin: T.d1 },
+  { ikon: 'kalp', baslik: T.d2Baslik, metin: T.d2 },
+  { ikon: 'aile', baslik: T.d3Baslik, metin: T.d3 },
+  { ikon: 'yaprak', baslik: T.d4Baslik, metin: T.d4 },
+] as const;
+---
+
+<Base dil={dil} yalin="/hakkimizda/" baslik={T.metaBaslik} aciklama={T.metaAciklama}>
+  <div class="bg-krem">
+    <!-- Giriş: amaç metni + mimari fotoğraf -->
+    <section class="genis-kap grid items-center gap-10 pt-12 pb-12 lg:grid-cols-[1fr_1.15fr] lg:gap-12 lg:pt-14">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-altin-koyu">{T.etiket}</p>
+        <h1 class="mt-4 text-[2.75rem] font-bold leading-tight text-emerald-800 sm:text-[64px]">{T.baslik}</h1>
+        <p class="mt-5 max-w-[620px] text-lg leading-relaxed text-emerald-900 sm:text-xl">{T.giris}</p>
+        <p class="mt-4 flex max-w-[620px] flex-wrap items-center gap-x-2 gap-y-1 text-[17px] text-emerald-900/85">
+          <span class="shrink-0 text-altin-koyu"><Ikon ad="bina" boyut={22} /></span>
+          <span>{T.anaSirket}</span>
+          <a href="https://hekzapotsoftware.com/" rel="noopener" target="_blank" class="inline-flex min-h-11 items-center gap-1 font-semibold text-emerald-700 underline underline-offset-4 hover:text-emerald-600" title={T.anaSirketBag}>
+            <bdi>hekzapotsoftware.com</bdi>
+          </a>
+        </p>
+        <span class="mt-8 block h-[3px] w-20 rounded-full bg-altin" aria-hidden="true"></span>
+        <a href={yol(dil, '/rehber/')} class="dugme-ana mt-8 min-h-12 rounded-lg px-6 text-lg font-semibold">
+          {T.kesfet}
+          <Ikon ad="ok" boyut={20} class="yon-ok" />
+        </a>
+      </div>
+      <img
+        src="/img/hakkimizda/harem-revak.webp"
+        width="762"
+        height="278"
+        alt={T.gorselAlt}
+        class="aspect-[762/278] w-full rounded-2xl object-cover shadow-[0_10px_30px_-12px_rgb(60_50_20/0.35)] lg:aspect-[782/298]"
+      />
+    </section>
+
+    <!-- Amaç ve yolculuk -->
+    <section class="genis-kap grid gap-10 pb-14 md:grid-cols-2 md:gap-0">
+      <article class="flex gap-5 md:pe-10">
+        <span class="cerceve" aria-hidden="true"><Ikon ad="kabe" boyut={46} /></span>
+        <div class="min-w-0">
+          <h2 class="text-2xl font-bold text-emerald-800 sm:text-[28px]">{T.amacBaslik}</h2>
+          <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/90">{T.amac}</p>
+        </div>
+      </article>
+      <article class="flex gap-5 md:border-s md:border-krem-cizgi md:ps-10">
+        <span class="cerceve" aria-hidden="true">
+          <!-- Konum işareti ve kıvrımlı yol (ortak ikon setinde yok) -->
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 11.5s-3-2.7-3-5.2a3 3 0 0 1 6 0c0 2.5-3 5.2-3 5.2Z" /><circle cx="16" cy="6.3" r="1" />
+            <path d="M15 13.5c-3 .3-7 .6-7 2.4 0 1.8 5 1.5 5 3.3 0 1.2-3 1.6-7 1.8" />
+          </svg>
+        </span>
+        <div class="min-w-0">
+          <h2 class="text-2xl font-bold text-emerald-800 sm:text-[28px]">{T.yaninizdaBaslik}</h2>
+          <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/90">{T.yaninizda}</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Vizyon paneli + değerler -->
+    <section class="border-t border-krem-cizgi/70">
+      <div class="mx-auto grid w-full max-w-[1536px] lg:grid-cols-[minmax(0,480px)_1fr]">
+        <div class="vizyon relative isolate overflow-hidden text-white">
+          <svg class="absolute inset-0 -z-10 h-full w-full rtl:-scale-x-100" viewBox="0 0 480 320" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="vizyon-zemin" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0d4535" />
+                <stop offset="1" stop-color="#0b2b26" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M-4 1.5H365C392 1.5 398 12 402 26 407 43 420 50 440 52 462 54 477 66 477 88V324H-4Z"
+              fill="url(#vizyon-zemin)"
+              stroke="#b8963e"
+              stroke-width="3"
+              vector-effect="non-scaling-stroke"
+            />
+          </svg>
+          <!-- Minare ve kubbe çizimi -->
+          <svg class="pointer-events-none absolute end-4 bottom-0 h-36 w-auto text-altin/70" viewBox="0 0 120 150" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M22 150V62h12v88M20 62h16M23 62l5-18 5 18M28 44V30M25 30h6M28 30v-8M28 22a2 2 0 1 0 0-.1M20 96h16M20 120h16" />
+            <path d="M48 150v-24h70v24M52 126a31 31 0 0 1 62 0M83 95v-8M83 85a2 2 0 1 0 0-.1M58 150v-10a4 4 0 0 1 8 0v10M72 150v-10a4 4 0 0 1 8 0v10M86 150v-10a4 4 0 0 1 8 0v10M100 150v-10a4 4 0 0 1 8 0v10M6 149h114" />
+          </svg>
+          <div class="relative px-6 pt-14 pb-16 sm:ps-16 sm:pe-28 lg:ps-[60px]">
+            <h2 class="text-3xl font-bold text-white sm:text-[40px]">{T.vizyonBaslik}</h2>
+            <p class="mt-5 max-w-[320px] text-lg leading-relaxed text-white/90 sm:text-[19px]">{T.vizyon}</p>
+          </div>
+        </div>
+
+        <div class="px-4 pt-12 pb-14 md:px-6 lg:ps-10 lg:pe-14">
+          <h2 class="text-3xl font-bold text-emerald-800 sm:text-[40px]">{T.degerlerBaslik}</h2>
+          <ul class="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-0">
+            {
+              degerler.map((d, i) => (
+                <li class:list={['xl:px-6', i === 0 ? 'xl:ps-0' : 'xl:border-s xl:border-krem-cizgi']}>
+                  <span class="text-altin" aria-hidden="true">
+                    <Ikon ad={d.ikon} boyut={44} />
+                  </span>
+                  <h3 class="baslik mt-4 text-[22px] font-bold text-emerald-800">{d.baslik}</h3>
+                  <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/85">{d.metin}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* Sekizgen, kenarları oyulmuş ikon çerçevesi (görseldeki rozet) */
+  .cerceve {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 92px;
+    color: var(--color-altin);
+    background: #eef0e2;
+    border-radius: 34% 34% 34% 34% / 30% 30% 30% 30%;
+    box-shadow:
+      0 0 0 1px rgb(184 150 62 / 0.35),
+      0 0 0 6px #f6f3ec,
+      0 0 0 7px rgb(184 150 62 / 0.25);
+    margin: 7px;
+  }
+  .genis-kap {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .genis-kap {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .genis-kap {
+      padding-inline: 60px;
+    }
+  }
+  .vizyon {
+    min-height: 320px;
+  }
+</style>

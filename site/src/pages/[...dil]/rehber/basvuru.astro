@@ -1,0 +1,115 @@
+---
+// Rehber başvurusu: onaylı referans görsel (07-rehber-basvurusu) düzeni.
+// Başvuru programa kabul sözü vermez. Sertifika için yalnız belge dosyası istenir.
+import Base from '../../../layouts/Base.astro';
+import Ikon from '../../../components/Ikon.astro';
+import Form from '../../../components/form/Form.astro';
+import Alan from '../../../components/form/Alan.astro';
+import { dilYollari, type Dil } from '../../../i18n';
+import { sayfaMetni } from '../../../i18n/sayfa';
+import { REHBER_BASVURU } from '../../../i18n/sayfa/rehberBasvuru';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const T = sayfaMetni(dil, REHBER_BASVURU);
+
+const faydalar = [
+  { ikon: 'aile', baslik: T.f1, metin: T.f1m },
+  { ikon: 'takvimTik', baslik: T.f2, metin: T.f2m },
+  { ikon: 'kalkan', baslik: T.f3, metin: T.f3m },
+] as const;
+
+const bolgeler = [
+  { d: 'mekke', ad: T.mekke },
+  { d: 'medine', ad: T.medine },
+  { d: 'ikisi', ad: T.ikisi },
+];
+const diller = [
+  { d: 'tr', ad: T.dTr },
+  { d: 'ar', ad: T.dAr },
+  { d: 'en', ad: T.dEn },
+  { d: 'diger', ad: T.dDiger },
+];
+---
+
+<Base dil={dil} yalin="/rehber/basvuru/" baslik={T.metaBaslik} aciklama={T.metaAciklama}>
+  <section class="relative overflow-hidden bg-gradient-to-b from-[#f8f5ee] to-krem">
+    <div class="mx-auto grid w-full max-w-[1440px] gap-10 px-4 pt-10 pb-12 md:px-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1fr)] lg:gap-14 lg:ps-14 lg:pt-14 lg:pb-14">
+      <!-- Sol: amaç ve faydalar -->
+      <div class="relative flex flex-col">
+        <p class="flex items-center gap-5 text-[15px] font-semibold tracking-[0.22em] text-altin-koyu uppercase rtl:tracking-normal">
+          {T.etiket}
+          <span class="h-px max-w-36 min-w-8 flex-1 bg-altin/60" aria-hidden="true"></span>
+        </p>
+        <h1 class="mt-6 text-[2.6rem] leading-[1.1] font-bold text-emerald-800 sm:text-6xl lg:text-[62px] text-balance">{T.baslik}</h1>
+        <p class="mt-6 max-w-[580px] text-lg leading-relaxed text-emerald-900/85 sm:text-xl">{T.metin}</p>
+
+        <ul class="mt-10 space-y-7">
+          {
+            faydalar.map((f) => (
+              <li class="flex items-start gap-6">
+                <span class="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-2xl bg-[#efe9da] text-altin-koyu">
+                  <Ikon ad={f.ikon} boyut={36} />
+                </span>
+                <span class="min-w-0 pt-1">
+                  <span class="baslik block text-2xl leading-tight font-bold text-emerald-800">{f.baslik}</span>
+                  <span class="mt-1.5 block max-w-[420px] text-[17px] leading-relaxed text-emerald-900/85">{f.metin}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <img
+          src="/img/rehber-basvuru/kabe.webp"
+          alt=""
+          width="720"
+          height="330"
+          loading="lazy"
+          class="kabe pointer-events-none mt-6 w-full max-w-[720px] select-none lg:-ms-14 lg:mt-auto lg:w-[calc(100%+3.5rem)] lg:max-w-none"
+        />
+      </div>
+
+      <!-- Sağ: form kartı -->
+      <div class="self-start rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 shadow-[0_2px_16px_rgb(60_50_20/0.06)] sm:p-7">
+        <h2 class="text-[1.9rem] leading-tight font-bold text-emerald-800 sm:text-[40px]">{T.formBaslik}</h2>
+        <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/85 sm:text-lg">{T.formMetin}</p>
+        <p class="mt-3 flex items-start gap-2 text-[15px] leading-snug text-emerald-900/75">
+          <Ikon ad="bilgi" boyut={18} class="mt-0.5 shrink-0 text-altin-koyu" />
+          {T.surecNot}
+        </p>
+        <hr class="my-6 border-krem-cizgi" />
+
+        <Form dil={dil} tur="rehber" gonderMetni={T.fGonder} basariMetni={T.fBasari} dosyali>
+          <Alan ad="adSoyad" etiket={T.fAd} zorunlu ikon="kisi" yer={T.fAdYer} otomatik="name" />
+          <Alan ad="telefon" etiket={T.fTelefon} tip="telefon" zorunlu ikon="telefon" yer={T.fTelefonYer} />
+          <Alan ad="eposta" etiket={T.fEposta} tip="eposta" zorunlu ikon="posta" yer={T.fEpostaYer} genis />
+          <Alan ad="bolge" etiket={T.fBolge} tip="secim" zorunlu ikon="konum" secenekler={bolgeler} secinMetni={T.fBolgeSec} />
+          <Alan ad="diller" etiket={T.fDil} tip="cokluSecim" zorunlu secenekler={diller} />
+          <Alan ad="deneyim" etiket={T.fDeneyim} tip="metinAlani" zorunlu ikon="liste" yer={T.fDeneyimYer} satir={3} genis />
+          <Alan
+            ad="belge"
+            etiket={T.fBelge}
+            tip="dosya"
+            zorunlu
+            ikon="ek"
+            kabul=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+            dosyaDugme={T.fBelgeDugme}
+            dosyaNot={T.fBelgeNot}
+            genis
+          />
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Kâbe çizimi üst kenarda zemine karışır (aynalanmaz) */
+  .kabe {
+    mask-image:
+      linear-gradient(180deg, transparent 0%, #000 22%, #000 88%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-composite: intersect;
+  }
+</style>

@@ -1,5 +1,9 @@
 ---
+// Açık zeminli başlık çubuğu (onaylı ana sayfa görseli): logo | menü ........ TR / EN / AR
 import { DILLER, DIL_ADI, cevirmen, yol, type Dil } from '../i18n';
+import { anaMenu } from '../lib/menu';
+import Logo from './Logo.astro';
+import Ikon from './Ikon.astro';
 
 interface Props {
   dil: Dil;
@@ -7,72 +11,126 @@ interface Props {
 }
 const { dil, yalin } = Astro.props;
 const t = cevirmen(dil);
-const menu = [
-  { ad: t('nav.ozellikler'), href: yol(dil, '/#ozellikler') },
-  { ad: t('nav.paketler'), href: yol(dil, '/#paketler') },
-  { ad: t('nav.destek'), href: yol(dil, '/destek') },
-];
+const menu = anaMenu(dil);
+const aktif = (m: { yalin: string }) => (m.yalin === '/' ? yalin === '/' : yalin.startsWith(m.yalin));
+const kisaDil: Record<Dil, string> = { tr: 'TR', en: 'EN', ar: 'AR' };
 ---
 
-<header class="yesil-degrade text-white">
-  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4">
-    <a href={yol(dil, '/')} class="flex items-center gap-2 font-bold text-lg no-underline shrink-0">
-      <img src="/logo.png" alt="" width="40" height="38" class="h-9 w-auto rounded-lg bg-white/95 p-0.5" />
-      <span>{t('site.ad')}</span>
+<header class="sticky top-0 z-40 border-b border-krem-cizgi bg-krem/95 text-emerald-900 backdrop-blur">
+  <div class="mx-auto flex min-h-[76px] w-full max-w-[1440px] items-center gap-6 px-4 md:px-8">
+    <a href={yol(dil, '/')} class="flex items-center gap-3 rounded-kart no-underline">
+      <Logo boyut={54} />
+      <span class="baslik text-[26px] font-bold leading-none whitespace-nowrap text-emerald-900">{t('site.ad')}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-6 ms-6 text-white/90" aria-label={t('nav.menu')}>
-      {menu.map((m) => <a href={m.href} class="hover:text-white no-underline">{m.ad}</a>)}
+    <span class="hidden xl:block h-9 w-px bg-emerald-900/40" aria-hidden="true"></span>
+
+    <nav class="hidden xl:flex items-center gap-1" aria-label={t('nav.menu')}>
+      {
+        menu.map((m) => (
+          <a
+            href={m.href}
+            aria-current={aktif(m) ? 'page' : undefined}
+            class:list={[
+              'relative rounded-md px-3.5 py-2 text-[17px] no-underline transition',
+              aktif(m) ? 'text-emerald-600 font-medium' : 'text-emerald-900 hover:text-emerald-600',
+            ]}
+          >
+            {m.ad}
+            {aktif(m) && <span class="absolute inset-x-3.5 -bottom-1 h-0.5 rounded-full bg-altin" aria-hidden="true" />}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="ms-auto flex items-center gap-3">
-      <ul class="hidden sm:flex items-center gap-1 text-sm" aria-label={t('nav.dil')}>
+      <ul class="hidden sm:flex items-center text-[15px] font-medium" aria-label={t('nav.dil')}>
         {
-          DILLER.map((d) => (
-            <li>
+          DILLER.map((d, i) => (
+            <li class="flex items-center">
+              {i > 0 && <span class="px-1 text-emerald-900/70" aria-hidden="true">/</span>}
               <a
                 href={yol(d, yalin)}
                 hreflang={d}
                 lang={d}
+                title={DIL_ADI[d]}
+                aria-label={DIL_ADI[d]}
                 aria-current={d === dil ? 'true' : undefined}
                 class:list={[
-                  'rounded-md px-2 py-1 no-underline',
-                  d === dil ? 'bg-white/20 font-semibold' : 'text-white/80 hover:text-white',
+                  'inline-flex min-h-9 min-w-11 items-center justify-center rounded-full px-2.5 no-underline transition',
+                  d === dil ? 'bg-mint text-emerald-800 font-semibold' : 'text-emerald-900 hover:text-emerald-600',
                 ]}
               >
-                {DIL_ADI[d]}
+                {kisaDil[d]}
               </a>
             </li>
           ))
         }
       </ul>
-      <a href={yol(dil, '/#indir')} class="hidden md:inline-flex dugme-acik !py-2 text-sm">{t('nav.indir')}</a>
 
-      <!-- Mobil menü: JS'siz <details> -->
-      <details class="md:hidden relative">
-        <summary class="list-none cursor-pointer rounded-md px-3 py-2 bg-white/15" aria-label={t('nav.menu')}>
-          ☰
+      <!-- Mobil menü: <details>; RTL'de mantıksal özelliklerle ters taraftan açılır. -->
+      <details class="xl:hidden group relative" data-mobil-menu>
+        <summary
+          class="list-none [&::-webkit-details-marker]:hidden flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-kart border border-krem-cizgi bg-white text-emerald-800"
+          aria-label={t('nav.menu')}
+        >
+          <Ikon ad="menu" class="group-open:hidden" />
+          <Ikon ad="kapat" class="hidden group-open:block" />
         </summary>
-        <div class="absolute end-0 mt-2 w-56 kart p-3 text-metin z-40 flex flex-col gap-1">
-          {menu.map((m) => <a href={m.href} class="rounded-md px-3 py-2 hover:bg-mint no-underline">{m.ad}</a>)}
-          <a href={yol(dil, '/#indir')} class="rounded-md px-3 py-2 hover:bg-mint no-underline font-medium text-emerald-600"
-            >{t('nav.indir')}</a
-          >
-          <hr class="my-1 border-cizgi" />
-          {
-            DILLER.map((d) => (
-              <a
-                href={yol(d, yalin)}
-                hreflang={d}
-                lang={d}
-                class:list={['rounded-md px-3 py-2 hover:bg-mint no-underline', d === dil && 'font-semibold']}
-              >
-                {DIL_ADI[d]}
-              </a>
-            ))
-          }
+        <div class="absolute end-0 z-50 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-buyuk border border-krem-cizgi bg-white p-3 text-metin shadow-xl">
+          <nav class="flex flex-col" aria-label={t('nav.menu')}>
+            {
+              menu.map((m) => (
+                <a
+                  href={m.href}
+                  aria-current={aktif(m) ? 'page' : undefined}
+                  class:list={[
+                    'flex min-h-11 items-center rounded-kart px-3 text-[17px] no-underline hover:bg-mint/60',
+                    aktif(m) && 'bg-mint/60 font-semibold text-emerald-700',
+                  ]}
+                >
+                  {m.ad}
+                </a>
+              ))
+            }
+          </nav>
+          <hr class="my-3 border-krem-cizgi" />
+          <div class="flex gap-2" aria-label={t('nav.dil')}>
+            {
+              DILLER.map((d) => (
+                <a
+                  href={yol(d, yalin)}
+                  hreflang={d}
+                  lang={d}
+                  aria-current={d === dil ? 'true' : undefined}
+                  class:list={[
+                    'flex min-h-11 flex-1 items-center justify-center rounded-kart border text-sm no-underline',
+                    d === dil ? 'border-emerald-600 bg-emerald-600 font-semibold text-white' : 'border-krem-cizgi hover:bg-mint/60',
+                  ]}
+                >
+                  {DIL_ADI[d]}
+                </a>
+              ))
+            }
+          </div>
         </div>
       </details>
     </div>
   </div>
 </header>
+
+<script>
+  // Mobil menü: dışarı tıklayınca, Esc ile ve bağlantıya basınca kapanır.
+  for (const menu of document.querySelectorAll<HTMLDetailsElement>('[data-mobil-menu]')) {
+    document.addEventListener('click', (e) => {
+      if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => (menu.open = false)));
+  }
+</script>

@@ -29,6 +29,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // CSP 'script-src self': küçük betikler de satır içine gömülmesin, ayrı dosya olsun.
+    build: { assetsInlineLimit: 0 },
   },
   integrations: [htaccess()],
 });

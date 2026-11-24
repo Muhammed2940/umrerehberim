@@ -1,0 +1,702 @@
+---
+// Mekke ve Medine Rehberi: onaylı referans görsel (02-rehber) düzeni.
+// Mekânlar, kapılar, ulaşım, umre adımları ve dualar: data/rehber.json (uygulama verisi, tek kaynak).
+// Şehir sekmesi ve arama istemcide süzer, URL ile eşlenir: ?sehir=mekke|medine|diger&q=...
+// JS yoksa tüm kartlar görünür kalır.
+import Base from '../../../layouts/Base.astro';
+import Ikon from '../../../components/Ikon.astro';
+import TurIkon from '../../../components/rehber/TurIkon.astro';
+import MekanGorsel from '../../../components/rehber/MekanGorsel.astro';
+import BilgiBolum from '../../../components/rehber/BilgiBolum.astro';
+import { cevirmen, dilYollari, yol, type Dil } from '../../../i18n';
+import { sayfaMetni } from '../../../i18n/sayfa';
+import { REHBER_METIN } from '../../../i18n/sayfa/rehber';
+import {
+  REHBER,
+  MEKANLAR,
+  MEKAN_FOTO,
+  m,
+  metinDili,
+  duaDil,
+  arayuz,
+  mekanSlug,
+  mekanAramaAnahtari,
+} from '../../../lib/rehber';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const T = sayfaMetni(dil, REHBER_METIN);
+const doldur = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ''));
+const detay = (id: string) => yol(dil, `/rehber/${mekanSlug(id)}/`);
+
+const sekmeler = [
+  { d: 'mekke', ad: arayuz('tabMekke', dil), ikon: 'kabe' },
+  { d: 'medine', ad: arayuz('tabMedine', dil), ikon: 'mescid' },
+  { d: 'diger', ad: arayuz('tabDiger', dil), ikon: 'tarihiSehir' },
+];
+
+const oneCikanlar = [
+  { ad: T.f1Ad, metin: T.f1Metin, sehir: T.mekke, foto: '/img/rehber/mescid-i-haram.webp', id: 'mescid_i_haram' },
+  { ad: T.f2Ad, metin: T.f2Metin, sehir: T.mekke, foto: '/img/rehber/kabe.webp', id: 'mescid_i_haram' },
+  { ad: T.f3Ad, metin: T.f3Metin, sehir: T.medine, foto: '/img/rehber/mescid-i-nebevi.webp', id: 'mescid_i_nebevi' },
+  { ad: T.f4Ad, metin: T.f4Metin, sehir: T.medine, foto: '/img/rehber/ravza.webp', id: 'mescid_i_nebevi' },
+];
+
+const girisler = [
+  { id: 'harem-kapilari', ad: T.kapilarBaslik, metin: T.kapilarMetin, ikon: 'kapi' },
+  { id: 'ulasim', ad: T.ulasimBaslik, metin: T.ulasimMetin, ikon: 'otobus' },
+  { id: 'adim-adim-umre', ad: T.adimBaslik, metin: T.adimMetin, ikon: 'kabe' },
+  { id: 'dualar', ad: T.duaBaslik, metin: T.duaMetin, ikon: 'kuran' },
+];
+
+const turAdi = (tur: string) => (T as Record<string, string>)[`tur_${tur}`] ?? '';
+
+const kapiGruplari = [REHBER.haremKapilari.haram, REHBER.haremKapilari.nebevi];
+const ul = REHBER.ulasim;
+const sehirUlasim = [ul.mekke, ul.medine];
+const adimlar = REHBER.umreAdimlari;
+---
+
+<Base dil={dil} yalin="/rehber/" baslik={T.metaBaslik} aciklama={T.metaAciklama}>
+  <!-- 1. Giriş: krem zemin, sağda Mekke–Medine silüeti -->
+  <section class="rehber-giris relative overflow-hidden bg-krem">
+    <img
+      src="/img/rehber/silu.webp"
+      alt=""
+      width="656"
+      height="212"
+      decoding="async"
+      class="silu pointer-events-none absolute end-0 bottom-0 hidden h-[212px] w-auto lg:block xl:h-[230px]"
+    />
+    <div class="relative mx-auto w-full max-w-[1440px] px-4 pt-10 pb-6 md:px-10 lg:pt-14 lg:pb-12">
+      <h1 class="max-w-[860px] text-[2.2rem] font-bold leading-[1.15] text-emerald-800 sm:text-5xl lg:max-w-[60%] lg:text-[50px] xl:max-w-[66%] xl:text-[56px] text-balance">
+        {T.baslik}
+      </h1>
+      <p class="mt-4 max-w-[800px] text-lg leading-relaxed text-emerald-900/85 lg:max-w-[56%] lg:text-xl text-pretty">{T.alt}</p>
+    </div>
+    <img
+      src="/img/rehber/silu.webp"
+      alt=""
+      width="656"
+      height="212"
+      decoding="async"
+      class="silu relative ms-auto block h-auto w-full max-w-[560px] lg:hidden"
+    />
+  </section>
+
+  <!-- 2. Şehir sekmeleri + arama (JS: süzme ve URL eşleme; JS yoksa GET ile aynı sayfa) -->
+  <section class="bg-krem" data-rehber>
+    <div class="mx-auto w-full max-w-[1440px] px-4 pt-4 md:px-10">
+      <form action={yol(dil, '/rehber/')} method="get" role="search" class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-filtre>
+        <fieldset>
+          <legend class="sr-only">{T.sehir}</legend>
+          <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
+            {
+              sekmeler.map((s, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="sehir" value={s.d} checked={i === 0} class="peer sr-only" />
+                  <span class="sekme flex min-h-[52px] items-center justify-center gap-3 rounded-xl border border-[#cfd8c6] bg-[#f1efe6] px-2 text-center text-[17px] leading-tight font-medium text-emerald-900 transition hover:border-emerald-600/60 peer-checked:border-emerald-700 peer-checked:text-white peer-checked:shadow-md peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-sage sm:min-h-[58px] sm:px-7 sm:text-[22px] lg:min-w-[200px]">
+                    <TurIkon ad={s.ikon} boyut={28} class="sekme-ikon hidden text-emerald-600 sm:block" />
+                    <span class="baslik font-normal">{s.ad}</span>
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+        <div class="relative flex-1">
+          <label for="rehber-q" class="sr-only">{T.araEtiket}</label>
+          <span class="pointer-events-none absolute inset-y-0 start-5 flex items-center text-emerald-900"><Ikon ad="arama" boyut={26} /></span>
+          <input
+            id="rehber-q"
+            name="q"
+            type="search"
+            autocomplete="off"
+            maxlength="60"
+            placeholder={T.araYer}
+            class="min-h-[58px] w-full rounded-xl border border-[#d6c79c] bg-[#fdfcf8] ps-15 pe-4 text-lg text-emerald-900 shadow-sm placeholder:text-emerald-900/65 focus:border-emerald-600 focus:outline-none focus-visible:outline-3 focus-visible:outline-sage sm:text-xl"
+            data-sorgu
+          />
+          <button type="submit" class="sr-only">{T.araDugme}</button>
+        </div>
+      </form>
+      <p class="mt-3 hidden text-base text-emerald-900/80" aria-live="polite" data-durum>
+        <span data-durum-metin></span>
+        <a href="#tum-yerler" class="ms-2 inline-flex min-h-11 items-center gap-1 font-semibold text-altin-koyu underline-offset-4 hover:underline">
+          {T.sonuclariGor}
+          <Ikon ad="asagi" boyut={18} />
+        </a>
+      </p>
+    </div>
+
+    <!-- 3. Öne çıkan ziyaret yerleri -->
+    <div class="mx-auto w-full max-w-[1520px] px-4 pt-8 pb-10 md:px-5 md:pt-10">
+      <div class="flex flex-wrap items-end justify-between gap-3 md:px-5">
+        <h2 class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.oneCikan}</h2>
+        <a href="#tum-yerler" class="inline-flex min-h-11 items-center gap-2 text-lg font-semibold text-altin-koyu no-underline hover:underline underline-offset-4">
+          {T.tumu}
+          <Ikon ad="ok" boyut={22} />
+        </a>
+      </div>
+      <ul class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" role="list">
+        {
+          oneCikanlar.map((k, i) => (
+            <li>
+              <a
+                href={detay(k.id)}
+                class="group flex h-full flex-col overflow-hidden rounded-2xl border border-krem-cizgi bg-[#fbfaf6] no-underline shadow-[0_2px_10px_rgb(60_50_20/0.06)] transition hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-md"
+              >
+                <div class="relative aspect-[357/198] overflow-hidden">
+                  <img
+                    src={k.foto}
+                    alt=""
+                    width="357"
+                    height="198"
+                    loading={i < 2 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    class="h-full w-full object-cover"
+                  />
+                  <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-[#fbfaf6]/95 px-3 py-1 text-base text-emerald-900 shadow-sm">
+                    <Ikon ad="konum" boyut={17} class="text-altin-koyu" />
+                    {k.sehir}
+                  </span>
+                </div>
+                <div class="flex flex-1 items-start gap-3 px-5 pt-4 pb-5">
+                  <div class="min-w-0 flex-1">
+                    <h3 class="baslik text-[24px] font-bold leading-tight text-emerald-900">{k.ad}</h3>
+                    <p class="mt-1.5 text-base leading-snug text-emerald-900/85">{k.metin}</p>
+                  </div>
+                  <span class="mt-8 shrink-0 text-altin-koyu transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                    <Ikon ad="ok" boyut={24} />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- 4. Bölüm girişleri -->
+      <ul class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" role="list">
+        {
+          girisler.map((g) => (
+            <li>
+              <a
+                href={`#${g.id}`}
+                class="giris-kart group flex h-full items-start gap-4 rounded-2xl px-5 py-6 no-underline shadow-[0_2px_10px_rgb(60_50_20/0.05)] transition hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <span class="shrink-0 text-emerald-600">
+                  <TurIkon ad={g.ikon} boyut={54} />
+                </span>
+                <span class="min-w-0 flex-1">
+                  <span class="baslik block text-[25px] font-bold leading-tight text-emerald-900">{g.ad}</span>
+                  <span class="mt-2 flex items-center gap-3">
+                    <span class="min-w-0 flex-1 text-base leading-snug text-emerald-900/85">{g.metin}</span>
+                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-altin text-altin-koyu transition group-hover:bg-altin group-hover:text-white">
+                      <Ikon ad="ok" boyut={18} />
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Tüm ziyaret yerleri (veriden: tüm mekânlar) -->
+  <section id="tum-yerler" class="scroll-mt-20 bg-[#f1efe6] py-12" aria-labelledby="tum-yerler-baslik">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 id="tum-yerler-baslik" class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.tumu}</h2>
+          <p class="mt-1 text-base text-emerald-900/80">{T.tumuAlt}</p>
+        </div>
+        <p class="text-base font-medium text-emerald-800" data-sayac data-sablon={T.sonucSayisi}>
+          {doldur(T.sonucSayisi, { n: MEKANLAR.length })}
+        </p>
+      </div>
+
+      <div class="mt-8 hidden rounded-2xl border border-dashed border-altin/60 bg-[#fbfaf6] px-6 py-10 text-center" data-bos>
+        <p class="text-lg font-medium text-emerald-900">{T.sonucYok}</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <button type="button" class="dugme-ana min-h-12" data-temizle>{T.temizle}</button>
+          {
+            sekmeler.map((s) => (
+              <button
+                type="button"
+                class="hidden min-h-12 rounded-kart border border-emerald-600/40 px-5 font-medium text-emerald-700 hover:bg-mint/60"
+                data-diger-sehir={s.d}
+                data-sablon={doldur(T.digerSehirde, { sehir: s.ad, n: '{n}' })}
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <ul class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" role="list" data-liste>
+        {
+          MEKANLAR.map((y) => {
+            const ad = m(y.ad, dil);
+            const arapcaGoster = y.arapcaAd && y.arapcaAd !== ad;
+            return (
+              <li data-yer data-bolge={y.bolge} data-ara={mekanAramaAnahtari(y)}>
+                <a
+                  href={detay(y.id)}
+                  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-krem-cizgi bg-[#fbfaf6] no-underline shadow-[0_2px_10px_rgb(60_50_20/0.05)] transition hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-md"
+                >
+                  <div class="relative aspect-[16/9] overflow-hidden">
+                    <MekanGorsel tur={y.tur} bolge={y.bolge} foto={MEKAN_FOTO[y.id]} ikonBoyut={48} />
+                    <span class="absolute top-3 left-3 inline-flex max-w-[85%] items-center gap-1.5 rounded-full bg-[#fbfaf6]/95 px-3 py-1 text-[15px] text-emerald-900 shadow-sm">
+                      <Ikon ad="konum" boyut={16} class="shrink-0 text-altin-koyu" />
+                      <span class="truncate" lang={metinDili(y.sehir, dil)}>{m(y.sehir, dil).split(/[,،]/)[0]}</span>
+                    </span>
+                  </div>
+                  <div class="flex flex-1 flex-col px-5 pt-4 pb-5">
+                    <h3 class="baslik text-[21px] font-bold leading-snug text-emerald-900" lang={metinDili(y.ad, dil)}>{ad}</h3>
+                    {arapcaGoster && (
+                      <p lang="ar" dir="rtl" class="mt-1 font-amiri text-lg leading-normal text-emerald-700">
+                        {y.arapcaAd}
+                      </p>
+                    )}
+                    <p class="mt-2 text-base leading-snug text-emerald-900/80" lang={metinDili(y.altBaslik, dil)}>{m(y.altBaslik, dil)}</p>
+                    <div class="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4 text-[15px]">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-mint/70 px-3 py-1 text-emerald-700">
+                        <TurIkon ad={y.tur} boyut={16} />
+                        {turAdi(y.tur)}
+                      </span>
+                      {y.sesliRehber && (
+                        <span class="inline-flex items-center gap-1.5 text-emerald-700">
+                          <Ikon ad="kulaklik" boyut={17} />
+                          {T.sesliRehber}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <p class="mt-6 flex gap-2 text-sm text-emerald-900/65">
+        <span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="bilgi" boyut={18} /></span>
+        {T.fotoNot}
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. Harem kapıları (uygulama verisi) -->
+  <section id="harem-kapilari" class="scroll-mt-20 bg-krem py-14" aria-labelledby="kapilar-baslik">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-600"><TurIkon ad="kapi" boyut={44} /></span>
+        <h2 id="kapilar-baslik" class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.kapilarBaslik}</h2>
+      </div>
+      <p class="mt-3 max-w-3xl text-lg text-emerald-900/85">{T.kapilarMetin}</p>
+      <p class="mt-4 flex max-w-4xl gap-3 rounded-xl border border-altin/40 bg-fildisi px-4 py-3 text-base text-emerald-900/90">
+        <Ikon ad="bilgi" boyut={22} class="mt-0.5 shrink-0 text-altin-koyu" />
+        <span lang={metinDili(REHBER.haremKapilari.not, dil)}>{m(REHBER.haremKapilari.not, dil)}</span>
+      </p>
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+        {
+          kapiGruplari.map((g) => (
+            <div>
+              <h3 class="baslik flex items-baseline justify-between gap-3 text-2xl font-bold text-emerald-800">
+                <span>{m(g.baslik, dil)}</span>
+                <span class="font-latin text-base font-normal text-soluk">{doldur(T.kapiSayisi, { n: g.kapilar.length })}</span>
+              </h3>
+              <ul class="mt-4 space-y-2.5" role="list">
+                {g.kapilar.map((k) => (
+                  <li>
+                    <details class="group rounded-xl border border-krem-cizgi bg-[#fbfaf6] open:bg-white">
+                      <summary class="flex min-h-14 cursor-pointer list-none items-center gap-4 px-4 py-3 [&::-webkit-details-marker]:hidden">
+                        <span class="flex h-11 min-w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-600 px-2 text-base font-bold text-white" title={k.no ? undefined : T.kapiNumarasiz}>
+                          <span class="sr-only">{T.kapiNo} </span>
+                          {k.no ?? '–'}
+                        </span>
+                        <span class="min-w-0 flex-1">
+                          <span class="block font-semibold text-emerald-900" lang={metinDili(k.ad, dil)}>{m(k.ad, dil)}</span>
+                          <span class="block text-[15px] text-soluk" lang={metinDili(k.yakin, dil)}>{m(k.yakin, dil)}</span>
+                        </span>
+                        {dil !== 'ar' && k.ad.ar && (
+                          <span lang="ar" dir="rtl" class="hidden shrink-0 font-amiri text-lg text-emerald-700 sm:block">{k.ad.ar}</span>
+                        )}
+                        <span class="shrink-0 text-xl leading-none text-altin-koyu transition group-open:rotate-45" aria-hidden="true">+</span>
+                      </summary>
+                      <dl class="space-y-3 px-4 pb-4 text-base leading-relaxed text-emerald-900/90">
+                        <div>
+                          <dt class="font-semibold text-emerald-800">{T.kapiAnlam}</dt>
+                          <dd lang={metinDili(k.anlam, dil)}>{m(k.anlam, dil)}</dd>
+                        </div>
+                        <div>
+                          <dt class="font-semibold text-emerald-800">{T.kapiKonum}</dt>
+                          <dd lang={metinDili(k.konum, dil)}>{m(k.konum, dil)}</dd>
+                        </div>
+                        {k.tarih && (
+                          <div>
+                            <dt class="font-semibold text-emerald-800">{T.kapiTarih}</dt>
+                            <dd lang={metinDili(k.tarih, dil)}>{m(k.tarih, dil)}</dd>
+                          </div>
+                        )}
+                        {k.ipucu && (
+                          <div>
+                            <dt class="font-semibold text-emerald-800">{T.kapiIpucu}</dt>
+                            <dd lang={metinDili(k.ipucu, dil)}>{m(k.ipucu, dil)}</dd>
+                          </div>
+                        )}
+                      </dl>
+                    </details>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Ulaşım (uygulama verisi, özet) -->
+  <section id="ulasim" class="scroll-mt-20 bg-[#f1efe6] py-14" aria-labelledby="ulasim-baslik">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-600"><Ikon ad="otobus" boyut={44} /></span>
+        <h2 id="ulasim-baslik" class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.ulasimBaslik}</h2>
+      </div>
+      <p class="mt-3 max-w-3xl text-lg text-emerald-900/85">{T.ulasimMetin}</p>
+      <p class="mt-4 flex max-w-4xl gap-3 rounded-xl border border-altin/40 bg-fildisi px-4 py-3 text-base text-emerald-900/90">
+        <Ikon ad="bilgi" boyut={22} class="mt-0.5 shrink-0 text-altin-koyu" />
+        <span lang={metinDili(ul.ustNot, dil)}>{m(ul.ustNot, dil)}</span>
+      </p>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        {
+          sehirUlasim.map((s) => (
+            <article class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 md:p-6">
+              <h3 class="baslik text-2xl font-bold text-emerald-800">{m(s.baslik, dil)}</h3>
+              <ul class="mt-4 space-y-2.5 text-base leading-relaxed text-emerald-900/90">
+                {s.genel.map((md) => (
+                  <li lang={metinDili(md.metin, dil)}>
+                    {md.baslik && <strong class="font-semibold text-emerald-800">{m(md.baslik, dil)} </strong>}
+                    {m(md.metin, dil)}
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-5 space-y-2.5">
+                <details class="group rounded-xl border border-krem-cizgi bg-white/70 open:bg-white">
+                  <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-semibold text-emerald-800 [&::-webkit-details-marker]:hidden">
+                    <span>
+                      {T.hatlar} ({s.hatlar.length})
+                    </span>
+                    <span class="text-xl leading-none text-altin-koyu transition group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="overflow-x-auto px-4 pb-4">
+                    <table class="w-full border-collapse text-start text-base">
+                      <thead>
+                        <tr class="border-b border-krem-cizgi text-emerald-800">
+                          <th scope="col" class="py-2 pe-3 text-start font-semibold">{T.hatNo}</th>
+                          <th scope="col" class="py-2 pe-3 text-start font-semibold">{T.guzergah}</th>
+                          <th scope="col" class="py-2 text-start font-semibold">{T.ucret}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {s.hatlar.map((h) => (
+                          <tr class="border-b border-krem-cizgi/70 align-top">
+                            <td class="py-2 pe-3 font-bold text-emerald-700">{h.numara}</td>
+                            <td class="py-2 pe-3">
+                              {m(h.nereden, dil)} ↔ {m(h.nereye, dil)}
+                            </td>
+                            <td class="py-2 whitespace-nowrap">{h.ucret ? m(h.ucret, dil) : '–'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+                {s.ek.map((b) => (
+                  <BilgiBolum bolum={b} dil={dil} />
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <article class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 md:p-6">
+          <h3 class="baslik text-2xl font-bold text-emerald-800">{m(ul.sehirlerarasi.baslik, dil)}</h3>
+          <ul class="mt-4 space-y-2.5 text-base leading-relaxed text-emerald-900/90">
+            {
+              ul.sehirlerarasi.genel.map((md) => (
+                <li lang={metinDili(md.metin, dil)}>
+                  {md.baslik && <strong class="font-semibold text-emerald-800">{m(md.baslik, dil)} </strong>}
+                  {m(md.metin, dil)}
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-5 space-y-2.5">
+            {[...ul.sehirlerarasi.istasyonlar, ...ul.sehirlerarasi.otobus].map((b) => <BilgiBolum bolum={b} dil={dil} />)}
+          </div>
+        </article>
+        <article class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 md:p-6">
+          <h3 class="baslik text-2xl font-bold text-emerald-800">{m(ul.taksi.baslik, dil)}</h3>
+          <div class="mt-4 space-y-2.5">
+            {[...ul.sehirlerarasi.havalimani, ...ul.taksi.bolumler].map((b) => <BilgiBolum bolum={b} dil={dil} />)}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Adım adım umre (uygulamadaki umre adımları verisi) -->
+  <section id="adim-adim-umre" class="scroll-mt-20 bg-krem py-14" aria-labelledby="adim-baslik">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-600"><Ikon ad="kabe" boyut={44} /></span>
+        <h2 id="adim-baslik" class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.adimBaslik}</h2>
+      </div>
+      <p class="mt-3 max-w-3xl text-lg text-emerald-900/85">{T.adimMetin}</p>
+      <ol class="mt-8 grid gap-5 lg:grid-cols-2" role="list">
+        {
+          adimlar.map((a, i) => (
+            <li class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 md:p-6">
+              <div class="flex items-start gap-4">
+                <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-xl font-bold text-white" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <div class="min-w-0">
+                  <h3 class="baslik text-[22px] font-bold leading-snug text-emerald-900">
+                    <span class="sr-only">{i + 1}. </span>
+                    {m(a.baslik, dil)}
+                  </h3>
+                  <p class="mt-0.5 flex items-center gap-1.5 text-[15px] text-soluk">
+                    <Ikon ad="konum" boyut={16} class="text-altin-koyu" />
+                    {m(a.yer, dil)}
+                  </p>
+                </div>
+              </div>
+              <ul class="mt-4 list-disc space-y-1.5 ps-6 text-base leading-relaxed text-emerald-900/90 marker:text-altin">
+                {a.yapilacaklar.map((x) => (
+                  <li lang={metinDili(x, dil)}>{m(x, dil)}</li>
+                ))}
+              </ul>
+              {a.dikkat && a.dikkat.length > 0 && (
+                <details class="group mt-4 rounded-xl border border-altin/40 bg-fildisi">
+                  <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5 font-semibold text-altin-koyu [&::-webkit-details-marker]:hidden">
+                    <span>{T.dikkat}</span>
+                    <span class="text-xl leading-none transition group-open:rotate-45" aria-hidden="true">+</span>
+                  </summary>
+                  <ul class="list-disc space-y-1.5 ps-9 pe-4 pb-4 text-base leading-relaxed text-emerald-900/90">
+                    {a.dikkat.map((x) => (
+                      <li lang={metinDili(x, dil)}>{m(x, dil)}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+              {a.dua && (
+                <a href={`#dua-${i + 1}`} class="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-emerald-700 underline-offset-4 hover:underline">
+                  <Ikon ad="dua" boyut={20} />
+                  {T.adimDua}: {m(a.dua.baslik, dil)}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- 9. Dualar (umre adımlarının duaları; uygulamadaki DuaMetni verisi) -->
+  <section id="dualar" class="scroll-mt-20 bg-[#f1efe6] py-14" aria-labelledby="dua-baslik">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-600"><TurIkon ad="kuran" boyut={44} /></span>
+        <h2 id="dua-baslik" class="text-[1.85rem] font-bold text-emerald-900 sm:text-[34px]">{T.duaBaslik}</h2>
+      </div>
+      <p class="mt-3 max-w-3xl text-lg text-emerald-900/85">{T.duaMetin}</p>
+      <ol class="mt-8 grid gap-5 lg:grid-cols-2" role="list">
+        {
+          adimlar.map((a, i) => {
+            const d = a.dua;
+            if (!d) return null;
+            const okunus = duaDil(d.okunus, dil);
+            const anlam = duaDil(d.anlam, dil);
+            return (
+              <li id={`dua-${i + 1}`} class="scroll-mt-24 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 md:p-6">
+                <p class="text-[15px] font-medium text-altin-koyu">{m(a.baslik, dil)}</p>
+                <h3 class="baslik mt-1 text-[22px] font-bold text-emerald-900">{m(d.baslik, dil)}</h3>
+                {d.arapca && (
+                  <p lang="ar" dir="rtl" class="mt-4 font-amiri text-[26px] leading-[2] text-emerald-800">
+                    {d.arapca}
+                  </p>
+                )}
+                <dl class="mt-3 space-y-3 text-base leading-relaxed text-emerald-900/90">
+                  {okunus && (
+                    <div>
+                      <dt class="font-semibold text-emerald-800">{T.okunus}</dt>
+                      <dd class="italic">{okunus}</dd>
+                    </div>
+                  )}
+                  {anlam && (
+                    <div>
+                      <dt class="font-semibold text-emerald-800">{T.anlam}</dt>
+                      <dd>{anlam}</dd>
+                    </div>
+                  )}
+                  {d.kaynak && (
+                    <div class="flex flex-wrap gap-x-2 text-[15px] text-soluk">
+                      <dt>{T.kaynak}:</dt>
+                      <dd>{m(d.kaynak, dil)}</dd>
+                    </div>
+                  )}
+                </dl>
+              </li>
+            );
+          })
+        }
+      </ol>
+      <div class="mt-6 flex flex-col items-start gap-3 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-base text-emerald-900/90">{T.duaUygulama}</p>
+        <a href={yol(dil, '/#indir')} class="dugme-ana min-h-12 shrink-0 no-underline">
+          <Ikon ad="indir" boyut={20} />
+          {T.uygulamadaAc}
+        </a>
+      </div>
+      <p class="mt-4 text-[15px] text-soluk">{t('altbilgi.fetva')}</p>
+    </div>
+  </section>
+
+  <!-- 10. Rehber başvurusu -->
+  <section class="bg-krem py-12">
+    <div class="mx-auto w-full max-w-[1440px] px-4 md:px-10">
+      <div class="giris-zemin flex flex-col items-start gap-5 rounded-2xl px-6 py-8 text-white md:flex-row md:items-center md:justify-between md:px-10">
+        <div>
+          <h2 class="text-[1.7rem] font-bold sm:text-3xl">{T.basvuruBaslik}</h2>
+          <p class="mt-2 max-w-2xl text-lg text-koyu-soluk">{T.basvuruMetin}</p>
+        </div>
+        <a href={yol(dil, '/rehber/basvuru/')} class="dugme-altin min-h-14 shrink-0 rounded-lg px-7 text-lg font-semibold">
+          {T.basvuruDugme}
+          <Ikon ad="ok" boyut={22} />
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Silüet: metne doğru kenarı krem zemine yumuşakça karışır (aynalanmaz). */
+  .silu {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%), linear-gradient(to bottom, transparent 0%, #000 30%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 22%), linear-gradient(to bottom, transparent 0%, #000 30%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  :global(html[dir='rtl']) .silu {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 22%), linear-gradient(to bottom, transparent 0%, #000 30%);
+    mask-image: linear-gradient(to left, transparent 0%, #000 22%), linear-gradient(to bottom, transparent 0%, #000 30%);
+  }
+  .rehber-giris {
+    background:
+      radial-gradient(ellipse 50% 80% at 85% 30%, rgb(255 255 255 / 0.55), transparent 70%),
+      var(--color-krem);
+  }
+  /* Etkin şehir sekmesi: koyu zümrüt degrade, altın ikon (referans görsel). */
+  :global(input:checked) + .sekme {
+    background: linear-gradient(180deg, #1d5446 0%, #0b2b26 100%);
+  }
+  :global(input:checked) + .sekme .sekme-ikon {
+    color: var(--color-altin-acik);
+  }
+  .giris-kart {
+    background: linear-gradient(180deg, #f6f3ea 0%, #efebdf 100%);
+    border: 1px solid rgb(228 220 203 / 0.7);
+  }
+</style>
+
+<script>
+  import { aramaAnahtari, BOLGELER, type Bolge } from '../../../lib/rehberAra';
+
+  const kok = document.querySelector<HTMLElement>('[data-rehber]');
+  const form = kok?.querySelector<HTMLFormElement>('[data-filtre]');
+  const sorgu = kok?.querySelector<HTMLInputElement>('[data-sorgu]');
+  const durum = kok?.querySelector<HTMLElement>('[data-durum]');
+  const durumMetin = kok?.querySelector<HTMLElement>('[data-durum-metin]');
+  const kartlar = [...document.querySelectorAll<HTMLElement>('[data-yer]')];
+  const bos = document.querySelector<HTMLElement>('[data-bos]');
+  const sayac = document.querySelector<HTMLElement>('[data-sayac]');
+  const digerDugmeler = [...document.querySelectorAll<HTMLButtonElement>('[data-diger-sehir]')];
+  const temizle = document.querySelector<HTMLButtonElement>('[data-temizle]');
+  const bolum = document.getElementById('tum-yerler');
+
+  if (form && sorgu && kartlar.length) {
+    const radyolar = [...form.querySelectorAll<HTMLInputElement>('input[name="sehir"]')];
+    const sehirAl = (): Bolge => (radyolar.find((r) => r.checked)?.value as Bolge) ?? 'mekke';
+    const sehirYaz = (s: Bolge) => radyolar.forEach((r) => (r.checked = r.value === s));
+    const sablon = (el: HTMLElement | null | undefined, n: number) => (el?.dataset.sablon ?? '{n}').replace('{n}', String(n));
+
+    const eslesenler = (s: Bolge, q: string) => {
+      const parcalar = aramaAnahtari(q).split(' ').filter(Boolean);
+      return kartlar.filter((k) => k.dataset.bolge === s && parcalar.every((p) => (k.dataset.ara ?? '').includes(p)));
+    };
+
+    const uygula = (urlGuncelle: boolean) => {
+      const s = sehirAl();
+      const q = sorgu.value.trim();
+      const gorunen = new Set(eslesenler(s, q));
+      kartlar.forEach((k) => (k.hidden = !gorunen.has(k)));
+      const n = gorunen.size;
+      if (sayac) sayac.textContent = sablon(sayac, n);
+      if (bos) bos.classList.toggle('hidden', n > 0);
+      // Boş sonuçta: aynı sorgunun diğer şehirlerdeki sonuçlarını öner.
+      digerDugmeler.forEach((d) => {
+        const ds = d.dataset.digerSehir as Bolge;
+        const dn = n === 0 && q && ds !== s ? eslesenler(ds, q).length : 0;
+        d.classList.toggle('hidden', dn === 0);
+        if (dn) d.textContent = sablon(d, dn);
+      });
+      if (durum && durumMetin) {
+        durum.classList.remove('hidden');
+        durumMetin.textContent = sablon(sayac, n);
+      }
+      if (urlGuncelle) {
+        const p = new URLSearchParams();
+        p.set('sehir', s);
+        if (q) p.set('q', q);
+        history.replaceState(null, '', `${location.pathname}?${p.toString()}${location.hash}`);
+      }
+    };
+
+    // Açılışta URL'den oku (ana sayfadaki arama formu ?sehir=..&q=.. ile gelir).
+    const p = new URLSearchParams(location.search);
+    const ilkSehir = p.get('sehir');
+    const ilkQ = (p.get('q') ?? '').slice(0, 60);
+    if (ilkSehir && (BOLGELER as readonly string[]).includes(ilkSehir)) sehirYaz(ilkSehir as Bolge);
+    sorgu.value = ilkQ;
+    uygula(false);
+    if (!ilkSehir && !ilkQ && durum) durum.classList.add('hidden');
+    if (ilkQ && !location.hash) bolum?.scrollIntoView({ block: 'start' });
+
+    radyolar.forEach((r) => r.addEventListener('change', () => uygula(true)));
+    sorgu.addEventListener('input', () => uygula(true));
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      uygula(true);
+      bolum?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    temizle?.addEventListener('click', () => {
+      sorgu.value = '';
+      uygula(true);
+      sorgu.focus();
+    });
+    digerDugmeler.forEach((d) =>
+      d.addEventListener('click', () => {
+        sehirYaz(d.dataset.digerSehir as Bolge);
+        uygula(true);
+      }),
+    );
+  }
+</script>

@@ -1,0 +1,59 @@
+---
+// Rehber sayfalarına özel ikonlar (ortak Ikon setinde olmayanlar). Ikon.astro ile aynı çizgi dili:
+// 24×24, stroke, yuvarlak uç, currentColor. Ortak sette olanlar (kabe, kubbe, bina, otobus, kitap) oradan gelir.
+import Ikon from '../Ikon.astro';
+
+interface Props {
+  /** Mekân türü (uygulamadaki GeziTur) ya da bölüm ikonu */
+  ad: string;
+  boyut?: number;
+  class?: string;
+}
+
+const OZEL: Record<string, string> = {
+  dag: '<path d="M2.5 19 9 7.5l3.2 5.4 2.3-3.4 7 9.5Z"/><path d="m7.2 10.7 1.8 1.3 1.6-1.2"/>',
+  magara: '<path d="M2.5 19 9 7.5l3.2 5.4 2.3-3.4 7 9.5Z"/><path d="M10 19v-2.2a2.5 2.5 0 0 1 5 0V19"/>',
+  mezarlik: '<path d="M5 20v-6.5a3 3 0 0 1 6 0V20M13 20v-8.5a3.5 3.5 0 0 1 7 0V20M3 20h18"/>',
+  ova: '<path d="M2.5 19h19"/><path d="M4.5 19 9 11l4.5 8M9 11v-1.5"/><path d="m13.5 19 3.5-5.5 3.5 5.5"/>',
+  savasAlani: '<path d="M6 21V3.5"/><path d="M6 4.5h11.5l-2.3 3.5 2.3 3.5H6"/><path d="M3.5 21h6"/>',
+  tarihiSehir: '<path d="M3 20h18M5 20v-9l4-3 4 3v9M13 20v-6.5h6V20"/><path d="M8 13.5h2M8 16.5h2M15.5 16.5h1"/>',
+  // Harem kapısı: kemerli kapı
+  kapi: '<path d="M5 21V10a7 7 0 0 1 14 0v11"/><path d="M3.5 21h17"/><path d="M9 21v-7.5a3 3 0 0 1 6 0V21"/><path d="M12 3V1.8"/>',
+  // Açık Kur'an / dua kitabı (rahle üzerinde)
+  kuran: '<path d="M12 7.5C10 6 7.5 5.5 4 5.5v10c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-10c-3.5 0-6 .5-8 2Z"/><path d="M12 7.5v10"/><path d="m5 21 7-3.5 7 3.5"/>',
+};
+
+const ORTAK: Record<string, 'kabe' | 'kubbe' | 'bina' | 'otobus' | 'konum'> = {
+  kabe: 'kabe',
+  mescid: 'kubbe',
+  muze: 'bina',
+  otobus: 'otobus',
+  konum: 'konum',
+};
+
+const { ad, boyut = 24, class: sinif } = Astro.props;
+const ortak = ORTAK[ad];
+const svg = OZEL[ad] ?? OZEL.tarihiSehir;
+---
+
+{
+  ortak ? (
+    <Ikon ad={ortak} boyut={boyut} class={sinif} />
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={boyut}
+      height={boyut}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      class={sinif}
+      set:html={svg}
+    />
+  )
+}

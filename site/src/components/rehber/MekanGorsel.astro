@@ -1,0 +1,64 @@
+---
+// Mekân görseli: doğrulanmış fotoğraf varsa o, yoksa türe göre ikonlu, bölgeye göre renkli sade yer tutucu.
+// Kutsal mekân fotoğrafları RTL'de de aynalanmaz.
+import TurIkon from './TurIkon.astro';
+
+interface Props {
+  tur: string;
+  bolge: string;
+  foto?: string;
+  alt?: string;
+  /** İlk ekrandaysa tembel yükleme kapalı */
+  hemen?: boolean;
+  class?: string;
+  ikonBoyut?: number;
+}
+
+const { tur, bolge, foto, alt = '', hemen = false, class: sinif, ikonBoyut = 56 } = Astro.props;
+const zemin: Record<string, string> = {
+  mekke: 'yer-tutucu-mekke text-emerald-600',
+  medine: 'yer-tutucu-medine text-emerald-700',
+  diger: 'yer-tutucu-diger text-altin-koyu',
+};
+---
+
+{
+  foto ? (
+    <img
+      src={foto}
+      alt={alt}
+      width="357"
+      height="198"
+      loading={hemen ? 'eager' : 'lazy'}
+      decoding="async"
+      class:list={['h-full w-full object-cover', sinif]}
+    />
+  ) : (
+    <div class:list={['relative flex h-full w-full items-center justify-center overflow-hidden', zemin[bolge] ?? zemin.diger, sinif]}>
+      <span class="yer-tutucu-halka flex items-center justify-center rounded-full">
+        <TurIkon ad={tur} boyut={ikonBoyut} />
+      </span>
+    </div>
+  )
+}
+
+<style>
+  /* Sade, desenli olmayan yumuşak degrade; bölgeye göre ton. */
+  .yer-tutucu-mekke {
+    background: radial-gradient(circle at 50% 55%, #f4f8f2 0%, #dcebdc 60%, #c9dfcd 100%);
+  }
+  .yer-tutucu-medine {
+    background: radial-gradient(circle at 50% 55%, #f3f7f1 0%, #e1ece0 60%, #cfe2d2 100%);
+  }
+  .yer-tutucu-diger {
+    background: radial-gradient(circle at 50% 55%, #fbf7ec 0%, #efe5cc 60%, #e4d6b2 100%);
+  }
+  .yer-tutucu-halka {
+    width: 6.5rem;
+    height: 6.5rem;
+    background: rgb(255 255 255 / 0.55);
+    box-shadow:
+      0 0 0 1px rgb(184 150 62 / 0.35),
+      0 0 0 10px rgb(255 255 255 / 0.25);
+  }
+</style>

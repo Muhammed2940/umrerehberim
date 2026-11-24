@@ -1,0 +1,147 @@
+---
+// Tek form alanı: etiket, isteğe bağlı ikon, girdi (metin/e-posta/telefon/seçim/metin alanı/dosya), hata satırı.
+// <Alan ad="adSoyad" etiket="Ad Soyad" zorunlu ikon="kisi" yer="Adınız ve soyadınız" />
+// <Alan ad="tur" etiket="İşletme Türü" tip="secim" secenekler={[{d:'otel',ad:'Otel'}]} />
+import Ikon from '../Ikon.astro';
+
+type IkonAd = Parameters<typeof Ikon>[0]['ad'];
+interface Props {
+  ad: string;
+  etiket: string;
+  tip?: 'metin' | 'eposta' | 'telefon' | 'secim' | 'cokluSecim' | 'metinAlani' | 'dosya';
+  zorunlu?: boolean;
+  yer?: string;
+  ikon?: IkonAd;
+  secenekler?: { d: string; ad: string }[];
+  /** Seçimde ilk boş seçenek metni */
+  secinMetni?: string;
+  /** Varsayılan seçili değer */
+  deger?: string;
+  /** Izgarada iki sütunu kaplasın */
+  genis?: boolean;
+  otomatik?: string;
+  /** dosya: kabul edilen türler ve not */
+  kabul?: string;
+  dosyaDugme?: string;
+  dosyaNot?: string;
+  satir?: number;
+}
+const {
+  ad,
+  etiket,
+  tip = 'metin',
+  zorunlu = false,
+  yer,
+  ikon,
+  secenekler = [],
+  secinMetni = '—',
+  deger,
+  genis = false,
+  otomatik,
+  kabul,
+  dosyaDugme,
+  dosyaNot,
+  satir = 4,
+} = Astro.props;
+const id = `alan-${ad}`;
+const hataId = `${id}-hata`;
+const girdi =
+  'w-full rounded-lg border border-[#cfc8b8] bg-white text-base text-emerald-900 placeholder:text-emerald-900/50 transition focus:border-emerald-600 focus:outline-none focus-visible:outline-3 focus-visible:outline-sage aria-[invalid=true]:border-hata';
+const ikonluPad = ikon ? 'ps-12' : 'ps-4';
+---
+
+<div class:list={['min-w-0', genis && 'sm:col-span-2']}>
+  <label for={id} class="mb-1.5 block text-[15px] font-semibold text-emerald-900">
+    {etiket}{zorunlu && <span class="text-hata" aria-hidden="true"> *</span>}
+  </label>
+  <div class="relative">
+    {
+      ikon && tip !== 'dosya' && (
+        <span class:list={['pointer-events-none absolute start-4 flex text-emerald-900/60', tip === 'metinAlani' ? 'top-3.5' : 'inset-y-0 items-center']}>
+          <Ikon ad={ikon} boyut={20} />
+        </span>
+      )
+    }
+    {
+      (tip === 'metin' || tip === 'eposta' || tip === 'telefon') && (
+        <input
+          id={id}
+          name={ad}
+          type={tip === 'eposta' ? 'email' : tip === 'telefon' ? 'tel' : 'text'}
+          inputmode={tip === 'telefon' ? 'tel' : undefined}
+          dir={tip === 'eposta' || tip === 'telefon' ? 'ltr' : undefined}
+          required={zorunlu}
+          placeholder={yer}
+          autocomplete={otomatik ?? (tip === 'eposta' ? 'email' : tip === 'telefon' ? 'tel' : undefined)}
+          maxlength="200"
+          aria-describedby={hataId}
+          class:list={[girdi, ikonluPad, 'min-h-12 pe-4 rtl:text-right']}
+        />
+      )
+    }
+    {
+      (tip === 'secim' || tip === 'cokluSecim') && (
+        <select
+          id={id}
+          name={ad}
+          required={zorunlu}
+          multiple={tip === 'cokluSecim' || undefined}
+          aria-describedby={hataId}
+          class:list={[girdi, ikonluPad, tip === 'secim' ? 'min-h-12 pe-10' : 'min-h-28 py-2 pe-4']}
+        >
+          {tip === 'secim' && <option value="">{secinMetni}</option>}
+          {secenekler.map((s) => (
+            <option value={s.d} selected={s.d === deger}>
+              {s.ad}
+            </option>
+          ))}
+        </select>
+      )
+    }
+    {
+      tip === 'metinAlani' && (
+        <textarea
+          id={id}
+          name={ad}
+          required={zorunlu}
+          rows={satir}
+          placeholder={yer}
+          maxlength="2000"
+          aria-describedby={hataId}
+          class:list={[girdi, ikonluPad, 'py-3 pe-4']}
+        />
+      )
+    }
+    {
+      tip === 'dosya' && (
+        <label for={id} class="flex min-h-14 cursor-pointer items-center overflow-hidden rounded-lg border border-[#cfc8b8] bg-krem focus-within:outline-3 focus-within:outline-sage">
+          <span class="flex items-center gap-2 self-stretch border-e border-[#cfc8b8] bg-[#ece7da] px-5 font-semibold text-emerald-900">
+            {ikon && <Ikon ad={ikon} boyut={20} />}
+            {dosyaDugme}
+          </span>
+          <span class="px-4 text-sm text-emerald-900/70" data-dosya-adi>{dosyaNot}</span>
+          <input
+            id={id}
+            name={ad}
+            type="file"
+            accept={kabul}
+            required={zorunlu}
+            data-azami-mb="10"
+            aria-describedby={hataId}
+            class="sr-only"
+          />
+        </label>
+      )
+    }
+  </div>
+  <p id={hataId} data-hata-icin={ad} class="mt-1 text-sm font-medium text-hata" hidden></p>
+</div>
+
+<script>
+  for (const g of document.querySelectorAll<HTMLInputElement>('input[type=file]')) {
+    g.addEventListener('change', () => {
+      const yer = g.closest('label')?.querySelector('[data-dosya-adi]');
+      if (yer && g.files?.[0]) yer.textContent = g.files[0].name;
+    });
+  }
+    </script>

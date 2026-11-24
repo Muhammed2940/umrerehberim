@@ -35,8 +35,17 @@ AddDefaultCharset utf-8
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
   Header always set Cross-Origin-Opener-Policy "same-origin"
   # Faz 2: Google girişi / Turnstile eklenince script-src ve frame-src genişletilir; Faz 3'te PayTR iFrame.
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.__ALAN__; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.__ALAN__; object-src 'none'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; font-src 'self'; connect-src 'self' https://api.__ALAN__; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.__ALAN__; object-src 'none'; upgrade-insecure-requests"
   Header unset X-Powered-By
+</IfModule>
+
+# Aile Takibi (/t/): token URL'de (#) olsa da sayfa önbelleğe girmesin, Referer hiç gitmesin.
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/(en/|ar/)?t/#">
+    Header always set Referrer-Policy "no-referrer"
+    Header always set Cache-Control "no-store"
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  </If>
 </IfModule>
 
 <IfModule mod_expires.c>

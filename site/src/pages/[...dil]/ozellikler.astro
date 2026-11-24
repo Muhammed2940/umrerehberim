@@ -1,0 +1,173 @@
+---
+// Özellikler: onaylı referans görsel (03-ozellikler) düzeni. Dört bölüm + indirme alanı.
+import Base from '../../layouts/Base.astro';
+import Ikon from '../../components/Ikon.astro';
+import MagazaRozetleri from '../../components/MagazaRozetleri.astro';
+import { cevirmen, dilYollari, yol, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { OZELLIKLER } from '../../i18n/sayfa/ozellikler';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const T = sayfaMetni(dil, OZELLIKLER);
+
+const bolumler = [
+  {
+    id: 'ibadet',
+    baslik: T.ibadetBaslik,
+    metin: T.ibadetMetin,
+    maddeler: [T.ibadetM1, T.ibadetM2, T.ibadetM3],
+    ikon: 'dua' as const,
+    gorsel: '/img/ozellikler/ibadet.webp',
+    alt: T.ibadetGorsel,
+    en: 262,
+  },
+  {
+    id: 'mekke-medine',
+    baslik: T.rehberBaslik,
+    metin: T.rehberMetin,
+    maddeler: [T.rehberM1, T.rehberM2, T.rehberM3],
+    ikon: 'konum' as const,
+    gorsel: '/img/ozellikler/mekke-medine.webp',
+    alt: T.rehberGorsel,
+    en: 264,
+  },
+  {
+    id: 'sesli-rehber',
+    baslik: T.sesliBaslik,
+    metin: T.sesliMetin,
+    maddeler: [T.sesliM1, T.sesliM2, T.sesliM3],
+    ikon: 'wifiYok' as const,
+    gorsel: '/img/ozellikler/sesli-rehber.webp',
+    alt: T.sesliGorsel,
+    en: 268,
+  },
+  {
+    id: 'aile-takibi',
+    baslik: T.aileBaslik,
+    metin: T.aileMetin,
+    maddeler: [T.aileM1, T.aileM2, T.aileM3],
+    ikon: 'aile' as const,
+    gorsel: '/img/ozellikler/aile-takibi.webp',
+    alt: T.aileGorsel,
+    en: 266,
+  },
+];
+---
+
+<Base dil={dil} yalin="/ozellikler/" baslik={T.baslik} aciklama={T.aciklama}>
+  <div class="bg-krem">
+    <!-- 1. Başlık: solda soluk dağ silueti, sağda soluk Mescid-i Nebevî -->
+    <section class="ozellik-ust relative overflow-hidden">
+      <svg
+        class="dag-solma pointer-events-none absolute start-0 top-16 hidden h-[180px] w-[520px] text-[#d9cbb0] md:block"
+        viewBox="0 0 520 180"
+        fill="none"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M0 120 60 90l40 8 70-60 40 18 30-12 90 70 60 10 130 56H0Z" fill="currentColor" fill-opacity="0.22"></path>
+        <path d="M0 150 90 118l80 10 90-26 110 40 150 38H0Z" fill="currentColor" fill-opacity="0.18"></path>
+      </svg>
+      <img
+        src="/img/ozellikler/medine-sus.webp"
+        alt=""
+        width="266"
+        height="225"
+        class="pointer-events-none absolute end-0 top-4 hidden w-[266px] opacity-90 lg:block"
+      />
+      <div class="relative mx-auto max-w-4xl px-4 pt-12 pb-8 text-center md:pt-14">
+        <h1 class="text-[2.25rem] font-bold leading-tight text-emerald-900 sm:text-5xl lg:text-[58px] text-balance">{T.baslik}</h1>
+        <p class="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-emerald-900/80 sm:text-[21px] text-pretty">{T.alt}</p>
+        <!-- Süs: iki altın çizgi ve küçük Kâbe -->
+        <div class="mt-8 flex items-center justify-center gap-7" aria-hidden="true">
+          <span class="h-0.5 w-20 rounded-full bg-altin/80 sm:w-[120px]"></span>
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <path d="M3 10 17 4l14 6-14 6L3 10Z" fill="#2c6150"></path>
+            <path d="M3 10v14l14 6V16L3 10Z" fill="#b8963e"></path>
+            <path d="M31 10v14l-14 6V16l14-6Z" fill="#d1ad55"></path>
+            <path d="m3 14.5 14 6 14-6" stroke="#8a6d22" stroke-width="1.4"></path>
+          </svg>
+          <span class="h-0.5 w-20 rounded-full bg-altin/80 sm:w-[120px]"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Dört bölüm -->
+    <section class="mx-auto w-full max-w-[1536px] px-4 pb-14 md:px-11">
+      <div class="grid gap-6 xl:grid-cols-2">
+        {
+          bolumler.map((b) => (
+            <article
+              id={b.id}
+              class="scroll-mt-24 grid gap-5 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-3 shadow-[0_2px_10px_rgb(60_50_20/0.05)] sm:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] sm:p-3.5"
+            >
+              <img
+                src={b.gorsel}
+                alt={b.alt}
+                width={b.en}
+                height={b.id === 'ibadet' || b.id === 'mekke-medine' ? 264 : 280}
+                loading="lazy"
+                decoding="async"
+                class="aspect-[4/3] h-full w-full rounded-xl object-cover sm:aspect-auto sm:min-h-[260px]"
+              />
+              <div class="px-2 pb-4 sm:py-3 sm:pe-3">
+                <div class="flex items-center gap-4">
+                  <span class="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-[#f1dfa6] shadow-sm">
+                    <Ikon ad={b.ikon} boyut={30} />
+                  </span>
+                  <h2 class="text-[1.6rem] font-bold leading-tight text-emerald-900 lg:text-[28px] 2xl:text-[30px]">{b.baslik}</h2>
+                </div>
+                <p class="mt-4 text-[17px] leading-relaxed text-emerald-900/80">{b.metin}</p>
+                <ul class="mt-5 space-y-3">
+                  {b.maddeler.map((m) => (
+                    <li class="flex gap-3 text-base leading-snug text-emerald-900 sm:text-[17px]">
+                      <span class="mt-0.5 shrink-0 text-altin">
+                        <Ikon ad="tik" boyut={22} />
+                      </span>
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 3. İndir: mağaza durumu config.ts MAGAZA'dan (boşsa "Yakında") -->
+    <section id="indir" class="scroll-mt-20 pb-16">
+      <div class="mx-auto w-full max-w-[1536px] px-4 md:px-11">
+        <div class="giris-zemin flex flex-col gap-6 rounded-2xl p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
+          <div class="max-w-xl">
+            <h2 class="text-3xl font-bold">{t('indir.baslik')}</h2>
+            <p class="mt-3 text-koyu-soluk">{t('indir.metin')}</p>
+            <a
+              href={yol(dil, '/paketler/')}
+              class="mt-5 inline-flex min-h-11 items-center gap-2 font-medium text-altin-acik underline-offset-4 hover:underline"
+            >
+              {T.paketlereGit}
+              <Ikon ad="ok" boyut={20} />
+            </a>
+          </div>
+          <MagazaRozetleri dil={dil} />
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .dag-solma {
+    mask-image: linear-gradient(90deg, #000 40%, transparent 100%);
+  }
+  /* Dağ silueti kutsal mekân değil: RTL'de aynalanır ki solma sayfanın kenarına doğru olsun. */
+  :global(html[dir='rtl']) .dag-solma {
+    transform: scaleX(-1);
+  }
+  .ozellik-ust {
+    background: linear-gradient(180deg, #f8f1e6 0%, #f6f3ec 100%);
+  }
+</style>

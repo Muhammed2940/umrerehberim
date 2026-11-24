@@ -1,0 +1,324 @@
+---
+// Acente sayfası: onaylı referans görsel (05-acente) düzeni.
+// Sağdaki dizüstü paneli HTML/CSS ile çizilmiş ÖRNEK görünümdür (temsili veri; gerçek müşteri değil).
+import Base from '../../layouts/Base.astro';
+import Ikon from '../../components/Ikon.astro';
+import Form from '../../components/form/Form.astro';
+import Alan from '../../components/form/Alan.astro';
+import { cevirmen, dilYollari, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { ACENTE } from '../../i18n/sayfa/acente';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const T = sayfaMetni(dil, ACENTE);
+
+const yetenekler = [
+  { ikon: 'aile', ad: T.y1 },
+  { ikon: 'takvim', ad: T.y2 },
+  { ikon: 'yatak', ad: T.y3 },
+  { ikon: 'konum', ad: T.y4 },
+] as const;
+
+const ekler = [
+  { ikon: 'zil', ad: T.ek1 },
+  { ikon: 'telsiz', ad: T.ek2 },
+  { ikon: 'rapor', ad: T.ek3 },
+] as const;
+
+const menu = [
+  { ikon: 'aile', ad: T.pMenuKafile, etkin: true },
+  { ikon: 'kisi', ad: T.pMenuYolcu },
+  { ikon: 'takvim', ad: T.pMenuProgram },
+  { ikon: 'yatak', ad: T.pMenuOtel },
+  { ikon: 'konum', ad: T.pMenuHarita },
+  { ikon: 'zil', ad: T.pMenuBildirim },
+  { ikon: 'rapor', ad: T.pMenuRapor },
+] as const;
+
+const istatistik = [
+  { ikon: 'aile', sayi: '6', ad: T.pAktif },
+  { ikon: 'kisi', sayi: '182', ad: T.pToplam },
+  { ikon: 'otobus', sayi: '3', ad: T.pDevam },
+  { ikon: 'takvim', sayi: '3', ad: T.pPlan },
+] as const;
+
+const kafileler = [
+  { ad: T.pK1, tarih: T.pK1t, yolcu: 42, devam: true },
+  { ad: T.pK2, tarih: T.pK2t, yolcu: 36, devam: true },
+  { ad: T.pK3, tarih: T.pK3t, yolcu: 44, devam: false },
+  { ad: T.pK4, tarih: T.pK4t, yolcu: 28, devam: false },
+];
+
+const hacimler = [
+  { d: '0-100', ad: '0–100' },
+  { d: '100-500', ad: '100–500' },
+  { d: '500-1000', ad: '500–1000' },
+  { d: '1000+', ad: '1000+' },
+];
+---
+
+<Base dil={dil} yalin="/acente/" baslik={T.metaBaslik} aciklama={T.metaAciklama}>
+  <section class="acente-zemin relative overflow-hidden">
+    <div class="mx-auto grid w-full max-w-[1440px] gap-10 px-4 pt-10 pb-12 md:px-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-6 lg:pt-14 lg:pb-16 xl:ps-12">
+      <!-- Sol: açıklama -->
+      <div class="relative z-10 lg:pt-6">
+        <p class="inline-flex items-center gap-2.5 rounded-full bg-[#ebe8d9] px-4 py-2 text-[15px] font-medium text-emerald-900 sm:px-5 sm:text-base">
+          <Ikon ad="aile" boyut={20} class="shrink-0 text-emerald-600" />
+          {T.rozet}
+        </p>
+        <h1 class="mt-7 max-w-[560px] text-[2.6rem] leading-[1.08] font-bold text-emerald-800 sm:text-6xl lg:text-[66px] text-balance">
+          {T.baslik}
+        </h1>
+        <svg class="mt-3 h-4 w-60 text-altin" viewBox="0 0 240 16" fill="none" aria-hidden="true">
+          <path d="M3 12C60 5 150 3 237 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+        </svg>
+        <p class="mt-5 max-w-[540px] text-lg leading-relaxed text-emerald-900/85 sm:text-xl">{T.metin}</p>
+
+        <ul class="mt-8 grid max-w-[560px] grid-cols-2 gap-y-6 sm:grid-cols-4">
+          {
+            yetenekler.map((y, i) => (
+              <li class:list={['flex flex-col items-center gap-2 px-2 text-center text-base leading-snug text-emerald-900', i > 0 && 'sm:border-s sm:border-krem-cizgi', i % 2 === 1 && 'border-s border-krem-cizgi sm:border-s']}>
+                <Ikon ad={y.ikon} boyut={34} class="text-emerald-600" />
+                {y.ad}
+              </li>
+            ))
+          }
+        </ul>
+
+        <a href="#demo" class="mt-9 inline-flex min-h-[60px] items-center gap-4 rounded-lg bg-emerald-800 px-7 text-xl font-semibold text-white no-underline shadow-[0_10px_24px_-12px_rgb(11_43_38/0.7)] transition hover:bg-emerald-700">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white/90" aria-hidden="true">
+            <Ikon ad="oynat" boyut={16} />
+          </span>
+          {T.demoDugme}
+          <Ikon ad="ok" boyut={24} />
+        </a>
+      </div>
+
+      <!-- Sağ: Mekke arka planı + örnek panel -->
+      <figure class="relative min-w-0" aria-label={T.ornekEtiket}>
+        <!-- Örnek görünüm etiketi -->
+        <figcaption class="relative z-10 mb-3 flex w-fit max-w-full lg:absolute lg:top-[124px] lg:start-6 lg:mb-0 lg:max-w-[calc(100%-3rem)] items-center gap-2 rounded-2xl border border-altin/60 bg-fildisi px-3.5 py-1.5 text-[13px] font-semibold text-altin-koyu shadow-md sm:rounded-full sm:text-sm">
+          <Ikon ad="bilgi" boyut={18} class="shrink-0" />
+          <span>{T.ornek}<span class="font-normal text-emerald-900/75"> · {T.ornekNot}</span></span>
+        </figcaption>
+        <img
+          src="/img/acente/mekke-arka.webp"
+          alt=""
+          width="976"
+          height="174"
+          class="mekke-arka pointer-events-none absolute -top-2 end-0 hidden w-[96%] max-w-none select-none lg:block"
+        />
+
+        <div class="dizustu relative mx-auto max-w-[900px] lg:mt-[140px]">
+          <!-- Ekran -->
+          <div class="rounded-t-[22px] border border-black/40 bg-[#1b1d1c] p-2 shadow-[0_30px_60px_-25px_rgb(0_0_0/0.55)] sm:p-3">
+            <div class="panel @container overflow-hidden rounded-md bg-[#f4f6f2] text-start" aria-hidden="true">
+              <div class="grid @2xl:grid-cols-[170px_1fr]">
+                <!-- Yan menü -->
+                <div class="hidden bg-emerald-800 px-3 py-4 text-white @2xl:block">
+                  <div class="flex items-center gap-2 px-1 pb-5">
+                    <Ikon ad="kabe" boyut={30} class="text-altin-acik" />
+                    <span class="baslik text-[15px] leading-tight font-bold">{t('site.ad')}</span>
+                  </div>
+                  <ul class="space-y-1 text-[12.5px]">
+                    {
+                      menu.map((m) => (
+                        <li class:list={['flex items-center gap-2.5 rounded-md px-2.5 py-2', 'etkin' in m && m.etkin ? 'bg-emerald-600 font-semibold' : 'text-white/85']}>
+                          <Ikon ad={m.ikon} boyut={16} />
+                          {m.ad}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+
+                <!-- Ana alan -->
+                <div class="min-w-0 p-3 @lg:p-4">
+                  <div class="flex items-center justify-end gap-3 border-b border-cizgi pb-2.5 text-[12px] text-emerald-900">
+                    <Ikon ad="zil" boyut={18} class="text-emerald-700" />
+                    <span class="flex items-center gap-2 rounded-full bg-white px-2 py-1 shadow-sm">
+                      <span class="flex h-6 w-6 items-center justify-center rounded-full bg-mint text-emerald-700"><Ikon ad="kisi" boyut={14} /></span>
+                      {T.pAcente}
+                    </span>
+                  </div>
+
+                  <div class="mt-3 flex items-center justify-between gap-2">
+                    <span class="text-lg font-bold text-emerald-900 @lg:text-xl">{T.pBaslik}</span>
+                    <span class="rounded-md bg-emerald-600 px-2.5 py-1.5 text-[11.5px] font-semibold text-white">+ {T.pYeni}</span>
+                  </div>
+
+                  <div class="mt-3 grid grid-cols-2 gap-2 @lg:grid-cols-4">
+                    {
+                      istatistik.map((s) => (
+                        <div class="flex items-center gap-2.5 rounded-lg border border-cizgi bg-white px-2.5 py-2">
+                          <Ikon ad={s.ikon} boyut={22} class="shrink-0 text-emerald-600" />
+                          <span class="leading-tight">
+                            <span class="block text-base font-bold text-emerald-900">{s.sayi}</span>
+                            <span class="block text-[10.5px] text-soluk">{s.ad}</span>
+                          </span>
+                        </div>
+                      ))
+                    }
+                  </div>
+
+                  <div class="mt-3 grid gap-3 @xl:grid-cols-[1.25fr_1fr]">
+                    <!-- Kafile listesi -->
+                    <div class="rounded-lg border border-cizgi bg-white">
+                      <div class="flex items-center justify-between border-b border-cizgi px-3 py-2 text-[13px]">
+                        <span class="font-bold text-emerald-900">{T.pListe}</span>
+                        <span class="text-[11px] text-soluk">{T.pTumu} ▾</span>
+                      </div>
+                      <ul class="divide-y divide-cizgi">
+                        {
+                          kafileler.map((k) => (
+                            <li class="flex items-center gap-2 px-3 py-2">
+                              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#eef2ea] text-emerald-600"><Ikon ad="aile" boyut={15} /></span>
+                              <span class="min-w-0 flex-1 leading-tight">
+                                <span class="block truncate text-[11.5px] font-semibold text-emerald-900">{k.ad}</span>
+                                <span class="block text-[10px] text-soluk">{k.tarih}</span>
+                              </span>
+                              <span class="shrink-0 text-[10.5px] font-medium text-emerald-900">{k.yolcu} {T.pYolcu}</span>
+                              <span class:list={['shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium', k.devam ? 'bg-mint text-emerald-700' : 'bg-[#f6ecd3] text-altin-koyu']}>
+                                {k.devam ? T.pDevamEdiyor : T.pPlanlandi}
+                              </span>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+
+                    <!-- Harita (çizim; gerçek konum değil) -->
+                    <div class="hidden rounded-lg border border-cizgi bg-white @xl:block">
+                      <div class="flex items-center justify-between border-b border-cizgi px-3 py-2 text-[13px]">
+                        <span class="font-bold text-emerald-900">{T.pHarita}</span>
+                        <span class="flex items-center gap-1 rounded-full bg-mint px-2 py-0.5 text-[10px] font-medium text-emerald-700">
+                          <span class="canli-nokta h-1.5 w-1.5 rounded-full bg-emerald-600"></span>{T.pCanli}
+                        </span>
+                      </div>
+                      <div class="relative">
+                        <svg viewBox="0 0 260 190" class="block h-auto w-full" fill="none">
+                          <rect width="260" height="190" fill="#eef1e6"></rect>
+                          <path d="M0 0h70c-8 20-2 38-14 58-10 18-6 40-20 60-8 14-10 40-36 72H0Z" fill="#cfe2e6"></path>
+                          <path d="M70 0c-8 20-2 38-14 58-10 18-6 40-20 60-8 14-10 40-36 72" stroke="#b6cdd2" stroke-width="1.5"></path>
+                          <path d="M150 30c30 10 60 4 90 18M120 110c40-6 80 8 140 0M170 160c20-10 50-8 90-14" stroke="#dfe3d4" stroke-width="1.2"></path>
+                          <path d="M118 62c-6 28 22 36 18 62s-4 24 8 34" stroke="#b8963e" stroke-width="2.4" stroke-linecap="round"></path>
+                          <g transform="translate(118 62)">
+                            <path d="M0 0s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12Z" fill="#235347"></path>
+                            <circle cy="-12" r="2.6" fill="#fff"></circle>
+                          </g>
+                          <g transform="translate(144 158)">
+                            <path d="M0 0s-7-7-7-12a7 7 0 0 1 14 0c0 5-7 12-7 12Z" fill="#235347"></path>
+                            <circle cy="-12" r="2.6" fill="#fff"></circle>
+                          </g>
+                          <path d="M92 56h18v-6a9 9 0 0 0-18 0Z" fill="#235347"></path>
+                          <path d="M114 56V36" stroke="#235347" stroke-width="2"></path>
+                          <rect x="121" y="138" width="14" height="13" rx="1.5" fill="#1b1d1c"></rect>
+                          <path d="M121 142h14" stroke="#c9a24a" stroke-width="1.6"></path>
+                        </svg>
+                        <span class="absolute start-[52%] top-[21%] text-[12px] font-bold text-emerald-900">{T.pMedine}</span>
+                        <span class="absolute start-[60%] top-[74%] text-[12px] font-bold text-emerald-900">{T.pMekke}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Taban -->
+          <div class="relative -mx-[5%] h-4 rounded-b-[14px] bg-gradient-to-b from-[#d9dbdc] to-[#9da1a3] shadow-[0_18px_30px_-12px_rgb(0_0_0/0.5)]" aria-hidden="true">
+            <span class="absolute start-1/2 top-0 h-1.5 w-24 -translate-x-1/2 rounded-b-md bg-[#b9bcbe] rtl:translate-x-1/2"></span>
+          </div>
+
+        </div>
+
+        <!-- Panelde ayrıca: bildirim, telsiz, rapor (uygulamada mevcut) -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[15px] text-emerald-900 lg:mt-10">
+          <span class="font-semibold text-emerald-700">{T.ekBaslik}:</span>
+          {
+            ekler.map((e) => (
+              <span class="inline-flex items-center gap-2">
+                <Ikon ad={e.ikon} boyut={20} class="text-emerald-600" />
+                {e.ad}
+              </span>
+            ))
+          }
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Demo talebi -->
+  <section id="demo" class="scroll-mt-20 bg-krem px-4 pb-14 md:px-6 lg:pb-16">
+    <div class="mx-auto grid max-w-[1490px] gap-8 rounded-2xl border border-altin/55 bg-[#fbfaf6] p-5 shadow-[0_2px_14px_rgb(60_50_20/0.05)] sm:p-8 lg:grid-cols-[minmax(0,430px)_minmax(0,1fr)] lg:gap-10">
+      <div class="flex items-start gap-5 lg:border-e lg:border-krem-cizgi lg:pe-10">
+        <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-[#e8ecdf] text-emerald-600">
+          <Ikon ad="takvim" boyut={40} />
+        </span>
+        <div>
+          <h2 class="text-[1.75rem] font-bold leading-tight text-emerald-800 sm:text-3xl">{T.demoBaslik}</h2>
+          <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/85">{T.demoMetin}</p>
+        </div>
+      </div>
+
+      <Form dil={dil} tur="acente" gonderMetni={T.fGonder} basariMetni={T.fBasari} genis={false}>
+        <Alan ad="adSoyad" etiket={T.fAd} zorunlu ikon="kisi" yer={T.fAdYer} otomatik="name" />
+        <Alan ad="kurum" etiket={T.fKurum} zorunlu ikon="bina" yer={T.fKurumYer} otomatik="organization" />
+        <Alan ad="telefon" etiket={T.fTelefon} tip="telefon" zorunlu ikon="telefon" yer={T.fTelefonYer} />
+        <Alan ad="eposta" etiket={T.fEposta} tip="eposta" zorunlu ikon="posta" yer={T.fEpostaYer} />
+        <Alan ad="yillikHaci" etiket={T.fHacim} tip="secim" ikon="aile" secenekler={hacimler} secinMetni={T.fHacimSec} />
+        <Alan ad="not" etiket={T.fNot} tip="metinAlani" ikon="kalem" yer={T.fNotYer} satir={3} genis />
+      </Form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .acente-zemin {
+    background:
+      radial-gradient(ellipse 50% 55% at 78% 30%, rgb(255 255 255 / 0.7), transparent 70%),
+      linear-gradient(180deg, #f8f5ee 0%, var(--color-krem) 100%);
+  }
+  /* Mekke görseli alt kenarda zemine karışır */
+  .mekke-arka {
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%), linear-gradient(90deg, transparent 0%, #000 18%);
+    mask-composite: intersect;
+  }
+  :global(html[dir='rtl']) .mekke-arka {
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%), linear-gradient(270deg, transparent 0%, #000 18%);
+  }
+  /* Dizüstüne hafif 3B duruş (yalnız geniş ekranda); hareket azaltılmışsa düz durur */
+  @media (min-width: 1024px) {
+    .dizustu {
+      transform: perspective(1800px) rotateY(-7deg) rotateX(2deg);
+      transform-origin: 60% 50%;
+      transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+    }
+    .dizustu:hover {
+      transform: perspective(1800px) rotateY(-3deg) rotateX(1deg);
+    }
+    :global(html[dir='rtl']) .dizustu {
+      transform: perspective(1800px) rotateY(7deg) rotateX(2deg);
+    }
+    :global(html[dir='rtl']) .dizustu:hover {
+      transform: perspective(1800px) rotateY(3deg) rotateX(1deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dizustu,
+    .dizustu:hover,
+    :global(html[dir='rtl']) .dizustu,
+    :global(html[dir='rtl']) .dizustu:hover {
+      transform: none;
+    }
+  }
+  .canli-nokta {
+    animation: nabiz 1.8s ease-in-out infinite;
+  }
+  @keyframes nabiz {
+    50% {
+      opacity: 0.3;
+    }
+  }
+</style>

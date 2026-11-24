@@ -1,0 +1,25 @@
+---
+// Geçici sayfa: menü bağlantıları 404 vermesin diye. Sayfa tasarımı geldikçe gerçek içerikle değişir.
+import Base from '../layouts/Base.astro';
+import SayfaBasi from './SayfaBasi.astro';
+import { cevirmen, yol, type Dil } from '../i18n';
+
+interface Props {
+  dil: Dil;
+  yalin: string;
+  baslikAnahtar: string;
+}
+const { dil, yalin, baslikAnahtar } = Astro.props;
+const t = cevirmen(dil);
+const baslik = t(baslikAnahtar);
+---
+
+<Base dil={dil} yalin={yalin} baslik={baslik} noindex>
+  <SayfaBasi baslik={baslik} />
+  <div class="kapsayici py-14">
+    <div class="kart max-w-2xl p-6 md:p-8">
+      <p class="text-lg">{t('hazirlaniyor.metin')}</p>
+      <a href={yol(dil, '/')} class="dugme-ana mt-6 min-h-11">{t('hazirlaniyor.don')}</a>
+    </div>
+  </div>
+</Base>

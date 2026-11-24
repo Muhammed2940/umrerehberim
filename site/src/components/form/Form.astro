@@ -1,0 +1,137 @@
+---
+// Ortak form kabuğu: bal tuzağı, KVKK onayı, gönder düğmesi, başarı/hata kutuları ve davranış betiği.
+// Kullanım:
+//   <Form dil={dil} tur="acente" gonderMetni="Demo Talep Et">
+//     <Alan ... /> <Alan ... />
+//   </Form>
+// Alanlar slot'a gelir; KVKK onayı ve düğme otomatik eklenir (kvkk={false} ile kapatılabilir).
+import { cevirmen, yol, type Dil } from '../../i18n';
+import Ikon from '../Ikon.astro';
+
+interface Props {
+  dil: Dil;
+  /** Başvuru türü; sunucuda hangi listeye düşeceğini belirler (acente, esnaf, rehber, destek, silme …) */
+  tur: string;
+  /** umre-api yolu; varsayılan /v1/web/lead */
+  uc?: string;
+  gonderMetni: string;
+  basariMetni?: string;
+  kvkk?: boolean;
+  /** Düğme tam genişlik mi */
+  genis?: boolean;
+  /** Dosya yükleme alanı varsa true (enctype) */
+  dosyali?: boolean;
+  class?: string;
+  /** Alanları saran ızgara sınıfı */
+  izgara?: string;
+}
+const {
+  dil,
+  tur,
+  uc = '/v1/web/lead',
+  gonderMetni,
+  basariMetni,
+  kvkk = true,
+  genis = true,
+  dosyali = false,
+  class: sinif,
+  izgara = 'grid gap-4 sm:grid-cols-2',
+} = Astro.props;
+const t = cevirmen(dil);
+const metinler = {
+  zorunlu: t('form.zorunlu'),
+  eposta: t('form.eposta'),
+  telefon: t('form.telefon'),
+  kvkk: t('form.kvkk'),
+  dosya: t('form.dosya'),
+};
+const kimlik = `f-${tur}`;
+---
+
+<form
+  data-form
+  data-tur={tur}
+  data-uc={uc}
+  data-metinler={JSON.stringify(metinler)}
+  data-gonderiliyor={t('form.gonderiliyor')}
+  method="post"
+  action="#"
+  enctype={dosyali ? 'multipart/form-data' : undefined}
+  novalidate
+  class:list={[sinif]}
+>
+  <div class={izgara}>
+    <slot />
+  </div>
+
+  <!-- Bal tuzağı: insanlar görmez, botlar doldurur -->
+  <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+    <label>Web sitesi <input type="text" name="hp" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  {
+    kvkk && (
+      <div class="mt-5">
+        <label class="flex cursor-pointer items-start gap-3 text-[15px] leading-relaxed text-emerald-900">
+          <input
+            type="checkbox"
+            name="kvkk"
+            value="evet"
+            required
+            aria-describedby={`${kimlik}-kvkk-hata`}
+            class="mt-1 h-5 w-5 shrink-0 rounded border-krem-cizgi accent-emerald-600"
+          />
+          <span>
+            {t('form.kvkkOnay1')}
+            <a href={yol(dil, '/yasal/kvkk')} target="_blank" rel="noopener" class="font-medium text-emerald-600 underline underline-offset-2">
+              {t('form.kvkkBag')}
+            </a>
+            {t('form.kvkkOnay2')}
+          </span>
+        </label>
+        <p id={`${kimlik}-kvkk-hata`} data-hata-icin="kvkk" class="mt-1 text-sm font-medium text-hata" hidden />
+      </div>
+    )
+  }
+
+  <div class:list={['mt-6 flex flex-col gap-3', !genis && 'sm:flex-row sm:items-center']}>
+    <button
+      type="submit"
+      data-gonder
+      class:list={[
+        'inline-flex min-h-[52px] items-center justify-center gap-3 rounded-lg bg-emerald-800 px-7 text-lg font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-wait disabled:opacity-70',
+        genis && 'w-full',
+      ]}
+    >
+      <slot name="dugme-ikon" />
+      {gonderMetni}
+      <Ikon ad="ok" boyut={22} />
+    </button>
+    <p class="text-sm text-emerald-900/70">{t('form.zorunluNot')}</p>
+  </div>
+
+  <div
+    data-durum="basari"
+    role="status"
+    tabindex="-1"
+    hidden
+    class="mt-5 flex items-start gap-3 rounded-xl border border-emerald-600/30 bg-mint/60 p-4 text-emerald-800"
+  >
+    <Ikon ad="tik" class="mt-0.5 shrink-0" />
+    <p>{basariMetni ?? t('form.basari')}</p>
+  </div>
+  <div
+    data-durum="hata"
+    role="alert"
+    tabindex="-1"
+    hidden
+    class="mt-5 rounded-xl border border-hata/30 bg-hata/5 p-4 text-hata"
+  >
+    <p>{t('form.hata')}</p>
+  </div>
+</form>
+
+<script>
+  import { formlariBaslat } from '../../lib/form';
+  formlariBaslat();
+</script>

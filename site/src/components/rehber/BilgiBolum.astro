@@ -1,0 +1,31 @@
+---
+// Ulaşım verisindeki açılır bilgi kartı (UlasimBolum): başlık + maddeler. JS gerektirmez (<details>).
+import { m, metinDili, type Bolum } from '../../lib/rehber';
+import type { Dil } from '../../i18n';
+
+interface Props {
+  bolum: Bolum;
+  dil: Dil;
+}
+const { bolum, dil } = Astro.props;
+---
+
+<details class="group rounded-xl border border-krem-cizgi bg-white/70 open:bg-white">
+  <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-semibold text-emerald-800 [&::-webkit-details-marker]:hidden">
+    <span>
+      <span lang={metinDili(bolum.baslik, dil)}>{m(bolum.baslik, dil)}</span>
+      {bolum.altBaslik && <span class="block text-[15px] font-normal text-soluk">{m(bolum.altBaslik, dil)}</span>}
+    </span>
+    <span class="shrink-0 text-xl leading-none text-altin-koyu transition group-open:rotate-45" aria-hidden="true">+</span>
+  </summary>
+  <ul class="space-y-2 px-4 pb-4 text-base leading-relaxed text-emerald-900/90">
+    {
+      bolum.maddeler.map((md) => (
+        <li lang={metinDili(md.metin, dil)}>
+          {md.baslik && <strong class="font-semibold text-emerald-800">{m(md.baslik, dil)} </strong>}
+          {m(md.metin, dil)}
+        </li>
+      ))
+    }
+  </ul>
+</details>

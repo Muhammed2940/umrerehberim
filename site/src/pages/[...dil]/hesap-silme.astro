@@ -1,65 +1,301 @@
 ---
-// Google Play "Veri silme" şartı: uygulama içi adımlar + uygulamaya erişemeyenler için web yolu.
-// (Faz 2) Google ile doğrulanan form → POST api.ALAN/v1/web/deletion-request.
+// Google Play "Veri silme" şartı: uygulama içi adımlar (uygulamadaki GERÇEK akış, bkz. i18n/sayfa/hesap-silme.ts)
+// + uygulamaya erişemeyenler için web talebi (umre-api POST /v1/web/deletion-request) ve e-posta yolu.
+// Düzen: onaylı görsel 10-hesap-silme; telefon maketlerinin içi HTML ile, uygulamadaki ekran metinleriyle çizilir.
 import Base from '../../layouts/Base.astro';
+import Ikon from '../../components/Ikon.astro';
+import Form from '../../components/form/Form.astro';
+import Alan from '../../components/form/Alan.astro';
 import { cevirmen, dilYollari, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { HESAP_SILME } from '../../i18n/sayfa/hesap-silme';
 import { destekBilgisi } from '../../lib/destek';
 import { SIRKET } from '../../config';
 
 export const getStaticPaths = dilYollari;
 const { dil } = Astro.props as { dil: Dil };
 const t = cevirmen(dil);
+const T = sayfaMetni(dil, HESAP_SILME);
 const d = await destekBilgisi();
 const talepAdresi = d.eposta1 || SIRKET.kvkkEposta;
 // Konu satırı kişisel veri içermez.
-const konu = encodeURIComponent(dil === 'tr' ? 'Hesap silme talebi' : 'Account deletion request');
-const adimlar = [1, 2, 3, 4, 5].map((i) => t(`silme.adim${i}`));
+const konu = encodeURIComponent(T.epostaKonu);
+
+const adimlar = [T.adim1, T.adim2, T.adim3, T.adim4, T.adim5];
 const silinenler = [1, 2, 3, 4].map((i) => t(`silme.silinen${i}`));
+const saklananlar = [T.saklanan1, T.saklanan2];
+const nav = [
+  { ad: T.mNavAna, ikon: 'kabe' },
+  { ad: T.mNavDua, ikon: 'dua' },
+  { ad: T.mNavTakvim, ikon: 'takvim' },
+  { ad: T.mNavBilgi, ikon: 'bilgi' },
+  { ad: T.mNavProfil, ikon: 'kisi' },
+] as const;
 ---
 
-<Base dil={dil} yalin="/hesap-silme/" baslik={t('silme.baslik')}>
-  <div class="mx-auto max-w-3xl px-4 py-10">
-    <h1 class="text-3xl font-bold text-emerald-700">{t('silme.baslik')}</h1>
-    <p class="mt-3 text-soluk leading-relaxed">{t('silme.giris')}</p>
+<Base dil={dil} yalin="/hesap-silme/" baslik={T.baslik} aciklama={T.giris}>
+  <div class="bg-krem">
+    <!-- Başlık + Kâbe görseli -->
+    <section class="relative overflow-hidden">
+      <img
+        src="/img/hesap-silme/kabe.webp"
+        width="586"
+        height="246"
+        alt=""
+        class="kabe-ust pointer-events-none absolute end-0 top-0 hidden h-[250px] w-auto max-w-none lg:block"
+      />
+      <div class="genis-kap relative pt-10 pb-6 md:pt-12">
+        <h1 class="text-5xl font-bold text-emerald-800 sm:text-[64px]">{T.baslik}</h1>
+        <p class="mt-5 max-w-[860px] text-lg leading-relaxed text-emerald-900/90 sm:text-[21px] sm:leading-snug">{T.giris}</p>
+      </div>
+    </section>
 
-    <section class="kart mt-8 p-6">
-      <h2 class="text-xl font-semibold text-emerald-700">{t('silme.uygulamaBaslik')}</h2>
-      <ol class="mt-4 space-y-3">
+    <!-- Adımlar -->
+    <section class="genis-kap relative pt-6 pb-10" aria-labelledby="adimlar-baslik">
+      <div class="flex items-center gap-6">
+        <h2 id="adimlar-baslik" class="text-2xl font-bold text-emerald-800 sm:text-[30px]">{T.adimlarBaslik}</h2>
+        <span class="hidden h-px flex-1 bg-altin/60 md:block" aria-hidden="true"></span>
+      </div>
+
+      <ol class="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
         {
           adimlar.map((a, i) => (
-            <li class="flex gap-3">
-              <span class="shrink-0 h-7 w-7 rounded-full bg-emerald-600 text-white text-sm flex items-center justify-center">
-                {i + 1}
-              </span>
-              <span class="pt-0.5">{a}</span>
+            <li class="relative flex flex-col items-center lg:items-stretch">
+              {/* Telefon maketi: süs; bilgi adım metninde */}
+              <div class="telefon mx-auto" aria-hidden="true">
+                {i === 0 && (
+                  <div class="flex h-full flex-col items-center px-3 pt-7 text-center">
+                    <span class="text-emerald-700"><Ikon ad="kabe" boyut={30} /></span>
+                    <span class="baslik mt-1.5 text-[15px] font-bold text-emerald-800">{t('site.ad')}</span>
+                    <span class="mt-5 flex w-full items-center justify-center gap-1.5 rounded-full border border-cizgi bg-white px-2 py-2 text-[11px] font-semibold text-emerald-900 shadow-sm ring-2 ring-altin/70">
+                      <span class="baslik text-[13px] font-bold text-[#4285f4]">G</span>
+                      {T.mGoogle}
+                    </span>
+                    <span class="mt-3 text-[10px] leading-tight text-soluk">{T.mVeya}</span>
+                  </div>
+                )}
+                {i === 1 && (
+                  <div class="flex h-full flex-col pb-4">
+                    <div class="yesil-degrade px-3 py-2.5 text-[12px] font-semibold text-white">{t('site.ad')}</div>
+                    <div class="flex-1 space-y-1.5 p-2.5">
+                      <span class="block h-8 rounded-md bg-mint/70" />
+                      <span class="block h-8 rounded-md bg-zemin" />
+                    </div>
+                    <div class="grid grid-cols-5 border-t border-cizgi bg-white px-0.5 py-1.5">
+                      {nav.map((n, j) => (
+                        <span class:list={['flex flex-col items-center gap-0.5 text-[8px] leading-none', j === 4 ? 'font-bold text-emerald-700' : 'text-soluk']}>
+                          <span class:list={['flex h-5 w-7 items-center justify-center rounded-full', j === 4 && 'bg-mint ring-2 ring-altin/70']}>
+                            <Ikon ad={n.ikon} boyut={13} />
+                          </span>
+                          <span class="max-w-full truncate">{n.ad}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {i === 2 && (
+                  <div class="flex h-full flex-col">
+                    <div class="border-b border-cizgi px-3 py-2.5 text-[13px] font-semibold text-emerald-800">{T.mProfil}</div>
+                    <div class="flex-1 space-y-1.5 p-2.5">
+                      <span class="block h-6 rounded-md bg-zemin" />
+                      <span class="block h-6 rounded-md bg-zemin" />
+                      <span class="mt-2 flex items-center justify-center gap-1 rounded-md border border-hata/70 py-1.5 text-[11px] font-medium text-hata">
+                        {T.mCikis}
+                      </span>
+                      <span class="flex items-center justify-center gap-1 rounded-md bg-hata/5 py-1.5 text-[11px] font-semibold text-hata ring-2 ring-altin/70">
+                        <Ikon ad="cop" boyut={13} />
+                        {T.mSil}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                {i === 3 && (
+                  <div class="flex h-full flex-col bg-emerald-900/35 p-2">
+                    <div class="mt-3 rounded-xl bg-white px-2.5 py-3 text-center shadow-md">
+                      <span class="mx-auto flex justify-center text-hata"><Ikon ad="cop" boyut={20} /></span>
+                      <span class="mt-1 block text-[11px] font-bold text-emerald-900">{T.mOnayBaslik}</span>
+                      <span class="mt-1 block text-[8.5px] leading-snug text-soluk">{T.mOnayMetin}</span>
+                      <span class="mt-2 flex items-center justify-center gap-1.5 text-[9.5px]">
+                        <span class="px-1.5 py-1 font-medium text-emerald-700">{T.mVazgec}</span>
+                        <span class="rounded-full bg-hata px-2 py-1 font-semibold text-white ring-2 ring-altin/70">{T.mKalici}</span>
+                      </span>
+                    </div>
+                  </div>
+                )}
+                {i === 4 && (
+                  <div class="flex h-full flex-col items-center justify-end px-2.5 pb-6">
+                    <span class="text-emerald-700"><Ikon ad="kabe" boyut={26} /></span>
+                    <span class="baslik mt-1 text-[13px] font-bold text-emerald-800">{t('site.ad')}</span>
+                    <span class="mt-auto flex w-full items-center gap-1.5 rounded-md bg-emerald-800 px-2.5 py-2 text-[10.5px] font-medium text-white shadow-md ring-2 ring-altin/70">
+                      <Ikon ad="tik" boyut={13} />
+                      {T.mSilindi}
+                    </span>
+                  </div>
+                )}
+              </div>
+              {i < adimlar.length - 1 && (
+                <span class="ok-ara hidden text-altin lg:block" aria-hidden="true">
+                  <Ikon ad="ok" boyut={26} class="yon-ok" />
+                </span>
+              )}
+              <p class="mt-5 flex max-w-[300px] items-start gap-3 text-[17px] leading-snug text-emerald-900">
+                <span class="numara" aria-hidden="true">{i + 1}</span>
+                <span class="pt-1.5"><span class="sr-only">{i + 1}. </span>{a}</span>
+              </p>
             </li>
           ))
         }
       </ol>
-      <p class="mt-4 text-sm text-soluk">{t('silme.acenteNot')}</p>
+      <p class="mt-8 flex items-start gap-2.5 rounded-xl bg-[#eef1e8] px-4 py-3 text-[16px] text-emerald-900/90">
+        <Ikon ad="bilgi" boyut={20} class="mt-0.5 shrink-0 text-emerald-700" />
+        {t('silme.acenteNot')}
+      </p>
     </section>
 
-    <div class="mt-6 grid gap-5 md:grid-cols-2">
-      <section class="kart p-6">
-        <h2 class="font-semibold text-emerald-700">{t('silme.silinenBaslik')}</h2>
-        <ul class="mt-3 list-disc ps-5 space-y-1.5 text-sm">{silinenler.map((s) => <li>{s}</li>)}</ul>
-      </section>
-      <section class="kart p-6">
-        <h2 class="font-semibold text-emerald-700">{t('silme.saklananBaslik')}</h2>
-        <p class="mt-3 text-sm leading-relaxed">{t('silme.saklanan')}</p>
-      </section>
-    </div>
+    <!-- Silinen / saklanabilecek -->
+    <section class="genis-kap grid gap-6 pb-10 lg:grid-cols-2 lg:gap-7">
+      <div class="flex flex-col gap-4 sm:flex-row sm:gap-5 rounded-2xl border border-[#cfd9c9] bg-[#eef1e8] p-6 sm:p-7">
+        <span class="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-full bg-[#dde8d8] text-emerald-700" aria-hidden="true">
+          <Ikon ad="cop" boyut={32} />
+        </span>
+        <div class="min-w-0">
+          <h2 class="text-[28px] font-bold text-emerald-800">{T.silinenBaslik}</h2>
+          <ul class="mt-3 space-y-1.5 text-[17px] text-emerald-900">
+            {silinenler.map((s) => <li class="madde">{s}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row sm:gap-5 rounded-2xl border border-altin/40 bg-[#fbfaf6] p-6 sm:p-7">
+        <span class="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-full bg-[#f1e9d6] text-altin" aria-hidden="true">
+          <Ikon ad="veritabani" boyut={32} />
+        </span>
+        <div class="min-w-0">
+          <h2 class="text-[28px] font-bold text-emerald-800">{T.saklananBaslik}</h2>
+          <ul class="mt-3 space-y-2 text-[17px] leading-snug text-emerald-900">
+            {saklananlar.map((s) => <li class="madde">{s}</li>)}
+          </ul>
+          <p class="mt-4 flex items-center gap-2 text-[16px] text-emerald-900/80">
+            <Ikon ad="saat" boyut={18} class="shrink-0" />
+            {T.sure}
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <section id="talep" class="kart mt-6 p-6 border-emerald-600/30">
-      <h2 class="text-xl font-semibold text-emerald-700">{t('silme.talepBaslik')}</h2>
-      <p class="mt-3 leading-relaxed">{t('silme.talep')}</p>
-      <p class="mt-4">
-        <span class="text-sm text-soluk">{t('silme.talepEposta')}:</span>
-        <a href={`mailto:${talepAdresi}?subject=${konu}`} dir="ltr" class="ms-1 font-medium text-emerald-600 underline"
-          >{talepAdresi}</a
-        >
-      </p>
-      <p class="mt-4 text-sm text-soluk">{t('silme.formYakinda')}</p>
+    <!-- Talep: düğme sayfada bölümü açar (JS'siz çalışır) -->
+    <section class="genis-kap pb-16">
+      <details id="talep" class="talep group scroll-mt-24">
+        <summary class="mx-auto flex min-h-[60px] w-fit cursor-pointer list-none items-center justify-center gap-4 rounded-xl border-2 border-altin bg-emerald-800 px-8 py-3 text-white shadow-[0_8px_20px_-10px_rgb(0_0_0/0.5)] transition hover:bg-emerald-700 sm:px-12">
+          <Ikon ad="cop" boyut={26} />
+          <span class="baslik text-xl font-bold sm:text-2xl">{T.talepDugme}</span>
+          <Ikon ad="ok" boyut={24} class="yon-ok transition-transform group-open:rotate-90" />
+        </summary>
+
+        <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 shadow-[0_2px_12px_rgb(60_50_20/0.06)] sm:p-8">
+          <h2 class="text-[28px] font-bold text-emerald-800">{T.talepBaslik}</h2>
+          <p class="mt-3 text-[17px] leading-relaxed text-emerald-900/90">{T.talepGiris}</p>
+          <Form dil={dil} tur="silme" uc="/v1/web/deletion-request" gonderMetni={T.gonder} basariMetni={T.basari} genis={false} class="mt-6">
+            <Alan ad="eposta" etiket={T.eposta} tip="eposta" zorunlu yer={T.epostaYer} genis />
+            <Alan ad="adSoyad" etiket={T.adSoyad} yer={T.adSoyadYer} otomatik="name" genis />
+            <Alan ad="aciklama" etiket={T.aciklama} tip="metinAlani" yer={T.aciklamaYer} genis satir={3} />
+          </Form>
+
+          <div class="mt-8 border-t border-krem-cizgi pt-6">
+            <p class="text-[17px] leading-relaxed text-emerald-900/90">{T.epostaYolu}</p>
+            <p class="mt-2">
+              <span class="text-soluk">{t('silme.talepEposta')}:</span>
+              <a href={`mailto:${talepAdresi}?subject=${konu}`} dir="ltr" class="ms-1 inline-flex min-h-11 items-center font-semibold text-emerald-600 underline underline-offset-2">
+                {talepAdresi}
+              </a>
+            </p>
+            <p class="mt-3 text-sm text-soluk">{T.fazNot}</p>
+          </div>
+        </div>
+      </details>
     </section>
   </div>
 </Base>
+
+<script>
+  // #talep bağlantısıyla gelindiğinde bölüm açık gelsin.
+  const ac = () => {
+    if (location.hash === '#talep') document.querySelector<HTMLDetailsElement>('#talep')?.setAttribute('open', '');
+  };
+  ac();
+  window.addEventListener('hashchange', ac);
+</script>
+
+<style>
+  .genis-kap {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .genis-kap {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .genis-kap {
+      padding-inline: 52px;
+    }
+  }
+  .kabe-ust {
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%), linear-gradient(180deg, #000 70%, transparent 100%);
+    mask-composite: intersect;
+  }
+  :global(html[dir='rtl']) .kabe-ust {
+    mask-image: linear-gradient(270deg, transparent 0%, #000 30%), linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+  /* Telefon maketi: alt kenarı açık, zemine solan çerçeve */
+  .telefon {
+    position: relative;
+    width: 200px;
+    height: 205px;
+    overflow: hidden;
+    background: #fff;
+    border: 6px solid var(--color-emerald-800);
+    border-bottom: 0;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.4);
+    mask-image: linear-gradient(180deg, #000 88%, transparent 100%);
+  }
+  .ok-ara {
+    position: absolute;
+    top: 95px;
+    inset-inline-end: -22px;
+  }
+  .numara {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9999px;
+    font-family: var(--font-baslik);
+    font-size: 19px;
+    color: #fff;
+    background: linear-gradient(180deg, #d9b45c, #b8963e);
+    box-shadow: 0 0 0 3px #f6f3ec, 0 0 0 4px rgb(184 150 62 / 0.45);
+  }
+  .madde {
+    position: relative;
+    padding-inline-start: 1.5rem;
+  }
+  .madde::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.25rem;
+    top: 0.55em;
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: var(--color-altin);
+  }
+  .talep summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

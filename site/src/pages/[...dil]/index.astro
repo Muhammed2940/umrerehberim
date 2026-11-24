@@ -1,62 +1,330 @@
 ---
+// Ana sayfa: onaylı referans görsel (Umre_Rehberim_Tasarim/01-ana-sayfa) düzeni.
 import Base from '../../layouts/Base.astro';
 import MagazaRozetleri from '../../components/MagazaRozetleri.astro';
 import Paketler from '../../components/Paketler.astro';
-import { cevirmen, dilYollari, type Dil } from '../../i18n';
+import KabeSahnesi from '../../components/KabeSahnesi.astro';
+import GirisKemeri from '../../components/GirisKemeri.astro';
+import KabeSahnesiMobil from '../../components/KabeSahnesiMobil.astro';
+import Ikon from '../../components/Ikon.astro';
+import { cevirmen, dilYollari, yol, type Dil } from '../../i18n';
 
 export const getStaticPaths = dilYollari;
 const { dil } = Astro.props as { dil: Dil };
 const t = cevirmen(dil);
-const ozellikler = [1, 2, 3, 4].map((i) => ({ baslik: t(`ozellik.f${i}Baslik`), metin: t(`ozellik.f${i}`) }));
-const simgeler = ['🕋', '🗺️', '🎧', '👨‍👩‍👧'];
+
+const kapilar = [
+  { ad: t('kapi.haci'), metin: t('kapi.haciMetin'), href: yol(dil, '/rehber/'), ikon: 'kisiKonum' as const },
+  { ad: t('kapi.acente'), metin: t('kapi.acenteMetin'), href: yol(dil, '/acente/'), ikon: 'grupCanta' as const },
+  { ad: t('kapi.esnaf'), metin: t('kapi.esnafMetin'), href: yol(dil, '/esnaf/'), ikon: 'dukkan' as const },
+];
+
+const ozellikIkon = ['kitap', 'harita', 'kulaklik', 'aile'] as const;
+const ozellikler = [1, 2, 3, 4].map((i) => ({
+  baslik: t(`ozellik.f${i}Baslik`),
+  metin: t(`ozellik.f${i}`),
+  ikon: ozellikIkon[i - 1],
+}));
 ---
 
 <Base dil={dil} yalin="/">
-  <section class="yesil-degrade text-white">
-    <div class="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-10 md:grid-cols-2 items-center">
-      <div>
-        <h1 class="text-3xl md:text-5xl font-bold leading-tight">{t('giris.baslik')}</h1>
-        <p class="mt-5 text-lg text-white/85 leading-relaxed">{t('giris.alt')}</p>
-        <div id="indir" class="mt-8 scroll-mt-6">
-          <MagazaRozetleri dil={dil} />
+  <!-- 1. Giriş -->
+  <!-- Mobil/tablet: açık, ortalı (12-arapca-mobil). Geniş ekran: koyu zümrüt, iki kolon (01-ana-sayfa). -->
+  <section class="giris-duyarli relative overflow-hidden text-emerald-900 lg:text-white">
+    <div class="hidden lg:block"><GirisKemeri /></div>
+    <div class="relative mx-auto grid w-full max-w-[1440px] lg:min-h-[470px] lg:grid-cols-[1.12fr_0.88fr]">
+      <div class="relative z-10 px-5 pt-10 pb-2 text-center sm:px-10 lg:ps-[120px] lg:pe-6 lg:pt-[84px] lg:pb-16 lg:text-start">
+        <h1 class="mx-auto max-w-[700px] text-[2.35rem] font-bold leading-[1.15] text-emerald-800 sm:text-6xl lg:mx-0 lg:text-[64px] lg:leading-[1.1] lg:text-white text-balance">
+          {t('giris.baslik')}
+        </h1>
+        <p class="mx-auto mt-4 max-w-xl text-lg text-emerald-900/80 sm:text-[22px] sm:leading-snug lg:mx-0 lg:mt-5 lg:text-white/90 text-pretty">
+          {t('giris.altKisa')}
+        </p>
+        <span class="mt-8 hidden h-[3px] w-20 rounded-full bg-altin lg:block" aria-hidden="true"></span>
+        <div class="mt-7 flex flex-wrap justify-center gap-4 lg:mt-8 lg:justify-start">
+          <!-- Mobil: koyu yeşil hap düğme -->
+          <a
+            href="#rehber"
+            class="inline-flex min-h-14 items-center gap-3 rounded-full border-2 border-altin/70 bg-emerald-800 px-8 text-lg font-semibold text-white no-underline shadow-lg transition hover:bg-emerald-700 lg:hidden"
+          >
+            {t('giris.kesfet')}
+            <Ikon ad="ok" boyut={22} />
+          </a>
+          <!-- Geniş ekran: altın düğme + çerçeveli ikincil -->
+          <a href="#rehber" class="dugme-altin hidden min-h-14 rounded-lg px-7 text-lg font-semibold lg:inline-flex">
+            {t('giris.kesfet')}
+            <Ikon ad="ok" boyut={22} />
+          </a>
+          <a href={yol(dil, '/ozellikler/')} class="dugme-cerceve hidden min-h-14 rounded-lg px-7 text-lg font-semibold lg:inline-flex">
+            {t('giris.tani')}
+          </a>
         </div>
       </div>
-      <!-- (SAHİP) Gerçek uygulama ekran görüntüleri buraya -->
-      <div class="flex justify-center gap-4" aria-label={t('giris.ekranNot')}>
+      <!-- Mobil sahne -->
+      <div class="mt-4 lg:hidden">
+        <KabeSahnesiMobil />
+      </div>
+      <!-- Geniş ekran sahnesi -->
+      <div class="hidden lg:static lg:block">
+        <KabeSahnesi dil={dil} />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Mekke ve Medine rehberi: şehir + arama → /rehber/?sehir=…&q=… -->
+  <section id="rehber" class="rehber-bolum relative isolate scroll-mt-20 overflow-hidden">
+    <svg class="yildiz-desen pointer-events-none absolute inset-0 -z-10 h-full w-full" aria-hidden="true">
+      <defs>
+        <pattern id="rh-desen" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M28 10l5.3 12.7L46 28l-12.7 5.3L28 46l-5.3-12.7L10 28l12.7-5.3Z M28 14.5l12.7 13.5L28 41.5 15.3 28Z" fill="none" stroke="#b8963e" stroke-width="0.8"></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#rh-desen)"></rect>
+    </svg>
+    <div class="mx-auto w-full max-w-[1440px] px-4 pt-12 pb-14 md:px-14">
+      <div class="flex flex-col items-center">
+        <!-- Kubbe süsü -->
+        <svg width="320" height="44" viewBox="0 0 320 44" fill="none" aria-hidden="true" class="max-w-full">
+          <path d="M0 40h132c6 0 10-3 12-8 3-9 8-15 16-18 8 3 13 9 16 18 2 5 6 8 12 8h132" stroke="#c9a24a" stroke-width="1.6" stroke-opacity="0.85"></path>
+          <path d="M160 14V6" stroke="#c9a24a" stroke-width="1.6"></path>
+        </svg>
+        <div class="mt-3 flex w-full items-center justify-center gap-6">
+          <span class="hidden h-px flex-1 bg-gradient-to-r from-transparent to-altin/70 sm:block rtl:bg-gradient-to-l" aria-hidden="true"></span>
+          <h2 class="text-center text-[2rem] font-bold text-emerald-900 sm:text-[44px]">{t('rehberAra.baslik')}</h2>
+          <span class="hidden h-px flex-1 bg-gradient-to-l from-transparent to-altin/70 sm:block rtl:bg-gradient-to-r" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <form action={yol(dil, '/rehber/')} method="get" role="search" class="mx-auto mt-8 max-w-[1200px]">
+        <fieldset class="mx-auto w-fit">
+          <legend class="sr-only">{t('rehberAra.sehir')}</legend>
+          <div class="flex rounded-xl bg-[#e5eee3] p-1 shadow-[inset_0_1px_2px_rgb(0_0_0/0.06)]">
+            {
+              [
+                { d: 'mekke', ad: t('rehberAra.mekke'), ikon: 'kabe' as const },
+                { d: 'medine', ad: t('rehberAra.medine'), ikon: 'kubbe' as const },
+              ].map((s, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="sehir" value={s.d} checked={i === 0} class="peer sr-only" />
+                  <span class="flex min-h-[52px] min-w-[150px] items-center justify-center gap-3 rounded-lg px-8 text-lg font-medium text-emerald-800 transition peer-checked:bg-emerald-600 peer-checked:text-white peer-checked:shadow-md peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-sage sm:min-w-[250px] sm:text-[22px]">
+                    <Ikon ad={s.ikon} boyut={28} />
+                    {s.ad}
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <div class="relative mt-6">
+          <label for="rehber-q" class="sr-only">{t('rehberAra.araEtiket')}</label>
+          <span class="pointer-events-none absolute inset-y-0 start-5 flex items-center text-emerald-900/70"><Ikon ad="arama" boyut={26} /></span>
+          <input
+            id="rehber-q"
+            name="q"
+            type="search"
+            autocomplete="off"
+            maxlength="60"
+            placeholder={t('rehberAra.araYer')}
+            class="min-h-[60px] w-full rounded-xl border border-[#cfc8b8] bg-white ps-16 pe-20 text-lg text-emerald-900 shadow-sm placeholder:text-emerald-900/60 focus:border-emerald-600 focus:outline-none focus-visible:outline-3 focus-visible:outline-sage sm:text-[22px]"
+          />
+          <button
+            type="submit"
+            class="absolute inset-y-1.5 end-1.5 inline-flex w-[72px] items-center justify-center rounded-lg bg-emerald-600 text-white transition hover:bg-emerald-700"
+            aria-label={t('rehberAra.araDugme')}
+            title={t('rehberAra.araDugme')}
+          >
+            <Ikon ad="arama" boyut={26} />
+          </button>
+        </div>
+      </form>
+
+      <!-- 3. Üç kapı -->
+      <div class="mt-10 grid gap-5 lg:grid-cols-3">
         {
-          [0, 1].map((i) => (
-            <div
-              class:list={[
-                'w-32 sm:w-40 md:w-48 aspect-[9/19] rounded-[28px] border-4 border-white/25 bg-emerald-900/40 flex items-center justify-center text-center p-4 text-sm text-white/70',
-                i === 1 && 'mt-10',
-              ]}
+          kapilar.map((k) => (
+            <a
+              href={k.href}
+              class="kapi-kart group relative flex items-center gap-5 rounded-2xl p-5 no-underline transition duration-300 hover:-translate-y-1"
             >
-              {i === 0 ? <img src="/logo.png" alt="" width="96" height="92" class="w-24 rounded-xl bg-white/95 p-1" /> : t('giris.ekranNot')}
-            </div>
+              <span class="kapi-madalyon flex h-20 w-20 shrink-0 items-center justify-center rounded-full text-emerald-700">
+                <Ikon ad={k.ikon} boyut={40} />
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="baslik block text-[26px] font-bold leading-tight text-emerald-900">{k.ad}</span>
+                <span class="mt-1 block text-[17px] leading-snug text-emerald-900/85">{k.metin}</span>
+              </span>
+              <span class="shrink-0 text-emerald-800 transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                <Ikon ad="ok" boyut={26} />
+              </span>
+            </a>
           ))
         }
       </div>
     </div>
   </section>
 
-  <section id="ozellikler" class="mx-auto max-w-6xl px-4 py-14">
-    <h2 class="text-2xl md:text-3xl font-bold text-emerald-700">{t('ozellik.baslik')}</h2>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        ozellikler.map((o, i) => (
-          <article class="kart p-6">
-            <div class="h-12 w-12 rounded-kart bg-mint flex items-center justify-center text-2xl" aria-hidden="true">
-              {simgeler[i]}
-            </div>
-            <h3 class="mt-4 font-semibold text-lg text-emerald-700">{o.baslik}</h3>
-            <p class="mt-2 text-sm text-soluk leading-relaxed">{o.metin}</p>
-          </article>
-        ))
-      }
+  <!-- 4. Özellikler: koyu zümrüt bant, mihrap kemeri biçimli kartlar -->
+  <section class="ozellik-bolum relative isolate overflow-hidden text-white">
+    <svg class="yildiz-desen-koyu pointer-events-none absolute inset-0 -z-10 h-full w-full" aria-hidden="true">
+      <defs>
+        <pattern id="oz-desen" width="56" height="56" patternUnits="userSpaceOnUse">
+          <path d="M28 10l5.3 12.7L46 28l-12.7 5.3L28 46l-5.3-12.7L10 28l12.7-5.3Z M28 14.5l12.7 13.5L28 41.5 15.3 28Z" fill="none" stroke="#e3bf68" stroke-width="0.8"></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#oz-desen)"></rect>
+    </svg>
+    <div class="mx-auto w-full max-w-[1280px] px-4 py-16 md:px-8 md:py-20">
+      <div class="flex flex-col items-center text-center">
+        <svg width="220" height="34" viewBox="0 0 220 34" fill="none" aria-hidden="true" class="max-w-full">
+          <path d="M0 31h82c5 0 8-2 10-6 3-8 8-13 18-16 10 3 15 8 18 16 2 4 5 6 10 6h82" stroke="#e3bf68" stroke-width="1.5"></path>
+          <path d="M110 9V2" stroke="#e3bf68" stroke-width="1.5"></path>
+          <circle cx="110" cy="2" r="1.6" fill="#e3bf68"></circle>
+        </svg>
+        <div class="mt-3 flex w-full items-center justify-center gap-6">
+          <span class="hidden h-px flex-1 bg-gradient-to-r from-transparent to-altin-acik/60 sm:block rtl:bg-gradient-to-l" aria-hidden="true"></span>
+          <h2 class="text-[2rem] font-bold text-white sm:text-[44px]">{t('ozellik.baslik')}</h2>
+          <span class="hidden h-px flex-1 bg-gradient-to-l from-transparent to-altin-acik/60 sm:block rtl:bg-gradient-to-r" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        {
+          ozellikler.map((o, i) => (
+            <article class="kemer-kart group relative flex flex-col items-center px-6 pt-12 pb-8 text-center transition duration-300 hover:-translate-y-1">
+              <span class="kemer-madalyon flex h-[72px] w-[72px] items-center justify-center rounded-full text-emerald-900">
+                <Ikon ad={o.ikon} boyut={32} />
+              </span>
+              <span class="baslik mt-5 text-sm font-bold tracking-[0.3em] text-altin-acik" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="baslik mt-2 text-xl font-bold text-white">{o.baslik}</h3>
+              <div class="mt-4 flex w-24 items-center gap-2" aria-hidden="true">
+                <span class="h-px flex-1 bg-altin-acik/45"></span>
+                <svg width="8" height="8" viewBox="0 0 10 10" class="text-altin-acik">
+                  <path d="M5 0 10 5 5 10 0 5Z" fill="currentColor" />
+                </svg>
+                <span class="h-px flex-1 bg-altin-acik/45"></span>
+              </div>
+              <p class="mt-4 leading-relaxed text-koyu-soluk">{o.metin}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-12 flex justify-center">
+        <a href={yol(dil, '/ozellikler/')} class="dugme-altin min-h-12 rounded-full px-8 text-lg font-semibold">
+          {t('ozellik.tumu')}
+          <Ikon ad="ok" boyut={20} />
+        </a>
+      </div>
     </div>
   </section>
 
-  <div class="bg-white/60 border-y border-cizgi">
-    <Paketler dil={dil} />
-  </div>
+  <!-- 5. Paket özeti -->
+  <Paketler dil={dil} />
+
+  <!-- 6. İndir -->
+  <section id="indir" class="scroll-mt-20 bg-krem pb-16">
+    <div class="kapsayici">
+      <div class="giris-zemin flex flex-col gap-6 rounded-2xl p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
+        <div class="max-w-xl">
+          <h2 class="text-3xl font-bold">{t('indir.baslik')}</h2>
+          <p class="mt-3 text-koyu-soluk">{t('indir.metin')}</p>
+        </div>
+        <MagazaRozetleri dil={dil} />
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  /* Rehber bölümü: krem zemin, soluk yıldız deseni, üstte altın parıltı */
+  .rehber-bolum {
+    background:
+      radial-gradient(ellipse 55% 40% at 50% 0%, rgb(227 191 104 / 0.16), transparent 70%),
+      linear-gradient(180deg, #f6f3ec 0%, #f3efe4 100%);
+  }
+  .yildiz-desen {
+    opacity: 0.08;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 30%, transparent 90%);
+  }
+  .kapi-kart {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
+    border: 1px solid #e4dccb;
+    box-shadow: 0 10px 28px -18px rgb(60 50 20 / 0.45);
+  }
+  .kapi-kart::before {
+    content: '';
+    position: absolute;
+    inset: 0 1.5rem auto;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, transparent, #c9a24a, transparent);
+  }
+  .kapi-kart:hover {
+    border-color: rgb(201 162 74 / 0.6);
+    box-shadow: 0 20px 36px -20px rgb(60 50 20 / 0.55);
+  }
+  .kapi-madalyon {
+    position: relative;
+    background: radial-gradient(circle at 35% 30%, #eef6ec, #d3e6d1 80%);
+  }
+  .kapi-madalyon::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 9999px;
+    border: 1px dashed #b8963e;
+    opacity: 0.55;
+  }
+
+  /* Özellikler: koyu zümrüt bant */
+  .ozellik-bolum {
+    background:
+      radial-gradient(ellipse 50% 60% at 15% 0%, rgb(35 83 71 / 0.8), transparent 70%),
+      radial-gradient(ellipse 45% 55% at 90% 100%, rgb(227 191 104 / 0.12), transparent 70%),
+      linear-gradient(160deg, #0d4535 0%, #0b2b26 100%);
+  }
+  .yildiz-desen-koyu {
+    opacity: 0.07;
+  }
+  /* Mihrap kemeri biçimli kart */
+  .kemer-kart {
+    border-radius: 50% 50% 1.25rem 1.25rem / 110px 110px 1.25rem 1.25rem;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.07) 0%, rgb(255 255 255 / 0.02) 100%);
+    border: 1px solid rgb(227 191 104 / 0.45);
+  }
+  .kemer-kart::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border-radius: 50% 50% 0.9rem 0.9rem / 104px 104px 0.9rem 0.9rem;
+    border: 1px solid rgb(227 191 104 / 0.18);
+    pointer-events: none;
+  }
+  .kemer-kart:hover {
+    border-color: rgb(227 191 104 / 0.8);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.1) 0%, rgb(255 255 255 / 0.03) 100%);
+  }
+  .kemer-madalyon {
+    position: relative;
+    background: radial-gradient(circle at 35% 30%, #f8e3a6, #c9a24a 80%);
+    box-shadow: 0 8px 20px -8px rgb(0 0 0 / 0.5);
+  }
+  .kemer-madalyon::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 1px dashed #e3bf68;
+    opacity: 0.5;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kapi-kart,
+    .kemer-kart {
+      transition: none;
+      transform: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+// İç sayfaların ortak koyu zümrüt başlığı. Sağ taraf için isteğe bağlı "yan" yuvası var.
+interface Props {
+  baslik: string;
+  alt?: string;
+  etiket?: string;
+}
+const { baslik, alt, etiket } = Astro.props;
+const yanVar = Astro.slots.has('yan');
+---
+
+<section class="koyu-sahne text-white">
+  <div class:list={['kapsayici py-14 md:py-20', yanVar && 'grid items-center gap-10 lg:grid-cols-2']}>
+    <div>
+      {
+        etiket && (
+          <p class="inline-flex items-center gap-2 rounded-full border border-altin/40 bg-emerald-900/40 px-4 py-1.5 text-sm text-fildisi">
+            <span class="h-1.5 w-1.5 rounded-full bg-altin" aria-hidden="true" />
+            {etiket}
+          </p>
+        )
+      }
+      <h1 class:list={['text-4xl font-bold leading-tight md:text-5xl text-balance', etiket && 'mt-5']}>{baslik}</h1>
+      {alt && <p class="mt-5 max-w-2xl text-lg leading-relaxed text-koyu-soluk text-pretty">{alt}</p>}
+      <slot />
+    </div>
+    {yanVar && <div><slot name="yan" /></div>}
+  </div>
+</section>

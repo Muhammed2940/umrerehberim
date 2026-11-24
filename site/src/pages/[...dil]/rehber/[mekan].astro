@@ -1,0 +1,299 @@
+---
+// Ziyaret yeri detay sayfası (SEO): her mekân × 3 dil. İçerik: data/rehber.json (uygulama verisi, tek kaynak).
+// Harita iframe'i yok; yalnız OpenStreetMap'e düz bağlantı.
+import Base from '../../../layouts/Base.astro';
+import Ikon from '../../../components/Ikon.astro';
+import TurIkon from '../../../components/rehber/TurIkon.astro';
+import MekanGorsel from '../../../components/rehber/MekanGorsel.astro';
+import { DILLER, VARSAYILAN, cevirmen, yol, type Dil } from '../../../i18n';
+import { sayfaMetni } from '../../../i18n/sayfa';
+import { REHBER_METIN } from '../../../i18n/sayfa/rehber';
+import { MEKANLAR, MEKAN_FOTO, MEKAN_FOTO_BILGI, m, metinDili, paragraflar, arayuz, mekanSlug, type Mekan } from '../../../lib/rehber';
+
+export function getStaticPaths() {
+  return DILLER.flatMap((d) =>
+    MEKANLAR.map((y) => ({
+      params: { dil: d === VARSAYILAN ? undefined : d, mekan: mekanSlug(y.id) },
+      props: { dil: d, y },
+    })),
+  );
+}
+
+const { dil, y } = Astro.props as { dil: Dil; y: Mekan };
+const t = cevirmen(dil);
+const T = sayfaMetni(dil, REHBER_METIN);
+const foto = MEKAN_FOTO_BILGI[y.id];
+const ad = m(y.ad, dil);
+const yalin = `/rehber/${mekanSlug(y.id)}/`;
+const turAdi = (T as Record<string, string>)[`tur_${y.tur}`] ?? '';
+const bolgeAdi = arayuz(y.bolge === 'mekke' ? 'tabMekke' : y.bolge === 'medine' ? 'tabMedine' : 'tabDiger', dil);
+const aciklama = `${ad}: ${m(y.altBaslik, dil)}. ${paragraflar(y.genel, dil)[0] ?? ''}`.slice(0, 300).replace(/\s+\S*$/, '…');
+
+const hizli = [
+  { etiket: T.sehirEtiket, deger: y.sehir, ikon: 'konum' as const },
+  { etiket: T.uygunSaat, deger: y.uygunSaat, ikon: 'saat' as const },
+  { etiket: T.ziyaretSuresi, deger: y.ziyaretSuresi, ikon: 'takvim' as const },
+  { etiket: T.uzaklik, deger: y.uzaklik, ikon: 'harita' as const },
+].filter((h) => h.deger);
+
+const ayniBolge = MEKANLAR.filter((x) => x.bolge === y.bolge && x.id !== y.id);
+const i = MEKANLAR.indexOf(y);
+// Sıradaki 4 yer (döngüsel): her sayfada farklı, kalıcı bağlantılar.
+const yakindakiler = [...ayniBolge.slice(Math.max(0, ayniBolge.findIndex((x) => MEKANLAR.indexOf(x) > i))), ...ayniBolge].slice(0, 4);
+const osm = `https://www.openstreetmap.org/?mlat=${y.konum.lat}&mlon=${y.konum.lng}#map=17/${y.konum.lat}/${y.konum.lng}`;
+
+const bolumBaslik = 'text-[1.6rem] font-bold text-emerald-900 sm:text-[30px]';
+---
+
+<Base dil={dil} yalin={yalin} baslik={ad} aciklama={aciklama}>
+  <article>
+    <!-- Başlık -->
+    <header class="bg-krem">
+      <div class="mx-auto w-full max-w-[1200px] px-4 pt-6 pb-10 md:px-6">
+        <nav aria-label={T.geri}>
+          <a href={yol(dil, '/rehber/')} class="inline-flex min-h-11 items-center gap-2 font-medium text-emerald-700 no-underline hover:underline underline-offset-4">
+            <Ikon ad="ok" boyut={20} class="rotate-180" />
+            {T.geri}
+          </a>
+        </nav>
+        <div class="mt-4 grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p class="flex flex-wrap items-center gap-2 text-base">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1 text-white">
+                <Ikon ad="konum" boyut={16} />
+                {bolgeAdi}
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-mint/80 px-3 py-1 text-emerald-700">
+                <TurIkon ad={y.tur} boyut={16} />
+                {turAdi}
+              </span>
+            </p>
+            <h1 class="mt-4 text-[2.1rem] font-bold leading-tight text-emerald-800 sm:text-5xl text-balance" lang={metinDili(y.ad, dil)}>{ad}</h1>
+            {
+              y.arapcaAd && y.arapcaAd !== ad && (
+                <p lang="ar" dir="rtl" class="mt-3 font-amiri text-[28px] leading-normal text-emerald-700">
+                  {y.arapcaAd}
+                </p>
+              )
+            }
+            <p class="mt-3 text-lg leading-relaxed text-emerald-900/85 text-pretty" lang={metinDili(y.altBaslik, dil)}>{m(y.altBaslik, dil)}</p>
+          </div>
+          <figure>
+          <div class="relative aspect-[16/9] overflow-hidden rounded-2xl border border-krem-cizgi shadow-sm">
+            <MekanGorsel tur={y.tur} bolge={y.bolge} foto={MEKAN_FOTO[y.id]} alt={foto ? ad : ''} hemen ikonBoyut={72} />
+            <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-[#fbfaf6]/95 px-3 py-1 text-base text-emerald-900 shadow-sm" aria-hidden="true">
+              <Ikon ad="konum" boyut={16} class="text-altin-koyu" />
+              {m(y.sehir, dil).split(/[,،]/)[0]}
+            </span>
+          </div>
+          {
+            foto?.kaynak && (
+              <figcaption class="mt-2 text-sm leading-snug text-emerald-900/65">
+                {T.fotoEtiket}:{' '}
+                <a href={foto.kaynak} rel="noopener" target="_blank" class="underline-offset-2 hover:underline">
+                  <bdi>{foto.yazar}</bdi>
+                </a>
+                {' · '}
+                {foto.lisansUrl ? (
+                  <a href={foto.lisansUrl} rel="noopener license" target="_blank" class="underline-offset-2 hover:underline">
+                    <bdi>{foto.lisans}</bdi>
+                  </a>
+                ) : (
+                  <bdi>{foto.lisans}</bdi>
+                )}
+                {' · '}{foto.site}
+              </figcaption>
+            )
+          }
+          </figure>
+        </div>
+      </div>
+    </header>
+
+    <div class="mx-auto grid w-full max-w-[1200px] gap-10 px-4 py-12 md:px-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div class="min-w-0 space-y-12">
+        <!-- Genel bilgi -->
+        <section aria-labelledby="genel">
+          <h2 id="genel" class={bolumBaslik}>{arayuz('genel', dil)}</h2>
+          <div class="mt-4 space-y-4 text-[17px] leading-relaxed text-emerald-900/90" lang={metinDili(y.genel, dil)}>
+            {paragraflar(y.genel, dil).map((p) => <p>{p}</p>)}
+          </div>
+        </section>
+
+        <!-- Tarihçe -->
+        <section aria-labelledby="tarihce">
+          <h2 id="tarihce" class={bolumBaslik}>{arayuz('tarihce', dil)}</h2>
+          <div class="mt-4 space-y-4 text-[17px] leading-relaxed text-emerald-900/90" lang={metinDili(y.tarihce, dil)}>
+            {paragraflar(y.tarihce, dil).map((p) => <p>{p}</p>)}
+          </div>
+        </section>
+
+        <!-- Önemli olaylar -->
+        {
+          y.olaylar && y.olaylar.length > 0 && (
+            <section aria-labelledby="olaylar">
+              <h2 id="olaylar" class={bolumBaslik}>{arayuz('olaylar', dil)}</h2>
+              <ol class="mt-5 space-y-5 border-s-2 border-altin/50 ps-6" role="list">
+                {y.olaylar.map((o) => (
+                  <li class="relative">
+                    <span class="absolute top-1.5 -start-[31px] h-3.5 w-3.5 rounded-full border-2 border-altin bg-krem" aria-hidden="true" />
+                    <p class="font-semibold text-emerald-700">{m(o.tarih, dil)}</p>
+                    <p class="mt-1 text-base leading-relaxed text-emerald-900/90" lang={metinDili(o.metin, dil)}>{m(o.metin, dil)}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )
+        }
+
+        <!-- Dini önemi -->
+        {
+          y.fazilet && (
+            <section aria-labelledby="fazilet">
+              <h2 id="fazilet" class={bolumBaslik}>{arayuz('fazilet', dil)}</h2>
+              <div class="mt-4 space-y-4 text-[17px] leading-relaxed text-emerald-900/90" lang={metinDili(y.fazilet, dil)}>
+                {paragraflar(y.fazilet, dil).map((p) => <p>{p}</p>)}
+              </div>
+              {y.alintilar && y.alintilar.length > 0 && (
+                <div class="mt-6 space-y-4">
+                  {y.alintilar.map((a) => (
+                    <figure class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5">
+                      <blockquote>
+                        <p lang="ar" dir="rtl" class="font-amiri text-[24px] leading-[2] text-emerald-800">
+                          {a.arapca}
+                        </p>
+                        {dil !== 'ar' && <p class="mt-2 text-base leading-relaxed text-emerald-900/90">{m(a.meal, dil)}</p>}
+                      </blockquote>
+                      <figcaption class="mt-2 text-[15px] text-soluk">{m(a.kaynak, dil)}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+            </section>
+          )
+        }
+
+        <!-- Adab ve ipuçları -->
+        {
+          y.adab && y.adab.length > 0 && (
+            <section aria-labelledby="adab">
+              <h2 id="adab" class={bolumBaslik}>{arayuz('adab', dil)}</h2>
+              <ul class="mt-4 list-disc space-y-2 ps-6 text-[17px] leading-relaxed text-emerald-900/90 marker:text-altin">
+                {y.adab.map((x) => (
+                  <li lang={metinDili(x, dil)}>{m(x, dil)}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        <!-- Kaynaklar -->
+        {
+          y.kaynaklar && y.kaynaklar.length > 0 && (
+            <section aria-labelledby="kaynaklar">
+              <h2 id="kaynaklar" class={bolumBaslik}>{arayuz('kaynaklar', dil)}</h2>
+              <ul class="mt-4 space-y-1 text-base">
+                {y.kaynaklar.map((k) => (
+                  <li>
+                    <a href={k.url} rel="noopener noreferrer external" target="_blank" class="inline-flex min-h-11 items-center gap-1.5 text-emerald-700 underline underline-offset-2 hover:text-emerald-900">
+                      {k.baslik}
+                      <span class="sr-only"> {T.yeniSekme}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-3 text-[15px] text-soluk">{arayuz('kaynakNotu', dil)}</p>
+            </section>
+          )
+        }
+      </div>
+
+      <!-- Yan sütun -->
+      <aside class="space-y-6 lg:sticky lg:top-24 lg:self-start">
+        <div class="rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5">
+          <h2 class="baslik text-xl font-bold text-emerald-900">{T.hizliBilgi}</h2>
+          <dl class="mt-4 space-y-3.5">
+            {
+              hizli.map((h) => (
+                <div class="flex gap-3">
+                  <span class="mt-0.5 shrink-0 text-altin-koyu">
+                    <Ikon ad={h.ikon} boyut={20} />
+                  </span>
+                  <div>
+                    <dt class="text-[15px] text-soluk">{h.etiket}</dt>
+                    <dd class="text-base text-emerald-900" lang={metinDili(h.deger, dil)}>{m(h.deger, dil)}</dd>
+                  </div>
+                </div>
+              ))
+            }
+          </dl>
+          <a href={osm} rel="noopener noreferrer external" target="_blank" class="mt-4 inline-flex min-h-11 items-center gap-2 font-medium text-emerald-700 underline underline-offset-2">
+            <Ikon ad="harita" boyut={18} />
+            {T.harita}
+            <span class="sr-only"> {T.yeniSekme}</span>
+          </a>
+        </div>
+
+        {
+          y.ziyaretNotu && (
+            <div class="rounded-2xl border border-altin/50 bg-fildisi p-5">
+              <h2 class="baslik flex items-center gap-2 text-xl font-bold text-emerald-900">
+                <Ikon ad="bilgi" boyut={22} class="text-altin-koyu" />
+                {arayuz('ziyaretNotu', dil)}
+              </h2>
+              <p class="mt-1 text-[15px] text-soluk">{arayuz('ziyaretNotuAlt', dil)}</p>
+              <div class="mt-3 space-y-3 text-base leading-relaxed text-emerald-900/90" lang={metinDili(y.ziyaretNotu, dil)}>
+                {paragraflar(y.ziyaretNotu, dil).map((p) => <p>{p}</p>)}
+              </div>
+              <p class="mt-3 text-[15px] font-medium text-altin-koyu">{T.notGuncel}</p>
+            </div>
+          )
+        }
+
+        {
+          y.sesliRehber && (
+            <div class="giris-zemin rounded-2xl p-5 text-white">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-altin-acik">
+                <Ikon ad="kulaklik" boyut={26} />
+              </span>
+              <h2 class="baslik mt-3 text-xl font-bold">{T.sesliBaslik}</h2>
+              <p class="mt-2 text-base text-koyu-soluk">{T.sesliMetin}</p>
+              <a href={yol(dil, '/#indir')} class="dugme-altin mt-4 min-h-12 w-full rounded-lg font-semibold">
+                {T.sesliDugme}
+              </a>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+
+    <!-- Aynı bölgedeki diğer yerler + geri -->
+    <nav class="bg-[#f1efe6] py-12" aria-labelledby="yakindakiler">
+      <div class="mx-auto w-full max-w-[1200px] px-4 md:px-6">
+        <h2 id="yakindakiler" class={bolumBaslik}>{T.yakindakiler}</h2>
+        <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" role="list">
+          {
+            yakindakiler.map((x) => (
+              <li>
+                <a
+                  href={yol(dil, `/rehber/${mekanSlug(x.id)}/`)}
+                  class="group flex h-full items-center gap-3 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-4 no-underline transition hover:-translate-y-0.5 hover:border-emerald-600/40 hover:shadow-md"
+                >
+                  <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-mint/70 text-emerald-600">
+                    <TurIkon ad={x.tur} boyut={26} />
+                  </span>
+                  <span class="min-w-0 flex-1 font-semibold leading-snug text-emerald-900" lang={metinDili(x.ad, dil)}>{m(x.ad, dil)}</span>
+                  <Ikon ad="ok" boyut={20} class="shrink-0 text-altin-koyu" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a href={`${yol(dil, '/rehber/')}?sehir=${y.bolge}#tum-yerler`} class="dugme-ana mt-8 min-h-12 no-underline">
+          {T.tumYerlereDon}
+        </a>
+      </div>
+    </nav>
+  </article>
+  <p class="mx-auto w-full max-w-[1200px] px-4 py-6 text-[15px] text-soluk md:px-6">{t('altbilgi.fetva')}</p>
+</Base>

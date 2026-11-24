@@ -1,0 +1,179 @@
+---
+// Esnaf sayfası: onaylı referans görsel (06-esnaf) düzeni.
+// Çarşı fotoğrafındaki tabela ("Medine Hediyelik") örnektir; gerçek iş ortağı olarak sunulmaz.
+import Base from '../../layouts/Base.astro';
+import Ikon from '../../components/Ikon.astro';
+import Form from '../../components/form/Form.astro';
+import Alan from '../../components/form/Alan.astro';
+import { cevirmen, dilYollari, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { ESNAF } from '../../i18n/sayfa/esnaf';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const T = sayfaMetni(dil, ESNAF);
+
+const adimlar = [
+  { ikon: 'qr', baslik: T.a1, metin: T.a1m },
+  { ikon: 'indirim', baslik: T.a2, metin: T.a2m },
+  { ikon: 'dukkan', baslik: T.a3, metin: T.a3m },
+] as const;
+
+const degerler = [T.d1, T.d2, T.d3, T.d4];
+
+// Uygulamadaki dükkân kategorileri (ShopModel.categories) ile aynı anahtarlar
+const turler = [
+  { d: 'Hediyelik', ad: T.k1 },
+  { d: 'Hurma & Gıda', ad: T.k2 },
+  { d: 'Parfüm & Misk', ad: T.k3 },
+  { d: 'Tekstil & İhram', ad: T.k4 },
+  { d: 'Kuyumcu', ad: T.k5 },
+  { d: 'Restoran & Kafe', ad: T.k6 },
+  { d: 'Kitap & Tesbih', ad: T.k7 },
+  { d: 'Diğer', ad: T.k8 },
+];
+const sehirler = [
+  { d: 'Mekke', ad: T.mekke },
+  { d: 'Medine', ad: T.medine },
+];
+---
+
+<Base dil={dil} yalin="/esnaf/" baslik={T.metaBaslik} aciklama={T.metaAciklama}>
+  <!-- 1. Giriş -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-[#f8f5ee] to-krem">
+    <div class="relative mx-auto grid w-full max-w-[1536px] lg:min-h-[382px] lg:grid-cols-[minmax(0,0.43fr)_minmax(0,0.57fr)]">
+      <div class="relative z-10 px-4 pt-9 pb-8 sm:px-10 lg:ps-16 lg:pe-0 lg:pt-9 lg:pb-6">
+        <p class="inline-flex items-center gap-3 rounded-full border border-altin/70 bg-fildisi/70 px-5 py-2 text-[17px] font-medium text-altin-koyu">
+          <Ikon ad="dukkan" boyut={24} class="shrink-0" />
+          {T.rozet}
+        </p>
+        <h1 class="esnaf-baslik mt-6 text-[2.5rem] leading-[1.1] font-bold text-emerald-800 sm:text-[3.4rem] lg:text-[60px] text-balance">
+          {T.baslik}
+        </h1>
+        <p class="mt-5 max-w-[600px] text-lg leading-snug text-emerald-900/85 sm:text-xl">{T.metin}</p>
+        <a
+          href="#basvuru"
+          class="mt-8 inline-flex min-h-14 items-center gap-4 rounded-xl border-2 border-altin/80 bg-emerald-800 px-7 text-xl font-semibold text-white no-underline shadow-[0_10px_22px_-12px_rgb(11_43_38/0.7)] transition hover:bg-emerald-700"
+        >
+          <Ikon ad="dukkan" boyut={26} class="text-altin-acik" />
+          {T.dugme}
+          <Ikon ad="ok" boyut={24} />
+        </a>
+      </div>
+
+      <figure class="relative m-0 h-[260px] sm:h-[340px] lg:h-full">
+        <img
+          src="/img/esnaf/carsi.webp"
+          alt={T.gorselAlt}
+          width="868"
+          height="381"
+          fetchpriority="high"
+          class="carsi absolute inset-0 h-full w-full object-cover object-[70%_50%]"
+        />
+        <figcaption class="absolute end-3 bottom-3 rounded-full bg-emerald-900/70 px-3 py-1 text-[13px] font-medium text-white">
+          {T.gorselNot}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2. Üç adım -->
+  <section class="bg-krem">
+    <div class="mx-auto w-full max-w-[1440px] px-4 pt-8 pb-10 md:px-16">
+      <div class="flex items-center justify-center gap-8">
+        <span class="hidden h-px w-32 bg-gradient-to-r from-transparent to-altin/80 sm:block rtl:bg-gradient-to-l" aria-hidden="true"></span>
+        <h2 class="text-center text-[1.75rem] font-bold text-emerald-800 sm:text-[34px]">{T.adimBaslik}</h2>
+        <span class="hidden h-px w-32 bg-gradient-to-l from-transparent to-altin/80 sm:block rtl:bg-gradient-to-r" aria-hidden="true"></span>
+      </div>
+
+      <ol class="mt-7 grid items-center gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:gap-4">
+        {
+          adimlar.map((a, i) => (
+            <>
+              {i > 0 && (
+                <li aria-hidden="true" class="flex justify-center text-altin">
+                  <Ikon ad="ok" boyut={30} class="hidden lg:block" />
+                  <Ikon ad="asagi" boyut={26} class="lg:hidden" />
+                </li>
+              )}
+              <li class="flex h-full items-center gap-5 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 shadow-[0_2px_10px_rgb(60_50_20/0.05)]">
+                <span class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#e6eadc] text-emerald-800">
+                  <Ikon ad={a.ikon} boyut={40} />
+                </span>
+                <span class="min-w-0">
+                  <span class="baslik block text-2xl font-bold text-emerald-800">{a.baslik}</span>
+                  <span class="mt-1.5 block text-base leading-snug text-emerald-900/85">{a.metin}</span>
+                </span>
+              </li>
+            </>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. Değer + başvuru formu -->
+  <section class="relative overflow-hidden bg-krem">
+    <div class="mx-auto grid w-full max-w-[1440px] gap-10 px-4 pb-14 md:px-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:pb-10">
+      <div class="relative self-start lg:min-h-[340px] lg:ps-[200px] lg:pt-10">
+        <h2 class="text-[1.9rem] leading-tight font-bold text-emerald-800 sm:text-[36px] text-balance">{T.degerBaslik}</h2>
+        <ul class="mt-7 space-y-4">
+          {
+            degerler.map((d) => (
+              <li class="flex items-center gap-4 text-lg text-emerald-900">
+                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-altin text-white">
+                  <Ikon ad="tik" boyut={16} />
+                </span>
+                {d}
+              </li>
+            ))
+          }
+        </ul>
+        <img
+          src="/img/esnaf/mescit.webp"
+          alt=""
+          width="280"
+          height="334"
+          loading="lazy"
+          class="mescit pointer-events-none absolute -start-16 top-2 hidden w-[250px] select-none lg:block"
+        />
+      </div>
+
+      <div id="basvuru" class="scroll-mt-24 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-5 shadow-[0_2px_14px_rgb(60_50_20/0.06)] sm:p-8">
+        <div class="mb-5 flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
+          <h2 class="text-[1.9rem] font-bold text-emerald-800 sm:text-[34px] xl:shrink-0">{T.formBaslik}</h2>
+          <p class="max-w-[260px] text-[15px] leading-snug text-emerald-900/80">{T.formNot}</p>
+        </div>
+        <Form dil={dil} tur="esnaf" gonderMetni={T.fGonder} basariMetni={T.fBasari}>
+          <Ikon slot="dugme-ikon" ad="gonder" boyut={22} />
+          <Alan ad="isletmeAdi" etiket={T.fAd} zorunlu yer={T.fAdYer} otomatik="organization" />
+          <Alan ad="isletmeTuru" etiket={T.fTur} tip="secim" zorunlu secenekler={turler} secinMetni={t('form.secin')} />
+          <Alan ad="sehir" etiket={T.fSehir} tip="secim" zorunlu secenekler={sehirler} secinMetni={t('form.secin')} />
+          <Alan ad="yetkili" etiket={T.fYetkili} zorunlu yer={T.fYetkiliYer} otomatik="name" />
+          <Alan ad="eposta" etiket={T.fEposta} tip="eposta" zorunlu yer={T.fEpostaYer} />
+          <Alan ad="telefon" etiket={T.fTelefon} tip="telefon" zorunlu yer={T.fTelefonYer} />
+        </Form>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Fotoğrafın baş kenarı (TR/EN solda, AR sağda) zemine karışır; mobilde alt kenar. */
+  .carsi {
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%);
+  }
+  @media (min-width: 1024px) {
+    .carsi {
+      mask-image: linear-gradient(90deg, transparent 0%, #000 22%);
+    }
+    :global(html[dir='rtl']) .carsi {
+      mask-image: linear-gradient(270deg, transparent 0%, #000 22%);
+    }
+  }
+  /* Mescit çizimi kenarlarında zemine karışır (aynalanmaz) */
+  .mescit {
+    mask-image: radial-gradient(ellipse 72% 68% at 50% 50%, #000 58%, transparent 100%);
+  }
+</style>

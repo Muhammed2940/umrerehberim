@@ -1,0 +1,75 @@
+---
+// Mobil giriş sahnesi (12-arapca-mobil): Mekke silüeti önünde Kâbe ve altın yörünge.
+// Görseldeki yörünge çizgisi üzerinde iki küçük ışık yavaşça dolaşır; "hareketi azalt"ta sabit durur.
+// Görsel aynalanmaz (RTL'de de aynı).
+---
+
+<div class="relative w-full overflow-hidden" data-mobil-sahne>
+  <div class="relative -mx-[32.5%] w-[165%] sm:-mx-[10%] sm:w-[120%]">
+  <img
+    src="/img/kabe-mobil.webp"
+    alt=""
+    width="1024"
+    height="342"
+    fetchpriority="high"
+    class="sahne-solma block h-auto w-full select-none"
+  />
+  <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1024 342" fill="none" aria-hidden="true">
+    <defs>
+      <radialGradient id="ksm-isik">
+        <stop offset="0" stop-color="#fff7df"></stop>
+        <stop offset="0.25" stop-color="#f3d68c" stop-opacity="0.8"></stop>
+        <stop offset="1" stop-color="#e3bf68" stop-opacity="0"></stop>
+      </radialGradient>
+    </defs>
+    {
+      [0, 1].map((i) => (
+        <g data-mobil-isik={i}>
+          <circle r="22" fill="url(#ksm-isik)" />
+          <circle r="4" fill="#fffaf0" />
+        </g>
+      ))
+    }
+  </svg>
+  </div>
+</div>
+
+<script>
+  // Görseldeki yörüngeye yakın elips (görsel piksel düzlemi 1024×342)
+  const O = { cx: 512, cy: 154, rx: 282, ry: 104, egim: (-11 * Math.PI) / 180 };
+  const nokta = (a: number) => {
+    const x = Math.cos(a) * O.rx;
+    const y = Math.sin(a) * O.ry;
+    return [O.cx + x * Math.cos(O.egim) - y * Math.sin(O.egim), O.cy + x * Math.sin(O.egim) + y * Math.cos(O.egim)];
+  };
+  for (const kok of document.querySelectorAll<HTMLElement>('[data-mobil-sahne]')) {
+    const isiklar = [...kok.querySelectorAll<SVGGElement>('[data-mobil-isik]')];
+    const az = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const yerlestir = (s: number) =>
+      isiklar.forEach((g, i) => {
+        // Işıklar yalnız yörüngenin üst (Kâbe'nin arkası sayılan) yayında değil, tüm turda dolaşır
+        const [x, y] = nokta(-2.2 + i * Math.PI + s * 0.12);
+        g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+      });
+    let gorunur = true;
+    let kare = 0;
+    let t0 = 0;
+    const dongu = (z: number) => {
+      if (!t0) t0 = z;
+      yerlestir((z - t0) / 1000);
+      kare = requestAnimationFrame(dongu);
+    };
+    const guncelle = () => {
+      cancelAnimationFrame(kare);
+      if (gorunur && !az.matches && !document.hidden && kok.offsetParent !== null) kare = requestAnimationFrame(dongu);
+    };
+    new IntersectionObserver(([g]) => {
+      gorunur = g.isIntersecting;
+      guncelle();
+    }).observe(kok);
+    document.addEventListener('visibilitychange', guncelle);
+    az.addEventListener('change', guncelle);
+    yerlestir(0);
+    guncelle();
+  }
+</script>

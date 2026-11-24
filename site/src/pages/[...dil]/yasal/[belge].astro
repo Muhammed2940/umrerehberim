@@ -3,7 +3,7 @@ import Yasal from '../../../layouts/Yasal.astro';
 import { DILLER, VARSAYILAN, cevirmen, type Dil } from '../../../i18n';
 
 // Metinler: src/content/yasal/{tr,en}/<belge>.md. AR şimdilik EN gövdesini (Arapça notla) gösterir.
-const metinler = import.meta.glob<{ Content: any }>('../../../content/yasal/*/*.md', { eager: true });
+const metinler = import.meta.glob<{ Content: any; getHeadings: () => { depth: number; slug: string; text: string }[] }>('../../../content/yasal/*/*.md', { eager: true });
 
 const BELGELER = {
   gizlilik: 'yasal.gizlilikBaslik',
@@ -28,9 +28,11 @@ const govdeDili: Dil = dil === 'ar' ? 'en' : dil;
 const modul = metinler[`../../../content/yasal/${govdeDili}/${belge}.md`];
 if (!modul) throw new Error(`Yasal metin yok: ${govdeDili}/${belge}.md`);
 const { Content } = modul;
+// İçindekiler: markdown'daki h2 başlıkları
+const basliklar = modul.getHeadings().filter((h) => h.depth === 2);
 const t = cevirmen(dil);
 ---
 
-<Yasal dil={dil} yalin={`/yasal/${belge}/`} baslik={t(BELGELER[belge])} govdeDili={govdeDili}>
+<Yasal dil={dil} yalin={`/yasal/${belge}/`} baslik={t(BELGELER[belge])} govdeDili={govdeDili} belge={belge} basliklar={basliklar}>
   <Content />
 </Yasal>

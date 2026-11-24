@@ -1,55 +1,83 @@
 ---
 import { cevirmen, yol, type Dil } from '../i18n';
 import { SIRKET } from '../config';
+import { anaMenu } from '../lib/menu';
+import Logo from './Logo.astro';
 
 interface Props {
   dil: Dil;
 }
 const { dil } = Astro.props;
 const t = cevirmen(dil);
-const yasal = [
-  { ad: t('altbilgi.gizlilik'), href: yol(dil, '/yasal/gizlilik') },
-  { ad: t('altbilgi.kvkk'), href: yol(dil, '/yasal/kvkk') },
-  { ad: t('altbilgi.acikRiza'), href: yol(dil, '/yasal/acik-riza') },
-  { ad: t('altbilgi.kosullar'), href: yol(dil, '/yasal/kullanim-kosullari') },
-];
-const diger = [
-  { ad: t('altbilgi.destek'), href: yol(dil, '/destek') },
-  { ad: t('altbilgi.hesapSilme'), href: yol(dil, '/hesap-silme') },
+const menu = anaMenu(dil);
+const bul = (y: string) => menu.find((m) => m.yalin === y)!;
+const sutunlar = [
+  {
+    baslik: t('altbilgi.sayfalar'),
+    linkler: [{ ad: t('nav.ozellikler'), href: yol(dil, '/ozellikler/') }, ...['/paketler/', '/rehber/', '/hakkimizda/'].map(bul)],
+  },
+  {
+    baslik: t('altbilgi.isOrtakligi'),
+    linkler: [bul('/acente/'), bul('/esnaf/'), { ad: t('sayfa.rehberBasvuru'), href: yol(dil, '/rehber/basvuru/') }],
+  },
+  {
+    baslik: t('altbilgi.yasal'),
+    linkler: [
+      { ad: t('altbilgi.gizlilik'), href: yol(dil, '/yasal/gizlilik') },
+      { ad: t('altbilgi.kvkk'), href: yol(dil, '/yasal/kvkk') },
+      { ad: t('altbilgi.acikRiza'), href: yol(dil, '/yasal/acik-riza') },
+      { ad: t('altbilgi.kosullar'), href: yol(dil, '/yasal/kullanim-kosullari') },
+      { ad: t('altbilgi.destek'), href: yol(dil, '/destek') },
+      { ad: t('altbilgi.hesapSilme'), href: yol(dil, '/hesap-silme') },
+    ],
+  },
 ];
 const yil = new Date().getFullYear();
 ---
 
-<footer class="bg-emerald-800 text-white/85 mt-16">
-  <div class="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-3">
+<footer class="bg-emerald-800 text-koyu-soluk">
+  <div class="kapsayici py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
     <div>
-      <div class="flex items-center gap-2 font-bold text-white text-lg">
-        <img src="/logo.png" alt="" width="36" height="34" class="h-8 w-auto rounded-md bg-white/95 p-0.5" />
-        {t('site.ad')}
+      <div class="flex items-center gap-3 text-white">
+        <Logo boyut={52} koyu />
+        <span class="baslik text-xl font-semibold">{t('site.ad')}</span>
       </div>
-      <p class="mt-3 text-sm leading-relaxed">
+      <p class="mt-4 leading-relaxed">
         {SIRKET.unvan}<br />
         {SIRKET.adres}<br />
-        MERSİS: {SIRKET.mersis}
+        MERSİS: <span dir="ltr">{SIRKET.mersis}</span>
       </p>
     </div>
-    <nav aria-label={t('altbilgi.yasal')}>
-      <h2 class="font-semibold text-white mb-3">{t('altbilgi.yasal')}</h2>
-      <ul class="space-y-2 text-sm">
-        {yasal.map((l) => <li><a href={l.href} class="hover:text-white">{l.ad}</a></li>)}
-      </ul>
-    </nav>
-    <nav aria-label={t('altbilgi.destek')}>
-      <h2 class="font-semibold text-white mb-3">{t('altbilgi.destek')}</h2>
-      <ul class="space-y-2 text-sm">
-        {diger.map((l) => <li><a href={l.href} class="hover:text-white">{l.ad}</a></li>)}
-      </ul>
-    </nav>
+    {
+      sutunlar.map((s) => (
+        <nav aria-label={s.baslik}>
+          <h2 class="[font-family:inherit] text-base font-semibold text-white mb-3 tracking-normal">{s.baslik}</h2>
+          <ul class="space-y-1">
+            {s.linkler.map((l) => (
+              <li>
+                <a href={l.href} class="inline-flex min-h-9 items-center hover:text-white">
+                  {l.ad}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
   </div>
   <div class="border-t border-white/10">
-    <div class="mx-auto max-w-6xl px-4 py-5 text-xs text-white/70 space-y-2">
-      <p class="rounded-kart bg-white/5 px-3 py-2">{t('altbilgi.fetva')}</p>
-      <p>© {yil} {t('site.ad')}. {t('altbilgi.haklar')}</p>
+    <div class="kapsayici py-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between text-[15px]">
+      <p class="flex items-start gap-2">
+        <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-altin" aria-hidden="true"></span>
+        {t('altbilgi.fetva')}
+      </p>
+      <p class="shrink-0">
+        © {yil} {t('site.ad')}. {t('altbilgi.haklar')}
+        <span class="mx-1.5 text-white/40" aria-hidden="true">·</span>
+        {t('altbilgi.markasi')}
+        <a href="https://hekzapotsoftware.com/" rel="noopener" target="_blank" class="mx-1 inline-flex min-h-11 items-center font-semibold text-altin-acik underline-offset-4 hover:underline md:min-h-0"><bdi>Hekzapot Software</bdi></a>
+        {t('altbilgi.markasiSon')}
+      </p>
     </div>
   </div>
 </footer>

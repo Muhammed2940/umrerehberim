@@ -1,0 +1,36 @@
+---
+// Paketler sayfasına özel, ortak ikon setinde (Ikon.astro) olmayan ikonlar. Aynı çizgi dili: 24×24, stroke, currentColor.
+// Ortak sete taşınması önerilir (rapor).
+interface Props {
+  ad: keyof typeof EK;
+  boyut?: number;
+  class?: string;
+}
+
+const EK = {
+  // Akıllı telefon (Ücretsiz paket)
+  akilliTelefon: '<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>',
+  // Çatal-bıçak: yemek ve içecek
+  yemek: '<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 21V3c-2 1.5-3 4-3 7v3h3"/>',
+  // SIM kart: eSIM
+  sim: '<path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><rect x="9" y="11" width="6" height="6" rx="1"/><path d="M12 11v6M9 14h6"/>',
+} as const;
+
+const { ad, boyut = 24, class: sinif } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={boyut}
+  height={boyut}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  class={sinif}
+  set:html={EK[ad]}
+/>

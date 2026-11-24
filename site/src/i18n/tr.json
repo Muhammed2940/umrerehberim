@@ -4,19 +4,31 @@
     "aciklama": "Umre Rehberim: dualar, Kur'an-ı Kerim, ezan vakitleri, kıble, gezilecek yerler, sesli rehber ve aile takibiyle umrenizde yanınızda olan rehber uygulaması."
   },
   "nav": {
-    "anaSayfa": "Ana sayfa",
+    "anaSayfa": "Anasayfa",
     "ozellikler": "Özellikler",
     "paketler": "Paketler",
     "destek": "Destek",
     "indir": "Uygulamayı indir",
     "dil": "Dil",
     "menu": "Menü",
-    "icerigeGec": "İçeriğe geç"
+    "icerigeGec": "İçeriğe geç",
+    "rehber": "Rehber",
+    "acente": "Acente",
+    "esnaf": "Esnaf",
+    "hakkimizda": "Hakkımızda",
+    "menuKapat": "Menüyü kapat"
   },
   "giris": {
     "baslik": "Umrenizde her adımda yanınızda",
     "alt": "Dualar, Kur'an-ı Kerim, ezan vakitleri ve kıble; Mekke ve Medine'de gezilecek yerler, Harem kapıları ve ulaşım bilgileri tek uygulamada. Temel özellikler her zaman ücretsiz.",
-    "ekranNot": "Ekran görüntüleri yakında"
+    "ekranNot": "Ekran görüntüleri yakında",
+    "etiket": "Mekke ve Medine için dijital yol arkadaşı",
+    "kesfet": "Mekke ve Medine'yi keşfet",
+    "tani": "Uygulamayı tanı",
+    "sahneEtiket": "Kâbe ve çevresinde yavaşça dönen iki ışıktan oluşan süsleme",
+    "duraklat": "Animasyonu duraklat",
+    "oynat": "Animasyonu oynat",
+    "altKisa": "Dualar, ziyaret yerleri ve yolculuk bilgileri tek uygulamada."
   },
   "ozellik": {
     "baslik": "Neler sunar?",
@@ -27,7 +39,8 @@
     "f3Baslik": "Sesli rehber",
     "f3": "Profesyonel sesli rehber ve internetsiz tam kullanım (Umre Paketi).",
     "f4Baslik": "Aile ve grup",
-    "f4": "Aile Takibi, grubunuza özel canlı harita ve grup içi internet telsizi."
+    "f4": "Aile Takibi, grubunuza özel canlı harita ve grup içi internet telsizi.",
+    "tumu": "Tüm özellikleri inceleyin"
   },
   "magaza": {
     "play": "Google Play'den edinin",
@@ -43,7 +56,11 @@
     "hesapSilme": "Hesap silme",
     "destek": "Destek",
     "fetva": "Uygulamadaki dini bilgiler rehberlik amaçlıdır; fetva yerine geçmez. Hükümler için ehil bir din görevlisine danışın.",
-    "haklar": "Tüm hakları saklıdır."
+    "haklar": "Tüm hakları saklıdır.",
+    "markasi": "Bir",
+    "markasiSon": "markasıdır.",
+    "sayfalar": "Sayfalar",
+    "isOrtakligi": "İş ortaklığı"
   },
   "yasal": {
     "taslak": "TASLAK – avukat onayı bekliyor",
@@ -93,15 +110,72 @@
     "bilgiYok": "Yakında eklenecek",
     "ipucuBaslik": "Hızlı yardım",
     "ipucu1": "Konum, bildirim veya mikrofon çalışmıyorsa telefonunuzun Ayarlar > Uygulamalar > Umre Rehberim > İzinler bölümünü kontrol edin.",
-    "ipucu2": "Paket ve ödeme sorularında satın alma tarihini ve kullandığınız Google hesabını belirtin.",
+    "ipucu2": "Paket ve ödeme sorularında ödeme tarihini ve uygulamada kullandığınız Google hesabını belirtin.",
     "ipucu3": "Hesabınızı silmek için Hesap silme sayfasına bakın."
   },
   "paket": {
-    "baslik": "Paketler"
+    "baslik": "Paketler",
+    "tumu": "Paketleri karşılaştırın"
   },
   "bulunamadi": {
     "baslik": "Sayfa bulunamadı",
     "metin": "Aradığınız sayfa taşınmış ya da hiç olmamış olabilir.",
     "don": "Ana sayfaya dön"
+  },
+  "rehberAra": {
+    "baslik": "Mekke ve Medine Rehberi",
+    "alt": "Gezilecek yerleri şehre göre seçin ya da adıyla arayın.",
+    "sehir": "Şehir",
+    "mekke": "Mekke",
+    "medine": "Medine",
+    "araEtiket": "Mekân adı",
+    "araYer": "Ziyaret yeri ara",
+    "araDugme": "Rehberde ara",
+    "kapilar": "Harem kapıları",
+    "ulasim": "Ulaşım",
+    "adimAdim": "Adım adım umre",
+    "dualar": "Dualar"
+  },
+  "kapi": {
+    "baslik": "Size uygun kapıdan girin",
+    "alt": "Hacılar, kafile yöneten acenteler ve Mekke-Medine esnafı için ayrı sayfalar.",
+    "haci": "Hacıyım",
+    "haciMetin": "Umre yolculuğum için rehberlik alır, ziyaret yerlerini keşfederim.",
+    "acente": "Acenteyim",
+    "acenteMetin": "Umre organizasyonlarımı planlar ve kolayca yönetirim.",
+    "esnaf": "Esnafım",
+    "esnafMetin": "Hac ve umre misafirlerine hizmet sunarım."
+  },
+  "indir": {
+    "baslik": "Uygulamayı indirin",
+    "metin": "Umre Rehberim Android ve iPhone için hazırlanıyor. Mağaza bağlantıları açıldığında burada yer alacak."
+  },
+  "hazirlaniyor": {
+    "metin": "Bu sayfa hazırlanıyor. Kısa süre içinde burada olacak.",
+    "don": "Ana sayfaya dön"
+  },
+  "sayfa": {
+    "ozellikler": "Özellikler",
+    "paketler": "Paketler",
+    "rehber": "Mekke ve Medine Rehberi",
+    "rehberBasvuru": "Rehber olarak başvurun",
+    "acente": "Acenteler için",
+    "esnaf": "Esnaf için",
+    "hakkimizda": "Biz Kimiz?"
+  },
+  "form": {
+    "zorunlu": "Bu alanı doldurun.",
+    "eposta": "Geçerli bir e-posta adresi yazın.",
+    "telefon": "Geçerli bir telefon numarası yazın.",
+    "kvkk": "Devam etmek için aydınlatma metnini onaylayın.",
+    "dosya": "Dosya en fazla 10 MB olabilir.",
+    "gonderiliyor": "Gönderiliyor…",
+    "basari": "Başvurunuz alındı. Ekibimiz en kısa sürede sizinle iletişime geçecek.",
+    "hata": "Şu anda gönderilemedi. Lütfen biraz sonra tekrar deneyin ya da Destek sayfasındaki kanallardan bize ulaşın.",
+    "kvkkOnay1": "",
+    "kvkkBag": "KVKK Aydınlatma Metni",
+    "kvkkOnay2": "’ni okudum; kişisel verilerimin bu başvuru için işlenmesini kabul ediyorum.",
+    "secin": "Seçiniz",
+    "zorunluNot": "* işaretli alanlar zorunludur."
   }
 }

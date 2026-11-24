@@ -1,0 +1,22 @@
+---
+// Umre Rehberim logosu (uygulamadaki assets/icons/logo.png ile aynı).
+// Açık zemin: özgün renkler (/img/logo.webp). Koyu zemin: siyah kısımlar mint (#DAF1DE) (/img/logo-koyu.webp).
+// Logonun yanında her zaman site adı yazılı olduğu için görsel dekoratiftir (alt="").
+interface Props {
+  /** Yükseklik (px) */
+  boyut?: number;
+  koyu?: boolean;
+  class?: string;
+}
+const { boyut = 44, koyu = false, class: sinif } = Astro.props;
+const genislik = Math.round((boyut * 201) / 192);
+---
+
+<img
+  src={koyu ? '/img/logo-koyu.webp' : '/img/logo.webp'}
+  width={genislik}
+  height={boyut}
+  alt=""
+  decoding="async"
+  class:list={['shrink-0 select-none', sinif]}
+/>

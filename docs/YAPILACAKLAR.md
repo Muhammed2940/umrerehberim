@@ -31,17 +31,19 @@ Play Store / App Store başvurusu bunları ister.
 - [ ] Yasal metinlerin Arapça çevirisi
 
 ## Faz 2: Pazarlama sitesi (2–3 hafta)
-- [ ] Ana sayfa: üç kapı (Hacı / Acente / Esnaf), özellikler, güven şeridi, SSS
-- [ ] `/paketler`: Ücretsiz · Umre 349,99 TL (30 gün) · Aile/Arkadaş 799,99 TL (6 kişi, 30 gün) ·
+- [ ] Ana sayfa: üç kapı (Hacı / Acente / Esnaf), özellikler, güven şeridi, SSS — tasarım uygulandı (01 + 12 referans); güven şeridi ve SSS bekliyor
+- [x] `/paketler`: Ücretsiz · Umre 349,99 TL (30 gün) · Aile/Arkadaş 799,99 TL (6 kişi, 30 gün) ·
       Full Umre 1.500 $ (10 gün; uçak, vize, otel, yemek, ulaşım, eSIM). Sıra ve metin uygulamayla aynı;
       `paketler.json`'dan otomatik
 - [ ] `/full-umre`: ayrıntı + başvuru formu (ad, telefon, e-posta, kişi sayısı, tercih edilen ay, not, KVKK)
-- [ ] `/acente`: faydalar (canlı konum, telsiz, duyuru, esnaf ağı, raporlar), "teklif alın", demo formu
-- [ ] `/esnaf`: QR indirim ve puan anlatımı, başvuru formu
-- [ ] `/rehber`: 40 gezilecek yer, Harem kapıları, ulaşım, adım adım umre, dualar
+- [x] `/acente`: faydalar (canlı konum, telsiz, duyuru, esnaf ağı, raporlar), "teklif alın", demo formu (arayüz hazır; form uç noktası bekliyor)
+- [x] `/esnaf`: QR indirim ve puan anlatımı, başvuru formu (arayüz hazır; form uç noktası bekliyor)
+- [x] `/rehber`: 40 gezilecek yer, Harem kapıları, ulaşım, adım adım umre, dualar
       (`tool/rehber_aktar.mjs` ile uygulama verisinden; her mekana ayrı SEO sayfası)
-- [ ] `/hakkimizda`, `/yatirimci`
+- [x] `/hakkimizda` · [ ] `/yatirimci`
 - [ ] EN ve AR çeviriler, RTL kontrolü
+- [x] `/ozellikler`, `/rehber/basvuru` (rehber başvuru formu; dosya yükleme sunucu tarafı bekliyor), yasal sayfa şablonu yenilendi
+- [ ] Form uç noktaları (umre-api): tur = acente, esnaf, rehber, destek; silme → deletion-request
 - [ ] sitemap.xml, robots.txt, yapılandırılmış veri (Organization, FAQ)
 - [ ] Çerezsiz analitik
 - (SAHİP) Logo SVG, gerçek ekran görüntüleri, acente fiyatları gösterilsin mi / "teklif alın" mı
@@ -64,7 +66,7 @@ Play Store / App Store başvurusu bunları ister.
 - (SAHİP) PayTR mağaza no / anahtar / tuz (yalnız Plesk gizli klasörüne), test modu onayı
 
 ## Faz 4: Web uygulamaları
-- [ ] `aile.ALAN`: Aile Takibi izleyicisi (api'den tek kullanımlık jeton, doğrudan Firestore yok)
+- [x] Aile Takibi izleyicisi: `https://www.ALAN/t/#<token>` (TR/EN/AR, Leaflet + OSM, `POST api/v1/track`, `/t/#demo` kipi). Ayrı alt alan (`aile.ALAN`) gerekmedi; sözleşme `/t/` yolunu istiyor. Kalan: gerçek API ile uçtan uca deneme (`umre-api` `/v1/track` bitince), alan adı gelince CSP'de `api.ALAN` zaten tanımlı
 - [ ] `panel.ALAN`: Flutter Web acente paneli denemesi (uygulama deposundan derlenir)
 
 ## Faz 5
@@ -73,3 +75,5 @@ Play Store / App Store başvurusu bunları ister.
 ## Sahibin vereceği kararlar (özet)
 Alan adı · logo · şirket bilgileri · avukat · SMTP · PayTR bilgileri · acente fiyat gösterimi ·
 mağaza linkleri · pilot acente ekran görüntüsü izinleri.
+
+- [ ] Rehber mekân fotoğrafları: 31/40 hazır (Wikimedia Commons + Openverse/Flickr, lisanslar `site/src/data/mekan-foto.json`). Eksik 9: Ebû Kubeys (Wikimedia sınırı, `node ../tool/mekan_foto.mjs` ile tekrar dene), Kuba (uygun lisanslı foto yok), Taif/İbn Abbas (doğrulanmış foto yok), Ci'râne, Harameyn Müzesi, Mescid-i Biat, Mescid-i Cuma, Hudeybiye, Cuhfe.

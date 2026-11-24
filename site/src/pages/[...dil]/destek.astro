@@ -1,56 +1,256 @@
 ---
+// Destek: onaylı görsel 09-destek. İletişim bilgileri derlemede platform_settings/app'ten
+// (lib/destek.ts; çekilemezse config.ts DESTEK_YEDEK). Boş kanal pasif "Yakında" görünür.
 import Base from '../../layouts/Base.astro';
-import { cevirmen, dilYollari, yol, type Dil } from '../../i18n';
+import Ikon from '../../components/Ikon.astro';
+import Form from '../../components/form/Form.astro';
+import Alan from '../../components/form/Alan.astro';
+import { dilYollari, paket, yol, type Dil } from '../../i18n';
+import { sayfaMetni } from '../../i18n/sayfa';
+import { DESTEK } from '../../i18n/sayfa/destek';
 import { destekBilgisi, telHref, waHref } from '../../lib/destek';
 
 export const getStaticPaths = dilYollari;
 const { dil } = Astro.props as { dil: Dil };
-const t = cevirmen(dil);
+const T = sayfaMetni(dil, DESTEK);
 const d = await destekBilgisi();
 
 const telefonlar = [d.telefon1, d.telefon2].filter(Boolean);
 const epostalar = [d.eposta1, d.eposta2].filter(Boolean);
+
+// Ücretli paketler: tek kaynak data/paketler.json
+const paketler = (['Umre', 'Aile', 'Full'] as const).map((p) => ({
+  ad: paket(dil, `paketler${p}Name`),
+  fiyat: paket(dil, `paketler${p}Price`),
+  sure: paket(dil, `paketler${p}Period`),
+}));
+
+type Bag = { metin: string; yol: string };
+const sorular: { soru: string; cevap: string; liste?: string[]; not?: string; baglar?: Bag[] }[] = [
+  { soru: T.s1, cevap: T.c1, baglar: [{ metin: T.c1Bag, yol: '/ozellikler/' }] },
+  { soru: T.s2, cevap: T.c2, not: T.c2Silme, baglar: [{ metin: T.c2Bag, yol: '/hesap-silme/' }] },
+  {
+    soru: T.s3,
+    cevap: T.c3,
+    liste: paketler.map((p) => `${p.ad}: ${p.fiyat} (${p.sure})`),
+    baglar: [{ metin: T.c3Bag, yol: '/paketler/' }],
+  },
+  {
+    soru: T.s4,
+    cevap: T.c4,
+    baglar: [
+      { metin: T.c4Acente, yol: '/acente/' },
+      { metin: T.c4Esnaf, yol: '/esnaf/' },
+    ],
+  },
+  { soru: T.s5, cevap: T.c5, not: T.c5Not, baglar: [{ metin: T.c3Bag, yol: '/paketler/' }] },
+  { soru: T.s6, cevap: T.c6, not: T.c6Not, baglar: [{ metin: T.formBaslik, yol: '#destek-formu' }] },
+];
+
+const konular = [
+  { d: 'uygulama', ad: T.konuUygulama },
+  { d: 'paket-odeme', ad: T.konuPaket },
+  { d: 'hesap-giris', ad: T.konuHesap },
+  { d: 'acente-esnaf', ad: T.konuIsOrtagi },
+  { d: 'teknik', ad: T.konuTeknik },
+  { d: 'diger', ad: T.konuDiger },
+];
+
+const kart = 'flex flex-col gap-4 sm:flex-row sm:gap-5 rounded-2xl border border-krem-cizgi bg-[#fbfaf6] p-6 shadow-[0_2px_10px_rgb(60_50_20/0.05)]';
+const ikonKutu = 'flex h-[60px] w-[60px] shrink-0 items-center justify-center rounded-xl bg-[#e2eedf] text-emerald-700';
 ---
 
-<Base dil={dil} yalin="/destek/" baslik={t('destek.baslik')}>
-  <div class="mx-auto max-w-4xl px-4 py-10">
-    <h1 class="text-3xl font-bold text-emerald-700">{t('destek.baslik')}</h1>
-    <p class="mt-3 text-soluk">{t('destek.giris')}</p>
+<Base dil={dil} yalin="/destek/" baslik={T.baslik} aciklama={T.giris}>
+  <div class="bg-krem">
+    <!-- Başlık + Kâbe görseli -->
+    <section class="relative overflow-hidden">
+      <img
+        src="/img/destek/kabe.webp"
+        width="766"
+        height="236"
+        alt=""
+        class="kabe-ust pointer-events-none absolute end-0 top-0 hidden h-[250px] w-auto max-w-none md:block lg:h-[270px]"
+      />
+      <div class="genis-kap relative pt-10 pb-8 md:pt-12 md:pb-14">
+        <h1 class="text-5xl font-bold text-emerald-800 sm:text-[64px]">{T.baslik}</h1>
+        <span class="mt-4 block h-[3px] w-14 rounded-full bg-altin" aria-hidden="true"></span>
+        <p class="mt-6 max-w-[600px] text-lg leading-relaxed text-emerald-900/85 sm:text-[22px] sm:leading-snug">{T.giris}</p>
+      </div>
+    </section>
 
-    <div class="mt-8 grid gap-5 md:grid-cols-3">
-      <section class="kart p-6">
-        <h2 class="font-semibold text-emerald-700">📞 {t('destek.telefon')}</h2>
-        <ul class="mt-3 space-y-1">
-          {telefonlar.length
-            ? telefonlar.map((n) => <li><a href={telHref(n)} dir="ltr" class="text-emerald-600 underline">{n}</a></li>)
-            : <li class="text-soluk text-sm">{t('destek.bilgiYok')}</li>}
-        </ul>
-      </section>
-      <section class="kart p-6">
-        <h2 class="font-semibold text-emerald-700">💬 {t('destek.whatsapp')}</h2>
-        <div class="mt-3">
-          {d.whatsapp
-            ? <a href={waHref(d.whatsapp)} rel="noopener" class="dugme-ana !py-2 text-sm">{t('destek.whatsappYaz')}</a>
-            : <span class="text-soluk text-sm">{t('destek.bilgiYok')}</span>}
-        </div>
-      </section>
-      <section class="kart p-6">
-        <h2 class="font-semibold text-emerald-700">✉️ {t('destek.eposta')}</h2>
-        <ul class="mt-3 space-y-1 break-all">
-          {epostalar.length
-            ? epostalar.map((e) => <li><a href={`mailto:${e}`} dir="ltr" class="text-emerald-600 underline">{e}</a></li>)
-            : <li class="text-soluk text-sm">{t('destek.bilgiYok')}</li>}
-        </ul>
-      </section>
-    </div>
-
-    <section class="kart mt-8 p-6 bg-mint/40">
-      <h2 class="font-semibold text-emerald-700">{t('destek.ipucuBaslik')}</h2>
-      <ul class="mt-3 list-disc ps-6 space-y-2 text-sm">
-        <li>{t('destek.ipucu1')}</li>
-        <li>{t('destek.ipucu2')}</li>
-        <li><a href={yol(dil, '/hesap-silme/')} class="text-emerald-600 underline">{t('destek.ipucu3')}</a></li>
+    <!-- İletişim kartları -->
+    <section class="genis-kap relative" aria-label={`${T.telefonBaslik}, ${T.whatsappBaslik}, ${T.epostaBaslik}`}>
+      <ul class="grid gap-5 lg:grid-cols-3 lg:gap-6">
+        <li class={kart}>
+          <span class={ikonKutu} aria-hidden="true"><Ikon ad="telefon" boyut={30} /></span>
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold text-emerald-800">{T.telefonBaslik}</h2>
+            <p class="mt-1 text-emerald-900/80">{T.telefonAlt}</p>
+            {
+              telefonlar.length ? (
+                telefonlar.map((n) => (
+                  <a href={telHref(n)} dir="ltr" class="mt-3 inline-flex min-h-11 items-center text-[22px] font-bold text-emerald-800 hover:underline">
+                    {n}
+                  </a>
+                ))
+              ) : (
+                <p class="mt-3 text-soluk">{T.bilgiYok}</p>
+              )
+            }
+            <p class="flex items-center gap-2 text-emerald-900/80">
+              <Ikon ad="saat" boyut={18} />
+              {T.telefonSaat}
+            </p>
+          </div>
+        </li>
+        <li class={kart}>
+          <span class={ikonKutu} aria-hidden="true"><Ikon ad="mesaj" boyut={30} /></span>
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold text-emerald-800">{T.whatsappBaslik}</h2>
+            <p class="mt-1 text-emerald-900/80">{T.whatsappAlt}</p>
+            {
+              d.whatsapp ? (
+                <a
+                  href={waHref(d.whatsapp)}
+                  rel="noopener"
+                  target="_blank"
+                  class="mt-4 inline-flex min-h-11 items-center gap-2.5 rounded-lg bg-emerald-800 px-5 font-medium text-white transition hover:bg-emerald-700"
+                >
+                  <Ikon ad="mesaj" boyut={20} />
+                  {T.whatsappDugme}
+                  <Ikon ad="ok" boyut={18} class="yon-ok" />
+                </a>
+              ) : (
+                <p class="mt-4 flex flex-wrap items-center gap-3">
+                  <span
+                    class="inline-flex min-h-11 cursor-not-allowed items-center gap-2.5 rounded-lg bg-emerald-800/15 px-5 font-medium text-emerald-900/60"
+                    aria-disabled="true"
+                  >
+                    <Ikon ad="mesaj" boyut={20} />
+                    {T.whatsappDugme}
+                  </span>
+                  <span class="rounded-full bg-altin/20 px-3 py-1 text-sm font-semibold text-altin-koyu">{T.whatsappYakinda}</span>
+                  <span class="sr-only">{T.whatsappYakindaNot}</span>
+                </p>
+              )
+            }
+          </div>
+        </li>
+        <li class={kart}>
+          <span class={ikonKutu} aria-hidden="true"><Ikon ad="posta" boyut={30} /></span>
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold text-emerald-800">{T.epostaBaslik}</h2>
+            <p class="mt-1 text-emerald-900/80">{T.epostaAlt}</p>
+            {
+              epostalar.length ? (
+                epostalar.map((e) => (
+                  <a href={`mailto:${e}`} dir="ltr" class="mt-3 inline-flex min-h-11 items-center break-all text-lg font-bold sm:text-xl text-emerald-800 hover:underline">
+                    {e}
+                  </a>
+                ))
+              ) : (
+                <p class="mt-3 text-soluk">{T.bilgiYok}</p>
+              )
+            }
+            <p class="flex items-center gap-2 text-emerald-900/80">
+              <Ikon ad="saat" boyut={18} class="shrink-0" />
+              {T.epostaSure}
+            </p>
+          </div>
+        </li>
       </ul>
+    </section>
+
+    <!-- Hızlı Yardım + Destek formu -->
+    <section class="genis-kap grid gap-10 pt-12 pb-16 lg:grid-cols-[1fr_1.07fr] lg:gap-8">
+      <div>
+        <h2 class="text-4xl font-bold text-emerald-800 sm:text-[40px]">{T.yardimBaslik}</h2>
+        <span class="mt-3 block h-[3px] w-14 rounded-full bg-altin" aria-hidden="true"></span>
+        <p class="mt-5 text-lg text-emerald-900/85">{T.yardimAlt}</p>
+        <div class="mt-7 space-y-2.5">
+          {
+            sorular.map((s) => (
+              <details name="sss" class="sss group rounded-xl border border-krem-cizgi bg-[#fbfaf6] shadow-[0_1px_4px_rgb(60_50_20/0.05)] open:border-emerald-600/30">
+                <summary class="baslik flex min-h-[52px] cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-3 text-lg font-bold text-emerald-800 sm:text-[19px]">
+                  {s.soru}
+                  <svg class="shrink-0 transition-transform group-open:rotate-180" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <div class="px-5 pb-5 text-[17px] leading-relaxed text-emerald-900/90">
+                  <p>{s.cevap}</p>
+                  {s.liste && (
+                    <ul class="mt-2 list-disc space-y-1 ps-6">
+                      {s.liste.map((l) => <li>{l}</li>)}
+                    </ul>
+                  )}
+                  {s.not && <p class="mt-2">{s.not}</p>}
+                  {s.baglar && (
+                    <p class="mt-3 flex flex-wrap gap-x-6 gap-y-1">
+                      {s.baglar.map((b) => (
+                        <a href={b.yol.startsWith('#') ? b.yol : yol(dil, b.yol)} class="inline-flex min-h-11 items-center gap-1.5 font-semibold text-emerald-600 underline underline-offset-4">
+                          {b.metin}
+                          <Ikon ad="ok" boyut={16} class="yon-ok" />
+                        </a>
+                      ))}
+                    </p>
+                  )}
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+
+      <div id="destek-formu" class="scroll-mt-24 rounded-2xl border border-krem-cizgi bg-[#eef1e8] p-5 shadow-[0_2px_12px_rgb(60_50_20/0.06)] sm:p-7">
+        <div class="flex gap-4">
+          <span class="mt-1 shrink-0 text-emerald-700" aria-hidden="true"><Ikon ad="destek" boyut={48} /></span>
+          <div>
+            <h2 class="text-3xl font-bold text-emerald-800">{T.formBaslik}</h2>
+            <p class="mt-2 text-[17px] leading-snug text-emerald-900/85">{T.formAlt}</p>
+          </div>
+        </div>
+        <Form dil={dil} tur="destek" gonderMetni={T.gonder} basariMetni={T.basari} genis={false} class="mt-6">
+          <Alan ad="adSoyad" etiket={T.adSoyad} zorunlu yer={T.adSoyadYer} otomatik="name" />
+          <Alan ad="eposta" etiket={T.eposta} tip="eposta" zorunlu yer={T.epostaYer} />
+          <Alan ad="konu" etiket={T.konu} tip="secim" zorunlu secenekler={konular} secinMetni={T.konuSecin} />
+          <Alan ad="telefon" etiket={T.telefon} tip="telefon" yer={T.telefonYer} />
+          <Alan ad="mesaj" etiket={T.mesaj} tip="metinAlani" zorunlu yer={T.mesajYer} genis satir={4} />
+          <Ikon ad="gonder" boyut={22} slot="dugme-ikon" />
+        </Form>
+      </div>
     </section>
   </div>
 </Base>
+
+<style>
+  .genis-kap {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1440px;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .genis-kap {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .genis-kap {
+      padding-inline: 56px;
+    }
+  }
+  /* Kâbe görseli soldan zemine karışır (aynalanmaz; RTL'de de aynı görsel) */
+  .kabe-ust {
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%, #000 85%, transparent 100%),
+      linear-gradient(180deg, #000 70%, transparent 100%);
+    mask-composite: intersect;
+  }
+  :global(html[dir='rtl']) .kabe-ust {
+    mask-image: linear-gradient(270deg, transparent 0%, #000 30%, #000 85%, transparent 100%),
+      linear-gradient(180deg, #000 70%, transparent 100%);
+  }
+  .sss summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

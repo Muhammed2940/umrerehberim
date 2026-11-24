@@ -35,7 +35,7 @@ async function cek(): Promise<Destek> {
   }
 }
 
-/** tel: bağlantısı için yalnız rakam ve baştaki + */
-export const telHref = (n: string) => `tel:${n.replace(/[^\d+]/g, '')}`;
+/** tel: bağlantısı: yalnız rakam ve baştaki +; yurt dışından da aranabilsin diye baştaki tek 0 → +90 */
+export const telHref = (n: string) => `tel:${n.replace(/[^\d+]/g, '').replace(/^0(?=[1-9])/, '+90')}`;
 /** wa.me bağlantısı yalnız rakam ister */
 export const waHref = (n: string) => `https://wa.me/${n.replace(/\D/g, '')}`;

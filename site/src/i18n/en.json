@@ -11,12 +11,24 @@
     "indir": "Get the app",
     "dil": "Language",
     "menu": "Menu",
-    "icerigeGec": "Skip to content"
+    "icerigeGec": "Skip to content",
+    "rehber": "Guide",
+    "acente": "Agencies",
+    "esnaf": "Merchants",
+    "hakkimizda": "About us",
+    "menuKapat": "Close menu"
   },
   "giris": {
     "baslik": "By your side at every step of your Umrah",
     "alt": "Prayers, the Holy Quran, prayer times and qibla; places to visit in Makkah and Madinah, Haram gates and transport information, all in one app. The basics are always free.",
-    "ekranNot": "Screenshots coming soon"
+    "ekranNot": "Screenshots coming soon",
+    "etiket": "A digital companion for Makkah and Madinah",
+    "kesfet": "Explore Makkah and Madinah",
+    "tani": "Discover the app",
+    "sahneEtiket": "Decorative scene: the Kaaba with two softly orbiting lights",
+    "duraklat": "Pause animation",
+    "oynat": "Play animation",
+    "altKisa": "Prayers, places to visit and travel information in one app."
   },
   "ozellik": {
     "baslik": "What it offers",
@@ -27,7 +39,8 @@
     "f3Baslik": "Audio guide",
     "f3": "Professional audio guide and full offline use (Umrah Package).",
     "f4Baslik": "Family and group",
-    "f4": "Family Tracking, a live map just for your group and an in-group internet walkie-talkie."
+    "f4": "Family Tracking, a live map just for your group and an in-group internet walkie-talkie.",
+    "tumu": "See all features"
   },
   "magaza": {
     "play": "Get it on Google Play",
@@ -43,7 +56,11 @@
     "hesapSilme": "Account deletion",
     "destek": "Support",
     "fetva": "Religious information in the app is for guidance only and is not a fatwa. Consult a qualified scholar for rulings.",
-    "haklar": "All rights reserved."
+    "haklar": "All rights reserved.",
+    "markasi": "A brand of",
+    "markasiSon": "",
+    "sayfalar": "Pages",
+    "isOrtakligi": "Partnerships"
   },
   "yasal": {
     "taslak": "DRAFT – pending legal review",
@@ -93,15 +110,72 @@
     "bilgiYok": "Coming soon",
     "ipucuBaslik": "Quick help",
     "ipucu1": "If location, notifications or the microphone do not work, check Settings > Apps > My Umrah Guide > Permissions on your phone.",
-    "ipucu2": "For package and payment questions, include the purchase date and the Google account you use.",
+    "ipucu2": "For package and payment questions, include the payment date and the Google account you use in the app.",
     "ipucu3": "To delete your account, see the Account deletion page."
   },
   "paket": {
-    "baslik": "Packages"
+    "baslik": "Packages",
+    "tumu": "Compare packages"
   },
   "bulunamadi": {
     "baslik": "Page not found",
     "metin": "The page you are looking for may have moved or never existed.",
     "don": "Back to home"
+  },
+  "rehberAra": {
+    "baslik": "Makkah and Madinah Guide",
+    "alt": "Choose places to visit by city or search by name.",
+    "sehir": "City",
+    "mekke": "Makkah",
+    "medine": "Madinah",
+    "araEtiket": "Place name",
+    "araYer": "Search places to visit",
+    "araDugme": "Search the guide",
+    "kapilar": "Haram gates",
+    "ulasim": "Transport",
+    "adimAdim": "Umrah step by step",
+    "dualar": "Prayers"
+  },
+  "kapi": {
+    "baslik": "Choose your way in",
+    "alt": "Separate pages for pilgrims, agencies leading groups, and merchants in Makkah and Madinah.",
+    "haci": "I'm a pilgrim",
+    "haciMetin": "I get guidance for my Umrah journey and discover places to visit.",
+    "acente": "I'm an agency",
+    "acenteMetin": "I plan my Umrah tours and manage them with ease.",
+    "esnaf": "I'm a merchant",
+    "esnafMetin": "I serve Hajj and Umrah guests."
+  },
+  "indir": {
+    "baslik": "Get the app",
+    "metin": "My Umrah Guide is being prepared for Android and iPhone. Store links will appear here once available."
+  },
+  "hazirlaniyor": {
+    "metin": "This page is being prepared and will be available soon.",
+    "don": "Back to home"
+  },
+  "sayfa": {
+    "ozellikler": "Features",
+    "paketler": "Packages",
+    "rehber": "Makkah and Madinah Guide",
+    "rehberBasvuru": "Apply as a guide",
+    "acente": "For agencies",
+    "esnaf": "For merchants",
+    "hakkimizda": "Who we are"
+  },
+  "form": {
+    "zorunlu": "Please fill in this field.",
+    "eposta": "Enter a valid email address.",
+    "telefon": "Enter a valid phone number.",
+    "kvkk": "Please accept the privacy notice to continue.",
+    "dosya": "The file can be at most 10 MB.",
+    "gonderiliyor": "Sending…",
+    "basari": "Your request has been received. Our team will contact you shortly.",
+    "hata": "It could not be sent right now. Please try again later or reach us through the Support page.",
+    "kvkkOnay1": "I have read the ",
+    "kvkkBag": "Personal Data Notice",
+    "kvkkOnay2": " and agree to the processing of my personal data for this request.",
+    "secin": "Select",
+    "zorunluNot": "Fields marked * are required."
   }
 }

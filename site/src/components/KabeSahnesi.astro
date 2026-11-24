@@ -1,0 +1,210 @@
+---
+// Giriş bölümünün sağ tarafı: Kâbe görseli, arkasında ince altın yörüngeler ve yörüngede yavaşça dolaşan iki ışık.
+// Derinlik: yörüngeler Kâbe'nin ARKASINDA çizilir; ışık arkadan geçerken Kâbe onu örter (gerçek 3B örtüşme).
+// İmleç hareketinde katmanlar farklı miktarda kayar (paralaks). Kâbe'nin kendisi hareket etmez.
+// "Hareketi azalt" açıksa ışıklar referans görseldeki yerlerinde sabit durur.
+import { cevirmen, type Dil } from '../i18n';
+import Ikon from './Ikon.astro';
+
+interface Props {
+  dil: Dil;
+}
+const { dil } = Astro.props;
+const t = cevirmen(dil);
+
+// Yörüngeler görselin piksel düzleminde (756×470) tanımlı: merkez, yarıçaplar, eğim (derece).
+const yorungeler = [
+  { cx: 418, cy: 345, rx: 430, ry: 328, egim: -7, opaklik: 0.75, hiz: 0.045, baslangic: 4.27 },
+  { cx: 522, cy: 330, rx: 232, ry: 226, egim: 4, opaklik: 0.6, hiz: -0.06, baslangic: 5.6 },
+];
+---
+
+<div
+  class="kabe-sahne pointer-events-none absolute inset-0"
+  data-kabe-sahne
+  data-yorungeler={JSON.stringify(yorungeler)}
+  data-etiket-duraklat={t('giris.duraklat')}
+  data-etiket-oynat={t('giris.oynat')}
+>
+  <div class="absolute bottom-0 end-0 aspect-[756/470] w-[min(100%,760px)] lg:w-[min(49.5vw,820px)]">
+    <!-- Arka katman: yörüngeler ve ışıklar (Kâbe'nin arkasında) -->
+    <svg
+      class="katman absolute inset-0 h-full w-full overflow-visible"
+      data-katman="0.9"
+      viewBox="0 0 756 470"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <radialGradient id="ks-isik">
+          <stop offset="0" stop-color="#fff7df" stop-opacity="1"></stop>
+          <stop offset="0.22" stop-color="#f3d68c" stop-opacity="0.75"></stop>
+          <stop offset="1" stop-color="#e3bf68" stop-opacity="0"></stop>
+        </radialGradient>
+        <linearGradient id="ks-yorunge" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#e3bf68" stop-opacity="0.2"></stop>
+          <stop offset="0.5" stop-color="#e3bf68" stop-opacity="1"></stop>
+          <stop offset="1" stop-color="#e3bf68" stop-opacity="0.35"></stop>
+        </linearGradient>
+      </defs>
+      {
+        yorungeler.map((o) => (
+          <ellipse
+            cx={o.cx}
+            cy={o.cy}
+            rx={o.rx}
+            ry={o.ry}
+            transform={`rotate(${o.egim} ${o.cx} ${o.cy})`}
+            stroke="url(#ks-yorunge)"
+            stroke-opacity={o.opaklik}
+            stroke-width="1.6"
+          />
+        ))
+      }
+      {
+        yorungeler.map((_, i) => (
+          <g data-isik={i}>
+            {Array.from({ length: 14 }, (_, k) => (
+              <circle r={2.4 - k * 0.13} fill="#f3d68c" fill-opacity={0.5 - k * 0.034} data-iz={k} />
+            ))}
+            <circle r="26" fill="url(#ks-isik)" data-hale />
+            <circle r="4.2" fill="#fffaf0" data-cekirdek />
+          </g>
+        ))
+      }
+    </svg>
+
+    <!-- Kâbe -->
+    <img
+      src="/img/kabe.webp"
+      alt=""
+      width="756"
+      height="470"
+      fetchpriority="high"
+      decoding="async"
+      class="katman kabe-gorsel absolute inset-0 h-full w-full select-none"
+      data-katman="0.35"
+    />
+  </div>
+
+  <button
+    type="button"
+    class="pointer-events-auto absolute bottom-4 end-4 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/30 bg-emerald-900/55 text-white backdrop-blur transition hover:border-altin-acik hover:text-fildisi"
+    data-duraklat
+    aria-pressed="false"
+    aria-label={t('giris.duraklat')}
+    title={t('giris.duraklat')}
+  >
+    <span data-ikon-duraklat><Ikon ad="duraklat" boyut={20} /></span>
+    <span data-ikon-oynat class="hidden"><Ikon ad="oynat" boyut={20} /></span>
+  </button>
+</div>
+
+<script>
+  type Yorunge = { cx: number; cy: number; rx: number; ry: number; egim: number; hiz: number; baslangic: number };
+
+  for (const kok of document.querySelectorAll<HTMLElement>('[data-kabe-sahne]')) {
+    const yorungeler: Yorunge[] = JSON.parse(kok.dataset.yorungeler || '[]');
+    const isiklar = [...kok.querySelectorAll<SVGGElement>('[data-isik]')];
+    const azHareket = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const rtl = document.documentElement.dir === 'rtl';
+
+    // Elips üzerindeki nokta (eğimli)
+    const nokta = (o: Yorunge, a: number) => {
+      const x = Math.cos(a) * o.rx;
+      const y = Math.sin(a) * o.ry;
+      const e = (o.egim * Math.PI) / 180;
+      return [o.cx + x * Math.cos(e) - y * Math.sin(e), o.cy + x * Math.sin(e) + y * Math.cos(e)];
+    };
+
+    const yerlestir = (s: number) => {
+      isiklar.forEach((g, i) => {
+        const o = yorungeler[i];
+        const a = o.baslangic + s * o.hiz;
+        const [x, y] = nokta(o, a);
+        for (const c of g.querySelectorAll<SVGCircleElement>('[data-hale],[data-cekirdek]')) {
+          c.setAttribute('cx', x.toFixed(1));
+          c.setAttribute('cy', y.toFixed(1));
+        }
+        // Kuyruk: ışığın geldiği yönde kısa bir iz
+        for (const c of g.querySelectorAll<SVGCircleElement>('[data-iz]')) {
+          const k = Number(c.dataset.iz) + 1;
+          const [ix, iy] = nokta(o, a - Math.sign(o.hiz) * k * 0.018);
+          c.setAttribute('cx', ix.toFixed(1));
+          c.setAttribute('cy', iy.toFixed(1));
+        }
+      });
+    };
+
+    // --- Paralaks ---
+    const katmanlar = [...kok.querySelectorAll<HTMLElement | SVGElement>('[data-katman]')];
+    let px = 0, py = 0;
+    const paralaks = () => {
+      for (const k of katmanlar) {
+        const d = Number((k as HTMLElement).dataset.katman) * 14;
+        (k as HTMLElement).style.transform = `translate3d(${(px * d * (rtl ? -1 : 1)).toFixed(1)}px, ${(py * d * 0.6).toFixed(1)}px, 0)`;
+      }
+    };
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        if (azHareket.matches || e.pointerType !== 'mouse') return;
+        px = (e.clientX / window.innerWidth) * 2 - 1;
+        py = (e.clientY / window.innerHeight) * 2 - 1;
+        paralaks();
+      },
+      { passive: true },
+    );
+
+    // --- Döngü ---
+    let durdu = azHareket.matches;
+    let gorunur = true;
+    let kare = 0;
+    let gecen = 0; // saniye, duraklatınca kaldığı yerden devam
+    let onceki = 0;
+    const dongu = (z: number) => {
+      if (onceki) gecen += Math.min(0.05, (z - onceki) / 1000);
+      onceki = z;
+      yerlestir(gecen);
+      kare = requestAnimationFrame(dongu);
+    };
+    const guncelle = () => {
+      cancelAnimationFrame(kare);
+      onceki = 0;
+      if (!durdu && gorunur && !document.hidden) kare = requestAnimationFrame(dongu);
+      dugmeyiGuncelle();
+    };
+
+    const dugme = kok.querySelector<HTMLButtonElement>('[data-duraklat]');
+    function dugmeyiGuncelle() {
+      if (!dugme) return;
+      const etiket = durdu ? kok.dataset.etiketOynat! : kok.dataset.etiketDuraklat!;
+      dugme.setAttribute('aria-pressed', String(durdu));
+      dugme.setAttribute('aria-label', etiket);
+      dugme.title = etiket;
+      dugme.querySelector('[data-ikon-duraklat]')?.classList.toggle('hidden', durdu);
+      dugme.querySelector('[data-ikon-oynat]')?.classList.toggle('hidden', !durdu);
+    }
+    dugme?.addEventListener('click', () => {
+      durdu = !durdu;
+      guncelle();
+    });
+
+    new IntersectionObserver(([g]) => {
+      gorunur = g.isIntersecting;
+      guncelle();
+    }).observe(kok);
+    document.addEventListener('visibilitychange', guncelle);
+    azHareket.addEventListener('change', (e) => {
+      durdu = e.matches;
+      if (durdu) {
+        px = py = 0;
+        paralaks();
+      }
+      guncelle();
+    });
+
+    yerlestir(0);
+    guncelle();
+  }
+</script>

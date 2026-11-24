@@ -1,0 +1,25 @@
+---
+// Geçici sayfa: Paketler'deki "Başvur" düğmesi 404 vermesin diye (Hazirlaniyor ile aynı görünüm).
+// Başlık uygulamanın paketler.json'undan; başvuru formu tasarımı gelince gerçek içerikle değişir.
+import Base from '../../layouts/Base.astro';
+import SayfaBasi from '../../components/SayfaBasi.astro';
+import { cevirmen, dilYollari, paket, yol, type Dil } from '../../i18n';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const baslik = paket(dil, 'paketlerFullName');
+---
+
+<Base dil={dil} yalin="/full-umre/" baslik={baslik} noindex>
+  <SayfaBasi baslik={baslik} />
+  <div class="kapsayici py-14">
+    <div class="kart max-w-2xl p-6 md:p-8">
+      <p class="text-lg">{t('hazirlaniyor.metin')}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href={yol(dil, '/paketler/')} class="dugme-ana min-h-11">{t('sayfa.paketler')}</a>
+        <a href={yol(dil, '/')} class="inline-flex min-h-11 items-center px-2 font-medium text-emerald-600 underline-offset-4 hover:underline">{t('hazirlaniyor.don')}</a>
+      </div>
+    </div>
+  </div>
+</Base>

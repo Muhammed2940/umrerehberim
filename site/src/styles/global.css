@@ -11,6 +11,11 @@
 @import '@fontsource/noto-naskh-arabic/arabic-400.css';
 @import '@fontsource/noto-naskh-arabic/arabic-600.css';
 @import '@fontsource/noto-naskh-arabic/arabic-700.css';
+/* Başlıklar: editoryal serif Merriweather (Latin) ve Amiri (Arapça başlık + dua metni). İkisi de OFL lisanslı. */
+@import '@fontsource/merriweather/latin-700.css';
+@import '@fontsource/merriweather/latin-ext-700.css';
+@import '@fontsource/amiri/arabic-400.css';
+@import '@fontsource/amiri/arabic-700.css';
 
 /* Uygulamanın renk belirteçleri (umrerehberim/lib/core/theme/app_theme.dart ile birebir). */
 @theme {
@@ -26,9 +31,20 @@
   --color-cizgi: #dce8e0;
   --color-hata: #c0392b;
   --color-uyari: #b7791f;
+  /* Ölçülü süs renkleri: fildişi kâğıt ve altın (yalnız vurgu; ana renk emerald kalır). */
+  --color-fildisi: #fbf5e6;
+  --color-altin: #b8963e;
+  --color-altin-koyu: #8a6d22;
+  --color-koyu-soluk: #c7ddd0;
+  /* Onaylı ana sayfa görselindeki fildişi zemin ve çizgi */
+  --color-krem: #f6f3ec;
+  --color-krem-cizgi: #e4dccb;
+  --color-altin-acik: #e3bf68;
 
   --font-latin: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-arapca: 'Noto Naskh Arabic', 'Roboto', system-ui, sans-serif;
+  --font-baslik: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --font-amiri: 'Amiri', 'Noto Naskh Arabic', serif;
 
   /* Kart köşeleri: uygulamada 12; büyük kartlar 20. */
   --radius-kart: 12px;
@@ -55,6 +71,35 @@
     outline: 3px solid var(--color-sage);
     outline-offset: 2px;
   }
+  /* Başlıklar serif; Arapçada Amiri. */
+  h1,
+  h2,
+  .baslik {
+    font-family: var(--font-baslik);
+    letter-spacing: -0.01em;
+  }
+  html[lang='ar'] h1,
+  html[lang='ar'] h2,
+  html[lang='ar'] .baslik {
+    font-family: var(--font-amiri);
+    letter-spacing: 0;
+    line-height: 1.5;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
@@ -70,6 +115,27 @@
   }
   .dugme-acik {
     @apply inline-flex items-center justify-center gap-2 rounded-kart px-5 py-3 font-medium transition bg-mint text-emerald-800 hover:bg-white;
+  }
+  /* Koyu zemin üstünde ana çağrı: altın düğme, koyu metin (kontrast AA). */
+  .dugme-altin {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-kart px-6 py-3 font-medium no-underline transition bg-altin text-emerald-900 hover:bg-fildisi;
+  }
+  /* Koyu zemin üstünde ikincil: ince çerçeve. */
+  .dugme-cerceve {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-kart border border-white/35 px-6 py-3 font-medium text-white no-underline transition hover:border-altin hover:text-fildisi;
+  }
+  .kapsayici {
+    @apply mx-auto w-full max-w-[1200px] px-4 md:px-6;
+  }
+  /* Koyu zümrüt sahne zemini (hero, sayfa başları) */
+  .koyu-sahne {
+    background:
+      radial-gradient(ellipse 60% 70% at 75% 45%, rgb(35 83 71 / 0.55), transparent 70%),
+      linear-gradient(135deg, var(--color-emerald-700), var(--color-emerald-800) 55%, var(--color-emerald-900));
+  }
+  /* Yönlü oklar Arapçada aynalanır */
+  html[dir='rtl'] .yon-ok {
+    transform: scaleX(-1);
   }
 
   /* Yasal metin / uzun yazı tipografisi */
@@ -107,5 +173,65 @@
   }
   .yazi th {
     @apply bg-mint/60 font-semibold;
+  }
+}
+
+/* --- Onaylı ana sayfa görselinin parçaları --- */
+@layer components {
+  /* Altın düğme: yumuşak altın degrade, koyu metin (kontrast AA). */
+  .dugme-altin {
+    background: linear-gradient(180deg, #e8c672 0%, #c9a24a 100%);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.35) inset, 0 6px 18px -8px rgb(0 0 0 / 0.5);
+  }
+  .dugme-altin:hover {
+    background: linear-gradient(180deg, #f0d48a 0%, #d4ad55 100%);
+  }
+  .dugme-cerceve {
+    border-width: 2px;
+    border-color: rgb(255 255 255 / 0.9);
+  }
+  /* Giriş bölümü zemini: solda derin, Kâbe arkasında hafif ışıyan zümrüt. */
+  .giris-zemin {
+    background:
+      radial-gradient(ellipse 45% 70% at 76% 42%, rgb(22 110 84 / 0.55), transparent 70%),
+      linear-gradient(100deg, #0b2b26 0%, #0c3a30 45%, #0d4535 100%);
+  }
+  /* Geometrik desen sağa doğru kaybolur. */
+  .desen-solma {
+    mask-image: linear-gradient(90deg, #000 30%, transparent 100%);
+  }
+  html[dir='rtl'] .desen-solma {
+    mask-image: linear-gradient(270deg, #000 30%, transparent 100%);
+  }
+  /* Kâbe katmanı: alt kenarı bölüm sınırına oturur, gölgesi zemine karışır. */
+  .kabe-gorsel {
+    filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.45));
+  }
+  .katman {
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+  }
+}
+
+/* Ana sayfa girişi: mobilde açık (12-arapca-mobil), geniş ekranda koyu zümrüt (01-ana-sayfa). */
+@layer components {
+  .giris-duyarli {
+    background: linear-gradient(180deg, #f8f5ee 0%, var(--color-krem) 100%);
+  }
+  @media (min-width: 1024px) {
+    .giris-duyarli {
+      background:
+        radial-gradient(ellipse 45% 70% at 76% 42%, rgb(22 110 84 / 0.55), transparent 70%),
+        linear-gradient(100deg, #0b2b26 0%, #0c3a30 45%, #0d4535 100%);
+    }
+    html[dir='rtl'] .giris-duyarli {
+      background:
+        radial-gradient(ellipse 45% 70% at 24% 42%, rgb(22 110 84 / 0.55), transparent 70%),
+        linear-gradient(260deg, #0b2b26 0%, #0c3a30 45%, #0d4535 100%);
+    }
+  }
+  /* Mobil sahne görselinin üst ve alt kenarı zemine karışır */
+  .sahne-solma {
+    mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 82%, transparent 100%);
   }
 }

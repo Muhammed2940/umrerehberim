@@ -37,7 +37,7 @@ Alan adı henüz belli değil; her yerde `ALAN` yer tutucusu kullanılır (tek a
 |---|---|---|---|
 | `www` | Tanıtım sitesi, yasal sayfalar, rehber içerik | Astro (statik) | 1–2 |
 | `api` | Kimlik + form + ödeme + silme talebi | PHP 8.1+ (umre-api) | 1 (form), 3 (ödeme) |
-| `aile` | Aile Takibi izleyicisi (tek kullanımlık bağlantı) | Astro sayfası + api | 4 |
+| `www/t/` | Aile Takibi izleyicisi (`/t/#<token>`; ayrı alt alan değil, `www` içinde) | Astro sayfası + `POST api/v1/track` | 4 |
 | `panel` | Acente web paneli | Flutter Web (uygulama deposundan) | 4–5 |
 
 Hepsi Plesk'te, Let's Encrypt SSL, http → https yönlendirme.
@@ -119,6 +119,19 @@ lisanslı veya kendi çekimimiz.
 - Çerezsiz analitik (Umami/Plausible). Google Analytics yok → çerez bannerı gerekmez (yalnız bilgi notu).
 - Formlarda kişisel veri yalnız POST gövdesinde; URL'de asla.
 - Gizli değer (servis hesabı, PayTR, SMTP) bu depoya girmez; `.gitignore` + paketleme betiği taraması.
+
+## 9b. Aile Takibi (`/t/`)
+
+Sözleşme (tek kaynak): uygulama deposunda `docs/plan/AILE_TAKIBI_SOZLESME.md`.
+- Sayfa: `site/src/pages/[...dil]/t.astro` (TR `/t/`, EN `/en/t/`, AR `/ar/t/`), mantık `site/src/lib/takip.ts`,
+  metinler `site/src/i18n/sayfa/takip.ts`. Kendi kabuğu var (Base.astro üst/alt bilgisi yok).
+- Token yalnız `location.hash`'te; API'ye `POST {API_URL}/v1/track` gövdesiyle gider (`API_URL` = `config.ts`).
+  URL'ye, loga, konsola yazılmaz. `noindex`, `<meta name="referrer" content="no-referrer">`.
+- Harita: Leaflet (npm) + OSM karoları (atıf üstte görünür). Karolar için CSP `img-src`'e
+  `https://tile.openstreetmap.org` eklendi; karo isteği yalnız köken Referer'ı gönderir (OSM karo politikası).
+- `.htaccess`: `/t/` yolları için `Cache-Control: no-store`, `Referrer-Policy: no-referrer`, `X-Robots-Tag: noindex`.
+- Demo: `/t/#demo`; sunum için ek durumlar `#demo-gizli`, `#demo-yok`, `#demo-eski`, `#demo-yaklasik`,
+  `#demo-medine`, `#demo-iptal`, `#demo-suresi`, `#demo-bitti`, `#demo-sik`. Sunucuya istek gitmez.
 
 ## 10. Yayın
 

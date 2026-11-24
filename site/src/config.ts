@@ -27,7 +27,7 @@ export const SIRKET = {
   adres: '[ŞİRKET ADRESİ]',
   vergiDairesiNo: '[VERGİ DAİRESİ / NO]',
   mersis: '[MERSİS NO]',
-  kvkkEposta: `kvkk@${ALAN}`,
+  kvkkEposta: 'kvkk@umrerehberim.com', // onaylı KVKK görseli (11-kvkk)
 };
 
 /**
@@ -35,10 +35,10 @@ export const SIRKET = {
  * (src/lib/destek.ts). Çekilemezse bu yedek değerler kullanılır.
  */
 export const DESTEK_YEDEK = {
-  telefon1: '',
+  telefon1: '0555 021 6974', // kullanıcı onayı (2026-11-24)
   telefon2: '',
   whatsapp: '',
-  eposta1: `destek@${ALAN}`,
+  eposta1: 'destek@umrerehberim.com', // onaylı destek görseli (09-destek)
   eposta2: '',
 };
 

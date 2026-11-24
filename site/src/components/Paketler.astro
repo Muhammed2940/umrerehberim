@@ -1,39 +1,63 @@
 ---
-// Paket adları, fiyatları ve özellikleri uygulamanın paketler.json dosyasından (tek kaynak).
-import { paket, type Dil } from '../i18n';
+// Ana sayfa paket özeti. Paket adları, fiyatları ve özellikleri uygulamanın paketler.json dosyasından (tek kaynak).
+// Süsleme: kubbe süslü başlık, madalyon ikonlar, sekiz köşeli yıldız deseni, altın ince çizgiler.
+import { cevirmen, paket, yol, type Dil } from '../i18n';
+import { sayfaMetni } from '../i18n/sayfa';
+import { PAKETLER } from '../i18n/sayfa/paketler';
+import Ikon from './Ikon.astro';
+import EkIkon from './paketler/EkIkon.astro';
 
 interface Props {
   dil: Dil;
 }
 const { dil } = Astro.props;
 const p = (k: Parameters<typeof paket>[1]) => paket(dil, k);
+const T = sayfaMetni(dil, PAKETLER);
+const t = cevirmen(dil);
 
-const kartlar = [
+type Tur = 'ucretsiz' | 'umre' | 'aile' | 'full';
+const kartlar: {
+  tur: Tur;
+  ad: string;
+  fiyat: string;
+  sure: string;
+  rozet: string;
+  ozellikler: string[];
+  dugme: string;
+  href: string;
+}[] = [
   {
+    tur: 'ucretsiz',
     ad: p('paketlerFreeName'),
     fiyat: p('paketlerFreePrice'),
-    sure: '',
-    rozet: p('paketlerFreeBadge'),
+    sure: p('paketlerFreeBadge'),
+    rozet: '',
     ozellikler: [p('paketlerFreeF1'), p('paketlerFreeF2'), p('paketlerFreeF3'), p('paketlerFreeF4')],
-    vurgu: false,
+    dugme: T.ucretsizBasla,
+    href: yol(dil, '/#indir'),
   },
   {
+    tur: 'umre',
     ad: p('paketlerUmreName'),
     fiyat: p('paketlerUmrePrice'),
     sure: p('paketlerUmrePeriod'),
     rozet: p('paketlerRecommended'),
     ozellikler: [p('paketlerUmreF1'), p('paketlerUmreF2'), p('paketlerUmreF3'), p('paketlerUmreF4'), p('paketlerUmreF5')],
-    vurgu: true,
+    dugme: T.paketiSec,
+    href: yol(dil, '/paketler/'),
   },
   {
+    tur: 'aile',
     ad: p('paketlerAileName'),
     fiyat: p('paketlerAilePrice'),
     sure: p('paketlerAilePeriod'),
     rozet: p('paketlerBestValue'),
     ozellikler: [p('paketlerAileF1'), p('paketlerAileF2'), p('paketlerAileF3')],
-    vurgu: false,
+    dugme: T.paketiSec,
+    href: yol(dil, '/paketler/'),
   },
   {
+    tur: 'full',
     ad: p('paketlerFullName'),
     fiyat: p('paketlerFullPrice'),
     sure: p('paketlerFullPeriod'),
@@ -47,50 +71,246 @@ const kartlar = [
       p('paketlerFullF6'),
       p('paketlerFullF7'),
     ],
-    vurgu: false,
+    dugme: T.incele,
+    href: yol(dil, '/paketler/#full-umre-baslik'),
   },
 ];
 ---
 
-<section id="paketler" class="mx-auto max-w-6xl px-4 py-14">
-  <h2 class="text-2xl md:text-3xl font-bold text-emerald-700">{p('paketlerTitle')}</h2>
-  <p class="mt-2 text-soluk max-w-2xl">{p('paketlerIntro')}</p>
+<section id="paketler" class="paket-bolum relative isolate overflow-hidden">
+  <!-- Arka plan: soluk sekiz köşeli yıldız deseni -->
+  <svg class="desen pointer-events-none absolute inset-0 -z-10 h-full w-full" aria-hidden="true">
+    <defs>
+      <pattern id="pk-desen" width="56" height="56" patternUnits="userSpaceOnUse">
+        <path
+          d="M28 10l5.3 12.7L46 28l-12.7 5.3L28 46l-5.3-12.7L10 28l12.7-5.3Z M28 14.5l12.7 13.5L28 41.5 15.3 28Z"
+          fill="none"
+          stroke="#b8963e"
+          stroke-width="0.8"
+        ></path>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#pk-desen)"></rect>
+  </svg>
 
-  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-    {
-      kartlar.map((k) => (
-        <article
-          class:list={[
-            'rounded-buyuk p-6 flex flex-col border',
-            k.vurgu ? 'yesil-degrade text-white border-transparent shadow-lg' : 'bg-white border-cizgi shadow-sm',
-          ]}
-        >
-          <span
-            class:list={[
-              'self-start rounded-full px-3 py-1 text-xs font-semibold',
-              k.vurgu ? 'bg-sage text-emerald-900' : 'bg-mint text-emerald-700',
-            ]}
-          >
-            {k.rozet}
-          </span>
-          <h3 class="mt-4 text-lg font-bold">{k.ad}</h3>
-          <p class="mt-1 text-3xl font-bold" dir="auto">{k.fiyat}</p>
-          {k.sure && <p class:list={['text-sm', k.vurgu ? 'text-white/80' : 'text-soluk']}>{k.sure}</p>}
-          <ul class="mt-5 space-y-2 text-sm">
-            {k.ozellikler.map((o) => (
-              <li class="flex gap-2">
-                <span aria-hidden="true" class={k.vurgu ? 'text-mint' : 'text-emerald-600'}>✓</span>
-                <span>{o}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))
-    }
-  </div>
+  <div class="mx-auto max-w-[1280px] px-4 pt-16 pb-14 md:px-8">
+    <!-- Başlık: kubbe süsü + altın çizgiler -->
+    <div class="flex flex-col items-center text-center">
+      <svg width="220" height="34" viewBox="0 0 220 34" fill="none" aria-hidden="true" class="max-w-full">
+        <path d="M0 31h82c5 0 8-2 10-6 3-8 8-13 18-16 10 3 15 8 18 16 2 4 5 6 10 6h82" stroke="#c9a24a" stroke-width="1.5"></path>
+        <path d="M110 9V2" stroke="#c9a24a" stroke-width="1.5"></path>
+        <circle cx="110" cy="2" r="1.6" fill="#c9a24a"></circle>
+      </svg>
+      <div class="mt-3 flex w-full items-center justify-center gap-6">
+        <span class="hidden h-px flex-1 bg-gradient-to-r from-transparent to-altin/70 sm:block rtl:bg-gradient-to-l" aria-hidden="true"></span>
+        <h2 class="text-[2rem] font-bold text-emerald-900 sm:text-[44px]">{p('paketlerTitle')}</h2>
+        <span class="hidden h-px flex-1 bg-gradient-to-l from-transparent to-altin/70 sm:block rtl:bg-gradient-to-r" aria-hidden="true"></span>
+      </div>
+      <p class="mt-3 max-w-2xl text-lg text-emerald-900/80 text-pretty">{p('paketlerIntro')}</p>
+    </div>
 
-  <div class="mt-6 space-y-1 text-sm text-soluk">
-    <p>{p('paketlerAgencyNote')}</p>
-    <p>{p('paketlerFootnote')}</p>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+      {
+        kartlar.map((k) => {
+          const koyu = k.tur === 'umre';
+          const full = k.tur === 'full';
+          return (
+            <article
+              class:list={[
+                'kart group relative flex flex-col rounded-2xl p-6 pt-8 transition duration-300 hover:-translate-y-1',
+                koyu && 'kart-koyu text-white',
+                full && 'kart-full text-emerald-900',
+                !koyu && !full && 'kart-acik text-emerald-900',
+              ]}
+            >
+              <!-- Köşe süsü: sekiz köşeli yıldız -->
+              <svg
+                class:list={['pointer-events-none absolute end-4 top-4 h-14 w-14', koyu ? 'opacity-30' : 'opacity-25']}
+                viewBox="0 0 48 48"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M24 3l6 15 15 6-15 6-6 15-6-15-15-6 15-6Z" stroke={koyu ? '#f1dfa6' : '#b8963e'} stroke-width="1.2"></path>
+                <rect x="13" y="13" width="22" height="22" transform="rotate(45 24 24)" stroke={koyu ? '#f1dfa6' : '#b8963e'} stroke-width="1.2"></rect>
+                <circle cx="24" cy="24" r="3" fill={koyu ? '#f1dfa6' : '#b8963e'}></circle>
+              </svg>
+
+              {k.rozet && (
+                <span
+                  class:list={[
+                    'absolute -top-3.5 start-6 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-sm font-semibold shadow-sm',
+                    koyu ? 'bg-[#f1dfa6] text-emerald-900' : full ? 'rozet-altin text-emerald-900' : 'border border-krem-cizgi bg-[#eef4ec] text-emerald-700',
+                  ]}
+                >
+                  {(koyu || full) && (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z" />
+                    </svg>
+                  )}
+                  {k.rozet}
+                </span>
+              )}
+
+              <!-- Madalyon ikon -->
+              <span
+                class:list={[
+                  'madalyon flex h-16 w-16 items-center justify-center rounded-full',
+                  koyu || full ? 'madalyon-altin text-emerald-900' : 'madalyon-yesil text-emerald-700',
+                ]}
+              >
+                {k.tur === 'ucretsiz' && <EkIkon ad="akilliTelefon" boyut={30} />}
+                {k.tur === 'umre' && <Ikon ad="kabe" boyut={30} />}
+                {k.tur === 'aile' && <Ikon ad="aile" boyut={30} />}
+                {k.tur === 'full' && <Ikon ad="ucak" boyut={30} />}
+              </span>
+
+              <h3 class="baslik mt-5 text-[1.45rem] font-bold leading-tight">{k.ad}</h3>
+
+              <!-- Fiyat + altın ayraç -->
+              <p class:list={['baslik mt-4 text-[2.4rem] font-bold leading-none', koyu ? 'text-[#f1dfa6]' : 'text-emerald-800']}>
+                <bdi>{k.fiyat}</bdi>
+              </p>
+              <p class:list={['mt-2 text-[15px]', koyu ? 'text-white/75' : 'text-emerald-900/65']}>{k.sure}</p>
+              <div class="mt-5 flex items-center gap-2" aria-hidden="true">
+                <span class:list={['h-px flex-1', koyu ? 'bg-[#f1dfa6]/40' : 'bg-altin/40']}></span>
+                <svg width="10" height="10" viewBox="0 0 10 10" class:list={[koyu ? 'text-[#f1dfa6]' : 'text-altin']}>
+                  <path d="M5 0 10 5 5 10 0 5Z" fill="currentColor" />
+                </svg>
+                <span class:list={['h-px flex-1', koyu ? 'bg-[#f1dfa6]/40' : 'bg-altin/40']}></span>
+              </div>
+
+              <ul class="mt-5 space-y-2.5 text-[15px]">
+                {k.ozellikler.map((o) => (
+                  <li class="flex gap-2.5 leading-snug">
+                    <span
+                      class:list={[
+                        'mt-px flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
+                        koyu ? 'bg-[#f1dfa6]/20 text-[#f1dfa6]' : 'bg-emerald-600/10 text-emerald-600',
+                      ]}
+                    >
+                      <Ikon ad="tik" boyut={14} />
+                    </span>
+                    <span>{o}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-auto pt-7">
+                <a
+                  href={k.href}
+                  class:list={[
+                    'flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 font-semibold no-underline transition',
+                    koyu || full
+                      ? 'dugme-altin'
+                      : 'border-[1.5px] border-emerald-600 bg-white/70 text-emerald-900 hover:bg-emerald-600 hover:text-white',
+                  ]}
+                >
+                  {k.dugme}
+                  <Ikon ad="ok" boyut={18} />
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-8 flex flex-col gap-2 text-[15px] text-emerald-900/80 md:flex-row md:justify-center md:gap-8">
+      <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="grupCanta" boyut={20} /></span>{p('paketlerAgencyNote')}</p>
+      <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="bilgi" boyut={20} /></span>{p('paketlerFootnote')}</p>
+    </div>
+    <div class="mt-8 flex justify-center">
+      <a href={yol(dil, '/paketler/')} class="inline-flex min-h-12 items-center gap-2 rounded-full border border-emerald-600/40 bg-white/60 px-7 font-semibold text-emerald-800 no-underline transition hover:border-emerald-600 hover:bg-white">
+        {t('paket.tumu')}
+        <Ikon ad="ok" boyut={20} />
+      </a>
+    </div>
   </div>
 </section>
+
+<style>
+  .paket-bolum {
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 0%, rgb(227 191 104 / 0.18), transparent 70%),
+      linear-gradient(180deg, #f6f3ec 0%, #f3efe4 100%);
+  }
+  .desen {
+    opacity: 0.09;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 90%);
+  }
+
+  /* Kartlar: üstte ince altın şerit ve yumuşak gölge */
+  .kart {
+    box-shadow: 0 10px 30px -18px rgb(60 50 20 / 0.45);
+  }
+  .kart::before {
+    content: '';
+    position: absolute;
+    inset: 0 1.5rem auto;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, transparent, #c9a24a, transparent);
+  }
+  .kart:hover {
+    box-shadow: 0 22px 40px -20px rgb(60 50 20 / 0.55);
+  }
+  .kart-acik {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfaf6 100%);
+    border: 1px solid #e4dccb;
+  }
+  .kart-koyu {
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%, rgb(35 83 71 / 0.75), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgb(227 191 104 / 0.14), transparent 70%),
+      linear-gradient(160deg, #0d4535 0%, #0b2b26 100%);
+    border: 1.5px solid #c9a24a;
+    box-shadow:
+      0 0 0 4px rgb(201 162 74 / 0.12),
+      0 18px 40px -16px rgb(5 31 32 / 0.65);
+  }
+  .kart-koyu::before {
+    background: linear-gradient(90deg, transparent, #f1dfa6, transparent);
+  }
+  .kart-full {
+    background:
+      radial-gradient(ellipse 70% 45% at 100% 0%, rgb(227 191 104 / 0.28), transparent 70%),
+      linear-gradient(180deg, #fdf8ec 0%, #f8efd8 100%);
+    border: 1.5px solid rgb(201 162 74 / 0.6);
+  }
+
+  /* Madalyon: iç halka + dış ince halka */
+  .madalyon {
+    position: relative;
+  }
+  .madalyon::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 9999px;
+    border: 1px dashed currentColor;
+    opacity: 0.35;
+  }
+  .madalyon-yesil {
+    background: radial-gradient(circle at 35% 30%, #eef6ec, #d6e8d4 80%);
+  }
+  .madalyon-altin {
+    background: radial-gradient(circle at 35% 30%, #f8e3a6, #c9a24a 80%);
+    box-shadow: 0 6px 16px -8px rgb(150 110 30 / 0.7);
+  }
+  .kart-koyu .madalyon-altin::after {
+    border-color: #f1dfa6;
+    opacity: 0.5;
+  }
+  .rozet-altin {
+    background: linear-gradient(135deg, #f6dc93, #d8b45c);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kart {
+      transition: none;
+    }
+    .kart:hover {
+      transform: none;
+    }
+  }
+</style>
