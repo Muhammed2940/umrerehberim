@@ -27,7 +27,7 @@ String tcToEmail(String tc) => '${tc.trim()}@$authEmailDomain';
 String tcToPassword(String tc) => tc.trim();
 
 /// Firebase kimlik modundaki e-posta: `id<loginId>@umrerehberim.app`.
-String loginIdToEmail(String loginId) => 'id${loginId.trim()}@$authEmailDomain';
+String loginIdToEmail(String loginId) => 'id${loginId.trim().toLowerCase()}@$authEmailDomain';
 
 /// Girişte kullanılacak e-posta: kök ID'si kökün (TC'li) e-postasına, diğerleri `id<loginId>@...`'e gider.
 String loginIdToAuthEmail(String loginId) {
@@ -39,8 +39,8 @@ String loginIdToAuthEmail(String loginId) {
 String? loginIdFromEmail(String? email) {
   final e = (email ?? '').trim().toLowerCase();
   if (e == tcToEmail(rootSuperAdminTc)) return rootLoginId;
-  final m = RegExp(r'^id([1-9][0-9]{6})@umrerehberim\.app$').firstMatch(e);
-  return m?.group(1);
+  final m = RegExp(r'^id([1-9][0-9]{6}|[a-z]{2}[0-9]{6})@umrerehberim\.app$').firstMatch(e);
+  return m?.group(1)?.toUpperCase();
 }
 
 final Random _rng = Random.secure();

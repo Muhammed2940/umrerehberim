@@ -23,7 +23,7 @@ const FS_DB = `projects/${PROJECT_ID}/databases/(default)`;
 const FS = `https://firestore.googleapis.com/v1/${FS_DB}`;
 
 const tcToEmail = (tc) => `${tc}@${EMAIL_DOMAIN}`;
-const loginIdToEmail = (id) => `id${id}@${EMAIL_DOMAIN}`;
+const loginIdToEmail = (id) => `id${String(id).toLowerCase()}@${EMAIL_DOMAIN}`;
 
 // ---------------------------------------------------------------------------
 // Rastgele ID / şifre

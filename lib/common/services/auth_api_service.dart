@@ -195,7 +195,8 @@ class AuthApiService {
   /// Firebase kimlik modunda (AUTH_API boş) herkes şifre kullanır (PIN yok).
   static bool usesPin(String userType) => authApiEnabled && userType == UserType.misafir;
 
-  static final RegExp loginIdPattern = RegExp(r'^[1-9][0-9]{6}$');
+  /// 7 haneli rakam ya da (ara Firebase modu, ör. personel) 2 büyük harf + 6 rakam: `SP294054`.
+  static final RegExp loginIdPattern = RegExp(r'^(?:[1-9][0-9]{6}|[A-Z]{2}[0-9]{6})$');
   static final RegExp pinPattern = RegExp(r'^[0-9]{6}$');
   static const minPasswordLength = 8;
 

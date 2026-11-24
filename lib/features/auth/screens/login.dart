@@ -174,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     final login = context.read<LoginProvider>();
     if (authApiEnabled) {
       await login.handleApiLogin(
-        loginId: _loginIdController.text,
+        loginId: _loginIdController.text.trim().toUpperCase(),
         secret: _secretController.text,
         userType: _userType,
         appState: context.read<AppStateProvider>(),
@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       return;
     }
     await login.handleFirebaseIdLogin(
-      loginId: _loginIdController.text,
+      loginId: _loginIdController.text.trim().toUpperCase(),
       password: _secretController.text,
       userType: _userType,
       appState: context.read<AppStateProvider>(),
@@ -340,11 +340,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       label: context.l10n.authApiLoginIdLabel,
                       hint: '1234567',
                       icon: Icons.pin_outlined,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.next,
                       inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        LengthLimitingTextInputFormatter(7),
+                        FilteringTextInputFormatter.allow(RegExp(r'[A-Za-z0-9]')),
+                        LengthLimitingTextInputFormatter(8),
+                        TextInputFormatter.withFunction(
+                          (_, v) => v.copyWith(text: v.text.toUpperCase()),
+                        ),
                       ],
                       validator: _validateLoginId,
                     ),

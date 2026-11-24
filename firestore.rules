@@ -95,7 +95,7 @@ service cloud.firestore {
       return !d.keys().hasAny(['auth_migrated', 'disabled'])
           && (!('login_id' in d)
               || (d.login_id is string
-                  && d.login_id.matches('^[1-9][0-9]{6}$')
+                  && d.login_id.matches('^([1-9][0-9]{6}|[A-Z]{2}[0-9]{6})$')
                   && get(/databases/$(database)/documents/login_ids/$(d.login_id)).data.uid == uid));
     }
     match /users/{uid} {
@@ -151,7 +151,7 @@ service cloud.firestore {
             && !changed().hasAny(['auth_migrated'])
             && !('login_id' in resource.data)
             && d.login_id is string
-            && d.login_id.matches('^[1-9][0-9]{6}$')
+            && d.login_id.matches('^([1-9][0-9]{6}|[A-Z]{2}[0-9]{6})$')
             && get(/databases/$(database)/documents/login_ids/$(d.login_id)).data.uid == uid;
       }
 
@@ -227,7 +227,7 @@ service cloud.firestore {
       allow list: if false;
       allow create: if (isSuper() || ((isManager() || isAgencyAdmin())
                                       && !exists(/databases/$(database)/documents/users/$(request.resource.data.uid))))
-                    && id.matches('^[1-9][0-9]{6}$')
+                    && id.matches('^([1-9][0-9]{6}|[A-Z]{2}[0-9]{6})$')
                     && (id != '1000146' || isRoot())
                     && request.resource.data.keys().hasOnly(['uid'])
                     && request.resource.data.keys().hasAll(['uid'])

@@ -137,7 +137,7 @@ await t('fazladan alanla (created_at) AÇILAMAZ', () =>
 await t('uid alanı olmadan AÇILAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '3333338'), { x: 'y' })));
 await t('uid sayı tipinde AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '3333339'), { uid: 5 })));
 await t('uid boş AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '3333340'), { uid: '' })));
-for (const bad of ['0123456', '123456', '12345678', 'abcdefg', '1234 67']) {
+for (const bad of ['0123456', '123456', '12345678', 'abcdefg', '1234 67', 'sp294054', 'S1294054', 'SPX29405', 'SP2940545']) {
   await t(`biçimsiz id (${bad}) ile AÇILAMAZ (süper admin)`, () => assertFails(setDoc(doc(as('sa'), 'login_ids', bad), { uid: 'newB' })));
 }
 await t('yönetici, users belgesi OLAN uid için kayıt AÇAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '3333341'), { uid: 'g1' })));
@@ -148,6 +148,10 @@ await t('var olan kaydın üzerine yazılamaz (yönetici)', () => assertFails(se
 await t('kök ID (1000146) süper admin tarafından AÇILAMAZ', () => assertFails(setDoc(doc(as('sa'), 'login_ids', '1000146'), { uid: 'sa' })));
 await t('kök ID (1000146) yönetici tarafından AÇILAMAZ', () => assertFails(setDoc(doc(as('mg'), 'login_ids', '1000146'), { uid: 'zz1' })));
 await t('kök ID (1000146) yalnız kök tarafından açılır', () => assertSucceeds(setDoc(doc(asRoot(), 'login_ids', '1000146'), { uid: 'rootuid' })));
+
+await t('harfli ID (SP294054) süper admin tarafından açılır', () => assertSucceeds(setDoc(doc(as('sa'), 'login_ids', 'SP294054'), { uid: 'newSP' })));
+await t('harfli ID ile süper admin belgesi açılır', () =>
+  assertSucceeds(setDoc(doc(as('sa'), 'users', 'newSP'), { user_type: 'super_admin', agency_id: '', user_name: 'Test SP', login_id: 'SP294054' })));
 
 console.log('login_ids ara mod: güncelleme / silme:');
 await t('kayıt güncellenemez (süper admin)', () => assertFails(updateDoc(doc(as('sa'), 'login_ids', '1000001'), { uid: 'sa' })));
