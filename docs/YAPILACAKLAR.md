@@ -4,28 +4,31 @@ Mimari: [MIMARI.md](MIMARI.md). İşaretler: `[ ]` yapılacak, `[x]` bitti, `(SA
 sağlaması gereken bilgi/karar.
 
 ## Faz 0: Kurulum (alan adı beklemeden)
-- [ ] `site/` içine Astro + Tailwind projesi kur; `config.ts` içinde `ALAN` yer tutucusu
-- [ ] Tasarım belirteçleri: uygulama renkleri, yazı tipleri (Latin + Arapça), kart/köşe ölçüleri
-- [ ] `Base.astro`: dil seçimi, `dir="rtl"`, SEO etiketleri, Open Graph, hreflang
-- [ ] Header (logo, menü, dil seçici, "Uygulamayı indir"), Footer (şirket bilgisi, yasal linkler,
+- [x] `site/` içine Astro + Tailwind projesi kur; `config.ts` içinde `ALAN` yer tutucusu
+- [x] Tasarım belirteçleri: uygulama renkleri, yazı tipleri (Latin + Arapça), kart/köşe ölçüleri
+- [x] `Base.astro`: dil seçimi, `dir="rtl"`, SEO etiketleri, Open Graph, hreflang
+- [x] Header (logo, menü, dil seçici, "Uygulamayı indir"), Footer (şirket bilgisi, yasal linkler,
       "Fetva yerine geçmez" notu)
-- [ ] i18n altyapısı: `tr.json`, `en.json`, `ar.json`
-- [ ] `.htaccess`: https yönlendirme, güvenlik başlıkları, 404
-- [ ] `tool/paketle.ps1`: derle → `dist/www.zip`, gizli dosya taraması
-- [ ] Git deposu (özel) ve ilk commit
+- [x] i18n altyapısı: `tr.json`, `en.json`, `ar.json`
+- [x] `.htaccess`: https yönlendirme, güvenlik başlıkları, 404
+- [x] `tool/paketle.ps1`: derle → `dist/www.zip`, gizli dosya taraması
+- [x] Git deposu (özel) ve ilk commit
 
 ## Faz 1: Mağaza için zorunlu sayfalar (~1 hafta)
 Play Store / App Store başvurusu bunları ister.
-- [ ] Tek sayfa tanıtım (ana sayfa taslağı): başlık, 3–4 özellik, ekran görüntüleri, mağaza rozetleri
-- [ ] `/yasal/gizlilik`: gizlilik politikası (konum, kamera, mikrofon/telsiz, bildirim, Google girişi)
-- [ ] `/yasal/kvkk`: KVKK aydınlatma metni
-- [ ] `/yasal/acik-riza`: konum ve sağlık (adımsayar) açık rızası
-- [ ] `/yasal/kullanim-kosullari`
-- [ ] `/hesap-silme`: uygulama içinden silme adımları + erişemeyenler için talep formu
-- [ ] `/destek`: telefon, WhatsApp, e-posta (`platform_settings/app`'ten derlemede çekilir)
+- [x] Tek sayfa tanıtım (ana sayfa taslağı): başlık, 3–4 özellik, ekran görüntüleri, mağaza rozetleri
+- [x] `/yasal/gizlilik`: gizlilik politikası (konum, kamera, mikrofon/telsiz, bildirim, Google girişi)
+- [x] `/yasal/kvkk`: KVKK aydınlatma metni
+- [x] `/yasal/acik-riza`: konum ve sağlık (adımsayar) açık rızası
+- [x] `/yasal/kullanim-kosullari`
+- [x] `/hesap-silme`: uygulama içinden silme adımları + erişemeyenler için talep yolu (şimdilik e-posta;
+      Google doğrulamalı form Faz 2'de `deletion-request` ile)
+- [x] `/destek`: telefon, WhatsApp, e-posta (`platform_settings/app`'ten derlemede çekilir;
+      belge şu an REST'te 404 veriyor → yedek değerler `config.ts`'ten)
 - [ ] Uygulamadaki yasal linkleri bu URL'lere bağla (uygulama deposunda ayrı iş)
 - (SAHİP) Şirket unvanı, adres, vergi no, MERSİS, KVKK irtibat e-postası
-- (SAHİP) Avukat incelemesi; taslakları biz yazarız
+- (SAHİP) Avukat incelemesi; taslakları biz yazarız (TR+EN taslak hazır; AR sayfası EN gövdeyi gösteriyor)
+- [ ] Yasal metinlerin Arapça çevirisi
 
 ## Faz 2: Pazarlama sitesi (2–3 hafta)
 - [ ] Ana sayfa: üç kapı (Hacı / Acente / Esnaf), özellikler, güven şeridi, SSS

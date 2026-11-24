@@ -1,0 +1,36 @@
+---
+import Yasal from '../../../layouts/Yasal.astro';
+import { DILLER, VARSAYILAN, cevirmen, type Dil } from '../../../i18n';
+
+// Metinler: src/content/yasal/{tr,en}/<belge>.md. AR şimdilik EN gövdesini (Arapça notla) gösterir.
+const metinler = import.meta.glob<{ Content: any }>('../../../content/yasal/*/*.md', { eager: true });
+
+const BELGELER = {
+  gizlilik: 'yasal.gizlilikBaslik',
+  kvkk: 'yasal.kvkkBaslik',
+  'acik-riza': 'yasal.acikRizaBaslik',
+  'kullanim-kosullari': 'yasal.kosullarBaslik',
+} as const;
+type Belge = keyof typeof BELGELER;
+
+export function getStaticPaths() {
+  return DILLER.flatMap((dil) =>
+    // getStaticPaths ayrı derlenir; üstteki sabitlere erişemez, liste burada tekrar yazılır.
+    ['gizlilik', 'kvkk', 'acik-riza', 'kullanim-kosullari'].map((belge) => ({
+      params: { dil: dil === VARSAYILAN ? undefined : dil, belge },
+      props: { dil, belge },
+    })),
+  );
+}
+
+const { dil, belge } = Astro.props as { dil: Dil; belge: Belge };
+const govdeDili: Dil = dil === 'ar' ? 'en' : dil;
+const modul = metinler[`../../../content/yasal/${govdeDili}/${belge}.md`];
+if (!modul) throw new Error(`Yasal metin yok: ${govdeDili}/${belge}.md`);
+const { Content } = modul;
+const t = cevirmen(dil);
+---
+
+<Yasal dil={dil} yalin={`/yasal/${belge}/`} baslik={t(BELGELER[belge])} govdeDili={govdeDili}>
+  <Content />
+</Yasal>

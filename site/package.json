@@ -1,0 +1,20 @@
+{
+  "name": "umrerehberim-site",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "veri": "node ../tool/veri_aktar.mjs",
+    "dev": "astro dev",
+    "prebuild": "node ../tool/veri_aktar.mjs",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/noto-naskh-arabic": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.13",
+    "tailwindcss": "^4.3.5"
+  }
+}

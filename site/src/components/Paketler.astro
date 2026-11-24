@@ -1,0 +1,96 @@
+---
+// Paket adları, fiyatları ve özellikleri uygulamanın paketler.json dosyasından (tek kaynak).
+import { paket, type Dil } from '../i18n';
+
+interface Props {
+  dil: Dil;
+}
+const { dil } = Astro.props;
+const p = (k: Parameters<typeof paket>[1]) => paket(dil, k);
+
+const kartlar = [
+  {
+    ad: p('paketlerFreeName'),
+    fiyat: p('paketlerFreePrice'),
+    sure: '',
+    rozet: p('paketlerFreeBadge'),
+    ozellikler: [p('paketlerFreeF1'), p('paketlerFreeF2'), p('paketlerFreeF3'), p('paketlerFreeF4')],
+    vurgu: false,
+  },
+  {
+    ad: p('paketlerUmreName'),
+    fiyat: p('paketlerUmrePrice'),
+    sure: p('paketlerUmrePeriod'),
+    rozet: p('paketlerRecommended'),
+    ozellikler: [p('paketlerUmreF1'), p('paketlerUmreF2'), p('paketlerUmreF3'), p('paketlerUmreF4'), p('paketlerUmreF5')],
+    vurgu: true,
+  },
+  {
+    ad: p('paketlerAileName'),
+    fiyat: p('paketlerAilePrice'),
+    sure: p('paketlerAilePeriod'),
+    rozet: p('paketlerBestValue'),
+    ozellikler: [p('paketlerAileF1'), p('paketlerAileF2'), p('paketlerAileF3')],
+    vurgu: false,
+  },
+  {
+    ad: p('paketlerFullName'),
+    fiyat: p('paketlerFullPrice'),
+    sure: p('paketlerFullPeriod'),
+    rozet: p('paketlerFullBadge'),
+    ozellikler: [
+      p('paketlerFullF1'),
+      p('paketlerFullF2'),
+      p('paketlerFullF3'),
+      p('paketlerFullF4'),
+      p('paketlerFullF5'),
+      p('paketlerFullF6'),
+      p('paketlerFullF7'),
+    ],
+    vurgu: false,
+  },
+];
+---
+
+<section id="paketler" class="mx-auto max-w-6xl px-4 py-14">
+  <h2 class="text-2xl md:text-3xl font-bold text-emerald-700">{p('paketlerTitle')}</h2>
+  <p class="mt-2 text-soluk max-w-2xl">{p('paketlerIntro')}</p>
+
+  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      kartlar.map((k) => (
+        <article
+          class:list={[
+            'rounded-buyuk p-6 flex flex-col border',
+            k.vurgu ? 'yesil-degrade text-white border-transparent shadow-lg' : 'bg-white border-cizgi shadow-sm',
+          ]}
+        >
+          <span
+            class:list={[
+              'self-start rounded-full px-3 py-1 text-xs font-semibold',
+              k.vurgu ? 'bg-sage text-emerald-900' : 'bg-mint text-emerald-700',
+            ]}
+          >
+            {k.rozet}
+          </span>
+          <h3 class="mt-4 text-lg font-bold">{k.ad}</h3>
+          <p class="mt-1 text-3xl font-bold" dir="auto">{k.fiyat}</p>
+          {k.sure && <p class:list={['text-sm', k.vurgu ? 'text-white/80' : 'text-soluk']}>{k.sure}</p>}
+          <ul class="mt-5 space-y-2 text-sm">
+            {k.ozellikler.map((o) => (
+              <li class="flex gap-2">
+                <span aria-hidden="true" class={k.vurgu ? 'text-mint' : 'text-emerald-600'}>✓</span>
+                <span>{o}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="mt-6 space-y-1 text-sm text-soluk">
+    <p>{p('paketlerAgencyNote')}</p>
+    <p>{p('paketlerFootnote')}</p>
+  </div>
+</section>

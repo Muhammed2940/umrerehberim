@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+
+/* Yazı tipleri yerel (fontsource) — Google Fonts'a istek gitmez. */
+/* Yalnız gereken alt kümeler: Latin + Latin-ext (Türkçe harfler) ve Arapça. */
+@import '@fontsource/roboto/latin-400.css';
+@import '@fontsource/roboto/latin-ext-400.css';
+@import '@fontsource/roboto/latin-500.css';
+@import '@fontsource/roboto/latin-ext-500.css';
+@import '@fontsource/roboto/latin-700.css';
+@import '@fontsource/roboto/latin-ext-700.css';
+@import '@fontsource/noto-naskh-arabic/arabic-400.css';
+@import '@fontsource/noto-naskh-arabic/arabic-600.css';
+@import '@fontsource/noto-naskh-arabic/arabic-700.css';
+
+/* Uygulamanın renk belirteçleri (umrerehberim/lib/core/theme/app_theme.dart ile birebir). */
+@theme {
+  --color-emerald-900: #051f20;
+  --color-emerald-800: #0b2b26;
+  --color-emerald-700: #163832;
+  --color-emerald-600: #235347;
+  --color-sage: #8eb69b;
+  --color-mint: #daf1de;
+  --color-zemin: #f3f8f4;
+  --color-metin: #051f20;
+  --color-soluk: #5e7a6e;
+  --color-cizgi: #dce8e0;
+  --color-hata: #c0392b;
+  --color-uyari: #b7791f;
+
+  --font-latin: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-arapca: 'Noto Naskh Arabic', 'Roboto', system-ui, sans-serif;
+
+  /* Kart köşeleri: uygulamada 12; büyük kartlar 20. */
+  --radius-kart: 12px;
+  --radius-buyuk: 20px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-latin);
+    background: var(--color-zemin);
+    color: var(--color-metin);
+    -webkit-text-size-adjust: 100%;
+  }
+  html[lang='ar'] {
+    font-family: var(--font-arapca);
+  }
+  html[lang='ar'] body {
+    line-height: 1.8;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-sage);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .kart {
+    @apply rounded-kart bg-white border border-cizgi shadow-sm;
+  }
+  /* Profil başlığındaki yeşil degrade */
+  .yesil-degrade {
+    background: linear-gradient(135deg, var(--color-emerald-600), var(--color-emerald-800));
+  }
+  .dugme-ana {
+    @apply inline-flex items-center justify-center gap-2 rounded-kart px-5 py-3 font-medium transition bg-emerald-600 text-white hover:bg-emerald-700;
+  }
+  .dugme-acik {
+    @apply inline-flex items-center justify-center gap-2 rounded-kart px-5 py-3 font-medium transition bg-mint text-emerald-800 hover:bg-white;
+  }
+
+  /* Yasal metin / uzun yazı tipografisi */
+  .yazi h2 {
+    @apply mt-8 mb-3 text-xl font-bold text-emerald-700;
+  }
+  .yazi h3 {
+    @apply mt-6 mb-2 text-lg font-semibold text-emerald-700;
+  }
+  .yazi p {
+    @apply my-3 leading-relaxed;
+  }
+  .yazi ul,
+  .yazi ol {
+    @apply my-3 ps-6 space-y-1.5;
+  }
+  .yazi ul {
+    @apply list-disc;
+  }
+  .yazi ol {
+    @apply list-decimal;
+  }
+  .yazi a {
+    @apply text-emerald-600 underline underline-offset-2;
+  }
+  .yazi strong {
+    @apply font-semibold text-emerald-800;
+  }
+  .yazi table {
+    @apply my-4 w-full border-collapse text-sm;
+  }
+  .yazi th,
+  .yazi td {
+    @apply border border-cizgi px-3 py-2 text-start align-top;
+  }
+  .yazi th {
+    @apply bg-mint/60 font-semibold;
+  }
+}

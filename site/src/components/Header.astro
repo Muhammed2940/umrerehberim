@@ -1,0 +1,78 @@
+---
+import { DILLER, DIL_ADI, cevirmen, yol, type Dil } from '../i18n';
+
+interface Props {
+  dil: Dil;
+  yalin: string;
+}
+const { dil, yalin } = Astro.props;
+const t = cevirmen(dil);
+const menu = [
+  { ad: t('nav.ozellikler'), href: yol(dil, '/#ozellikler') },
+  { ad: t('nav.paketler'), href: yol(dil, '/#paketler') },
+  { ad: t('nav.destek'), href: yol(dil, '/destek') },
+];
+---
+
+<header class="yesil-degrade text-white">
+  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4">
+    <a href={yol(dil, '/')} class="flex items-center gap-2 font-bold text-lg no-underline shrink-0">
+      <img src="/logo.png" alt="" width="40" height="38" class="h-9 w-auto rounded-lg bg-white/95 p-0.5" />
+      <span>{t('site.ad')}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 ms-6 text-white/90" aria-label={t('nav.menu')}>
+      {menu.map((m) => <a href={m.href} class="hover:text-white no-underline">{m.ad}</a>)}
+    </nav>
+
+    <div class="ms-auto flex items-center gap-3">
+      <ul class="hidden sm:flex items-center gap-1 text-sm" aria-label={t('nav.dil')}>
+        {
+          DILLER.map((d) => (
+            <li>
+              <a
+                href={yol(d, yalin)}
+                hreflang={d}
+                lang={d}
+                aria-current={d === dil ? 'true' : undefined}
+                class:list={[
+                  'rounded-md px-2 py-1 no-underline',
+                  d === dil ? 'bg-white/20 font-semibold' : 'text-white/80 hover:text-white',
+                ]}
+              >
+                {DIL_ADI[d]}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href={yol(dil, '/#indir')} class="hidden md:inline-flex dugme-acik !py-2 text-sm">{t('nav.indir')}</a>
+
+      <!-- Mobil menü: JS'siz <details> -->
+      <details class="md:hidden relative">
+        <summary class="list-none cursor-pointer rounded-md px-3 py-2 bg-white/15" aria-label={t('nav.menu')}>
+          ☰
+        </summary>
+        <div class="absolute end-0 mt-2 w-56 kart p-3 text-metin z-40 flex flex-col gap-1">
+          {menu.map((m) => <a href={m.href} class="rounded-md px-3 py-2 hover:bg-mint no-underline">{m.ad}</a>)}
+          <a href={yol(dil, '/#indir')} class="rounded-md px-3 py-2 hover:bg-mint no-underline font-medium text-emerald-600"
+            >{t('nav.indir')}</a
+          >
+          <hr class="my-1 border-cizgi" />
+          {
+            DILLER.map((d) => (
+              <a
+                href={yol(d, yalin)}
+                hreflang={d}
+                lang={d}
+                class:list={['rounded-md px-3 py-2 hover:bg-mint no-underline', d === dil && 'font-semibold']}
+              >
+                {DIL_ADI[d]}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

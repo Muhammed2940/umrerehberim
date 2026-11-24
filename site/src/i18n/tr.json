@@ -1,0 +1,107 @@
+{
+  "site": {
+    "ad": "Umre Rehberim",
+    "aciklama": "Umre Rehberim: dualar, Kur'an-ı Kerim, ezan vakitleri, kıble, gezilecek yerler, sesli rehber ve aile takibiyle umrenizde yanınızda olan rehber uygulaması."
+  },
+  "nav": {
+    "anaSayfa": "Ana sayfa",
+    "ozellikler": "Özellikler",
+    "paketler": "Paketler",
+    "destek": "Destek",
+    "indir": "Uygulamayı indir",
+    "dil": "Dil",
+    "menu": "Menü",
+    "icerigeGec": "İçeriğe geç"
+  },
+  "giris": {
+    "baslik": "Umrenizde her adımda yanınızda",
+    "alt": "Dualar, Kur'an-ı Kerim, ezan vakitleri ve kıble; Mekke ve Medine'de gezilecek yerler, Harem kapıları ve ulaşım bilgileri tek uygulamada. Temel özellikler her zaman ücretsiz.",
+    "ekranNot": "Ekran görüntüleri yakında"
+  },
+  "ozellik": {
+    "baslik": "Neler sunar?",
+    "f1Baslik": "İbadet",
+    "f1": "Dualar, Kur'an-ı Kerim ve zikirmatik; ezan vakitleri ve kıble yönü.",
+    "f2Baslik": "Mekke ve Medine rehberi",
+    "f2": "Gezilecek yerler, Harem kapıları ve ulaşım bilgileri.",
+    "f3Baslik": "Sesli rehber",
+    "f3": "Profesyonel sesli rehber ve internetsiz tam kullanım (Umre Paketi).",
+    "f4Baslik": "Aile ve grup",
+    "f4": "Aile Takibi, grubunuza özel canlı harita ve grup içi internet telsizi."
+  },
+  "magaza": {
+    "play": "Google Play'den edinin",
+    "appStore": "App Store'dan indirin",
+    "yakinda": "Yakında"
+  },
+  "altbilgi": {
+    "yasal": "Yasal",
+    "gizlilik": "Gizlilik Politikası",
+    "kvkk": "KVKK Aydınlatma Metni",
+    "acikRiza": "Açık Rıza Metni",
+    "kosullar": "Kullanım Koşulları",
+    "hesapSilme": "Hesap silme",
+    "destek": "Destek",
+    "fetva": "Uygulamadaki dini bilgiler rehberlik amaçlıdır; fetva yerine geçmez. Hükümler için ehil bir din görevlisine danışın.",
+    "haklar": "Tüm hakları saklıdır."
+  },
+  "yasal": {
+    "taslak": "TASLAK – avukat onayı bekliyor",
+    "taslakNot": "Bu metin taslaktır; hukuki inceleme tamamlanınca kesinleşecektir.",
+    "sonGuncelleme": "Son güncelleme",
+    "veriSorumlusu": "Veri sorumlusu",
+    "unvan": "Unvan",
+    "adres": "Adres",
+    "vergi": "Vergi dairesi / no",
+    "mersis": "MERSİS",
+    "iletisim": "KVKK iletişim",
+    "gizlilikBaslik": "Gizlilik Politikası",
+    "kvkkBaslik": "KVKK Aydınlatma Metni",
+    "acikRizaBaslik": "Açık Rıza Metni",
+    "kosullarBaslik": "Kullanım Koşulları",
+    "dilNotu": ""
+  },
+  "silme": {
+    "baslik": "Hesap silme",
+    "giris": "Umre Rehberim hesabınızı ve ilişkili verilerinizi istediğiniz zaman silebilirsiniz. Bu sayfa hem uygulama içinden silmeyi hem de uygulamaya erişemeyenler için talep yolunu anlatır.",
+    "uygulamaBaslik": "Uygulama içinden silme",
+    "adim1": "Umre Rehberim uygulamasını açın ve Google hesabınızla giriş yapın.",
+    "adim2": "Alt menüden Profil sekmesine gidin.",
+    "adim3": "Sayfanın altındaki “Hesabımı sil” düğmesine dokunun.",
+    "adim4": "Onay penceresinde “Kalıcı olarak sil” seçin ve Google hesabınızla yeniden doğrulayın.",
+    "adim5": "“Hesabınız silindi.” mesajını gördüğünüzde işlem tamamlanmıştır.",
+    "acenteNot": "Hesabınızı bir acente oluşturduysa (PIN ile giriş) silme talebinizi acentenize veya aşağıdaki yolla bize iletebilirsiniz.",
+    "silinenBaslik": "Neler silinir?",
+    "silinen1": "Hesabınız ve giriş kaydınız",
+    "silinen2": "Profil bilgileriniz (ad, e-posta, telefon, fotoğraf)",
+    "silinen3": "Kurduğunuz Toplu Hatim grupları; üyesi olduğunuz gruplardan ayrılırsınız",
+    "silinen4": "Paylaştığınız konum kayıtları ve yolculuk bilgileriniz",
+    "saklananBaslik": "Saklanabilecek kayıtlar",
+    "saklanan": "Yasal yükümlülükler gereği ödeme ve fatura kayıtları ilgili mevzuatta öngörülen süre boyunca saklanır, sonra silinir. Talebiniz en geç 30 gün içinde sonuçlandırılır.",
+    "talepBaslik": "Uygulamaya erişemiyorsanız",
+    "talep": "Uygulamaya giriş yapamıyorsanız, uygulamada kullandığınız e-posta adresinden aşağıdaki adrese “Hesap silme talebi” konulu bir e-posta gönderin. Kimliğinizi doğrulamak için sizinle aynı adresten iletişime geçeriz.",
+    "talepEposta": "Talep e-postası",
+    "formYakinda": "Google ile doğrulanan web talep formu yakında bu sayfada olacak."
+  },
+  "destek": {
+    "baslik": "Destek",
+    "giris": "Uygulamayla ilgili sorularınız, önerileriniz ve sorunlarınız için bize ulaşın.",
+    "telefon": "Telefon",
+    "whatsapp": "WhatsApp",
+    "eposta": "E-posta",
+    "whatsappYaz": "WhatsApp'tan yazın",
+    "bilgiYok": "Yakında eklenecek",
+    "ipucuBaslik": "Hızlı yardım",
+    "ipucu1": "Konum, bildirim veya mikrofon çalışmıyorsa telefonunuzun Ayarlar > Uygulamalar > Umre Rehberim > İzinler bölümünü kontrol edin.",
+    "ipucu2": "Paket ve ödeme sorularında satın alma tarihini ve kullandığınız Google hesabını belirtin.",
+    "ipucu3": "Hesabınızı silmek için Hesap silme sayfasına bakın."
+  },
+  "paket": {
+    "baslik": "Paketler"
+  },
+  "bulunamadi": {
+    "baslik": "Sayfa bulunamadı",
+    "metin": "Aradığınız sayfa taşınmış ya da hiç olmamış olabilir.",
+    "don": "Ana sayfaya dön"
+  }
+}

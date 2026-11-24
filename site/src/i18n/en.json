@@ -1,0 +1,107 @@
+{
+  "site": {
+    "ad": "My Umrah Guide",
+    "aciklama": "My Umrah Guide: a guide app by your side during Umrah, with prayers, the Holy Quran, prayer times, qibla, places to visit, an audio guide and family tracking."
+  },
+  "nav": {
+    "anaSayfa": "Home",
+    "ozellikler": "Features",
+    "paketler": "Packages",
+    "destek": "Support",
+    "indir": "Get the app",
+    "dil": "Language",
+    "menu": "Menu",
+    "icerigeGec": "Skip to content"
+  },
+  "giris": {
+    "baslik": "By your side at every step of your Umrah",
+    "alt": "Prayers, the Holy Quran, prayer times and qibla; places to visit in Makkah and Madinah, Haram gates and transport information, all in one app. The basics are always free.",
+    "ekranNot": "Screenshots coming soon"
+  },
+  "ozellik": {
+    "baslik": "What it offers",
+    "f1Baslik": "Worship",
+    "f1": "Prayers, the Holy Quran and dhikr counter; prayer times and qibla direction.",
+    "f2Baslik": "Makkah and Madinah guide",
+    "f2": "Places to visit, Haram gates and transport information.",
+    "f3Baslik": "Audio guide",
+    "f3": "Professional audio guide and full offline use (Umrah Package).",
+    "f4Baslik": "Family and group",
+    "f4": "Family Tracking, a live map just for your group and an in-group internet walkie-talkie."
+  },
+  "magaza": {
+    "play": "Get it on Google Play",
+    "appStore": "Download on the App Store",
+    "yakinda": "Coming soon"
+  },
+  "altbilgi": {
+    "yasal": "Legal",
+    "gizlilik": "Privacy Policy",
+    "kvkk": "Personal Data Notice (KVKK)",
+    "acikRiza": "Explicit Consent",
+    "kosullar": "Terms of Use",
+    "hesapSilme": "Account deletion",
+    "destek": "Support",
+    "fetva": "Religious information in the app is for guidance only and is not a fatwa. Consult a qualified scholar for rulings.",
+    "haklar": "All rights reserved."
+  },
+  "yasal": {
+    "taslak": "DRAFT – pending legal review",
+    "taslakNot": "This text is a draft and will be finalised after legal review.",
+    "sonGuncelleme": "Last updated",
+    "veriSorumlusu": "Data controller",
+    "unvan": "Company",
+    "adres": "Address",
+    "vergi": "Tax office / no",
+    "mersis": "MERSIS",
+    "iletisim": "Data protection contact",
+    "gizlilikBaslik": "Privacy Policy",
+    "kvkkBaslik": "Personal Data Protection Notice (KVKK)",
+    "acikRizaBaslik": "Explicit Consent Statement",
+    "kosullarBaslik": "Terms of Use",
+    "dilNotu": "In case of any discrepancy, the Turkish version prevails."
+  },
+  "silme": {
+    "baslik": "Account deletion",
+    "giris": "You can delete your My Umrah Guide account and associated data at any time. This page explains how to delete in the app and how to request deletion if you cannot access the app.",
+    "uygulamaBaslik": "Delete in the app",
+    "adim1": "Open the My Umrah Guide app and sign in with your Google account.",
+    "adim2": "Go to the Profile tab in the bottom menu.",
+    "adim3": "Tap “Delete my account” at the bottom of the page.",
+    "adim4": "Choose “Delete permanently” in the confirmation dialog and verify again with your Google account.",
+    "adim5": "When you see “Your account has been deleted.”, the process is complete.",
+    "acenteNot": "If your account was created by an agency (PIN sign-in), send your deletion request to your agency or to us as described below.",
+    "silinenBaslik": "What is deleted?",
+    "silinen1": "Your account and sign-in record",
+    "silinen2": "Your profile details (name, email, phone, photo)",
+    "silinen3": "Group Khatm groups you created; you leave the groups you joined",
+    "silinen4": "Location records you shared and your trip details",
+    "saklananBaslik": "Records that may be kept",
+    "saklanan": "Payment and invoice records are kept for the period required by law and then deleted. Your request is completed within 30 days at the latest.",
+    "talepBaslik": "If you cannot access the app",
+    "talep": "If you cannot sign in, send an email with the subject “Account deletion request” from the email address you use in the app to the address below. We will contact you from the same address to verify your identity.",
+    "talepEposta": "Request email",
+    "formYakinda": "A web request form verified with Google will be available on this page soon."
+  },
+  "destek": {
+    "baslik": "Support",
+    "giris": "Contact us with your questions, suggestions and issues about the app.",
+    "telefon": "Phone",
+    "whatsapp": "WhatsApp",
+    "eposta": "Email",
+    "whatsappYaz": "Message on WhatsApp",
+    "bilgiYok": "Coming soon",
+    "ipucuBaslik": "Quick help",
+    "ipucu1": "If location, notifications or the microphone do not work, check Settings > Apps > My Umrah Guide > Permissions on your phone.",
+    "ipucu2": "For package and payment questions, include the purchase date and the Google account you use.",
+    "ipucu3": "To delete your account, see the Account deletion page."
+  },
+  "paket": {
+    "baslik": "Packages"
+  },
+  "bulunamadi": {
+    "baslik": "Page not found",
+    "metin": "The page you are looking for may have moved or never existed.",
+    "don": "Back to home"
+  }
+}

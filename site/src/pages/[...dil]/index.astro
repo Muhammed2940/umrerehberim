@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import MagazaRozetleri from '../../components/MagazaRozetleri.astro';
+import Paketler from '../../components/Paketler.astro';
+import { cevirmen, dilYollari, type Dil } from '../../i18n';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const ozellikler = [1, 2, 3, 4].map((i) => ({ baslik: t(`ozellik.f${i}Baslik`), metin: t(`ozellik.f${i}`) }));
+const simgeler = ['🕋', '🗺️', '🎧', '👨‍👩‍👧'];
+---
+
+<Base dil={dil} yalin="/">
+  <section class="yesil-degrade text-white">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-10 md:grid-cols-2 items-center">
+      <div>
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight">{t('giris.baslik')}</h1>
+        <p class="mt-5 text-lg text-white/85 leading-relaxed">{t('giris.alt')}</p>
+        <div id="indir" class="mt-8 scroll-mt-6">
+          <MagazaRozetleri dil={dil} />
+        </div>
+      </div>
+      <!-- (SAHİP) Gerçek uygulama ekran görüntüleri buraya -->
+      <div class="flex justify-center gap-4" aria-label={t('giris.ekranNot')}>
+        {
+          [0, 1].map((i) => (
+            <div
+              class:list={[
+                'w-32 sm:w-40 md:w-48 aspect-[9/19] rounded-[28px] border-4 border-white/25 bg-emerald-900/40 flex items-center justify-center text-center p-4 text-sm text-white/70',
+                i === 1 && 'mt-10',
+              ]}
+            >
+              {i === 0 ? <img src="/logo.png" alt="" width="96" height="92" class="w-24 rounded-xl bg-white/95 p-1" /> : t('giris.ekranNot')}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="ozellikler" class="mx-auto max-w-6xl px-4 py-14">
+    <h2 class="text-2xl md:text-3xl font-bold text-emerald-700">{t('ozellik.baslik')}</h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        ozellikler.map((o, i) => (
+          <article class="kart p-6">
+            <div class="h-12 w-12 rounded-kart bg-mint flex items-center justify-center text-2xl" aria-hidden="true">
+              {simgeler[i]}
+            </div>
+            <h3 class="mt-4 font-semibold text-lg text-emerald-700">{o.baslik}</h3>
+            <p class="mt-2 text-sm text-soluk leading-relaxed">{o.metin}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="bg-white/60 border-y border-cizgi">
+    <Paketler dil={dil} />
+  </div>
+</Base>

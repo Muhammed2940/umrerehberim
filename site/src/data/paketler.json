@@ -1,0 +1,437 @@
+{
+  "paketlerTitle": {
+    "tr": "Paketler",
+    "en": "Packages",
+    "ar": "الباقات"
+  },
+  "paketlerIntro": {
+    "tr": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+    "en": "Planning your Umrah on your own? Choose the package that suits you. The basics are always free.",
+    "ar": "إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا."
+  },
+  "paketlerBrowse": {
+    "tr": "Paketleri incele",
+    "en": "View packages",
+    "ar": "عرض الباقات"
+  },
+  "paketlerQuickSub": {
+    "tr": "Umre ve Aile paketleri",
+    "en": "Umrah and Family packages",
+    "ar": "باقات العمرة والعائلة"
+  },
+  "paketlerFreeName": {
+    "tr": "Ücretsiz",
+    "en": "Free",
+    "ar": "مجاني"
+  },
+  "paketlerFreePrice": {
+    "tr": "0 TL",
+    "en": "€0",
+    "ar": "0 €"
+  },
+  "paketlerCurrent": {
+    "tr": "Mevcut planınız",
+    "en": "Your current plan",
+    "ar": "خطتك الحالية"
+  },
+  "paketlerFreeF1": {
+    "tr": "Dualar, Kur'an-ı Kerim ve zikirmatik",
+    "en": "Prayers, the Holy Quran and dhikr counter",
+    "ar": "الأدعية والقرآن الكريم والمسبحة"
+  },
+  "paketlerFreeF2": {
+    "tr": "Ezan vakitleri ve kıble",
+    "en": "Prayer times and qibla",
+    "ar": "مواقيت الصلاة والقبلة"
+  },
+  "paketlerFreeF3": {
+    "tr": "Gezilecek yerler, Harem kapıları ve ulaşım bilgileri",
+    "en": "Places to visit, Haram gates and transport information",
+    "ar": "الأماكن التي تُزار وأبواب الحرم ومعلومات النقل"
+  },
+  "paketlerFreeF4": {
+    "tr": "Toplu Hatim grupları",
+    "en": "Group Khatm circles",
+    "ar": "مجموعات الختمة الجماعية"
+  },
+  "paketlerUmreName": {
+    "tr": "Umre Paketi",
+    "en": "Umrah Package",
+    "ar": "باقة العمرة"
+  },
+  "paketlerUmrePrice": {
+    "tr": "349,99 TL",
+    "en": "€9.99",
+    "ar": "9.99 €"
+  },
+  "paketlerUmrePeriod": {
+    "tr": "30 gün · tek kişi",
+    "en": "30 days · 1 person",
+    "ar": "30 يومًا · شخص واحد"
+  },
+  "paketlerUmreF1": {
+    "tr": "Profesyonel sesli rehber",
+    "en": "Professional audio guide",
+    "ar": "دليل صوتي احترافي"
+  },
+  "paketlerUmreF2": {
+    "tr": "İnternetsiz tam kullanım",
+    "en": "Full offline use",
+    "ar": "استخدام كامل دون إنترنت"
+  },
+  "paketlerUmreF3": {
+    "tr": "Kişisel umre planı",
+    "en": "Personal Umrah plan",
+    "ar": "خطة عمرة شخصية"
+  },
+  "paketlerUmreF4": {
+    "tr": "Aile Takibi: evdekiler konumunuzu bir bağlantıyla görür",
+    "en": "Family Tracking: loved ones at home see your location via a link",
+    "ar": "متابعة العائلة: يرى أهلك موقعك عبر رابط"
+  },
+  "paketlerUmreF5": {
+    "tr": "Esnaf indirimleri",
+    "en": "Merchant discounts",
+    "ar": "خصومات المتاجر"
+  },
+  "paketlerAileName": {
+    "tr": "Aile / Arkadaş Paketi",
+    "en": "Family / Friends Package",
+    "ar": "باقة العائلة / الأصدقاء"
+  },
+  "paketlerAilePrice": {
+    "tr": "799,99 TL",
+    "en": "€19.99",
+    "ar": "19.99 €"
+  },
+  "paketlerAilePeriod": {
+    "tr": "30 gün · 6 kişiye kadar",
+    "en": "30 days · up to 6 people",
+    "ar": "30 يومًا · حتى 6 أشخاص"
+  },
+  "paketlerAileF1": {
+    "tr": "Umre Paketi'ndeki her şey, 6 kişi için",
+    "en": "Everything in the Umrah Package, for 6 people",
+    "ar": "كل ما في باقة العمرة لستة أشخاص"
+  },
+  "paketlerAileF2": {
+    "tr": "Grubunuza özel canlı harita",
+    "en": "A live map just for your group",
+    "ar": "خريطة مباشرة خاصة بمجموعتك"
+  },
+  "paketlerAileF3": {
+    "tr": "Grup içi internet telsizi",
+    "en": "In-group internet walkie-talkie",
+    "ar": "لاسلكي عبر الإنترنت داخل المجموعة"
+  },
+  "paketlerRecommended": {
+    "tr": "Önerilen",
+    "en": "Recommended",
+    "ar": "موصى بها"
+  },
+  "paketlerBestValue": {
+    "tr": "Kişi başı en uygun",
+    "en": "Best value per person",
+    "ar": "الأوفر للشخص"
+  },
+  "paketlerBuy": {
+    "tr": "Satın al",
+    "en": "Buy",
+    "ar": "شراء"
+  },
+  "paketlerAgencyNote": {
+    "tr": "Anlaşmalı bir acenteyle seyahat ediyorsanız bu özellikler acenteniz tarafından ücretsiz sunulur.",
+    "en": "If you travel with a partner agency, these features are provided free by your agency.",
+    "ar": "إذا كنت تسافر مع وكالة متعاقدة فستقدّم لك وكالتك هذه الميزات مجانًا."
+  },
+  "paketlerFootnote": {
+    "tr": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
+    "en": "Packages do not renew automatically. The period starts when you purchase.",
+    "ar": "لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء."
+  },
+  "paketlerFullName": {
+    "tr": "Full Umre Paketi",
+    "en": "Full Umrah Package",
+    "ar": "باقة العمرة الشاملة"
+  },
+  "paketlerFullPrice": {
+    "tr": "1.500 $",
+    "en": "$1,500",
+    "ar": "1500 $"
+  },
+  "paketlerFullPeriod": {
+    "tr": "10 gün · kişi başı",
+    "en": "10 days · per person",
+    "ar": "10 أيام · للشخص"
+  },
+  "paketlerFullBadge": {
+    "tr": "Her şey dahil",
+    "en": "All inclusive",
+    "ar": "شامل كل شيء"
+  },
+  "paketlerFullF1": {
+    "tr": "Gidiş-dönüş uçak bileti",
+    "en": "Return flight tickets",
+    "ar": "تذاكر طيران ذهابًا وإيابًا"
+  },
+  "paketlerFullF2": {
+    "tr": "Umre vizesi",
+    "en": "Umrah visa",
+    "ar": "تأشيرة العمرة"
+  },
+  "paketlerFullF3": {
+    "tr": "Mekke ve Medine'de otel konaklaması",
+    "en": "Hotel stay in Makkah and Madinah",
+    "ar": "الإقامة الفندقية في مكة والمدينة"
+  },
+  "paketlerFullF4": {
+    "tr": "Yemek ve içecek",
+    "en": "Food and drinks",
+    "ar": "الطعام والشراب"
+  },
+  "paketlerFullF5": {
+    "tr": "Havalimanı transferi ve şehirler arası ulaşım",
+    "en": "Airport transfers and intercity transport",
+    "ar": "النقل من المطار وبين المدن"
+  },
+  "paketlerFullF6": {
+    "tr": "Suudi Arabistan eSIM (internet)",
+    "en": "Saudi Arabia eSIM (data)",
+    "ar": "شريحة eSIM للسعودية (إنترنت)"
+  },
+  "paketlerFullF7": {
+    "tr": "Umre Paketi'nin tüm uygulama özellikleri",
+    "en": "All app features of the Umrah Package",
+    "ar": "جميع ميزات التطبيق في باقة العمرة"
+  },
+  "paketlerFullCta": {
+    "tr": "Satın al",
+    "en": "Buy",
+    "ar": "شراء"
+  },
+  "paketlerFreeBadge": {
+    "tr": "Herkese açık",
+    "en": "For everyone",
+    "ar": "متاح للجميع"
+  },
+  "paketlerBackToFree": {
+    "tr": "Ücretsiz plana dön",
+    "en": "Switch to free plan",
+    "ar": "العودة إلى الخطة المجانية"
+  },
+  "paketlerBackToFreeTitle": {
+    "tr": "Ücretsiz plana dön",
+    "en": "Switch to free plan",
+    "ar": "العودة إلى الخطة المجانية"
+  },
+  "paketlerBackToFreeBody": {
+    "tr": "Paketiniz ve girdiğiniz yolculuk bilgileri bu cihazdan kaldırılacak.",
+    "en": "Your package and the journey details you entered will be removed from this device.",
+    "ar": "ستُزال باقتك وبيانات الرحلة التي أدخلتها من هذا الجهاز."
+  },
+  "paketlerBackToFreeDone": {
+    "tr": "Ücretsiz plana geçildi.",
+    "en": "Switched to the free plan.",
+    "ar": "تم الانتقال إلى الخطة المجانية."
+  },
+  "paketlerCancel": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "ar": "إلغاء"
+  },
+  "paketlerConfirm": {
+    "tr": "Evet, dön",
+    "en": "Yes, switch",
+    "ar": "نعم، انتقل"
+  },
+  "paketlerEditPlan": {
+    "tr": "Tarih ve otel bilgilerimi düzenle",
+    "en": "Edit my dates and hotels",
+    "ar": "تعديل التواريخ والفنادق"
+  },
+  "paketlerChooseTitle": {
+    "tr": "Paketinizi seçin",
+    "en": "Choose your package",
+    "ar": "اختر باقتك"
+  },
+  "paketlerChooseSub": {
+    "tr": "Mekke ve Medine geri sayımı, sesli rehber ve daha fazlası",
+    "en": "Makkah and Madinah countdown, audio guide and more",
+    "ar": "العد التنازلي لمكة والمدينة والدليل الصوتي والمزيد"
+  },
+  "paketlerYourPackage": {
+    "tr": "Paketiniz: {name}",
+    "en": "Your package: {name}",
+    "ar": "باقتك: {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "paketlerPlanTitle": {
+    "tr": "Yolculuk Bilgilerim",
+    "en": "My Journey",
+    "ar": "بيانات رحلتي"
+  },
+  "paketlerPlanIntro": {
+    "tr": "Mekke ve Medine'deki konaklama tarihlerinizi ve otelinizi girin. Ana sayfada geri sayım kartlarınız bu bilgilerle gösterilir.",
+    "en": "Enter your stay dates and hotels in Makkah and Madinah. Your countdown cards on the home page use these details.",
+    "ar": "أدخل تواريخ إقامتك وفندقك في مكة والمدينة. تُعرض بطاقات العد التنازلي في الصفحة الرئيسية بهذه البيانات."
+  },
+  "paketlerPlanMekke": {
+    "tr": "Mekke",
+    "en": "Makkah",
+    "ar": "مكة"
+  },
+  "paketlerPlanMedine": {
+    "tr": "Medine",
+    "en": "Madinah",
+    "ar": "المدينة"
+  },
+  "paketlerPlanPickDates": {
+    "tr": "Giriş ve çıkış tarihi seçin",
+    "en": "Select check-in and check-out dates",
+    "ar": "اختر تاريخي الوصول والمغادرة"
+  },
+  "paketlerPlanHotel": {
+    "tr": "Otel adı",
+    "en": "Hotel name",
+    "ar": "اسم الفندق"
+  },
+  "paketlerPlanSave": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "ar": "حفظ"
+  },
+  "paketlerPlanSaved": {
+    "tr": "Yolculuk bilgileriniz kaydedildi.",
+    "en": "Your journey details were saved.",
+    "ar": "تم حفظ بيانات رحلتك."
+  },
+  "paketlerPendingTitle": {
+    "tr": "Onay bekleniyor",
+    "en": "Awaiting approval",
+    "ar": "بانتظار الموافقة"
+  },
+  "paketlerPendingBody": {
+    "tr": "Full Umre Paketi talebiniz alındı. Yöneticimiz onayladıktan sonra yolculuk tarihlerinizi belirlemek için sizinle iletişime geçecek.",
+    "en": "Your Full Umrah Package request has been received. After approval, our manager will contact you to set your travel dates.",
+    "ar": "تم استلام طلب باقة العمرة الشاملة. بعد الموافقة سيتواصل معك مسؤولنا لتحديد مواعيد رحلتك."
+  },
+  "paketlerPendingBadge": {
+    "tr": "Onay bekleniyor",
+    "en": "Awaiting approval",
+    "ar": "بانتظار الموافقة"
+  },
+  "paketlerPendingShort": {
+    "tr": "Onay bekleniyor · bizimle iletişime geçin",
+    "en": "Awaiting approval · contact us",
+    "ar": "بانتظار الموافقة · تواصل معنا"
+  },
+  "paketlerContactUs": {
+    "tr": "Bizimle iletişime geçin",
+    "en": "Contact us",
+    "ar": "تواصل معنا"
+  },
+  "odemeTitle": {
+    "tr": "Ödeme",
+    "en": "Payment",
+    "ar": "الدفع"
+  },
+  "odemeSummary": {
+    "tr": "Sipariş özeti",
+    "en": "Order summary",
+    "ar": "ملخص الطلب"
+  },
+  "odemeRowPackage": {
+    "tr": "Paket",
+    "en": "Package",
+    "ar": "الباقة"
+  },
+  "odemeRowPeriod": {
+    "tr": "Süre",
+    "en": "Period",
+    "ar": "المدة"
+  },
+  "odemeRowTotal": {
+    "tr": "Toplam",
+    "en": "Total",
+    "ar": "الإجمالي"
+  },
+  "odemeFullNote": {
+    "tr": "Ödemenizden sonra yöneticimiz talebinizi onaylar ve yolculuk tarihlerinizi belirlemek için sizinle iletişime geçer.",
+    "en": "After your payment, our manager approves your request and contacts you to set your travel dates.",
+    "ar": "بعد الدفع يوافق مسؤولنا على طلبك ويتواصل معك لتحديد مواعيد رحلتك."
+  },
+  "odemeSecureNote": {
+    "tr": "Ödeme, PayTR güvenli ödeme sayfasında yapılır. Kart bilgileriniz uygulamada saklanmaz.",
+    "en": "Payment is made on the PayTR secure payment page. Your card details are not stored in the app.",
+    "ar": "يتم الدفع عبر صفحة الدفع الآمنة PayTR. لا تُخزَّن بيانات بطاقتك في التطبيق."
+  },
+  "odemeDemoNote": {
+    "tr": "Demo sürüm: ödeme alınmaz, paket bu cihazda etkinleştirilir.",
+    "en": "Demo version: no payment is taken; the package is activated on this device.",
+    "ar": "نسخة تجريبية: لا يتم أخذ أي دفعة وتُفعَّل الباقة على هذا الجهاز."
+  },
+  "odemePay": {
+    "tr": "{price} öde",
+    "en": "Pay {price}",
+    "ar": "ادفع {price}",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "odemePoweredBy": {
+    "tr": "PayTR güvenli ödeme altyapısı",
+    "en": "Secured by PayTR",
+    "ar": "بنية الدفع الآمنة PayTR"
+  },
+  "odemeProcessing": {
+    "tr": "Ödeme işleniyor",
+    "en": "Processing payment",
+    "ar": "جارٍ معالجة الدفع"
+  },
+  "odemeProcessingBody": {
+    "tr": "Lütfen bekleyin, sayfadan ayrılmayın.",
+    "en": "Please wait and do not leave this page.",
+    "ar": "يرجى الانتظار وعدم مغادرة الصفحة."
+  },
+  "odemeSuccess": {
+    "tr": "Ödeme başarılı",
+    "en": "Payment successful",
+    "ar": "تم الدفع بنجاح"
+  },
+  "odemeSuccessBody": {
+    "tr": "Paketiniz etkinleştirildi. Şimdi yolculuk bilgilerinizi girebilirsiniz.",
+    "en": "Your package is active. You can now enter your journey details.",
+    "ar": "تم تفعيل باقتك. يمكنك الآن إدخال بيانات رحلتك."
+  },
+  "odemeSuccessFull": {
+    "tr": "Talebiniz alındı. Yöneticimiz onay ve tarih belirleme için sizinle iletişime geçecek.",
+    "en": "Your request has been received. Our manager will contact you for approval and dates.",
+    "ar": "تم استلام طلبك. سيتواصل معك مسؤولنا للموافقة وتحديد المواعيد."
+  },
+  "paketlerOnlyTitle": {
+    "tr": "Ücretli paketlere özel",
+    "en": "For paid packages",
+    "ar": "خاص بالباقات المدفوعة"
+  },
+  "paketlerOnlyBody": {
+    "tr": "Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.",
+    "en": "Merchant discounts, points and spending history are available with the Umrah, Family and Full packages.",
+    "ar": "تتوفر خصومات المتاجر والنقاط وسجل الإنفاق مع باقات العمرة والعائلة والشاملة."
+  },
+  "paketlerDiscountLocked": {
+    "tr": "Esnaf indirimi ücretli paketlerde kullanılabilir.",
+    "en": "Merchant discounts are available with paid packages.",
+    "ar": "خصومات المتاجر متاحة مع الباقات المدفوعة."
+  },
+  "odemeFailed": {
+    "tr": "İşlem tamamlanamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.",
+    "en": "The operation could not be completed. Check your connection and try again.",
+    "ar": "تعذّر إتمام العملية. تحقق من اتصالك وحاول مرة أخرى."
+  }
+}

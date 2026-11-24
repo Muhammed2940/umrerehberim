@@ -1,0 +1,65 @@
+---
+// Google Play "Veri silme" şartı: uygulama içi adımlar + uygulamaya erişemeyenler için web yolu.
+// (Faz 2) Google ile doğrulanan form → POST api.ALAN/v1/web/deletion-request.
+import Base from '../../layouts/Base.astro';
+import { cevirmen, dilYollari, type Dil } from '../../i18n';
+import { destekBilgisi } from '../../lib/destek';
+import { SIRKET } from '../../config';
+
+export const getStaticPaths = dilYollari;
+const { dil } = Astro.props as { dil: Dil };
+const t = cevirmen(dil);
+const d = await destekBilgisi();
+const talepAdresi = d.eposta1 || SIRKET.kvkkEposta;
+// Konu satırı kişisel veri içermez.
+const konu = encodeURIComponent(dil === 'tr' ? 'Hesap silme talebi' : 'Account deletion request');
+const adimlar = [1, 2, 3, 4, 5].map((i) => t(`silme.adim${i}`));
+const silinenler = [1, 2, 3, 4].map((i) => t(`silme.silinen${i}`));
+---
+
+<Base dil={dil} yalin="/hesap-silme/" baslik={t('silme.baslik')}>
+  <div class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="text-3xl font-bold text-emerald-700">{t('silme.baslik')}</h1>
+    <p class="mt-3 text-soluk leading-relaxed">{t('silme.giris')}</p>
+
+    <section class="kart mt-8 p-6">
+      <h2 class="text-xl font-semibold text-emerald-700">{t('silme.uygulamaBaslik')}</h2>
+      <ol class="mt-4 space-y-3">
+        {
+          adimlar.map((a, i) => (
+            <li class="flex gap-3">
+              <span class="shrink-0 h-7 w-7 rounded-full bg-emerald-600 text-white text-sm flex items-center justify-center">
+                {i + 1}
+              </span>
+              <span class="pt-0.5">{a}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-4 text-sm text-soluk">{t('silme.acenteNot')}</p>
+    </section>
+
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      <section class="kart p-6">
+        <h2 class="font-semibold text-emerald-700">{t('silme.silinenBaslik')}</h2>
+        <ul class="mt-3 list-disc ps-5 space-y-1.5 text-sm">{silinenler.map((s) => <li>{s}</li>)}</ul>
+      </section>
+      <section class="kart p-6">
+        <h2 class="font-semibold text-emerald-700">{t('silme.saklananBaslik')}</h2>
+        <p class="mt-3 text-sm leading-relaxed">{t('silme.saklanan')}</p>
+      </section>
+    </div>
+
+    <section id="talep" class="kart mt-6 p-6 border-emerald-600/30">
+      <h2 class="text-xl font-semibold text-emerald-700">{t('silme.talepBaslik')}</h2>
+      <p class="mt-3 leading-relaxed">{t('silme.talep')}</p>
+      <p class="mt-4">
+        <span class="text-sm text-soluk">{t('silme.talepEposta')}:</span>
+        <a href={`mailto:${talepAdresi}?subject=${konu}`} dir="ltr" class="ms-1 font-medium text-emerald-600 underline"
+          >{talepAdresi}</a
+        >
+      </p>
+      <p class="mt-4 text-sm text-soluk">{t('silme.formYakinda')}</p>
+    </section>
+  </div>
+</Base>
