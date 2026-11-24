@@ -100,7 +100,8 @@ class AileTakibiProvider extends ChangeNotifier {
     if (name.isEmpty || name.length > 30) throw ArgumentError('label');
 
     final now = DateTime.now();
-    var expires = now.add(linkDuration);
+    // Telefon saati sunucudan biraz ileride olabilir; kural "sunucu saati + en çok 30 gün" ister.
+    var expires = now.add(linkDuration - const Duration(minutes: 10));
     if (u.isBireysel) {
       final until = personalPlan.paidUntil;
       if (until == null) throw StateError('no_right');
