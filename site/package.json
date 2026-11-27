@@ -4,9 +4,9 @@
   "type": "module",
   "version": "0.1.0",
   "scripts": {
-    "veri": "node ../tool/veri_aktar.mjs && node ../tool/rehber_aktar.mjs",
+    "veri": "node ../tool/veri_aktar.mjs && node ../tool/rehber_aktar.mjs && node ../tool/kur_aktar.mjs",
     "dev": "astro dev",
-    "prebuild": "node ../tool/veri_aktar.mjs && node ../tool/rehber_aktar.mjs",
+    "prebuild": "node ../tool/veri_aktar.mjs && node ../tool/rehber_aktar.mjs && node ../tool/kur_aktar.mjs",
     "build": "astro build",
     "preview": "astro preview"
   },

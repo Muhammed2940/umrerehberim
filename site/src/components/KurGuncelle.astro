@@ -1,0 +1,46 @@
+---
+// EN/AR fiyatlarını sayfa açılınca güncel kurla yeniden yazar (data-tl + data-pb taşıyan öğeler).
+// Derleme anındaki kur zaten sayfada; bu yalnız arada geçen günlerin farkını kapatır.
+// İstek başarısızsa sayfadaki değer kalır. Kur oturum boyunca sessionStorage'da tutulur (çerez yok).
+---
+
+<script>
+  import { KUR } from '../config';
+  import { dovizMetni, cevir, type Kurlar, type ParaBirimi } from '../lib/fiyat';
+
+  const ANAHTAR = 'umre-kur';
+
+  async function kurlariAl(): Promise<Kurlar | null> {
+    try {
+      const onbellek = sessionStorage.getItem(ANAHTAR);
+      if (onbellek) return JSON.parse(onbellek) as Kurlar;
+    } catch {}
+    try {
+      const yanit = await fetch(KUR.canliUrl, { credentials: 'omit', referrerPolicy: 'no-referrer' });
+      if (!yanit.ok) return null;
+      const v = (await yanit.json()) as { rates?: Kurlar };
+      const kurlar = v.rates ?? null;
+      if (!kurlar || !(Number(kurlar.EUR) > 0)) return null;
+      try {
+        sessionStorage.setItem(ANAHTAR, JSON.stringify(kurlar));
+      } catch {}
+      return kurlar;
+    } catch {
+      return null;
+    }
+  }
+
+  async function guncelle() {
+    const ogeler = document.querySelectorAll<HTMLElement>('[data-tl][data-pb]');
+    const dil = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+    if (!ogeler.length || !KUR.canliUrl || document.documentElement.lang === 'tr') return;
+    const kurlar = await kurlariAl();
+    if (!kurlar) return;
+    ogeler.forEach((o) => {
+      const tutar = cevir(Number(o.dataset.tl), o.dataset.pb as ParaBirimi, kurlar);
+      if (tutar !== null) o.textContent = dovizMetni(dil, tutar, o.dataset.pb as ParaBirimi);
+    });
+  }
+
+  guncelle();
+</script>

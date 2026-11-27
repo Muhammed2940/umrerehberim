@@ -2,6 +2,9 @@ import tr from './tr.json';
 import en from './en.json';
 import ar from './ar.json';
 import paketler from '../data/paketler.json';
+import kur from '../data/kur.json';
+import { KUR } from '../config';
+import { cevir, dovizMetni, tlTutar, type Kurlar } from '../lib/fiyat';
 
 export const DILLER = ['tr', 'en', 'ar'] as const;
 export type Dil = (typeof DILLER)[number];
@@ -27,8 +30,29 @@ export function cevirmen(dil: Dil) {
 type PaketAnahtar = keyof typeof paketler;
 /** Uygulamanın paketler.json metni (tek kaynak). */
 export function paket(dil: Dil, anahtar: PaketAnahtar): string {
+  if (String(anahtar).endsWith('Price')) return paketFiyat(dil, anahtar).metin;
+  return paketHam(dil, anahtar);
+}
+
+function paketHam(dil: Dil, anahtar: PaketAnahtar): string {
   const v = paketler[anahtar] as Record<Dil, string> | undefined;
   return v?.[dil] ?? v?.tr ?? String(anahtar);
+}
+
+/**
+ * Paket fiyatı. TL fiyat EN/AR'da derleme anındaki kurla çevrilir (lib/fiyat.ts).
+ * `oznitelik` fiyat öğesine konur; KurGuncelle.astro sayfa açılınca güncel kurla yeniden yazar.
+ * Kur yoksa veya fiyat TL değilse paketler.json metni aynen döner.
+ */
+export function paketFiyat(dil: Dil, anahtar: PaketAnahtar): { metin: string; oznitelik: Record<string, string> } {
+  const sabit = { metin: paketHam(dil, anahtar), oznitelik: {} };
+  if (dil === 'tr') return sabit;
+  const tl = tlTutar(paketHam('tr', anahtar));
+  if (tl === null) return sabit;
+  const pb = KUR.paraBirimi[dil];
+  const tutar = cevir(tl, pb, kur.kurlar as Kurlar);
+  if (tutar === null) return sabit;
+  return { metin: dovizMetni(dil, tutar, pb), oznitelik: { 'data-tl': String(tl), 'data-pb': pb } };
 }
 
 /** Dil öneki olmayan yol ('/yasal/gizlilik') → dile göre yol ('/en/yasal/gizlilik'). */

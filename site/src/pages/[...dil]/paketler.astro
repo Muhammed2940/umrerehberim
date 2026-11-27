@@ -5,7 +5,8 @@
 import Base from '../../layouts/Base.astro';
 import Ikon from '../../components/Ikon.astro';
 import EkIkon from '../../components/paketler/EkIkon.astro';
-import { dilYollari, paket, yol, type Dil } from '../../i18n';
+import { dilYollari, paket, paketFiyat, yol, type Dil } from '../../i18n';
+import KurGuncelle from '../../components/KurGuncelle.astro';
 import { sayfaMetni } from '../../i18n/sayfa';
 import { PAKETLER } from '../../i18n/sayfa/paketler';
 import { MAGAZA } from '../../config';
@@ -29,6 +30,7 @@ const kartlar = [
     ad: p('paketlerFreeName'),
     alt: T.ucretsizAlt,
     fiyat: p('paketlerFreePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerFreePrice').oznitelik,
     sure: '',
     rozet: '',
     maddeler: ucretsiz,
@@ -39,6 +41,7 @@ const kartlar = [
     ad: p('paketlerUmreName'),
     alt: T.umreAlt,
     fiyat: p('paketlerUmrePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerUmrePrice').oznitelik,
     sure: p('paketlerUmrePeriod'),
     rozet: p('paketlerRecommended'),
     maddeler: umre,
@@ -49,6 +52,7 @@ const kartlar = [
     ad: p('paketlerAileName'),
     alt: T.aileAlt,
     fiyat: p('paketlerAilePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerAilePrice').oznitelik,
     sure: p('paketlerAilePeriod'),
     rozet: p('paketlerBestValue'),
     maddeler: aile,
@@ -74,8 +78,9 @@ const fullMaddeler = [
 type Hucre = boolean | string;
 type Satir = [Hucre, Hucre, Hucre, Hucre];
 const sutunlar = [...kartlar.map((k) => ({ ad: k.ad, tur: k.tur as string })), { ad: p('paketlerFullName'), tur: 'full' }];
-const satirlar: { ad: string; d: Satir }[] = [
-  { ad: T.fiyat, d: [p('paketlerFreePrice'), p('paketlerUmrePrice'), p('paketlerAilePrice'), p('paketlerFullPrice')] },
+const fiyatOz = (['Free', 'Umre', 'Aile', 'Full'] as const).map((k) => paketFiyat(dil, `paketler${k}Price`).oznitelik);
+const satirlar: { ad: string; d: Satir; oz?: Record<string, string>[] }[] = [
+  { ad: T.fiyat, d: [p('paketlerFreePrice'), p('paketlerUmrePrice'), p('paketlerAilePrice'), p('paketlerFullPrice')], oz: fiyatOz },
   { ad: T.sureKisi, d: [p('paketlerFreeBadge'), p('paketlerUmrePeriod'), p('paketlerAilePeriod'), p('paketlerFullPeriod')] },
   ...ucretsiz.map((ad) => ({ ad, d: [true, true, true, true] as Satir })),
   ...umre.map((ad) => ({ ad, d: [false, true, true, true] as Satir })),
@@ -151,7 +156,7 @@ const satirlar: { ad: string; d: Satir }[] = [
                     </div>
                   </div>
                   <p class:list={['baslik mt-5 text-[2.5rem] font-bold leading-none', vurgu ? 'text-[#f1dfa6]' : 'text-emerald-900']}>
-                    <bdi>{k.fiyat}</bdi>
+                    <bdi {...k.fiyatOz}>{k.fiyat}</bdi>
                   </p>
                   {k.sure && <p class:list={['mt-2 text-[15px]', vurgu ? 'text-white/80' : 'text-soluk']}>{k.sure}</p>}
                   <ul class="mt-5 space-y-2.5">
@@ -189,6 +194,7 @@ const satirlar: { ad: string; d: Satir }[] = [
       <div class="mt-5 flex flex-col gap-2 text-[15px] text-emerald-900/80 xl:ms-[342px]">
         <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-emerald-600"><Ikon ad="grupCanta" boyut={20} /></span>{p('paketlerAgencyNote')}</p>
         <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-emerald-600"><Ikon ad="bilgi" boyut={20} /></span>{p('paketlerFootnote')}</p>
+        {p('paketlerKurNot') && <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-emerald-600"><Ikon ad="bilgi" boyut={20} /></span>{p('paketlerKurNot')}</p>}
       </div>
     </section>
 
@@ -281,7 +287,7 @@ const satirlar: { ad: string; d: Satir }[] = [
                   {s.d.map((h, i) => (
                     <td class:list={['px-4 py-3 text-center', i === 1 && 'bg-[#eef4ec]', i === 3 && 'bg-[#fdf8ec]']}>
                       {typeof h === 'string' ? (
-                        <bdi class="text-[15px] font-medium text-emerald-900">{h}</bdi>
+                        <bdi class="text-[15px] font-medium text-emerald-900" {...s.oz?.[i]}>{h}</bdi>
                       ) : h ? (
                         <span class="inline-flex text-emerald-600">
                           <Ikon ad="tik" boyut={22} />
@@ -303,6 +309,7 @@ const satirlar: { ad: string; d: Satir }[] = [
       </div>
     </section>
   </div>
+  <KurGuncelle />
 </Base>
 
 <style>

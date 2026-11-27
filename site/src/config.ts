@@ -51,3 +51,14 @@ export const DESTEK_YEDEK = {
 
 /** Yasal metinlerin son güncelleme tarihi (avukat onayından sonra güncellenir). */
 export const YASAL_TARIH = '2026-11-24';
+
+/**
+ * Döviz gösterimi. Paket fiyatlarının aslı TL'dir (paketler.json'un TR metni; ödeme PayTR ile TL alınır).
+ * EN/AR sayfalarında tutar günlük kurla çevrilir: derlemede tool/kur_aktar.mjs → data/kur.json,
+ * sayfa açılınca da tarayıcı aynı kaynaktan güncel kuru çeker (çerez/kişisel veri yok).
+ * canliUrl boş bırakılırsa yalnız derleme anındaki kur kullanılır.
+ */
+export const KUR = {
+  canliUrl: 'https://api.frankfurter.dev/v1/latest?base=TRY&symbols=EUR,USD',
+  paraBirimi: { en: 'EUR', ar: 'EUR' } as Record<'en' | 'ar', 'EUR' | 'USD'>,
+};

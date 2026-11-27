@@ -1,7 +1,8 @@
 ---
 // Ana sayfa paket özeti. Paket adları, fiyatları ve özellikleri uygulamanın paketler.json dosyasından (tek kaynak).
 // Süsleme: kubbe süslü başlık, madalyon ikonlar, sekiz köşeli yıldız deseni, altın ince çizgiler.
-import { cevirmen, paket, yol, type Dil } from '../i18n';
+import { cevirmen, paket, paketFiyat, yol, type Dil } from '../i18n';
+import KurGuncelle from './KurGuncelle.astro';
 import { sayfaMetni } from '../i18n/sayfa';
 import { PAKETLER } from '../i18n/sayfa/paketler';
 import Ikon from './Ikon.astro';
@@ -20,6 +21,7 @@ const kartlar: {
   tur: Tur;
   ad: string;
   fiyat: string;
+  fiyatOz: Record<string, string>;
   sure: string;
   rozet: string;
   ozellikler: string[];
@@ -30,6 +32,7 @@ const kartlar: {
     tur: 'ucretsiz',
     ad: p('paketlerFreeName'),
     fiyat: p('paketlerFreePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerFreePrice').oznitelik,
     sure: p('paketlerFreeBadge'),
     rozet: '',
     ozellikler: [p('paketlerFreeF1'), p('paketlerFreeF2'), p('paketlerFreeF3'), p('paketlerFreeF4')],
@@ -40,6 +43,7 @@ const kartlar: {
     tur: 'umre',
     ad: p('paketlerUmreName'),
     fiyat: p('paketlerUmrePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerUmrePrice').oznitelik,
     sure: p('paketlerUmrePeriod'),
     rozet: p('paketlerRecommended'),
     ozellikler: [p('paketlerUmreF1'), p('paketlerUmreF2'), p('paketlerUmreF3'), p('paketlerUmreF4'), p('paketlerUmreF5')],
@@ -50,6 +54,7 @@ const kartlar: {
     tur: 'aile',
     ad: p('paketlerAileName'),
     fiyat: p('paketlerAilePrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerAilePrice').oznitelik,
     sure: p('paketlerAilePeriod'),
     rozet: p('paketlerBestValue'),
     ozellikler: [p('paketlerAileF1'), p('paketlerAileF2'), p('paketlerAileF3')],
@@ -60,6 +65,7 @@ const kartlar: {
     tur: 'full',
     ad: p('paketlerFullName'),
     fiyat: p('paketlerFullPrice'),
+    fiyatOz: paketFiyat(dil, 'paketlerFullPrice').oznitelik,
     sure: p('paketlerFullPeriod'),
     rozet: p('paketlerFullBadge'),
     ozellikler: [
@@ -168,7 +174,7 @@ const kartlar: {
 
               <!-- Fiyat + altın ayraç -->
               <p class:list={['baslik mt-4 text-[2.4rem] font-bold leading-none', koyu ? 'text-[#f1dfa6]' : 'text-emerald-800']}>
-                <bdi>{k.fiyat}</bdi>
+                <bdi {...k.fiyatOz}>{k.fiyat}</bdi>
               </p>
               <p class:list={['mt-2 text-[15px]', koyu ? 'text-white/75' : 'text-emerald-900/65']}>{k.sure}</p>
               <div class="mt-5 flex items-center gap-2" aria-hidden="true">
@@ -218,6 +224,7 @@ const kartlar: {
     <div class="mt-8 flex flex-col gap-2 text-[15px] text-emerald-900/80 md:flex-row md:justify-center md:gap-8">
       <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="grupCanta" boyut={20} /></span>{p('paketlerAgencyNote')}</p>
       <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="bilgi" boyut={20} /></span>{p('paketlerFootnote')}</p>
+      {p('paketlerKurNot') && <p class="flex gap-2"><span class="mt-0.5 shrink-0 text-altin-koyu"><Ikon ad="bilgi" boyut={20} /></span>{p('paketlerKurNot')}</p>}
     </div>
     <div class="mt-8 flex justify-center">
       <a href={yol(dil, '/paketler/')} class="inline-flex min-h-12 items-center gap-2 rounded-full border border-emerald-600/40 bg-white/60 px-7 font-semibold text-emerald-800 no-underline transition hover:border-emerald-600 hover:bg-white">
@@ -227,6 +234,7 @@ const kartlar: {
     </div>
   </div>
 </section>
+<KurGuncelle />
 
 <style>
   .paket-bolum {
