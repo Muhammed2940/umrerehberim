@@ -26,8 +26,8 @@
   },
   "paketlerFreePrice": {
     "tr": "0 TL",
-    "en": "€0",
-    "ar": "0 €"
+    "en": "0 TL",
+    "ar": "0 TL"
   },
   "paketlerCurrent": {
     "tr": "Mevcut planınız",
@@ -61,8 +61,8 @@
   },
   "paketlerUmrePrice": {
     "tr": "349,99 TL",
-    "en": "€9.99",
-    "ar": "9.99 €"
+    "en": "349.99 TL",
+    "ar": "349.99 TL"
   },
   "paketlerUmrePeriod": {
     "tr": "30 gün · tek kişi",
@@ -101,8 +101,8 @@
   },
   "paketlerAilePrice": {
     "tr": "799,99 TL",
-    "en": "€19.99",
-    "ar": "19.99 €"
+    "en": "799.99 TL",
+    "ar": "799.99 TL"
   },
   "paketlerAilePeriod": {
     "tr": "30 gün · 6 kişiye kadar",
@@ -148,6 +148,12 @@
     "tr": "Paketler otomatik yenilenmez. Süre, satın aldığınız andan itibaren başlar.",
     "en": "Packages do not renew automatically. The period starts when you purchase.",
     "ar": "لا تتجدد الباقات تلقائيًا. تبدأ المدة من لحظة الشراء."
+  },
+  "paketlerKurNot": {
+    "tr": "",
+    "en": "Payment is taken in Turkish lira (TRY). Euro prices are approximate, based on the current exchange rate.",
+    "ar": "يتم الدفع بالليرة التركية (TRY). الأسعار باليورو تقريبية وفق سعر الصرف الحالي.",
+    "description": "EN/AR paket fiyatları TL × anlık kur; ödeme TL alınır. TR boş (gösterilmez)."
   },
   "paketlerFullName": {
     "tr": "Full Umre Paketi",

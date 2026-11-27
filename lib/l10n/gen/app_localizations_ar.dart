@@ -7483,7 +7483,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerAilePeriod => '30 يومًا · حتى 6 أشخاص';
 
   @override
-  String get paketlerAilePrice => '19.99 €';
+  String get paketlerAilePrice => '799.99 TL';
 
   @override
   String get paketlerBackToFree => 'العودة إلى الخطة المجانية';
@@ -7556,7 +7556,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerFreeName => 'مجاني';
 
   @override
-  String get paketlerFreePrice => '0 €';
+  String get paketlerFreePrice => '0 TL';
 
   @override
   String get paketlerFullBadge => 'شامل كل شيء';
@@ -7597,6 +7597,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'إذا كنت تخطط لعمرتك بنفسك فاختر الباقة المناسبة لك. الميزات الأساسية مجانية دائمًا.';
+
+  @override
+  String get paketlerKurNot =>
+      'يتم الدفع بالليرة التركية (TRY). الأسعار باليورو تقريبية وفق سعر الصرف الحالي.';
 
   @override
   String get paketlerOnlyBody =>
@@ -7674,7 +7678,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get paketlerUmrePeriod => '30 يومًا · شخص واحد';
 
   @override
-  String get paketlerUmrePrice => '9.99 €';
+  String get paketlerUmrePrice => '349.99 TL';
 
   @override
   String paketlerYourPackage(String name) {

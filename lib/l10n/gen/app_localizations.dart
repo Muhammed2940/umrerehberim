@@ -13568,6 +13568,12 @@ abstract class AppLocalizations {
   /// **'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.'**
   String get paketlerIntro;
 
+  /// EN/AR paket fiyatları TL × anlık kur; ödeme TL alınır. TR boş (gösterilmez).
+  ///
+  /// In tr, this message translates to:
+  /// **''**
+  String get paketlerKurNot;
+
   /// No description provided for @paketlerOnlyBody.
   ///
   /// In tr, this message translates to:

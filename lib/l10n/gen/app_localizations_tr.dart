@@ -7514,6 +7514,9 @@ class AppLocalizationsTr extends AppLocalizations {
       'Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.';
 
   @override
+  String get paketlerKurNot => '';
+
+  @override
   String get paketlerOnlyBody =>
       'Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.';
 

@@ -7,13 +7,14 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
+import '../providers/paket_fiyat_provider.dart';
 import '../providers/personal_plan_provider.dart';
 import 'odeme_screen.dart';
 
 /// Bireysel kullanıcı paketleri (docs/plan/BIREYSEL_PLAN.md), fiyata göre sıralı:
-/// Ücretsiz, Umre Paketi (30 gün, 349,99 TL / 9,99 €), Aile/Arkadaş Paketi (6 kişi, 30 gün,
-/// 799,99 TL / 19,99 €), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel, yemek,
-/// ulaşım, eSIM dahil).
+/// Ücretsiz, Umre Paketi (30 gün, 349,99 TL), Aile/Arkadaş Paketi (6 kişi, 30 gün,
+/// 799,99 TL), Full Umre Paketi (10 gün, 1.500 $; uçak, vize, otel, yemek,
+/// ulaşım, eSIM dahil). EN/AR'da TL fiyat anlık kurla euroya çevrilir ([PaketFiyatProvider]).
 /// DEMO: Ödeme henüz bağlı değil; "Satın al" animasyonlu ödeme sayfasını açar ([OdemeScreen]),
 /// ödeme almadan paketi bu cihazda seçer ([PersonalPlanProvider]). Full: yönetici onayı.
 /// Görünüm yeni değil: bilgi ekranlarının [InfoCardBox], [InfoIconBadge], [InfoChip],
@@ -31,6 +32,7 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
     super.initState();
     final uid = context.read<AppStateProvider>().currentUser?.id;
     if (uid != null) personalPlan.loadFor(uid);
+    paketFiyat.yukle();
   }
 
   /// Ücretli paket: animasyonlu ödeme sayfası; başarılıysa Umre/Aile için Yolculuk
@@ -68,8 +70,9 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
+    final dil = Localizations.localeOf(context).languageCode;
     return ListenableBuilder(
-      listenable: personalPlan,
+      listenable: Listenable.merge([personalPlan, paketFiyat]),
       builder: (context, _) {
         final current = personalPlan.paket;
         // Full (onay bekleyen ya da onaylı): hak yönetici verisidir; değişiklik iletişimle.
@@ -89,7 +92,7 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
             _PaketKart(
               icon: icon,
               name: name,
-              price: price,
+              price: paketFiyat.goster(id, dil, price),
               period: period,
               badge: current == id
                   ? (id == PaketId.full && personalPlan.awaitingApproval ? l.paketlerPendingBadge : l.paketlerCurrent)
@@ -103,6 +106,7 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
                   ? (locked ? contact : _backToFree)
                   : locked
                       ? null
+                      // price: TL metni (ödeme TL çekilir); döviz karşılığını ödeme ekranı ekler.
                       : () => _buy(OdemeArgs(id: id, icon: icon, name: name, price: price, period: period)),
               editLabel: id == PaketId.full && personalPlan.hasPaidPackage && current == id ? l.paketlerContactUs : null,
               onEdit: switch (id) {
@@ -173,6 +177,7 @@ class _PaketlerScreenState extends State<PaketlerScreen> {
                 ],
               ),
               InfoNote(l.paketlerAgencyNote, icon: FlutterIslamicIcons.solidHadji),
+              if (l.paketlerKurNot.isNotEmpty) InfoNote(l.paketlerKurNot, icon: Icons.currency_exchange_rounded),
               const SizedBox(height: 4),
               Text(
                 l.paketlerFootnote,

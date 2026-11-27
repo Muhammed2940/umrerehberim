@@ -7451,7 +7451,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerAilePeriod => '30 days · up to 6 people';
 
   @override
-  String get paketlerAilePrice => '€19.99';
+  String get paketlerAilePrice => '799.99 TL';
 
   @override
   String get paketlerBackToFree => 'Switch to free plan';
@@ -7525,7 +7525,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerFreeName => 'Free';
 
   @override
-  String get paketlerFreePrice => '€0';
+  String get paketlerFreePrice => '0 TL';
 
   @override
   String get paketlerFullBadge => 'All inclusive';
@@ -7566,6 +7566,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get paketlerIntro =>
       'Planning your Umrah on your own? Choose the package that suits you. The basics are always free.';
+
+  @override
+  String get paketlerKurNot =>
+      'Payment is taken in Turkish lira (TRY). Euro prices are approximate, based on the current exchange rate.';
 
   @override
   String get paketlerOnlyBody =>
@@ -7644,7 +7648,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get paketlerUmrePeriod => '30 days · 1 person';
 
   @override
-  String get paketlerUmrePrice => '€9.99';
+  String get paketlerUmrePrice => '349.99 TL';
 
   @override
   String paketlerYourPackage(String name) {

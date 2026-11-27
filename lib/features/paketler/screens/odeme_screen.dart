@@ -4,6 +4,7 @@ import '../../../core/providers/locale_provider.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/global_snackbar.dart';
 import '../../info_screen/widgets/info_widgets.dart';
+import '../providers/paket_fiyat_provider.dart';
 import '../providers/personal_plan_provider.dart';
 
 /// Ödeme sayfasına giden animasyonlu geçiş: aşağıdan kayarak ve belirerek açılır;
@@ -28,12 +29,17 @@ class OdemeArgs {
   final PaketId id;
   final IconData icon;
   final String name;
+
+  /// Çekilecek tutarın metni: paketler.json fiyatı (TL; Full için $). Ekranda gösterilen döviz DEĞİL.
   final String price;
   final String? period;
 
   const OdemeArgs({required this.id, required this.icon, required this.name, required this.price, this.period});
 
   String get heroTag => 'paket-icon-${id.name}';
+
+  /// PayTR'ye gidecek tutar (kuruş, TL). Ödeme her zaman TL'dir; dil ve kurdan bağımsız.
+  int? get tlKurus => PaketFiyatProvider.tlKurus(id);
 }
 
 enum _Asama { ozet, isleniyor, basarili }
@@ -56,7 +62,7 @@ class _OdemeScreenState extends State<OdemeScreen> {
 
   Future<void> _ode() async {
     setState(() => _asama = _Asama.isleniyor);
-    // TODO(PayTR): sunucudan iFrame token al → WebView'de PayTR ödeme sayfası →
+    // TODO(PayTR): sunucudan iFrame token al (tutar: widget.args.tlKurus, para birimi TL) → WebView'de PayTR ödeme sayfası →
     // bildirim (callback) sunucuda doğrulanınca paket sunucuda tanımlanır.
     await Future<void>.delayed(const Duration(milliseconds: 1800));
     if (!mounted) return;
@@ -116,6 +122,10 @@ class _OdemeScreenState extends State<OdemeScreen> {
 
   Widget _ozet(BuildContext context, OdemeArgs a, bool full) {
     final l = context.l10n;
+    // EN/AR: "799.99 TL (≈ €14.41)". Çekilen tutar TL; döviz yalnız bilgi amaçlı, anlık kurla.
+    final dil = Localizations.localeOf(context).languageCode;
+    final doviz = dil == 'tr' ? null : paketFiyat.dovizMetni(a.id, dil);
+    final toplam = doviz == null ? a.price : '${a.price} (≈ $doviz)';
     return ListView(
       key: const ValueKey('ozet'),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
@@ -171,11 +181,12 @@ class _OdemeScreenState extends State<OdemeScreen> {
               _satir(l.odemeRowPackage, a.name),
               if (a.period != null) _satir(l.odemeRowPeriod, a.period!),
               const Divider(height: 22, color: AppColors.divider),
-              _satir(l.odemeRowTotal, a.price, strong: true),
+              _satir(l.odemeRowTotal, toplam, strong: true),
             ],
           ),
         ),
         if (full) InfoNote(l.odemeFullNote, icon: Icons.support_agent_rounded),
+        if (doviz != null && l.paketlerKurNot.isNotEmpty) InfoNote(l.paketlerKurNot, icon: Icons.currency_exchange_rounded),
         InfoNote(l.odemeSecureNote, icon: Icons.lock_rounded),
         InfoNote(l.odemeDemoNote, warning: true),
         const SizedBox(height: 8),
@@ -202,13 +213,18 @@ class _OdemeScreenState extends State<OdemeScreen> {
         child: Row(
           children: [
             Expanded(child: Text(k, style: const TextStyle(fontSize: 14, color: AppColors.textMuted))),
-            Text(
+            const SizedBox(width: 12),
+            Flexible(
+              flex: 2,
+              child: Text(
               v,
+              textAlign: TextAlign.end,
               style: TextStyle(
                 fontSize: strong ? 20 : 14.5,
                 fontWeight: strong ? FontWeight.w800 : FontWeight.w600,
                 color: strong ? AppColors.primary : AppColors.text,
               ),
+            ),
             ),
           ],
         ),

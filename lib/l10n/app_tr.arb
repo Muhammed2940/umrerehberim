@@ -4282,6 +4282,10 @@
   "paketlerFullPeriod": "10 gün · kişi başı",
   "paketlerFullPrice": "1.500 $",
   "paketlerIntro": "Umrenizi kendi başınıza planlıyorsanız size uygun paketi seçin. Temel özellikler her zaman ücretsiz.",
+  "paketlerKurNot": "",
+  "@paketlerKurNot": {
+    "description": "EN/AR paket fiyatları TL × anlık kur; ödeme TL alınır. TR boş (gösterilmez)."
+  },
   "paketlerOnlyBody": "Esnaf indirimleri, puanlar ve harcama geçmişi Umre, Aile ve Full paketlerde açılır.",
   "paketlerOnlyTitle": "Ücretli paketlere özel",
   "paketlerPendingBadge": "Onay bekleniyor",
