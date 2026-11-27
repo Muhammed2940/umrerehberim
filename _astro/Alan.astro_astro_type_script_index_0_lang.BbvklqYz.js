@@ -1,0 +1,1 @@
+for(let e of document.querySelectorAll(`input[type=file]`))e.addEventListener(`change`,()=>{let t=e.closest(`label`)?.querySelector(`[data-dosya-adi]`);t&&e.files?.[0]&&(t.textContent=e.files[0].name)});

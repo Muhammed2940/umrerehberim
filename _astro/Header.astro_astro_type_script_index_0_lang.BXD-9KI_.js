@@ -1,0 +1,1 @@
+for(let e of document.querySelectorAll(`[data-mobil-menu]`))document.addEventListener(`click`,t=>{e.open&&!e.contains(t.target)&&(e.open=!1)}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&e.open&&(e.open=!1,e.querySelector(`summary`)?.focus())}),e.querySelectorAll(`a`).forEach(t=>t.addEventListener(`click`,()=>e.open=!1));

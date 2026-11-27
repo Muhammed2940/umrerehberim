@@ -1,0 +1,1 @@
+var e=()=>{location.hash===`#talep`&&document.querySelector(`#talep`)?.setAttribute(`open`,``)};e(),window.addEventListener(`hashchange`,e);

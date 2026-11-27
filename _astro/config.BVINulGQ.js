@@ -1,0 +1,1 @@
+var e=`https://api.ALAN`,t={canliUrl:`https://api.frankfurter.dev/v1/latest?base=TRY&symbols=EUR,USD`,paraBirimi:{en:`EUR`,ar:`EUR`}};export{t as n,e as t};
